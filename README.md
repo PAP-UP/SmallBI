@@ -1,0 +1,3 @@
+# SmallBI
+
+Inicio
