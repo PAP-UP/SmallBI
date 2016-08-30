@@ -635,7 +635,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         carregarCbxSgbd();
     }
     
-    private void carregarTxtPorta(){//COMENTE AQUI PARA TESTAR
+    private void carregarTxtPorta(){
         switch(cbxSgbd.getSelectedItem().toString()){
             case "Selecione":
                 txtPorta.setText("");

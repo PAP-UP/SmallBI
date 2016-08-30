@@ -41,21 +41,17 @@ public class TratarArquivos {
         //jfc.setCurrentDirectory(new File("B:\\PAPIRO\\PAP\\SmallBI\\Arquivos"));
         //jfc.setCurrentDirectory(new File ("%HOMEPATH%"));
         jfc.setDialogTitle("Procurar Arquivo");
-
         jfc.setFileFilter(new FileNameExtensionFilter(null, "csv", "xlsx"));
-
         jfc.showOpenDialog(jfc);
 
         String caminho = new String();
 
         if (jfc.getSelectedFile() != null) {
-
+            
             caminho = jfc.getSelectedFile().getPath();
-
             String extensao = caminho.substring(caminho.lastIndexOf("."));
-
             File arquivo = new File(caminho);
-
+            
             if (extensao.equals(".csv")) {
                 return modelo = importarCSV(separador, modelo, arquivo);
             } else if (extensao.equals(".xlsx")) {
@@ -97,7 +93,6 @@ public class TratarArquivos {
                         linhaCompleta += tiposDeCell(cell) + ",";
                     }
                 }
-
 
                 if (!primeiraLinha) {
                     Object[] obj = linhaCompleta.split(",");

@@ -70,23 +70,18 @@ public class TabelaDao {
         for (int coluna = 0; coluna < tbl.getColumnCount(); coluna++) {
             
             sql += retirarEspacos(tbl.getColumnName(coluna));
-
             cbx = listaCbxTiposParametro.get(coluna);
-
             String tipoSQL = transformarOpcaoEmTipoDeVariavelSQL(cbx.getSelectedItem().toString());
 
             if (coluna != (tbl.getColumnCount() - 1)) {
-
                 if (tbl.getColumnName(coluna).equals(chavePrimaria)) {
                     sql += " " + tipoSQL + " PRIMARY KEY NOT NULL,";
                 } else {
                     sql += " " + tipoSQL + ",";
                 }
-
             } else {
                 sql += " " + tipoSQL + ");";
             }
-
         }
         System.out.println("Print: " + sql);
         return sql;
@@ -99,13 +94,11 @@ public class TabelaDao {
     }
 
     private String preencherTabela(JTable tbl, String nomeTabela, List<JComboBox> listaCbxTiposParametro) {
-
         
         String sql = "INSERT INTO " + retirarEspacos(nomeTabela) + " (";
         JComboBox cbx;
 
-        for (int coluna = 0; coluna < tbl.getColumnCount(); coluna++) {
-            
+        for (int coluna = 0; coluna < tbl.getColumnCount(); coluna++) {            
             if (coluna != tbl.getColumnCount() - 1) {
                 sql += retirarEspacos(tbl.getColumnName(coluna)) + ",";
             } else {
@@ -120,7 +113,7 @@ public class TabelaDao {
             sql += "(";
             
             for (int coluna = 0; coluna < tbl.getColumnCount(); coluna++) {
-
+                
                 cbx = listaCbxTiposParametro.get(coluna);
                 String tipoSQL = transformarOpcaoEmTipoDeVariavelSQL(cbx.getSelectedItem().toString());
 
