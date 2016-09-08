@@ -48,8 +48,9 @@ public class Conexao {
             ResultSet rs = st.executeQuery(sql);
             return rs;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro ao executar query");
+            return null;
         }
-        return null;
     }
 }

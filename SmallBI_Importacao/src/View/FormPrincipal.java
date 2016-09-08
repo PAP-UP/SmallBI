@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 public class FormPrincipal extends javax.swing.JFrame {
 
     private List<JComboBox> listaDeCbxTipos = new ArrayList<>();
-
+    
     public FormPrincipal() {
         initComponents();
         btnValidarTipos.setVisible(false);
@@ -28,6 +28,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         cbxBanco.setVisible(false); //ALTERAÇÃO NO MODO DE CONEXÃO
         ativarLayoutImportarBanco(); //ALTERAÇÃO NO MODO DE CONEXÃO
         btnImportarFromDatabase.setVisible(false); //ALTERAÇÃO NO MODO DE CONEXÃO
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -53,6 +55,10 @@ public class FormPrincipal extends javax.swing.JFrame {
         lblTabela = new javax.swing.JLabel();
         cbxTabela = new javax.swing.JComboBox();
         btnImportarTabela = new javax.swing.JButton();
+        btnEscreverQuerySQL = new javax.swing.JButton();
+        btnExecutarQuery = new javax.swing.JButton();
+        jScrollPaneTxtArea = new javax.swing.JScrollPane();
+        txtAreaScriptSQL = new javax.swing.JTextArea();
         painelCbxTabela = new javax.swing.JPanel();
         lblBanco = new javax.swing.JLabel();
         lblEndereco = new javax.swing.JLabel();
@@ -148,6 +154,24 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnEscreverQuerySQL.setText("Escrever Query SQL");
+        btnEscreverQuerySQL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEscreverQuerySQLActionPerformed(evt);
+            }
+        });
+
+        btnExecutarQuery.setText("Executar");
+        btnExecutarQuery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExecutarQueryActionPerformed(evt);
+            }
+        });
+
+        txtAreaScriptSQL.setColumns(20);
+        txtAreaScriptSQL.setRows(5);
+        jScrollPaneTxtArea.setViewportView(txtAreaScriptSQL);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -156,9 +180,12 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(lblTabela)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbxTabela, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 162, Short.MAX_VALUE)
-                .addComponent(btnImportarTabela))
+            .addComponent(btnImportarTabela, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnEscreverQuerySQL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPaneTxtArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnExecutarQuery))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +195,13 @@ public class FormPrincipal extends javax.swing.JFrame {
                     .addComponent(lblTabela))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnImportarTabela)
-                .addGap(0, 48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(btnEscreverQuerySQL)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPaneTxtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnExecutarQuery)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout painelCbxBancoLayout = new javax.swing.GroupLayout(painelCbxBanco);
@@ -182,8 +215,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         painelCbxBancoLayout.setVerticalGroup(
             painelCbxBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCbxBancoLayout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout painelCbxTabelaLayout = new javax.swing.GroupLayout(painelCbxTabela);
@@ -226,16 +260,16 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addGroup(painelAreaDoArquivoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAreaDoArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneTblArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
-                    .addComponent(painelCbxTipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(painelCbxTipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneTblArquivo))
+                .addGap(16, 16, 16))
         );
         painelAreaDoArquivoLayout.setVerticalGroup(
             painelAreaDoArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAreaDoArquivoLayout.createSequentialGroup()
                 .addComponent(painelCbxTipos, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneTblArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                .addComponent(jScrollPaneTblArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -321,7 +355,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                             .addComponent(btnValidarTipos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnSalvarTabela, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 94, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lblDefinirSeparador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbxSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,9 +419,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                             .addComponent(btnConectar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelCbxBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelCbxTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75))))
+                        .addGap(51, 51, 51))))
         );
 
         pack();
@@ -440,6 +474,26 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void btnConectarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnConectarKeyPressed
         conectarComBanco();
     }//GEN-LAST:event_btnConectarKeyPressed
+
+    private void btnEscreverQuerySQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscreverQuerySQLActionPerformed
+        //abrirFormEscreverQuerySQL();
+        jScrollPaneTxtArea.setVisible(true);
+        txtAreaScriptSQL.setVisible(true);
+        btnExecutarQuery.setVisible(true);
+    }//GEN-LAST:event_btnEscreverQuerySQLActionPerformed
+
+    private void btnExecutarQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecutarQueryActionPerformed
+        importarTabelaFromScript();
+    }//GEN-LAST:event_btnExecutarQueryActionPerformed
+    
+    private void abrirFormEscreverQuerySQL(){
+        FormEscreverQuerySQL frmEscreverQuerySQL = new FormEscreverQuerySQL();
+        frmEscreverQuerySQL.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        frmEscreverQuerySQL.setTitle("Escrever Query SQL");
+        frmEscreverQuerySQL.setLocationRelativeTo(null);
+        frmEscreverQuerySQL.setResizable(false);
+        frmEscreverQuerySQL.setVisible(true);
+    }
     
     private void abrirFormSalvarTabela(){
         FormSalvar frmSalvar = new FormSalvar(tblArquivo, listaDeCbxTipos);
@@ -471,6 +525,15 @@ public class FormPrincipal extends javax.swing.JFrame {
         ConexaoDao.consultarTabela(cbxTabela.getSelectedItem().toString(), tblArquivo);
         controlarBotoes();
         iniciarComboBoxTiposDoBanco();
+    }
+    
+    private void importarTabelaFromScript(){
+        if(ConexaoDao.consultarTabela(tblArquivo, txtAreaScriptSQL.getText()) == null){
+            JOptionPane.showMessageDialog(null, "Falha ao executar Script SQL");
+        }else{
+            controlarBotoes();
+            iniciarComboBoxTipos();
+        }
     }
     
     private void conectarComBanco(){
@@ -795,6 +858,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         lblTabela.setVisible(true);
         cbxTabela.setVisible(true);
         btnImportarTabela.setVisible(true);
+        
+        btnEscreverQuerySQL.setVisible(true);
     }
     
     private void esconderBotoesConexaoBanco(){
@@ -821,6 +886,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         lblTabela.setVisible(false);
         cbxTabela.setVisible(false);
         btnImportarTabela.setVisible(false);
+        
+        btnEscreverQuerySQL.setVisible(false);
+        jScrollPaneTxtArea.setVisible(false);
+        txtAreaScriptSQL.setVisible(false);
+        btnExecutarQuery.setVisible(false);
     }
     
     public static void main(String args[]) {
@@ -838,6 +908,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConectar;
     private javax.swing.JButton btnDesconectar;
+    private javax.swing.JButton btnEscreverQuerySQL;
+    private javax.swing.JButton btnExecutarQuery;
     private javax.swing.JButton btnImportar;
     private javax.swing.JButton btnImportarFromDatabase;
     private javax.swing.JButton btnImportarTabela;
@@ -852,6 +924,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPaneAreaDoArquivo;
     private javax.swing.JScrollPane jScrollPaneTblArquivo;
+    private javax.swing.JScrollPane jScrollPaneTxtArea;
     private javax.swing.JLabel lblBD;
     private javax.swing.JLabel lblBanco;
     private javax.swing.JLabel lblDefinirSeparador;
@@ -866,6 +939,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel painelCbxTabela;
     private javax.swing.JPanel painelCbxTipos;
     private javax.swing.JTable tblArquivo;
+    private javax.swing.JTextArea txtAreaScriptSQL;
     private javax.swing.JTextField txtBanco;
     private javax.swing.JTextField txtEnredeco;
     private javax.swing.JTextField txtPorta;
