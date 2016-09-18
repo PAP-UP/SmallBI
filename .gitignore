@@ -1,0 +1,9 @@
+# Created by https://www.gitignore.io/api/netbeans
+
+### NetBeans ###
+SmallBI_Importacao/nbproject/private/
+SmallBI_Importacao/build/
+SmallBI_Importacao/nbbuild/
+SmallBI_Importacao/dist/
+SmallBI_Importacao/nbdist/
+SmallBI_Importacao/.nb-gradle/ 
