@@ -2,9 +2,9 @@ package View;
 
 import javax.swing.JComboBox;
 
-public class FormPrincipalAssistente extends javax.swing.JFrame {
+public class FormPrincipal extends javax.swing.JFrame {
 
-    public FormPrincipalAssistente() {
+    public FormPrincipal() {
         initComponents();
         iniciarCbxTiposExemplo();
     }
@@ -466,8 +466,8 @@ public class FormPrincipalAssistente extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new FormPrincipalAssistente().setVisible(true);
-                FormPrincipalAssistente form = new FormPrincipalAssistente();
+                //new FormPrincipal().setVisible(true);
+                FormPrincipal form = new FormPrincipal();
                 form.setLocationRelativeTo(null);
                 form.setVisible(true);
             }
