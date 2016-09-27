@@ -3,6 +3,7 @@ package View;
 import ControllerDao.ConexaoDao;
 import java.util.List;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -28,7 +29,6 @@ public class FormPrincipal extends javax.swing.JFrame {
         cbxBanco.setVisible(false); //ALTERAÇÃO NO MODO DE CONEXÃO
         ativarLayoutImportarBanco(); //ALTERAÇÃO NO MODO DE CONEXÃO
         btnImportarFromDatabase.setVisible(false); //ALTERAÇÃO NO MODO DE CONEXÃO
-        
         
     }
 
