@@ -2,14 +2,19 @@ package View;
 
 import ControllerDao.ConexaoDao;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class FormPrincipal extends javax.swing.JFrame {
 
+    private List<JComboBox> listaDeCbxTipos = new ArrayList<>();
+    
     public FormPrincipal() {
         initComponents();
-        //iniciarCbxTiposExemplo();
     }
     
     @SuppressWarnings("unchecked")
@@ -61,6 +66,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         txtPassAbaImportBd_Senha = new javax.swing.JPasswordField();
         btnAbaImportBd_Conectar = new javax.swing.JButton();
         btnAbaImportBd_Desconectar = new javax.swing.JButton();
+        btnAbaImportBd_Ajuda = new javax.swing.JButton();
         painelAbaImportBd_ConsultarBd = new javax.swing.JPanel();
         painelAbaImportBd_ConsulDefault = new javax.swing.JPanel();
         txtAbaImportBd_Tabela = new javax.swing.JLabel();
@@ -73,12 +79,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         painelAbaTabelaPreview = new javax.swing.JPanel();
         painelAbaTabPrev_TabPrevResult = new javax.swing.JPanel();
         painelAbaTabPrev_CbxTiposVariaveis = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
         jScrollPaneTabPrev = new javax.swing.JScrollPane();
         tblTabPrev = new javax.swing.JTable();
+        btnAbaTabPrev_ValidarTipos = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,6 +97,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SmallBI - Assistente de Importação");
 
         painelAbaInicio_ExplicaoAssistente.setBorder(javax.swing.BorderFactory.createTitledBorder("Como utilizar o Assistente de Importação do SmallBI"));
 
@@ -372,6 +376,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         lblAbaImportBd_Sgbd.setText("SGBD:");
 
         cbxAbaImportBd_Sgbd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "PostgreSQL", "MySQL", "SQL Server" }));
+        cbxAbaImportBd_Sgbd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAbaImportBd_SgbdActionPerformed(evt);
+            }
+        });
 
         lblAbaImportBd_Banco.setText("Banco:");
 
@@ -399,16 +408,19 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnAbaImportBd_Ajuda.setText("Ajuda");
+        btnAbaImportBd_Ajuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbaImportBd_AjudaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelAbaImportBd_ConexaoLayout = new javax.swing.GroupLayout(painelAbaImportBd_Conexao);
         painelAbaImportBd_Conexao.setLayout(painelAbaImportBd_ConexaoLayout);
         painelAbaImportBd_ConexaoLayout.setHorizontalGroup(
             painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaImportBd_ConexaoLayout.createSequentialGroup()
                 .addGroup(painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelAbaImportBd_ConexaoLayout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(txtAbaImportBd_Conexao, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 119, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaImportBd_ConexaoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,17 +447,25 @@ public class FormPrincipal extends javax.swing.JFrame {
                             .addComponent(txtAbaImportBd_Porta)
                             .addComponent(txtPassAbaImportBd_Senha, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaImportBd_ConexaoLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(233, Short.MAX_VALUE)
                         .addComponent(btnAbaImportBd_Conectar)
                         .addGap(18, 18, 18)
                         .addComponent(btnAbaImportBd_Desconectar)
                         .addGap(220, 220, 220)))
                 .addContainerGap())
+            .addGroup(painelAbaImportBd_ConexaoLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(txtAbaImportBd_Conexao, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAbaImportBd_Ajuda)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelAbaImportBd_ConexaoLayout.setVerticalGroup(
             painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaImportBd_ConexaoLayout.createSequentialGroup()
-                .addComponent(txtAbaImportBd_Conexao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAbaImportBd_Conexao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAbaImportBd_Ajuda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAbaImportBd_Sgbd)
@@ -453,11 +473,12 @@ public class FormPrincipal extends javax.swing.JFrame {
                     .addComponent(lblAbaImportBd_Banco)
                     .addComponent(txtAbaImportBd_Banco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAbaImportBd_Endereco)
-                    .addComponent(txtAbaImportBd_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblABaImportBd_Porta)
-                    .addComponent(txtAbaImportBd_Porta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblAbaImportBd_Endereco)
+                        .addComponent(txtAbaImportBd_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAbaImportBd_Porta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -467,7 +488,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                         .addComponent(lblAbaImportBd_Senha)
                         .addComponent(txtPassAbaImportBd_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelAbaImportBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAbaImportBd_Conectar)
                     .addComponent(btnAbaImportBd_Desconectar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -591,54 +612,24 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         painelAbaTabPrev_TabPrevResult.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela Preview Resultado"));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Definir Tipo", "Texto", "V/F", "Inteiro", "Real", "Caractere", "Data dd-MM-yyyy", "Data MM-dd-yyyy" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Definir Tipo", "Texto", "V/F", "Inteiro", "Real", "Caractere", "Data dd-MM-yyyy", "Data MM-dd-yyyy" }));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Definir Tipo", "Texto", "V/F", "Inteiro", "Real", "Caractere", "Data dd-MM-yyyy", "Data MM-dd-yyyy" }));
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Definir Tipo", "Texto", "V/F", "Inteiro", "Real", "Caractere", "Data dd-MM-yyyy", "Data MM-dd-yyyy" }));
-
-        javax.swing.GroupLayout painelAbaTabPrev_CbxTiposVariaveisLayout = new javax.swing.GroupLayout(painelAbaTabPrev_CbxTiposVariaveis);
-        painelAbaTabPrev_CbxTiposVariaveis.setLayout(painelAbaTabPrev_CbxTiposVariaveisLayout);
-        painelAbaTabPrev_CbxTiposVariaveisLayout.setHorizontalGroup(
-            painelAbaTabPrev_CbxTiposVariaveisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAbaTabPrev_CbxTiposVariaveisLayout.createSequentialGroup()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox4, 0, 167, Short.MAX_VALUE))
-        );
-        painelAbaTabPrev_CbxTiposVariaveisLayout.setVerticalGroup(
-            painelAbaTabPrev_CbxTiposVariaveisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAbaTabPrev_CbxTiposVariaveisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        painelAbaTabPrev_CbxTiposVariaveis.setLayout(new java.awt.GridLayout());
 
         tblTabPrev.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Coluna 1", "Coluna 2", "Coluna 3", "Coluna 4"
+
             }
         ));
         jScrollPaneTabPrev.setViewportView(tblTabPrev);
+
+        btnAbaTabPrev_ValidarTipos.setText("Validar Tipos de Dados");
+        btnAbaTabPrev_ValidarTipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbaTabPrev_ValidarTiposActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelAbaTabPrev_TabPrevResultLayout = new javax.swing.GroupLayout(painelAbaTabPrev_TabPrevResult);
         painelAbaTabPrev_TabPrevResult.setLayout(painelAbaTabPrev_TabPrevResultLayout);
@@ -648,7 +639,10 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(painelAbaTabPrev_TabPrevResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelAbaTabPrev_CbxTiposVariaveis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneTabPrev))
+                    .addComponent(jScrollPaneTabPrev, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaTabPrev_TabPrevResultLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAbaTabPrev_ValidarTipos)))
                 .addContainerGap())
         );
         painelAbaTabPrev_TabPrevResultLayout.setVerticalGroup(
@@ -658,7 +652,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(painelAbaTabPrev_CbxTiposVariaveis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneTabPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAbaTabPrev_ValidarTipos)
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout painelAbaTabelaPreviewLayout = new javax.swing.GroupLayout(painelAbaTabelaPreview);
@@ -733,10 +729,37 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaImportBd_ExecConsulPersonActionPerformed
 
     private void btnAbaImportBd_DesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaImportBd_DesconectarActionPerformed
-        desconectarBanco();
+        desconectarDoBanco();
     }//GEN-LAST:event_btnAbaImportBd_DesconectarActionPerformed
 
-    private void desconectarBanco(){
+    private void btnAbaTabPrev_ValidarTiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_ValidarTiposActionPerformed
+        validarTiposDeDados();
+    }//GEN-LAST:event_btnAbaTabPrev_ValidarTiposActionPerformed
+
+    private void cbxAbaImportBd_SgbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAbaImportBd_SgbdActionPerformed
+        carregarTxtPorta();
+    }//GEN-LAST:event_cbxAbaImportBd_SgbdActionPerformed
+
+    private void btnAbaImportBd_AjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaImportBd_AjudaActionPerformed
+        ajudaAreaBanco();
+    }//GEN-LAST:event_btnAbaImportBd_AjudaActionPerformed
+
+    private void ajudaAreaBanco(){
+       FormAjudaComBanco frm = new FormAjudaComBanco();
+       frm.setLocationRelativeTo(null);
+       frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+       frm.setVisible(true);
+    }
+    
+    private void validarTiposDeDados(){
+        String msg = Core.ValidarTipos.validarTipagemDosCampos(tblTabPrev, listaDeCbxTipos);                
+        JOptionPane.showMessageDialog(null, msg);
+        if (msg.equals("Campos validados com sucesso!")) {
+            
+        } 
+    }
+    
+    private void desconectarDoBanco(){
         ConexaoDao.desconectar();
         //limparJTable();
         //painelCbxTipos.removeAll();
@@ -749,14 +772,14 @@ public class FormPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Falha ao executar Script SQL");
         }else{
             painelAbas.setSelectedIndex(4);
-            //iniciarComboBoxTipos();
+            iniciarComboBoxTiposBanco();
         }
     }
     
     private void importarTabelaDefault(){
         ConexaoDao.consultarTabela(cbxAbaImportBd_Tabela.getSelectedItem().toString(), tblTabPrev);
         painelAbas.setSelectedIndex(4);
-        //iniciarComboBoxTiposDoBanco();
+        iniciarComboBoxTiposBanco();
     }               
     
     private void conectarComBanco(){
@@ -812,20 +835,14 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void chamarImportarXlsx(){
         Core.ImportarXlsx.importarArquivo(tblTabPrev);
         if(tblTabPrev.getRowCount() > 0){
+            iniciarComboBoxTiposArquivo();
             painelAbas.setSelectedIndex(4);
-            //controlarBotoes();
-            //iniciarComboBoxTipos();
-        }
-        else{            
-//            painelCbxTipos.removeAll();
-//            painelCbxTipos.updateUI();
-//            btnValidarTipos.setVisible(false);
         }
     }
     
     private void chamarImportarCsv(){
         Core.ImportarCsv.importarArquivo(tblTabPrev, cbxAbaImportArq_ParamSeparador.getSelectedItem().toString());
-        if(tblTabPrev.getRowCount() > 0){
+        if(tblTabPrev.getRowCount() >= 0){
             iniciarComboBoxTiposArquivo();
             painelAbas.setSelectedIndex(4);
         }
@@ -844,8 +861,124 @@ public class FormPrincipal extends javax.swing.JFrame {
             cbx.addItem("Caractere");
             cbx.addItem("Data dd-MM-yyyy");            
             cbx.addItem("Data MM-dd-yyyy");
+            listaDeCbxTipos.add(cbx);
             painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
             painelAbaTabPrev_CbxTiposVariaveis.updateUI();
+        }
+    }
+    
+    private void iniciarComboBoxTiposBanco(){
+        ArrayList<String> tipos = buscarTipoDeCampoDoBanco();        
+        int colunas = 0;
+        colunas = tblTabPrev.getColumnCount();
+        painelAbaTabPrev_CbxTiposVariaveis.removeAll();
+        for (int i = 0; i < colunas; i++) {
+            JComboBox cbx = new JComboBox();
+            cbx.addItem("Texto");
+            cbx.addItem("V/F");
+            cbx.addItem("Inteiro");
+            cbx.addItem("Real");
+            cbx.addItem("Caractere");
+            cbx.addItem("Data dd-MM-yyyy");            
+            cbx.addItem("Data MM-dd-yyyy");
+            listaDeCbxTipos.add(cbx);
+            painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
+            cbx.setSelectedItem(transformarTipo(tipos.get(i)));
+            painelAbaTabPrev_CbxTiposVariaveis.updateUI();
+        }
+    }
+    
+    private ArrayList<String> buscarTipoDeCampoDoBanco(){
+        return ConexaoDao.getDataType(cbxAbaImportBd_Tabela.getSelectedItem().toString(), 
+                cbxAbaImportBd_Sgbd.getSelectedItem().toString());
+    }
+    
+    private String transformarTipo(String tipoBanco){
+        System.out.println(tipoBanco);
+        switch(cbxAbaImportBd_Sgbd.getSelectedItem().toString()){
+            case "PostgreSQL":
+                switch(tipoBanco){
+                    case "smallint":
+                        return "Inteiro";
+                    case "integer":
+                        return "Inteiro";
+                    case "bigint":
+                        return "Inteiro";
+                    case "decimal":
+                        return "Real";
+                    case "numeric":
+                        return "Real";
+                    case "real":
+                        return "Real";
+                    case "double precision":
+                        return "Real";
+                    case "money":
+                        return "Real";
+                    case "varchar":
+                        return "Texto";
+                    case "character":
+                        return "Caractere";
+                    case "char":
+                        return "Caractere";
+                    case "text":
+                        return "Caractere";
+                    case "character varying":
+                        return "Texto";
+                    case "date":
+                        return "Data dd-MM-yyyy";
+                    default:
+                        return "Texto";
+                }//switch postgres
+            case "MySQL":
+                switch(tipoBanco){
+                    case "tinyint":
+                        return "Inteiro";
+                    case "smallint":
+                        return "Inteiro";
+                    case "mediumint":
+                        return "Inteiro";
+                    case "int":
+                        return "Inteiro";
+                    case "bigint":
+                        return "Inteiro";
+                    case "decimal":
+                        return "Real";
+                    case "float":
+                        return "Real";
+                    case "double":
+                        return "Real";
+                    case "bit":
+                        return "V/F";
+                    case "char":
+                        return "Caractere";
+                    case "varchar":
+                        return "Texto";
+                    default:
+                        return "Texto";                    
+                }//swtich mysql
+            case "SQL Server":
+                switch(tipoBanco){
+                    
+                }//switch sqlserver
+                break;
+        }//switch SGBD
+        return null;
+    }
+    
+    private void carregarTxtPorta(){
+        switch(cbxAbaImportBd_Sgbd.getSelectedItem().toString()){
+            case "Selecione":
+                txtAbaImportBd_Porta.setText("");
+                break;
+            case "PostgreSQL":
+                txtAbaImportBd_Porta.setText("5432");
+                break;
+            case "MySQL":
+                txtAbaImportBd_Porta.setText("3306");
+                break;
+            case "SQL Server":
+                txtAbaImportBd_Porta.setText("1433");
+                break;
         }
     }
     
@@ -863,20 +996,18 @@ public class FormPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbaImportArq_ProcurarArquivoCsv;
     private javax.swing.JButton btnAbaImportArq_ProcurarPlanilhaXlsx;
+    private javax.swing.JButton btnAbaImportBd_Ajuda;
     private javax.swing.JButton btnAbaImportBd_Conectar;
     private javax.swing.JButton btnAbaImportBd_Desconectar;
     private javax.swing.JButton btnAbaImportBd_ExecConsulPerson;
     private javax.swing.JButton btnAbaImportBd_ImportTabela;
     private javax.swing.JButton btnAbaInicio_Proximo;
+    private javax.swing.JButton btnAbaTabPrev_ValidarTipos;
     private javax.swing.JButton btnAbaTipoImportImportarBanco;
     private javax.swing.JButton btnAbaTipoImport_ImportarArquivo;
     private javax.swing.JComboBox<String> cbxAbaImportArq_ParamSeparador;
     private javax.swing.JComboBox<String> cbxAbaImportBd_Sgbd;
     private javax.swing.JComboBox<String> cbxAbaImportBd_Tabela;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
