@@ -31,8 +31,6 @@ public class ImportarXlsx {
         jfc.setFileFilter(new FileNameExtensionFilter(null, "xlsx"));
         jfc.showOpenDialog(jfc);
 
-
-
         if (jfc.getSelectedFile() != null) {  
             String caminho = new String();
             caminho = jfc.getSelectedFile().getPath();
