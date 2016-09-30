@@ -133,36 +133,39 @@ public class ConexaoDao {
         String script = "SELECT * FROM " + tabela;
         
         ResultSet rs = Conexao.getResultSet(script);
-        try {            
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int numColunas = rsmd.getColumnCount();
-            DefaultTableModel modelo = (DefaultTableModel) tblParametro.getModel();
-            modelo.setColumnCount(0);
-            modelo.setRowCount(0);
-            String linha;
-            Object obj[] = null;
-            
-            for(int i = 1; i < numColunas + 1; i++){
-                modelo.addColumn(rsmd.getColumnName(i));
-            }
-            
-            while(rs.next()){
-                linha = "";
+        if(rs == null){
+            return null;
+        }else{
+            try {            
+                ResultSetMetaData rsmd = rs.getMetaData();
+                int numColunas = rsmd.getColumnCount();
+                DefaultTableModel modelo = (DefaultTableModel) tblParametro.getModel();
+                modelo.setColumnCount(0);
+                modelo.setRowCount(0);
+                String linha;
+                Object obj[] = null;
+
                 for(int i = 1; i < numColunas + 1; i++){
-                    if(i == numColunas + 1){
-                        linha += rs.getString(i);
-                    }else{
-                        linha += rs.getString(i) + ",";
-                    }
+                    modelo.addColumn(rsmd.getColumnName(i));
                 }
-                obj = linha.split(",");
-                modelo.addRow(obj);
+
+                while(rs.next()){
+                    linha = "";
+                    for(int i = 1; i < numColunas + 1; i++){
+                        if(i == numColunas + 1){
+                            linha += rs.getString(i);
+                        }else{
+                            linha += rs.getString(i) + ",";
+                        }
+                    }
+                    obj = linha.split(",");
+                    modelo.addRow(obj);
+                }
+                return modelo;
+            } catch (SQLException ex) {
+                Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
             }
-            return modelo;
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //FormPrincipal.script = null;
         return null;
     }
     

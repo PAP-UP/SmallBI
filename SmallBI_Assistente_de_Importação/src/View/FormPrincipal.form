@@ -50,6 +50,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="painelAbas" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,7 +58,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="painelAbas" pref="528" max="32767" attributes="0"/>
+              <Component id="painelAbas" pref="559" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -113,7 +114,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPaneInicioExplicacao" pref="761" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneInicioExplicacao" pref="758" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="btnAbaInicio_Proximo" min="-2" max="-2" attributes="0"/>
@@ -127,7 +128,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPaneInicioExplicacao" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneInicioExplicacao" pref="425" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnAbaInicio_Proximo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -182,6 +183,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="painelAbaTipoImport_ImportacaoBanco" max="32767" attributes="0"/>
                           <Component id="painelAbaTipoImport_ImportacaoArquivo" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnAbaTipoImport_Voltar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -194,7 +199,9 @@
                       <Component id="painelAbaTipoImport_ImportacaoArquivo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="painelAbaTipoImport_ImportacaoBanco" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="185" max="32767" attributes="0"/>
+                      <EmptySpace pref="179" max="32767" attributes="0"/>
+                      <Component id="btnAbaTipoImport_Voltar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -284,7 +291,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane2" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="526" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="523" max="32767" attributes="0"/>
                                   <Component id="btnAbaTipoImportImportarBanco" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -334,6 +341,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="btnAbaTipoImport_Voltar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaTipoImport_VoltarActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="painelAbaImportacaoArquivo">
@@ -353,6 +368,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="painelAbaImportArq_ImportCsv" max="32767" attributes="0"/>
                           <Component id="painelAbaImportArq_ImportXlsx" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnAbaImportArq_Voltar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -365,7 +384,9 @@
                       <Component id="painelAbaImportArq_ImportCsv" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="painelAbaImportArq_ImportXlsx" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="155" max="32767" attributes="0"/>
+                      <Component id="btnAbaImportArq_Voltar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -386,7 +407,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPaneImportCsv" alignment="0" pref="761" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneImportCsv" alignment="0" pref="758" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="lblAbaImportArq_ParamSeparador" min="-2" max="-2" attributes="0"/>
@@ -534,6 +555,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="btnAbaImportArq_Voltar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaImportArq_VoltarActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="painelAbaConexBanco">
@@ -553,6 +582,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="painelAbaConexBd_InfoConex" max="32767" attributes="0"/>
                           <Component id="painelAbaConexBd_Conexao" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnAbaConexBd_Voltar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -565,7 +598,9 @@
                       <Component id="painelAbaConexBd_InfoConex" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="painelAbaConexBd_Conexao" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="129" max="32767" attributes="0"/>
+                      <Component id="btnAbaConexBd_Voltar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -605,7 +640,7 @@
                                       </Group>
                                       <Component id="lblAbaConexBd_Usuario" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="208" max="32767" attributes="0"/>
+                                  <EmptySpace pref="205" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblAbaConexBd_Banco" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblABaConexBd_Porta" min="-2" max="-2" attributes="0"/>
@@ -817,6 +852,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="btnAbaConexBd_Voltar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaConexBd_VoltarActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="painelAbaConsulBanco">
@@ -836,6 +879,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="painelAbaConsulBd_InfoConsul" max="32767" attributes="0"/>
                           <Component id="painelAbaConsulBd_ConsultarBd" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnAbaConsulBd_Voltar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -848,7 +895,9 @@
                       <Component id="painelAbaConsulBd_InfoConsul" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="painelAbaConsulBd_ConsultarBd" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="53" max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
+                      <Component id="btnAbaConsulBd_Voltar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -908,7 +957,7 @@
                               <Component id="cbxAbaConexBd_Tabela" min="-2" pref="179" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnAbaConexBd_ImportTabela" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="191" max="32767" attributes="0"/>
+                              <EmptySpace pref="188" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1082,6 +1131,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="btnAbaConsulBd_Voltar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaConsulBd_VoltarActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="painelAbaTabelaPreview">
@@ -1101,6 +1158,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="painelAbaTabPrev_AreaDaTabResult" max="32767" attributes="0"/>
                           <Component id="painelAbaTabPrev_TrabDados" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnAbaTabPrev_Voltar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1113,7 +1174,9 @@
                       <Component id="painelAbaTabPrev_AreaDaTabResult" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="painelAbaTabPrev_TrabDados" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                      <Component id="btnAbaTabPrev_Voltar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1210,7 +1273,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPaneAbaTabPrev_ScrollDaAreaTabPrev" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneAbaTabPrev_ScrollDaAreaTabPrev" alignment="0" pref="758" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="btnAbaTabPrev_ValidarTipos" min="-2" max="-2" attributes="0"/>
@@ -1304,6 +1367,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="btnAbaTabPrev_Voltar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Voltar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaTabPrev_VoltarActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
