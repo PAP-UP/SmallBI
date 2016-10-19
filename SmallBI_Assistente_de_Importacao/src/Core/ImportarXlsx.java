@@ -45,6 +45,7 @@ public class ImportarXlsx {
     private static DefaultTableModel importarXlsx(DefaultTableModel modelo, File arquivo){
         try {
             FileInputStream fis = new FileInputStream(arquivo);
+            //10485760 bytes == 10 Mb
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
             XSSFSheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rowIterator = sheet.iterator();
