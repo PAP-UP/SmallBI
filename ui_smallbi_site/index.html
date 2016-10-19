@@ -37,60 +37,14 @@
 
 </head>
 <body>
-
-	<div id="modalLogin" class="dialog">
-		<a href="#close" class="dialog-close dialog-close-background"></a>
-		<div class="dialog-container">
-			<a href="#close" class="dialog-close-icone fa fa-times"></a>
-
-			<div class="dialog-header">
-				<strong>Entrar</strong>
-			</div>
-
-			<div class="dialog-content">
-
-				<button class="btnGoogle" title="Entrar com Google"><span class="fa fa-google-plus"></span> Entrar com Google</button>
-
-				<div class="form-option">ou</div>
-				<div id="loginForm-modal-login">
-					<form class="modalForm">
-						<label for="login-email-modal-login">Email Address</label>
-						<input id="login-email-modal-login" class="" tabindex="63" name="e" type="email" placeholder=" name@company.com" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: pointer;">
-						<div class="error-message-container">
-							<div id="login-email-modal-login-not-valid" class="error-message" style="display:none">
-								Oops, looks like that’s not a valid email.
-							</div>
-						</div>
-						<label for="login-password-modal-login">Password</label>
-						<input id="login-password-modal-login" class="" tabindex="64" name="p" type="password" placeholder="Password" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-						
-						<a href="#" title="Esqueceu sua senha?" class="center-block text-center btnEsqueceuSenha">Esqueceu sua senha?</a>
-
-						<input type="submit" id="login-submit-modal-login" class="btnModal" tabindex="66" onclick="AsanaHelpers.pushEventToGA(['Login', 'Submit', 'modal-login']);" title="Try Asana" value="Log In" autocomplete="off">
-					</form>
-
-				</div>
-
-			</div>
-
-		</div>
-	</div>
-
+	
 	<!-- TOPO -->
 	<div class="area-topo">
-
-		<!-- CARROSSEL FUNDO -->
-		<div class="banner">
-			<div class="areaTxtBanner container">
-				<h2 class=" tituloBanner animated fadeInUp">SmallBI, <br>Lorem ipsum dolor sit amet, consectetur adipiscing.</h2>
-				<a href="#" class="linkBanner animated fadeInUp">Saiba mais</a>
-			</div>
-		</div>
 
 		<!-- CABEÇALHO -->
 		<header class="topo">
 			<ul class="areaAcessoUsuario">
-				<li><a href="#" title="Entrar">Entrar</a></li>
+				<li><a href="#" title="Entrar" id="btnModalLogin">Entrar</a></li>
 				<li><a href="#" title="Cadastro">Cadastro</a></li>
 			</ul>
 			<nav class="navbar" role="navigation">
@@ -124,7 +78,7 @@
 							<li><a href="#">Diferenciais</a></li>
 							<li><a href="#">Serviços</a></li>
 							<li><a href="#">Quem Somos</a></li>
-							<li><a href="#">Contato</a></li>
+							<li><a href="#" id="btnModalContato">Contato</a></li>
 
 						</ul>
 
@@ -134,6 +88,14 @@
 			</nav>
 		</header>
 
+	</div>
+
+	<!-- BANNER -->
+	<div class="banner">
+		<div class="areaTxtBanner container">
+			<h2 class=" tituloBanner animated fadeInUp">SmallBI, <br>Lorem ipsum dolor sit amet, consectetur adipiscing.</h2>
+			<a href="#" class="linkBanner animated fadeInUp">Saiba mais</a>
+		</div>
 	</div>
 
 	<!-- PÁGINA INICIAL -->
@@ -286,6 +248,68 @@
 			</div>
 		</div>
 	</footer>
+
+	<div id="modalLogin" class="dialog">
+		<a href="#" class="dialog-close dialog-close-background btnFecharModal"></a>
+		<div class="dialog-container">
+			<a href="#" class="dialog-close-icone fa fa-times btnFecharModal"></a>
+
+			<div class="dialog-header">
+				<strong>Entrar</strong>
+			</div>
+
+			<div class="dialog-content">
+
+				<button class="btnGoogle" title="Entrar com Google"><span class="fa fa-google-plus"></span> Entrar com Google</button>
+
+				<div class="form-option">ou</div>
+				<div id="loginForm-modal-login">
+					<form class="modalForm">
+						<label for="login-email-modal-login">E-mail</label>
+						<input name="usuario" type="email" placeholder="name@company.com">
+						<label for="login-password-modal-login">Senha</label>
+						<input name="senha" type="password" placeholder="Senha">
+						
+						<a href="#" title="Esqueceu sua senha?" class="center-block text-center btnEsqueceuSenha">Esqueceu sua senha?</a>
+
+						<input type="submit" id="login-submit-modal-login" class="btnModal" title="Entrar" value="Entrar">
+					</form>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div id="modalContato" class="dialog">
+		<a href="#" class="dialog-close dialog-close-background btnFecharModal"></a>
+		<div class="dialog-container">
+			<a href="#" class="dialog-close-icone fa fa-times btnFecharModal"></a>
+
+			<div class="dialog-header">
+				<strong>Contato</strong>
+			</div>
+
+			<div class="dialog-content">
+
+				<div id="loginForm-modal-login">
+					<form class="modalForm">
+						<label>Nome</label>
+						<input name="nome" type="text" placeholder="José Soares">
+						<label>E-mail</label>
+						<input name="usuario" type="email" placeholder="jose@compania.com">
+						<label>Mensagem</label>
+						<textarea name="mensagem" rows="8" cols="20" placeholder="Deixe-nos saber qual é sua dúvida."></textarea>
+						<input type="submit" id="login-submit-modal-login" class="btnModal" title="Enviar" value="Enviar">
+					</form>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
 
 </body>
 </html>

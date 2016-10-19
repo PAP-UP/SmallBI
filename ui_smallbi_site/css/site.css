@@ -22,6 +22,32 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 		color: #093a4d;
 		margin: 0;
 	}
+	body.cadastro{
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		min-height: 100vh;
+		background-color: #414A52;
+	    /* background-image: -webkit-linear-gradient(bottom left, #ffffff 10%, #7AE2DE 65%, #ffffff 125%);
+	    background-image: linear-gradient(to top right,#ffffff 10%, #7AE2DE 65%, #ffffff 125%); */
+	}
+	/*body.cadastro:after{
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		background: #7ae2de;
+		background: -moz-linear-gradient(-45deg,  #7ae2de 0%, #ffffff 100%);
+		background: -webkit-linear-gradient(-45deg,  #7ae2de 0%,#ffffff 100%);
+		background: linear-gradient(135deg,  #7ae2de 0%,#ffffff 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ae2de', endColorstr='#ffffff',GradientType=1 );
+		
+	    
+
+	}*/
 		a {
 			background-color: transparent;
 			outline: 0!important;
@@ -37,24 +63,26 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 		    position: relative;
 
 		    width: 100%;
+		    z-index: 1;
 		}
 
-			.area-topo .banner{
+			.banner{
 				position: relative;
-				z-index: 0;
+				/*z-index: 0;*/
 
 				height: 740px;
 				/*background: #414A52 url(../img/banner.png);*/
 				background: #414A52;
 				background-size: cover;
+				margin-top: -208px;
 			}
 
-				.area-topo .banner .areaTxtBanner{
+				.banner .areaTxtBanner{
 					text-align: center;
 					padding: 350px 0 40px;
 					border-bottom: solid 1px rgba(255,255,255,0.25);
 				}
-					.area-topo .banner .areaTxtBanner .tituloBanner{
+					.banner .areaTxtBanner .tituloBanner{
 						margin-bottom: 40px;
 						color: #fff;
 						font-size: 45px;
@@ -62,7 +90,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 						line-height: 68px;
 						font-family: 'Raleway', sans-serif;
 					}
-					.area-topo .banner .areaTxtBanner .linkBanner{
+					.banner .areaTxtBanner .linkBanner{
 						display: inline-block;
 						font-size: 13px;
 						letter-spacing: 1px;
@@ -74,16 +102,14 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 						line-height: 1;
 					}
 
-						.area-topo .banner .areaTxtBanner .linkBanner:hover{
+						.banner .areaTxtBanner .linkBanner:hover{
 							background-color: #71D5D2;
 						}
 
 			.area-topo .topo {
-			    position: absolute;
-			    z-index: 9999;
-			    top: 20px;
-			    left: 0;
-
+			    /*z-index: 9999;*/
+			    margin-top: 20px;
+				height: 188px;
 			    width: 100%;
 			}
 
@@ -120,7 +146,9 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 								background-color: #71D5D2;
 								border-color: #71D5D2;
 							}
-
+				.area-topo .topo .navbar{
+					margin-bottom: 0;
+				}
 				.area-topo .topo .navbar-header{
 					width: 100%;
 				}
@@ -133,7 +161,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 					    display: block;
 
 					    width: 56.5%;
-					    height: 108px;
+					    height: 150px;
 					    margin: 0;
 					    padding: 0;
 
@@ -229,63 +257,63 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 								}
 
 	/* RODAPÉ */
-	.rodape{
-		background-color: #414A52;
-		padding: 40px 0;
-	}
-		.rodape .marca{
+		.rodape{
+			background-color: #414A52;
+			padding: 40px 0;
+		}
+			.rodape .marca{
 
-		}
-			.rodape .marca .logo{
-				margin-bottom: 10px;
-				width: 50px;
 			}
-			.rodape .marca p{
-				font-size: 14px;
-				color: #fff;
-				line-height: 27px;
-				padding-bottom: 15px;
-			}
-		.rodape .navRodape{
-			margin-bottom: 20px;
-		}
-			.rodape .navRodape ul{
-				margin: 0;
-				padding: 0;
-				list-style: none;
-				text-align: center;
-			}
-				.rodape .navRodape ul li{
-					display: inline-block;
-					margin-right: 50px;
+				.rodape .marca .logo{
+					margin-bottom: 10px;
+					width: 50px;
+				}
+				.rodape .marca p{
 					font-size: 14px;
 					color: #fff;
+					line-height: 27px;
+					padding-bottom: 15px;
 				}
-					.rodape .navRodape ul li:last-child{
-						margin-right: 0px;
-					} 
-					.rodape .navRodape ul li a{
-						color: #fff;
-						-webkit-transition-timing-function: ease;
-						transition-timing-function: ease;
-						-webkit-transition-duration: 200ms;
-						transition-duration: 200ms;
-						text-decoration: none;
-						cursor: pointer;
-					}
-						.rodape .navRodape ul li a:hover{
-							color: #7AE2DE;
-						}
-		.rodape .areaCopyright{
-			padding: 5px 0 0;
-			margin: 0;
-			border-top: solid 1px rgba(255,255,255,0.15);
-			list-style: none;
-		}
-			.rodape .areaCopyright li{
-				color: #8A9097;
-				font-size: 14px;
+			.rodape .navRodape{
+				margin-bottom: 20px;
 			}
+				.rodape .navRodape ul{
+					margin: 0;
+					padding: 0;
+					list-style: none;
+					text-align: center;
+				}
+					.rodape .navRodape ul li{
+						display: inline-block;
+						margin-right: 50px;
+						font-size: 14px;
+						color: #fff;
+					}
+						.rodape .navRodape ul li:last-child{
+							margin-right: 0px;
+						} 
+						.rodape .navRodape ul li a{
+							color: #fff;
+							-webkit-transition-timing-function: ease;
+							transition-timing-function: ease;
+							-webkit-transition-duration: 200ms;
+							transition-duration: 200ms;
+							text-decoration: none;
+							cursor: pointer;
+						}
+							.rodape .navRodape ul li a:hover{
+								color: #7AE2DE;
+							}
+			.rodape .areaCopyright{
+				padding: 5px 0 0;
+				margin: 0;
+				border-top: solid 1px rgba(255,255,255,0.15);
+				list-style: none;
+			}
+				.rodape .areaCopyright li{
+					color: #8A9097;
+					font-size: 14px;
+				}
 
 
 	/* PG GERAL */
@@ -316,14 +344,14 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 			bottom: 0;
 			left: 0;
 			margin: 0;
-			opacity: 1;
-			pointer-events: none;
+			opacity: 0;
+			pointer-events: auto;
 			position: fixed;
 			right: 0;
 			top: 0;
 			transition: all .15s ease-in;
-			visibility: visible;
-			z-index: 99999;
+			visibility: hidden;
+			z-index: 999;
 		}
 		.dialog-close {
 		    color: #b9bcc0;
@@ -337,8 +365,8 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 		    display: block;
 		    pointer-events: all;
 		    position: absolute;
-		    right: .75em;
-		    top: .75em;
+		    right: 0;
+		    top: 0;
 		    transition: opacity .15s;
 		}
 			.dialog-close:hover {
@@ -377,14 +405,16 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 				margin: 0;
 				opacity: .6;
 				position: absolute;
-				right: .75em;
-				top: .75em;
+				right: 15px;
+				top: 15px;
 				transition: opacity .15s;
 			}
+				.dialog-close-icone:hover{
+					text-decoration: none;
+				}
 			.dialog-header {
 			    border-bottom: none;
-			    padding: 20px 15px 15px 30px;	
-			    padding-top: 40px;
+			    padding-top: 30px;
 			    text-align: center;
 			}
 			.dialog-header strong{
@@ -392,7 +422,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 			    font-weight: 300;
 			}
 			.dialog-content{
-				padding: 20px 30px;
+				padding: 10px 30px 20px;
 				overflow: hidden;
 			}
 			.dialog-content .btnGoogle{
@@ -430,7 +460,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 				position: absolute;
 				top: 50%;
 				width: 45%;
-				z-index: 0;
+				/*z-index: 0;*/
 			}
 			.form-option:after{
 				border-top: 1px solid #e1e2e4;
@@ -440,7 +470,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 				position: absolute;
 				top: 50%;
 				width: 45%;
-				z-index: 0;
+				/*z-index: 0;*/
 			}
 			.modalForm{
 
@@ -448,7 +478,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 			.modalForm label{
 				color: #a1a4aa;
 				display: block;
-				font-size: .75em;
+				font-size: 10.3px;
 				margin-bottom: 7px;
 				margin-top: 25px;
 				text-transform: uppercase;
@@ -462,39 +492,64 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 				color: #1b2432;
 				font-size: .875em;
 				height: 40px;
-				margin: 0 0 15px;
+				margin: 0 0 10px;
+				padding: 0;
+				padding-left: 10px;
+				transition: .15s;
+				width: 100%;
+			}
+			.modalForm textarea{
+				background-color: #fff;
+				border: 1px solid #cdcfd2;
+				border-radius: 3px;
+				color: #1b2432;
+				font-size: .875em;
+				margin: 0 0 10px;
 				padding: 0;
 				padding-left: 10px;
 				transition: .15s;
 				width: 100%;
 			}
 			.btnEsqueceuSenha{
-				color: #a1a4aa;
+			    color: #676d76;
+			    font-size: 11px;
+			    font-weight: 600;
+			    margin-top: 10px;
 				text-decoration: underline;
 				margin-bottom: 20px;
+				text-align: left;
+				display: inline;
 			}
+				.btnEsqueceuSenha:hover{
+				    color: #676d76;
+					text-decoration: none;
+				}
 			.btnModal{
 				display: inline-block;
 				font-size: 13px;
 				letter-spacing: 1px;
-				text-transform: uppercase;
-				color: #7AE2DE;
+				color: #fff!important;
 				border: 2px solid #7AE2DE;
-				padding: 10px 20px;
+				background: #093a4d!important;
+				padding: 10px 20px!important;
+				margin-top: 15px!important;
 				text-decoration: none;
 				line-height: 1;
+				width: 100px!important;
+				text-align: center!important;
+				float: right;
 				-webkit-transition-timing-function: ease;
 				transition-timing-function: ease;
 				-webkit-transition-duration: 200ms;
 				transition-duration: 200ms;
 			}
 				.btnModal:hover{
-					color: #fff;
-					background-color: #71D5D2;
-					border-color: #71D5D2;
+					color: #fff!important;
+					background-color: #71D5D2!important;
+					border-color: #71D5D2!important;
 				}
 
-	/* PG INICIAL*/
+	/* PG INICIAL */
 		.pg-inicial{
 
 		}
@@ -678,6 +733,58 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 						border-color: #fff;
 					}
 
+	/* PG CADASTRP */
+		.pg-cadastro{
+			
+
+		}
+		.pg-cadastro .formContainer{
+			width: 100%;
+			max-width: 585px;
+			margin: 0 auto;
+			background-color: #fff;
+			border-radius: 3px;
+			box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
+			line-height: 1.5;
+			padding: 0 90px;
+			margin-bottom: 30px;
+		}
+		.pg-cadastro .formContainer .modalForm input {
+			float: none;
+		}
+		.pg-cadastro .navRodape{
+				margin:0 auto 20px;
+				width: 100%;
+				max-width: 585px;
+			}
+				.pg-cadastro .navRodape ul{
+					margin: 0;
+					padding: 0;
+					list-style: none;
+					text-align: center;
+				}
+					.pg-cadastro .navRodape ul li{
+						display: inline-block;
+						margin-right: 15px;
+						font-size: 12px;
+						color: #fff;
+					}
+						.pg-cadastro .navRodape ul li:last-child{
+							margin-right: 0px;
+						} 
+						.pg-cadastro .navRodape ul li a{
+							color: #fff;
+							-webkit-transition-timing-function: ease;
+							transition-timing-function: ease;
+							-webkit-transition-duration: 200ms;
+							transition-duration: 200ms;
+							text-decoration: none;
+							cursor: pointer;
+						}
+							.pg-cadastro .navRodape ul li a:hover{
+								color: #7AE2DE;
+							}
+		
 	/* @MEDIA */
 		@media screen and (max-width: 991px) {
 
