@@ -1,6 +1,6 @@
 package View;
 
-import ControllerDao.ConexaoDao;
+import Dao.ConexaoDao;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;

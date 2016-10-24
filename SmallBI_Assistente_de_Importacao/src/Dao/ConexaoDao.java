@@ -1,4 +1,4 @@
-package ControllerDao;
+package Dao;
 
 import Model.Conexao;
 import java.sql.Connection;
