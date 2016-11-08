@@ -733,7 +733,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 						border-color: #fff;
 					}
 
-	/* PG CADASTRP */
+	/* PG CADASTRO */
 		.pg-cadastro{
 			
 
@@ -784,6 +784,242 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 							.pg-cadastro .navRodape ul li a:hover{
 								color: #7AE2DE;
 							}
+	/*PAINEL DE CONTROLE*/
+	.pg-painel .menu {
+		background: #414A52;
+		height: 100vh;
+		width: 240px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 5;
+		outline: none;
+		color: #fff;
+	}
+	.pg-painel .menu .avatar {
+		background: rgba(0, 0, 0, 0.1);
+		padding: 2em 0.5em;
+		text-align: center;
+	}
+	.pg-painel .menu .avatar img {
+		width: 100px;
+		border-radius: 50%;
+		overflow: hidden;
+		border: 4px solid #ccc;
+		box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+	}
+	.pg-painel .menu .avatar strong {
+		font-weight: normal;
+		margin-bottom: 0;
+		font-size: 24px;
+		display: block;
+	}
+	.pg-painel .menu ul {
+		list-style: none;
+		padding: 0.5em 0;
+		margin: 0;
+	}
+	.pg-painel .menu ul li {
+		margin: 5px 0;
+		padding: 0 0.5em;
+		font-weight: regular;
+		width: 100%;
+		transition: all 0.15s linear;
+		cursor: pointer;
+		position: relative;
+	}
+	.pg-painel .menu ul li a {
+		display: block;
+		font-family: 'Open Sans', sans-serif;
+		color: #fff;
+		margin-left: 40px;
+		text-decoration: none;
+		font-size: 16px;
+		min-height: 40px;
+		padding: 12px 0;
+	}
+	.pg-painel .menu ul li a span {
+
+	}
+	.pg-painel .menu ul li.fa::before{
+		font-size: 20px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.pg-painel .menu ul li:hover {
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+	.pg-painel .menu ul li:focus {
+		outline: none;
+	}
+
+	.pg-painel section {
+		position: relative;
+		height: 100vh;
+		margin-left: 240px;
+		padding: 40px;
+	}
+	.pg-painel section .card {
+		border-radius: 4px;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
+		background-color: #fff;
+		margin: 0 10px;
+		margin-bottom: 30px;
+	}
+	.pg-painel section .card .header {
+		padding: 15px 15px 0;
+	}
+	.pg-painel section .card .title {
+		margin: 0;
+		color: #333333;
+		font-weight: 300;
+	}
+	.pg-painel section .card .category, 
+	.pg-painel section .card label {
+		font-size: 14px;
+		font-weight: 400;
+		color: #9A9A9A;
+		margin-bottom: 0px;
+	}
+	.pg-painel section .card .content {
+		padding: 15px 15px 10px 15px;
+	}
+	.pg-painel section .card .ct-chart {
+		margin: 30px 0 30px;
+		height: 245px;
+	}
+	.pg-painel section .ct-perfect-fourth {
+		display: block;
+		position: relative;
+		width: 100%;
+	}
+	.pg-painel section .card .footer {
+		padding: 0;
+		background-color: transparent;
+		line-height: 30px;
+	}
+	.pg-painel section .card .footer div {
+		display: inline-block;
+	}
+	.pg-painel section .card .footer .legend {
+		padding: 5px 0;
+	}
+	.pg-painel section .card .stats {
+		color: #a9a9a9;
+	}
+	@media screen and (max-width: 900px) and (min-width: 400px) {
+		.pg-painel section {
+			margin-left: 90px;
+		}
+		.pg-painel .menu {
+			width: 90px;
+		}
+		.pg-painel .menu .avatar {
+			padding: 0.5em;
+			position: relative;
+		}
+		.pg-painel .menu .avatar img {
+			width: 60px;
+		}
+		.pg-painel .menu .avatar strong {
+
+			opacity: 0;
+			position: absolute;
+			top: 50%;
+			left: 100px;
+			margin: 0;
+			min-width: 200px;
+			border-radius: 4px;
+			background: rgba(0, 0, 0, 0.4);
+			transform: translate3d(-20px, -50%, 0);
+			transition: all 0.15s ease-in-out;
+		}
+		.pg-painel .menu .avatar:hover strong {
+			opacity: 1;
+			transform: translate3d(0px, -50%, 0);
+		}
+		.pg-painel .menu ul li {
+			height: 60px;
+			background-position: center center;
+			background-size: 30px auto;
+			position: relative;
+		}
+		.pg-painel .menu ul li a {
+			opacity: 0;
+			position: absolute;
+			background: rgba(0, 0, 0, 0.5);
+			padding: 0.2em 0.5em;
+			border-radius: 4px;
+			top: 50%;
+			left: 80px;
+			transform: translate3d(-15px, -50%, 0);
+			transition: all 0.15s ease-in-out;
+		}
+		.pg-painel .menu ul li a:before {
+			content: '';
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 50%;
+			left: -5px;
+			border-top: 5px solid transparent;
+			border-bottom: 5px solid transparent;
+			border-right: 5px solid rgba(0, 0, 0, 0.5);
+			transform: translateY(-50%);
+		}
+		.pg-painel .menu ul li:hover a {
+			opacity: 1;
+			transform: translate3d(0px, -50%, 0);
+		}
+	}
+	@media screen and (max-width: 400px) {
+		.pg-painel section {
+			margin-left: 0;
+		}
+		.pg-painel .menu {
+			width: 230px;
+			box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);
+			transform: translate3d(-230px, 0, 0);
+			transition: all 0.3s ease-in-out;
+		}
+		.pg-painel .menu .smartphone-menu-trigger {
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			left: 100%;
+			background: #5bc995;
+		}
+		.pg-painel .menu .smartphone-menu-trigger:before,
+		.pg-painel .menu .smartphone-menu-trigger:after {
+			content: '';
+			width: 50%;
+			height: 2px;
+			background: #fff;
+			border-radius: 10px;
+			position: absolute;
+			top: 45%;
+			left: 50%;
+			transform: translate3d(-50%, -50%, 0);
+		}
+		.pg-painel .menu .smartphone-menu-trigger:after {
+			top: 55%;
+			transform: translate3d(-50%, -50%, 0);
+		}
+		.pg-painel .menu ul li {
+			padding: 1em 1em 1em 3em;
+			font-size: 1.2em;
+		}
+		.menu:focus {
+			transform: translate3d(0, 0, 0);
+			box-shadow: 0 0 0 100em rgba(0, 0, 0, 0.6);
+		}
+		.menu:focus .smartphone-menu-trigger {
+			pointer-events: none;
+		}
+	}
+
 		
 	/* @MEDIA */
 		@media screen and (max-width: 991px) {

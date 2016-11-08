@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+	<!-- META -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	<meta property="og:title" content="" />
+	<meta property="og:description" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:image" content=""/>
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="" />
+
+	<!-- TÍTULO -->
+	<title>Painel - Small BI</title>
+
+	<!-- FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600|Montserrat" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/site.css" />
+
+	<!-- JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/geral.js"></script>
+
+	<!-- FAVICON -->
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+	<style>
+
+	</style>
+</head>
+<body>
+
+	<div class="pg-painel">
+		<div class="menu" tabindex="0">
+			<div class="smartphone-menu-trigger"></div>
+			<div class="avatar">
+				<img src="img/user-img.png" />
+				<strong>Nome Empresa</strong>
+			</div>
+			<ul>
+				<li class="fa fa-home active"><a href="#home"><span>Dashboard</span></a></li>
+				<li class="fa fa-search"><a href="#opcao1"><span>Dados da Empresa</span></a></li>
+				<li class="fa fa-times"><a href="#opcao2"><span>Dados de Usuário</span></a></li>
+				<li class="fa fa-pencil"><a href="#opcao3"><span>Cubos</span></a></li>
+				<li class="fa fa-envelope"><a href="#opcao4"><span>Carregar Cubos</span></a></li>
+				<li class="fa fa-car"><a href="#opcao5"><span>Sair</span></a></li>          
+			</ul>
+		</div>
+		<!-- HOME PAINEL -->
+		<section id="home" class="text-center active">
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="card">
+								<div class="header">
+									<h4 class="title">Email Statistics</h4>
+									<p class="category">Last Campaign Performance</p>
+								</div>
+								<div class="content">
+									<div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+
+									<div class="footer">
+										<div class="legend">
+											<i class="fa fa-circle text-info"></i> Open
+											<i class="fa fa-circle text-danger"></i> Bounce
+											<i class="fa fa-circle text-warning"></i> Unsubscribe
+										</div>
+										<hr>
+										<div class="stats">
+											<i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-8">
+							<div class="card">
+								<div class="header">
+									<h4 class="title">Users Behavior</h4>
+									<p class="category">24 Hours performance</p>
+								</div>
+								<div class="content">
+									<div id="chartHours" class="ct-chart"></div>
+									<div class="footer">
+										<div class="legend">
+											<i class="fa fa-circle text-info"></i> Open
+											<i class="fa fa-circle text-danger"></i> Click
+											<i class="fa fa-circle text-warning"></i> Click Second Time
+										</div>
+										<hr>
+										<div class="stats">
+											<i class="fa fa-history"></i> Updated 3 minutes ago
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card ">
+								<div class="header">
+									<h4 class="title">2014 Sales</h4>
+									<p class="category">All products including Taxes</p>
+								</div>
+								<div class="content">
+									<div id="chartActivity" class="ct-chart"></div>
+
+									<div class="footer">
+										<div class="legend">
+											<i class="fa fa-circle text-info"></i> Tesla Model S
+											<i class="fa fa-circle text-danger"></i> BMW 5 Series
+										</div>
+										<hr>
+										<div class="stats">
+											<i class="fa fa-check"></i> Data information certified
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+</body>
+</html>
