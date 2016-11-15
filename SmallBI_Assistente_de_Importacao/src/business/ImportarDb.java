@@ -1,6 +1,6 @@
-package Dao;
+package business;
 
-import Model.Conexao;
+import model.Conexao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class ConexaoDao {
+public class ImportarDb {
     
     public static ArrayList<String> setarVariaveisConexao(String sgbdSelecionado, String usuario, String senha, 
             String endereco, String porta){        
@@ -77,7 +77,7 @@ public class ConexaoDao {
             }
             return bancos;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImportarDb.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -123,7 +123,7 @@ public class ConexaoDao {
                     tabelas.add(rs.getString(1));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ImportarDb.class.getName()).log(Level.SEVERE, null, ex);
             }
         return tabelas;
     }
@@ -163,7 +163,7 @@ public class ConexaoDao {
                 }
                 return modelo;
             } catch (SQLException ex) {
-                Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ImportarDb.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return null;
@@ -202,9 +202,81 @@ public class ConexaoDao {
                 }
                 return modelo;
             } catch (SQLException ex) {
-                Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ImportarDb.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        return null;
+    }
+    
+        public static String transformarTipo(String tipoBanco, String sgbdSelecionado){
+        System.out.println(tipoBanco);
+        switch(sgbdSelecionado){
+            case "PostgreSQL":
+                switch(tipoBanco){
+                    case "smallint":
+                        return "Inteiro";
+                    case "integer":
+                        return "Inteiro";
+                    case "bigint":
+                        return "Inteiro";
+                    case "decimal":
+                        return "Real";
+                    case "numeric":
+                        return "Real";
+                    case "real":
+                        return "Real";
+                    case "double precision":
+                        return "Real";
+                    case "money":
+                        return "Real";
+                    case "varchar":
+                        return "Texto";
+                    case "character":
+                        return "Caractere";
+                    case "char":
+                        return "Caractere";
+                    case "text":
+                        return "Caractere";
+                    case "character varying":
+                        return "Texto";
+                    case "date":
+                        return "Data dd-MM-yyyy";
+                    default:
+                        return "Texto";
+                }//switch postgres
+            case "MySQL":
+                switch(tipoBanco){
+                    case "tinyint":
+                        return "Inteiro";
+                    case "smallint":
+                        return "Inteiro";
+                    case "mediumint":
+                        return "Inteiro";
+                    case "int":
+                        return "Inteiro";
+                    case "bigint":
+                        return "Inteiro";
+                    case "decimal":
+                        return "Real";
+                    case "float":
+                        return "Real";
+                    case "double":
+                        return "Real";
+                    case "bit":
+                        return "V/F";
+                    case "char":
+                        return "Caractere";
+                    case "varchar":
+                        return "Texto";
+                    default:
+                        return "Texto";                    
+                }//swtich mysql
+            case "SQL Server":
+                switch(tipoBanco){
+                    
+                }//switch sqlserver
+                break;
+        }//switch SGBD
         return null;
     }
 }

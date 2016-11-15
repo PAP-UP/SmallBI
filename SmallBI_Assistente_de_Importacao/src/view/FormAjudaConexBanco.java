@@ -1,4 +1,4 @@
-package View;
+package view;
 
 public class FormAjudaConexBanco extends javax.swing.JFrame {
 

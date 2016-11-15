@@ -1,6 +1,7 @@
-package View;
+package view;
 
-import Dao.ConexaoDao;
+import view.percorrerAbas.PercorrerAbasFormPrincipal;
+import business.ImportarDb;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
@@ -10,10 +11,11 @@ import javax.swing.JOptionPane;
 public class FormPrincipal extends javax.swing.JFrame {
 
     private List<JComboBox> listaDeCbxTipos = new ArrayList<>();
+    public static boolean importandoDeArquivo = true;
     
     public FormPrincipal() {
         initComponents();
-        desativarAbasNoInicio();
+        PercorrerAbasFormPrincipal.desativarAbasNoInicio();
     }
     
     @SuppressWarnings("unchecked")
@@ -277,7 +279,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(painelAbaTipoImport_ImportacaoArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelAbaTipoImport_ImportacaoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                 .addComponent(btnAbaTipoImport_Voltar)
                 .addContainerGap())
         );
@@ -343,7 +345,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         txtAreaAbaImportArq_ImportXlsx.setFocusable(false);
         jScrollPaneImportXlsx.setViewportView(txtAreaAbaImportArq_ImportXlsx);
 
-        btnAbaImportArq_ProcurarPlanilhaXlsx.setText("Procurar Planilha XLSX");
+        btnAbaImportArq_ProcurarPlanilhaXlsx.setText("Procurar Planilha");
         btnAbaImportArq_ProcurarPlanilhaXlsx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbaImportArq_ProcurarPlanilhaXlsxActionPerformed(evt);
@@ -401,7 +403,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(painelAbaImportArq_ImportCsv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelAbaImportArq_ImportXlsx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addComponent(btnAbaImportArq_Voltar)
                 .addContainerGap())
         );
@@ -581,7 +583,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(painelAbaConexBd_InfoConex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelAbaConexBd_Conexao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(btnAbaConexBd_Voltar)
                 .addContainerGap())
         );
@@ -746,7 +748,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(painelAbaConsulBd_InfoConsul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelAbaConsulBd_ConsultarBd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAbaConsulBd_Voltar)
                 .addContainerGap())
         );
@@ -762,7 +764,8 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnAbaTabPrev_GerarCuboXml.setText("Gerar Cubo XML");
+        btnAbaTabPrev_GerarCuboXml.setText("Gerar Cubo");
+        btnAbaTabPrev_GerarCuboXml.setEnabled(false);
         btnAbaTabPrev_GerarCuboXml.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbaTabPrev_GerarCuboXmlActionPerformed(evt);
@@ -898,7 +901,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(painelAbaTabPrev_AreaDaTabResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(painelAbaTabPrev_TrabDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAbaTabPrev_Voltar)
                 .addContainerGap())
         );
@@ -918,7 +921,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
+                .addComponent(painelAbas, javax.swing.GroupLayout.PREFERRED_SIZE, 559, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -926,15 +929,15 @@ public class FormPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAbaInicio_ProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaInicio_ProximoActionPerformed
-        acaoAbaIncio_BtnProximo();
+        PercorrerAbasFormPrincipal.abaIniToAbaTipoImport();
     }//GEN-LAST:event_btnAbaInicio_ProximoActionPerformed
 
     private void btnAbaTipoImport_ImportarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTipoImport_ImportarArquivoActionPerformed
-        acaoAbaTipoImport_ImportArq();
+        PercorrerAbasFormPrincipal.abaTipoImportToAbaImportArq();
     }//GEN-LAST:event_btnAbaTipoImport_ImportarArquivoActionPerformed
 
     private void btnAbaTipoImportImportarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTipoImportImportarBancoActionPerformed
-        acaoAbaTipoImport_ImportBd();
+        PercorrerAbasFormPrincipal.abaTipoImportToConexBanco();
     }//GEN-LAST:event_btnAbaTipoImportImportarBancoActionPerformed
 
     private void btnAbaImportArq_ProcurarArquivoCsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaImportArq_ProcurarArquivoCsvActionPerformed
@@ -978,87 +981,39 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaConsulBd_InfoAjudaActionPerformed
 
     private void btnAbaTabPrev_ImportMaisDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_ImportMaisDadosActionPerformed
-        painelAbas.setSelectedIndex(1);
+        PercorrerAbasFormPrincipal.importarMaisDados();
     }//GEN-LAST:event_btnAbaTabPrev_ImportMaisDadosActionPerformed
 
     private void btnAbaTabPrev_GerarCuboXmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_GerarCuboXmlActionPerformed
-        JOptionPane.showMessageDialog(null, "Não implementado!");
+        chamarFormGerarCuboXml();
     }//GEN-LAST:event_btnAbaTabPrev_GerarCuboXmlActionPerformed
 
     private void btnAbaTipoImport_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTipoImport_VoltarActionPerformed
-        acaoAbaTipoImport_Voltar();
+        PercorrerAbasFormPrincipal.abaTipoImportToAbaIni();
     }//GEN-LAST:event_btnAbaTipoImport_VoltarActionPerformed
 
     private void btnAbaImportArq_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaImportArq_VoltarActionPerformed
-        acaoAbaImportArq_Voltar();
+        PercorrerAbasFormPrincipal.abaImportArqToAbaTipoImport();
     }//GEN-LAST:event_btnAbaImportArq_VoltarActionPerformed
 
     private void btnAbaConexBd_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaConexBd_VoltarActionPerformed
-        acaoAbaConexBd_Voltar();
+        PercorrerAbasFormPrincipal.abaConexBancoToAbaTipoImport();
     }//GEN-LAST:event_btnAbaConexBd_VoltarActionPerformed
 
     private void btnAbaConsulBd_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaConsulBd_VoltarActionPerformed
-        acaoAbaConsulBd_Voltar();
+        PercorrerAbasFormPrincipal.abaConsulBancoToAbaConexBanco();
     }//GEN-LAST:event_btnAbaConsulBd_VoltarActionPerformed
 
     private void btnAbaTabPrev_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_VoltarActionPerformed
-        acaoAbaTabPrev_Voltar();
+        PercorrerAbasFormPrincipal.abaTabPreviewToAbaTipoImport();
     }//GEN-LAST:event_btnAbaTabPrev_VoltarActionPerformed
-
-    private void desativarAbasNoInicio(){
-        painelAbas.setEnabledAt(1, false);
-        painelAbas.setEnabledAt(2, false);
-        painelAbas.setEnabledAt(3, false);
-        painelAbas.setEnabledAt(4, false);
-        painelAbas.setEnabledAt(5, false);
-    }
     
-    private void acaoAbaIncio_BtnProximo(){
-        painelAbas.setSelectedIndex(1);
-        painelAbas.setEnabledAt(0, false);
-        painelAbas.setEnabledAt(1, true);
-    }
-    
-    private void acaoAbaTipoImport_ImportArq(){
-        painelAbas.setSelectedIndex(2);
-        painelAbas.setEnabledAt(1, false);
-        painelAbas.setEnabledAt(2, true);
-    }
-    
-    private void acaoAbaTipoImport_ImportBd(){
-        painelAbas.setSelectedIndex(3);
-        painelAbas.setEnabledAt(1, false);
-        painelAbas.setEnabledAt(3, true);       
-    }
-    
-    private void acaoAbaTipoImport_Voltar(){
-        painelAbas.setSelectedIndex(0);
-        painelAbas.setEnabledAt(1, false);
-        painelAbas.setEnabledAt(0, true);        
-    }
-    
-    private void acaoAbaImportArq_Voltar(){
-        painelAbas.setSelectedIndex(1);
-        painelAbas.setEnabledAt(2, false);
-        painelAbas.setEnabledAt(1, true);         
-    }
-    
-    private void acaoAbaConexBd_Voltar(){
-        painelAbas.setSelectedIndex(1);
-        painelAbas.setEnabledAt(3, false);
-        painelAbas.setEnabledAt(1, true);
-    }
-    
-    private void acaoAbaConsulBd_Voltar(){
-        painelAbas.setSelectedIndex(3);
-        painelAbas.setEnabledAt(4, false);
-        painelAbas.setEnabledAt(3, true);        
-    }
-    
-    private void acaoAbaTabPrev_Voltar(){
-        painelAbas.setSelectedIndex(4);
-        painelAbas.setEnabledAt(5, false);
-        painelAbas.setEnabledAt(4, true);             
+    private void chamarFormGerarCuboXml(){       
+        FormGerarCuboXml frm = new FormGerarCuboXml(tblTabPrev, listaDeCbxTipos);
+        frm.setLocationRelativeTo(null);
+        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        frm.setTitle("Assistente de Modelagem do Cubo");
+        frm.setVisible(true);        
     }
     
     private void ajudaAreaConsulBanco(){
@@ -1076,50 +1031,45 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
     
     private void validarTiposDeDados(){
-        String msg = Core.ValidarTipos.validarTipagemDosCampos(tblTabPrev, listaDeCbxTipos);                
+        String msg = business.ValidarTipos.validarTipagemDosCampos(tblTabPrev, listaDeCbxTipos);                
         JOptionPane.showMessageDialog(null, msg);
-        if (msg.equals("Campos validados com sucesso!")) {            
+        if (msg.equals("Campos validados com sucesso!")) {
+            btnAbaTabPrev_GerarCuboXml.setEnabled(true);
         } 
     }
     
     private void desconectarDoBanco(){
-        ConexaoDao.desconectar();
+        ImportarDb.desconectar();
         JOptionPane.showMessageDialog(null, "Desconectado com sucesso!");
     }
     
     private void importarTabelaPersonalizada(){
-        if(ConexaoDao.consultarTabela(tblTabPrev, txtAbaImportBd_ConsulPerson.getText()) == null){
+        if(ImportarDb.consultarTabela(tblTabPrev, txtAbaImportBd_ConsulPerson.getText()) == null){
             JOptionPane.showMessageDialog(null, "Falha ao executar Script SQL");
         }else{
-            painelAbas.setSelectedIndex(5);
-            painelAbas.setEnabledAt(4,false);
-            painelAbas.setEnabledAt(5,true);
+            PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
             iniciarComboBoxTiposBanco();
         }
     }
     
     private void importarTabelaDefault(){
-        if(ConexaoDao.consultarTabela(cbxAbaConexBd_Tabela.getSelectedItem().toString(), tblTabPrev) == null){
+        if(ImportarDb.consultarTabela(cbxAbaConexBd_Tabela.getSelectedItem().toString(), tblTabPrev) == null){
            JOptionPane.showMessageDialog(null, "Selecione uma tabela para ser importada!");
         }else{
-            painelAbas.setSelectedIndex(5);
-            painelAbas.setEnabledAt(4,false);
-            painelAbas.setEnabledAt(5,true);
+            PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
             iniciarComboBoxTiposBanco();             
         }
     }               
     
     private void conectarComBanco(){
         if(validarCamposConexao()){
-            ArrayList<String> bancos = ConexaoDao.setarVariaveisConexao(
+            ArrayList<String> bancos = ImportarDb.setarVariaveisConexao(
                     cbxAbaConexBd_Sgbd.getSelectedItem().toString(), 
                         txtAbaConexBd_Usuario.getText(), txtPassAbaConexBd_Senha.getText(),
                             txtAbaConexBd_Endereco.getText(), txtAbaConexBd_Porta.getText());
             if(bancos != null){
                 carregarCbxTabela();
-                painelAbas.setSelectedIndex(4);
-                painelAbas.setEnabledAt(4,true);
-                painelAbas.setEnabledAt(3,false);
+                PercorrerAbasFormPrincipal.abaConexBancoToAbaConsulBanco();
             }else{
                 JOptionPane.showMessageDialog(null, "Falha ao conectar!");
             }
@@ -1129,7 +1079,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
     
     private void carregarCbxTabela(){
-        ArrayList<String> tabelas = ConexaoDao.getTables(cbxAbaConexBd_Sgbd.getSelectedItem().toString(), 
+        ArrayList<String> tabelas = ImportarDb.getTables(cbxAbaConexBd_Sgbd.getSelectedItem().toString(), 
                 txtAbaConexBd_Banco.getText(), txtAbaConexBd_Usuario.getText(), 
                     txtPassAbaConexBd_Senha.getText(), txtAbaConexBd_Porta.getText(), 
                         txtAbaConexBd_Endereco.getText());
@@ -1163,18 +1113,18 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
     
     private void chamarImportarXlsx(){
-        Core.ImportarXlsx.importarArquivo(tblTabPrev);
+        business.ImportarXlsx.importarArquivo(tblTabPrev);
         if(tblTabPrev.getRowCount() > 0){
             iniciarComboBoxTiposArquivo();
-            painelAbas.setSelectedIndex(5);
+            PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
         }
     }
     
     private void chamarImportarCsv(){
-        Core.ImportarCsv.importarArquivo(tblTabPrev, cbxAbaImportArq_ParamSeparador.getSelectedItem().toString());
+        business.ImportarCsv.importarArquivo(tblTabPrev, cbxAbaImportArq_ParamSeparador.getSelectedItem().toString());
         if(tblTabPrev.getRowCount() > 0){
             iniciarComboBoxTiposArquivo();
-            painelAbas.setSelectedIndex(5);
+            PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
         }
     }
     
@@ -1213,86 +1163,16 @@ public class FormPrincipal extends javax.swing.JFrame {
             cbx.addItem("Data MM-dd-yyyy");
             listaDeCbxTipos.add(cbx);
             painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
-            cbx.setSelectedItem(transformarTipo(tipos.get(i)));
+            //cbx.setSelectedItem(transformarTipo(tipos.get(i)));
+            cbx.setSelectedItem(ImportarDb.transformarTipo(tipos.get(i), 
+                    cbxAbaConexBd_Sgbd.getSelectedItem().toString()));
             painelAbaTabPrev_CbxTiposVariaveis.updateUI();
         }
     }
     
     private ArrayList<String> buscarTipoDeCampoDoBanco(){
-        return ConexaoDao.getDataType(cbxAbaConexBd_Tabela.getSelectedItem().toString(), 
+        return ImportarDb.getDataType(cbxAbaConexBd_Tabela.getSelectedItem().toString(), 
                 cbxAbaConexBd_Sgbd.getSelectedItem().toString());
-    }
-    
-    private String transformarTipo(String tipoBanco){
-        System.out.println(tipoBanco);
-        switch(cbxAbaConexBd_Sgbd.getSelectedItem().toString()){
-            case "PostgreSQL":
-                switch(tipoBanco){
-                    case "smallint":
-                        return "Inteiro";
-                    case "integer":
-                        return "Inteiro";
-                    case "bigint":
-                        return "Inteiro";
-                    case "decimal":
-                        return "Real";
-                    case "numeric":
-                        return "Real";
-                    case "real":
-                        return "Real";
-                    case "double precision":
-                        return "Real";
-                    case "money":
-                        return "Real";
-                    case "varchar":
-                        return "Texto";
-                    case "character":
-                        return "Caractere";
-                    case "char":
-                        return "Caractere";
-                    case "text":
-                        return "Caractere";
-                    case "character varying":
-                        return "Texto";
-                    case "date":
-                        return "Data dd-MM-yyyy";
-                    default:
-                        return "Texto";
-                }//switch postgres
-            case "MySQL":
-                switch(tipoBanco){
-                    case "tinyint":
-                        return "Inteiro";
-                    case "smallint":
-                        return "Inteiro";
-                    case "mediumint":
-                        return "Inteiro";
-                    case "int":
-                        return "Inteiro";
-                    case "bigint":
-                        return "Inteiro";
-                    case "decimal":
-                        return "Real";
-                    case "float":
-                        return "Real";
-                    case "double":
-                        return "Real";
-                    case "bit":
-                        return "V/F";
-                    case "char":
-                        return "Caractere";
-                    case "varchar":
-                        return "Texto";
-                    default:
-                        return "Texto";                    
-                }//swtich mysql
-            case "SQL Server":
-                switch(tipoBanco){
-                    
-                }//switch sqlserver
-                break;
-        }//switch SGBD
-        return null;
     }
     
     private void carregarTxtPorta(){
@@ -1336,7 +1216,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaImportArq_Voltar;
     private javax.swing.JButton btnAbaImportBd_ExecConsulPerson;
     private javax.swing.JButton btnAbaInicio_Proximo;
-    private javax.swing.JButton btnAbaTabPrev_GerarCuboXml;
+    public static javax.swing.JButton btnAbaTabPrev_GerarCuboXml;
     private javax.swing.JButton btnAbaTabPrev_ImportMaisDados;
     private javax.swing.JButton btnAbaTabPrev_ValidarTipos;
     private javax.swing.JButton btnAbaTabPrev_Voltar;
@@ -1386,7 +1266,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel painelAbaTipoImport_ImportacaoArquivo;
     private javax.swing.JPanel painelAbaTipoImport_ImportacaoBanco;
     private javax.swing.JPanel painelAbaTipoImportação;
-    private javax.swing.JTabbedPane painelAbas;
+    public static javax.swing.JTabbedPane painelAbas;
     private javax.swing.JTable tblTabPrev;
     private javax.swing.JTextField txtAbaConexBd_Banco;
     private javax.swing.JTextField txtAbaConexBd_Endereco;
