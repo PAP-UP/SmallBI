@@ -38,7 +38,7 @@
 
 	</style>
 </head>
-<body>
+<body style="padding-bottom: 40px;">
 
 	<div class="pg-painel">
 		<div class="menu" tabindex="0">
@@ -49,17 +49,17 @@
 			</div>
 			<ul>
 				<li class="fa fa-home active"><a href="#home"><span>Dashboard</span></a></li>
-				<li class="fa fa-search"><a href="#opcao1"><span>Dados da Empresa</span></a></li>
-				<li class="fa fa-times"><a href="#opcao2"><span>Dados de Usuário</span></a></li>
-				<li class="fa fa-pencil"><a href="#opcao3"><span>Cubos</span></a></li>
-				<li class="fa fa-envelope"><a href="#opcao4"><span>Carregar Cubos</span></a></li>
-				<li class="fa fa-car"><a href="#opcao5"><span>Sair</span></a></li>          
+				<li class="fa fa-bank"><a href="#opcao1"><span>Dados da Empresa</span></a></li>
+				<li class="fa fa-user"><a href="#opcao2"><span>Dados de Usuário</span></a></li>
+				<li class="fa fa-cubes"><a href="#opcao3"><span>Cubos</span></a></li>
+				<li class="fa fa-upload"><a href="#opcao4"><span>Carregar Cubos</span></a></li>
+				<li class="fa fa-times"><a href="#opcao5"><span>Sair</span></a></li>          
 			</ul>
 		</div>
 		<!-- HOME PAINEL -->
 		<section id="home" class="text-center active">
 			<div class="content">
-				<div class="container-fluid">
+				<div class="container-fluid" style=" padding-bottom: 64px; ">
 					<div class="row">
 						<div class="col-md-4">
 							<div class="card">
@@ -135,9 +135,68 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<table class="table table-bordered table-striped table-condensed">
+								<thead>
+									<tr>
+										<th>Nome</th>
+										<th class="text-center">Editar</th>
+										<th class="text-center">Excluir</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="text-left">Item</td>
+										<td class="text-center"><a href="#"><i class="fa fa-pencil iconeEditar text-warning"></i></a></td>
+										<td class="text-center"><a href="#"><i class="fa fa-remove iconeRemover text-danger	"></i></a></td>
+									</tr>
+								</tbody>
+							</table>
+							<a href="#" id="plus"><i class="fa fa-plus fa-lg icon"></i></a>
+							<a href="#" class="novoItem">Cadastrar novo item</a>
+							
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-12">
+							<form action="" method="post">
+								<div class="form-group">
+									<label class="text-left" style="display: block;" for="nomeCadastro">Nome Completo</label>
+									<input type="text" class="form-control" id="nomeCadastro" name="nomeCadastro">
+								</div>
+								<div class="form-group">
+									<label class="text-left" style="display: block;" for="emailCadastro">Email</label>
+									<input type="email" class="form-control" id="emailCadastro" name="emailCadastro">
+								</div>
+								<div class="form-group">
+									<label class="text-left" style="display: block;" for="loginCadastro">Login</label>
+									<input type="text" class="form-control" id="loginCadastro" name="loginCadastro">
+								</div>
+								<div class="form-group">
+									<label class="text-left" style="display: block;" for="senhaCadastro">Senha</label>
+									<input type="password" class="form-control" id="senhaCadastro" name="senhaCadastro">
+								</div>
+								<button type="submit" class="btn btn-success" style="float: right;">Enviar</button>
+							</form>
+						</div>
+					</div>	
 				</div>
 			</div>
 		</section>
+
+		<footer class="rodape">
+			<ul>
+				<li><img class="logo" src="img/logo.png" alt="logo"> © SmallBI 2016</li>
+				<li><a href="#">O que é Business Intelligence?</a></li>
+				<li><a href="#">Diferenciais</a></li>
+				<li><a href="#">Serviços</a></li>
+				<li><a href="#">Quem Somos</a></li>
+				<li><a href="#">Contato</a></li>
+			</ul>
+		</footer>
 	</div>
 
 </body>

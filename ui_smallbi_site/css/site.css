@@ -785,6 +785,9 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 								color: #7AE2DE;
 							}
 	/*PAINEL DE CONTROLE*/
+	.pg-painel {
+		/*padding-bottom: 40px;*/
+	}
 	.pg-painel .menu {
 		background: #414A52;
 		height: 100vh;
@@ -795,6 +798,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 		z-index: 5;
 		outline: none;
 		color: #fff;
+		border-right: 1px solid #fff;
 	}
 	.pg-painel .menu .avatar {
 		background: rgba(0, 0, 0, 0.1);
@@ -884,7 +888,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 		margin-bottom: 0px;
 	}
 	.pg-painel section .card .content {
-		padding: 15px 15px 10px 15px;
+		padding: 15px 15px 25px 15px;
 	}
 	.pg-painel section .card .ct-chart {
 		margin: 30px 0 30px;
@@ -908,6 +912,80 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 	}
 	.pg-painel section .card .stats {
 		color: #a9a9a9;
+	}
+	.pg-painel .rodape{
+	 	text-align: center;
+	    color: white;
+	    background: #414A52;
+	    position: fixed;
+	    height: 40px;
+	    bottom: 0;
+	    left: 0;
+	    width: 100%;
+	    padding: 0 20px;
+	}
+	.pg-painel .rodape ul{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		text-align: center;
+		float: right;
+		margin: 9px 0px;
+	}
+		.pg-painel .rodape ul li{
+			display: inline-block;
+			margin-right: 25px;
+			font-size: 13px;
+			color: #fff;
+		}
+			.pg-painel .rodape ul li:last-child{
+				margin-right: 0px;
+			} 
+			.pg-painel .rodape ul li a{
+				color: #fff;
+				-webkit-transition-timing-function: ease;
+				transition-timing-function: ease;
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+				text-decoration: none;
+				cursor: pointer;
+			}
+				.pg-painel .rodape ul li a:hover{
+					color: #7AE2DE;
+				}
+	.pg-painel .rodape .logo {
+	    margin-bottom: 10px;
+	    width: 20px;	    
+    	vertical-align: -webkit-baseline-middle;
+	}
+	.pg-painel .iconeEditar{
+		font-size: 18px;
+	}
+	td+td {
+ 		width: 150px;
+	}
+	.novoItem{
+		float: right;
+		line-height: 60px;
+		padding: 0 15px;
+		color: #23527c;
+	}
+	.novoItem:hover{
+		text-decoration: none;
+	}
+	#plus {
+	    width: 60px;
+	    height: 60px;
+	    border-radius: 50%;
+	    background: #23527c;
+	    float: right;
+	    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.5);
+	    text-align: center;
+	    cursor: pointer;
+	    color: #FFF;
+	    text-align: center;
+	    line-height: 60px;
+	    vertical-align: middle;
 	}
 	@media screen and (max-width: 900px) and (min-width: 400px) {
 		.pg-painel section {
