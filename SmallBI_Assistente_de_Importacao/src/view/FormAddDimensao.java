@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Component;
 import view.percorrerAbas.PercorrerAbasAddDimensao;
 import java.util.List;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class FormAddDimensao extends javax.swing.JFrame {
     private JTable tabelaPivot = new JTable();
     private String nomeTabelaPivot = new String();
     private List<JCheckBox> listaDeCheckBox = new ArrayList<>();
-    public static List<String> atributosDoCubo = new ArrayList<>();
+    public static List<String> atributosUtilizadosNoCubo = new ArrayList<>();
     
     public FormAddDimensao(JTable tabelaPivot, String nomeTabelaPivot) {
         initComponents();
@@ -264,7 +265,11 @@ public class FormAddDimensao extends javax.swing.JFrame {
         d.setNome(txtAbaNomeChave_NomeDim.getText());
         d.setTabela(nomeTabelaPivot);
         d.setKey(cbxAbaNomeChave_PKs.getSelectedItem().toString());
-        d.setAtributos(atributosDoCubo);    
+        List<String> atributos = new ArrayList<>();
+        for(int i = 0; i < cbxAbaNomeChave_PKs.getComponentCount(); i++){
+            atributos.add(cbxAbaNomeChave_PKs.getItemAt(i));
+        }
+        d.setAtributos(atributos);    
         FormGerarCuboXml.dimensoes.add(d);
         
         JLabel l = new JLabel();
@@ -290,15 +295,13 @@ public class FormAddDimensao extends javax.swing.JFrame {
     
     private void salvarAtributosUtilizados(String atributo){        
         boolean existeNaLista = false;
-        for(int i = 0; i < atributosDoCubo.size(); i++){
-            if(atributosDoCubo.get(i).equals(atributo)){
+        for(int i = 0; i < atributosUtilizadosNoCubo.size(); i++){
+            if(atributosUtilizadosNoCubo.get(i).equals(atributo)){
                 existeNaLista = true;
             }
         }        
         if(existeNaLista == false){
-            atributosDoCubo.add(atributo);
-        }else{
-            //atributosDoCubo.remove(atributo);
+            atributosUtilizadosNoCubo.add(atributo);
         }
     }
     

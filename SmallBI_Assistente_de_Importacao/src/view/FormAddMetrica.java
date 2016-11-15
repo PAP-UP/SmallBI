@@ -165,7 +165,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
     
     private void carregarColunas(){
         cbxPainelConfMetri_Coluna.removeAllItems();
-        for(String s : FormAddDimensao.atributosDoCubo){
+        for(String s : FormAddDimensao.atributosUtilizadosNoCubo){
             cbxPainelConfMetri_Coluna.addItem(s);
         }
     }

@@ -8,8 +8,6 @@ import model.Schema;
 
 public class GerarSchema {
     
-    //private static String schema = new String();
-    
     public static String createSchema(Schema schema){
         
         String schemaXml = new String();

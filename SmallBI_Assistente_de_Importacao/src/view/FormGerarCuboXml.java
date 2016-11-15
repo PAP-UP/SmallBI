@@ -12,6 +12,7 @@ import javax.swing.JTable;
 import model.Dimensao;
 import model.Metrica;
 import model.Schema;
+import xmleditorkit.XMLEditorKit;
 
 public class FormGerarCuboXml extends javax.swing.JFrame {
     
@@ -63,10 +64,11 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         btnAbaModelMetri_Prox = new javax.swing.JButton();
         btnAbaModelMetri = new javax.swing.JButton();
         painelAbaCuboPreview = new javax.swing.JPanel();
-        painelAbaCuboPreview_Preview1 = new javax.swing.JPanel();
-        jScrollAbaCuboPreview_Preview1 = new javax.swing.JScrollPane();
-        txtAreaAbaCuboPreview_Preview1 = new javax.swing.JTextArea();
+        painelAbaCuboPreview_Preview = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        edtPaneAbaCuboPreview_XmlPreview = new javax.swing.JEditorPane();
         btnAbaCuboPreview_Sair = new javax.swing.JButton();
+        btnAbaCuboPreview_EnviarCubo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -390,26 +392,24 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
 
         jtpPainelAbas.addTab("Modelagem Métricas", painelAbaModelMetri);
 
-        painelAbaCuboPreview_Preview1.setBorder(javax.swing.BorderFactory.createTitledBorder("Preview do Cubo"));
+        painelAbaCuboPreview_Preview.setBorder(javax.swing.BorderFactory.createTitledBorder("Preview do Cubo"));
 
-        txtAreaAbaCuboPreview_Preview1.setColumns(20);
-        txtAreaAbaCuboPreview_Preview1.setRows(5);
-        jScrollAbaCuboPreview_Preview1.setViewportView(txtAreaAbaCuboPreview_Preview1);
+        jScrollPane1.setViewportView(edtPaneAbaCuboPreview_XmlPreview);
 
-        javax.swing.GroupLayout painelAbaCuboPreview_Preview1Layout = new javax.swing.GroupLayout(painelAbaCuboPreview_Preview1);
-        painelAbaCuboPreview_Preview1.setLayout(painelAbaCuboPreview_Preview1Layout);
-        painelAbaCuboPreview_Preview1Layout.setHorizontalGroup(
-            painelAbaCuboPreview_Preview1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAbaCuboPreview_Preview1Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelAbaCuboPreview_PreviewLayout = new javax.swing.GroupLayout(painelAbaCuboPreview_Preview);
+        painelAbaCuboPreview_Preview.setLayout(painelAbaCuboPreview_PreviewLayout);
+        painelAbaCuboPreview_PreviewLayout.setHorizontalGroup(
+            painelAbaCuboPreview_PreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAbaCuboPreview_PreviewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollAbaCuboPreview_Preview1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        painelAbaCuboPreview_Preview1Layout.setVerticalGroup(
-            painelAbaCuboPreview_Preview1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAbaCuboPreview_Preview1Layout.createSequentialGroup()
+        painelAbaCuboPreview_PreviewLayout.setVerticalGroup(
+            painelAbaCuboPreview_PreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAbaCuboPreview_PreviewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollAbaCuboPreview_Preview1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -420,6 +420,13 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
             }
         });
 
+        btnAbaCuboPreview_EnviarCubo.setText("Enviar Cubo");
+        btnAbaCuboPreview_EnviarCubo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbaCuboPreview_EnviarCuboActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelAbaCuboPreviewLayout = new javax.swing.GroupLayout(painelAbaCuboPreview);
         painelAbaCuboPreview.setLayout(painelAbaCuboPreviewLayout);
         painelAbaCuboPreviewLayout.setHorizontalGroup(
@@ -427,9 +434,11 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
             .addGroup(painelAbaCuboPreviewLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAbaCuboPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelAbaCuboPreview_Preview1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelAbaCuboPreview_Preview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaCuboPreviewLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAbaCuboPreview_EnviarCubo)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAbaCuboPreview_Sair)))
                 .addContainerGap())
         );
@@ -437,9 +446,11 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
             painelAbaCuboPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaCuboPreviewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAbaCuboPreview_Preview1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelAbaCuboPreview_Preview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnAbaCuboPreview_Sair)
+                .addGroup(painelAbaCuboPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAbaCuboPreview_Sair)
+                    .addComponent(btnAbaCuboPreview_EnviarCubo))
                 .addContainerGap())
         );
 
@@ -487,7 +498,6 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
 
     private void btnAbaModelMetri_ProxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelMetri_ProxActionPerformed
         PercorrerAbasFormGerarCuboXml.modelMetriToCuboPreview();    
-        //criar cubo
         gerarSchemaXml();
     }//GEN-LAST:event_btnAbaModelMetri_ProxActionPerformed
 
@@ -519,6 +529,10 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnAbaCuboPreview_SairActionPerformed
 
+    private void btnAbaCuboPreview_EnviarCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaCuboPreview_EnviarCuboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAbaCuboPreview_EnviarCuboActionPerformed
+
     private void gerarSchemaXml(){
         Schema schema = new Schema();
         schema.setNome("Schema " + txtAbaNomeCubo_NomeCubo.getText());
@@ -527,8 +541,14 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         schema.setNomeCubo(txtAbaNomeCubo_NomeCubo.getText());
         schema.setDimensoes(dimensoes);
         schema.setMetricas(metricas);
-        //System.out.println(GerarSchema.createSchema(schema));
-        GerarSchema.createSchema(schema);
+        System.out.println("XML Gerado: " + GerarSchema.createSchema(schema));
+        //GerarSchema.createSchema(schema);
+        carregarTxtAreaPreview(GerarSchema.createSchema(schema));
+    }
+    
+    private void carregarTxtAreaPreview(String schemaXml){  
+          edtPaneAbaCuboPreview_XmlPreview.setEditorKit(new XMLEditorKit());
+          edtPaneAbaCuboPreview_XmlPreview.setText(schemaXml);
     }
     
     private void chamarFormAddMetri(){
@@ -555,7 +575,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(null, new GerarScriptSql().salvarTabelaPivot(tabelaPivot, 
                         nomeTabela, chavePrimaria, listaCbxTipos));
-                //System.out.println("Script SQL gerado: " + GerarScriptSql.scriptSqlTabelaPivot);
+                System.out.println("Script SQL gerado: " + GerarScriptSql.scriptSqlTabelaPivot);
                 PercorrerAbasFormGerarCuboXml.saveTabToNomeCubo();
             
             }else{
@@ -581,6 +601,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAbaCuboPreview_EnviarCubo;
     private javax.swing.JButton btnAbaCuboPreview_Sair;
     private javax.swing.JButton btnAbaModelDim_Proximo;
     private javax.swing.JButton btnAbaModelDim_Sair;
@@ -597,13 +618,14 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private javax.swing.JComboBox cbxPainelConfTab_CamposPrimaryKey;
     private javax.swing.JLabel cbxPainelConfTab_lblNomeTab;
     private javax.swing.JLabel cbxPainelConfTab_lblPrimaryKey;
-    private javax.swing.JScrollPane jScrollAbaCuboPreview_Preview1;
+    private javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;
+    private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTabbedPane jtpPainelAbas;
     private javax.swing.JLabel lblAbaNomeCubo_Nomecubo;
     private javax.swing.JPanel paineAbaModelDim;
     private javax.swing.JPanel paineAbaNomeCubo;
     private javax.swing.JPanel painelAbaCuboPreview;
-    private javax.swing.JPanel painelAbaCuboPreview_Preview1;
+    private javax.swing.JPanel painelAbaCuboPreview_Preview;
     private javax.swing.JPanel painelAbaModelMetri;
     public static javax.swing.JPanel painelAbaModelMetri_ListMetri;
     public static javax.swing.JPanel painelAbaModelMetri_ModelMetri;
@@ -613,7 +635,6 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private javax.swing.JPanel painel_AbaModelDim_AtriDim;
     public static javax.swing.JPanel painel_jtpAbaModelDim_listDims;
     private javax.swing.JTextField txtAbaNomeCubo_NomeCubo;
-    private javax.swing.JTextArea txtAreaAbaCuboPreview_Preview1;
     private javax.swing.JTextField txtPainelConfTab_txtNomeTab;
     // End of variables declaration//GEN-END:variables
 }
