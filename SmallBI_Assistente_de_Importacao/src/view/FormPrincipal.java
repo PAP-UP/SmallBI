@@ -929,15 +929,15 @@ public class FormPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAbaInicio_ProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaInicio_ProximoActionPerformed
-        PercorrerAbasFormPrincipal.AbaIniToAbaTipoImport();
+        PercorrerAbasFormPrincipal.abaIniToAbaTipoImport();
     }//GEN-LAST:event_btnAbaInicio_ProximoActionPerformed
 
     private void btnAbaTipoImport_ImportarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTipoImport_ImportarArquivoActionPerformed
-        PercorrerAbasFormPrincipal.AbaTipoImportToAbaImportArq();
+        PercorrerAbasFormPrincipal.abaTipoImportToAbaImportArq();
     }//GEN-LAST:event_btnAbaTipoImport_ImportarArquivoActionPerformed
 
     private void btnAbaTipoImportImportarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTipoImportImportarBancoActionPerformed
-        PercorrerAbasFormPrincipal.AbaTipoImportToConexBanco();
+        PercorrerAbasFormPrincipal.abaTipoImportToConexBanco();
     }//GEN-LAST:event_btnAbaTipoImportImportarBancoActionPerformed
 
     private void btnAbaImportArq_ProcurarArquivoCsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaImportArq_ProcurarArquivoCsvActionPerformed
@@ -985,33 +985,33 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaTabPrev_ImportMaisDadosActionPerformed
 
     private void btnAbaTabPrev_GerarCuboXmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_GerarCuboXmlActionPerformed
-        gerarCuboXml();
+        chamarFormGerarCuboXml();
     }//GEN-LAST:event_btnAbaTabPrev_GerarCuboXmlActionPerformed
 
     private void btnAbaTipoImport_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTipoImport_VoltarActionPerformed
-        PercorrerAbasFormPrincipal.AbaTipoImportToAbaIni();
+        PercorrerAbasFormPrincipal.abaTipoImportToAbaIni();
     }//GEN-LAST:event_btnAbaTipoImport_VoltarActionPerformed
 
     private void btnAbaImportArq_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaImportArq_VoltarActionPerformed
-        PercorrerAbasFormPrincipal.AbaImportArqToAbaTipoImport();
+        PercorrerAbasFormPrincipal.abaImportArqToAbaTipoImport();
     }//GEN-LAST:event_btnAbaImportArq_VoltarActionPerformed
 
     private void btnAbaConexBd_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaConexBd_VoltarActionPerformed
-        PercorrerAbasFormPrincipal.AbaConexBancoToAbaTipoImport();
+        PercorrerAbasFormPrincipal.abaConexBancoToAbaTipoImport();
     }//GEN-LAST:event_btnAbaConexBd_VoltarActionPerformed
 
     private void btnAbaConsulBd_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaConsulBd_VoltarActionPerformed
-        PercorrerAbasFormPrincipal.AbaConsulBancoToAbaConexBanco();
+        PercorrerAbasFormPrincipal.abaConsulBancoToAbaConexBanco();
     }//GEN-LAST:event_btnAbaConsulBd_VoltarActionPerformed
 
     private void btnAbaTabPrev_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_VoltarActionPerformed
-        PercorrerAbasFormPrincipal.AbaTabPreviewToAbaTipoImport();
+        PercorrerAbasFormPrincipal.abaTabPreviewToAbaTipoImport();
     }//GEN-LAST:event_btnAbaTabPrev_VoltarActionPerformed
     
-    private void gerarCuboXml(){       
+    private void chamarFormGerarCuboXml(){       
         FormGerarCuboXml frm = new FormGerarCuboXml(tblTabPrev, listaDeCbxTipos);
         frm.setLocationRelativeTo(null);
-        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Assistente de Modelagem do Cubo");
         frm.setVisible(true);        
     }
@@ -1047,7 +1047,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         if(ImportarDb.consultarTabela(tblTabPrev, txtAbaImportBd_ConsulPerson.getText()) == null){
             JOptionPane.showMessageDialog(null, "Falha ao executar Script SQL");
         }else{
-            PercorrerAbasFormPrincipal.AbaConsulBancoToAbaTabPreview();
+            PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
             iniciarComboBoxTiposBanco();
         }
     }
@@ -1056,7 +1056,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         if(ImportarDb.consultarTabela(cbxAbaConexBd_Tabela.getSelectedItem().toString(), tblTabPrev) == null){
            JOptionPane.showMessageDialog(null, "Selecione uma tabela para ser importada!");
         }else{
-            PercorrerAbasFormPrincipal.AbaConsulBancoToAbaTabPreview();
+            PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
             iniciarComboBoxTiposBanco();             
         }
     }               
@@ -1069,7 +1069,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                             txtAbaConexBd_Endereco.getText(), txtAbaConexBd_Porta.getText());
             if(bancos != null){
                 carregarCbxTabela();
-                PercorrerAbasFormPrincipal.AbaConexBancoToAbaConsulBanco();
+                PercorrerAbasFormPrincipal.abaConexBancoToAbaConsulBanco();
             }else{
                 JOptionPane.showMessageDialog(null, "Falha ao conectar!");
             }
@@ -1116,7 +1116,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         business.ImportarXlsx.importarArquivo(tblTabPrev);
         if(tblTabPrev.getRowCount() > 0){
             iniciarComboBoxTiposArquivo();
-            PercorrerAbasFormPrincipal.AbaImportArqToTabPreview();
+            PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
         }
     }
     
@@ -1124,7 +1124,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         business.ImportarCsv.importarArquivo(tblTabPrev, cbxAbaImportArq_ParamSeparador.getSelectedItem().toString());
         if(tblTabPrev.getRowCount() > 0){
             iniciarComboBoxTiposArquivo();
-            PercorrerAbasFormPrincipal.AbaImportArqToTabPreview();
+            PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
         }
     }
     

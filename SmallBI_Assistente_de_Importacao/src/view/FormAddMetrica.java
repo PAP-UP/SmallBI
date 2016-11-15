@@ -1,17 +1,13 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import model.Metrica;
 
 public class FormAddMetrica extends javax.swing.JFrame {
     
-    List<String> colunas = new ArrayList<>();
-
-    public FormAddMetrica(List<String> colunas) {
+    public FormAddMetrica() {
         initComponents();
-        this.colunas = colunas;
         carregarAgregadores();
         carregarFormatos();
         carregarColunas();
@@ -149,36 +145,34 @@ public class FormAddMetrica extends javax.swing.JFrame {
         salvarMetrica();
     }//GEN-LAST:event_btnPainelConfMetri_SalvarActionPerformed
 
-    private void salvarMetrica(){
-        //CRIAR XML REFERENTE A METRICA
-        carregarPainelNoFormGerarCuboXml();
-        dispose();
-    }
-    
-    private void carregarPainelNoFormGerarCuboXml(){
-        JLabel l = new JLabel();
-        l.setText("Métrica: " + txtPainelConfMetri_Nome.getText() + ", Coluna: " +
-                cbxPainelConfMetri_Coluna.getSelectedItem() + ", Agregador: " +
-                    cbxPainelConfMetri_Agre.getSelectedItem() + ", Formato: " +
-                        cbxPainelConfMetri_Formato.getSelectedItem());
-                
-        FormGerarCuboXml.painelAbaModelMetri_ListMetri.setLayout(
-            new BoxLayout(FormGerarCuboXml.painelAbaModelMetri_ListMetri, BoxLayout.Y_AXIS));
+    private void salvarMetrica(){        
+        Metrica m = new Metrica();
+        m.setNome(txtPainelConfMetri_Nome.getText());
+        m.setColuna(cbxPainelConfMetri_Coluna.getSelectedItem().toString());
+        m.setAgregador(cbxPainelConfMetri_Agre.getSelectedItem().toString());
+        m.setFormato(cbxPainelConfMetri_Formato.getSelectedItem().toString());        
+        FormGerarCuboXml.metricas.add(m);
         
+        JLabel l = new JLabel();   
+        l.setText("Métrica: " + m.getNome() + ", Coluna: " + m.getColuna() + ", Agregador: " + m.getAgregador() +
+                ", Formato: " + m.getFormato() + ";");
+        FormGerarCuboXml.painelAbaModelMetri_ListMetri.setLayout(
+            new BoxLayout(FormGerarCuboXml.painelAbaModelMetri_ListMetri, BoxLayout.Y_AXIS));    
         FormGerarCuboXml.painelAbaModelMetri_ListMetri.add(l);
-        FormGerarCuboXml.painelAbaModelMetri_ListMetri.updateUI();
+        FormGerarCuboXml.painelAbaModelMetri_ListMetri.updateUI();        
+        dispose();
     }
     
     private void carregarColunas(){
         cbxPainelConfMetri_Coluna.removeAllItems();
-        for(String s : colunas){
-            cbxPainelConfMetri_Coluna.addItem(s + "");
+        for(String s : FormAddDimensao.atributosDoCubo){
+            cbxPainelConfMetri_Coluna.addItem(s);
         }
     }
     
     private void carregarAgregadores(){
         cbxPainelConfMetri_Agre.removeAllItems();
-        cbxPainelConfMetri_Agre.addItem("cout");
+        cbxPainelConfMetri_Agre.addItem("count");
         cbxPainelConfMetri_Agre.addItem("sum");
         cbxPainelConfMetri_Agre.addItem("avg");
         cbxPainelConfMetri_Agre.addItem("max");
@@ -193,7 +187,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormAddMetrica(null).setVisible(true);
+                new FormAddMetrica().setVisible(true);
             }
         });
     }

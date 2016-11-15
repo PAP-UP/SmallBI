@@ -7,20 +7,21 @@ import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import model.Dimensao;
 
 public class FormAddDimensao extends javax.swing.JFrame {
 
     private JTable tabelaPivot = new JTable();
     private String nomeTabelaPivot = new String();
     private List<JCheckBox> listaDeCheckBox = new ArrayList<>();
-    private List<String> atributosUtilizados = new ArrayList<>();
+    public static List<String> atributosDoCubo = new ArrayList<>();
     
     public FormAddDimensao(JTable tabelaPivot, String nomeTabelaPivot) {
         initComponents();
         this.tabelaPivot = tabelaPivot;     
         this.nomeTabelaPivot = nomeTabelaPivot;
         carregarCheckBoxesAtr();
-        PercorrerAbasAddDimensao.DesativarAbasInicio();
+        PercorrerAbasAddDimensao.desativarAbasInicio();
     }
 
     @SuppressWarnings("unchecked")
@@ -246,12 +247,12 @@ public class FormAddDimensao extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaNomeChave_SalvarActionPerformed
 
     private void btnAbaAtributos_ProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaAtributos_ProximoActionPerformed
-        PercorrerAbasAddDimensao.AtributosToNomeChave();
+        PercorrerAbasAddDimensao.atributosToNomeChave();
         carregarCbxPrimaryKey();
     }//GEN-LAST:event_btnAbaAtributos_ProximoActionPerformed
 
     private void btnAbaNomeChave_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaNomeChave_VoltarActionPerformed
-        PercorrerAbasAddDimensao.NomeChaveToAtributos();
+        PercorrerAbasAddDimensao.nomeChaveToAtributos();
     }//GEN-LAST:event_btnAbaNomeChave_VoltarActionPerformed
 
     private void btnAbaAtributos_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaAtributos_SairActionPerformed
@@ -259,21 +260,20 @@ public class FormAddDimensao extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaAtributos_SairActionPerformed
     
     private void salvarDimensao(){
-        carregarPainelNoFormGerarCuboXml();
-        //CRIAR PARTE DO XML REFERENTE A DIMENSÃO!!!
-        dispose();
-    }
-    
-    private void carregarPainelNoFormGerarCuboXml(){
+        Dimensao d = new Dimensao();
+        d.setNome(txtAbaNomeChave_NomeDim.getText());
+        d.setTabela(nomeTabelaPivot);
+        d.setKey(cbxAbaNomeChave_PKs.getSelectedItem().toString());
+        d.setAtributos(atributosDoCubo);    
+        FormGerarCuboXml.dimensoes.add(d);
+        
         JLabel l = new JLabel();
-        l.setText("Dimensão: " + txtAbaNomeChave_NomeDim.getText() + ", Tabela: " + nomeTabelaPivot +
-                ", Chave: " + cbxAbaNomeChave_PKs.getSelectedItem().toString() + ";");
-        
+        l.setText("Dimensão: " + d.getNome() + ", Tabela: " + d.getTabela() + ", Chave: " + d.getKey() + ";");
         FormGerarCuboXml.painel_jtpAbaModelDim_listDims.setLayout(
-                new BoxLayout(FormGerarCuboXml.painel_jtpAbaModelDim_listDims,BoxLayout.Y_AXIS));
-        
+            new BoxLayout(FormGerarCuboXml.painel_jtpAbaModelDim_listDims,BoxLayout.Y_AXIS));
         FormGerarCuboXml.painel_jtpAbaModelDim_listDims.add(l);
-        FormGerarCuboXml.painel_jtpAbaModelDim_listDims.updateUI();
+        FormGerarCuboXml.painel_jtpAbaModelDim_listDims.updateUI();        
+        dispose();
     }
         
     private void carregarCbxPrimaryKey(){
@@ -285,18 +285,20 @@ public class FormAddDimensao extends javax.swing.JFrame {
             }
         }
         cbxAbaNomeChave_PKs.updateUI();
-        PercorrerAbasAddDimensao.AbaAtriToAbaNomeChave();
+        PercorrerAbasAddDimensao.abaAtriToAbaNomeChave();
     }
     
     private void salvarAtributosUtilizados(String atributo){        
         boolean existeNaLista = false;
-        for(int i = 0; i < FormGerarCuboXml.atributosParaCubo.size(); i++){
-            if(FormGerarCuboXml.atributosParaCubo.get(i).equals(atributo)){
+        for(int i = 0; i < atributosDoCubo.size(); i++){
+            if(atributosDoCubo.get(i).equals(atributo)){
                 existeNaLista = true;
             }
         }        
         if(existeNaLista == false){
-            FormGerarCuboXml.atributosParaCubo.add(atributo);
+            atributosDoCubo.add(atributo);
+        }else{
+            //atributosDoCubo.remove(atributo);
         }
     }
     
