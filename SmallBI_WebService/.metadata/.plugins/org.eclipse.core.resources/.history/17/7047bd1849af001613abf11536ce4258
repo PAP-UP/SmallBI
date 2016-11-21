@@ -1,0 +1,7 @@
+package br.com.smallbi.dal;
+
+import br.com.smallbi.entity.Telefone;
+
+public class TelefoneDao implements InterfaceDao<Telefone>{
+
+}

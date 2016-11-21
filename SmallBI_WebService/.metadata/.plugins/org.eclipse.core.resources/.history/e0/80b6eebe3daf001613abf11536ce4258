@@ -1,0 +1,14 @@
+package entity;
+
+import java.util.Calendar;
+
+public class Funcao {
+
+	private Integer idFuncao;
+	
+	private Calendar dataCadastro;
+	
+	private Usuario usuario;
+	
+	private String nomeFuncao;
+}

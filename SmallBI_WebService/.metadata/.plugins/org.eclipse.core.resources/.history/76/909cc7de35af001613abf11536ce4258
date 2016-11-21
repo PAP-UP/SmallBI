@@ -1,0 +1,9 @@
+package entity;
+
+public class Estado {
+	
+	private Integer idEstado;
+	private String dataCadastro;
+	private String nomeEstado;
+	private String siglaEstado;
+}

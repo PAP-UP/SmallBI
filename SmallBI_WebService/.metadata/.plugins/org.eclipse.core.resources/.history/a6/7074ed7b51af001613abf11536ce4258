@@ -1,0 +1,9 @@
+package br.com.smallbi.business.interfaceBusiness;
+
+public interface InterfaceBusiness <T>{
+	public void create(T t);
+	public List<T> list();
+	public void update(T t);
+	public void delete(Integer t);
+	public T getObj(Integer t);
+}

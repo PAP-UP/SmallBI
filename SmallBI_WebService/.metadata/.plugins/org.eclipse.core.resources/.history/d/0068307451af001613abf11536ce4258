@@ -1,0 +1,5 @@
+package br.com.smallbi.business.interfaceBusiness;
+
+public interface InterfaceBusiness {
+
+}

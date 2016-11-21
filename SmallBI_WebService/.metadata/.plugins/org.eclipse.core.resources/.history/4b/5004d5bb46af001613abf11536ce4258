@@ -1,0 +1,39 @@
+package br.com.smallbi.dal;
+
+import java.util.List;
+
+import br.com.smallbi.entity.Estado;
+
+public class EstadoDao implements InterfaceDao<Estado>{
+
+	@Override
+	public void criarObj(Estado t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Estado> listarObj() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void alterarObj(Estado t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deletarObj(Estado t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Estado getObjById(Integer t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

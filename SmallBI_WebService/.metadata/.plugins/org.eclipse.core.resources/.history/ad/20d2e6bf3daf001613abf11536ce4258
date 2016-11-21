@@ -1,0 +1,24 @@
+package entity;
+
+import java.util.Calendar;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+@Entity
+public class Funcao {
+
+	@Id
+	@SequenceGenerator(name="seq_funcao", sequenceName="seq_funcao_id", allocationSize=1)
+	@GeneratedValue(generator="seq_funcao", strategy=GenerationType.SEQUENCE)
+	private Integer idFuncao;
+	
+	private Calendar dataCadastro;
+	
+	private Usuario usuario;
+	
+	private String nomeFuncao;
+}

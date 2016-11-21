@@ -1,0 +1,14 @@
+package entity;
+
+import java.util.Calendar;
+
+public class FormaPagamento {
+
+	private Integer idFormaPagamento;
+	
+	private Calendar dataCadastro;
+	
+	private Usuario usuario;
+	
+	private String formaPagamento;
+}

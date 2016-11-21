@@ -1,0 +1,65 @@
+package entity;
+
+import java.util.Calendar;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
+@Entity
+public class Endereco {
+
+	@Id
+	@SequenceGenerator(name="seq_endereco", sequenceName="seq_endereco_id", allocationSize=1)
+	@GeneratedValue(generator="seq_endereco", strategy=GenerationType.SEQUENCE)
+	private Integer idEndereco;
+	
+	@NotNull(message="Hibernate Validator: A dataCadastro não pode ser null!")
+	@Column(name="dataCadastro", nullable=false)
+	private Calendar dataCadastro;
+	
+	@NotNull(message="Hibernate Validator: O usuario não pode ser null!")
+	@Column(name="usuario", nullable=false)
+	private Usuario usuario;
+	
+	@Length(max=30, message="Hibernate Validator: O endereco não pode conter mais de {max} caracteres!")
+	@NotBlank(message="Hibernate Validator: O endereco não pode estar em branco!")
+	@NotNull(message="Hibernate Validator: O endereco não pode ser null!")
+	@Column(name="endereco", nullable=false, length=30)
+	private String endereco;
+	
+	@Length(max=10, message="Hibernate Validator: O numero não pode conter mais de {max} caracteres!")
+	@NotBlank(message="Hibernate Validator: O numero não pode estar em branco!")
+	@NotNull(message="Hibernate Validator: O numero não pode ser null!")
+	@Column(name="numero", nullable=false, length=10)
+	private String numero;
+	
+	@Length(max=30, message="Hibernate Validator: O bairro não pode conter mais de {max} caracteres!")
+	@NotBlank(message="Hibernate Validator: O bairro não pode estar em branco!")
+	@NotNull(message="Hibernate Validator: O bairro não pode ser null!")
+	@Column(name="bairro", nullable=false, length=30)
+	private String bairro;
+	
+	@NotNull(message="Hibernate Validator: A cidade não pode ser null!")
+	@Column(name="cidade", nullable=false)
+	private Cidade cidade;
+	
+	@NotNull(message="Hibernate Validator: A pessoa não pode ser null!")
+	@Column(name="pessoa", nullable=false)
+	private Pessoa pessoa;
+	
+	@NotNull(message="Hibernate Validator: O tipo não pode ser null!")
+	@Column(name="tipo", nullable=false)
+	private Tipo tipo;
+	
+	@NotNull(message="Hibernate Validator: O cliente não pode ser null!")
+	@Column(name="cliente", nullable=false)
+	private Empresa empresa;
+}

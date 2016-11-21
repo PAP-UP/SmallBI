@@ -1,0 +1,12 @@
+package entity;
+
+import java.util.Calendar;
+
+public class RamoAtividade {
+
+	private Integer idRamoAtividade;
+	
+	private Calendar dataCadastro;
+	
+	
+}

@@ -1,0 +1,6 @@
+package dal.interfaces;
+
+public interface InterfaceDao <T>{
+
+	
+}

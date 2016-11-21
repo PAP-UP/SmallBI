@@ -1,0 +1,14 @@
+package br.com.smallbi.test;
+
+import org.junit.Test;
+
+import br.com.smallbi.entity.Cidade;
+
+public class TestCidade {
+
+	@Test
+	public void createCidade(){
+		Cidade cidade = new Cidade();
+		
+	}
+}

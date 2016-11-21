@@ -1,0 +1,52 @@
+package br.com.smallbi.dal;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.com.smallbi.entity.Usuario;
+
+public class UsuarioDao implements InterfaceDao<Usuario>{
+
+	@Override
+	public void criar(Usuario t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.persist(t);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public List<Usuario> listar() {
+		EntityManager em = SingletonConexao.getInstance();
+		Query q = em.createQuery("SELECT e FROM Estado e");
+		return q.getResultList();
+	}
+
+	@Override
+	public void alterar(Usuario t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.merge(t);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public void deletar(Usuario t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.remove(t);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public Usuario getObjById(Integer id) {
+		EntityManager em = SingletonConexao.getInstance();
+		return em.find(Usuario.class, id);
+	}
+
+}

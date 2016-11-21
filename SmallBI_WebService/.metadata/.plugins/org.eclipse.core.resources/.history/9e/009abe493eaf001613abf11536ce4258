@@ -1,0 +1,40 @@
+package entity;
+
+import java.util.Calendar;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+
+@Entity
+public class Telefone {
+	
+	@Id
+	@SequenceGenerator(name="seq_telefone", sequenceName="seq_telefone_id", allocationSize=1)
+	@GeneratedValue(generator="seq_telefone", strategy=GenerationType.SEQUENCE)
+	private Integer idTelefone;
+	
+	@NotNull(message="Hibernate Validator: A dataCadastro não pode ser null!")
+	@Column(name="dataCadastro", nullable=false)
+	private Calendar dataCadastro;
+	
+	@NotNull(message="Hibernate Validator: O usuario não pode ser null!")
+	@Column(name="usuario", nullable=false)
+	private Usuario usuario;
+	
+	@NotNull(message="Hibernate Validator: O tipo não pode ser null!")
+	@Column(name="tipo", nullable=false)
+	private Tipo tipo;
+	
+	private String ddd;
+	
+	private String telefone;
+	
+	private Pessoa pessoa;
+	
+	private Cliente cliente;
+}

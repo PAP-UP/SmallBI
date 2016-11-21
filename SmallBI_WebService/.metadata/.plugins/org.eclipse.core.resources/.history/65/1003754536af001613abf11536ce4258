@@ -1,0 +1,19 @@
+package entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+@Entity
+public class Estado {
+	
+	@Id
+	@SequenceGenerator(name="seq_estado", sequenceName="seq_estado_id", allocationSize=1)
+	
+	private Integer idEstado;
+	private String dataCadastro;
+	private String nomeEstado;
+	private String siglaEstado;
+	
+	
+}

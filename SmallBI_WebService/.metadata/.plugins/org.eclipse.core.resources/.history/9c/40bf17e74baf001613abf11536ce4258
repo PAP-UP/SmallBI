@@ -1,0 +1,50 @@
+package br.com.smallbi.dal;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+public class Funcao implements InterfaceDao<Funcao>{
+
+	@Override
+	public void criar(Funcao t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.persist(t);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public List<Funcao> listar() {
+		EntityManager em = SingletonConexao.getInstance();
+		Query q = em.createQuery("SELECT e FROM Funcao e");
+		return q.getResultList();
+	}
+
+	@Override
+	public void alterar(Funcao t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.merge(t);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public void deletar(Funcao t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.remove(t);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public Funcao getObjById(Integer id) {
+		EntityManager em = SingletonConexao.getInstance();
+		return em.find(Funcao.class, id);
+	}
+
+}

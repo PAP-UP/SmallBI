@@ -1,0 +1,52 @@
+package br.com.smallbi.dal;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.com.smallbi.entity.Endereco;
+
+public class EnderecoDao implements InterfaceDao<Endereco>{
+
+	@Override
+	public void criarObj(Endereco t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.persist(t);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public List<Endereco> listarObj() {
+		EntityManager em = SingletonConexao.getInstance();
+		Query q = em.createQuery("SELECT e FROM Endereco e");
+		return q.getResultList();
+	}
+
+	@Override
+	public void alterarObj(Endereco t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.merge(t);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public void deletarObj(Endereco t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.remove(t);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public Endereco getObjById(Integer id) {
+		EntityManager em = SingletonConexao.getInstance();
+		return em.find(Endereco.class, id);ll;
+	}
+
+}

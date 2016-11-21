@@ -1,0 +1,39 @@
+package br.com.smallbi.dal;
+
+import java.util.List;
+
+import br.com.smallbi.entity.Cidade;
+
+public class CidadeDao implements InterfaceDao<Cidade>{
+
+	@Override
+	public void criarObj(Cidade t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Cidade> listarObj() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void alterarObj(Cidade t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deletarObj(Cidade t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Cidade getObjById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

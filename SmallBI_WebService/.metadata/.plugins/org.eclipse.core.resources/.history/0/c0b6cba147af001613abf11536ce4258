@@ -1,0 +1,46 @@
+package br.com.smallbi.dal;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.com.smallbi.entity.Cidade;
+
+public class CidadeDao implements InterfaceDao<Cidade>{
+
+	@Override
+	public void criarObj(Cidade t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.persist(t);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public List<Cidade> listarObj() {
+		EntityManager em = SingletonConexao.getInstance();
+		Query q = em.createQuery("SELECT e FROM Cidade e");
+		return q.getResultList();
+	}
+
+	@Override
+	public void alterarObj(Cidade t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deletarObj(Cidade t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Cidade getObjById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

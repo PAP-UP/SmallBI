@@ -1,0 +1,14 @@
+package entity;
+
+import java.util.Calendar;
+
+public class Tipo {
+
+	private Integer idTipo;
+	
+	private Calendar dataCadastro;
+	
+	private Usuario usuario;
+	
+	private String tipo;
+}

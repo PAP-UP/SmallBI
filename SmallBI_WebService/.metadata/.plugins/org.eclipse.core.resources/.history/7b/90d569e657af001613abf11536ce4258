@@ -1,0 +1,21 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+
+import org.junit.Test;
+
+import br.com.smallbi.entity.Cidade;
+
+public class TestCidade {
+
+	@Test
+	public void CadastrarCidade(){
+		Cidade c = new Cidade();
+		
+		c.setDataCadastro(Calendar.getInstance());
+		c.setEstado(null);
+		c.setNomeCidade("Curitiba");
+		c.setSiglaCidade("CTBA");
+		c.setUsuario(null);
+	}
+}

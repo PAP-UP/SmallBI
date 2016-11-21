@@ -1,0 +1,18 @@
+package br.com.smallbi.dal.factory;
+
+import br.com.smallbi.dal.EstadoDao;
+import br.com.smallbi.dal.interfaceDal.InterfaceDao;
+import br.com.smallbi.entity.Estado;
+
+public class FactoryDao {
+	
+	public static InterfaceDao<Estado> criarEstadoDao(){
+		return new EstadoDao();
+	}
+
+/*
+  	public static InterfaceDao<Produto> createProdutoDao() {		
+		return new ProdutoDao();
+	}
+ */
+}

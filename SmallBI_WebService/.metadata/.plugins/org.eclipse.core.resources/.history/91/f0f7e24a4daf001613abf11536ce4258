@@ -1,0 +1,12 @@
+package br.com.smallbi.dal.interfaceDal;
+
+import java.util.List;
+
+public interface InterfaceDao <T>{
+
+	public void criar(T t);
+	public List<T> listar();
+	public void alterar(T t);
+	public void deletar(T t);
+	public T getObjById(Integer id);
+}

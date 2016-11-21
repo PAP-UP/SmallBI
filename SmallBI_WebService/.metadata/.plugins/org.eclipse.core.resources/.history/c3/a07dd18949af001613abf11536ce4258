@@ -1,0 +1,46 @@
+package br.com.smallbi.dal;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.com.smallbi.entity.FormaPagamento;
+
+public class FormaPagamentoDao implements InterfaceDao<FormaPagamento>{
+
+	@Override
+	public void criar(FormaPagamento t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.persist(t);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public List<FormaPagamento> listar() {
+		EntityManager em = SingletonConexao.getInstance();
+		Query q = em.createQuery("SELECT e FROM FormaPagamento e");
+		return q.getResultList();
+	}
+
+	@Override
+	public void alterar(FormaPagamento t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deletar(FormaPagamento t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public FormaPagamento getObjById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
