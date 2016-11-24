@@ -1,0 +1,14 @@
+package br.com.smallbi.test;
+
+import org.junit.Test;
+
+import br.com.smallbi.entity.Estado;
+
+public class TestEstado {
+
+	@Test
+	public void testCreateEstado(){
+		Estado estado = new Estado();
+		
+	}
+}

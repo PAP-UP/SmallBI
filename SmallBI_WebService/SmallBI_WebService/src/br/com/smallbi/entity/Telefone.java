@@ -7,11 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 public class Telefone {
@@ -21,37 +22,32 @@ public class Telefone {
 	@GeneratedValue(generator="seq_telefone", strategy=GenerationType.SEQUENCE)
 	private Integer idTelefone;
 	
-	@NotNull(message="Hibernate Validator: A dataCadastro não pode ser null!")
 	@Column(name="dataCadastro", nullable=false)
 	private Calendar dataCadastro;
 	
-	@NotNull(message="Hibernate Validator: O usuario não pode ser null!")
-	@Column(name="usuario", nullable=false)
-	private Usuario usuario;
+	@Column(name="usuarioId", nullable=false)
+	private Integer usuarioId;
 	
-	@NotNull(message="Hibernate Validator: O tipo não pode ser null!")
-	@Column(name="tipo", nullable=false)
+	@ManyToOne
+	@JoinColumn(name="tipo", referencedColumnName="idTipo", nullable=false)
+	@ForeignKey(name="fk_tipo")
 	private Tipo tipo;
 	
-	@Length(max=2, message="Hibernate Validator: O ddd não pode conter mais de {max} caracteres!")
-	@NotBlank(message="Hibernate Validator: O ddd não pode estar em branco!")
-	@NotNull(message="Hibernate Validator: O ddd não pode ser null!")
 	@Column(name="ddd", nullable=false, length=2)
 	private String ddd;
 	
-	@Length(max=10, message="Hibernate Validator: O telefone não pode conter mais de {max} caracteres!")
-	@NotBlank(message="Hibernate Validator: O telefone não pode estar em branco!")
-	@NotNull(message="Hibernate Validator: O telefone não pode ser null!")
-	@Column(name="ddd", nullable=false, length=10)
+	@Column(name="telefone", nullable=false, length=10)
 	private String telefone;
 	
-	@NotNull(message="Hibernate Validator: A pessoa não pode ser null!")
-	@Column(name="pessoa", nullable=false)
-	private Pessoa pessoa;
-	
-	@NotNull(message="Hibernate Validator: O cliente não pode ser null!")
-	@Column(name="cliente", nullable=false)
+	@OneToOne
+	@JoinColumn(name="empresa", referencedColumnName="idEmpresa", nullable=false)
+	@ForeignKey(name="fk_empresa")
 	private Empresa empresa;
+	
+	@ManyToOne
+	@JoinColumn(name="pessoa", referencedColumnName="idPessoa", nullable=false)
+	@ForeignKey(name="fk_pessoa")
+	private Pessoa pessoa;
 
 	public Integer getIdTelefone() {
 		return idTelefone;
@@ -69,12 +65,12 @@ public class Telefone {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Integer getUsuarioId() {
+		return usuarioId;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuarioId(Integer usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
 	public Tipo getTipo() {
@@ -101,6 +97,14 @@ public class Telefone {
 		this.telefone = telefone;
 	}
 
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -109,13 +113,6 @@ public class Telefone {
 		this.pessoa = pessoa;
 	}
 
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
 	
 	
 }

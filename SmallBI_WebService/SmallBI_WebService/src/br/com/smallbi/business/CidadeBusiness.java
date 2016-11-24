@@ -30,11 +30,6 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 //		}catch (Exception e) {
 //			throw new BusinessException("Usuario não encontrado.");
 //		}		
-		if(!usuario.equals(null)){
-			t.setUsuario(usuario);
-		}else{
-			throw new BusinessException("Usuario não pode ser null.");
-		}
 		if(t.getNomeCidade().equals(null) || t.getNomeCidade().equals("")){
 			throw new BusinessException("O nomeCidade não pode ser null.");
 		}
@@ -61,12 +56,6 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 		}
 		if(t.getDataCadastro().equals(null)){
 			//error
-		}
-		Usuario usuario = usuarioDao.getObjById(t.getUsuario().getIdUsuario());
-		if(usuario.equals(null)){
-			//error
-		}else{
-			t.setUsuario(usuario);
 		}
 		if(t.getNomeCidade().equals(null) || t.getNomeCidade().equals("")){
 			//error

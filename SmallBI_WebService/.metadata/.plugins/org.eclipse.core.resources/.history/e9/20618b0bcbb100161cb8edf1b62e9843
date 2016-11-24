@@ -1,0 +1,9 @@
+package br.com.smallbi.business;
+
+import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import br.com.smallbi.entity.Estado;
+
+public class EstadoBusiness implements InterfaceBusiness<Estado>{
+
+	
+}

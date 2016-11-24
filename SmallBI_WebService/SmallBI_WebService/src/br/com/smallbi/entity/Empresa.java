@@ -7,12 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.br.CNPJ;
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 public class Empresa {
@@ -22,55 +22,45 @@ public class Empresa {
 	@GeneratedValue(generator="seq_empresa", strategy=GenerationType.SEQUENCE)
 	private Integer idEmpresa;
 	
-	@NotNull(message="Hibernate Validator: A dataCadastro não pode ser null!")
 	@Column(name="dataCadastro", nullable=false)
 	private Calendar dataCadastro;
 	
-	@NotNull(message="Hibernate Validator: O usuario não pode ser null!")
-	@Column(name="usuario", nullable=false)
-	private Usuario usuario;
+	@Column(name="usuarioId", nullable=false)
+	private Integer usuarioId;
 	
-	@Length(max=30, message="Hibernate Validator: A razaoSocial não pode conter mais de {max} caracteres!")
-	@NotBlank(message="Hibernate Validator: A razaoSocial não pode estar em branco!")
-	@NotNull(message="Hibernate Validator: A razaoSocial não pode ser null!")
 	@Column(name="razaoSocial", nullable=false, length=30)
 	private String razaoSocial;
 	
-	@Length(max=30, message="Hibernate Validator: O nomeFantasia não pode conter mais de {max} caracteres!")
-	@NotBlank(message="Hibernate Validator: O nomeFantasia não pode estar em branco!")
-	@NotNull(message="Hibernate Validator: O nomeFantasia não pode ser null!")
 	@Column(name="nomeFantasia", nullable=false, length=30)
 	private String nomeFantasia;
 	
-	@CNPJ
-	@NotNull(message="Hibernate Validator: O cnpj não pode ser null!")
 	@Column(name="cnpj", nullable=false)
 	private String cnpj;
 	
-	@Length(max=30, message="Hibernate Validator: O ie não pode conter mais de {max} caracteres!")
-	@NotBlank(message="Hibernate Validator: O ie não pode estar em branco!")
-	@NotNull(message="Hibernate Validator: O ie não pode ser null!")
 	@Column(name="ie", nullable=false, length=30)
 	private String ie;
 	
-	@NotNull(message="Hibernate Validator: O endereco não pode ser null!")
-	@Column(name="endereco", nullable=false)
+	@OneToOne
+	@JoinColumn(name="endereco", referencedColumnName="idEndereco", nullable=false)
+	@ForeignKey(name="fk_endereco")
 	private Endereco endereco;
 	
-	@NotNull(message="Hibernate Validator: O ramoAtividade não pode ser null!")
-	@Column(name="ramoAtividade", nullable=false)
+	@ManyToOne
+	@JoinColumn(name="ramoAtividade", referencedColumnName="idRamoAtividade", nullable=false)
+	@ForeignKey(name="fk_ramoAtividade")
 	private RamoAtividade ramoAtividade;
 	
-	@NotNull(message="Hibernate Validator: O tamanhoTotal não pode ser null!")
 	@Column(name="tamanhoTotal", nullable=false)
 	private int tamanhoTotal;
 	
-	@NotNull(message="Hibernate Validator: A formaPagamento não pode ser null!")
-	@Column(name="formaPagamento", nullable=false)
+	@ManyToOne
+	@JoinColumn(name="formaPagamento", referencedColumnName="idFormaPagamento", nullable=false)
+	@ForeignKey(name="fk_formaPagamento")
 	private FormaPagamento formaPagamento;
 	
-	@NotNull(message="Hibernate Validator: O plano não pode ser null!")
-	@Column(name="plano", nullable=false)
+	@ManyToOne
+	@JoinColumn(name="plano", referencedColumnName="idPlano", nullable=false)
+	@ForeignKey(name="fk_plano")
 	private Plano plano;
 
 	public Integer getIdEmpresa() {
@@ -89,12 +79,12 @@ public class Empresa {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Integer getUsuarioId() {
+		return usuarioId;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuarioId(Integer usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
 	public String getRazaoSocial() {
@@ -168,6 +158,9 @@ public class Empresa {
 	public void setPlano(Plano plano) {
 		this.plano = plano;
 	}
+	
+
+	
 	
 	
 }

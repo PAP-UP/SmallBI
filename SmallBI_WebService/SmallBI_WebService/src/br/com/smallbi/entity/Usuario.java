@@ -7,11 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 public class Usuario {
@@ -21,41 +22,33 @@ public class Usuario {
 	@GeneratedValue(generator="seq_usuario", strategy=GenerationType.SEQUENCE)
 	private Integer idUsuario;
 	
-	@NotNull(message="Hibernate Validator: A dataCadastro não pode ser null!")
 	@Column(name="dataCadastro", nullable=false)
 	private Calendar dataCadastro;
 	
-	@NotNull(message="Hibernate Validator: O usuario não pode ser null!")
-	@Column(name="usuario", nullable=false)
-	private Usuario usuario;
+	@Column(name="usuarioId", nullable=false)
+	private Integer usuarioId;
 	
-	@Length(max=30, message="Hibernate Validator: O login não pode conter mais de {max} caracteres!")
-	@NotBlank(message="Hibernate Validator: O login não pode estar em branco!")
-	@NotNull(message="Hibernate Validator: O login não pode ser null!")
 	@Column(name="login", nullable=false, length=30)
 	private String login;
 	
-	@Length(max=20, message="Hibernate Validator: A senha não pode conter mais de {max} caracteres!")
-	@NotBlank(message="Hibernate Validator: A senha não pode estar em branco!")
-	@NotNull(message="Hibernate Validator: A senha não pode ser null!")
 	@Column(name="senha", nullable=false, length=20)
 	private String senha;
 	
-	@NotNull(message="Hibernate Validator: O perfil não pode ser null!")
-	@Column(name="perfil", nullable=false)
+	@ManyToOne
+	@JoinColumn(name="perfil", referencedColumnName="idPerfil", nullable=false)
+	@ForeignKey(name="fk_perfil")
 	private Perfil perfil;
 	
-	@NotNull(message="Hibernate Validator: A pessoa não pode ser null!")
-	@Column(name="pessoa", nullable=false)
+	@OneToOne
+	@JoinColumn(name="pessoa", referencedColumnName="idPessoa", nullable=false)
+	@ForeignKey(name="fk_pessoa")
 	private Pessoa pessoa;
 	
-	@NotNull(message="Hibernate Validator: O cliente não pode ser null!")
-	@Column(name="cliente", nullable=false)
+	@ManyToOne
+	@JoinColumn(name="empresa", referencedColumnName="idEmpresa", nullable=false)
+	@ForeignKey(name="fk_empresa")
 	private Empresa empresa;
 	
-	@Length(max=30, message="Hibernate Validator: O usuarioSaiku não pode conter mais de {max} caracteres!")
-	@NotBlank(message="Hibernate Validator: O usuarioSaiku não pode estar em branco!")
-	@NotNull(message="Hibernate Validator: O usuarioSaiku não pode ser null!")
 	@Column(name="usuarioSaiku", nullable=false, length=30)
 	private String usuarioSaiku;
 
@@ -75,12 +68,12 @@ public class Usuario {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Integer getUsuarioId() {
+		return usuarioId;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuarioId(Integer usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
 	public String getLogin() {
@@ -130,6 +123,8 @@ public class Usuario {
 	public void setUsuarioSaiku(String usuarioSaiku) {
 		this.usuarioSaiku = usuarioSaiku;
 	}
+
+	
 	
 	
 }

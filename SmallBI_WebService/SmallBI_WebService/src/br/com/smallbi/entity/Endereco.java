@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 public class Endereco {
@@ -21,47 +21,30 @@ public class Endereco {
 	@GeneratedValue(generator="seq_endereco", strategy=GenerationType.SEQUENCE)
 	private Integer idEndereco;
 	
-	@NotNull(message="Hibernate Validator: A dataCadastro não pode ser null!")
 	@Column(name="dataCadastro", nullable=false)
 	private Calendar dataCadastro;
+
+	@Column(name="usuarioId", nullable=false)
+	private Integer usuarioId;
 	
-	@NotNull(message="Hibernate Validator: O usuario não pode ser null!")
-	@Column(name="usuario", nullable=false)
-	private Usuario usuario;
-	
-	@Length(max=30, message="Hibernate Validator: O endereco não pode conter mais de {max} caracteres!")
-	@NotBlank(message="Hibernate Validator: O endereco não pode estar em branco!")
-	@NotNull(message="Hibernate Validator: O endereco não pode ser null!")
 	@Column(name="endereco", nullable=false, length=30)
 	private String endereco;
 	
-	@Length(max=10, message="Hibernate Validator: O numero não pode conter mais de {max} caracteres!")
-	@NotBlank(message="Hibernate Validator: O numero não pode estar em branco!")
-	@NotNull(message="Hibernate Validator: O numero não pode ser null!")
 	@Column(name="numero", nullable=false, length=10)
 	private String numero;
 	
-	@Length(max=30, message="Hibernate Validator: O bairro não pode conter mais de {max} caracteres!")
-	@NotBlank(message="Hibernate Validator: O bairro não pode estar em branco!")
-	@NotNull(message="Hibernate Validator: O bairro não pode ser null!")
 	@Column(name="bairro", nullable=false, length=30)
 	private String bairro;
 	
-	@NotNull(message="Hibernate Validator: A cidade não pode ser null!")
-	@Column(name="cidade", nullable=false)
+	@ManyToOne
+	@JoinColumn(name="cidade", referencedColumnName="idCidade", nullable=false)
+	@ForeignKey(name="fk_cidade")
 	private Cidade cidade;
-	
-	@NotNull(message="Hibernate Validator: A pessoa não pode ser null!")
-	@Column(name="pessoa", nullable=false)
-	private Pessoa pessoa;
-	
-	@NotNull(message="Hibernate Validator: O tipo não pode ser null!")
-	@Column(name="tipo", nullable=false)
+
+	@ManyToOne
+	@JoinColumn(name="tipo", referencedColumnName="idTipo", nullable=false)
+	@ForeignKey(name="fk_tipo")
 	private Tipo tipo;
-	
-	@NotNull(message="Hibernate Validator: O cliente não pode ser null!")
-	@Column(name="cliente", nullable=false)
-	private Empresa empresa;
 
 	public Integer getIdEndereco() {
 		return idEndereco;
@@ -79,12 +62,12 @@ public class Endereco {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Integer getUsuarioId() {
+		return usuarioId;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuarioId(Integer usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
 	public String getEndereco() {
@@ -119,14 +102,6 @@ public class Endereco {
 		this.cidade = cidade;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
-
 	public Tipo getTipo() {
 		return tipo;
 	}
@@ -134,14 +109,10 @@ public class Endereco {
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
+	
 
-	public Empresa getEmpresa() {
-		return empresa;
-	}
+	
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
 	
 	
 }
