@@ -14,46 +14,77 @@ public class EstadoBusiness implements InterfaceBusiness<Estado>{
 	
 	@Override
 	public void create(Estado t) throws BusinessException {
-		/*if(t.equals(null)){
+
+		if(t == null){
 			throw new BusinessException("O objeto não pode ser null!");
 		}
+		
+		if(t.getDataCadastro() == null){
+			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
+		}
+		
 		if(t.getNomeEstado().equals(null) || t.getNomeEstado().equals("")){
 			throw new BusinessException("A variável 'nomeEstado' deve ser informada!");
 		}
+		
 		if(t.getSiglaEstado().equals(null) || t.getSiglaEstado().equals("")){
 			throw new BusinessException("A variável 'siglaEstado' deve ser informada!");
 		}
-		if(t.getUsuarioId().equals(null)){
+		
+		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
-		if(t.getDataCadastro().equals(null)){
-			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}*/
+		
 		estadoDao.create(t);
 	}
 
 	@Override
 	public List<Estado> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return estadoDao.list();
 	}
 
 	@Override
 	public void update(Estado t) throws BusinessException {
-		// TODO Auto-generated method stub
 		
+		if(t == null){
+			throw new BusinessException("O objeto não pode ser null!");
+		}
+		
+		if(t.getDataCadastro() == null){
+			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
+		}
+		
+		if(t.getNomeEstado().equals(null) || t.getNomeEstado().equals("")){
+			throw new BusinessException("A variável 'nomeEstado' deve ser informada!");
+		}
+		
+		if(t.getSiglaEstado().equals(null) || t.getSiglaEstado().equals("")){
+			throw new BusinessException("A variável 'siglaEstado' deve ser informada!");
+		}
+		
+		if(t.getUsuarioId() == null){
+			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+		}
+		
+		estadoDao.update(t);
 	}
 
 	@Override
-	public void delete(Integer t) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+	public void delete(Integer id) throws BusinessException {
+		Estado estado = estadoDao.getObjById(id);
+		if(estado == null){
+			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Estado'!");
+		}
+		estadoDao.delete(estado);
 	}
 
 	@Override
-	public Estado getObjById(Integer t) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+	public Estado getObjById(Integer id) throws BusinessException {
+		Estado estado = estadoDao.getObjById(id);
+		if(estado == null){
+			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Estado'!");
+		}
+		return estado;
 	}
 
 	

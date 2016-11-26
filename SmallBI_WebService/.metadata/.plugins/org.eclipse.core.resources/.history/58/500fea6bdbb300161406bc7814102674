@@ -1,0 +1,86 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+import java.util.List;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.business.EmpresaBusiness;
+import br.com.smallbi.business.EnderecoBusiness;
+import br.com.smallbi.business.FormaPagamentoBusiness;
+import br.com.smallbi.business.PlanoBusiness;
+import br.com.smallbi.business.RamoAtividadeBusiness;
+import br.com.smallbi.business.exception.BusinessException;
+import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Endereco;
+import br.com.smallbi.entity.FormaPagamento;
+import br.com.smallbi.entity.Plano;
+import br.com.smallbi.entity.RamoAtividade;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestEmpresa {
+
+	EmpresaBusiness empresaBusiness = new EmpresaBusiness();
+	public static int idTestEmpresa;
+	
+	@Test
+	public void test1CreateEmpresa(){
+		Empresa e = new Empresa();
+		e.setCnpj("12.123.123/1234-12");
+		e.setDataCadastro(Calendar.getInstance());
+		
+		List<Endereco> enderecos = new EnderecoBusiness().list();
+		Endereco endereco = enderecos.get(0);
+		e.setEndereco(endereco);
+		
+		List<FormaPagamento> formas = new FormaPagamentoBusiness().list();
+		FormaPagamento formaPagamento = formas.get(0);
+		e.setFormaPagamento(formaPagamento);
+		
+		e.setIe("I don't know what this!");
+		e.setNomeFantasia("SmallBI Enterprise");
+		
+		List<Plano> planos = new PlanoBusiness().list();
+		Plano plano = planos.get(0);
+		e.setPlano(plano);
+		
+		List<RamoAtividade> ramos = new RamoAtividadeBusiness().list();
+		RamoAtividade ramoAtividade = ramos.get(0);
+		e.setRamoAtividade(ramoAtividade);
+		
+		e.setRazaoSocial("Deyneson Borba Ltda");
+		e.setTamanhoTotal(100);
+		e.setUsuarioId(1);
+		
+		try {
+			empresaBusiness.create(e);
+		} catch (BusinessException e1) {
+			e1.printStackTrace();
+		}
+		idTestEmpresa = e.getIdEmpresa();
+	}
+	
+	@Test
+	public void test2ListEmpresa(){
+		List<Empresa> empresas = empresaBusiness.list();
+		System.out.println("<<Empresas:>>");
+		for(Empresa e : empresas){
+			System.out.println("----------");
+			System.out.println("CNJP: " + e.getCnpj());
+			System.out.println("Ie: " + e.getIe());
+			System.out.println("Nome Fantasia: " + e.getNomeFantasia());
+			System.out.println("Razão Social: " + e.getRazaoSocial());
+			System.out.println("Id: " + e.getIdEmpresa());
+			System.out.println("Tamanho total: " + e.getTamanhoTotal());
+			System.out.println("Usuário: " + e.getUsuarioId());
+			System.out.println("Data de cadastro: " + e.getDataCadastro().getTime());
+			System.out.println("Endereço: " + e.getEndereco().getEndereco());
+			System.out.println("Forma de pagamento: " + e.getFormaPagamento().getFormaPagamento());
+			System.out.println("Plano: " + e.getPlano().getDescricao());
+			System.out.println("Ramo de atividade: " + e.getRamoAtividade().getRamoAtividade());
+			System.out.println("----------");
+		}
+	}
+}

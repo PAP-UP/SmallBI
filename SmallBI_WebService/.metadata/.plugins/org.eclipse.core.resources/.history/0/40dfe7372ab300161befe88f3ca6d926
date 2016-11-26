@@ -1,0 +1,70 @@
+package br.com.smallbi.business;
+
+import java.util.List;
+
+import br.com.smallbi.business.exception.BusinessException;
+import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import br.com.smallbi.dal.EmpresaDao;
+import br.com.smallbi.dal.factory.FactoryDao;
+import br.com.smallbi.dal.interfaceDal.InterfaceDao;
+import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Telefone;
+
+public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
+
+	InterfaceDao<Empresa> empresaDao = FactoryDao.createEmpresaDao();
+	
+	@Override
+	public void create(Telefone t) throws BusinessException {
+		
+		if(t == null){
+			throw new BusinessException("O objeto não pode ser null!");
+		}
+		
+		if(t.getDataCadastro() == null){
+			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
+		}
+		
+		if(t.getDdd().equals(null) || t.getDdd().equals("")){
+			throw new BusinessException("A variável 'ddd' deve ser informada!");
+		}
+		
+		if(t.getEmpresa() != null){
+			if(t.getEmpresa().getIdEmpresa() != null){
+				Empresa empresa = empresaDao.getObjById(t.getEmpresa().getIdEmpresa());
+				if(empresa == null){
+					
+				}
+			}else{
+				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
+			}
+		}else{
+			throw new BusinessException("A variável 'empresa' deve ser informada!");
+		}
+	}
+
+	@Override
+	public List<Telefone> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(Telefone t) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Integer id) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Telefone getObjById(Integer id) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

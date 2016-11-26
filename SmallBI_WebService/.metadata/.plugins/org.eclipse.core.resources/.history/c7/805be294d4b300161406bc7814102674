@@ -1,0 +1,9 @@
+package br.com.smallbi.test;
+
+import org.junit.FixMethodOrder;
+
+FixMethodOrder()
+public class TestPessoa {
+
+	
+}

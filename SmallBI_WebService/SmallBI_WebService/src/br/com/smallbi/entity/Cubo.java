@@ -2,7 +2,6 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,28 +20,22 @@ public class Cubo {
 	@GeneratedValue(generator="seq_cubo", strategy=GenerationType.SEQUENCE)
 	private Integer idCubo;
 	
-	@Column(name="dataCadastro", nullable=false)
 	private Calendar dataCadastro;
 	
-	@Column(name="usuarioId", nullable=false)
 	private Integer usuarioId;
 	
-	@Column(name="nomeCubo", nullable=false, length=30)
 	private String nomeCubo;
 	
 	@ManyToOne
-	@JoinColumn(name="empresa", referencedColumnName="idEmpresa", nullable=false)
+	@JoinColumn(name="empresa", referencedColumnName="idEmpresa")
 	@ForeignKey(name="fk_empresa")
 	private Empresa empresa;
 	
-	@Column(name="mdx", nullable=false)
 	private String mdx;
 	
-	@Column(name="tabelaFato", nullable=false)
 	private String tabelaFato;
 	
-	@Column(name="tamanho", nullable=false)
-	private int tamanho;
+	private Integer tamanho;
 
 	public Integer getIdCubo() {
 		return idCubo;
@@ -100,11 +93,11 @@ public class Cubo {
 		this.tabelaFato = tabelaFato;
 	}
 
-	public int getTamanho() {
+	public Integer getTamanho() {
 		return tamanho;
 	}
 
-	public void setTamanho(int tamanho) {
+	public void setTamanho(Integer tamanho) {
 		this.tamanho = tamanho;
 	}
 

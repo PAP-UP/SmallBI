@@ -2,7 +2,6 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,16 +16,12 @@ public class Estado {
 	@GeneratedValue(generator="seq_estado", strategy=GenerationType.SEQUENCE)
 	private Integer idEstado;
 	
-	@Column(name="dataCadastro", nullable=false)
 	private Calendar dataCadastro;
 	
-	@Column(name="usuarioId", nullable=false)
 	private Integer usuarioId;
 	
-	@Column(name="nomeEstado", nullable=false, length=30)
 	private String nomeEstado;
 	
-	@Column(name="siglaEstado", nullable=false, length=2)
 	private String siglaEstado;
 
 	public Integer getIdEstado() {

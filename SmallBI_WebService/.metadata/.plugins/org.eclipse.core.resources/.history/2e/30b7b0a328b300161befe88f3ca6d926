@@ -1,0 +1,47 @@
+package br.com.smallbi.business;
+
+import java.util.List;
+
+import br.com.smallbi.business.exception.BusinessException;
+import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import br.com.smallbi.entity.Plano;
+
+public class PlanoBusiness implements InterfaceBusiness<Plano>{
+
+	@Override
+	public void create(Plano t) throws BusinessException {
+		
+		if(t = null){
+			throw new BusinessException("O objeto não pode ser null!");
+		}
+		
+		if(t.getDataCadastro() == null){
+			throw new BusinessException("A variável plano' deve ser informada!");
+		}
+	}
+
+	@Override
+	public List<Plano> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(Plano t) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Integer id) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Plano getObjById(Integer id) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

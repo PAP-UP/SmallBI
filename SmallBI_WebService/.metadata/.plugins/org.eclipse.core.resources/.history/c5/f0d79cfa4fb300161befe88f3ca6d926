@@ -1,0 +1,70 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+import java.util.List;
+
+import org.junit.Test;
+
+import br.com.smallbi.business.EstadoBusiness;
+import br.com.smallbi.business.exception.BusinessException;
+import br.com.smallbi.entity.Estado;
+
+public class TestEstado{
+
+	EstadoBusiness estadoBusiness = new EstadoBusiness();
+	private static int idGerado;
+	
+	@Test
+	public void testCreateEstado(){
+		Estado estado = new Estado();
+		estado.setNomeEstado("Rio Grande do Sul");
+		estado.setSiglaEstado("RS");
+		estado.setUsuarioId(1);
+		estado.setDataCadastro(Calendar.getInstance());		
+		try {
+			estadoBusiness.create(estado);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		idGerado = estado.getIdEstado();
+	}
+	
+	@Test
+	public void testListEstado(){
+		List<Estado> estados = estadoBusiness.list();
+		System.out.println("<<Estados>>");
+		for(Estado e : estados){
+			System.out.println("----------");
+			System.out.println("Nome: " + e.getNomeEstado());
+			System.out.println("Sigla: " + e.getSiglaEstado());
+			System.out.println("Id: " + e.getIdEstado());
+			System.out.println("Usuário: " + e.getUsuarioId());
+			System.out.println("Data de Cadastro: " + e.getDataCadastro().getTime());
+			System.out.println("----------");
+		}
+	}
+	
+	@Test
+	public void testUpdateEstado(){
+		try {
+			Estado e = estadoBusiness.getObjById(idGerado);
+			e.setNomeEstado("Santa Catarina");
+			estadoBusiness.update(e);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		System.out.println("UPDATE");
+		testListEstado();
+	}
+	
+	@Test
+	public void testDeleteEstado(){
+		try {
+			estadoBusiness.delete(idGerado);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
+		testListEstado();
+	}
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestUsuario" project="SmallBI_WebService" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.smallbi.test.TestUsuario" time="2.277">
+    <testcase name="test2ListUsuario" classname="br.com.smallbi.test.TestUsuario" time="2.277"/>
+  </testsuite>
+</testrun>

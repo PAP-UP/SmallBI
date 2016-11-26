@@ -18,29 +18,40 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 	
 	@Override
 	public void create(Cidade t) throws BusinessException {
-		if(t.equals(null)){
-			throw new BusinessException("O objeto não pode ser null.");
+		
+		if(t == null){
+			throw new BusinessException("O objeto não pode ser null!");
 		}
-		if(t.getDataCadastro().equals(null)){
-			throw new BusinessException("A dataCadastro não pode ser null.");
-		}		
-		Usuario usuario = new Usuario();
-//		try{
-//			usuario = usuarioDao.getObjById(t.getUsuario().getIdUsuario());
-//		}catch (Exception e) {
-//			throw new BusinessException("Usuario não encontrado.");
-//		}		
+		
+		if(t.getDataCadastro() == null){
+			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
+		}
+		
+		if(t.getEstado() != null){
+			if(t.getEstado().getIdEstado() != null){
+				Estado estado = estadoDao.getObjById(t.getEstado().getIdEstado());
+				if(estado == null){
+					throw new BusinessException("Nenhum resultado para a variável 'estado' foi encontrado!");
+				}
+			}else{
+				throw new BusinessException("A variável 'estado.idEstado' deve ser informada!");
+			}
+		}else{
+			throw new BusinessException("A variável 'estado' deve ser informada!");
+		}
+		
 		if(t.getNomeCidade().equals(null) || t.getNomeCidade().equals("")){
-			throw new BusinessException("O nomeCidade não pode ser null.");
+			throw new BusinessException("A variável 'nomeCidade' deve ser informada!");
 		}
+		
 		if(t.getSiglaCidade().equals(null) || t.getSiglaCidade().equals("")){
-			throw new BusinessException("A siglaCidade não pode ser null.");
+			throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
 		}
-//		try{
-//			Estado estado = estadoDao.getObjById(t.getEstado().getIdEstado());
-//		}catch (Exception e) {
-//			throw new BusinessException("O estado não pode ser null.");
-//		}			
+		
+		if(t.getUsuarioId() == null){
+			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+		}
+		
 		cidadeDao.create(t);
 	}
 	
@@ -51,34 +62,57 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 	
 	@Override
 	public void update(Cidade t) throws BusinessException {
-		if(t.equals(null)){
-			//error
+
+		if(t == null){
+			throw new BusinessException("O objeto não pode ser null!");
 		}
-		if(t.getDataCadastro().equals(null)){
-			//error
+		
+		if(t.getDataCadastro() == null){
+			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}
-		if(t.getNomeCidade().equals(null) || t.getNomeCidade().equals("")){
-			//error
-		}
-		if(t.getSiglaCidade().equals(null) || t.getSiglaCidade().equals("")){
-			//error
-		}
-		Estado estado = estadoDao.getObjById(t.getEstado().getIdEstado());
-		if(estado.equals(null)){
-			//error
+		
+		if(t.getEstado() != null){
+			if(t.getEstado().getIdEstado() != null){
+				Estado estado = estadoDao.getObjById(t.getEstado().getIdEstado());
+				if(estado == null){
+					throw new BusinessException("Nenhum resultado para a variável 'estado' foi encontrado!");
+				}
+			}else{
+				throw new BusinessException("A variável 'estado.idEstado' deve ser informada!");
+			}
 		}else{
-			t.setEstado(estado);
-		}		
+			throw new BusinessException("A variável 'estado' deve ser informada!");
+		}
+		
+		if(t.getNomeCidade().equals(null) || t.getNomeCidade().equals("")){
+			throw new BusinessException("A variável 'nomeCidade' deve ser informada!");
+		}
+		
+		if(t.getSiglaCidade().equals(null) || t.getSiglaCidade().equals("")){
+			throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
+		}
+		
+		if(t.getUsuarioId() == null){
+			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+		}
+		
 		cidadeDao.update(t);
 	}
 	
 	@Override
-	public void delete(Integer t) throws BusinessException {
-		Cidade cidade = cidadeDao.getObjById(t);
+	public void delete(Integer id) throws BusinessException {
+		Cidade cidade = cidadeDao.getObjById(id);
+		if(cidade == null){
+			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cidade'!");
+		}
 		cidadeDao.delete(cidade);
 	}
 	@Override
-	public Cidade getObjById(Integer t) throws BusinessException {
-		return cidadeDao.getObjById(t);
+	public Cidade getObjById(Integer id) throws BusinessException {
+		Cidade cidade = cidadeDao.getObjById(id);
+		if(cidade == null){
+			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cidade'!");
+		}
+		return cidade;
 	}
 }

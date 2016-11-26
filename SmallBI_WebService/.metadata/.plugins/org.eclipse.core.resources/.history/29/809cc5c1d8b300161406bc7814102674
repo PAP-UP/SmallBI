@@ -1,0 +1,27 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.business.PlanoBusiness;
+import br.com.smallbi.entity.Plano;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestPlano {
+
+	PlanoBusiness planoBusiness = new PlanoBusiness();
+	public static int idTestPlani
+	
+	@Test
+	public void test1CreatePlano(){
+		Plano plano = new Plano();
+		plano.setDataCadastro(Calendar.getInstance());
+		plano.setDescricao("Cheap plan");
+		plano.setUsuarioId(1);
+		
+		
+	}
+}

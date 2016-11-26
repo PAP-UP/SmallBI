@@ -1,0 +1,45 @@
+package br.com.smallbi.business;
+
+import java.util.List;
+
+import br.com.smallbi.business.exception.BusinessException;
+import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import br.com.smallbi.entity.Empresa;
+
+public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
+
+	@Override
+	public void create(Empresa t) throws BusinessException {
+		
+		if(t == null){
+			throw new BusinessException("O objeto não pode ser null!");
+		}
+		
+		if()
+	}
+
+	@Override
+	public List<Empresa> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(Empresa t) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Integer id) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Empresa getObjById(Integer id) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,38 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+import java.util.List;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.business.EnderecoBusiness;
+import br.com.smallbi.business.FuncaoBusiness;
+import br.com.smallbi.entity.Endereco;
+import br.com.smallbi.entity.Funcao;
+import br.com.smallbi.entity.Pessoa;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestPessoa {
+
+	@Test
+	public void test1CreatePessoa(){
+		Pessoa pessoa = new Pessoa();
+		pessoa.setCpf("123.123.123-12");
+		pessoa.setDataCadastro(Calendar.getInstance());
+		
+		List<Endereco> enderecos = new EnderecoBusiness().list();
+		Endereco endereco = enderecos.get(0);
+		pessoa.setEndereco(endereco);
+		
+		List<Funcao> funcoes = new FuncaoBusiness().list();
+		Funcao funcao = funcoes.get(0);
+		pessoa.setFuncao(funcao);
+		
+		pessoa.setNome("Huguinho");
+		pessoa.setRg("12.123.123-1");
+		pessoa.setUsuarioId(1);
+		
+	}
+}

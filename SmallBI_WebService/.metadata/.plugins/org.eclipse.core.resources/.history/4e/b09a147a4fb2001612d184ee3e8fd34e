@@ -1,0 +1,21 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+
+import org.junit.Test;
+
+import br.com.smallbi.entity.Usuario;
+
+public class TestUsuario {
+
+	@Test
+	public void createFirstUser(){
+		Usuario usuario = new Usuario();
+		usuario.setDataCadastro(Calendar.getInstance());
+		usuario.setUsuarioId(null);
+		usuario.setLogin("deynesonborba");
+		usuario.setSenha("deynesonborba");
+		usuario.setPerfil(null);
+		
+	}
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestFormaPagamento" project="SmallBI_WebService" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.smallbi.test.TestFormaPagamento" time="2.172">
+    <testcase name="test1CreateFormaPagamento" classname="br.com.smallbi.test.TestFormaPagamento" time="1.94"/>
+    <testcase name="test2ListFormaPagamento" classname="br.com.smallbi.test.TestFormaPagamento" time="0.232"/>
+  </testsuite>
+</testrun>

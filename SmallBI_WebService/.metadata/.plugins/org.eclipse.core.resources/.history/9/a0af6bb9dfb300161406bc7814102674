@@ -1,0 +1,16 @@
+package br.com.smallbi.test;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.entity.Usuario;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestUsuario {
+
+	@Test
+	public void test1CreateUsuario(){
+		Usuario usuario = new Usuario();
+	}
+}

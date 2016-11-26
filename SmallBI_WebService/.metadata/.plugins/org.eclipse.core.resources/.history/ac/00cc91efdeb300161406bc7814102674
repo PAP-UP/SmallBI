@@ -1,0 +1,26 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.business.PerfilBusiness;
+import br.com.smallbi.entity.Perfil;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestPerfil {
+
+	PerfilBusiness perfilBusiness = new PerfilBusiness();
+	
+	@Test
+	public void test1CreatePerfil(){
+		Perfil perfil = new Perfil();
+		perfil.setDataCadastro(Calendar.getInstance());
+		perfil.setNomePerfil("Adm");
+		perfil.setUsuarioId(1);
+		
+		
+	}
+}

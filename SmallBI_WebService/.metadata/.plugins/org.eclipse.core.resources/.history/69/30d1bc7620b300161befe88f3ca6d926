@@ -1,0 +1,41 @@
+package br.com.smallbi.business;
+
+import java.util.List;
+
+import br.com.smallbi.business.exception.BusinessException;
+import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import br.com.smallbi.entity.Cubo;
+
+public class CuboBusiness implements InterfaceBusiness<Cubo>{
+
+	@Override
+	public void create(Cubo t) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Cubo> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(Cubo t) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Integer id) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Cubo getObjById(Integer id) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

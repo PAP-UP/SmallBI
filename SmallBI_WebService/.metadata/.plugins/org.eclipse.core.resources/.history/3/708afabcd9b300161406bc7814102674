@@ -1,0 +1,16 @@
+package br.com.smallbi.test;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.entity.Empresa;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestEmpresa {
+
+	@Test
+	public void test1CreateEmpresa(){
+		Empresa empresa = new Empresa();
+	}
+}

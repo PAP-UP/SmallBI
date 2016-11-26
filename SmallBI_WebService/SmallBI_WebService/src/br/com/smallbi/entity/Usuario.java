@@ -2,7 +2,6 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,34 +21,29 @@ public class Usuario {
 	@GeneratedValue(generator="seq_usuario", strategy=GenerationType.SEQUENCE)
 	private Integer idUsuario;
 	
-	@Column(name="dataCadastro", nullable=false)
 	private Calendar dataCadastro;
 	
-	@Column(name="usuarioId", nullable=false)
 	private Integer usuarioId;
 	
-	@Column(name="login", nullable=false, length=30)
 	private String login;
 	
-	@Column(name="senha", nullable=false, length=20)
 	private String senha;
 	
 	@ManyToOne
-	@JoinColumn(name="perfil", referencedColumnName="idPerfil", nullable=false)
+	@JoinColumn(name="perfil", referencedColumnName="idPerfil")
 	@ForeignKey(name="fk_perfil")
 	private Perfil perfil;
 	
 	@OneToOne
-	@JoinColumn(name="pessoa", referencedColumnName="idPessoa", nullable=false)
+	@JoinColumn(name="pessoa", referencedColumnName="idPessoa")
 	@ForeignKey(name="fk_pessoa")
 	private Pessoa pessoa;
 	
 	@ManyToOne
-	@JoinColumn(name="empresa", referencedColumnName="idEmpresa", nullable=false)
+	@JoinColumn(name="empresa", referencedColumnName="idEmpresa")
 	@ForeignKey(name="fk_empresa")
 	private Empresa empresa;
 	
-	@Column(name="usuarioSaiku", nullable=false, length=30)
 	private String usuarioSaiku;
 
 	public Integer getIdUsuario() {

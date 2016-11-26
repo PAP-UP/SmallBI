@@ -1,0 +1,52 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+import java.util.List;
+
+import org.junit.Test;
+
+import br.com.smallbi.business.EstadoBusiness;
+import br.com.smallbi.business.exception.BusinessException;
+import br.com.smallbi.entity.Estado;
+
+public class TestEstado{
+
+	EstadoBusiness estadoBusiness = new EstadoBusiness();
+	
+	@Test
+	public void testCreateEstado(){
+		Estado estado = new Estado();
+		estado.setNomeEstado("Paraná");
+		estado.setSiglaEstado("PR");
+		estado.setUsuarioId(1);
+		estado.setDataCadastro(Calendar.getInstance());
+		
+		try {
+			estadoBusiness.create(estado);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testListEstado(){
+		List<Estado> estados = estadoBusiness.list();
+		System.out.println("<<Estados>>");
+		for(Estado e : estados){
+			System.out.println("Nome: " + e.getNomeEstado());
+			System.out.println("Sigla: " + e.getSiglaEstado());
+			System.out.println("Id: " + e.getIdEstado());
+			System.out.println("Usuário: " + e.getUsuarioId());
+			System.out.println("Data de Cadastro: " + e.getDataCadastro().getTime());
+		}
+	}
+	
+	@Test
+	public void testUpdateEstado(){
+		try {
+			Estado e = estadoBusiness.getObjById(2);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+	}
+}

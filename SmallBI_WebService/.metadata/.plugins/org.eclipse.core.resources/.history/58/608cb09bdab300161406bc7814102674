@@ -1,0 +1,50 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+import java.util.List;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.business.EnderecoBusiness;
+import br.com.smallbi.business.FormaPagamentoBusiness;
+import br.com.smallbi.business.PlanoBusiness;
+import br.com.smallbi.business.RamoAtividadeBusiness;
+import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Endereco;
+import br.com.smallbi.entity.FormaPagamento;
+import br.com.smallbi.entity.Plano;
+import br.com.smallbi.entity.RamoAtividade;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestEmpresa {
+
+	@Test
+	public void test1CreateEmpresa(){
+		Empresa e = new Empresa();
+		e.setCnpj("12.123.123/1234-12");
+		e.setDataCadastro(Calendar.getInstance());
+		
+		List<Endereco> enderecos = new EnderecoBusiness().list();
+		Endereco endereco = enderecos.get(0);
+		e.setEndereco(endereco);
+		
+		List<FormaPagamento> formas = new FormaPagamentoBusiness().list();
+		FormaPagamento formaPagamento = formas.get(0);
+		e.setFormaPagamento(formaPagamento);
+		
+		e.setIe("I don't know what this!");
+		e.setNomeFantasia("SmallBI Enterprise");
+		
+		List<Plano> planos = new PlanoBusiness().list();
+		Plano plano = planos.get(0);
+		e.setPlano(plano);
+		
+		List<RamoAtividade> ramos = new RamoAtividadeBusiness().list();
+		RamoAtividade ramoAtividade = ramos.get(0);
+		e.setRamoAtividade(ramoAtividade);
+		
+		e.setRazaoSocial("");
+	}
+}

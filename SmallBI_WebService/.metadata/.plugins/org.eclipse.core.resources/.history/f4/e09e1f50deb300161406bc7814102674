@@ -1,0 +1,68 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+import java.util.List;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.business.EmpresaBusiness;
+import br.com.smallbi.business.PessoaBusiness;
+import br.com.smallbi.business.TelefoneBusiness;
+import br.com.smallbi.business.TipoBusiness;
+import br.com.smallbi.business.exception.BusinessException;
+import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Pessoa;
+import br.com.smallbi.entity.Telefone;
+import br.com.smallbi.entity.Tipo;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestTelefone {
+	
+	TelefoneBusiness telefoneBusiness = new TelefoneBusiness();
+	public static int idTestTeledone;
+
+	@Test
+	public void test1CreateTelefone(){
+		Telefone telefone = new Telefone();
+		telefone.setDataCadastro(Calendar.getInstance());
+		telefone.setDdd("41");
+		
+		List<Empresa> empresas = new EmpresaBusiness().list();
+		Empresa empresa = empresas.get(0);
+		telefone.setEmpresa(empresa);
+		
+		List<Pessoa> pessoas = new PessoaBusiness().list();
+		Pessoa pessoa = pessoas.get(0);
+		telefone.setPessoa(pessoa);
+		
+		telefone.setTelefone("1234-5678");
+		
+		List<Tipo> tipos = new TipoBusiness().list();
+		Tipo tipo = tipos.get(0);
+		telefone.setTipo(tipo);
+		
+		telefone.setUsuarioId(1);
+		
+		try {
+			telefoneBusiness.create(telefone);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		idTestTeledone = telefone.getIdTelefone();
+	}
+	
+	@Test
+	public void test2ListTelefone(){
+		List<Telefone> telefones = telefoneBusiness.list();
+		System.out.println("<<Telefones>>");
+		for(Telefone t : telefones){
+			System.out.println("----------");
+			System.out.println("DDD: " + t.getDdd());
+			System.out.println("Telefone: " + t.getTelefone());
+			System.out.println("Id: " + t.getIdTelefone());
+			System.out.println("----------");
+		}
+	}
+}

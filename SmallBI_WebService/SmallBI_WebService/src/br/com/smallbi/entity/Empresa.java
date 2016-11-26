@@ -2,7 +2,6 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,44 +21,37 @@ public class Empresa {
 	@GeneratedValue(generator="seq_empresa", strategy=GenerationType.SEQUENCE)
 	private Integer idEmpresa;
 	
-	@Column(name="dataCadastro", nullable=false)
 	private Calendar dataCadastro;
 	
-	@Column(name="usuarioId", nullable=false)
 	private Integer usuarioId;
 	
-	@Column(name="razaoSocial", nullable=false, length=30)
 	private String razaoSocial;
 	
-	@Column(name="nomeFantasia", nullable=false, length=30)
 	private String nomeFantasia;
 	
-	@Column(name="cnpj", nullable=false)
 	private String cnpj;
 	
-	@Column(name="ie", nullable=false, length=30)
 	private String ie;
 	
 	@OneToOne
-	@JoinColumn(name="endereco", referencedColumnName="idEndereco", nullable=false)
+	@JoinColumn(name="endereco", referencedColumnName="idEndereco")
 	@ForeignKey(name="fk_endereco")
 	private Endereco endereco;
 	
 	@ManyToOne
-	@JoinColumn(name="ramoAtividade", referencedColumnName="idRamoAtividade", nullable=false)
+	@JoinColumn(name="ramoAtividade", referencedColumnName="idRamoAtividade")
 	@ForeignKey(name="fk_ramoAtividade")
 	private RamoAtividade ramoAtividade;
 	
-	@Column(name="tamanhoTotal", nullable=false)
-	private int tamanhoTotal;
+	private Integer tamanhoTotal;
 	
 	@ManyToOne
-	@JoinColumn(name="formaPagamento", referencedColumnName="idFormaPagamento", nullable=false)
+	@JoinColumn(name="formaPagamento", referencedColumnName="idFormaPagamento")
 	@ForeignKey(name="fk_formaPagamento")
 	private FormaPagamento formaPagamento;
 	
 	@ManyToOne
-	@JoinColumn(name="plano", referencedColumnName="idPlano", nullable=false)
+	@JoinColumn(name="plano", referencedColumnName="idPlano")
 	@ForeignKey(name="fk_plano")
 	private Plano plano;
 
@@ -135,11 +127,11 @@ public class Empresa {
 		this.ramoAtividade = ramoAtividade;
 	}
 
-	public int getTamanhoTotal() {
+	public Integer getTamanhoTotal() {
 		return tamanhoTotal;
 	}
 
-	public void setTamanhoTotal(int tamanhoTotal) {
+	public void setTamanhoTotal(Integer tamanhoTotal) {
 		this.tamanhoTotal = tamanhoTotal;
 	}
 

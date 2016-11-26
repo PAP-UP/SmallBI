@@ -1,0 +1,20 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.entity.Telefone;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestTelefone {
+
+	@Test
+	public void test1CreateTelefone(){
+		Telefone telefone = new Telefone();
+		telefone.setDataCadastro(Calendar.getInstance()
+				);
+	}
+}

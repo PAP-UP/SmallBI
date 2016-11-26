@@ -1,0 +1,4 @@
+127.0.0.1 - - [24/Nov/2016:10:46:53 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [24/Nov/2016:10:46:54 -0200] "GET /SmallBI_WebService/WEB-INF/classes/br/com/smallbi/test/TestEstado.java HTTP/1.1" 404 949
+127.0.0.1 - - [24/Nov/2016:10:50:23 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [24/Nov/2016:10:50:24 -0200] "GET /SmallBI_WebService/WEB-INF/classes/br/com/smallbi/business/EstadoBusiness.java HTTP/1.1" 404 949

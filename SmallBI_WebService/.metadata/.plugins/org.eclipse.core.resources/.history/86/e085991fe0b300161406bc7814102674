@@ -1,0 +1,56 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+import java.util.List;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.business.EmpresaBusiness;
+import br.com.smallbi.business.PerfilBusiness;
+import br.com.smallbi.business.PessoaBusiness;
+import br.com.smallbi.business.UsuarioBusiness;
+import br.com.smallbi.business.exception.BusinessException;
+import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Perfil;
+import br.com.smallbi.entity.Pessoa;
+import br.com.smallbi.entity.Usuario;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestUsuario {
+
+	UsuarioBusiness usuarioBusiness = new UsuarioBusiness();
+	public static int idTestusuario;
+	
+	@Test
+	public void test1CreateUsuario(){
+		Usuario usuario = new Usuario();
+		usuario.setDataCadastro(Calendar.getInstance());
+		
+		List<Empresa> empresas = new EmpresaBusiness().list();
+		Empresa empresa = empresas.get(0);
+		usuario.setEmpresa(empresa);
+		
+		usuario.setLogin("borbagato");
+		
+		List<Perfil> perfis = new PerfilBusiness().list();
+		Perfil perfil = perfis.get(0);
+		usuario.setPerfil(perfil);
+		
+		List<Pessoa> pessoas = new PessoaBusiness().list();
+		Pessoa pessoa = pessoas.get(0);
+		usuario.setPessoa(pessoa);
+		
+		usuario.setSenha("123");
+		usuario.setUsuarioId(1);
+		usuario.setUsuarioSaiku("borbasaiku");
+		
+		try {
+			usuarioBusiness.create(usuario);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		idTestusuario = usuario.getIdUsuario()
+	}
+}

@@ -1,0 +1,37 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+
+import org.junit.Test;
+
+import br.com.smallbi.business.UsuarioBusiness;
+import br.com.smallbi.business.exception.BusinessException;
+import br.com.smallbi.entity.Usuario;
+
+public class TestUsuario {
+
+	@Test
+	public void createFirstUser(){
+		Usuario usuario = new Usuario();
+		usuario.setDataCadastro(Calendar.getInstance());
+		usuario.setUsuarioId(null);
+		usuario.setLogin("deynesonborba");
+		usuario.setSenha("deynesonborba");
+		usuario.setPerfil(null);
+		usuario.setPessoa(null);
+		usuario.setEmpresa(null);
+		usuario.setUsuarioSaiku(null);
+		
+		try {
+			new UsuarioBusiness().create(usuario);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void listUsers(){
+		List<Usuario> usuarios = new UsuarioBusiness().list();
+		for(Usuario usuario : )
+	}
+}

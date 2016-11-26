@@ -2,7 +2,6 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,20 +21,16 @@ public class Cidade {
 	@GeneratedValue(generator="seq_cidade", strategy=GenerationType.SEQUENCE)
 	private Integer idCidade;
 	
-	@Column(name="dataCadastro", nullable=false)
 	private Calendar dataCadastro;
 	
-	@Column(name="usuarioId", nullable=false)
 	private Integer usuarioId;
 
-	@Column(name="nomeCidade", nullable=false, length=30)
 	private String nomeCidade;
 
-	@Column(name="siglaCidade", nullable=false, length=4)
 	private String siglaCidade;
 	
 	@ManyToOne
-	@JoinColumn(name="estado", referencedColumnName="idEstado", nullable=false)
+	@JoinColumn(name="estado", referencedColumnName="idEstado")
 	@ForeignKey(name="fk_estado")
 	private Estado estado;
 

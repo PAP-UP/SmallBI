@@ -1,0 +1,21 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.entity.Endereco;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestEndereco {
+
+	@Test
+	public void test1CreateEndereco(){
+		Endereco endereco = new Endereco();
+		endereco.setBairro("Centro");
+		
+		endereco.setCidade(cidade);
+	}
+}

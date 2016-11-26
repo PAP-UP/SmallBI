@@ -1,0 +1,17 @@
+package br.com.smallbi.test;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.entity.Pessoa;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestPessoa {
+
+	@Test
+	public void test1CreatePessoa(){
+		Pessoa pessoa = new Pessoa();
+		pessoa.setCpf("123.123.123-12");
+	}
+}

@@ -1,0 +1,47 @@
+package br.com.smallbi.business;
+
+import java.util.List;
+
+import br.com.smallbi.business.exception.BusinessException;
+import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import br.com.smallbi.entity.RamoAtividade;
+
+public class RamoAtividadeBusiness implements InterfaceBusiness<RamoAtividade>{
+
+	@Override
+	public void create(RamoAtividade t) throws BusinessException {
+		
+		if(t == null){
+			throw new BusinessException("O objeto não pode ser null!");
+		}
+		
+		if(t.getDataCadastro() == null){
+			
+		}
+	}
+
+	@Override
+	public List<RamoAtividade> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(RamoAtividade t) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Integer id) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public RamoAtividade getObjById(Integer id) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
