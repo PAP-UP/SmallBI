@@ -13,6 +13,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private List<JComboBox> listaDeCbxTipos = new ArrayList<>();
     public static boolean importandoDeArquivo = true;
     
+    
     public FormPrincipal() {
         initComponents();
         PercorrerAbasFormPrincipal.desativarAbasNoInicio();
@@ -1113,20 +1114,31 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
     
     private void chamarImportarXlsx(){
-        business.ImportarXlsx.importarArquivo(tblTabPrev);
+        tblTabPrev.setModel(business.ImportarXlsx.importarArquivo(tblTabPrev));
         if(tblTabPrev.getRowCount() > 0){
             iniciarComboBoxTiposArquivo();
             PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
         }
     }
     
-    private void chamarImportarCsv(){
+    private void chamarImportarCsv(){        
+        tblTabPrev.setModel(business.ImportarCsv.importarArquivo(tblTabPrev, 
+                cbxAbaImportArq_ParamSeparador.getSelectedItem().toString()));
+        if(tblTabPrev.getRowCount() > 0){
+            iniciarComboBoxTiposArquivo();
+            PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
+        }
+    }
+    
+    /*
+        private void chamarImportarCsv(){
         business.ImportarCsv.importarArquivo(tblTabPrev, cbxAbaImportArq_ParamSeparador.getSelectedItem().toString());
         if(tblTabPrev.getRowCount() > 0){
             iniciarComboBoxTiposArquivo();
             PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
         }
     }
+    */
     
     private void iniciarComboBoxTiposArquivo() {
         int colunas = 0;

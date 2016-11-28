@@ -1,7 +1,0 @@
-package br.com.smallbi.dal;
-
-import br.com.smallbi.entity.RamoAtividade;
-
-public class RamoAtividadeDao implements InterfaceDao<RamoAtividade>{
-
-}

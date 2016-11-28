@@ -1,5 +1,0 @@
-package br.com.smallbi.dal.factory;
-
-public class FactoryDao {
-
-}

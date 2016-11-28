@@ -1,7 +1,0 @@
-package br.com.smallbi.dal;
-
-import br.com.smallbi.entity.Estado;
-
-public class EstadoDao implements InterfaceDao<Estado>{
-
-}

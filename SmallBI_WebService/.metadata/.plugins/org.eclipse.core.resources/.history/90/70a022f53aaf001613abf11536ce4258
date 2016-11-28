@@ -1,9 +1,0 @@
-package entity;
-
-import java.util.Calendar;
-
-public class Endereco {
-
-	private Integer idEndereco;
-	private Calendar dataCadastro;
-}

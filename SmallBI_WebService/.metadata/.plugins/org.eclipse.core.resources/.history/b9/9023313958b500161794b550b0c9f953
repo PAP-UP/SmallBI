@@ -1,0 +1,6 @@
+package br.com.smallbi.rest;
+
+
+public class EnderecoWebService {
+
+}

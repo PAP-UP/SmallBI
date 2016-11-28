@@ -1,9 +1,0 @@
-package entity;
-
-import java.util.Calendar;
-
-public class Cidade {
-	
-	private Integer idCidade;
-	private Calendar dataCadastro;
-}

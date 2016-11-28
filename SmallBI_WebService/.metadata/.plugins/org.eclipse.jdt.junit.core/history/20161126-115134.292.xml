@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TestPerfil" project="SmallBI_WebService" tests="3" started="3" failures="0" errors="0" ignored="0">
-  <testsuite name="br.com.smallbi.test.TestPerfil" time="2.227">
-    <testcase name="test1CreatePerfil" classname="br.com.smallbi.test.TestPerfil" time="1.978"/>
-    <testcase name="test2ListPerfil" classname="br.com.smallbi.test.TestPerfil" time="0.216"/>
-    <testcase name="test3UpdatePerfil" classname="br.com.smallbi.test.TestPerfil" time="0.031"/>
-  </testsuite>
-</testrun>

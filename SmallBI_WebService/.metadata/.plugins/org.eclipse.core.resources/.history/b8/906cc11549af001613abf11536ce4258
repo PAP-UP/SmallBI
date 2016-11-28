@@ -1,5 +1,0 @@
-package br.com.smallbi.dal;
-
-public class TelefoneDao implements InterfaceDao<Teefone>{
-
-}

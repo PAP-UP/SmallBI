@@ -1,0 +1,7 @@
+package br.com.smallbi.rest;
+
+import javax.ws.rs.core.MediaType;
+
+public class EnderecoWebService {
+
+}
