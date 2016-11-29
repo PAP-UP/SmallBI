@@ -1,0 +1,5 @@
+127.0.0.1 - - [29/Nov/2016:08:38:57 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [29/Nov/2016:08:40:03 -0200] "GET / HTTP/1.1" 404 951
+10.40.0.33 - - [29/Nov/2016:08:40:14 -0200] "GET /SmallBI_WebService/rest/estado/listar/ HTTP/1.1" 500 4452
+10.40.0.33 - - [29/Nov/2016:08:40:14 -0200] "GET /favicon.ico HTTP/1.1" 404 973
+10.40.0.33 - - [29/Nov/2016:08:42:19 -0200] "GET /SmallBI_WebService/rest/estado/listar/ HTTP/1.1" 500 4452

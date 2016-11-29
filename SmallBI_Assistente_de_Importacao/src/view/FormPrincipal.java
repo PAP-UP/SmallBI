@@ -1,5 +1,6 @@
 package view;
 
+import business.ImportarCsv;
 import view.percorrerAbas.PercorrerAbasFormPrincipal;
 import business.ImportarDb;
 import java.util.ArrayList;
@@ -1122,8 +1123,11 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
     
     private void chamarImportarCsv(){        
-        tblTabPrev.setModel(business.ImportarCsv.importarArquivo(tblTabPrev, 
-                cbxAbaImportArq_ParamSeparador.getSelectedItem().toString()));
+        
+        ImportarCsv importarCsv = new ImportarCsv(cbxAbaImportArq_ParamSeparador.getSelectedItem().toString(),
+                tblTabPrev);
+        
+        tblTabPrev.setModel(importarCsv.importarArquivo());
         if(tblTabPrev.getRowCount() > 0){
             iniciarComboBoxTiposArquivo();
             PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
@@ -1144,6 +1148,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         int colunas = 0;
         colunas = tblTabPrev.getColumnCount();
         painelAbaTabPrev_CbxTiposVariaveis.removeAll();
+        listaDeCbxTipos.removeAll(listaDeCbxTipos);
         for (int i = 0; i < colunas; i++) {
             JComboBox cbx = new JComboBox();
             cbx.addItem("Texto");

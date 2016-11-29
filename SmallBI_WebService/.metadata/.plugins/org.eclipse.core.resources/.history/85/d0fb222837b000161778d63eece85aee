@@ -1,7 +1,0 @@
-package br.com.smallbi.business;
-
-import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
-
-public class test implements InterfaceBusiness<Cliente>{
-
-}
