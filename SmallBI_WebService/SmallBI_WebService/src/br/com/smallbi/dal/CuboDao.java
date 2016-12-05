@@ -38,11 +38,8 @@ public class CuboDao implements InterfaceDao<Cubo>{
 
 	@Override
 	public void delete(Cubo t) {
-		EntityManager em = SingletonConexao.getInstance();
-		em.getTransaction().begin();
-		em.remove(t);
-		em.getTransaction().commit();
-		em.close();
+		t.setStatus(false);
+		update(t);
 	}
 
 	@Override

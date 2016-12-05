@@ -1,5 +1,6 @@
 package br.com.smallbi.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -63,7 +64,13 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 
 	@Override
 	public List<Cubo> list() {
-		return cuboDao.list();
+		List<Cubo> cubos = new ArrayList<>();
+		for(Cubo c : cuboDao.list()){
+			if(c.isStatus() == true){
+				cubos.add(c);
+			}
+		}
+		return cubos;
 	}
 
 	@Override

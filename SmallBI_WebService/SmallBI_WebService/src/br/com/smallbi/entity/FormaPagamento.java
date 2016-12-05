@@ -21,6 +21,16 @@ public class FormaPagamento {
 	private Integer usuarioId;
 	
 	private String formaPagamento;
+	
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public Integer getIdFormaPagamento() {
 		return idFormaPagamento;

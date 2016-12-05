@@ -33,6 +33,16 @@ public class Cidade {
 	@JoinColumn(name="estado", referencedColumnName="idEstado")
 	@ForeignKey(name="fk_estado")
 	private Estado estado;
+	
+	private boolean status;
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public Integer getIdCidade() {
 		return idCidade;

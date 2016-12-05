@@ -1,5 +1,6 @@
 package br.com.smallbi.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -36,7 +37,13 @@ public class RamoAtividadeBusiness implements InterfaceBusiness<RamoAtividade>{
 
 	@Override
 	public List<RamoAtividade> list() {
-		return ramoAtividadeDao.list();
+		List<RamoAtividade> ramos = new ArrayList<>();
+		for(RamoAtividade r : ramoAtividadeDao.list()){
+			if(r.isStatus() == true){
+				ramos.add(r);
+			}
+		}
+		return ramos;
 	}
 
 	@Override

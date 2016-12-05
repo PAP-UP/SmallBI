@@ -1,5 +1,6 @@
 package br.com.smallbi.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -36,7 +37,13 @@ public class TipoBusiness implements InterfaceBusiness<Tipo>{
 
 	@Override
 	public List<Tipo> list() {
-		return tipoDao.list();
+		List<Tipo> tipos = new ArrayList<>();
+		for(Tipo t : tipoDao.list()){
+			if(t.isStatus() == true){
+				tipos.add(t);
+			}
+		}
+		return tipos;
 	}
 
 	@Override

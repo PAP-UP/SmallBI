@@ -38,11 +38,8 @@ public class PerfilDao implements InterfaceDao<Perfil>{
 
 	@Override
 	public void delete(Perfil t) {
-		EntityManager em = SingletonConexao.getInstance();
-		em.getTransaction().begin();
-		em.remove(t);
-		em.getTransaction().commit();
-		em.close();
+		t.setStatus(false);
+		update(t);
 	}
 
 	@Override

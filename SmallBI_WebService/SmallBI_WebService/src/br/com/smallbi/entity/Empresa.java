@@ -54,6 +54,16 @@ public class Empresa {
 	@JoinColumn(name="plano", referencedColumnName="idPlano")
 	@ForeignKey(name="fk_plano")
 	private Plano plano;
+	
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public Integer getIdEmpresa() {
 		return idEmpresa;

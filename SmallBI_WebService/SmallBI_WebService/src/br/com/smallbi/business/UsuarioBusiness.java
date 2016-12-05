@@ -1,5 +1,6 @@
 package br.com.smallbi.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -42,9 +43,9 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			throw new BusinessException("A variável 'empresa' deve ser informada!");
 		}
 		
-		/*if(t.getIdUsuario() == null){
-			throw new BusinessException("A variável 'idUsuario' deve ser informada!");
-		}*/
+		if(t.getUsuarioId() == null){
+			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+		}
 		
 		if(t.getLogin().equals(null)|| t.getLogin().equals("")){
 			throw new BusinessException("A variável 'login' deve ser informada!");
@@ -94,7 +95,13 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 
 	@Override
 	public List<Usuario> list() {
-		return usuarioDao.list();
+		List<Usuario> usuarios = new ArrayList<>();
+		for(Usuario u : usuarioDao.list()){
+			if(u.isStatus() == true){
+				usuarios.add(u);
+			}
+		}
+		return usuarios;
 	}
 
 	@Override
@@ -185,5 +192,7 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		return usuario;
 	}
 
-	
+	public void createFirstUser(Usuario usuario){
+		usuarioDao.create(usuario);
+	}
 }

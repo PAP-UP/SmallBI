@@ -31,6 +31,7 @@ public class TestCidade {
 		cidade.setEstado(estado);
 		cidade.setNomeCidade("Londrina");
 		cidade.setSiglaCidade("LDRN");
+		cidade.setStatus(true);
 		cidade.setUsuarioId(1);		
 		try {
 			cidadeBusiness.create(cidade);
@@ -68,5 +69,16 @@ public class TestCidade {
 		}
 		System.out.println("UPDATE");
 		test2ListCidade();		
+	}
+	
+	@Test
+	public void test4DeleteCidade(){
+		try {
+			cidadeBusiness.delete(idTestCidade);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
+		test2ListCidade();
 	}
 }

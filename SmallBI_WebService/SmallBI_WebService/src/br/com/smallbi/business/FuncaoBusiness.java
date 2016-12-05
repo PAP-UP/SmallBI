@@ -1,5 +1,6 @@
 package br.com.smallbi.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -36,7 +37,13 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 
 	@Override
 	public List<Funcao> list() {
-		return funcaoDao.list();
+		List<Funcao> funcoes = new ArrayList<>();
+		for(Funcao f : funcaoDao.list()){
+			if(f.isStatus() == true){
+				funcoes.add(f);
+			}
+		}
+		return funcoes;
 	}
 
 	@Override

@@ -22,6 +22,7 @@ public class TestEstado{
 		Estado estado = new Estado();
 		estado.setNomeEstado("Santa Catarina");
 		estado.setSiglaEstado("RS");
+		estado.setStatus(true);
 		estado.setUsuarioId(1);
 		estado.setDataCadastro(Calendar.getInstance());		
 		try {
@@ -60,14 +61,14 @@ public class TestEstado{
 		test2ListEstado();
 	}
 	
-//	@Test
-//	public void testDeleteEstado(){
-//		try {
-//			estadoBusiness.delete(idGerado);
-//		} catch (BusinessException e) {
-//			e.printStackTrace();
-//		}
-//		System.out.println("DELETE");
-//		testListEstado();
-//	}
+	@Test
+	public void test4DeleteEstado(){
+		try {
+			estadoBusiness.delete(idTestEstado);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
+		test2ListEstado();
+	}
 }

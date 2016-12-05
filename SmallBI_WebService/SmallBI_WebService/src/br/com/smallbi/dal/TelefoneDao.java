@@ -38,11 +38,8 @@ public class TelefoneDao implements InterfaceDao<Telefone>{
 
 	@Override
 	public void delete(Telefone t) {
-		EntityManager em = SingletonConexao.getInstance();
-		em.getTransaction().begin();
-		em.remove(t);
-		em.getTransaction().commit();
-		em.close();
+		t.setStatus(false);
+		update(t);
 	}
 
 	@Override

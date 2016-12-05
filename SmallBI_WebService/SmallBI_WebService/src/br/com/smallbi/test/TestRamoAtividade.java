@@ -22,6 +22,7 @@ public class TestRamoAtividade {
 		RamoAtividade ramoAtividade = new RamoAtividade();
 		ramoAtividade.setDataCadastro(Calendar.getInstance());
 		ramoAtividade.setRamoAtividade("Rain cookie sales");
+		ramoAtividade.setStatus(true);
 		ramoAtividade.setUsuarioId(1);
 		
 		try {
@@ -56,6 +57,17 @@ public class TestRamoAtividade {
 			e.printStackTrace();
 		}
 		System.out.println("UPDATE");
+		test2ListRamoAtividade();
+	}
+
+	@Test
+	public void test4DeleteRamoAtividade(){
+		try {
+			ramoAtividadeBusiness.delete(idTestRamoAtividade);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
 		test2ListRamoAtividade();
 	}
 }

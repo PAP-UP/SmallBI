@@ -37,6 +37,7 @@ public class TestPessoa {
 		
 		pessoa.setNome("Huguinho");
 		pessoa.setRg("12.123.123-1");
+		pessoa.setStatus(true);
 		pessoa.setUsuarioId(1);
 		
 		try {
@@ -76,6 +77,17 @@ public class TestPessoa {
 			e.printStackTrace();
 		}
 		System.out.println("UPDATE");
+		test2ListPessoa();
+	}
+
+	@Test
+	public void test4DeletePessoa(){
+		try {
+			pessoaBusiness.delete(idTestPessoa);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
 		test2ListPessoa();
 	}
 }

@@ -21,6 +21,16 @@ public class Plano {
 	private Integer usuarioId;
 	
 	private String descricao;
+	
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public Integer getIdPlano() {
 		return idPlano;

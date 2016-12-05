@@ -22,6 +22,7 @@ public class TestPerfil {
 		Perfil perfil = new Perfil();
 		perfil.setDataCadastro(Calendar.getInstance());
 		perfil.setNomePerfil("Adm");
+		perfil.setStatus(true);
 		perfil.setUsuarioId(1);
 		
 		try {
@@ -56,6 +57,17 @@ public class TestPerfil {
 			e.printStackTrace();
 		}
 		System.out.println("UPDATE");
+		test2ListPerfil();
+	}
+
+	@Test
+	public void test4DeletePerfil(){
+		try {
+			perfilBusiness.delete(idTestPerfil);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
 		test2ListPerfil();
 	}
 }

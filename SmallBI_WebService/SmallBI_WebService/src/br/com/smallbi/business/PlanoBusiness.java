@@ -1,5 +1,6 @@
 package br.com.smallbi.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -36,7 +37,13 @@ public class PlanoBusiness implements InterfaceBusiness<Plano>{
 
 	@Override
 	public List<Plano> list() {
-		return planoDao.list();
+		List<Plano> planos = new ArrayList<>();
+		for(Plano p : planoDao.list()){
+			if(p.isStatus() == true){
+				planos.add(p);
+			}
+		}
+		return planos;
 	}
 
 	@Override

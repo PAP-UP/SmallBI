@@ -1,6 +1,9 @@
 package br.com.smallbi.business;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.sun.org.apache.regexp.internal.recompile;
 
 import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
@@ -57,7 +60,13 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 	
 	@Override
 	public List<Cidade> list() {
-		return cidadeDao.list();
+		List<Cidade> cidades = new ArrayList<>();
+		for(Cidade c : cidadeDao.list()){
+			if(c.isStatus() == true){
+				cidades.add(c);
+			}
+		}
+		return cidades;
 	}
 	
 	@Override

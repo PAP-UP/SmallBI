@@ -33,6 +33,7 @@ public class TestEndereco {
 		endereco.setDataCadastro(Calendar.getInstance());
 		endereco.setEndereco("Rua do Zacarias");
 		endereco.setNumero("1200");
+		endereco.setStatus(true);
 		
 		List<Tipo> tipos = new TipoBusiness().list();
 		Tipo tipo = tipos.get(0);
@@ -75,6 +76,17 @@ public class TestEndereco {
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
+		test2ListEndereco();
+	}
+
+	@Test
+	public void test4DeleteEndereco(){
+		try {
+			enderecoBusiness.delete(idTestEndereco);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
 		test2ListEndereco();
 	}
 }

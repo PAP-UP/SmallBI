@@ -45,6 +45,16 @@ public class Usuario {
 	private Empresa empresa;
 	
 	private String usuarioSaiku;
+	
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public Integer getIdUsuario() {
 		return idUsuario;

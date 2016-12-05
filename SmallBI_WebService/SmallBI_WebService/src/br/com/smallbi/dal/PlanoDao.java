@@ -38,11 +38,8 @@ public class PlanoDao implements InterfaceDao<Plano>{
 
 	@Override
 	public void delete(Plano t) {
-		EntityManager em = SingletonConexao.getInstance();
-		em.getTransaction().begin();
-		em.remove(t);
-		em.getTransaction().commit();
-		em.close();
+		t.setStatus(false);
+		update(t);
 	}
 
 	@Override

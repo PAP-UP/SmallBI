@@ -1,5 +1,6 @@
 package br.com.smallbi.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -36,7 +37,13 @@ public class PerfilBusiness implements InterfaceBusiness<Perfil>{
 
 	@Override
 	public List<Perfil> list() {
-		return perfilDao.list();
+		List<Perfil> perfis = new ArrayList<>();
+		for(Perfil p : perfilDao.list()){
+			if(p.isStatus() == true){
+				perfis.add(p);
+			}
+		}
+		return perfis;
 	}
 
 	@Override

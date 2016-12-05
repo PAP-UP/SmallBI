@@ -22,6 +22,7 @@ public class TestPlano {
 		Plano plano = new Plano();
 		plano.setDataCadastro(Calendar.getInstance());
 		plano.setDescricao("Cheap plan");
+		plano.setStatus(true);
 		plano.setUsuarioId(1);
 		
 		try {
@@ -56,6 +57,17 @@ public class TestPlano {
 			e.printStackTrace();
 		}
 		System.out.println("UPDATE");
+		test2ListPlano();
+	}
+
+	@Test
+	public void test4DeletePlano(){
+		try {
+			planoBusiness.delete(idTestPlano);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
 		test2ListPlano();
 	}
 }

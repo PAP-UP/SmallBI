@@ -30,6 +30,7 @@ public class TestCubo {
 		
 		cubo.setMdx("<Schema>");
 		cubo.setNomeCubo("Sales Cube");
+		cubo.setStatus(true);
 		cubo.setTabelaFato("SalesPivot");
 		cubo.setTamanho(30);
 		cubo.setUsuarioId(1);
@@ -70,6 +71,17 @@ public class TestCubo {
 			e.printStackTrace();
 		}
 		System.out.println("UPDATE");
+		test2ListCubo();
+	}
+
+	@Test
+	public void test4DeleteCubo(){
+		try {
+			cuboBusiness.delete(idTestCubo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
 		test2ListCubo();
 	}
 }

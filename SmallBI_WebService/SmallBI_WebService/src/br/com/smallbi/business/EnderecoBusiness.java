@@ -1,5 +1,6 @@
 package br.com.smallbi.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -74,7 +75,13 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 
 	@Override
 	public List<Endereco> list() {
-		return enderecoDao.list();
+		List<Endereco> enderecos = new ArrayList<>();
+		for(Endereco e : enderecoDao.list()){
+			if(e.isStatus() == true){
+				enderecos.add(e);
+			}
+		}
+		return enderecos;
 	}
 
 	@Override

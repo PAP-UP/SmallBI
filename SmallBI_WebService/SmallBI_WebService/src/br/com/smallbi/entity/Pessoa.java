@@ -39,6 +39,16 @@ public class Pessoa {
 	@JoinColumn(name="endereco", referencedColumnName="idEndereco")
 	@ForeignKey(name="fk_endereco")
 	private Endereco endereco;
+	
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public Integer getIdPessoa() {
 		return idPessoa;

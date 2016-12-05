@@ -21,6 +21,16 @@ public class Perfil {
 	private Integer usuarioId;
 	
 	private String nomePerfil;
+	
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public Integer getIdPerfil() {
 		return idPerfil;

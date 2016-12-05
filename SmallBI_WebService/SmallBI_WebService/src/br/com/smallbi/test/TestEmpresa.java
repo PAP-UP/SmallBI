@@ -51,6 +51,7 @@ public class TestEmpresa {
 		e.setRamoAtividade(ramoAtividade);
 		
 		e.setRazaoSocial("Deyneson Borba Ltda");
+		e.setStatus(true);
 		e.setTamanhoTotal(100);
 		e.setUsuarioId(1);
 		
@@ -94,6 +95,17 @@ public class TestEmpresa {
 			e.printStackTrace();
 		}
 		System.out.println("UPDATE");
+		test2ListEmpresa();
+	}
+
+	@Test
+	public void test4DeleteEmpresa(){
+		try {
+			empresaBusiness.delete(idTestEmpresa);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
 		test2ListEmpresa();
 	}
 }

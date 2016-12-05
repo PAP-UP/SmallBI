@@ -43,6 +43,16 @@ public class Telefone {
 	@JoinColumn(name="pessoa", referencedColumnName="idPessoa")
 	@ForeignKey(name="fk_pessoa")
 	private Pessoa pessoa;
+	
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public Integer getIdTelefone() {
 		return idTelefone;

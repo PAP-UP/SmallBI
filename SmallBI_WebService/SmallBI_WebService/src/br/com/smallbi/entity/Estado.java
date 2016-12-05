@@ -23,6 +23,16 @@ public class Estado {
 	private String nomeEstado;
 	
 	private String siglaEstado;
+	
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public Integer getIdEstado() {
 		return idEstado;

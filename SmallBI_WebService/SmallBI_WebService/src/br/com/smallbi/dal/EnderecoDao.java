@@ -38,11 +38,8 @@ public class EnderecoDao implements InterfaceDao<Endereco>{
 
 	@Override
 	public void delete(Endereco t) {
-		EntityManager em = SingletonConexao.getInstance();
-		em.getTransaction().begin();
-		em.remove(t);
-		em.getTransaction().commit();
-		em.close();
+		t.setStatus(false);
+		update(t);
 	}
 
 	@Override

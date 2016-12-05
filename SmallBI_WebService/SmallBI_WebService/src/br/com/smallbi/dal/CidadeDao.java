@@ -38,11 +38,8 @@ public class CidadeDao implements InterfaceDao<Cidade>{
 
 	@Override
 	public void delete(Cidade t) {
-		EntityManager em = SingletonConexao.getInstance();
-		em.getTransaction().begin();
-		em.remove(t);
-		em.getTransaction().commit();
-		em.close();
+		t.setStatus(false);
+		update(t);
 	}
 
 	@Override

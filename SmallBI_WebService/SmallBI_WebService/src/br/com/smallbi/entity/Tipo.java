@@ -22,6 +22,16 @@ public class Tipo {
 	
 	private String tipo;
 
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	
 	public Integer getIdTipo() {
 		return idTipo;
 	}

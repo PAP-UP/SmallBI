@@ -37,6 +37,7 @@ public class TestTelefone {
 		Pessoa pessoa = pessoas.get(0);
 		telefone.setPessoa(pessoa);
 		
+		telefone.setStatus(true);
 		telefone.setTelefone("1234-5678");
 		
 		List<Tipo> tipos = new TipoBusiness().list();
@@ -81,6 +82,17 @@ public class TestTelefone {
 			e.printStackTrace();
 		}
 		System.out.println("UPDATE");
+		test2ListTelefone();
+	}
+
+	@Test
+	public void test4DeleteTelefone(){
+		try {
+			telefoneBusiness.delete(idTestTeledone);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
 		test2ListTelefone();
 	}
 }

@@ -1,5 +1,6 @@
 package br.com.smallbi.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -36,7 +37,13 @@ public class FormaPagamentoBusiness implements InterfaceBusiness<FormaPagamento>
 
 	@Override
 	public List<FormaPagamento> list() {
-		return formaPagamentoDao.list();
+		List<FormaPagamento> formas = new ArrayList<>();
+		for(FormaPagamento f : formaPagamentoDao.list()){
+			if(f.isStatus() == true){
+				formas.add(f);
+			}
+		}
+		return formas;
 	}
 
 	@Override

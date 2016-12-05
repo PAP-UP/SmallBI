@@ -22,6 +22,7 @@ public class TestFuncao {
 		Funcao funcao = new Funcao();
 		funcao.setDataCadastro(Calendar.getInstance());
 		funcao.setNomeFuncao("Data Scientist");
+		funcao.setStatus(true);
 		funcao.setUsuarioId(1);
 		
 		try {
@@ -56,6 +57,17 @@ public class TestFuncao {
 			e.printStackTrace();
 		}
 		System.out.println("UPDATE");
+		test2ListFuncao();
+	}
+
+	@Test
+	public void test4DeleteFuncao(){
+		try {
+			funcaoBusiness.delete(idTestFuncao);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
 		test2ListFuncao();
 	}
 }

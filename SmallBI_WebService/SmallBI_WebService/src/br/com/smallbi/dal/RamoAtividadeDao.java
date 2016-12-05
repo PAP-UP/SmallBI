@@ -38,11 +38,8 @@ public class RamoAtividadeDao implements InterfaceDao<RamoAtividade>{
 
 	@Override
 	public void delete(RamoAtividade t) {
-		EntityManager em = SingletonConexao.getInstance();
-		em.getTransaction().begin();
-		em.remove(t);
-		em.getTransaction().commit();
-		em.close();
+		t.setStatus(false);
+		update(t);
 	}
 
 	@Override

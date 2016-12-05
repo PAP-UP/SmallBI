@@ -22,6 +22,7 @@ public class TestFormaPagamento {
 		FormaPagamento formaPagamento = new FormaPagamento();
 		formaPagamento.setDataCadastro(Calendar.getInstance());
 		formaPagamento.setFormaPagamento("Credit");
+		formaPagamento.setStatus(true);
 		formaPagamento.setUsuarioId(1);
 		try {
 			formaPagamentoBusiness.create(formaPagamento);
@@ -55,6 +56,17 @@ public class TestFormaPagamento {
 			e.printStackTrace();
 		}
 		System.out.println("UPDATE");
+		test2ListFormaPagamento();
+	}
+
+	@Test
+	public void test4DeleteFormaPagamento(){
+		try {
+			formaPagamentoBusiness.delete(idTestFormaPagamento);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
 		test2ListFormaPagamento();
 	}
 }

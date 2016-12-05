@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRamoAtividade" project="SmallBI_WebService" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.smallbi.test.TestRamoAtividade" time="2.418">
+    <testcase name="test1CreateRamoAtividade" classname="br.com.smallbi.test.TestRamoAtividade" time="2.156"/>
+    <testcase name="test2ListRamoAtividade" classname="br.com.smallbi.test.TestRamoAtividade" time="0.217"/>
+    <testcase name="test3UpdateRamoAtividade" classname="br.com.smallbi.test.TestRamoAtividade" time="0.045"/>
+  </testsuite>
+</testrun>

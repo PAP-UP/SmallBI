@@ -21,6 +21,7 @@ public class TestTipo {
 	public void test1CreateTipo(){
 		Tipo tipo = new Tipo();
 		tipo.setDataCadastro(Calendar.getInstance());
+		tipo.setStatus(true);
 		tipo.setTipo("Residencial");
 		tipo.setUsuarioId(1);
 		
@@ -56,6 +57,17 @@ public class TestTipo {
 			e.printStackTrace();
 		}
 		System.out.println("UPDATE");
+		test2ListTipo();
+	}
+
+	@Test
+	public void test4DeleteTipo(){
+		try {
+			tipoBusiness.delete(idTestTipo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DELETE");
 		test2ListTipo();
 	}
 }

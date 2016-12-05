@@ -21,6 +21,16 @@ public class RamoAtividade {
 	private Integer usuarioId;
 	
 	private String ramoAtividade;
+	
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public Integer getIdRamoAtividade() {
 		return idRamoAtividade;
