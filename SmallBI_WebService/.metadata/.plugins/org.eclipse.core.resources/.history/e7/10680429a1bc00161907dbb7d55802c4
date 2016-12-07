@@ -1,0 +1,8 @@
+package br.com.smallbi.rest;
+
+import br.com.smallbi.business.TipoBusiness;
+
+public class TipoWebService {
+
+	TipoBusiness tipoBusiness = new TipoBusiness();
+}

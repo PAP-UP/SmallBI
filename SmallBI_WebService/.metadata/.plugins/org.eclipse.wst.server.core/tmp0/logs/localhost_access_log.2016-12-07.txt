@@ -1,2 +1,17 @@
 127.0.0.1 - - [07/Dec/2016:11:25:07 -0200] "GET / HTTP/1.1" 404 951
 127.0.0.1 - - [07/Dec/2016:11:25:36 -0200] "POST /SmallBI_WebService/rest/cidade/adicionar/ HTTP/1.1" 204 -
+127.0.0.1 - - [07/Dec/2016:15:20:32 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:15:20:43 -0200] "POST /SmallBI_WebService/rest/tipo/listar/ HTTP/1.1" 405 -
+127.0.0.1 - - [07/Dec/2016:15:21:17 -0200] "POST /SmallBI_WebService/rest/cidade/listar/ HTTP/1.1" 405 -
+127.0.0.1 - - [07/Dec/2016:15:21:36 -0200] "GET /SmallBI_WebService/rest/estado/listar/ HTTP/1.1" 200 12
+127.0.0.1 - - [07/Dec/2016:15:22:07 -0200] "GET /SmallBI_WebService/rest/cidade/listar/ HTTP/1.1" 200 751
+127.0.0.1 - - [07/Dec/2016:15:22:12 -0200] "GET /SmallBI_WebService/rest/tipo/listar/ HTTP/1.1" 200 165
+127.0.0.1 - - [07/Dec/2016:15:30:13 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:15:30:40 -0200] "POST /SmallBI_WebService/rest/tipo/adicionar/ HTTP/1.1" 204 -
+127.0.0.1 - - [07/Dec/2016:15:33:32 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:15:34:06 -0200] "POST /SmallBI_WebService/rest/tipo/alterar/ HTTP/1.1" 204 -
+127.0.0.1 - - [07/Dec/2016:15:35:48 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:15:35:50 -0200] "POST /SmallBI_WebService/rest/tipo/alterar/ HTTP/1.1" 204 -
+127.0.0.1 - - [07/Dec/2016:15:37:14 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:15:37:35 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:15:37:47 -0200] "POST /SmallBI_WebService/rest/tipo/deletar/ HTTP/1.1" 204 -

@@ -1,0 +1,28 @@
+package br.com.smallbi.rest;
+
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import com.google.gson.Gson;
+
+import br.com.smallbi.business.TipoBusiness;
+import br.com.smallbi.entity.Tipo;
+
+@Path("/tipo")
+public class TipoWebService {
+
+	TipoBusiness tipoBusiness = new TipoBusiness();
+	
+	@GET
+	@Path("/listar")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getTipos(){
+		List<Tipo> tipos = tipoBusiness.list();
+		Gson gson = new Gson();
+		return gson.toJson(tipos);
+	}
+}
