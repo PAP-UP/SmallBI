@@ -1,6 +1,5 @@
 package br.com.smallbi.rest;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -10,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.lang.reflect.Type;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -72,15 +72,7 @@ public class EstadoWebService {
 	@GET
 	@Path("/getById/{idEstado}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getById(@PathParam("idEstado") String idEstado){
-		Estado estado = new Estado();
-		estado.setIdEstado(Integer.parseInt(idEstado));
-		try {
-			estado = estadoBusiness.getObjById(estado.getIdEstado());
-			return gson.toJson(estado);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+	public void getById(@PathParam("idEstado") String idEstado){
+		
 	}
 }

@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.EnderecoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Endereco;
 
 @Path("/endereco")
@@ -73,14 +72,7 @@ public class EnderecoWebService {
 	@Path("/getById/{idEndereco}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idEndereco") String idEndereco){
-		Endereco endereco = new Endereco();
-		endereco.setIdEndereco(Integer.parseInt(idEndereco));
-		try {
-			endereco = enderecoBusiness.getObjById(endereco.getIdEndereco());
-			return gson.toJson(endereco);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		
 		return "";
 	}
 }

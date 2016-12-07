@@ -78,7 +78,7 @@ public class TipoWebService {
 		try {
 			tipo = tipoBusiness.getObjById(tipo.getIdTipo());
 			return gson.toJson(tipo);
-		} catch (BusinessException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "";

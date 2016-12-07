@@ -44,3 +44,10 @@ Exemplo:
 {
 	"idEndereco":1
 }
+
+GetById:
+Método: GET
+Path: "http://localhost:8080/SmallBI_WebService/rest/endereco/getById/{idEndereco}"
+Parametros: "application/json"
+Exemplo: 
+http://localhost:8080/SmallBI_WebService/rest/endereco/getById/1

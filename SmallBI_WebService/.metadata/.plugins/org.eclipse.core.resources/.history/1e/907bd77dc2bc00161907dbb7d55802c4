@@ -7,7 +7,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -72,16 +71,6 @@ public class TipoWebService {
 	@GET
 	@Path("/getById/{idTipo}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getById(@PathParam("idTipo") String idTipo){
-		Tipo tipo = new Tipo();
-		tipo.setIdTipo(Integer.parseInt(idTipo));
-		try {
-			tipo = tipoBusiness.getObjById(tipo.getIdTipo());
-			return gson.toJson(tipo);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
+	public String getById()
 }
 
