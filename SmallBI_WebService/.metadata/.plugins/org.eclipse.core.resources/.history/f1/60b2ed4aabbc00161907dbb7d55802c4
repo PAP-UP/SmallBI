@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.CidadeBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Cidade;
 
 @Path("/cidade")
@@ -70,17 +69,9 @@ public class CidadeWebService {
 	}
 	
 	@GET
-	@Path("/getById/{idCidade}")
+	@Path("/getByid{idCidade}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getById(@PathParam("idCidade") String idCidade){
-		Cidade cidade = new Cidade();
-		cidade.setIdCidade(Integer.parseInt(idCidade));
-		try {
-			cidade = cidadeBusiness.getObjById(cidade.getIdCidade());
-			return gson.toJson(cidade);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+	public String getById(@PathParam("idCidade") String id){
 		return "";
 	}
 }

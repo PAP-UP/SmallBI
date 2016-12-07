@@ -30,3 +30,14 @@
 127.0.0.1 - - [07/Dec/2016:16:04:02 -0200] "POST /SmallBI_WebService/rest/endereco/deletar/ HTTP/1.1" 204 -
 127.0.0.1 - - [07/Dec/2016:16:05:47 -0200] "POST /SmallBI_WebService/rest/tipo/adicionar/ HTTP/1.1" 204 -
 127.0.0.1 - - [07/Dec/2016:16:07:15 -0200] "GET /SmallBI_WebService/rest/endereco/listar/ HTTP/1.1" 200 1484
+127.0.0.1 - - [07/Dec/2016:16:34:56 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:16:35:20 -0200] "GET /SmallBI_WebService/rest/cidade/getById/1 HTTP/1.1" 404 -
+127.0.0.1 - - [07/Dec/2016:16:35:26 -0200] "GET /SmallBI_WebService/rest/cidade/getById%7B1%7D HTTP/1.1" 404 -
+127.0.0.1 - - [07/Dec/2016:16:36:32 -0200] "GET /SmallBI_WebService/rest/cidade/getById/7 HTTP/1.1" 404 -
+127.0.0.1 - - [07/Dec/2016:16:36:50 -0200] "GET /SmallBI_WebService/rest/cidade/getByid/7 HTTP/1.1" 404 -
+127.0.0.1 - - [07/Dec/2016:16:37:24 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:16:37:29 -0200] "GET /SmallBI_WebService/rest/cidade/getById/7 HTTP/1.1" 500 6181
+127.0.0.1 - - [07/Dec/2016:16:38:23 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:16:40:36 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:16:40:43 -0200] "GET /SmallBI_WebService/rest/cidade/getById/7 HTTP/1.1" 200 381
+127.0.0.1 - - [07/Dec/2016:16:41:16 -0200] "GET /SmallBI_WebService/rest/cidade/getById/8 HTTP/1.1" 200 385

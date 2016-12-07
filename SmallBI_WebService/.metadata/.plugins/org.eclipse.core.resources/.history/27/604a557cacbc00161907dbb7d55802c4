@@ -72,9 +72,8 @@ public class CidadeWebService {
 	@GET
 	@Path("/getById/{idCidade}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getById(@PathParam("idCidade") String idCidade){
-		Cidade cidade = new Cidade();
-		cidade.setIdCidade(Integer.parseInt(idCidade));
+	public String getById(@PathParam("idCidade") int idCidade){
+		Cidade cidade = gson.fromJson(idCidade, type);
 		try {
 			cidade = cidadeBusiness.getObjById(cidade.getIdCidade());
 			return gson.toJson(cidade);
