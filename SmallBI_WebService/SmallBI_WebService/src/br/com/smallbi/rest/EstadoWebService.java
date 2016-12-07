@@ -36,37 +36,46 @@ public class EstadoWebService {
 	@POST
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void addEstado(String json){		
+	@Produces(MediaType.APPLICATION_JSON)
+	public String addEstado(String json){		
 		Estado estado = gson.fromJson(json, type);
 		try {
 			estadoBusiness.create(estado);
+			return gson.toJson(true);
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@POST
 	@Path("/alterar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void setEstado(String json){
+	@Produces(MediaType.APPLICATION_JSON)
+	public String setEstado(String json){
 		Estado estado = gson.fromJson(json, type);
 		try {
 			estadoBusiness.update(estado);
+			return gson.toJson(true);
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@POST
 	@Path("/deletar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void delEstado(String json){
+	@Produces(MediaType.APPLICATION_JSON)
+	public String delEstado(String json){
 		Estado estado = gson.fromJson(json, type);
 		try {
 			estadoBusiness.delete(estado.getIdEstado());
+			return gson.toJson(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@GET

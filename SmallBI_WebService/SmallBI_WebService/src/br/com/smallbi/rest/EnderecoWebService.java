@@ -36,37 +36,46 @@ public class EnderecoWebService {
 	@POST
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void addEndereco(String json){
+	@Produces(MediaType.APPLICATION_JSON)
+	public String addEndereco(String json){
 		Endereco endereco = gson.fromJson(json, type);
 		try {
 			enderecoBusiness.create(endereco);
+			return gson.toJson(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@POST
 	@Path("/alterar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void setEndereco(String json){
+	@Produces(MediaType.APPLICATION_JSON)
+	public String setEndereco(String json){
 		Endereco endereco = gson.fromJson(json, type);
 		try {
 			enderecoBusiness.update(endereco);
+			return gson.toJson(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@POST
 	@Path("/deletar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void delEndereco(String json){
+	@Produces(MediaType.APPLICATION_JSON)
+	public String delEndereco(String json){
 		Endereco endereco = gson.fromJson(json, type);
 		try {
 			enderecoBusiness.delete(endereco.getIdEndereco());
+			return gson.toJson(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@GET

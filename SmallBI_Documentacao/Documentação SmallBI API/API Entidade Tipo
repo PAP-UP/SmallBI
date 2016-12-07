@@ -16,6 +16,12 @@ Exemplo:
 	"usuarioId": 1,
 	"tipo": "Comercial"
 }
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
 
 Alterar:
 Método: POST
@@ -27,6 +33,12 @@ Exemplo:
 	"usuarioId": 1,
 	"tipo": "Comercial"
 }
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
 
 Deletar:
 Método: POST
@@ -35,6 +47,12 @@ Parametros: "application/json"
 Exemplo:
 {
 	"idTipo":1
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
 }
 
 GetById:

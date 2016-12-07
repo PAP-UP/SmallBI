@@ -36,37 +36,46 @@ public class TipoWebService {
 	@POST
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void addTipo(String json){
+	@Produces(MediaType.APPLICATION_JSON)
+	public String addTipo(String json){
 		Tipo tipo = gson.fromJson(json, type);
 		try {
 			tipoBusiness.create(tipo);
+			return gson.toJson(true);
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@POST
 	@Path("/alterar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void setTipo(String json){
+	@Produces(MediaType.APPLICATION_JSON)
+	public String setTipo(String json){
 		Tipo tipo = gson.fromJson(json, type);
 		try {
 			tipoBusiness.update(tipo);
+			return gson.toJson(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@POST
 	@Path("/deletar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void delTipo(String json){
+	@Produces(MediaType.APPLICATION_JSON)
+	public String delTipo(String json){
 		Tipo tipo = gson.fromJson(json, type);
 		try {
 			tipoBusiness.delete(tipo.getIdTipo());
+			return gson.toJson(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@GET

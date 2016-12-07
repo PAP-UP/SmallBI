@@ -19,6 +19,12 @@ Exemplo:
     "estado":{"idEstado":"1"},
     "status": "true"
 }
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
 
 Alterar:
 Método: POST
@@ -33,6 +39,12 @@ Exemplo:
 	"estado":{"idEstado":"1"},
 	"status": "true"
 }
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
 
 Deletar:
 Método: POST
@@ -41,6 +53,12 @@ Parametros: "application/json"
 Exemplo:
 {
   "idCidade":"1"
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
 }
 
 GetById:

@@ -36,37 +36,46 @@ public class CidadeWebService {
 	@POST
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void addCidade(String json){
+	@Produces(MediaType.APPLICATION_JSON)
+	public String addCidade(String json){
 		Cidade cidade = gson.fromJson(json, type);
 		try {
 			cidadeBusiness.create(cidade);
+			return gson.toJson(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@POST
 	@Path("/alterar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void setCidade(String json){
+	@Produces(MediaType.APPLICATION_JSON)
+	public String setCidade(String json){
 		Cidade cidade = gson.fromJson(json, type);
 		try {
 			cidadeBusiness.update(cidade);
+			return gson.toJson(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@POST
 	@Path("/deletar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void delCidade(String json){
+	@Produces(MediaType.APPLICATION_JSON)
+	public String delCidade(String json){
 		Cidade cidade = gson.fromJson(json, type);
 		try {
 			cidadeBusiness.delete(cidade.getIdCidade());
+			return gson.toJson(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return gson.toJson(false);
 	}
 	
 	@GET

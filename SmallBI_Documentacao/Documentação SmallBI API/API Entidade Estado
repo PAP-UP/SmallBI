@@ -17,6 +17,12 @@ Exemplo:
     "nomeEstado":"Paraná",
 	"siglaEstado":"PR"	
 }
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
 
 Alterar:
 Método: POST
@@ -29,6 +35,12 @@ Exemplo:
     "nomeEstado":"Santa Catarina",
 	"siglaEstado":"SC"	
 }
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
 
 Deletar:
 Método: POST
@@ -37,6 +49,12 @@ Parametros: "application/json"
 Exemplo:
 {
     "idEstado": "1"
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
 }
 
 GetById:

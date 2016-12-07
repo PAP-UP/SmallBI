@@ -51,3 +51,8 @@
 127.0.0.1 - - [07/Dec/2016:19:28:13 -0200] "GET /SmallBI_WebService/rest/estado/getById/23 HTTP/1.1" 200 196
 127.0.0.1 - - [07/Dec/2016:19:33:06 -0200] "GET / HTTP/1.1" 404 951
 127.0.0.1 - - [07/Dec/2016:19:33:13 -0200] "GET /SmallBI_WebService/rest/endereco/getById/4 HTTP/1.1" 200 750
+127.0.0.1 - - [07/Dec/2016:20:04:11 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:20:04:27 -0200] "GET /SmallBI_WebService/rest/perfil/listar HTTP/1.1" 200 168
+127.0.0.1 - - [07/Dec/2016:20:04:54 -0200] "POST /SmallBI_WebService/rest/perfil/adicionar HTTP/1.1" 500 -
+127.0.0.1 - - [07/Dec/2016:20:06:01 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [07/Dec/2016:20:06:12 -0200] "POST /SmallBI_WebService/rest/perfil/adicionar HTTP/1.1" 200 14

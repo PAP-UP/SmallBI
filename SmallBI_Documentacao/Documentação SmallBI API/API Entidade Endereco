@@ -20,6 +20,12 @@ Exemplo:
     "cidade": {"idCidade": 1},
     "tipo": {"idTipo":1}
 }
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
 
 Alterar:
 Método: POST
@@ -35,6 +41,12 @@ Exemplo:
     "cidade": {"idCidade": 1},
     "tipo": {"idTipo":1}
 }
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
 
 Deletar:
 Método: POST
@@ -43,6 +55,12 @@ Parametros: "application/json"
 Exemplo:
 {
 	"idEndereco":1
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
 }
 
 GetById:
