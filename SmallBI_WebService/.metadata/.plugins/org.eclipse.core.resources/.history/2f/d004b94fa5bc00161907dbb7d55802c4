@@ -67,4 +67,12 @@ public class EstadoWebService {
 			e.printStackTrace();
 		}
 	}
+	
+	//Não funciona!
+/*	@GET
+	@Path("/listar2")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Estado> getEstados2(){
+		return new EstadoBusiness().list();
+	}*/
 }

@@ -60,6 +60,8 @@ public class TipoWebService {
 	@Path("/deletar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void delTipo(String json){
+		Gson gson = new Gson();
+		Type type = new TypeToken<Tipo>() {}.getType();
 		Tipo tipo = gson.fromJson(json, type);
 		try {
 			tipoBusiness.delete(tipo.getIdTipo());
@@ -67,7 +69,5 @@ public class TipoWebService {
 			e.printStackTrace();
 		}
 	}
-	
-	
 }
 

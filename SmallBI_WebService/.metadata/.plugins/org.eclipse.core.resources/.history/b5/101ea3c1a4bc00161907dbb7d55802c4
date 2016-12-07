@@ -1,0 +1,37 @@
+package br.com.smallbi.rest;
+
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import com.google.gson.Gson;
+
+import br.com.smallbi.business.EnderecoBusiness;
+import br.com.smallbi.entity.Endereco;
+
+@Path("/endereco")
+public class EnderecoWebService {
+
+	EnderecoBusiness enderecoBusiness = new EnderecoBusiness();
+	
+	@GET
+	@Path("/listar")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getEnderecos(){
+		List<Endereco> enderecos = enderecoBusiness.list();
+		Gson gson = new Gson();
+		return gson.toJson(enderecos);
+	}
+	
+	@POST
+	@Path("/adicionar")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void addEndereco(String json){
+		Gson gson = new Gson();
+	}
+}

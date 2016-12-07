@@ -13,33 +13,32 @@ import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import br.com.smallbi.business.TipoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
-import br.com.smallbi.entity.Tipo;
+import br.com.smallbi.business.EnderecoBusiness;
+import br.com.smallbi.entity.Endereco;
 
-@Path("/tipo")
-public class TipoWebService {
+@Path("/endereco")
+public class EnderecoWebService {
 
-	TipoBusiness tipoBusiness = new TipoBusiness();
+	EnderecoBusiness enderecoBusiness = new EnderecoBusiness();
 	Gson gson = new Gson();
-	Type type = new TypeToken<Tipo>() {}.getType();
+	Type type = new TypeToken<Endereco>() {}.getType();
 	
 	@GET
 	@Path("/listar")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getTipos(){
-		List<Tipo> tipos = tipoBusiness.list();
-		return gson.toJson(tipos);
+	public String getEnderecos(){
+		List<Endereco> enderecos = enderecoBusiness.list();
+		return gson.toJson(enderecos);
 	}
 	
 	@POST
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void addTipo(String json){
-		Tipo tipo = gson.fromJson(json, type);
+	public void addEndereco(String json){
+		Endereco endereco = gson.fromJson(json, type);
 		try {
-			tipoBusiness.create(tipo);
-		} catch (BusinessException e) {
+			enderecoBusiness.create(endereco);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -47,10 +46,10 @@ public class TipoWebService {
 	@POST
 	@Path("/alterar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void setTipo(String json){
-		Tipo tipo = gson.fromJson(json, type);
+	public void setEndereco(String json){
+		Endereco endereco = gson.fromJson(json, type);
 		try {
-			tipoBusiness.update(tipo);
+			enderecoBusiness.update(endereco);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,15 +58,12 @@ public class TipoWebService {
 	@POST
 	@Path("/deletar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void delTipo(String json){
-		Tipo tipo = gson.fromJson(json, type);
+	public void delEndereco(String json){
+		Endereco endereco = gson.fromJson(json, type);
 		try {
-			tipoBusiness.delete(tipo.getIdTipo());
+			enderecoBusiness.delete(endereco.getIdEndereco());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
 }
-

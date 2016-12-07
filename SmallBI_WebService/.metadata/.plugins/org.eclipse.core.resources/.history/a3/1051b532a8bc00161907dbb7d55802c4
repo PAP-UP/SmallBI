@@ -68,6 +68,8 @@ public class TipoWebService {
 		}
 	}
 	
-	
+	private Tipo getTipoFromJson(){
+		return gson.fromJson(json, type);
+	}
 }
 

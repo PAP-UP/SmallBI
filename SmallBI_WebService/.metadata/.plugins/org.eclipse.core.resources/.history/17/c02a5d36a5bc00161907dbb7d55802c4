@@ -28,6 +28,7 @@ public class CidadeWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getCidade(){
 		List<Cidade> cidades = cidadeBusiness.list();
+		//Gson gson = new Gson();
 		return gson.toJson(cidades);
 	}
 	
@@ -35,6 +36,8 @@ public class CidadeWebService {
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addCidade(String json){
+		//Gson gson = new Gson();
+		//Type type = new TypeToken<Cidade>() {}.getType();
 		Cidade cidade = gson.fromJson(json, type);
 		try {
 			cidadeBusiness.create(cidade);
@@ -47,6 +50,8 @@ public class CidadeWebService {
 	@Path("/alterar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void setCidade(String json){
+		//Gson gson = new Gson();
+		//Type type = new TypeToken<Cidade>() {}.getType();
 		Cidade cidade = gson.fromJson(json, type);
 		try {
 			cidadeBusiness.update(cidade);
@@ -59,6 +64,8 @@ public class CidadeWebService {
 	@Path("/deletar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void delCidade(String json){
+		//Gson gson = new Gson();
+		//Type type = new TypeToken<Cidade>() {}.getType();
 		Cidade cidade = gson.fromJson(json, type);
 		try {
 			cidadeBusiness.delete(cidade.getIdCidade());

@@ -21,14 +21,13 @@ import br.com.smallbi.entity.Estado;
 public class EstadoWebService {
 
 	EstadoBusiness estadoBusiness = new EstadoBusiness();	
-	Gson gson = new Gson();
-	Type type = new TypeToken<Estado>() {}.getType();
 	
 	@GET
 	@Path("/listar")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getEstados(){
 		List<Estado> estados = estadoBusiness.list();
+		Gson gson = new Gson();
 		return gson.toJson(estados);
 	}	
 	
@@ -36,6 +35,8 @@ public class EstadoWebService {
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addEstado(String json){		
+		Gson gson = new Gson();
+		Type type = new TypeToken<Estado>() {}.getType();
 		Estado estado = gson.fromJson(json, type);
 		try {
 			estadoBusiness.create(estado);
@@ -48,6 +49,8 @@ public class EstadoWebService {
 	@Path("/alterar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void setEstado(String json){
+		Gson gson = new Gson();
+		Type type = new TypeToken<Estado>() {}.getType();
 		Estado estado = gson.fromJson(json, type);
 		try {
 			estadoBusiness.update(estado);
@@ -60,6 +63,8 @@ public class EstadoWebService {
 	@Path("/deletar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void delEstado(String json){
+		Gson gson = new Gson();
+		Type type = new TypeToken<Estado>() {}.getType();
 		Estado estado = gson.fromJson(json, type);
 		try {
 			estadoBusiness.delete(estado.getIdEstado());
@@ -67,4 +72,12 @@ public class EstadoWebService {
 			e.printStackTrace();
 		}
 	}
+	
+	//Não funciona!
+/*	@GET
+	@Path("/listar2")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Estado> getEstados2(){
+		return new EstadoBusiness().list();
+	}*/
 }
