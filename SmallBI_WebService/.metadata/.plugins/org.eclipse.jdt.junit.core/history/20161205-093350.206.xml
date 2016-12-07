@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TestEndereco" project="SmallBI_WebService" tests="4" started="4" failures="0" errors="0" ignored="0">
-  <testsuite name="br.com.smallbi.test.TestEndereco" time="3.142">
-    <testcase name="test1CreateEndereco" classname="br.com.smallbi.test.TestEndereco" time="3.004"/>
-    <testcase name="test2ListEndereco" classname="br.com.smallbi.test.TestEndereco" time="0.035"/>
-    <testcase name="test3UpdateEndereco" classname="br.com.smallbi.test.TestEndereco" time="0.058"/>
-    <testcase name="test4DeleteEndereco" classname="br.com.smallbi.test.TestEndereco" time="0.045"/>
-  </testsuite>
-</testrun>

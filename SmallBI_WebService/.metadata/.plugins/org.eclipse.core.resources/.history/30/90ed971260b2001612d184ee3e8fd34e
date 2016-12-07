@@ -1,8 +1,0 @@
-package br.com.smallbi.business;
-
-import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
-import br.com.smallbi.entity.Endereco;
-
-public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
-
-}

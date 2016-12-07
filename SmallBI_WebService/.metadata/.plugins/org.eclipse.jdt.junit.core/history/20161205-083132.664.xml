@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TestEstado" project="SmallBI_WebService" tests="3" started="3" failures="0" errors="0" ignored="0">
-  <testsuite name="br.com.smallbi.test.TestEstado" time="2.87">
-    <testcase name="test1CreateEstado" classname="br.com.smallbi.test.TestEstado" time="2.634"/>
-    <testcase name="test2ListEstado" classname="br.com.smallbi.test.TestEstado" time="0.21"/>
-    <testcase name="test3UpdateEstado" classname="br.com.smallbi.test.TestEstado" time="0.025"/>
-  </testsuite>
-</testrun>

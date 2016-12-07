@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TestCidade" project="SmallBI_WebService" tests="4" started="4" failures="0" errors="0" ignored="0">
-  <testsuite name="br.com.smallbi.test.TestCidade" time="2.978">
-    <testcase name="test1CreateCidade" classname="br.com.smallbi.test.TestCidade" time="2.87"/>
-    <testcase name="test2ListCidade" classname="br.com.smallbi.test.TestCidade" time="0.027"/>
-    <testcase name="test3UpdadeCidade" classname="br.com.smallbi.test.TestCidade" time="0.053"/>
-    <testcase name="test4DeleteCidade" classname="br.com.smallbi.test.TestCidade" time="0.028"/>
-  </testsuite>
-</testrun>

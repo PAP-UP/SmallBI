@@ -1,9 +1,8 @@
 package br.com.smallbi.business;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
-
-import com.sun.org.apache.regexp.internal.recompile;
 
 import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
@@ -26,9 +25,9 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getEstado() != null){
 			if(t.getEstado().getIdEstado() != null){
@@ -54,6 +53,9 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		cidadeDao.create(t);
 	}
@@ -76,9 +78,9 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getEstado() != null){
 			if(t.getEstado().getIdEstado() != null){
@@ -104,6 +106,9 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		cidadeDao.update(t);
 	}

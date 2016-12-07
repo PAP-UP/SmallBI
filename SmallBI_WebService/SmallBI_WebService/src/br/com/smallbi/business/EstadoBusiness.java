@@ -1,6 +1,7 @@
 package br.com.smallbi.business;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -20,10 +21,6 @@ public class EstadoBusiness implements InterfaceBusiness<Estado>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
-			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
-		
 		if(t.getNomeEstado().equals(null) || t.getNomeEstado().equals("")){
 			throw new BusinessException("A variável 'nomeEstado' deve ser informada!");
 		}
@@ -35,6 +32,9 @@ public class EstadoBusiness implements InterfaceBusiness<Estado>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		estadoDao.create(t);
 	}
@@ -57,8 +57,8 @@ public class EstadoBusiness implements InterfaceBusiness<Estado>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
-			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
+		if(t.getIdEstado() == null){
+			throw new BusinessException("A variável 'idEstado' deve ser informada!");
 		}
 		
 		if(t.getNomeEstado().equals(null) || t.getNomeEstado().equals("")){
@@ -73,11 +73,16 @@ public class EstadoBusiness implements InterfaceBusiness<Estado>{
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
 		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		estadoDao.update(t);
 	}
 
 	@Override
 	public void delete(Integer id) throws BusinessException {
+		if(id == null){
+			throw new BusinessException("A variável 'idEstado' deve ser informada!");
+		}
 		Estado estado = estadoDao.getObjById(id);
 		if(estado == null){
 			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Estado'!");
@@ -87,6 +92,9 @@ public class EstadoBusiness implements InterfaceBusiness<Estado>{
 
 	@Override
 	public Estado getObjById(Integer id) throws BusinessException {
+		if(id == null){
+			throw new BusinessException("A variável 'idEstado' deve ser informada!");
+		}
 		Estado estado = estadoDao.getObjById(id);
 		if(estado == null){
 			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Estado'!");

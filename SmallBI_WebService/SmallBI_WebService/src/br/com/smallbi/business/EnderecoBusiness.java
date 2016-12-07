@@ -1,6 +1,7 @@
 package br.com.smallbi.business;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -41,9 +42,9 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 			throw new BusinessException("A variável 'cidade' deve ser informada!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getEndereco().equals(null) || t.getEndereco().equals("")){
 			throw new BusinessException("A variável 'endereco' deve ser informada!");
@@ -69,6 +70,9 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		enderecoDao.create(t);
 	}
@@ -108,9 +112,9 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 			throw new BusinessException("A variável 'cidade' deve ser informada!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getEndereco().equals(null) || t.getEndereco().equals("")){
 			throw new BusinessException("A variável 'endereco' deve ser informada!");
@@ -136,6 +140,9 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		enderecoDao.update(t);
 	}

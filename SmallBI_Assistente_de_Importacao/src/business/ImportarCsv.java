@@ -66,14 +66,14 @@ public class ImportarCsv {
             String linha;
             boolean primeiraLinha = true;
             while ((linha = br.readLine()) != null) {
-                Object[] obj = linha.split(separador);
+                Object[] objects = linha.split(separador);
                 if (primeiraLinha) {
-                    for (Object objColuna : obj) {
+                    for (Object objColuna : objects) {
                         modelo.addColumn(objColuna);
                     }
                     primeiraLinha = false;
                 } else {
-                    modelo.addRow(obj);
+                    modelo.addRow(objects);
                }
             }
             primeiroArquivo = false;            

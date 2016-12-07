@@ -1,8 +1,0 @@
-package br.com.smallbi.rest;
-
-import javax.ws.rs.Path;
-
-@Path("/estado")
-public class EstadoWebService {
-
-}

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TestFormaPagamento" project="SmallBI_WebService" tests="4" started="4" failures="0" errors="0" ignored="0">
-  <testsuite name="br.com.smallbi.test.TestFormaPagamento" time="2.953">
-    <testcase name="test1CreateFormaPagamento" classname="br.com.smallbi.test.TestFormaPagamento" time="2.679"/>
-    <testcase name="test2ListFormaPagamento" classname="br.com.smallbi.test.TestFormaPagamento" time="0.203"/>
-    <testcase name="test3UpdateFormaPagamento" classname="br.com.smallbi.test.TestFormaPagamento" time="0.034"/>
-    <testcase name="test4DeleteFormaPagamento" classname="br.com.smallbi.test.TestFormaPagamento" time="0.037"/>
-  </testsuite>
-</testrun>

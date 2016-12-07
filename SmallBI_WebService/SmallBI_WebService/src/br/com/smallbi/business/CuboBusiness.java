@@ -1,6 +1,7 @@
 package br.com.smallbi.business;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -22,9 +23,9 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getEmpresa() != null){
 			if(t.getEmpresa().getIdEmpresa() != null){
@@ -58,6 +59,9 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		cuboDao.create(t);
 	}
@@ -80,9 +84,9 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getEmpresa() != null){
 			if(t.getEmpresa().getIdEmpresa() != null){
@@ -116,6 +120,9 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		cuboDao.update(t);
 	}

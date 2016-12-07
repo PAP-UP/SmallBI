@@ -1,6 +1,7 @@
 package br.com.smallbi.business;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -20,9 +21,9 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getNomeFuncao().equals(null) || t.getNomeFuncao().equals("")){
 			throw new BusinessException("A variável 'nomeFuncao' deve ser informada!");
@@ -31,6 +32,9 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		funcaoDao.create(t);
 	}
@@ -53,9 +57,9 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getNomeFuncao().equals(null) || t.getNomeFuncao().equals("")){
 			throw new BusinessException("A variável 'nomeFuncao' deve ser informada!");
@@ -64,6 +68,9 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		funcaoDao.update(t);
 	}

@@ -1,9 +1,0 @@
-package br.com.smallbi.test.interfaceTest;
-
-public interface InterfaceTest {
-
-	public void testCreateObj();
-	public void testListObj();
-	public void testUpdateObj();
-	public void testDeleteObj();
-}

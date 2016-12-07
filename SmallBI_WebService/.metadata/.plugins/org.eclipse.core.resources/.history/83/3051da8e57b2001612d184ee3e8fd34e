@@ -1,6 +1,0 @@
-package br.com.smallbi.test.interfaceTest;
-
-public interface InterfaceTest {
-
-	public void testCreateObj();
-}

@@ -1,6 +1,7 @@
 package br.com.smallbi.business;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -34,9 +35,9 @@ public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
 			//validar cnpj
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getEndereco() != null){
 			if(t.getEndereco().getIdEndereco() != null){
@@ -109,6 +110,9 @@ public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		empresaDao.create(t);
 	}
@@ -137,9 +141,9 @@ public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
 			//validar cnpj
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getEndereco() != null){
 			if(t.getEndereco().getIdEndereco() != null){
@@ -212,6 +216,9 @@ public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		empresaDao.update(t);
 	}

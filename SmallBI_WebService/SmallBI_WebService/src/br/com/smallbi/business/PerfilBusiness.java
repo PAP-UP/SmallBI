@@ -1,6 +1,7 @@
 package br.com.smallbi.business;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -20,9 +21,9 @@ public class PerfilBusiness implements InterfaceBusiness<Perfil>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getNomePerfil().equals(null) || t.getNomePerfil().equals("")){
 			throw new BusinessException("A variável 'nomePerfil' deve ser informada!");
@@ -31,6 +32,9 @@ public class PerfilBusiness implements InterfaceBusiness<Perfil>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		perfilDao.create(t);
 	}
@@ -53,9 +57,9 @@ public class PerfilBusiness implements InterfaceBusiness<Perfil>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getNomePerfil().equals(null) || t.getNomePerfil().equals("")){
 			throw new BusinessException("A variável 'nomePerfil' deve ser informada!");
@@ -64,6 +68,9 @@ public class PerfilBusiness implements InterfaceBusiness<Perfil>{
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		perfilDao.update(t);
 	}

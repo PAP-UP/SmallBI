@@ -1,6 +1,7 @@
 package br.com.smallbi.business;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.smallbi.business.exception.BusinessException;
@@ -20,9 +21,9 @@ public class FormaPagamentoBusiness implements InterfaceBusiness<FormaPagamento>
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getFormaPagamento().equals(null) || t.getFormaPagamento().equals("")){
 			throw new BusinessException("A variável 'formaPagamento' deve ser informada!");
@@ -31,6 +32,9 @@ public class FormaPagamentoBusiness implements InterfaceBusiness<FormaPagamento>
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		formaPagamentoDao.create(t);
 	}
@@ -53,9 +57,9 @@ public class FormaPagamentoBusiness implements InterfaceBusiness<FormaPagamento>
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
-		if(t.getDataCadastro() == null){
+/*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}
+		}*/
 		
 		if(t.getFormaPagamento().equals(null) || t.getFormaPagamento().equals("")){
 			throw new BusinessException("A variável 'formaPagamento' deve ser informada!");
@@ -64,6 +68,9 @@ public class FormaPagamentoBusiness implements InterfaceBusiness<FormaPagamento>
 		if(t.getUsuarioId() == null){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}
+		
+		t.setDataCadastro(Calendar.getInstance());
+		t.setStatus(true);
 		
 		formaPagamentoDao.update(t);
 	}

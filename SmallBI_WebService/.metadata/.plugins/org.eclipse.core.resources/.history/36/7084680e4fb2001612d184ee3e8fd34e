@@ -1,9 +1,0 @@
-package br.com.smallbi.test;
-
-public class TestUsuario {
-
-	@Test
-	public void createFirstUser(){
-		
-	}
-}
