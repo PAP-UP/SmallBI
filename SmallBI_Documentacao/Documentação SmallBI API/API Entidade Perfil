@@ -1,6 +1,6 @@
 Documentação SmallBI API
 
-Entidade Cidade:
+Entidade Perfil:
 url: "http://localhost:8080/SmallBI_WebService/rest/perfil/"
 
 Listar: 

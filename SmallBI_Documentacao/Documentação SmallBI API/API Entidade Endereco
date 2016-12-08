@@ -1,6 +1,6 @@
 Documentação SmallBI API
 
-Entidade Tipo:
+Entidade Endereco:
 url: "http://localhost:8080/SmallBI_WebService/rest/endereco/"
 
 Listar: 
@@ -50,10 +50,12 @@ if(success){
 
 Deletar:
 Método: POST
-Path: "http://localhost:8080/SmallBI_WebService/rest/endereco/deletar/{idEndereco}"
+Path: "http://localhost:8080/SmallBI_WebService/rest/endereco/deletar"
 Parametros: "application/json"
 Exemplo:
-http://localhost:8080/SmallBI_WebService/rest/endereco/getById/1
+{
+	"idEndereco":1
+}
 Response:
 if(success){
 	return true;

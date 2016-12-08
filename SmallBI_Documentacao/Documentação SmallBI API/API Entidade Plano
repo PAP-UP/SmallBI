@@ -1,0 +1,57 @@
+Documentação SmallBI API
+
+Entidade Plano:
+url: "http://localhost:8080/SmallBI_WebService/rest/plano/"
+
+Listar: 
+Método: GET
+Path: "http://localhost:8080/SmallBI_WebService/rest/plano/listar"
+
+Adicionar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/plano/adicionar"
+Parametros: "application/json"
+Exemplo:
+{
+	"usuarioId": 1,
+	"descricao": "Ultra Expensive plan"
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
+
+Alterar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/plano/alterar"
+Parametros: "application/json"
+Exemplo:
+{
+	"idPlano":1,
+	"usuarioId": 1,
+	"descricao": "Ultra Expensive Plan High Tech"
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
+
+Deletar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/plano/deletar"
+Parametros: "application/json"
+Exemplo:
+{
+  "idPlano":"1"
+}
+
+GetById:
+Método: GET
+Path: "http://localhost:8080/SmallBI_WebService/rest/plano/getById/{idPlano}"
+Parametros: "application/json"
+Exemplo: 
+http://localhost:8080/SmallBI_WebService/rest/plano/getById/1
