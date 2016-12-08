@@ -82,10 +82,8 @@ public class EstadoWebService {
 	@Path("/getById/{idEstado}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idEstado") String idEstado){
-		Estado estado = new Estado();
-		estado.setIdEstado(Integer.parseInt(idEstado));
 		try {
-			estado = estadoBusiness.getObjById(estado.getIdEstado());
+			Estado estado = estadoBusiness.getObjById(Integer.parseInt(idEstado));
 			return gson.toJson(estado);
 		} catch (BusinessException e) {
 			e.printStackTrace();

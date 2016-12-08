@@ -7,6 +7,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -45,5 +46,48 @@ public class PerfilWebService {
 			e.printStackTrace();
 		}
 		return gson.toJson(false);
+	}
+	
+	@POST
+	@Path("/alterar")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String setPerfil(String json){
+		Perfil perfil = gson.fromJson(json, type);
+		try {
+			perfilBusiness.update(perfil);
+			return gson.toJson(true);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		return gson.toJson(false);
+	}
+	
+	@POST
+	@Path("/deletar")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String delPerfil(String json){
+		Perfil perfil = gson.fromJson(json, type);
+		try {
+			perfilBusiness.delete(perfil.getIdPerfil());
+			return gson.toJson(true);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		return gson.toJson(false);
+	}
+	
+	@GET
+	@Path("/getById/{idPerfil}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getById(@PathParam("idPerfil") String idPerfil){
+		try {
+			Perfil perfil = perfilBusiness.getObjById(Integer.parseInt(idPerfil));
+			return gson.toJson(perfil);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 }

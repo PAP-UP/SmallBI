@@ -82,10 +82,8 @@ public class TipoWebService {
 	@Path("/getById/{idTipo}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idTipo") String idTipo){
-		Tipo tipo = new Tipo();
-		tipo.setIdTipo(Integer.parseInt(idTipo));
 		try {
-			tipo = tipoBusiness.getObjById(tipo.getIdTipo());
+			Tipo tipo = tipoBusiness.getObjById(Integer.parseInt(idTipo));
 			return gson.toJson(tipo);
 		} catch (BusinessException e) {
 			e.printStackTrace();

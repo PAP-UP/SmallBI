@@ -82,14 +82,13 @@ public class EnderecoWebService {
 	@Path("/getById/{idEndereco}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idEndereco") String idEndereco){
-		Endereco endereco = new Endereco();
-		endereco.setIdEndereco(Integer.parseInt(idEndereco));
 		try {
-			endereco = enderecoBusiness.getObjById(endereco.getIdEndereco());
+			Endereco endereco = enderecoBusiness.getObjById(Integer.parseInt(idEndereco));
 			return gson.toJson(endereco);
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
-		return "";
+		//return gson.toJson("Nenhum resultado encontrado");
+		return gson.toJson(false);
 	}
 }
