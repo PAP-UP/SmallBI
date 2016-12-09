@@ -1,0 +1,25 @@
+package br.com.smallbi.rest;
+
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+
+import br.com.smallbi.business.FormaPagamentoBusiness;
+import br.com.smallbi.entity.FormaPagamento;
+
+import javax.ws.rs.Produces;
+
+@Path("/formaPagamento")
+public class FormaPagamentoWebService {
+
+	FormaPagamentoBusiness formaPagamentoBusiness = new FormaPagamentoBusiness();
+	
+	@GET
+	@Path("/listar")
+	@Produces(MediaType)
+	public String getFormasPag(){
+		List<FormaPagamento> formas = 
+	}
+}

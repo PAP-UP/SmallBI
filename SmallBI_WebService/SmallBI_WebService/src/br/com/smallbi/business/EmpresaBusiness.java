@@ -135,6 +135,15 @@ public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
+		if(t.getIdEmpresa() == null){
+			throw new BusinessException("A variável 'idEmpresa' deve ser informada!");
+		}else{
+			Empresa empresa = empresaDao.getObjById(t.getIdEmpresa());
+			if(empresa == null){
+				throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+			}
+		}
+		
 		if(t.getCnpj().equals(null) || t.getCnpj().equals("")){
 			throw new BusinessException("A variável 'cnpj' deve ser informada!");
 		}else{

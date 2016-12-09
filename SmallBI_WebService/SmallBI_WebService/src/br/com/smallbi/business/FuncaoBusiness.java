@@ -56,6 +56,15 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 		if(t == null){
 			throw new BusinessException("O objeto não pode ser null!");
 		}
+
+		if(t.getIdFuncao() == null){
+			throw new BusinessException("A variável 'idFuncao' deve ser informada!");
+		}else{
+			Funcao funcao = funcaoDao.getObjById(t.getIdFuncao());
+			if(funcao == null){
+				throw new BusinessException("Nenhum resultado para a variável 'funcao' foi encontrado!");
+			}
+		}
 		
 /*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");

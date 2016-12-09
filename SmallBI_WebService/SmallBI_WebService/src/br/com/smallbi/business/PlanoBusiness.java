@@ -57,6 +57,15 @@ public class PlanoBusiness implements InterfaceBusiness<Plano>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
+		if(t.getIdPlano() == null){
+			throw new BusinessException("A variável 'idPlano' deve ser informada!");
+		}else{
+			Plano plano = planoDao.getObjById(t.getIdPlano());
+			if(plano == null){
+				throw new BusinessException("Nenhum resultado para a variável 'plano' foi encontrado!");
+			}
+		}
+		
 /*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/

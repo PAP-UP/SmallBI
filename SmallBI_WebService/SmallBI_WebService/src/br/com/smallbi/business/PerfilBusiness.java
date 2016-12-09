@@ -57,6 +57,15 @@ public class PerfilBusiness implements InterfaceBusiness<Perfil>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
+		if(t.getIdPerfil() == null){
+			throw new BusinessException("A variável 'idPerfil' deve ser informada!");
+		}else{
+			Perfil perfil = perfilDao.getObjById(t.getIdPerfil());
+			if(perfil == null){
+				throw new BusinessException("Nenhum resultado para a variável 'perfil' foi encontrado!");
+			}
+		}
+		
 /*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/

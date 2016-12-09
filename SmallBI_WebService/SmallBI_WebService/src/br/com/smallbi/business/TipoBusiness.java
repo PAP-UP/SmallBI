@@ -57,6 +57,15 @@ public class TipoBusiness implements InterfaceBusiness<Tipo>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
+		if(t.getIdTipo() == null){
+			throw new BusinessException("A variável 'idTipo' deve ser informada!");
+		}else{
+			Tipo tipo = tipoDao.getObjById(t.getIdTipo());
+			if(tipo == null){
+				throw new BusinessException("Nenhum resultado para a variável 'tipo' foi encontrado!");
+			}
+		}
+		
 /*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/

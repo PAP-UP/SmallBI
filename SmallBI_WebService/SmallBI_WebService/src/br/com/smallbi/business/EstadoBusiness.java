@@ -59,6 +59,15 @@ public class EstadoBusiness implements InterfaceBusiness<Estado>{
 		
 		if(t.getIdEstado() == null){
 			throw new BusinessException("A variável 'idEstado' deve ser informada!");
+		}else{
+			Estado estado = estadoDao.getObjById(t.getIdEstado());
+			if(estado == null){
+				throw new BusinessException("Nenhum resultado para a variável 'estado' foi encontrado!");
+			}
+		}
+		
+		if(t.getIdEstado() == null){
+			throw new BusinessException("A variável 'idEstado' deve ser informada!");
 		}
 		
 		if(t.getNomeEstado().equals(null) || t.getNomeEstado().equals("")){

@@ -1,0 +1,39 @@
+package br.com.smallbi.rest;
+
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+
+import com.google.gson.Gson;
+
+import br.com.smallbi.business.FormaPagamentoBusiness;
+import br.com.smallbi.entity.FormaPagamento;
+
+import javax.ws.rs.Produces;
+
+@Path("/formaPagamento")
+public class FormaPagamentoWebService {
+
+	FormaPagamentoBusiness formaPagamentoBusiness = new FormaPagamentoBusiness();
+	Gson gson = new Gson();
+	
+	@GET
+	@Path("/listar")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getFormasPag(){
+		List<FormaPagamento> formas = formaPagamentoBusiness.list();
+		return gson.toJson(formas);
+	}
+	
+	@POST
+	@Path("/adicionar")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String addFormaPag(String json){
+		
+	}
+}

@@ -42,10 +42,12 @@ if(success){
 
 Deletar:
 Método: POST
-Path: "http://localhost:8080/SmallBI_WebService/rest/cidade/deletar/{idTipo}"
+Path: "http://localhost:8080/SmallBI_WebService/rest/cidade/deletar"
 Parametros: "application/json"
 Exemplo:
-http://localhost:8080/SmallBI_WebService/rest/tipo/getById/1
+{
+	"idTipo":1
+}
 Response:
 if(success){
 	return true;

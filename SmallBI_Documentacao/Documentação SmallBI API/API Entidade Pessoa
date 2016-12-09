@@ -1,0 +1,71 @@
+Documentação SmallBI API
+
+Entidade Funcao:
+url: "http://localhost:8080/SmallBI_WebService/rest/pessoa/"
+
+Listar: 
+Método: GET
+Path: "http://localhost:8080/SmallBI_WebService/rest/pessoa/listar"
+
+Adicionar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/pessoa/adicionar"
+Parametros: "application/json"
+Exemplo:
+{
+    "usuarioId": 1,
+    "nome": "Huguinho",
+    "cpf": "123.123.123-12",
+    "rg": "12.123.123-1",
+    "funcao": {"idFuncao": 1},
+    "endereco": {"idEndereco": 1}
+}		
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
+
+Alterar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/pessoa/alterar"
+Parametros: "application/json"
+Exemplo:
+{
+  	"idPessoa":1,
+    "usuarioId": 1,
+    "nome": "Zezinho",
+    "cpf": "123.123.123-12",
+    "rg": "12.123.123-1",
+    "funcao": {"idFuncao": 1},
+    "endereco": {"idEndereco": 1}
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
+
+Deletar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/pessoa/deletar"
+Parametros: "application/json"
+Exemplo:
+{
+    "idPessoa": "1"
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
+
+GetById:
+Método: GET
+Path: "http://localhost:8080/SmallBI_WebService/rest/pessoa/getById/{idPessoa}"
+Parametros: "application/json"
+Exemplo: 
+http://localhost:8080/SmallBI_WebService/rest/pessoa/getById/1

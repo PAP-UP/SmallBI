@@ -106,6 +106,15 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
+		if(t.getIdTelefone() == null){
+			throw new BusinessException("A variável 'idTelefone' deve ser informada!");
+		}else{
+			Telefone telefone = telefoneDao.getObjById(t.getIdTelefone());
+			if(telefone == null){
+				throw new BusinessException("Nenhum resultado para a variável 'telefone' foi encontrado!");
+			}
+		}
+		
 /*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/

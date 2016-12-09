@@ -57,6 +57,15 @@ public class FormaPagamentoBusiness implements InterfaceBusiness<FormaPagamento>
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
+		if(t.getIdFormaPagamento() == null){
+			throw new BusinessException("A variável 'idFormaPagamento' deve ser informada!");
+		}else{
+			FormaPagamento formaPagamento = formaPagamentoDao.getObjById(t.getIdFormaPagamento());
+			if(formaPagamento == null){
+				throw new BusinessException("Nenhum resultado para a variável 'formaPagamento' foi encontrado!");
+			}
+		}
+		
 /*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/

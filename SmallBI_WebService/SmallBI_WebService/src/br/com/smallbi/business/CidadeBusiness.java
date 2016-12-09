@@ -78,6 +78,15 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
+		if(t.getIdCidade() == null){
+			throw new BusinessException("A variável 'idCidade' deve ser informada!");
+		}else{
+			Cidade cidade = cidadeDao.getObjById(t.getIdCidade());
+			if(cidade == null){
+				throw new BusinessException("Nenhum resultado para a variável 'cidade' foi encontrado!");
+			}
+		}
+		
 /*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/

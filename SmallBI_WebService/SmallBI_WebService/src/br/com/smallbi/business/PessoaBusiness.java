@@ -99,6 +99,15 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
+		if(t.getIdPessoa() == null){
+			throw new BusinessException("A variável 'idPessoa' deve ser informada!");
+		}else{
+			Pessoa pessoa = pessoaDao.getObjById(t.getIdPessoa());
+			if(pessoa == null){
+				throw new BusinessException("Nenhum resultado para a variável 'pessoa' foi encontrado!");
+			}
+		}
+		
 		if(t.getCpf().equals(null) || t.getCpf().equals("")){
 			throw new BusinessException("A variável 'cpf' deve ser informada!");
 		}else{

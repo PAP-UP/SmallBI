@@ -128,9 +128,14 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			throw new BusinessException("A variável 'empresa' deve ser informada!");
 		}
 		
-		/*if(t.getIdUsuario() == null){
+		if(t.getIdUsuario() == null){
 			throw new BusinessException("A variável 'idUsuario' deve ser informada!");
-		}*/
+		}else{
+			Usuario usuario = usuarioDao.getObjById(t.getIdUsuario());
+			if(usuario == null){
+				throw new BusinessException("Nenhum resultado para a variável 'usuario' foi encontrado!");
+			}
+		}
 		
 		if(t.getLogin().equals(null)|| t.getLogin().equals("")){
 			throw new BusinessException("A variável 'login' deve ser informada!");
@@ -167,6 +172,7 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			throw new BusinessException("A variável 'senha' deve ser informada!");
 		}
 		
+		//Usuário que está alterando estas informações
 		if(t.getUsuarioId().equals(null)){
 			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 		}

@@ -84,6 +84,15 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
+		if(t.getIdCubo() == null){
+			throw new BusinessException("A variável 'idCidade' deve ser informada!");
+		}else{
+			Cubo cubo = cuboDao.getObjById(t.getIdCubo());
+			if(cubo == null){
+				throw new BusinessException("Nenhum resultado para a variável 'cubo' foi encontrado!");
+			}
+		}
+		
 /*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/

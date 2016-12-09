@@ -57,6 +57,15 @@ public class RamoAtividadeBusiness implements InterfaceBusiness<RamoAtividade>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
+		if(t.getIdRamoAtividade() == null){
+			throw new BusinessException("A variável 'idRamoAtividade' deve ser informada!");
+		}else{
+			RamoAtividade ramoAtividade = ramoAtividadeDao.getObjById(t.getIdRamoAtividade());
+			if(ramoAtividade == null){
+				throw new BusinessException("Nenhum resultado para a variável 'ramoAtividade' foi encontrado!");
+			}
+		}
+		
 /*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/

@@ -95,6 +95,15 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 			throw new BusinessException("O objeto não pode ser null!");
 		}
 		
+		if(t.getIdEndereco() == null){
+			throw new BusinessException("A variável 'idEndereco' deve ser informada!");
+		}else{
+			Endereco endereco = enderecoDao.getObjById(t.getIdEndereco());
+			if(endereco == null){
+				throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
+			}
+		}
+		
 		if(t.getBairro().equals(null) || t.getBairro().equals("")){
 			throw new BusinessException("A variável 'bairro' deve ser informada!");
 		}
