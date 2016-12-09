@@ -14,33 +14,33 @@ import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import br.com.smallbi.business.FuncaoBusiness;
+import br.com.smallbi.business.CuboBusiness;
 import br.com.smallbi.business.exception.BusinessException;
-import br.com.smallbi.entity.Funcao;
+import br.com.smallbi.entity.Cubo;
 
-@Path("/funcao")
-public class FuncaoWebService {
+@Path("/cubo")
+public class CuboWebService {
 
-	FuncaoBusiness funcaoBusiness = new FuncaoBusiness();
+	CuboBusiness cuboBusiness = new CuboBusiness();
 	Gson gson = new Gson();
-	Type type = new TypeToken<Funcao>() {}.getType();
+	Type type = new TypeToken<Cubo>() {}.getType();
 	
 	@GET
 	@Path("/listar")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getFuncoes(){
-		List<Funcao> funcoes = funcaoBusiness.list();
-		return gson.toJson(funcoes);
+	public String getCubos(){
+		List<Cubo> cubos = cuboBusiness.list();
+		return gson.toJson(cubos);
 	}
 	
 	@POST
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String addFuncao(String json){
-		Funcao funcao = gson.fromJson(json, type);
+	public String addCubo(String json){
+		Cubo cubo = gson.fromJson(json, type);
 		try {
-			funcaoBusiness.create(funcao);
+			cuboBusiness.create(cubo);
 			return gson.toJson(true);
 		} catch (BusinessException e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class FuncaoWebService {
 	@Path("/alterar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String setFuncao(String json){
-		Funcao funcao = gson.fromJson(json, type);
+	public String setCubo(String json){
+		Cubo cubo = gson.fromJson(json, type);
 		try {
-			funcaoBusiness.update(funcao);
+			cuboBusiness.update(cubo);
 			return gson.toJson(true);
 		} catch (BusinessException e) {
 			e.printStackTrace();
@@ -67,10 +67,10 @@ public class FuncaoWebService {
 	@Path("/deletar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delFuncao(String json){
-		Funcao funcao = gson.fromJson(json, type);
+	public String delCubo(String json){
+		Cubo cubo = gson.fromJson(json, type);
 		try {
-			funcaoBusiness.delete(funcao.getIdFuncao());
+			cuboBusiness.delete(cubo.getIdCubo());
 			return gson.toJson(true);
 		} catch (BusinessException e) {
 			e.printStackTrace();
@@ -79,14 +79,13 @@ public class FuncaoWebService {
 	}
 	
 	@GET
-	@Path("/getById/{idFuncao}")
+	@Path("/getById/{idCubo}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getById(@PathParam("idFuncao") String idFuncao){
+	public String getById(@PathParam("idCubo") String idCubo){
 		try {
-			Funcao funcao = funcaoBusiness.getObjById(Integer.parseInt(idFuncao));
-			return gson.toJson(funcao);
+			Cubo cubo = cuboBusiness.getObjById(Integer.parseInt(idCubo));
+			return gson.toJson(cubo);
 		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "";

@@ -1,0 +1,71 @@
+Documentação SmallBI API
+
+Entidade Cubo:
+url: "http://localhost:8080/SmallBI_WebService/rest/cubo/"
+
+Listar: 
+Método: GET
+Path: "http://localhost:8080/SmallBI_WebService/rest/cubo/listar"
+
+Adicionar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/cubo/adicionar"
+Parametros: "application/json"
+Exemplo:
+{
+    "usuarioId": 1,
+    "nomeCubo": "Sales Cube",
+    "empresa": {"idEmpresa": 1},
+    "mdx": "<Schema>",
+    "tabelaFato": "SalesPivot",
+    "tamanho": 30
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
+
+Alterar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/cubo/alterar"
+Parametros: "application/json"
+Exemplo:
+{
+	"idCubo":1,
+    "usuarioId": 1,
+    "nomeCubo": "Sales Cube",
+    "empresa": {"idEmpresa": 1},
+    "mdx": "<Schema>",
+    "tabelaFato": "SalesPivot",
+    "tamanho": 30
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
+
+Deletar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/cubo/deletar"
+Parametros: "application/json"
+Exemplo:
+{
+    "idCubo": "1"
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
+
+GetById:
+Método: GET
+Path: "http://localhost:8080/SmallBI_WebService/rest/cubo/getById/{idCubo}"
+Parametros: "application/json"
+Exemplo: 
+http://localhost:8080/SmallBI_WebService/rest/cubo/getById/1

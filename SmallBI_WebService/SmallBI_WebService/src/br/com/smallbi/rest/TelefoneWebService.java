@@ -14,33 +14,33 @@ import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import br.com.smallbi.business.FuncaoBusiness;
+import br.com.smallbi.business.TelefoneBusiness;
 import br.com.smallbi.business.exception.BusinessException;
-import br.com.smallbi.entity.Funcao;
+import br.com.smallbi.entity.Telefone;
 
-@Path("/funcao")
-public class FuncaoWebService {
+@Path("/telefone")
+public class TelefoneWebService {
 
-	FuncaoBusiness funcaoBusiness = new FuncaoBusiness();
+	TelefoneBusiness telefoneBusiness = new TelefoneBusiness();
 	Gson gson = new Gson();
-	Type type = new TypeToken<Funcao>() {}.getType();
+	Type type = new TypeToken<Telefone>() {}.getType();
 	
 	@GET
 	@Path("/listar")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getFuncoes(){
-		List<Funcao> funcoes = funcaoBusiness.list();
-		return gson.toJson(funcoes);
+	public String getTelefones(){
+		List<Telefone> telefones = telefoneBusiness.list();
+		return gson.toJson(telefones);
 	}
 	
 	@POST
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String addFuncao(String json){
-		Funcao funcao = gson.fromJson(json, type);
+	public String addTelefone(String json){
+		Telefone telefone = gson.fromJson(json, type);
 		try {
-			funcaoBusiness.create(funcao);
+			telefoneBusiness.create(telefone);
 			return gson.toJson(true);
 		} catch (BusinessException e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class FuncaoWebService {
 	@Path("/alterar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String setFuncao(String json){
-		Funcao funcao = gson.fromJson(json, type);
+	public String setTelefone(String json){
+		Telefone telefone = gson.fromJson(json, type);
 		try {
-			funcaoBusiness.update(funcao);
+			telefoneBusiness.update(telefone);
 			return gson.toJson(true);
 		} catch (BusinessException e) {
 			e.printStackTrace();
@@ -67,10 +67,10 @@ public class FuncaoWebService {
 	@Path("/deletar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delFuncao(String json){
-		Funcao funcao = gson.fromJson(json, type);
+	public String delTelefone(String json){
+		Telefone telefone = gson.fromJson(json, type);
 		try {
-			funcaoBusiness.delete(funcao.getIdFuncao());
+			telefoneBusiness.delete(telefone.getIdTelefone());
 			return gson.toJson(true);
 		} catch (BusinessException e) {
 			e.printStackTrace();
@@ -79,14 +79,13 @@ public class FuncaoWebService {
 	}
 	
 	@GET
-	@Path("/getById/{idFuncao}")
+	@Path("/getById/{idTelefone}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getById(@PathParam("idFuncao") String idFuncao){
+	public String getById(@PathParam("idTelefone") String idTelefone){
 		try {
-			Funcao funcao = funcaoBusiness.getObjById(Integer.parseInt(idFuncao));
-			return gson.toJson(funcao);
+			Telefone telefone = telefoneBusiness.getObjById(Integer.parseInt(idTelefone));
+			return gson.toJson(telefone);
 		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "";

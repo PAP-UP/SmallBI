@@ -1,0 +1,18 @@
+package br.com.smallbi.rest;
+
+import java.lang.reflect.Type;
+
+import javax.ws.rs.Path;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import br.com.smallbi.business.CuboBusiness;
+
+@Path("/cubo")
+public class CuboWebService {
+
+	CuboBusiness cuboBusiness = new CuboBusiness();
+	Gson gson = new Gson();
+	Type type = new TypeToken<Cubo>() .{}getType();
+}

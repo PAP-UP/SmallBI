@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="br.com.smallbi.business.TelefoneBusiness"/>
-<fullyQualifiedTypeName name="br.com.smallbi.dal.EmpresaDao"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.interfaceBusiness.InterfaceBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.interfaceDal.InterfaceDao"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.factory.FactoryDao"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.EstadoDao"/>
@@ -10,11 +7,8 @@
 <fullyQualifiedTypeName name="org.junit.Before"/>
 <fullyQualifiedTypeName name="org.junit.After"/>
 <fullyQualifiedTypeName name="org.junit.runners.MethodSorters"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.EmpresaBusiness"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.CuboBusiness"/>
 <fullyQualifiedTypeName name="jdk.nashorn.internal.objects.annotations.Constructor"/>
 <fullyQualifiedTypeName name="org.junit.FixMethodOrder"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioBusiness"/>
 <fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.junit.Test"/>
@@ -31,14 +25,9 @@
 <fullyQualifiedTypeName name="javax.print.attribute.standard.Media"/>
 <fullyQualifiedTypeName name="br.com.smallbi.business.PlanoBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.business.RamoAtividadeBusiness"/>
-<fullyQualifiedTypeName name="com.google.gson.reflect.TypeToken"/>
 <fullyQualifiedTypeName name="br.com.smallbi.business.FormaPagamentoBusiness"/>
-<fullyQualifiedTypeName name="javax.ws.rs.POST"/>
-<fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
 <fullyQualifiedTypeName name="br.com.smallbi.business.FuncaoBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Cidade"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Cubo"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Empresa"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Endereco"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Estado"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.FormaPagamento"/>
@@ -46,18 +35,29 @@
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Perfil"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Plano"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.RamoAtividade"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Telefone"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Tipo"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.PessoaBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Pessoa"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.EmpresaBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Empresa"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.rest.UsuarioWebService"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Usuario"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.CuboBusiness"/>
+<fullyQualifiedTypeName name="com.google.gson.reflect.TypeToken"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Cubo"/>
 <fullyQualifiedTypeName name="com.google.gson.Gson"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Type"/>
+<fullyQualifiedTypeName name="java.lang.LinkageError"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.PessoaBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.TelefoneBusiness"/>
+<fullyQualifiedTypeName name="javax.ws.rs.POST"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
 <fullyQualifiedTypeName name="javax.ws.rs.GET"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Path"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
 <fullyQualifiedTypeName name="javax.ws.rs.PathParam"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Pessoa"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Telefone"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="javax.ws.rs.Path"/>
 </qualifiedTypeNameHistroy>

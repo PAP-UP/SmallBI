@@ -1,0 +1,12 @@
+package br.com.smallbi.rest;
+
+import javax.ws.rs.Path;
+
+import br.com.smallbi.business.CuboBusiness;
+
+@Path("/cubo")
+public class CuboWebService {
+
+	CuboBusiness cuboBusiness = new CuboBusiness();
+	Gson gson = new Gson();
+}
