@@ -1,0 +1,79 @@
+Documentação SmallBI API
+
+Entidade Estado:
+url: "http://localhost:8080/SmallBI_WebService/rest/empresa/"
+
+Listar: 
+Método: GET
+Path: "http://localhost:8080/SmallBI_WebService/rest/empresa/listar"
+
+Adicionar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/empresa/adicionar"
+Parametros: "application/json"
+Exemplo:
+{
+    "usuarioId": 1,
+    "razaoSocial": "Deyneson Borba",
+    "nomeFantasia": "SmallBI",
+    "cnpj": "12.123.123/1234-12",
+    "ie": "I don't know what this!",
+    "endereco": {"idEndereco": 1},
+    "ramoAtividade": {"idRamoAtividade": 1},
+    "tamanhoTotal": 100,
+    "formaPagamento": {"idFormaPagamento": 1},
+    "plano": {"idPlano": 1}
+}		
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
+
+Alterar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/empresa/alterar"
+Parametros: "application/json"
+Exemplo:
+{
+	"idEmpresa":1,
+    "usuarioId": 1,
+    "razaoSocial": "Deyneson Borba",
+    "nomeFantasia": "SmallBI",
+    "cnpj": "12.123.123/1234-12",
+    "ie": "I don't know what this!",
+    "endereco": {"idEndereco": 1},
+    "ramoAtividade": {"idRamoAtividade": 1},
+    "tamanhoTotal": 100,
+    "formaPagamento": {"idFormaPagamento": 1},
+    "plano": {"idPlano": 1}
+}	
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
+
+Deletar:
+Método: POST
+Path: "http://localhost:8080/SmallBI_WebService/rest/empresa/deletar"
+Parametros: "application/json"
+Exemplo:
+{
+    "idEmpresa": "1"
+}
+Response:
+if(success){
+	return true;
+}else{
+	return false;
+}
+
+GetById:
+Método: GET
+Path: "http://localhost:8080/SmallBI_WebService/rest/empresa/getById/{idEmpresa}"
+Parametros: "application/json"
+Exemplo: 
+http://localhost:8080/SmallBI_WebService/rest/empresa/getById/1

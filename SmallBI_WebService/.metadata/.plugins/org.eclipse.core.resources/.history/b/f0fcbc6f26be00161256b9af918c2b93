@@ -1,0 +1,15 @@
+package br.com.smallbi.rest;
+
+import javax.ws.rs.Path;
+
+import com.google.gson.Gson;
+
+import br.com.smallbi.business.EmpresaBusiness;
+
+@Path("/empresa")
+public class EmpresaWebService {
+
+	EmpresaBusiness empresaBusiness = new EmpresaBusiness();
+	Gson gson = new Gson();
+	Type type = new TypeToken<Empresa>() {}.getType();
+}

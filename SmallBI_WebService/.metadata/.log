@@ -3030,3 +3030,15 @@ java.util.concurrent.TimeoutException: Timeout after waiting 5 seconds to acquir
 	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
 	at org.eclipse.egit.ui.internal.ConfigurationChecker$1.run(ConfigurationChecker.java:45)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jface.text 2 0 2016-12-09 13:43:42.071
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2016-12-09 13:43:42.078
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2016-12-09 13:43:49.117
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2016-12-09 13:43:49.118
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

@@ -46,3 +46,10 @@
 127.0.0.1 - - [09/Dec/2016:11:21:43 -0200] "POST /SmallBI_WebService/rest/pessoa/deletar HTTP/1.1" 200 14
 127.0.0.1 - - [09/Dec/2016:11:21:53 -0200] "GET /SmallBI_WebService/rest/pessoa/getById/3 HTTP/1.1" 200 1138
 127.0.0.1 - - [09/Dec/2016:11:21:58 -0200] "GET /SmallBI_WebService/rest/pessoa/getById/4 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Dec/2016:13:50:35 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [09/Dec/2016:13:50:43 -0200] "GET /SmallBI_WebService/rest/empresa/listar HTTP/1.1" 200 1596
+127.0.0.1 - - [09/Dec/2016:13:53:48 -0200] "POST /SmallBI_WebService/rest/empresa/adicionar HTTP/1.1" 200 14
+127.0.0.1 - - [09/Dec/2016:13:54:07 -0200] "POST /SmallBI_WebService/rest/empresa/alterar HTTP/1.1" 200 15
+127.0.0.1 - - [09/Dec/2016:13:54:29 -0200] "POST /SmallBI_WebService/rest/empresa/alterar HTTP/1.1" 200 14
+127.0.0.1 - - [09/Dec/2016:13:54:45 -0200] "POST /SmallBI_WebService/rest/empresa/deletar HTTP/1.1" 200 14
+127.0.0.1 - - [09/Dec/2016:13:54:58 -0200] "GET /SmallBI_WebService/rest/empresa/getById/3 HTTP/1.1" 200 1600
