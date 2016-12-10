@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
@@ -15,10 +14,15 @@ public class PlanoBusiness implements InterfaceBusiness<Plano>{
 	InterfaceDao<Plano> planoDao = FactoryDao.createPlanoDao();
 	
 	@Override
-	public void create(Plano t) throws BusinessException {
+	public String create(Plano t){
 		
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+//			throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
+		}
+		
+		if(t.getIdPlano() != null){
+			return "A variavel ID não pode ser informada na criação de um novo objeto!";
 		}
 		
 /*		if(t.getDataCadastro() == null){
@@ -26,17 +30,20 @@ public class PlanoBusiness implements InterfaceBusiness<Plano>{
 		}*/
 		
 		if(t.getDescricao().equals(null) || t.getDescricao().equals("")){
-			throw new BusinessException("A variável 'descricao' deve ser informada!");
+//			throw new BusinessException("A variável 'descricao' deve ser informada!");
+			return "A variável 'descricao' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		planoDao.create(t);
+		return "Plano cadastrado com sucesso!";
 	}
 
 	@Override
@@ -51,18 +58,21 @@ public class PlanoBusiness implements InterfaceBusiness<Plano>{
 	}
 
 	@Override
-	public void update(Plano t) throws BusinessException {
+	public String update(Plano t){
 		
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+//			throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdPlano() == null){
-			throw new BusinessException("A variável 'idPlano' deve ser informada!");
+//			throw new BusinessException("A variável 'idPlano' deve ser informada!");
+			return "A variável 'idPlano' deve ser informada!";
 		}else{
 			Plano plano = planoDao.getObjById(t.getIdPlano());
 			if(plano == null){
-				throw new BusinessException("Nenhum resultado para a variável 'plano' foi encontrado!");
+//				throw new BusinessException("Nenhum resultado para a variável 'plano' foi encontrado!");
+				return "Nenhum resultado para a variável 'plano' foi encontrado!";
 			}
 		}
 		
@@ -71,33 +81,38 @@ public class PlanoBusiness implements InterfaceBusiness<Plano>{
 		}*/
 		
 		if(t.getDescricao().equals(null) || t.getDescricao().equals("")){
-			throw new BusinessException("A variável 'descricao' deve ser informada!");
+//			throw new BusinessException("A variável 'descricao' deve ser informada!");
+			return "A variável 'descricao' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		planoDao.update(t);
+		return "Plano alterado com sucesso!";
 	}
 
 	@Override
-	public void delete(Integer id) throws BusinessException {
+	public String delete(Integer id){
 		Plano plano = planoDao.getObjById(id);
 		if(plano == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Plano'!");
+//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Plano'!");
+			return "Nenhum resultado foi encontrado para o objeto do tipo 'Plano'!";
 		}
 		planoDao.delete(plano);
+		return "Plano deletado com sucesso!";
 	}
 
 	@Override
-	public Plano getObjById(Integer id) throws BusinessException {
+	public Plano getObjById(Integer id){
 		Plano plano = planoDao.getObjById(id);
 		if(plano == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Plano'!");
+			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Plano'!");
 		}
 		return plano;
 	}

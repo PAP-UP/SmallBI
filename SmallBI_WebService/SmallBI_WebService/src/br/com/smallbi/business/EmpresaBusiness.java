@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
@@ -23,14 +22,20 @@ public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
 	InterfaceDao<RamoAtividade> ramoAtividadeDao = FactoryDao.createRamoAtividadeDao();
 	
 	@Override
-	public void create(Empresa t) throws BusinessException {
+	public String create(Empresa t){
 		
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+//			throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
+		}
+		
+		if(t.getIdEmpresa() != null){
+			return "A variavel ID não pode ser informada na criação de um novo objeto!";
 		}
 		
 		if(t.getCnpj().equals(null) || t.getCnpj().equals("")){
-			throw new BusinessException("A variável 'cnpj' deve ser informada!");
+//			throw new BusinessException("A variável 'cnpj' deve ser informada!");
+			return "A variável 'cnpj' deve ser informada!";
 		}else{
 			//validar cnpj
 		}
@@ -43,78 +48,96 @@ public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
 			if(t.getEndereco().getIdEndereco() != null){
 				Endereco endereco = enderecoDao.getObjById(t.getEndereco().getIdEndereco());
 				if(endereco == null){
-					throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
+					return "Nenhum resultado para a variável 'endereco' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'endereco.idEndereco' deve ser informada!");
+//				throw new BusinessException("A variável 'endereco.idEndereco' deve ser informada!");
+				return "A variável 'endereco.idEndereco' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'endereco' deve ser informada!");
+//			throw new BusinessException("A variável 'endereco' deve ser informada!");
+			return "A variável 'endereco' deve ser informada!";
 		}
 		
 		if(t.getFormaPagamento() != null){
 			if(t.getFormaPagamento().getIdFormaPagamento() != null){
 				FormaPagamento formaPagamento = formaPagamentoDao.getObjById(t.getFormaPagamento().getIdFormaPagamento());
 				if(formaPagamento == null){
-					throw new BusinessException("Nenhum resultado para a variável 'FormaPagamento' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'FormaPagamento' foi encontrado!");
+					return "Nenhum resultado para a variável 'FormaPagamento' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'formaPagamento.idFormaPagamento' deve ser informada!");
+//				throw new BusinessException("A variável 'formaPagamento.idFormaPagamento' deve ser informada!");
+				return "A variável 'formaPagamento.idFormaPagamento' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'formaPagamento' deve ser informada!");
+//			throw new BusinessException("A variável 'formaPagamento' deve ser informada!");
+			return "A variável 'formaPagamento' deve ser informada!";
 		}
 		
 		if(t.getIe().equals(null) || t.getIe().equals("")){
-			throw new BusinessException("A variável 'ie' deve ser informada!");
+//			throw new BusinessException("A variável 'ie' deve ser informada!");
+			return "A variável 'ie' deve ser informada!";
 		}
 		
 		if(t.getNomeFantasia().equals(null) || t.getNomeFantasia().equals("")){
-			throw new BusinessException("A variável 'nomeFantasia' deve ser informada!");
+//			throw new BusinessException("A variável 'nomeFantasia' deve ser informada!");
+			return "A variável 'nomeFantasia' deve ser informada!";
 		}
 		
 		if(t.getPlano() != null){
 			if(t.getPlano().getIdPlano() != null){
 				Plano plano = planoDao.getObjById(t.getPlano().getIdPlano());
 				if(plano == null){
-					throw new BusinessException("Nenhum resultado para a variável 'Plano' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'Plano' foi encontrado!");
+					return "Nenhum resultado para a variável 'Plano' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'plano.idPlano' deve ser informada!");
+//				throw new BusinessException("A variável 'plano.idPlano' deve ser informada!");
+				return "A variável 'plano.idPlano' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'plano' deve ser informada!");
+//			throw new BusinessException("A variável 'plano' deve ser informada!");
+			return "A variável 'plano' deve ser informada!";
 		}
 		
 		if(t.getRamoAtividade() != null){
 			if(t.getRamoAtividade().getIdRamoAtividade() != null){
 				RamoAtividade ramoAtividade = ramoAtividadeDao.getObjById(t.getRamoAtividade().getIdRamoAtividade());
 				if(ramoAtividade == null){
-					throw new BusinessException("Nenhum resultado para a variável 'RamoAtividade' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'RamoAtividade' foi encontrado!");
+					return "Nenhum resultado para a variável 'RamoAtividade' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'ramoAtividade.idRamoAtividade' deve ser informada!");
+//				throw new BusinessException("A variável 'ramoAtividade.idRamoAtividade' deve ser informada!");
+				return "A variável 'ramoAtividade.idRamoAtividade' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'ramoAtividade' deve ser informada!");
+//			throw new BusinessException("A variável 'ramoAtividade' deve ser informada!");
+			return "A variável 'ramoAtividade' deve ser informada!";
 		}
 		
 		if(t.getRazaoSocial().equals(null) || t.getRazaoSocial().equals("")){
-			throw new BusinessException("A variável 'razaoSocial' deve ser informada!");
+//			throw new BusinessException("A variável 'razaoSocial' deve ser informada!");
+			return "A variável 'razaoSocial' deve ser informada!";
 		}
 		
 		if(t.getTamanhoTotal() == null){
-			throw new BusinessException("A variável 'tamahoTotal' deve ser informada!");
+//			throw new BusinessException("A variável 'tamahoTotal' deve ser informada!");
+			return "A variável 'tamahoTotal' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		empresaDao.create(t);
+		return "Empresa cadastrada com sucesso!";
 	}
 
 	@Override
@@ -129,23 +152,27 @@ public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
 	}
 
 	@Override
-	public void update(Empresa t) throws BusinessException {
+	public String update(Empresa t){
 		
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+//			throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdEmpresa() == null){
-			throw new BusinessException("A variável 'idEmpresa' deve ser informada!");
+//			throw new BusinessException("A variável 'idEmpresa' deve ser informada!");
+			return "A variável 'idEmpresa' deve ser informada!";
 		}else{
 			Empresa empresa = empresaDao.getObjById(t.getIdEmpresa());
 			if(empresa == null){
-				throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+//				throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+				return "Nenhum resultado para a variável 'empresa' foi encontrado!";
 			}
 		}
 		
 		if(t.getCnpj().equals(null) || t.getCnpj().equals("")){
-			throw new BusinessException("A variável 'cnpj' deve ser informada!");
+//			throw new BusinessException("A variável 'cnpj' deve ser informada!");
+			return "A variável 'cnpj' deve ser informada!";
 		}else{
 			//validar cnpj
 		}
@@ -158,94 +185,114 @@ public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
 			if(t.getEndereco().getIdEndereco() != null){
 				Endereco endereco = enderecoDao.getObjById(t.getEndereco().getIdEndereco());
 				if(endereco == null){
-					throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
+					return "Nenhum resultado para a variável 'endereco' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'endereco.idEndereco' deve ser informada!");
+//				throw new BusinessException("A variável 'endereco.idEndereco' deve ser informada!");
+				return "A variável 'endereco.idEndereco' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'endereco' deve ser informada!");
+//			throw new BusinessException("A variável 'endereco' deve ser informada!");
+			return "A variável 'endereco' deve ser informada!";
 		}
 		
 		if(t.getFormaPagamento() != null){
 			if(t.getFormaPagamento().getIdFormaPagamento() != null){
 				FormaPagamento formaPagamento = formaPagamentoDao.getObjById(t.getFormaPagamento().getIdFormaPagamento());
 				if(formaPagamento == null){
-					throw new BusinessException("Nenhum resultado para a variável 'FormaPagamento' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'FormaPagamento' foi encontrado!");
+					return "Nenhum resultado para a variável 'FormaPagamento' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'formaPagamento.idFormaPagamento' deve ser informada!");
+//				throw new BusinessException("A variável 'formaPagamento.idFormaPagamento' deve ser informada!");
+				return "A variável 'formaPagamento.idFormaPagamento' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'formaPagamento' deve ser informada!");
+//			throw new BusinessException("A variável 'formaPagamento' deve ser informada!");
+			return "A variável 'formaPagamento' deve ser informada!";
 		}
 		
 		if(t.getIe().equals(null) || t.getIe().equals("")){
-			throw new BusinessException("A variável 'ie' deve ser informada!");
+//			throw new BusinessException("A variável 'ie' deve ser informada!");
+			return "A variável 'ie' deve ser informada!";
 		}
 		
 		if(t.getNomeFantasia().equals(null) || t.getNomeFantasia().equals("")){
-			throw new BusinessException("A variável 'nomeFantasia' deve ser informada!");
+//			throw new BusinessException("A variável 'nomeFantasia' deve ser informada!");
+			return "A variável 'nomeFantasia' deve ser informada!";
 		}
 		
 		if(t.getPlano() != null){
 			if(t.getPlano().getIdPlano() != null){
 				Plano plano = planoDao.getObjById(t.getPlano().getIdPlano());
 				if(plano == null){
-					throw new BusinessException("Nenhum resultado para a variável 'Plano' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'Plano' foi encontrado!");
+					return "Nenhum resultado para a variável 'Plano' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'plano.idPlano' deve ser informada!");
+//				throw new BusinessException("A variável 'plano.idPlano' deve ser informada!");
+				return "A variável 'plano.idPlano' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'plano' deve ser informada!");
+//			throw new BusinessException("A variável 'plano' deve ser informada!");
+			return "A variável 'plano' deve ser informada!";
 		}
 		
 		if(t.getRamoAtividade() != null){
 			if(t.getRamoAtividade().getIdRamoAtividade() != null){
 				RamoAtividade ramoAtividade = ramoAtividadeDao.getObjById(t.getRamoAtividade().getIdRamoAtividade());
 				if(ramoAtividade == null){
-					throw new BusinessException("Nenhum resultado para a variável 'RamoAtividade' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'RamoAtividade' foi encontrado!");
+					return "Nenhum resultado para a variável 'RamoAtividade' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'ramoAtividade.idRamoAtividade' deve ser informada!");
+//				throw new BusinessException("A variável 'ramoAtividade.idRamoAtividade' deve ser informada!");
+				return "A variável 'ramoAtividade.idRamoAtividade' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'ramoAtividade' deve ser informada!");
+//			throw new BusinessException("A variável 'ramoAtividade' deve ser informada!");
+			return "A variável 'ramoAtividade' deve ser informada!";
 		}
 		
 		if(t.getRazaoSocial().equals(null) || t.getRazaoSocial().equals("")){
-			throw new BusinessException("A variável 'razaoSocial' deve ser informada!");
+//			throw new BusinessException("A variável 'razaoSocial' deve ser informada!");
+			return "A variável 'razaoSocial' deve ser informada!";
 		}
 		
 		if(t.getTamanhoTotal() == null){
-			throw new BusinessException("A variável 'tamahoTotal' deve ser informada!");
+//			throw new BusinessException("A variável 'tamahoTotal' deve ser informada!");
+			return "A variável 'tamahoTotal' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		empresaDao.update(t);
+		return "Empresa alterada com sucesso!";
 	}
 
 	@Override
-	public void delete(Integer id) throws BusinessException {
+	public String delete(Integer id){
 		Empresa empresa = empresaDao.getObjById(id);
 		if(empresa == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Empresa'!");
+//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Empresa'!");
+			return "Nenhum resultado foi encontrado para o objeto do tipo 'Empresa'!";
 		}
 		empresaDao.delete(empresa);
+		return "Empresa deletada com sucesso!";
 	}
 
 	@Override
-	public Empresa getObjById(Integer id) throws BusinessException {
+	public Empresa getObjById(Integer id){
 		Empresa empresa = empresaDao.getObjById(id);
 		if(empresa == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Empresa'!");
+			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Empresa'!");
 		}
 		return empresa;
 	}

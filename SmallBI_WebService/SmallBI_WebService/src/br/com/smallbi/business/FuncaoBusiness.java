@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
@@ -15,10 +14,15 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 	InterfaceDao<Funcao> funcaoDao = FactoryDao.createFuncaoDao();
 	
 	@Override
-	public void create(Funcao t) throws BusinessException {
+	public String create(Funcao t){
 		
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+//			throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
+		}
+		
+		if(t.getIdFuncao() != null){
+			return "A variavel ID não pode ser informada na criação de um novo objeto!";
 		}
 		
 /*		if(t.getDataCadastro() == null){
@@ -26,17 +30,20 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 		}*/
 		
 		if(t.getNomeFuncao().equals(null) || t.getNomeFuncao().equals("")){
-			throw new BusinessException("A variável 'nomeFuncao' deve ser informada!");
+//			throw new BusinessException("A variável 'nomeFuncao' deve ser informada!");
+			return "A variável 'nomeFuncao' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		funcaoDao.create(t);
+		return "Funcao cadastrada com sucesso!";
 	}
 
 	@Override
@@ -51,18 +58,21 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 	}
 
 	@Override
-	public void update(Funcao t) throws BusinessException {
+	public String update(Funcao t){
 		
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+//			throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
 		}
 
 		if(t.getIdFuncao() == null){
-			throw new BusinessException("A variável 'idFuncao' deve ser informada!");
+//			throw new BusinessException("A variável 'idFuncao' deve ser informada!");
+			return "A variável 'idFuncao' deve ser informada!";
 		}else{
 			Funcao funcao = funcaoDao.getObjById(t.getIdFuncao());
 			if(funcao == null){
-				throw new BusinessException("Nenhum resultado para a variável 'funcao' foi encontrado!");
+//				throw new BusinessException("Nenhum resultado para a variável 'funcao' foi encontrado!");
+				return "Nenhum resultado para a variável 'funcao' foi encontrado!";
 			}
 		}
 		
@@ -71,33 +81,38 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 		}*/
 		
 		if(t.getNomeFuncao().equals(null) || t.getNomeFuncao().equals("")){
-			throw new BusinessException("A variável 'nomeFuncao' deve ser informada!");
+//			throw new BusinessException("A variável 'nomeFuncao' deve ser informada!");
+			return "A variável 'nomeFuncao' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		funcaoDao.update(t);
+		return "Funcao alterada com sucesso!";
 	}
 
 	@Override
-	public void delete(Integer id) throws BusinessException {
+	public String delete(Integer id){
 		Funcao funcao = funcaoDao.getObjById(id);
 		if(funcao == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Funcao'!");
+//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Funcao'!");
+			return "Nenhum resultado foi encontrado para o objeto do tipo 'Funcao'!";
 		}
 		funcaoDao.delete(funcao);
+		return "Funcao deletada com sucesso!";
 	}
 
 	@Override
-	public Funcao getObjById(Integer id) throws BusinessException {
+	public Funcao getObjById(Integer id){
 		Funcao funcao = funcaoDao.getObjById(id);
 		if(funcao == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Funcao'!");
+			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Funcao'!");
 		}
 		return funcao;
 	}

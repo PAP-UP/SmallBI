@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
@@ -17,53 +16,67 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 	InterfaceDao<Empresa> empresaDao = FactoryDao.createEmpresaDao();
 
 	@Override
-	public void create(Cubo t) throws BusinessException {
+	public String create(Cubo t){
 		
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+			//throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
 		}
 		
 /*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
+		if(t.getIdCubo() != null){
+			return "A variavel ID não pode ser informada na criação de um novo objeto!";
+		}
+		
 		if(t.getEmpresa() != null){
 			if(t.getEmpresa().getIdEmpresa() != null){
 				Empresa empresa = empresaDao.getObjById(t.getEmpresa().getIdEmpresa());
 				if(empresa == null){
-					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+					//throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
+				//throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
+				return "A variável 'empresa.idEmpresa' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'empresa' deve ser informada!");
+//			throw new BusinessException("A variável 'empresa' deve ser informada!");
+			return "A variável 'empresa' deve ser informada!";
 		}
 		
 		if(t.getMdx().equals(null) || t.getMdx().equals("")){
-			throw new BusinessException("A variável 'mdx' deve ser informada!");
+//			throw new BusinessException("A variável 'mdx' deve ser informada!");
+			return "A variável 'mdx' deve ser informada!";
 		}
 		
 		if(t.getNomeCubo().equals(null) || t.getNomeCubo().equals("")){
-			throw new BusinessException("A variável 'nomeCubo' deve ser informada!");
+//			throw new BusinessException("A variável 'nomeCubo' deve ser informada!");
+			return "A variável 'nomeCubo' deve ser informada!";
 		}
 		
 		if(t.getTabelaFato().equals(null) || t.getTabelaFato().equals("")){
-			throw new BusinessException("A variável 'tabelaFato' deve ser informada!");
+//			throw new BusinessException("A variável 'tabelaFato' deve ser informada!");
+			return "A variável 'tabelaFato' deve ser informada!";
 		}
 		
 		if(t.getTamanho() == null){
-			throw new BusinessException("A variável 'tamanho' deve ser informada!");
+//			throw new BusinessException("A variável 'tamanho' deve ser informada!");
+			return "A variável 'tamanho' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		cuboDao.create(t);
+		return "Cubo cadastrado com sucesso!";
 	}
 
 	@Override
@@ -78,18 +91,21 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 	}
 
 	@Override
-	public void update(Cubo t) throws BusinessException {
+	public String update(Cubo t){
 		
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+//			throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdCubo() == null){
-			throw new BusinessException("A variável 'idCidade' deve ser informada!");
+//			throw new BusinessException("A variável 'idCidade' deve ser informada!");
+			return "A variável 'idCidade' deve ser informada!";
 		}else{
 			Cubo cubo = cuboDao.getObjById(t.getIdCubo());
 			if(cubo == null){
-				throw new BusinessException("Nenhum resultado para a variável 'cubo' foi encontrado!");
+//				throw new BusinessException("Nenhum resultado para a variável 'cubo' foi encontrado!");
+				return "Nenhum resultado para a variável 'cubo' foi encontrado!";
 			}
 		}
 		
@@ -101,55 +117,66 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			if(t.getEmpresa().getIdEmpresa() != null){
 				Empresa empresa = empresaDao.getObjById(t.getEmpresa().getIdEmpresa());
 				if(empresa == null){
-					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
+//				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
+				return "A variável 'empresa.idEmpresa' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'empresa' deve ser informada!");
+//			throw new BusinessException("A variável 'empresa' deve ser informada!");
+			return "A variável 'empresa' deve ser informada!";
 		}
 		
 		if(t.getMdx().equals(null) || t.getMdx().equals("")){
-			throw new BusinessException("A variável 'mdx' deve ser informada!");
+//			throw new BusinessException("A variável 'mdx' deve ser informada!");
+			return "A variável 'mdx' deve ser informada!";
 		}
 		
 		if(t.getNomeCubo().equals(null) || t.getNomeCubo().equals("")){
-			throw new BusinessException("A variável 'nomeCubo' deve ser informada!");
+//			throw new BusinessException("A variável 'nomeCubo' deve ser informada!");
+			return "A variável 'nomeCubo' deve ser informada!";
 		}
 		
 		if(t.getTabelaFato().equals(null) || t.getTabelaFato().equals("")){
-			throw new BusinessException("A variável 'tabelaFato' deve ser informada!");
+//			throw new BusinessException("A variável 'tabelaFato' deve ser informada!");
+			return "A variável 'tabelaFato' deve ser informada!";
 		}
 		
 		if(t.getTamanho() == null){
-			throw new BusinessException("A variável 'tamanho' deve ser informada!");
+//			throw new BusinessException("A variável 'tamanho' deve ser informada!");
+			return "A variável 'tamanho' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		cuboDao.update(t);
+		return "Cubo alterado com sucesso!";
 	}
 
 	@Override
-	public void delete(Integer id) throws BusinessException {
+	public String delete(Integer id){
 		Cubo cubo = cuboDao.getObjById(id);
 		if(cubo == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cubo'!");
+//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cubo'!");
+			return "Nenhum resultado foi encontrado para o objeto do tipo 'Cubo'!";
 		}
 		cuboDao.delete(cubo);
+		return "Cubo deletado com sucesso!";
 	}
 
 	@Override
-	public Cubo getObjById(Integer id) throws BusinessException {
+	public Cubo getObjById(Integer id){
 		Cubo cubo = cuboDao.getObjById(id);
 		if(cubo == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cubo'!");
+			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cubo'!");
 		}
 		return cubo;
 	}

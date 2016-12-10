@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
@@ -19,45 +18,57 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 	InterfaceDao<Estado> estadoDao = FactoryDao.createEstadoDao();
 	
 	@Override
-	public void create(Cidade t) throws BusinessException {
+	public String create(Cidade t){
 		
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+			//throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
 		}
 		
 /*		if(t.getDataCadastro() == null){
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
+		if(t.getIdCidade() != null){
+			return "A variavel ID não pode ser informada na criação de um novo objeto!";
+		}
+		
 		if(t.getEstado() != null){
 			if(t.getEstado().getIdEstado() != null){
 				Estado estado = estadoDao.getObjById(t.getEstado().getIdEstado());
 				if(estado == null){
-					throw new BusinessException("Nenhum resultado para a variável 'estado' foi encontrado!");
+					//throw new BusinessException("Nenhum resultado para a variável 'estado' foi encontrado!");
+					return "Nenhum resultado para a variável 'estado' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'estado.idEstado' deve ser informada!");
+				//throw new BusinessException("A variável 'estado.idEstado' deve ser informada!");
+				return "A variável 'estado.idEstado' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'estado' deve ser informada!");
+			//throw new BusinessException("A variável 'estado' deve ser informada!");
+			return "A variável 'estado' deve ser informada!";
 		}
 		
 		if(t.getNomeCidade().equals(null) || t.getNomeCidade().equals("")){
-			throw new BusinessException("A variável 'nomeCidade' deve ser informada!");
+			//throw new BusinessException("A variável 'nomeCidade' deve ser informada!");
+			return "A variável 'nomeCidade' deve ser informada!";
 		}
 		
 		if(t.getSiglaCidade().equals(null) || t.getSiglaCidade().equals("")){
-			throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
+			//throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
+			return "A variável 'siglaCidade' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			//throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		cidadeDao.create(t);
+		return "Cidade cadastrada com sucesso!";
 	}
 	
 	@Override
@@ -72,18 +83,21 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 	}
 	
 	@Override
-	public void update(Cidade t) throws BusinessException {
+	public String update(Cidade t){
 
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+			//throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdCidade() == null){
-			throw new BusinessException("A variável 'idCidade' deve ser informada!");
+			//throw new BusinessException("A variável 'idCidade' deve ser informada!");
+			return "A variável 'idCidade' deve ser informada!";
 		}else{
 			Cidade cidade = cidadeDao.getObjById(t.getIdCidade());
 			if(cidade == null){
-				throw new BusinessException("Nenhum resultado para a variável 'cidade' foi encontrado!");
+				//throw new BusinessException("Nenhum resultado para a variável 'cidade' foi encontrado!");
+				return "Nenhum resultado para a variável 'cidade' foi encontrado!";
 			}
 		}
 		
@@ -95,46 +109,55 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 			if(t.getEstado().getIdEstado() != null){
 				Estado estado = estadoDao.getObjById(t.getEstado().getIdEstado());
 				if(estado == null){
-					throw new BusinessException("Nenhum resultado para a variável 'estado' foi encontrado!");
+					//throw new BusinessException("Nenhum resultado para a variável 'estado' foi encontrado!");
+					return "Nenhum resultado para a variável 'estado' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'estado.idEstado' deve ser informada!");
+				//throw new BusinessException("A variável 'estado.idEstado' deve ser informada!");
+				return "A variável 'estado.idEstado' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'estado' deve ser informada!");
+			//throw new BusinessException("A variável 'estado' deve ser informada!");
+			return "A variável 'estado' deve ser informada!";
 		}
 		
 		if(t.getNomeCidade().equals(null) || t.getNomeCidade().equals("")){
-			throw new BusinessException("A variável 'nomeCidade' deve ser informada!");
+			//throw new BusinessException("A variável 'nomeCidade' deve ser informada!");
+			return "A variável 'nomeCidade' deve ser informada!";
 		}
 		
 		if(t.getSiglaCidade().equals(null) || t.getSiglaCidade().equals("")){
-			throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
+			//throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
+			return "A variável 'siglaCidade' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			//throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		cidadeDao.update(t);
+		return "Cidade alterada com sucesso!";
 	}
 	
 	@Override
-	public void delete(Integer id) throws BusinessException {
+	public String delete(Integer id){
 		Cidade cidade = cidadeDao.getObjById(id);
 		if(cidade == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cidade'!");
+			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cidade'!");
+			return "Nenhum resultado foi encontrado para o objeto do tipo 'Cidade'!";
 		}
 		cidadeDao.delete(cidade);
+		return "Cidade deletada com sucesso!";
 	}
 	@Override
-	public Cidade getObjById(Integer id) throws BusinessException {
+	public Cidade getObjById(Integer id){
 		Cidade cidade = cidadeDao.getObjById(id);
 		if(cidade == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cidade'!");
+			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cidade'!");
 		}
 		return cidade;
 	}

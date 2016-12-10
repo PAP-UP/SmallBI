@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.CidadeBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Cidade;
 
 @Path("/cidade")
@@ -39,14 +38,10 @@ public class CidadeWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addCidade(String json){
 		Cidade cidade = gson.fromJson(json, type);
-		try {
-			cidadeBusiness.create(cidade);
-			return gson.toJson(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = cidadeBusiness.create(cidade);
+		return gson.toJson(response);
 	}
+	
 	
 	@POST
 	@Path("/alterar")
@@ -54,13 +49,8 @@ public class CidadeWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setCidade(String json){
 		Cidade cidade = gson.fromJson(json, type);
-		try {
-			cidadeBusiness.update(cidade);
-			return gson.toJson(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = cidadeBusiness.update(cidade);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,25 +59,15 @@ public class CidadeWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delCidade(String json){
 		Cidade cidade = gson.fromJson(json, type);
-		try {
-			cidadeBusiness.delete(cidade.getIdCidade());
-			return gson.toJson(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = cidadeBusiness.delete(cidade.getIdCidade());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idCidade}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idCidade") String idCidade){
-		try {
-			Cidade cidade = cidadeBusiness.getObjById(Integer.parseInt(idCidade));
-			return gson.toJson(cidade);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+		Cidade cidade = cidadeBusiness.getObjById(Integer.parseInt(idCidade));
+		return gson.toJson(cidade);
 	}
 }

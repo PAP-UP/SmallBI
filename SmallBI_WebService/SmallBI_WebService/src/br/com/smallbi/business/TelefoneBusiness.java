@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
@@ -21,10 +20,15 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 	InterfaceDao<Tipo> tipoDao = FactoryDao.createTipoDao();
 	
 	@Override
-	public void create(Telefone t) throws BusinessException {
+	public String create(Telefone t){
 		
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+//			throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
+		}
+		
+		if(t.getIdTelefone() != null){
+			return "A variavel ID não pode ser informada na criação de um novo objeto!";
 		}
 		
 /*		if(t.getDataCadastro() == null){
@@ -32,60 +36,73 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 		}*/
 		
 		if(t.getDdd().equals(null) || t.getDdd().equals("")){
-			throw new BusinessException("A variável 'ddd' deve ser informada!");
+//			throw new BusinessException("A variável 'ddd' deve ser informada!");
+			return "A variável 'ddd' deve ser informada!";
 		}
 		
 		if(t.getEmpresa() != null){
 			if(t.getEmpresa().getIdEmpresa() != null){
 				Empresa empresa = empresaDao.getObjById(t.getEmpresa().getIdEmpresa());
 				if(empresa == null){
-					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
+//				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
+				return "A variável 'empresa.idEmpresa' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'empresa' deve ser informada!");
+//			throw new BusinessException("A variável 'empresa' deve ser informada!");
+			return "A variável 'empresa' deve ser informada!";
 		}
 		
 		if(t.getPessoa() != null){
 			if(t.getPessoa().getIdPessoa() != null){
 				Pessoa pessoa = pessoaDao.getObjById(t.getPessoa().getIdPessoa());
 				if(pessoa == null){
-					throw new BusinessException("Nenhum resultado para a variável 'pessoa' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'pessoa' foi encontrado!");
+					return "Nenhum resultado para a variável 'pessoa' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'pessoa.idPessoa' deve ser informada!");
+//				throw new BusinessException("A variável 'pessoa.idPessoa' deve ser informada!");
+				return "A variável 'pessoa.idPessoa' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'pessoa' deve ser informada!");
+//			throw new BusinessException("A variável 'pessoa' deve ser informada!");
+			return "A variável 'pessoa' deve ser informada!";
 		}
 		
 		if(t.getTelefone().equals(null) || t.getTelefone().equals("")){
-			throw new BusinessException("A variável 'telefone' deve ser informada!");
+//			throw new BusinessException("A variável 'telefone' deve ser informada!");
+			return "A variável 'telefone' deve ser informada!";
 		}
 		
 		if(t.getTipo() != null){
 			if(t.getTipo().getIdTipo() != null){
 				Tipo tipo = tipoDao.getObjById(t.getTipo().getIdTipo());
 				if(tipo == null){
-					throw new BusinessException("Nenhum resultado para a variável 'tipo' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'tipo' foi encontrado!");
+					return "Nenhum resultado para a variável 'tipo' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'tipo.idTipo' deve ser informada!");
+//				throw new BusinessException("A variável 'tipo.idTipo' deve ser informada!");
+				return "A variável 'tipo.idTipo' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'tipo' deve ser informada!");
+//			throw new BusinessException("A variável 'tipo' deve ser informada!");
+			return "A variável 'tipo' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		telefoneDao.create(t);
+		return "Telefone cadastrado com sucesso!";
 	}
 
 	@Override
@@ -100,18 +117,21 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 	}
 
 	@Override
-	public void update(Telefone t) throws BusinessException {
+	public String update(Telefone t){
 		
 		if(t == null){
-			throw new BusinessException("O objeto não pode ser null!");
+//			throw new BusinessException("O objeto não pode ser null!");
+			return "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdTelefone() == null){
-			throw new BusinessException("A variável 'idTelefone' deve ser informada!");
+//			throw new BusinessException("A variável 'idTelefone' deve ser informada!");
+			return "A variável 'idTelefone' deve ser informada!";
 		}else{
 			Telefone telefone = telefoneDao.getObjById(t.getIdTelefone());
 			if(telefone == null){
-				throw new BusinessException("Nenhum resultado para a variável 'telefone' foi encontrado!");
+//				throw new BusinessException("Nenhum resultado para a variável 'telefone' foi encontrado!");
+				return "Nenhum resultado para a variável 'telefone' foi encontrado!";
 			}
 		}
 		
@@ -120,76 +140,91 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 		}*/
 		
 		if(t.getDdd().equals(null) || t.getDdd().equals("")){
-			throw new BusinessException("A variável 'ddd' deve ser informada!");
+//			throw new BusinessException("A variável 'ddd' deve ser informada!");
+			return "A variável 'ddd' deve ser informada!";
 		}
 		
 		if(t.getEmpresa() != null){
 			if(t.getEmpresa().getIdEmpresa() != null){
 				Empresa empresa = empresaDao.getObjById(t.getEmpresa().getIdEmpresa());
 				if(empresa == null){
-					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
+//				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
+				return "A variável 'empresa.idEmpresa' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'empresa' deve ser informada!");
+//			throw new BusinessException("A variável 'empresa' deve ser informada!");
+			return "A variável 'empresa' deve ser informada!";
 		}
 		
 		if(t.getPessoa() != null){
 			if(t.getPessoa().getIdPessoa() != null){
 				Pessoa pessoa = pessoaDao.getObjById(t.getPessoa().getIdPessoa());
 				if(pessoa == null){
-					throw new BusinessException("Nenhum resultado para a variável 'pessoa' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'pessoa' foi encontrado!");
+					return "Nenhum resultado para a variável 'pessoa' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'pessoa.idPessoa' deve ser informada!");
+//				throw new BusinessException("A variável 'pessoa.idPessoa' deve ser informada!");
+				return "A variável 'pessoa.idPessoa' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'pessoa' deve ser informada!");
+//			throw new BusinessException("A variável 'pessoa' deve ser informada!");
+			return "A variável 'pessoa' deve ser informada!";
 		}
 		
 		if(t.getTelefone().equals(null) || t.getTelefone().equals("")){
-			throw new BusinessException("A variável 'telefone' deve ser informada!");
+//			throw new BusinessException("A variável 'telefone' deve ser informada!");
+			return "A variável 'telefone' deve ser informada!";
 		}
 		
 		if(t.getTipo() != null){
 			if(t.getTipo().getIdTipo() != null){
 				Tipo tipo = tipoDao.getObjById(t.getTipo().getIdTipo());
 				if(tipo == null){
-					throw new BusinessException("Nenhum resultado para a variável 'tipo' foi encontrado!");
+//					throw new BusinessException("Nenhum resultado para a variável 'tipo' foi encontrado!");
+					return "Nenhum resultado para a variável 'tipo' foi encontrado!";
 				}
 			}else{
-				throw new BusinessException("A variável 'tipo.idTipo' deve ser informada!");
+//				throw new BusinessException("A variável 'tipo.idTipo' deve ser informada!");
+				return "A variável 'tipo.idTipo' deve ser informada!";
 			}
 		}else{
-			throw new BusinessException("A variável 'tipo' deve ser informada!");
+//			throw new BusinessException("A variável 'tipo' deve ser informada!");
+			return "A variável 'tipo' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
+			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
 		telefoneDao.update(t);
+		return "Telefone alterado com sucesso!";
 	}
 
 	@Override
-	public void delete(Integer id) throws BusinessException {
+	public String delete(Integer id){
 		Telefone telefone = telefoneDao.getObjById(id);
 		if(telefone == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Telefone'!");
+//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Telefone'!");
+			return "Nenhum resultado foi encontrado para o objeto do tipo 'Telefone'!";
 		}
 		telefoneDao.delete(telefone);
+		return "Telefone deletado com sucesso!";
 	}
 
 	@Override
-	public Telefone getObjById(Integer id) throws BusinessException {
+	public Telefone getObjById(Integer id){
 		Telefone telefone = telefoneDao.getObjById(id);
 		if(telefone == null){
-			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Telefone'!");
+			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Telefone'!");
 		}
 		return telefone;
 	}
