@@ -1,5 +1,6 @@
 package view;
 
+import business.GerarScriptSql;
 import business.ImportarCsv;
 import view.percorrerAbas.PercorrerAbasFormPrincipal;
 import business.ImportarDb;
@@ -8,6 +9,7 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import model.TabelaFato;
 
 public class FormPrincipal extends javax.swing.JFrame {
 
@@ -102,6 +104,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jScrollPaneAbaTabPrev_ScrollDaTabelaPrev = new javax.swing.JScrollPane();
         tblTabPrev = new javax.swing.JTable();
         btnAbaTabPrev_ValidarTipos = new javax.swing.JButton();
+        btnAbaTabPrev_SalvarTabela = new javax.swing.JButton();
         btnAbaTabPrev_Voltar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -853,6 +856,13 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnAbaTabPrev_SalvarTabela.setText("Salvar Tabela");
+        btnAbaTabPrev_SalvarTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbaTabPrev_SalvarTabelaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelAbaTabPrev_AreaDaTabResultLayout = new javax.swing.GroupLayout(painelAbaTabPrev_AreaDaTabResult);
         painelAbaTabPrev_AreaDaTabResult.setLayout(painelAbaTabPrev_AreaDaTabResultLayout);
         painelAbaTabPrev_AreaDaTabResultLayout.setHorizontalGroup(
@@ -863,6 +873,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPaneAbaTabPrev_ScrollDaAreaTabPrev, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaTabPrev_AreaDaTabResultLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAbaTabPrev_SalvarTabela)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAbaTabPrev_ValidarTipos)))
                 .addContainerGap())
         );
@@ -871,7 +883,9 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addGroup(painelAbaTabPrev_AreaDaTabResultLayout.createSequentialGroup()
                 .addComponent(jScrollPaneAbaTabPrev_ScrollDaAreaTabPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAbaTabPrev_ValidarTipos)
+                .addGroup(painelAbaTabPrev_AreaDaTabResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAbaTabPrev_ValidarTipos)
+                    .addComponent(btnAbaTabPrev_SalvarTabela))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1009,9 +1023,21 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void btnAbaTabPrev_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_VoltarActionPerformed
         PercorrerAbasFormPrincipal.abaTabPreviewToAbaTipoImport();
     }//GEN-LAST:event_btnAbaTabPrev_VoltarActionPerformed
+
+    private void btnAbaTabPrev_SalvarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_SalvarTabelaActionPerformed
+        salvarTabela();
+    }//GEN-LAST:event_btnAbaTabPrev_SalvarTabelaActionPerformed
+    
+    private void salvarTabela(){
+        FormSalvarTabela frm = new FormSalvarTabela(tblTabPrev, listaDeCbxTipos);
+        frm.setLocationRelativeTo(null);
+        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        frm.setTitle("Assistente para Salvar Tabela Importada");
+        frm.setVisible(true);
+    }
     
     private void chamarFormGerarCuboXml(){       
-        FormGerarCuboXml frm = new FormGerarCuboXml(tblTabPrev, listaDeCbxTipos);
+        FormGerarCuboXml frm = new FormGerarCuboXml();
         frm.setLocationRelativeTo(null);
         frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Assistente de Modelagem do Cubo");
@@ -1235,6 +1261,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaInicio_Proximo;
     public static javax.swing.JButton btnAbaTabPrev_GerarCuboXml;
     private javax.swing.JButton btnAbaTabPrev_ImportMaisDados;
+    private javax.swing.JButton btnAbaTabPrev_SalvarTabela;
     private javax.swing.JButton btnAbaTabPrev_ValidarTipos;
     private javax.swing.JButton btnAbaTabPrev_Voltar;
     private javax.swing.JButton btnAbaTipoImportImportarBanco;
@@ -1284,7 +1311,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel painelAbaTipoImport_ImportacaoBanco;
     private javax.swing.JPanel painelAbaTipoImportação;
     public static javax.swing.JTabbedPane painelAbas;
-    private javax.swing.JTable tblTabPrev;
+    public static javax.swing.JTable tblTabPrev;
     private javax.swing.JTextField txtAbaConexBd_Banco;
     private javax.swing.JTextField txtAbaConexBd_Endereco;
     private javax.swing.JTextField txtAbaConexBd_Porta;

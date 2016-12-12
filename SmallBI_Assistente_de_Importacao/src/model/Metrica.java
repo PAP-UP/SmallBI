@@ -6,6 +6,7 @@ public class Metrica {
     private String coluna;
     private String agregador;
     private String formato;
+    
 
     /**
      * @return the nome
@@ -62,6 +63,8 @@ public class Metrica {
     public void setFormato(String formato) {
         this.formato = formato;
     }
+
+
     
     
 }

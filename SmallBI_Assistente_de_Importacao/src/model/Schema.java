@@ -4,8 +4,7 @@ import java.util.List;
 
 public class Schema {
     private String nome;
-    private String tabela;
-    private String chaveTabela;
+    private List<TabelaFato> tabelasFato;
     private String nomeCubo;
     private List<Dimensao> dimensoes;
     private List<Metrica> metricas;
@@ -22,34 +21,6 @@ public class Schema {
      */
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    /**
-     * @return the tabela
-     */
-    public String getTabela() {
-        return tabela;
-    }
-
-    /**
-     * @param tabela the tabela to set
-     */
-    public void setTabela(String tabela) {
-        this.tabela = tabela;
-    }
-
-    /**
-     * @return the chaveTabela
-     */
-    public String getChaveTabela() {
-        return chaveTabela;
-    }
-
-    /**
-     * @param chaveTabela the chaveTabela to set
-     */
-    public void setChaveTabela(String chaveTabela) {
-        this.chaveTabela = chaveTabela;
     }
 
     /**
@@ -92,6 +63,20 @@ public class Schema {
      */
     public void setMetricas(List<Metrica> metricas) {
         this.metricas = metricas;
+    }
+
+    /**
+     * @return the tabelasFato
+     */
+    public List<TabelaFato> getTabelasFato() {
+        return tabelasFato;
+    }
+
+    /**
+     * @param tabelasFato the tabelasFato to set
+     */
+    public void setTabelasFato(List<TabelaFato> tabelasFato) {
+        this.tabelasFato = tabelasFato;
     }
     
 }

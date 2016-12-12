@@ -1,5 +1,6 @@
 package view.percorrerAbas;
 
+import javax.swing.table.DefaultTableModel;
 import view.FormPrincipal;
 import static view.FormPrincipal.painelAbas;
 
@@ -68,12 +69,18 @@ public class PercorrerAbasFormPrincipal extends FormPrincipal{
     }
     
     public static void abaTabPreviewToAbaTipoImport(){
+        DefaultTableModel modelo = (DefaultTableModel) tblTabPrev.getModel();
+        modelo.setColumnCount(0);
+        modelo.setRowCount(0);        
         painelAbas.setSelectedIndex(1);
         painelAbas.setEnabledAt(5, false);
         painelAbas.setEnabledAt(1, true);             
     }
     
     public static void importarMaisDados(){
+        DefaultTableModel modelo = (DefaultTableModel) tblTabPrev.getModel();
+        modelo.setColumnCount(0);
+        modelo.setRowCount(0);  
         painelAbas.setSelectedIndex(1);
         painelAbas.setEnabledAt(1, true);
         btnAbaTabPrev_GerarCuboXml.setEnabled(false);

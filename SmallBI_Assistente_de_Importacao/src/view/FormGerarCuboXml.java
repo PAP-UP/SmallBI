@@ -2,16 +2,15 @@ package view;
 
 import business.GerarSchema;
 import view.percorrerAbas.PercorrerAbasFormGerarCuboXml;
-import business.GerarScriptSql;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import model.Dimensao;
 import model.Metrica;
 import model.Schema;
+import model.TabelaFato;
 import xmleditorkit.XMLEditorKit;
 
 public class FormGerarCuboXml extends javax.swing.JFrame {
@@ -20,14 +19,12 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private List<JComboBox> listaCbxTipos = new ArrayList<>();
     public static List<Dimensao> dimensoes = new ArrayList<>();
     public static List<Metrica> metricas = new ArrayList<>();
+    public static List<TabelaFato> tabelasFato = new ArrayList<>();
+    
 
-    public FormGerarCuboXml(JTable tabelaPivot, List<JComboBox> listaCbxTipos) {
+    public FormGerarCuboXml() {
         initComponents();
-        PercorrerAbasFormGerarCuboXml.desativarAbasInicio();
-        carregarCbxChavePrimaria(tabelaPivot);
-        this.tabelaPivot = tabelaPivot;
-        this.listaCbxTipos = listaCbxTipos;
-        txtPainelConfTab_txtNomeTab.setText("MinhaTabelaFato");          
+        PercorrerAbasFormGerarCuboXml.desativarAbasInicio();       
     }
 
     @SuppressWarnings("unchecked")
@@ -35,14 +32,6 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private void initComponents() {
 
         jtpPainelAbas = new javax.swing.JTabbedPane();
-        painelAbaSalvarSqlTabelaPivot = new javax.swing.JPanel();
-        painelAbaSaveSqlTabPivot_ConfTab = new javax.swing.JPanel();
-        cbxPainelConfTab_lblPrimaryKey = new javax.swing.JLabel();
-        cbxPainelConfTab_CamposPrimaryKey = new javax.swing.JComboBox();
-        txtPainelConfTab_txtNomeTab = new javax.swing.JTextField();
-        cbxPainelConfTab_lblNomeTab = new javax.swing.JLabel();
-        btnPainelConfTab_Salvar = new javax.swing.JButton();
-        btnPainelConfTab_Sair = new javax.swing.JButton();
         paineAbaNomeCubo = new javax.swing.JPanel();
         painelAbaNomeCubo_NomeCubo = new javax.swing.JPanel();
         lblAbaNomeCubo_Nomecubo = new javax.swing.JLabel();
@@ -71,86 +60,6 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         btnAbaCuboPreview_EnviarCubo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        painelAbaSaveSqlTabPivot_ConfTab.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurações da Tabela"));
-
-        cbxPainelConfTab_lblPrimaryKey.setText("Chave Primária:");
-
-        cbxPainelConfTab_CamposPrimaryKey.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione" }));
-
-        cbxPainelConfTab_lblNomeTab.setText("Nome da Tabela:");
-
-        javax.swing.GroupLayout painelAbaSaveSqlTabPivot_ConfTabLayout = new javax.swing.GroupLayout(painelAbaSaveSqlTabPivot_ConfTab);
-        painelAbaSaveSqlTabPivot_ConfTab.setLayout(painelAbaSaveSqlTabPivot_ConfTabLayout);
-        painelAbaSaveSqlTabPivot_ConfTabLayout.setHorizontalGroup(
-            painelAbaSaveSqlTabPivot_ConfTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAbaSaveSqlTabPivot_ConfTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelAbaSaveSqlTabPivot_ConfTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxPainelConfTab_lblNomeTab)
-                    .addComponent(cbxPainelConfTab_lblPrimaryKey))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelAbaSaveSqlTabPivot_ConfTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPainelConfTab_txtNomeTab)
-                    .addComponent(cbxPainelConfTab_CamposPrimaryKey, 0, 540, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        painelAbaSaveSqlTabPivot_ConfTabLayout.setVerticalGroup(
-            painelAbaSaveSqlTabPivot_ConfTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAbaSaveSqlTabPivot_ConfTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelAbaSaveSqlTabPivot_ConfTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxPainelConfTab_lblNomeTab)
-                    .addComponent(txtPainelConfTab_txtNomeTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(painelAbaSaveSqlTabPivot_ConfTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxPainelConfTab_lblPrimaryKey)
-                    .addComponent(cbxPainelConfTab_CamposPrimaryKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(225, Short.MAX_VALUE))
-        );
-
-        btnPainelConfTab_Salvar.setText("Salvar");
-        btnPainelConfTab_Salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPainelConfTab_SalvarActionPerformed(evt);
-            }
-        });
-
-        btnPainelConfTab_Sair.setText("Sair");
-        btnPainelConfTab_Sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPainelConfTab_SairActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout painelAbaSalvarSqlTabelaPivotLayout = new javax.swing.GroupLayout(painelAbaSalvarSqlTabelaPivot);
-        painelAbaSalvarSqlTabelaPivot.setLayout(painelAbaSalvarSqlTabelaPivotLayout);
-        painelAbaSalvarSqlTabelaPivotLayout.setHorizontalGroup(
-            painelAbaSalvarSqlTabelaPivotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAbaSalvarSqlTabelaPivotLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelAbaSalvarSqlTabelaPivotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelAbaSaveSqlTabPivot_ConfTab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaSalvarSqlTabelaPivotLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnPainelConfTab_Salvar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPainelConfTab_Sair)))
-                .addContainerGap())
-        );
-        painelAbaSalvarSqlTabelaPivotLayout.setVerticalGroup(
-            painelAbaSalvarSqlTabelaPivotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAbaSalvarSqlTabelaPivotLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painelAbaSaveSqlTabPivot_ConfTab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(painelAbaSalvarSqlTabelaPivotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPainelConfTab_Sair)
-                    .addComponent(btnPainelConfTab_Salvar))
-                .addContainerGap())
-        );
-
-        jtpPainelAbas.addTab("Salvar Tabela Pivot", painelAbaSalvarSqlTabelaPivot);
 
         painelAbaNomeCubo_NomeCubo.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome do Cubo"));
 
@@ -476,14 +385,6 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPainelConfTab_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPainelConfTab_SairActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnPainelConfTab_SairActionPerformed
-
-    private void btnPainelConfTab_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPainelConfTab_SalvarActionPerformed
-        salvarTabela();
-    }//GEN-LAST:event_btnPainelConfTab_SalvarActionPerformed
-
     private void btnModelMetri_AddMetriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModelMetri_AddMetriActionPerformed
         chamarFormAddMetri();
     }//GEN-LAST:event_btnModelMetri_AddMetriActionPerformed
@@ -536,8 +437,9 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private void gerarSchemaXml(){
         Schema schema = new Schema();
         schema.setNome("Schema " + txtAbaNomeCubo_NomeCubo.getText());
-        schema.setTabela(txtPainelConfTab_txtNomeTab.getText());
-        schema.setChaveTabela(cbxPainelConfTab_CamposPrimaryKey.getSelectedItem().toString());
+//        schema.setTabela(txtPainelConfTab_txtNomeTab.getText());
+        schema.setTabelasFato(tabelasFato);
+//        schema.setChaveTabela(cbxPainelConfTab_CamposPrimaryKey.getSelectedItem().toString());
         schema.setNomeCubo(txtAbaNomeCubo_NomeCubo.getText());
         schema.setDimensoes(dimensoes);
         schema.setMetricas(metricas);
@@ -560,42 +462,17 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     }
     
     private void chamarFormAddDim(){      
-        FormAddDimensao frm = new FormAddDimensao(tabelaPivot, txtPainelConfTab_txtNomeTab.getText());
+        FormAddDimensao frm = new FormAddDimensao();
         frm.setLocationRelativeTo(null);
         frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Adicionar Nova Dimensão");
         frm.setVisible(true);
     }
     
-    private void salvarTabela(){
-        String nomeTabela = txtPainelConfTab_txtNomeTab.getText();        
-        String chavePrimaria = cbxPainelConfTab_CamposPrimaryKey.getSelectedItem().toString();
-        if(nomeTabela != null && nomeTabela != ""){
-            if(chavePrimaria != "Selecione"){
-                
-                JOptionPane.showMessageDialog(null, new GerarScriptSql().salvarTabelaPivot(tabelaPivot, 
-                        nomeTabela, chavePrimaria, listaCbxTipos));
-                System.out.println("Script SQL gerado: " + GerarScriptSql.scriptSqlTabelaPivot);
-                PercorrerAbasFormGerarCuboXml.saveTabToNomeCubo();
-            
-            }else{
-                JOptionPane.showMessageDialog(null, "Selecione uma chave para a tabela!");
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Dê um nome para a tabela!");
-        }
-    }
-        
-    private void carregarCbxChavePrimaria(JTable tabelaPivot){
-        for(int coluna = 0; coluna < tabelaPivot.getColumnCount(); coluna++){
-            cbxPainelConfTab_CamposPrimaryKey.addItem(tabelaPivot.getColumnName(coluna));
-        }
-    }
-    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormGerarCuboXml(null,null).setVisible(true);
+                new FormGerarCuboXml().setVisible(true);
             }
         });
     }
@@ -613,11 +490,6 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaNomeCubo_Proximo;
     private javax.swing.JButton btnJtpAbaModelDim_AddDim;
     private javax.swing.JButton btnModelMetri_AddMetri;
-    private javax.swing.JButton btnPainelConfTab_Sair;
-    private javax.swing.JButton btnPainelConfTab_Salvar;
-    private javax.swing.JComboBox cbxPainelConfTab_CamposPrimaryKey;
-    private javax.swing.JLabel cbxPainelConfTab_lblNomeTab;
-    private javax.swing.JLabel cbxPainelConfTab_lblPrimaryKey;
     private javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTabbedPane jtpPainelAbas;
@@ -630,11 +502,8 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     public static javax.swing.JPanel painelAbaModelMetri_ListMetri;
     public static javax.swing.JPanel painelAbaModelMetri_ModelMetri;
     private javax.swing.JPanel painelAbaNomeCubo_NomeCubo;
-    private javax.swing.JPanel painelAbaSalvarSqlTabelaPivot;
-    private javax.swing.JPanel painelAbaSaveSqlTabPivot_ConfTab;
     private javax.swing.JPanel painel_AbaModelDim_AtriDim;
     public static javax.swing.JPanel painel_jtpAbaModelDim_listDims;
     private javax.swing.JTextField txtAbaNomeCubo_NomeCubo;
-    private javax.swing.JTextField txtPainelConfTab_txtNomeTab;
     // End of variables declaration//GEN-END:variables
 }

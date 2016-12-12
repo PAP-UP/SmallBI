@@ -5,6 +5,7 @@ import java.util.List;
 import model.Dimensao;
 import model.Metrica;
 import model.Schema;
+import model.TabelaFato;
 
 public class GerarSchema {
     
@@ -13,10 +14,10 @@ public class GerarSchema {
         String schemaXml = new String();
         
         schemaXml += initializeSchema(schema.getNome());
-        schemaXml += setPhysicalSchema(schema.getTabela(), schema.getChaveTabela());
+        schemaXml += setPhysicalSchema(schema.getTabelasFato());
         schemaXml += setCubeName(schema.getNome());
         schemaXml += setSchemaDimensions(schema.getDimensoes());
-        schemaXml += setSchemaMeasures(schema.getMetricas(), schema.getTabela(), schema.getDimensoes());
+        schemaXml += setSchemaMeasures(schema.getMetricas(), schema.getDimensoes());
         return schemaXml;
     }
     
@@ -24,9 +25,15 @@ public class GerarSchema {
         return "<?xml version='1.0'?><Schema name='" + nomeSchema + "' metamodelVersion='4.0'>";
     }
     
-    private static String setPhysicalSchema(String nomeTabela, String primaryKey){
-        return "<PhysicalSchema><Table name='" + nomeTabela + "'><Key><Column name='" +
-                primaryKey + "'/></Key></Table></PhysicalSchema>";
+    private static String setPhysicalSchema(List<TabelaFato> tabelas){
+        String schema = "<PhysicalSchema>";
+                
+        for(TabelaFato t : tabelas){
+            schema += "<Table name='" + t.getNomeTabela() + "'><Key><Column name='" + t.getPrimaryKey() 
+                + "'/></Key></Table>";
+        }
+        schema += "</PhysicalSchema>";
+        return schema;
     }
     
     private static String setCubeName(String cubeName){
@@ -48,7 +55,7 @@ public class GerarSchema {
         return schema;
     }
 
-    public static String setSchemaMeasures(List<Metrica> metricas, String nomeTabela, List<Dimensao> dimensoes){
+    public static String setSchemaMeasures(List<Metrica> metricas, List<Dimensao> dimensoes){
         
         String schema = new String();
         List<String> factLinks = new ArrayList<>();        

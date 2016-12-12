@@ -28,9 +28,9 @@ public class PercorrerAbasFormGerarCuboXml extends FormGerarCuboXml{
     }
     
     public static void nomeCuboToModelDim(){
-        jtpPainelAbas.setSelectedIndex(2);
-        jtpPainelAbas.setEnabledAt(2, true);
-        jtpPainelAbas.setEnabledAt(1, false);        
+        jtpPainelAbas.setSelectedIndex(1);
+        jtpPainelAbas.setEnabledAt(1, true);
+        jtpPainelAbas.setEnabledAt(0, false);        
     }
    
     public static void modelDimToNomeCubo(){
@@ -40,24 +40,24 @@ public class PercorrerAbasFormGerarCuboXml extends FormGerarCuboXml{
     }
     
     public static void modelDimToModelMetri(){
+        jtpPainelAbas.setSelectedIndex(2);
+        jtpPainelAbas.setEnabledAt(2, true);
+        jtpPainelAbas.setEnabledAt(1, false);         
+    }
+    
+    public static void modelMetriToModelDim(){
+        jtpPainelAbas.setSelectedIndex(1);
+        jtpPainelAbas.setEnabledAt(1, true);
+        jtpPainelAbas.setEnabledAt(2, false);         
+    }
+    
+    public static void modelMetriToCuboPreview(){
         jtpPainelAbas.setSelectedIndex(3);
         jtpPainelAbas.setEnabledAt(3, true);
         jtpPainelAbas.setEnabledAt(2, false);         
     }
     
-    public static void modelMetriToModelDim(){
-        jtpPainelAbas.setSelectedIndex(2);
-        jtpPainelAbas.setEnabledAt(2, true);
-        jtpPainelAbas.setEnabledAt(3, false);         
-    }
-    
-    public static void modelMetriToCuboPreview(){
-        jtpPainelAbas.setSelectedIndex(4);
-        jtpPainelAbas.setEnabledAt(4, true);
-        jtpPainelAbas.setEnabledAt(3, false);         
-    }
-    
     public PercorrerAbasFormGerarCuboXml(JTable tbl, List<JComboBox> listaCbxTiposParametro) {
-        super(tbl, listaCbxTiposParametro);
+        super();
     }    
 }

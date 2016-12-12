@@ -7,21 +7,19 @@ import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import model.Dimensao;
+import model.TabelaFato;
 
 public class FormAddDimensao extends javax.swing.JFrame {
 
-    private JTable tabelaPivot = new JTable();
-    private String nomeTabelaPivot = new String();
     private List<JCheckBox> listaDeCheckBox = new ArrayList<>();
     public static List<String> atributosUtilizadosNoCubo = new ArrayList<>();
+    private TabelaFato tabelaFato;
     
-    public FormAddDimensao(JTable tabelaPivot, String nomeTabelaPivot) {
+    public FormAddDimensao() {
         initComponents();
-        this.tabelaPivot = tabelaPivot;     
-        this.nomeTabelaPivot = nomeTabelaPivot;
-        carregarCheckBoxesAtr();
+        //carregarCheckBoxesAtr();
+        carregarTabelasSalvas();
         PercorrerAbasAddDimensao.desativarAbasInicio();
     }
 
@@ -31,6 +29,12 @@ public class FormAddDimensao extends javax.swing.JFrame {
 
         painelConfDim = new javax.swing.JPanel();
         painelAbas = new javax.swing.JTabbedPane();
+        painelAba_Tabela = new javax.swing.JPanel();
+        painelTabelas = new javax.swing.JPanel();
+        lblTabelas_selecione = new javax.swing.JLabel();
+        cbxTabelas = new javax.swing.JComboBox<>();
+        btnPainelTabelas_Sair = new javax.swing.JButton();
+        btnPainelTabelas_Proximo = new javax.swing.JButton();
         painelAba_Atributos = new javax.swing.JPanel();
         scroolPaneAbaAtri_Atributos = new javax.swing.JScrollPane();
         jPanelAtributos = new javax.swing.JPanel();
@@ -48,7 +52,78 @@ public class FormAddDimensao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        painelConfDim.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurar Nova Dimensão"));
+        painelConfDim.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        painelTabelas.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabelas"));
+
+        lblTabelas_selecione.setText("Selecione uma tabela: ");
+
+        cbxTabelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnPainelTabelas_Sair.setText("Sair");
+        btnPainelTabelas_Sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPainelTabelas_SairActionPerformed(evt);
+            }
+        });
+
+        btnPainelTabelas_Proximo.setText("Próximo");
+        btnPainelTabelas_Proximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPainelTabelas_ProximoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelTabelasLayout = new javax.swing.GroupLayout(painelTabelas);
+        painelTabelas.setLayout(painelTabelasLayout);
+        painelTabelasLayout.setHorizontalGroup(
+            painelTabelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelTabelasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelTabelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelTabelasLayout.createSequentialGroup()
+                        .addComponent(lblTabelas_selecione)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbxTabelas, 0, 224, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelTabelasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnPainelTabelas_Proximo)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPainelTabelas_Sair)))
+                .addContainerGap())
+        );
+        painelTabelasLayout.setVerticalGroup(
+            painelTabelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelTabelasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelTabelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTabelas_selecione)
+                    .addComponent(cbxTabelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                .addGroup(painelTabelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPainelTabelas_Sair)
+                    .addComponent(btnPainelTabelas_Proximo))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout painelAba_TabelaLayout = new javax.swing.GroupLayout(painelAba_Tabela);
+        painelAba_Tabela.setLayout(painelAba_TabelaLayout);
+        painelAba_TabelaLayout.setHorizontalGroup(
+            painelAba_TabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAba_TabelaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelTabelas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        painelAba_TabelaLayout.setVerticalGroup(
+            painelAba_TabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAba_TabelaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelTabelas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        painelAbas.addTab("Tabela", painelAba_Tabela);
 
         painelAba_Atributos.setBorder(javax.swing.BorderFactory.createTitledBorder("Atributos"));
 
@@ -60,11 +135,11 @@ public class FormAddDimensao extends javax.swing.JFrame {
         jPanelAtributos.setLayout(jPanelAtributosLayout);
         jPanelAtributosLayout.setHorizontalGroup(
             jPanelAtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 413, Short.MAX_VALUE)
+            .addGap(0, 598, Short.MAX_VALUE)
         );
         jPanelAtributosLayout.setVerticalGroup(
             jPanelAtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGap(0, 308, Short.MAX_VALUE)
         );
 
         scroolPaneAbaAtri_Atributos.setViewportView(jPanelAtributos);
@@ -90,7 +165,7 @@ public class FormAddDimensao extends javax.swing.JFrame {
             .addGroup(painelAba_AtributosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAba_AtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scroolPaneAbaAtri_Atributos, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                    .addComponent(scroolPaneAbaAtri_Atributos, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAba_AtributosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAbaAtributos_Proximo)
@@ -101,7 +176,7 @@ public class FormAddDimensao extends javax.swing.JFrame {
         painelAba_AtributosLayout.setVerticalGroup(
             painelAba_AtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAba_AtributosLayout.createSequentialGroup()
-                .addComponent(scroolPaneAbaAtri_Atributos, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                .addComponent(scroolPaneAbaAtri_Atributos, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelAba_AtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbaAtributos_Proximo)
@@ -154,7 +229,7 @@ public class FormAddDimensao extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(painelAbaNomeChave_NomeChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAbaNomeChave_NomeDim)
-                            .addComponent(cbxAbaNomeChave_PKs, 0, 244, Short.MAX_VALUE)))
+                            .addComponent(cbxAbaNomeChave_PKs, 0, 233, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaNomeChave_NomeChaveLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAbaNomeChave_Voltar)
@@ -175,7 +250,7 @@ public class FormAddDimensao extends javax.swing.JFrame {
                 .addGroup(painelAbaNomeChave_NomeChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAbaNomeChave_Chave)
                     .addComponent(cbxAbaNomeChave_PKs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                 .addGroup(painelAbaNomeChave_NomeChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbaNomeChave_Sair)
                     .addComponent(btnAbaNomeChave_Salvar)
@@ -206,16 +281,14 @@ public class FormAddDimensao extends javax.swing.JFrame {
         painelConfDim.setLayout(painelConfDimLayout);
         painelConfDimLayout.setHorizontalGroup(
             painelConfDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelConfDimLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painelAbas)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConfDimLayout.createSequentialGroup()
+                .addComponent(painelAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                 .addContainerGap())
         );
         painelConfDimLayout.setVerticalGroup(
             painelConfDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelConfDimLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painelAbas)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConfDimLayout.createSequentialGroup()
+                .addComponent(painelAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -259,11 +332,38 @@ public class FormAddDimensao extends javax.swing.JFrame {
     private void btnAbaAtributos_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaAtributos_SairActionPerformed
         dispose();
     }//GEN-LAST:event_btnAbaAtributos_SairActionPerformed
+
+    private void btnPainelTabelas_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPainelTabelas_SairActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnPainelTabelas_SairActionPerformed
+
+    private void btnPainelTabelas_ProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPainelTabelas_ProximoActionPerformed
+        carregarCheckBoxesAtr();
+        PercorrerAbasAddDimensao.tabelaToAtributos();
+    }//GEN-LAST:event_btnPainelTabelas_ProximoActionPerformed
     
+    private void carregarTabelasSalvas(){
+        cbxTabelas.removeAllItems();
+        for(TabelaFato t : FormGerarCuboXml.tabelasFato){
+            cbxTabelas.addItem(t.getNomeTabela());
+        }
+    }
+    
+    private void carregarCbxPrimaryKey(){
+        cbxAbaNomeChave_PKs.removeAllItems();
+        for(JCheckBox checkBox : listaDeCheckBox){
+            if(checkBox.isSelected()){
+                cbxAbaNomeChave_PKs.addItem(checkBox.getText());
+                salvarAtributosUtilizados(checkBox.getText());
+            }
+        }
+        cbxAbaNomeChave_PKs.updateUI();
+    }
+        
     private void salvarDimensao(){
         Dimensao d = new Dimensao();
         d.setNome(txtAbaNomeChave_NomeDim.getText());
-        d.setTabela(nomeTabelaPivot);
+        d.setTabela(tabelaFato.getNomeTabela());
         d.setKey(cbxAbaNomeChave_PKs.getSelectedItem().toString());
         List<String> atributos = new ArrayList<>();
         for(int i = 0; i < cbxAbaNomeChave_PKs.getComponentCount(); i++){
@@ -280,18 +380,6 @@ public class FormAddDimensao extends javax.swing.JFrame {
         FormGerarCuboXml.painel_jtpAbaModelDim_listDims.updateUI();        
         dispose();
     }
-        
-    private void carregarCbxPrimaryKey(){
-        cbxAbaNomeChave_PKs.removeAllItems();
-        for(JCheckBox checkBox : listaDeCheckBox){
-            if(checkBox.isSelected()){
-                cbxAbaNomeChave_PKs.addItem(checkBox.getText());
-                salvarAtributosUtilizados(checkBox.getText());
-            }
-        }
-        cbxAbaNomeChave_PKs.updateUI();
-        PercorrerAbasAddDimensao.abaAtriToAbaNomeChave();
-    }
     
     private void salvarAtributosUtilizados(String atributo){        
         boolean existeNaLista = false;
@@ -307,20 +395,34 @@ public class FormAddDimensao extends javax.swing.JFrame {
     
     private void carregarCheckBoxesAtr(){
         jPanelAtributos.setLayout(new BoxLayout(jPanelAtributos, BoxLayout.Y_AXIS));
-        for(int i = 0; i < tabelaPivot.getColumnCount(); i++){
+        tabelaFato = new TabelaFato();
+        for(TabelaFato t : FormGerarCuboXml.tabelasFato){
+            if(t.getNomeTabela().equals(cbxTabelas.getSelectedItem().toString())){
+                tabelaFato = t;
+            }
+        }
+        for(int i = 0; i < tabelaFato.getjTable().getColumnCount(); i++){
             JCheckBox checkBox = new JCheckBox();
-            checkBox.setText(tabelaPivot.getColumnName(i));
+            checkBox.setText(tabelaFato.getjTable().getColumnName(i));
             checkBox.setVisible(true);
             listaDeCheckBox.add(checkBox);
             jPanelAtributos.add(checkBox);
         }
+//        jPanelAtributos.setLayout(new BoxLayout(jPanelAtributos, BoxLayout.Y_AXIS));
+//        for(int i = 0; i < tabelaPivot.getColumnCount(); i++){
+//            JCheckBox checkBox = new JCheckBox();
+//            checkBox.setText(tabelaPivot.getColumnName(i));
+//            checkBox.setVisible(true);
+//            listaDeCheckBox.add(checkBox);
+//            jPanelAtributos.add(checkBox);
+//        }
         jPanelAtributos.updateUI();
     }
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormAddDimensao(null, null).setVisible(true);
+                new FormAddDimensao().setVisible(true);
             }
         });
     }
@@ -331,15 +433,21 @@ public class FormAddDimensao extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaNomeChave_Sair;
     private javax.swing.JButton btnAbaNomeChave_Salvar;
     private javax.swing.JButton btnAbaNomeChave_Voltar;
+    private javax.swing.JButton btnPainelTabelas_Proximo;
+    private javax.swing.JButton btnPainelTabelas_Sair;
     private javax.swing.JComboBox<String> cbxAbaNomeChave_PKs;
+    private javax.swing.JComboBox<String> cbxTabelas;
     private javax.swing.JPanel jPanelAtributos;
     private javax.swing.JLabel lblAbaNomeChave_Chave;
     private javax.swing.JLabel lblAbaNomeChave_NomeDim;
+    private javax.swing.JLabel lblTabelas_selecione;
     private javax.swing.JPanel painelAbaNomeChave_NomeChave;
     private javax.swing.JPanel painelAba_Atributos;
     private javax.swing.JPanel painelAba_NomeChave;
+    private javax.swing.JPanel painelAba_Tabela;
     public static javax.swing.JTabbedPane painelAbas;
     private javax.swing.JPanel painelConfDim;
+    private javax.swing.JPanel painelTabelas;
     private javax.swing.JScrollPane scroolPaneAbaAtri_Atributos;
     private javax.swing.JTextField txtAbaNomeChave_NomeDim;
     // End of variables declaration//GEN-END:variables

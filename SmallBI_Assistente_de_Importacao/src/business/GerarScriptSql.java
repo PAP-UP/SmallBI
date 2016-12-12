@@ -12,8 +12,7 @@ import javax.swing.JTable;
 public class GerarScriptSql {
     
     public static String scriptSqlTabelaPivot;
-    
-    
+        
     public String salvarTabelaPivot(JTable tbl, String nomeTabela, String chavePrimaria,
             List<JComboBox> listaCbxTiposParametro){
         
