@@ -9,7 +9,6 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.CidadeBusiness;
 import br.com.smallbi.business.EstadoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Estado;
 
@@ -33,11 +32,7 @@ public class TestCidade {
 		cidade.setSiglaCidade("LDRN");
 		cidade.setStatus(true);
 		cidade.setUsuarioId(1);		
-		try {
-			cidadeBusiness.create(cidade);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		cidadeBusiness.create(cidade);
 		idTestCidade = cidade.getIdCidade();
 	}
 	
@@ -59,25 +54,18 @@ public class TestCidade {
 	
 	@Test
 	public void test3UpdadeCidade(){
-		try {
-			Cidade cidade = cidadeBusiness.getObjById(idTestCidade);
-			cidade.setNomeCidade("Curitiba");
-			cidade.setSiglaCidade("CTBA");
-			cidadeBusiness.update(cidade);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		Cidade cidade = cidadeBusiness.getObjById(idTestCidade);
+		cidade.setNomeCidade("Curitiba");
+		cidade.setSiglaCidade("CTBA");
+		cidadeBusiness.update(cidade);
 		System.out.println("UPDATE");
 		test2ListCidade();		
 	}
 	
 	@Test
 	public void test4DeleteCidade(){
-		try {
-			cidadeBusiness.delete(idTestCidade);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		cidadeBusiness.delete(idTestCidade);
 		System.out.println("DELETE");
 		test2ListCidade();
 	}

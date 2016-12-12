@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.UsuarioBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Usuario;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

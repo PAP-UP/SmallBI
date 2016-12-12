@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.FuncaoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Funcao;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -24,12 +23,8 @@ public class TestFuncao {
 		funcao.setNomeFuncao("Data Scientist");
 		funcao.setStatus(true);
 		funcao.setUsuarioId(1);
-		
-		try {
-			funcaoBusiness.create(funcao);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+	
+		funcaoBusiness.create(funcao);
 		idTestFuncao = funcao.getIdFuncao();
 	}
 	
@@ -49,24 +44,16 @@ public class TestFuncao {
 	
 	@Test
 	public void test3UpdateFuncao(){
-		try {
-			Funcao funcao = funcaoBusiness.getObjById(idTestFuncao);
-			funcao.setNomeFuncao("Security Analyst");
-			funcaoBusiness.update(funcao);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		Funcao funcao = funcaoBusiness.getObjById(idTestFuncao);
+		funcao.setNomeFuncao("Security Analyst");
+		funcaoBusiness.update(funcao);
 		System.out.println("UPDATE");
 		test2ListFuncao();
 	}
 
 	@Test
 	public void test4DeleteFuncao(){
-		try {
-			funcaoBusiness.delete(idTestFuncao);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		funcaoBusiness.delete(idTestFuncao);
 		System.out.println("DELETE");
 		test2ListFuncao();
 	}

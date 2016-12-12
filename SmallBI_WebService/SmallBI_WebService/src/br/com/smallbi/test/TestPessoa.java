@@ -10,7 +10,6 @@ import org.junit.runners.MethodSorters;
 import br.com.smallbi.business.EnderecoBusiness;
 import br.com.smallbi.business.FuncaoBusiness;
 import br.com.smallbi.business.PessoaBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Funcao;
 import br.com.smallbi.entity.Pessoa;
@@ -40,11 +39,7 @@ public class TestPessoa {
 		pessoa.setStatus(true);
 		pessoa.setUsuarioId(1);
 		
-		try {
-			pessoaBusiness.create(pessoa);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		pessoaBusiness.create(pessoa);
 		idTestPessoa = pessoa.getIdPessoa();
 	}
 	
@@ -69,24 +64,16 @@ public class TestPessoa {
 	@Test
 	public void test3UpdatePessoa(){
 		Pessoa pessoa;
-		try {
-			pessoa = pessoaBusiness.getObjById(idTestPessoa);
-			pessoa.setNome("Zezinho");
-			pessoaBusiness.update(pessoa);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		pessoa = pessoaBusiness.getObjById(idTestPessoa);
+		pessoa.setNome("Zezinho");
+		pessoaBusiness.update(pessoa);
 		System.out.println("UPDATE");
 		test2ListPessoa();
 	}
 
 	@Test
 	public void test4DeletePessoa(){
-		try {
-			pessoaBusiness.delete(idTestPessoa);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		pessoaBusiness.delete(idTestPessoa);
 		System.out.println("DELETE");
 		test2ListPessoa();
 	}

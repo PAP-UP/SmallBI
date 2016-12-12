@@ -11,7 +11,6 @@ import br.com.smallbi.business.EmpresaBusiness;
 import br.com.smallbi.business.PessoaBusiness;
 import br.com.smallbi.business.TelefoneBusiness;
 import br.com.smallbi.business.TipoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Empresa;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Telefone;
@@ -46,11 +45,7 @@ public class TestTelefone {
 		
 		telefone.setUsuarioId(1);
 		
-		try {
-			telefoneBusiness.create(telefone);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		telefoneBusiness.create(telefone);
 		idTestTeledone = telefone.getIdTelefone();
 	}
 	
@@ -74,24 +69,16 @@ public class TestTelefone {
 	
 	@Test
 	public void test3UpdateTelefone(){
-		try {
-			Telefone t = telefoneBusiness.getObjById(idTestTeledone);
-			t.setTelefone("9999-9999");
-			telefoneBusiness.update(t);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		Telefone t = telefoneBusiness.getObjById(idTestTeledone);
+		t.setTelefone("9999-9999");
+		telefoneBusiness.update(t);
 		System.out.println("UPDATE");
 		test2ListTelefone();
 	}
 
 	@Test
 	public void test4DeleteTelefone(){
-		try {
-			telefoneBusiness.delete(idTestTeledone);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		telefoneBusiness.delete(idTestTeledone);
 		System.out.println("DELETE");
 		test2ListTelefone();
 	}

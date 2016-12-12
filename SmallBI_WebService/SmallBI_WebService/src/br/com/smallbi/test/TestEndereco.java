@@ -10,7 +10,6 @@ import org.junit.runners.MethodSorters;
 import br.com.smallbi.business.CidadeBusiness;
 import br.com.smallbi.business.EnderecoBusiness;
 import br.com.smallbi.business.TipoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Tipo;
@@ -41,11 +40,7 @@ public class TestEndereco {
 		
 		endereco.setUsuarioId(1);
 		
-		try {
-			enderecoBusiness.create(endereco);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		enderecoBusiness.create(endereco);
 		idTestEndereco = endereco.getIdEndereco();
 	}
 	
@@ -68,24 +63,16 @@ public class TestEndereco {
 	
 	@Test
 	public void test3UpdateEndereco(){
-		try {
-			Endereco endereco = enderecoBusiness.getObjById(idTestEndereco);
-			endereco.setEndereco("Rua dos Bobos");
-			endereco.setNumero("0");
-			enderecoBusiness.update(endereco);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		Endereco endereco = enderecoBusiness.getObjById(idTestEndereco);
+		endereco.setEndereco("Rua dos Bobos");
+		endereco.setNumero("0");
+		enderecoBusiness.update(endereco);
 		test2ListEndereco();
 	}
 
 	@Test
 	public void test4DeleteEndereco(){
-		try {
-			enderecoBusiness.delete(idTestEndereco);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		enderecoBusiness.delete(idTestEndereco);
 		System.out.println("DELETE");
 		test2ListEndereco();
 	}

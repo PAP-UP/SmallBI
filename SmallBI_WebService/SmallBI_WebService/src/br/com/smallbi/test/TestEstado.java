@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.EstadoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Estado;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -25,11 +24,7 @@ public class TestEstado{
 		estado.setStatus(true);
 		estado.setUsuarioId(1);
 		estado.setDataCadastro(Calendar.getInstance());		
-		try {
-			estadoBusiness.create(estado);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		estadoBusiness.create(estado);
 		idTestEstado = estado.getIdEstado();
 	}
 	
@@ -50,24 +45,16 @@ public class TestEstado{
 	
 	@Test
 	public void test3UpdateEstado(){
-		try {
-			Estado e = estadoBusiness.getObjById(idTestEstado);
-			e.setNomeEstado("Paraná");
-			estadoBusiness.update(e);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		Estado e = estadoBusiness.getObjById(idTestEstado);
+		e.setNomeEstado("Paraná");
+		estadoBusiness.update(e);
 		System.out.println("UPDATE");
 		test2ListEstado();
 	}
 	
 	@Test
 	public void test4DeleteEstado(){
-		try {
-			estadoBusiness.delete(idTestEstado);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		estadoBusiness.delete(idTestEstado);
 		System.out.println("DELETE");
 		test2ListEstado();
 	}

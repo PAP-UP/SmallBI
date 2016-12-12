@@ -12,7 +12,6 @@ import br.com.smallbi.business.EnderecoBusiness;
 import br.com.smallbi.business.FormaPagamentoBusiness;
 import br.com.smallbi.business.PlanoBusiness;
 import br.com.smallbi.business.RamoAtividadeBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Empresa;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.FormaPagamento;
@@ -55,11 +54,7 @@ public class TestEmpresa {
 		e.setTamanhoTotal(100);
 		e.setUsuarioId(1);
 		
-		try {
-			empresaBusiness.create(e);
-		} catch (BusinessException e1) {
-			e1.printStackTrace();
-		}
+		empresaBusiness.create(e);
 		idTestEmpresa = e.getIdEmpresa();
 	}
 	
@@ -87,24 +82,16 @@ public class TestEmpresa {
 	
 	@Test
 	public void test3UpdateEmpresa(){
-		try {
-			Empresa empresa = empresaBusiness.getObjById(idTestEmpresa);
-			empresa.setNomeFantasia("SmallBI");
-			empresaBusiness.update(empresa);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		Empresa empresa = empresaBusiness.getObjById(idTestEmpresa);
+		empresa.setNomeFantasia("SmallBI");
+		empresaBusiness.update(empresa);
 		System.out.println("UPDATE");
 		test2ListEmpresa();
 	}
 
 	@Test
 	public void test4DeleteEmpresa(){
-		try {
-			empresaBusiness.delete(idTestEmpresa);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		empresaBusiness.delete(idTestEmpresa);
 		System.out.println("DELETE");
 		test2ListEmpresa();
 	}

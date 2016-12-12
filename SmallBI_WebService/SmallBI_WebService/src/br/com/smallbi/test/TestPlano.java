@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.PlanoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Plano;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -25,11 +24,7 @@ public class TestPlano {
 		plano.setStatus(true);
 		plano.setUsuarioId(1);
 		
-		try {
-			planoBusiness.create(plano);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		planoBusiness.create(plano);
 		idTestPlano = plano.getIdPlano();
 	}
 	
@@ -49,24 +44,16 @@ public class TestPlano {
 	
 	@Test
 	public void test3UpdatePlano(){
-		try {
-			Plano p = planoBusiness.getObjById(idTestPlano);
-			p.setDescricao("Expensive plan");
-			planoBusiness.update(p);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		Plano p = planoBusiness.getObjById(idTestPlano);
+		p.setDescricao("Expensive plan");
+		planoBusiness.update(p);
 		System.out.println("UPDATE");
 		test2ListPlano();
 	}
 
 	@Test
 	public void test4DeletePlano(){
-		try {
-			planoBusiness.delete(idTestPlano);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		planoBusiness.delete(idTestPlano);
 		System.out.println("DELETE");
 		test2ListPlano();
 	}

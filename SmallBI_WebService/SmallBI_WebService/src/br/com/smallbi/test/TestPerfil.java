@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.PerfilBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Perfil;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -25,11 +24,7 @@ public class TestPerfil {
 		perfil.setStatus(true);
 		perfil.setUsuarioId(1);
 		
-		try {
-			perfilBusiness.create(perfil);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		perfilBusiness.create(perfil);
 		idTestPerfil = perfil.getIdPerfil();
 	}
 	
@@ -49,24 +44,16 @@ public class TestPerfil {
 	
 	@Test
 	public void test3UpdatePerfil(){
-		try {
-			Perfil p = perfilBusiness.getObjById(idTestPerfil);
-			p.setNomePerfil("User");
-			perfilBusiness.update(p);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		Perfil p = perfilBusiness.getObjById(idTestPerfil);
+		p.setNomePerfil("User");
+		perfilBusiness.update(p);
 		System.out.println("UPDATE");
 		test2ListPerfil();
 	}
 
 	@Test
 	public void test4DeletePerfil(){
-		try {
-			perfilBusiness.delete(idTestPerfil);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		perfilBusiness.delete(idTestPerfil);
 		System.out.println("DELETE");
 		test2ListPerfil();
 	}

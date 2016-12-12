@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.TipoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Tipo;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -25,11 +24,7 @@ public class TestTipo {
 		tipo.setTipo("Residencial");
 		tipo.setUsuarioId(1);
 		
-		try {
-			tipoBusiness.create(tipo);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		tipoBusiness.create(tipo);
 		idTestTipo = tipo.getIdTipo();
 	}
 	
@@ -49,24 +44,16 @@ public class TestTipo {
 	
 	@Test
 	public void test3UpdadeTipo(){
-		try {
-			Tipo tipo = tipoBusiness.getObjById(idTestTipo);
-			tipo.setTipo("Comercial");
-			tipoBusiness.update(tipo);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		Tipo tipo = tipoBusiness.getObjById(idTestTipo);
+		tipo.setTipo("Comercial");
+		tipoBusiness.update(tipo);
 		System.out.println("UPDATE");
 		test2ListTipo();
 	}
 
 	@Test
 	public void test4DeleteTipo(){
-		try {
-			tipoBusiness.delete(idTestTipo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		tipoBusiness.delete(idTestTipo);
 		System.out.println("DELETE");
 		test2ListTipo();
 	}

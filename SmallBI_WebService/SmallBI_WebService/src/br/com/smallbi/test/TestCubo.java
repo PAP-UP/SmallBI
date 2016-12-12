@@ -9,7 +9,6 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.CuboBusiness;
 import br.com.smallbi.business.EmpresaBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Cubo;
 import br.com.smallbi.entity.Empresa;
 
@@ -35,11 +34,7 @@ public class TestCubo {
 		cubo.setTamanho(30);
 		cubo.setUsuarioId(1);
 		
-		try {
-			cuboBusiness.create(cubo);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		cuboBusiness.create(cubo);
 		idTestCubo = cubo.getIdCubo();
 	}
 	
@@ -63,24 +58,16 @@ public class TestCubo {
 	
 	@Test
 	public void test3Update(){
-		try {
-			Cubo cubo = cuboBusiness.getObjById(idTestCubo);
-			cubo.setNomeCubo("Incidents Cube");
-			cuboBusiness.update(cubo);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		Cubo cubo = cuboBusiness.getObjById(idTestCubo);
+		cubo.setNomeCubo("Incidents Cube");
+		cuboBusiness.update(cubo);
 		System.out.println("UPDATE");
 		test2ListCubo();
 	}
 
 	@Test
 	public void test4DeleteCubo(){
-		try {
-			cuboBusiness.delete(idTestCubo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		cuboBusiness.delete(idTestCubo);
 		System.out.println("DELETE");
 		test2ListCubo();
 	}

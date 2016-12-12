@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.RamoAtividadeBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.RamoAtividade;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -25,11 +24,7 @@ public class TestRamoAtividade {
 		ramoAtividade.setStatus(true);
 		ramoAtividade.setUsuarioId(1);
 		
-		try {
-			ramoAtividadeBusiness.create(ramoAtividade);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		ramoAtividadeBusiness.create(ramoAtividade);
 		idTestRamoAtividade = ramoAtividade.getIdRamoAtividade();
 	}
 	
@@ -49,24 +44,16 @@ public class TestRamoAtividade {
 	
 	@Test
 	public void test3UpdateRamoAtividade(){
-		try {
-			RamoAtividade r = ramoAtividadeBusiness.getObjById(idTestRamoAtividade);
-			r.setRamoAtividade("Cyber Terrorism");
-			ramoAtividadeBusiness.update(r);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		RamoAtividade r = ramoAtividadeBusiness.getObjById(idTestRamoAtividade);
+		r.setRamoAtividade("Cyber Terrorism");
+		ramoAtividadeBusiness.update(r);
 		System.out.println("UPDATE");
 		test2ListRamoAtividade();
 	}
 
 	@Test
 	public void test4DeleteRamoAtividade(){
-		try {
-			ramoAtividadeBusiness.delete(idTestRamoAtividade);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ramoAtividadeBusiness.delete(idTestRamoAtividade);
 		System.out.println("DELETE");
 		test2ListRamoAtividade();
 	}

@@ -11,7 +11,6 @@ import br.com.smallbi.business.EmpresaBusiness;
 import br.com.smallbi.business.PerfilBusiness;
 import br.com.smallbi.business.PessoaBusiness;
 import br.com.smallbi.business.UsuarioBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Empresa;
 import br.com.smallbi.entity.Perfil;
 import br.com.smallbi.entity.Pessoa;
@@ -47,11 +46,7 @@ public class TestUsuario {
 		usuario.setUsuarioId(1);
 		usuario.setUsuarioSaiku("borbasaiku");
 		
-		try {
-			usuarioBusiness.create(usuario);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		usuarioBusiness.create(usuario);
 		idTestusuario = usuario.getIdUsuario();
 	}
 	
@@ -76,25 +71,17 @@ public class TestUsuario {
 	
 	@Test
 	public void test3UpdateUsuario(){
-		try {
-			Usuario u = usuarioBusiness.getObjById(idTestusuario);
-			u.setLogin("borba_1993");
-			u.setSenha("1234567890");
-			usuarioBusiness.update(u);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		Usuario u = usuarioBusiness.getObjById(idTestusuario);
+		u.setLogin("borba_1993");
+		u.setSenha("1234567890");
+		usuarioBusiness.update(u);
 		System.out.println("UPDATE");
 		test2ListUsuario();
 	}
 	
 	@Test
 	public void test4Deleteusuario(){
-		try {
-			usuarioBusiness.delete(idTestusuario);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		usuarioBusiness.delete(idTestusuario);
 		System.out.println("DELETE");
 		test2ListUsuario();
 	}

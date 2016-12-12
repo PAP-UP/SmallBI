@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.FormaPagamentoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.FormaPagamento;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -24,11 +23,7 @@ public class TestFormaPagamento {
 		formaPagamento.setFormaPagamento("Credit");
 		formaPagamento.setStatus(true);
 		formaPagamento.setUsuarioId(1);
-		try {
-			formaPagamentoBusiness.create(formaPagamento);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		formaPagamentoBusiness.create(formaPagamento);
 		idTestFormaPagamento = formaPagamento.getIdFormaPagamento();
 	}
 	
@@ -48,24 +43,16 @@ public class TestFormaPagamento {
 	
 	@Test
 	public void test3UpdateFormaPagamento(){
-		try {
-			FormaPagamento f = formaPagamentoBusiness.getObjById(idTestFormaPagamento);
-			f.setFormaPagamento("Debit");
-			formaPagamentoBusiness.update(f);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+		FormaPagamento f = formaPagamentoBusiness.getObjById(idTestFormaPagamento);
+		f.setFormaPagamento("Debit");
+		formaPagamentoBusiness.update(f);
 		System.out.println("UPDATE");
 		test2ListFormaPagamento();
 	}
 
 	@Test
 	public void test4DeleteFormaPagamento(){
-		try {
-			formaPagamentoBusiness.delete(idTestFormaPagamento);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		formaPagamentoBusiness.delete(idTestFormaPagamento);
 		System.out.println("DELETE");
 		test2ListFormaPagamento();
 	}
