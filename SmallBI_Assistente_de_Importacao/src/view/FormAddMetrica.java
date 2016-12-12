@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import model.Dimensao;
 import model.FactLink;
 import model.GrupoMetrica;
 import model.Metrica;
@@ -18,6 +19,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
         initComponents();
         carregarAgregadores();
         carregarFormatos();
+        carregarTabelasSalvas();
     }
 
     @SuppressWarnings("unchecked")
@@ -45,9 +47,6 @@ public class FormAddMetrica extends javax.swing.JFrame {
         cbxPainelConfMetri_Formato = new javax.swing.JComboBox<>();
         btnPainelConfMetri_Adicionar = new javax.swing.JButton();
         btnPainelConfMetri_Sair = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         AbaPreviewMetricas = new javax.swing.JPanel();
         painelMetricasAdicionadas = new javax.swing.JPanel();
         painelMetricas = new javax.swing.JPanel();
@@ -84,7 +83,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
                         .addGroup(painelConfGrupMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAbaGrupoMetri_NomeGrupo)
                             .addComponent(lblAbaGrupoMetri_Tabela))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                         .addGroup(painelConfGrupMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAbaGrupoMetri_NomeGrupo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbxAbaGrupoMetri_Tabela, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -106,7 +105,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
                 .addGroup(painelConfGrupMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAbaGrupoMetri_Tabela)
                     .addComponent(cbxAbaGrupoMetri_Tabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addGroup(painelConfGrupMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbaGrupoMetri_Sair)
                     .addComponent(btnAbaGrupoMetri_Proximo))
@@ -159,13 +158,10 @@ public class FormAddMetrica extends javax.swing.JFrame {
                         .addGroup(painelConfMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblPainelConfMetri_Agre, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPainelConfMetri_Formato, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(painelConfMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelConfMetricasLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                                .addComponent(cbxPainelConfMetri_Formato, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(painelConfMetricasLayout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(cbxPainelConfMetri_Agre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(cbxPainelConfMetri_Formato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxPainelConfMetri_Agre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(painelConfMetricasLayout.createSequentialGroup()
                         .addGroup(painelConfMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPainelConfMetri_Coluna)
@@ -212,33 +208,6 @@ public class FormAddMetrica extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("FackLink"));
-
-        jLabel1.setText("Dimensão: ");
-
-        jLabel2.setText("Chave Estrangeira: ");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout AbaMetricasLayout = new javax.swing.GroupLayout(AbaMetricas);
         AbaMetricas.setLayout(AbaMetricasLayout);
         AbaMetricasLayout.setHorizontalGroup(
@@ -251,8 +220,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnPainelConfMetri_Adicionar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPainelConfMetri_Sair))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnPainelConfMetri_Sair)))
                 .addContainerGap())
         );
         AbaMetricasLayout.setVerticalGroup(
@@ -260,9 +228,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
             .addGroup(AbaMetricasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(painelConfMetricas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(AbaMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPainelConfMetri_Sair)
                     .addComponent(btnPainelConfMetri_Adicionar))
@@ -289,10 +255,15 @@ public class FormAddMetrica extends javax.swing.JFrame {
             .addGroup(painelMetricasAdicionadasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(painelMetricas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         btnAbaPreviewMetri_Salvar.setText("Salvar");
+        btnAbaPreviewMetri_Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbaPreviewMetri_SalvarActionPerformed(evt);
+            }
+        });
 
         btnAbaPreviewMetri_MaisMetri.setText("Mais Métricas");
 
@@ -305,7 +276,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
                 .addGroup(AbaPreviewMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelMetricasAdicionadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaPreviewMetricasLayout.createSequentialGroup()
-                        .addGap(0, 250, Short.MAX_VALUE)
+                        .addGap(0, 333, Short.MAX_VALUE)
                         .addComponent(btnAbaPreviewMetri_MaisMetri)
                         .addGap(18, 18, 18)
                         .addComponent(btnAbaPreviewMetri_Salvar)))
@@ -331,7 +302,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAbas)
+                .addComponent(painelAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -360,6 +331,10 @@ public class FormAddMetrica extends javax.swing.JFrame {
         carregarCbxColunas();
     }//GEN-LAST:event_btnAbaGrupoMetri_ProximoActionPerformed
 
+    private void btnAbaPreviewMetri_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaPreviewMetri_SalvarActionPerformed
+        salvarGrupoMetrica();
+    }//GEN-LAST:event_btnAbaPreviewMetri_SalvarActionPerformed
+
     private void adicionarMetricaAoGrupo(){
         Metrica m = new Metrica();
         m.setNome(txtPainelConfMetri_Nome.getText());
@@ -367,17 +342,31 @@ public class FormAddMetrica extends javax.swing.JFrame {
         m.setAgregador(cbxPainelConfMetri_Agre.getSelectedItem().toString());
         m.setFormato(cbxPainelConfMetri_Formato.getSelectedItem().toString()); 
         
-        List<Metrica> metricas;
-        if(grupoMetrica.getMetricas().size() != 0){
-           metricas = grupoMetrica.getMetricas();
-        }else{
-            metricas = new ArrayList<>();
+        List<Metrica> metricas = new ArrayList<>();
+        if(grupoMetrica.getMetricas() != null){
+            metricas = grupoMetrica.getMetricas();
         }
+        
         metricas.add(m);
         grupoMetrica.setMetricas(metricas);
         
-        FactLink factLink = new FactLink();
-        factLink.
+        List<FactLink> factLinks = new ArrayList<>();
+        if(grupoMetrica.getFactLinks() != null){
+            factLinks = grupoMetrica.getFactLinks();
+        }
+        
+        for(Dimensao d : FormGerarCuboXml.dimensoes){
+            for(String atributo : d.getAtributos()){
+                 if(atributo.equals(m.getColuna())){
+                     FactLink factLink = new FactLink();
+                     factLink.setDimension(d.getNome());
+                     factLink.setForeignKey(atributo);
+                     factLinks.add(factLink);
+                 }
+            }
+        }
+        grupoMetrica.setFactLinks(factLinks);        
+        gerarPreview(m);
     }
     
     private void criarGrupoMetricas(){
@@ -385,19 +374,32 @@ public class FormAddMetrica extends javax.swing.JFrame {
         grupoMetrica.setTabela(cbxAbaGrupoMetri_Tabela.getSelectedItem().toString());
     }
     
-    private void salvarMetrica(){        
- 
-        FormGerarCuboXml.metricas.add(m);
-        
-        JLabel l = new JLabel();   
+    private void salvarGrupoMetrica(){
+        FormGerarCuboXml.grupoMetricas.add(grupoMetrica);
+    }
+    
+    private void gerarPreview(Metrica m){
+        JLabel l = new JLabel();
         l.setText("Métrica: " + m.getNome() + ", Coluna: " + m.getColuna() + ", Agregador: " + m.getAgregador() +
                 ", Formato: " + m.getFormato() + ";");
-        FormGerarCuboXml.painelAbaModelMetri_ListMetri.setLayout(
-            new BoxLayout(FormGerarCuboXml.painelAbaModelMetri_ListMetri, BoxLayout.Y_AXIS));    
-        FormGerarCuboXml.painelAbaModelMetri_ListMetri.add(l);
-        FormGerarCuboXml.painelAbaModelMetri_ListMetri.updateUI();        
-        dispose();
+        painelMetricas.setLayout(new BoxLayout(painelMetricas, BoxLayout.Y_AXIS)); 
+        painelMetricas.add(l);
+        painelMetricas.updateUI();
     }
+    
+//    private void salvarMetrica(){        
+// 
+//        FormGerarCuboXml.metricas.add(m);
+//        
+//        JLabel l = new JLabel();   
+//        l.setText("Métrica: " + m.getNome() + ", Coluna: " + m.getColuna() + ", Agregador: " + m.getAgregador() +
+//                ", Formato: " + m.getFormato() + ";");
+//        FormGerarCuboXml.painelAbaModelMetri_ListMetri.setLayout(
+//            new BoxLayout(FormGerarCuboXml.painelAbaModelMetri_ListMetri, BoxLayout.Y_AXIS));    
+//        FormGerarCuboXml.painelAbaModelMetri_ListMetri.add(l);
+//        FormGerarCuboXml.painelAbaModelMetri_ListMetri.updateUI();        
+//        dispose();
+//    }
     
     private void carregarTabelasSalvas(){
         cbxAbaGrupoMetri_Tabela.removeAllItems();
@@ -449,9 +451,6 @@ public class FormAddMetrica extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxPainelConfMetri_Agre;
     private javax.swing.JComboBox<String> cbxPainelConfMetri_Coluna;
     private javax.swing.JComboBox<String> cbxPainelConfMetri_Formato;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAbaGrupoMetri_NomeGrupo;
     private javax.swing.JLabel lblAbaGrupoMetri_Tabela;
     private javax.swing.JLabel lblPainelConfMetri_Agre;

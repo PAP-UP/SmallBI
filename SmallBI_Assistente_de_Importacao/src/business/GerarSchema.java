@@ -59,7 +59,7 @@ public class GerarSchema {
         
         String schema = new String();
         List<String> factLinks = new ArrayList<>();        
-        schema += "<MeasureGroups><MeasureGroup name='Métricas' table='" + nomeTabela + "'><Measures>";
+       // schema += "<MeasureGroups><MeasureGroup name='Métricas' table='" + nomeTabela + "'><Measures>";
         
         for(Metrica m : metricas){
             schema += "<Measure name='" + m.getNome() + "' column='" + m.getColuna() + "' aggregator='" +

@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JTable;
 import model.Dimensao;
+import model.GrupoMetrica;
 import model.Metrica;
 import model.Schema;
 import model.TabelaFato;
@@ -19,6 +20,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private List<JComboBox> listaCbxTipos = new ArrayList<>();
     public static List<Dimensao> dimensoes = new ArrayList<>();
     public static List<Metrica> metricas = new ArrayList<>();
+    public static List<GrupoMetrica> grupoMetricas = new ArrayList<>();
     public static List<TabelaFato> tabelasFato = new ArrayList<>();
     
 
