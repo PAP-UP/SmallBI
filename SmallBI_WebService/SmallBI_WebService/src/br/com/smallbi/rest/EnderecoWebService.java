@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.EnderecoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Endereco;
 
 @Path("/endereco")
@@ -39,13 +38,8 @@ public class EnderecoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addEndereco(String json){
 		Endereco endereco = gson.fromJson(json, type);
-		try {
-			enderecoBusiness.create(endereco);
-			return gson.toJson(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = enderecoBusiness.create(endereco);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class EnderecoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setEndereco(String json){
 		Endereco endereco = gson.fromJson(json, type);
-		try {
-			enderecoBusiness.update(endereco);
-			return gson.toJson(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = enderecoBusiness.update(endereco);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,26 +58,15 @@ public class EnderecoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delEndereco(String json){
 		Endereco endereco = gson.fromJson(json, type);
-		try {
-			enderecoBusiness.delete(endereco.getIdEndereco());
-			return gson.toJson(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = enderecoBusiness.delete(endereco.getIdEndereco());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idEndereco}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idEndereco") String idEndereco){
-		try {
-			Endereco endereco = enderecoBusiness.getObjById(Integer.parseInt(idEndereco));
-			return gson.toJson(endereco);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		//return gson.toJson("Nenhum resultado encontrado");
-		return gson.toJson(false);
+		Endereco endereco = enderecoBusiness.getObjById(Integer.parseInt(idEndereco));
+		return gson.toJson(endereco);
 	}
 }

@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.PerfilBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Perfil;
 
 @Path("/perfil")
@@ -39,13 +38,8 @@ public class PerfilWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addPerfil(String json){
 		Perfil perfil = gson.fromJson(json, type);
-		try {
-			perfilBusiness.create(perfil);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = perfilBusiness.create(perfil);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class PerfilWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setPerfil(String json){
 		Perfil perfil = gson.fromJson(json, type);
-		try {
-			perfilBusiness.update(perfil);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = perfilBusiness.update(perfil);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,25 +58,15 @@ public class PerfilWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delPerfil(String json){
 		Perfil perfil = gson.fromJson(json, type);
-		try {
-			perfilBusiness.delete(perfil.getIdPerfil());
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = perfilBusiness.delete(perfil.getIdPerfil());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idPerfil}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idPerfil") String idPerfil){
-		try {
-			Perfil perfil = perfilBusiness.getObjById(Integer.parseInt(idPerfil));
-			return gson.toJson(perfil);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+		Perfil perfil = perfilBusiness.getObjById(Integer.parseInt(idPerfil));
+		return gson.toJson(perfil);
 	}
 }

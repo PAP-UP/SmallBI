@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.FuncaoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Funcao;
 
 @Path("/funcao")
@@ -39,13 +38,8 @@ public class FuncaoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addFuncao(String json){
 		Funcao funcao = gson.fromJson(json, type);
-		try {
-			funcaoBusiness.create(funcao);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = funcaoBusiness.create(funcao);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class FuncaoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setFuncao(String json){
 		Funcao funcao = gson.fromJson(json, type);
-		try {
-			funcaoBusiness.update(funcao);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = funcaoBusiness.update(funcao);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,26 +58,15 @@ public class FuncaoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delFuncao(String json){
 		Funcao funcao = gson.fromJson(json, type);
-		try {
-			funcaoBusiness.delete(funcao.getIdFuncao());
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = funcaoBusiness.delete(funcao.getIdFuncao());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idFuncao}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idFuncao") String idFuncao){
-		try {
-			Funcao funcao = funcaoBusiness.getObjById(Integer.parseInt(idFuncao));
-			return gson.toJson(funcao);
-		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "";
+		Funcao funcao = funcaoBusiness.getObjById(Integer.parseInt(idFuncao));
+		return gson.toJson(funcao);
 	}
 }

@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.PlanoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Plano;
 
 @Path("/plano")
@@ -39,13 +38,8 @@ public class PlanoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addPlano(String json){
 		Plano plano = gson.fromJson(json, type);
-		try {
-			planoBusiness.create(plano);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = planoBusiness.create(plano);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class PlanoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setPlano(String json){
 		Plano plano = gson.fromJson(json, type);
-		try {
-			planoBusiness.update(plano);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = planoBusiness.update(plano);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,25 +58,15 @@ public class PlanoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delPlano(String json){
 		Plano plano = gson.fromJson(json, type);
-		try {
-			planoBusiness.delete(plano.getIdPlano());
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = planoBusiness.delete(plano.getIdPlano());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idPlano}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getPlanos(@PathParam("idPlano") String idPlano){
-		try {
-			Plano plano = planoBusiness.getObjById(Integer.parseInt(idPlano));
-			return gson.toJson(plano);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+		Plano plano = planoBusiness.getObjById(Integer.parseInt(idPlano));
+		return gson.toJson(plano);
 	}
 }

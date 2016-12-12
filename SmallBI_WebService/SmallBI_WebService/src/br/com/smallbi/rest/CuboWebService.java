@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.CuboBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Cubo;
 
 @Path("/cubo")
@@ -39,13 +38,8 @@ public class CuboWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addCubo(String json){
 		Cubo cubo = gson.fromJson(json, type);
-		try {
-			cuboBusiness.create(cubo);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = cuboBusiness.create(cubo);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class CuboWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setCubo(String json){
 		Cubo cubo = gson.fromJson(json, type);
-		try {
-			cuboBusiness.update(cubo);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = cuboBusiness.update(cubo);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,25 +58,15 @@ public class CuboWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delCubo(String json){
 		Cubo cubo = gson.fromJson(json, type);
-		try {
-			cuboBusiness.delete(cubo.getIdCubo());
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = cuboBusiness.delete(cubo.getIdCubo());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idCubo}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idCubo") String idCubo){
-		try {
-			Cubo cubo = cuboBusiness.getObjById(Integer.parseInt(idCubo));
-			return gson.toJson(cubo);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+		Cubo cubo = cuboBusiness.getObjById(Integer.parseInt(idCubo));
+		return gson.toJson(cubo);
 	}
 }

@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.TelefoneBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Telefone;
 
 @Path("/telefone")
@@ -39,13 +38,8 @@ public class TelefoneWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addTelefone(String json){
 		Telefone telefone = gson.fromJson(json, type);
-		try {
-			telefoneBusiness.create(telefone);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = telefoneBusiness.create(telefone);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class TelefoneWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setTelefone(String json){
 		Telefone telefone = gson.fromJson(json, type);
-		try {
-			telefoneBusiness.update(telefone);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = telefoneBusiness.update(telefone);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,25 +58,15 @@ public class TelefoneWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delTelefone(String json){
 		Telefone telefone = gson.fromJson(json, type);
-		try {
-			telefoneBusiness.delete(telefone.getIdTelefone());
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = telefoneBusiness.delete(telefone.getIdTelefone());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idTelefone}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idTelefone") String idTelefone){
-		try {
-			Telefone telefone = telefoneBusiness.getObjById(Integer.parseInt(idTelefone));
-			return gson.toJson(telefone);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+		Telefone telefone = telefoneBusiness.getObjById(Integer.parseInt(idTelefone));
+		return gson.toJson(telefone);
 	}
 }

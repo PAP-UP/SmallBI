@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.TipoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Tipo;
 
 @Path("/tipo")
@@ -39,13 +38,8 @@ public class TipoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addTipo(String json){
 		Tipo tipo = gson.fromJson(json, type);
-		try {
-			tipoBusiness.create(tipo);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = tipoBusiness.create(tipo);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class TipoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setTipo(String json){
 		Tipo tipo = gson.fromJson(json, type);
-		try {
-			tipoBusiness.update(tipo);
-			return gson.toJson(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = tipoBusiness.update(tipo);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,26 +58,16 @@ public class TipoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delTipo(String json){
 		Tipo tipo = gson.fromJson(json, type);
-		try {
-			tipoBusiness.delete(tipo.getIdTipo());
-			return gson.toJson(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = tipoBusiness.delete(tipo.getIdTipo());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idTipo}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idTipo") String idTipo){
-		try {
-			Tipo tipo = tipoBusiness.getObjById(Integer.parseInt(idTipo));
-			return gson.toJson(tipo);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+		Tipo tipo = tipoBusiness.getObjById(Integer.parseInt(idTipo));
+		return gson.toJson(tipo);
 	}
 }
 

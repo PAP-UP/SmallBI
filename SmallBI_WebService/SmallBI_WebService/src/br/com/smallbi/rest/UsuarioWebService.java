@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.UsuarioBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Usuario;
 
 @Path("/usuario")
@@ -39,13 +38,8 @@ public class UsuarioWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addUsuario(String json){
 		Usuario usuario = gson.fromJson(json, type);
-		try {
-			usuarioBusiness.create(usuario);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = usuarioBusiness.create(usuario);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class UsuarioWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setUsuario(String json){
 		Usuario usuario = gson.fromJson(json, type);
-		try {
-			usuarioBusiness.update(usuario);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = usuarioBusiness.update(usuario);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,25 +58,15 @@ public class UsuarioWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delUsuario(String json){
 		Usuario usuario = gson.fromJson(json, type);
-		try {
-			usuarioBusiness.delete(usuario.getIdUsuario());
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = usuarioBusiness.delete(usuario.getIdUsuario());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idUsuario}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idUsuario") String idUsuario){
-		try {
-			Usuario usuario = usuarioBusiness.getObjById(Integer.parseInt(idUsuario));
-			return gson.toJson(usuario);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+		Usuario usuario = usuarioBusiness.getObjById(Integer.parseInt(idUsuario));
+		return gson.toJson(usuario);
 	}
 }

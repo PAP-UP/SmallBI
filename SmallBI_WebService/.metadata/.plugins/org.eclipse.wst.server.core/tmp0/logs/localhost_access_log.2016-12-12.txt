@@ -1,0 +1,6 @@
+127.0.0.1 - - [12/Dec/2016:08:32:43 -0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [12/Dec/2016:08:34:07 -0200] "POST /SmallBI_WebService/rest/perfil/adicionar HTTP/1.1" 200 43
+127.0.0.1 - - [12/Dec/2016:08:34:25 -0200] "POST /SmallBI_WebService/rest/perfil/deletar HTTP/1.1" 500 3899
+127.0.0.1 - - [12/Dec/2016:08:34:52 -0200] "POST /SmallBI_WebService/rest/perfil/deletar HTTP/1.1" 200 86
+127.0.0.1 - - [12/Dec/2016:08:35:02 -0200] "POST /SmallBI_WebService/rest/perfil/deletar HTTP/1.1" 200 41
+127.0.0.1 - - [12/Dec/2016:08:35:23 -0200] "GET /SmallBI_WebService/rest/perfil/getById/5 HTTP/1.1" 200 172

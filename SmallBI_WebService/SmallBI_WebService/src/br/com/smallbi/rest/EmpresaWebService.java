@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.EmpresaBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Empresa;
 
 @Path("/empresa")
@@ -39,13 +38,8 @@ public class EmpresaWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addEmpresa(String json){
 		Empresa empresa = gson.fromJson(json, type);
-		try {
-			empresaBusiness.create(empresa);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = empresaBusiness.create(empresa);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class EmpresaWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setEmpresa(String json){
 		Empresa empresa = gson.fromJson(json, type);
-		try {
-			empresaBusiness.update(empresa);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = empresaBusiness.update(empresa);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,26 +58,15 @@ public class EmpresaWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delEmpresa(String json){
 		Empresa empresa = gson.fromJson(json, type);
-		try {
-			empresaBusiness.delete(empresa.getIdEmpresa());
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = empresaBusiness.delete(empresa.getIdEmpresa());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idEmpresa}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idEmpresa") String idEmpresa){
-		try {
-			Empresa empresa = empresaBusiness.getObjById(Integer.parseInt(idEmpresa));
-			return gson.toJson(empresa);
-		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "";
+		Empresa empresa = empresaBusiness.getObjById(Integer.parseInt(idEmpresa));
+		return gson.toJson(empresa);
 	}
 }

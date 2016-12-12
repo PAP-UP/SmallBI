@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.PessoaBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Pessoa;
 
 @Path("/pessoa")
@@ -39,13 +38,8 @@ public class PessoaWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addPessoa(String json){
 		Pessoa pessoa = gson.fromJson(json, type);
-		try {
-			pessoaBusiness.create(pessoa);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = pessoaBusiness.create(pessoa);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class PessoaWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setPessoa(String json){
 		Pessoa pessoa = gson.fromJson(json, type);
-		try {
-			pessoaBusiness.update(pessoa);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = pessoaBusiness.update(pessoa);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,25 +58,15 @@ public class PessoaWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delPessoa(String json){
 		Pessoa pessoa = gson.fromJson(json, type);
-		try {
-			pessoaBusiness.delete(pessoa.getIdPessoa());
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = pessoaBusiness.delete(pessoa.getIdPessoa());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idPessoa}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idPessoa") String idPessoa){
-		try {
-			Pessoa pessoa = pessoaBusiness.getObjById(Integer.parseInt(idPessoa));
-			return gson.toJson(pessoa);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+		Pessoa pessoa = pessoaBusiness.getObjById(Integer.parseInt(idPessoa));
+		return gson.toJson(pessoa);
 	}
 }

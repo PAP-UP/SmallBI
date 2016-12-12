@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.FormaPagamentoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.FormaPagamento;
 
 @Path("/formaPagamento")
@@ -39,13 +38,8 @@ public class FormaPagamentoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addFormaPag(String json){
 		FormaPagamento forma = gson.fromJson(json, type);
-		try {
-			formaPagamentoBusiness.create(forma);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = formaPagamentoBusiness.create(forma);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class FormaPagamentoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setFormaPag(String json){
 		FormaPagamento forma = gson.fromJson(json, type);
-		try {
-			formaPagamentoBusiness.update(forma);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = formaPagamentoBusiness.update(forma);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,25 +58,15 @@ public class FormaPagamentoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delFormaPag(String json){
 		FormaPagamento forma = gson.fromJson(json, type);
-		try {
-			formaPagamentoBusiness.delete(forma.getIdFormaPagamento());
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = formaPagamentoBusiness.delete(forma.getIdFormaPagamento());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idFormaPagamento}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idFormaPagamento") String idFormaPagamento){
-		try {
-			FormaPagamento forma = formaPagamentoBusiness.getObjById(Integer.parseInt(idFormaPagamento));
-			return gson.toJson(forma);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+		FormaPagamento forma = formaPagamentoBusiness.getObjById(Integer.parseInt(idFormaPagamento));
+		return gson.toJson(forma);
 	}
 }

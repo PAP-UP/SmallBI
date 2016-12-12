@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.EstadoBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.Estado;
 
 @Path("/estado")
@@ -39,13 +38,8 @@ public class EstadoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addEstado(String json){		
 		Estado estado = gson.fromJson(json, type);
-		try {
-			estadoBusiness.create(estado);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = estadoBusiness.create(estado);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class EstadoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setEstado(String json){
 		Estado estado = gson.fromJson(json, type);
-		try {
-			estadoBusiness.update(estado);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = estadoBusiness.update(estado);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,25 +58,15 @@ public class EstadoWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delEstado(String json){
 		Estado estado = gson.fromJson(json, type);
-		try {
-			estadoBusiness.delete(estado.getIdEstado());
-			return gson.toJson(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = estadoBusiness.delete(estado.getIdEstado());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idEstado}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idEstado") String idEstado){
-		try {
-			Estado estado = estadoBusiness.getObjById(Integer.parseInt(idEstado));
-			return gson.toJson(estado);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+		Estado estado = estadoBusiness.getObjById(Integer.parseInt(idEstado));
+		return gson.toJson(estado);
 	}
 }

@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.RamoAtividadeBusiness;
-import br.com.smallbi.business.exception.BusinessException;
 import br.com.smallbi.entity.RamoAtividade;
 
 @Path("/ramoAtividade")
@@ -39,13 +38,8 @@ public class RamoAtividadeWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addRamo(String json){
 		RamoAtividade ramoAtividade = gson.fromJson(json, type);
-		try {
-			ramoAtividadeBusiness.create(ramoAtividade);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = ramoAtividadeBusiness.create(ramoAtividade);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -54,13 +48,8 @@ public class RamoAtividadeWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setRamo(String json){
 		RamoAtividade ramoAtividade = gson.fromJson(json, type);
-		try {
-			ramoAtividadeBusiness.update(ramoAtividade);
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = ramoAtividadeBusiness.update(ramoAtividade);
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -69,25 +58,15 @@ public class RamoAtividadeWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delRamo(String json){
 		RamoAtividade ramoAtividade = gson.fromJson(json, type);
-		try {
-			ramoAtividadeBusiness.delete(ramoAtividade.getIdRamoAtividade());
-			return gson.toJson(true);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return gson.toJson(false);
+		String response = ramoAtividadeBusiness.delete(ramoAtividade.getIdRamoAtividade());
+		return gson.toJson(response);
 	}
 	
 	@GET
 	@Path("/getById/{idRamoAtividade}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idRamoAtividade") String idRamoAtividade){
-		try {
-			RamoAtividade ramoAtividade = ramoAtividadeBusiness.getObjById(Integer.parseInt(idRamoAtividade));
-			return gson.toJson(ramoAtividade);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		return "";
+		RamoAtividade ramoAtividade = ramoAtividadeBusiness.getObjById(Integer.parseInt(idRamoAtividade));
+		return gson.toJson(ramoAtividade);
 	}
 }
