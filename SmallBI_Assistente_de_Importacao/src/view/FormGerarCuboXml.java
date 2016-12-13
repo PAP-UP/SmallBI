@@ -16,10 +16,10 @@ import xmleditorkit.XMLEditorKit;
 
 public class FormGerarCuboXml extends javax.swing.JFrame {
     
-    private JTable tabelaPivot = new JTable();
-    private List<JComboBox> listaCbxTipos = new ArrayList<>();
+//    private JTable tabelaPivot = new JTable();
+//    private List<JComboBox> listaCbxTipos = new ArrayList<>();
     public static List<Dimensao> dimensoes = new ArrayList<>();
-    public static List<Metrica> metricas = new ArrayList<>();
+//    public static List<Metrica> metricas = new ArrayList<>();
     public static List<GrupoMetrica> grupoMetricas = new ArrayList<>();
     public static List<TabelaFato> tabelasFato = new ArrayList<>();
     
@@ -40,6 +40,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         txtAbaNomeCubo_NomeCubo = new javax.swing.JTextField();
         btnAbaNomeCubo_Proximo = new javax.swing.JButton();
         btnAbaNomeCubo_Anterior = new javax.swing.JButton();
+        btnAbaNomeCubo_Sair = new javax.swing.JButton();
         paineAbaModelDim = new javax.swing.JPanel();
         painel_AbaModelDim_AtriDim = new javax.swing.JPanel();
         painel_jtpAbaModelDim_listDims = new javax.swing.JPanel();
@@ -102,6 +103,13 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
             }
         });
 
+        btnAbaNomeCubo_Sair.setText("Sair");
+        btnAbaNomeCubo_Sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbaNomeCubo_SairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout paineAbaNomeCuboLayout = new javax.swing.GroupLayout(paineAbaNomeCubo);
         paineAbaNomeCubo.setLayout(paineAbaNomeCuboLayout);
         paineAbaNomeCuboLayout.setHorizontalGroup(
@@ -114,7 +122,9 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAbaNomeCubo_Anterior)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAbaNomeCubo_Proximo)))
+                        .addComponent(btnAbaNomeCubo_Proximo)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAbaNomeCubo_Sair)))
                 .addContainerGap())
         );
         paineAbaNomeCuboLayout.setVerticalGroup(
@@ -125,7 +135,8 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(paineAbaNomeCuboLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbaNomeCubo_Proximo)
-                    .addComponent(btnAbaNomeCubo_Anterior))
+                    .addComponent(btnAbaNomeCubo_Anterior)
+                    .addComponent(btnAbaNomeCubo_Sair))
                 .addContainerGap())
         );
 
@@ -436,18 +447,22 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAbaCuboPreview_EnviarCuboActionPerformed
 
+    private void btnAbaNomeCubo_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaNomeCubo_SairActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnAbaNomeCubo_SairActionPerformed
+
     private void gerarSchemaXml(){
         Schema schema = new Schema();
         schema.setNome("Schema " + txtAbaNomeCubo_NomeCubo.getText());
-//        schema.setTabela(txtPainelConfTab_txtNomeTab.getText());
         schema.setTabelasFato(tabelasFato);
-//        schema.setChaveTabela(cbxPainelConfTab_CamposPrimaryKey.getSelectedItem().toString());
         schema.setNomeCubo(txtAbaNomeCubo_NomeCubo.getText());
         schema.setDimensoes(dimensoes);
-        schema.setMetricas(metricas);
-        System.out.println("XML Gerado: " + GerarSchema.createSchema(schema));
-        //GerarSchema.createSchema(schema);
-        carregarTxtAreaPreview(GerarSchema.createSchema(schema));
+        schema.setGrupoMetrica(grupoMetricas);
+        
+        GerarSchema gerarSchema = new GerarSchema();
+        String xmlGerado = gerarSchema.createSchema(schema);
+        System.out.println("XML Gerado: " + xmlGerado);
+        carregarTxtAreaPreview(xmlGerado);
     }
     
     private void carregarTxtAreaPreview(String schemaXml){  
@@ -490,6 +505,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaModelMetri_Voltar;
     private javax.swing.JButton btnAbaNomeCubo_Anterior;
     private javax.swing.JButton btnAbaNomeCubo_Proximo;
+    private javax.swing.JButton btnAbaNomeCubo_Sair;
     private javax.swing.JButton btnJtpAbaModelDim_AddDim;
     private javax.swing.JButton btnModelMetri_AddMetri;
     private javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;

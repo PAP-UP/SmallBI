@@ -7,7 +7,7 @@ public class Schema {
     private List<TabelaFato> tabelasFato;
     private String nomeCubo;
     private List<Dimensao> dimensoes;
-    private List<Metrica> metricas;
+    private List<GrupoMetrica> grupoMetrica;
 
     /**
      * @return the nome
@@ -52,20 +52,6 @@ public class Schema {
     }
 
     /**
-     * @return the metricas
-     */
-    public List<Metrica> getMetricas() {
-        return metricas;
-    }
-
-    /**
-     * @param metricas the metricas to set
-     */
-    public void setMetricas(List<Metrica> metricas) {
-        this.metricas = metricas;
-    }
-
-    /**
      * @return the tabelasFato
      */
     public List<TabelaFato> getTabelasFato() {
@@ -77,6 +63,20 @@ public class Schema {
      */
     public void setTabelasFato(List<TabelaFato> tabelasFato) {
         this.tabelasFato = tabelasFato;
+    }
+
+    /**
+     * @return the grupoMetrica
+     */
+    public List<GrupoMetrica> getGrupoMetrica() {
+        return grupoMetrica;
+    }
+
+    /**
+     * @param grupoMetrica the grupoMetrica to set
+     */
+    public void setGrupoMetrica(List<GrupoMetrica> grupoMetrica) {
+        this.grupoMetrica = grupoMetrica;
     }
     
 }

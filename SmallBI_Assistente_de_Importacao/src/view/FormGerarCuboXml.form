@@ -63,12 +63,14 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="painelAbaNomeCubo_NomeCubo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="painelAbaNomeCubo_NomeCubo" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="btnAbaNomeCubo_Anterior" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnAbaNomeCubo_Proximo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnAbaNomeCubo_Sair" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -84,6 +86,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAbaNomeCubo_Proximo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnAbaNomeCubo_Anterior" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAbaNomeCubo_Sair" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -149,6 +152,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaNomeCubo_AnteriorActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAbaNomeCubo_Sair">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sair"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaNomeCubo_SairActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

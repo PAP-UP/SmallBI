@@ -3,13 +3,15 @@ package business;
 import java.util.ArrayList;
 import java.util.List;
 import model.Dimensao;
+import model.FactLink;
+import model.GrupoMetrica;
 import model.Metrica;
 import model.Schema;
 import model.TabelaFato;
 
 public class GerarSchema {
     
-    public static String createSchema(Schema schema){
+    public String createSchema(Schema schema){
         
         String schemaXml = new String();
         
@@ -17,15 +19,15 @@ public class GerarSchema {
         schemaXml += setPhysicalSchema(schema.getTabelasFato());
         schemaXml += setCubeName(schema.getNome());
         schemaXml += setSchemaDimensions(schema.getDimensoes());
-        schemaXml += setSchemaMeasures(schema.getMetricas(), schema.getDimensoes());
+        schemaXml += setSchemaMeasures(schema.getGrupoMetrica(), schema.getDimensoes());
         return schemaXml;
     }
     
-    private static String initializeSchema(String nomeSchema){
+    private String initializeSchema(String nomeSchema){
         return "<?xml version='1.0'?><Schema name='" + nomeSchema + "' metamodelVersion='4.0'>";
     }
     
-    private static String setPhysicalSchema(List<TabelaFato> tabelas){
+    private String setPhysicalSchema(List<TabelaFato> tabelas){
         String schema = "<PhysicalSchema>";
                 
         for(TabelaFato t : tabelas){
@@ -36,52 +38,50 @@ public class GerarSchema {
         return schema;
     }
     
-    private static String setCubeName(String cubeName){
+    private String setCubeName(String cubeName){
         return "<Cube name='" + cubeName + "'>";
     }
 
-    public static String setSchemaDimensions(List<Dimensao> dimensoes){   
+    public String setSchemaDimensions(List<Dimensao> dimensoes){   
   
-        String schema = new String();
+        String schema = "<Dimensions>";
         for(Dimensao dim : dimensoes){
-            schema += "<Dimensions><Dimension name='" + dim.getNome() + "' table='" + dim.getTabela() +
+            schema += "<Dimension name='" + dim.getNome() + "' table='" + dim.getTabela() +
                     "' key='" + dim.getKey() + "'><Attributes>";
 
             for(String atributo : dim.getAtributos()){
                 schema += "<Attribute name='" + atributo + "' keyColumn='" + atributo + "' hasHierarchy='true'/>";
             }
-            schema += "</Attributes></Dimension></Dimensions>";            
+            schema += "</Attributes></Dimension>";            
         }
+        schema += "</Dimensions>";
         return schema;
     }
 
-    public static String setSchemaMeasures(List<Metrica> metricas, List<Dimensao> dimensoes){
+    public String setSchemaMeasures(List<GrupoMetrica> grupoMetricas, List<Dimensao> dimensoes){
         
-        String schema = new String();
-        List<String> factLinks = new ArrayList<>();        
-       // schema += "<MeasureGroups><MeasureGroup name='Métricas' table='" + nomeTabela + "'><Measures>";
+        List<FactLink> factLinks = new ArrayList<>();
+        String schema;
         
-        for(Metrica m : metricas){
-            schema += "<Measure name='" + m.getNome() + "' column='" + m.getColuna() + "' aggregator='" +
-                    m.getAgregador() + "' formatString='" + m.getFormato() + "' visible='true'/>";
+        schema = "<MeasureGroups>";
+        
+        for(GrupoMetrica gm : grupoMetricas){
+            schema += "<MeasureGroup name='" + gm.getNome() + "' table='" + gm.getTabela() + "'><Measures>";
             
-            for(Dimensao d : dimensoes){
-               for(String atributo : d.getAtributos()){
-                    if(atributo.equals(m.getColuna())){
-                        factLinks.add("<FactLink dimension='" + d.getNome() + "' foreignKeyColumn='" +
-                                m.getColuna() + "'/>");
-                    }
-                }
+            for(Metrica m : gm.getMetricas()){
+                schema += "<Measure name='" + m.getNome() + "' column='" + m.getColuna() + "' aggregator='" +
+                    m.getAgregador() + "' formatString='" + m.getFormato() + "' visible='true'/>";    
             }
-        } 
-        
-        schema += "</Measures><DimensionLinks>";
-        
-        for(String factLink : factLinks){
-            schema += factLink;
+            
+            schema += "</Measures><DimensionLinks>";
+            
+            for(FactLink f : gm.getFactLinks()){
+                schema += "<FactLink dimension='" + f.getDimension() + "' foreignKeyColumn='" + f.getForeignKey() + "'/>";
+            }
+            
+            schema += "</DimensionLinks></MeasureGroup>";   
         }
-        
-        schema += "</DimensionLinks></MeasureGroup></MeasureGroups></Cube></Schema>";
+        schema += "</MeasureGroups></Cube></Schema>";
         return schema;
     }
 }

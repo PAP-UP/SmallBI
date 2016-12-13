@@ -11,6 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.TabelaFato;
@@ -817,7 +818,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         painelAbaTabPrev_AreaDaTabResult.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela Preview Resultado"));
 
-        painelAbaTabPrev_CbxTiposVariaveis.setLayout(new java.awt.GridLayout());
+        painelAbaTabPrev_CbxTiposVariaveis.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout painelAbaTabPrev_painelTiposVariaveisLayout = new javax.swing.GroupLayout(painelAbaTabPrev_painelTiposVariaveis);
         painelAbaTabPrev_painelTiposVariaveis.setLayout(painelAbaTabPrev_painelTiposVariaveisLayout);
@@ -836,17 +837,26 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        painelAbaTabPrev_painelTabela.setLayout(new java.awt.GridLayout());
+        javax.swing.GroupLayout painelAbaTabPrev_painelTabelaLayout = new javax.swing.GroupLayout(painelAbaTabPrev_painelTabela);
+        painelAbaTabPrev_painelTabela.setLayout(painelAbaTabPrev_painelTabelaLayout);
+        painelAbaTabPrev_painelTabelaLayout.setHorizontalGroup(
+            painelAbaTabPrev_painelTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        painelAbaTabPrev_painelTabelaLayout.setVerticalGroup(
+            painelAbaTabPrev_painelTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 205, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout painelAbaTabPrev_TabPrevResultLayout = new javax.swing.GroupLayout(painelAbaTabPrev_TabPrevResult);
         painelAbaTabPrev_TabPrevResult.setLayout(painelAbaTabPrev_TabPrevResultLayout);
         painelAbaTabPrev_TabPrevResultLayout.setHorizontalGroup(
             painelAbaTabPrev_TabPrevResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAbaTabPrev_TabPrevResultLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaTabPrev_TabPrevResultLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelAbaTabPrev_TabPrevResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelAbaTabPrev_painelTiposVariaveis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelAbaTabPrev_painelTabela, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(painelAbaTabPrev_TabPrevResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(painelAbaTabPrev_painelTabela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelAbaTabPrev_painelTiposVariaveis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         painelAbaTabPrev_TabPrevResultLayout.setVerticalGroup(
@@ -854,8 +864,8 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addGroup(painelAbaTabPrev_TabPrevResultLayout.createSequentialGroup()
                 .addComponent(painelAbaTabPrev_painelTiposVariaveis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(painelAbaTabPrev_painelTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addComponent(painelAbaTabPrev_painelTabela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jScrollPaneAbaTabPrev_ScrollDaAreaTabPrev.setViewportView(painelAbaTabPrev_TabPrevResult);
@@ -868,6 +878,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
 
         btnAbaTabPrev_SalvarTabela.setText("Salvar Tabela");
+        btnAbaTabPrev_SalvarTabela.setEnabled(false);
         btnAbaTabPrev_SalvarTabela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbaTabPrev_SalvarTabelaActionPerformed(evt);
@@ -1079,12 +1090,14 @@ public class FormPrincipal extends javax.swing.JFrame {
         String msg = business.ValidarTipos.validarTipagemDosCampos(jTableAtivo, listaDeCbxTipos);                
         JOptionPane.showMessageDialog(null, msg);
         if (msg.equals("Campos validados com sucesso!")) {
-            btnAbaTabPrev_GerarCuboXml.setEnabled(true);
+            //btnAbaTabPrev_GerarCuboXml.setEnabled(true);
+            btnAbaTabPrev_SalvarTabela.setEnabled(true);
         } 
     }
     
     private void desconectarDoBanco(){
-        ImportarDb.desconectar();
+        ImportarDb importarDb = new ImportarDb();
+        importarDb.desconectar();
         JOptionPane.showMessageDialog(null, "Desconectado com sucesso!");
     }
     
@@ -1098,7 +1111,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         }else{
             PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
             painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
-            painelAbaTabPrev_painelTabela.add(jTable);
+            JScrollPane jScrollPane = new JScrollPane(jTable);
+            painelAbaTabPrev_painelTabela.add(jScrollPane);
             painelAbaTabPrev_painelTabela.updateUI();
             jTableAtivo = jTable;
             
@@ -1119,7 +1133,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         }else{
             PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
             painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
-            painelAbaTabPrev_painelTabela.add(jTable);
+            JScrollPane jScrollPane = new JScrollPane(jTable);
+            painelAbaTabPrev_painelTabela.add(jScrollPane);
             painelAbaTabPrev_painelTabela.updateUI();
             jTableAtivo = jTable;
             iniciarComboBoxTiposBanco(jTable);   
@@ -1128,7 +1143,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     
     private void conectarComBanco(){
         if(validarCamposConexao()){
-            ArrayList<String> bancos = ImportarDb.setarVariaveisConexao(
+            ImportarDb importarDb = new ImportarDb();
+            ArrayList<String> bancos = importarDb.setarVariaveisConexao(
                     cbxAbaConexBd_Sgbd.getSelectedItem().toString(), 
                         txtAbaConexBd_Usuario.getText(), txtPassAbaConexBd_Senha.getText(),
                             txtAbaConexBd_Endereco.getText(), txtAbaConexBd_Porta.getText());
@@ -1146,7 +1162,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
     
     private boolean carregarCbxTabela(){
-        ArrayList<String> tabelas = ImportarDb.getTables(cbxAbaConexBd_Sgbd.getSelectedItem().toString(), 
+        ImportarDb importarDb = new ImportarDb();
+        ArrayList<String> tabelas = importarDb.getTables(cbxAbaConexBd_Sgbd.getSelectedItem().toString(), 
                 txtAbaConexBd_Banco.getText(), txtAbaConexBd_Usuario.getText(), 
                     txtPassAbaConexBd_Senha.getText(), txtAbaConexBd_Porta.getText(), 
                         txtAbaConexBd_Endereco.getText());
@@ -1187,7 +1204,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         if(jTable.getRowCount() > 0){
             iniciarComboBoxTiposArquivo(jTable);
             painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
-            painelAbaTabPrev_painelTabela.add(jTable);
+            JScrollPane jScrollPane = new JScrollPane(jTable);
+            painelAbaTabPrev_painelTabela.add(jScrollPane);
             painelAbaTabPrev_painelTabela.updateUI();
             jTableAtivo = jTable;
             PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
@@ -1203,7 +1221,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         if(jTable.getRowCount() > 0){
             iniciarComboBoxTiposArquivo(jTable);
             painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
-            painelAbaTabPrev_painelTabela.add(jTable);
+            JScrollPane jScrollPane = new JScrollPane(jTable);
+            painelAbaTabPrev_painelTabela.add(jScrollPane);
             painelAbaTabPrev_painelTabela.updateUI();
             jTableAtivo = jTable;
             PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
@@ -1234,6 +1253,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         ArrayList<String> tipos = buscarTipoDeCampoDoBanco();        
         int colunas = 0;
         colunas = jTable.getColumnCount();
+        ImportarDb importarDb = new ImportarDb();
         painelAbaTabPrev_CbxTiposVariaveis.removeAll();
         for (int i = 0; i < colunas; i++) {
             JComboBox cbx = new JComboBox();
@@ -1246,7 +1266,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             cbx.addItem("Data MM-dd-yyyy");
             listaDeCbxTipos.add(cbx);
             painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
-            cbx.setSelectedItem(ImportarDb.transformarTipo(tipos.get(i), 
+            cbx.setSelectedItem(importarDb.transformarTipo(tipos.get(i), 
                     cbxAbaConexBd_Sgbd.getSelectedItem().toString()));
             painelAbaTabPrev_CbxTiposVariaveis.updateUI();
         }

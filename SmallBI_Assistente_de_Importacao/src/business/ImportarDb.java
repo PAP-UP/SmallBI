@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ImportarDb {
     
-    public static ArrayList<String> setarVariaveisConexao(String sgbdSelecionado, String usuario, String senha, 
+    public ArrayList<String> setarVariaveisConexao(String sgbdSelecionado, String usuario, String senha, 
             String endereco, String porta){        
         if(sgbdSelecionado != "Selecione"){
             String banco = new String();
@@ -52,7 +52,7 @@ public class ImportarDb {
         return null;
     }
     
-    public static void desconectar(){
+    public void desconectar(){
         Conexao.fecharConexao();
     }
     
@@ -68,7 +68,7 @@ public class ImportarDb {
         return null;
     }   
     
-    private static ArrayList<String> getBancos(String sql){
+    private ArrayList<String> getBancos(String sql){
         ResultSet rs = Conexao.getResultSet(sql);
         ArrayList<String> bancos = new ArrayList<>();        
         try {
@@ -82,7 +82,7 @@ public class ImportarDb {
         return null;
     }
     
-    public static ArrayList<String> getTables(String sgbd, String bancoSelecionado, String usuario, 
+    public ArrayList<String> getTables(String sgbd, String bancoSelecionado, String usuario, 
             String senha, String porta, String endereco){
         
         String banco = new String();
@@ -110,7 +110,7 @@ public class ImportarDb {
         return null;
     }
     
-    private static ArrayList<String> carregarLista(String query){
+    private ArrayList<String> carregarLista(String query){
         ResultSet rs = null;
         try{
             rs = Conexao.getResultSet(query);
@@ -181,7 +181,7 @@ public class ImportarDb {
         return null;
     }
     
-    public static String transformarTipo(String tipoBanco, String sgbdSelecionado){
+    public String transformarTipo(String tipoBanco, String sgbdSelecionado){
         System.out.println(tipoBanco);
         switch(sgbdSelecionado){
             case "PostgreSQL":

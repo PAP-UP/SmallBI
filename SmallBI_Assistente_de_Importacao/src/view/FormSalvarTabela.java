@@ -146,7 +146,8 @@ public class FormSalvarTabela extends javax.swing.JFrame {
                 tabelaFato.setjTable(tabelaPivot);
                 tabelaFato.setPrimaryKey(chavePrimaria);
                 tabelaFato.setNomeTabela(nomeTabela);
-                FormGerarCuboXml.tabelasFato.add(tabelaFato);                
+                FormGerarCuboXml.tabelasFato.add(tabelaFato);    
+                FormPrincipal.btnAbaTabPrev_GerarCuboXml.setEnabled(true);
                 dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Selecione uma chave para a tabela!");
