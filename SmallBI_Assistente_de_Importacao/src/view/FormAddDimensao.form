@@ -54,7 +54,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="painelAbas" pref="438" max="32767" attributes="0"/>
+                  <Component id="painelAbas" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -62,7 +62,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="painelAbas" pref="367" max="32767" attributes="0"/>
+                  <Component id="painelAbas" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -221,6 +221,8 @@
                               <Component id="scroolPaneAbaAtri_Atributos" pref="392" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="btnAbaAtributos_Voltar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnAbaAtributos_Proximo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnAbaAtributos_Sair" min="-2" max="-2" attributes="0"/>
@@ -238,6 +240,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnAbaAtributos_Proximo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnAbaAtributos_Sair" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAbaAtributos_Voltar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -290,6 +293,14 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaAtributos_SairActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnAbaAtributos_Voltar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Voltar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaAtributos_VoltarActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

@@ -40,6 +40,7 @@ public class FormAddDimensao extends javax.swing.JFrame {
         jPanelAtributos = new javax.swing.JPanel();
         btnAbaAtributos_Proximo = new javax.swing.JButton();
         btnAbaAtributos_Sair = new javax.swing.JButton();
+        btnAbaAtributos_Voltar = new javax.swing.JButton();
         painelAba_NomeChave = new javax.swing.JPanel();
         painelAbaNomeChave_NomeChave = new javax.swing.JPanel();
         lblAbaNomeChave_NomeDim = new javax.swing.JLabel();
@@ -158,6 +159,13 @@ public class FormAddDimensao extends javax.swing.JFrame {
             }
         });
 
+        btnAbaAtributos_Voltar.setText("Voltar");
+        btnAbaAtributos_Voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbaAtributos_VoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelAba_AtributosLayout = new javax.swing.GroupLayout(painelAba_Atributos);
         painelAba_Atributos.setLayout(painelAba_AtributosLayout);
         painelAba_AtributosLayout.setHorizontalGroup(
@@ -168,6 +176,8 @@ public class FormAddDimensao extends javax.swing.JFrame {
                     .addComponent(scroolPaneAbaAtri_Atributos, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAba_AtributosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAbaAtributos_Voltar)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAbaAtributos_Proximo)
                         .addGap(18, 18, 18)
                         .addComponent(btnAbaAtributos_Sair)))
@@ -180,7 +190,8 @@ public class FormAddDimensao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelAba_AtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbaAtributos_Proximo)
-                    .addComponent(btnAbaAtributos_Sair))
+                    .addComponent(btnAbaAtributos_Sair)
+                    .addComponent(btnAbaAtributos_Voltar))
                 .addContainerGap())
         );
 
@@ -282,13 +293,13 @@ public class FormAddDimensao extends javax.swing.JFrame {
         painelConfDimLayout.setHorizontalGroup(
             painelConfDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConfDimLayout.createSequentialGroup()
-                .addComponent(painelAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                .addComponent(painelAbas)
                 .addContainerGap())
         );
         painelConfDimLayout.setVerticalGroup(
             painelConfDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConfDimLayout.createSequentialGroup()
-                .addComponent(painelAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addComponent(painelAbas)
                 .addContainerGap())
         );
 
@@ -341,6 +352,10 @@ public class FormAddDimensao extends javax.swing.JFrame {
         carregarCheckBoxesAtr();
         PercorrerAbasAddDimensao.tabelaToAtributos();
     }//GEN-LAST:event_btnPainelTabelas_ProximoActionPerformed
+
+    private void btnAbaAtributos_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaAtributos_VoltarActionPerformed
+        PercorrerAbasAddDimensao.atributosToTabela();
+    }//GEN-LAST:event_btnAbaAtributos_VoltarActionPerformed
     
     private void carregarTabelasSalvas(){
         cbxTabelas.removeAllItems();
@@ -400,11 +415,14 @@ public class FormAddDimensao extends javax.swing.JFrame {
         tabelaFato = new TabelaFato();
         for(TabelaFato t : FormGerarCuboXml.tabelasFato){
             if(t.getNomeTabela().equals(cbxTabelas.getSelectedItem().toString())){
+                System.out.println("Qtd Colunas no Jtable: " + t.getjTable().getColumnCount());
                 tabelaFato = t;
             }
         }
+        System.out.println("Qtd: " + tabelaFato.getjTable().getColumnCount());
         for(int i = 0; i < tabelaFato.getjTable().getColumnCount(); i++){
             JCheckBox checkBox = new JCheckBox();
+            System.out.println(tabelaFato.getjTable().getColumnName(i));
             checkBox.setText(tabelaFato.getjTable().getColumnName(i));
             checkBox.setVisible(true);
             listaDeCheckBox.add(checkBox);
@@ -432,6 +450,7 @@ public class FormAddDimensao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbaAtributos_Proximo;
     private javax.swing.JButton btnAbaAtributos_Sair;
+    private javax.swing.JButton btnAbaAtributos_Voltar;
     private javax.swing.JButton btnAbaNomeChave_Sair;
     private javax.swing.JButton btnAbaNomeChave_Salvar;
     private javax.swing.JButton btnAbaNomeChave_Voltar;

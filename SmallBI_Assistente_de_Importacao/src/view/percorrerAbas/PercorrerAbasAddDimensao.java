@@ -15,6 +15,12 @@ public class PercorrerAbasAddDimensao extends FormAddDimensao{
         painelAbas.setSelectedIndex(1);
     }
     
+    public static void atributosToTabela(){
+        painelAbas.setEnabledAt(1, false);
+        painelAbas.setEnabledAt(0, true);
+        painelAbas.setSelectedIndex(0);        
+    }
+    
     public static void atributosToNomeChave(){
         painelAbas.setEnabledAt(1, false);
         painelAbas.setEnabledAt(2, true);   

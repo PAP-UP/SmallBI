@@ -68,19 +68,13 @@ public class PercorrerAbasFormPrincipal extends FormPrincipal{
         painelAbas.setEnabledAt(5,true);
     }
     
-    public static void abaTabPreviewToAbaTipoImport(){
-        DefaultTableModel modelo = (DefaultTableModel) tblTabPrev.getModel();
-        modelo.setColumnCount(0);
-        modelo.setRowCount(0);        
+    public static void abaTabPreviewToAbaTipoImport(){        
         painelAbas.setSelectedIndex(1);
         painelAbas.setEnabledAt(5, false);
         painelAbas.setEnabledAt(1, true);             
     }
     
     public static void importarMaisDados(){
-        DefaultTableModel modelo = (DefaultTableModel) tblTabPrev.getModel();
-        modelo.setColumnCount(0);
-        modelo.setRowCount(0);  
         painelAbas.setSelectedIndex(1);
         painelAbas.setEnabledAt(1, true);
         btnAbaTabPrev_GerarCuboXml.setEnabled(false);

@@ -18,16 +18,12 @@ public class ImportarCsv {
     
     
     private String separador;
-    private JTable tbl;
-    private DefaultTableModel modelo;
     
-    public ImportarCsv(String separador, JTable tbl){
-        this.separador = separador;
-        this.tbl = tbl;
-        this.modelo = (DefaultTableModel) tbl.getModel();
+    public ImportarCsv(String separador){
+        this.separador = separador;    
     }   
     
-    public DefaultTableModel importarArquivo() {
+    public JTable importarArquivo() {
         
         JFileChooser jfc = new JFileChooser();
         jfc.setCurrentDirectory(new File("/backup/PAPIRO/PAP/SmallBI/Arquivos/"));
@@ -40,18 +36,22 @@ public class ImportarCsv {
             caminho = jfc.getSelectedFile().getPath();
             File file = new File(caminho);
             try {
-                return importarCSV(file);
+                JTable jtable = new JTable();
+                jtable.setModel(importarCSV(file));
+                return jtable;
             } catch (IOException ex) {
                 Logger.getLogger(ImportarCsv.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
-            modelo.setColumnCount(0);
+            //modelo.setColumnCount(0);
         }
         return null;
     }
 
     private DefaultTableModel importarCSV(File file) throws FileNotFoundException, IOException {
 
+        DefaultTableModel modelo = new DefaultTableModel();
+        
         try{
             FileInputStream fis = new FileInputStream(file);
             InputStreamReader isr = new InputStreamReader(fis);
@@ -59,7 +59,7 @@ public class ImportarCsv {
 
             boolean primeiraLinha = true;
             String linha;
-
+            
             while ((linha = br.readLine()) != null) {
                 Object[] obj = linha.split(separador);
                 if (primeiraLinha) {
