@@ -56,14 +56,14 @@ public class ImportarDb {
         Conexao.fecharConexao();
     }
     
-    public static ArrayList<String> getDataType(String nomeTabela, String sgbdSelecionado){
+    public ArrayList<String> getDataType(String nomeTabela, String sgbdSelecionado){
         switch(sgbdSelecionado){
                 case "PostgreSQL":
                     return carregarLista("SELECT data_type FROM information_schema.columns WHERE table_name = '" + nomeTabela + "'");
                 case "MySQL":
                     return carregarLista("SELECT data_type FROM information_schema.columns WHERE TABLE_name = '" + nomeTabela + "'");
                 case "SQL Server":
-                    return carregarLista("SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Cidade';");
+                    return carregarLista("SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '"+ nomeTabela + "';");
             }        
         return null;
     }   
@@ -128,57 +128,30 @@ public class ImportarDb {
         return tabelas;
     }
     
-    public static DefaultTableModel consultarTabela(String tabela, JTable tblParametro){
-
+    public JTable consultarTabelaDefault(String tabela){
         String script = "SELECT * FROM " + tabela;
-        
-        ResultSet rs = Conexao.getResultSet(script);
-        if(rs == null){
-            return null;
-        }else{
-            try {            
-                ResultSetMetaData rsmd = rs.getMetaData();
-                int numColunas = rsmd.getColumnCount();
-                DefaultTableModel modelo = (DefaultTableModel) tblParametro.getModel();
-                modelo.setColumnCount(0);
-                modelo.setRowCount(0);
-                String linha;
-                Object obj[] = null;
-
-                for(int i = 1; i < numColunas + 1; i++){
-                    modelo.addColumn(rsmd.getColumnName(i));
-                }
-
-                while(rs.next()){
-                    linha = "";
-                    for(int i = 1; i < numColunas + 1; i++){
-                        if(i == numColunas + 1){
-                            linha += rs.getString(i);
-                        }else{
-                            linha += rs.getString(i) + ",";
-                        }
-                    }
-                    obj = linha.split(",");
-                    modelo.addRow(obj);
-                }
-                return modelo;
-            } catch (SQLException ex) {
-                Logger.getLogger(ImportarDb.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return null;
+        JTable jTable = new JTable();
+        jTable.setModel(consultarTabela(script));
+        return jTable;
     }
     
-    public static DefaultTableModel consultarTabela(JTable tblParametro, String scriptParametro){
+    public JTable consultarTabelaPersonalisada(String scriptPersonalisado){
+        JTable jTable = new JTable();
+        jTable.setModel(consultarTabela(scriptPersonalisado));
+        return jTable;
+    }
+    
+    private DefaultTableModel consultarTabela(String scriptParametro ){
         
         ResultSet rs = Conexao.getResultSet(scriptParametro);
+        
         if(rs == null){
             return null;
         }else{
             try {            
                 ResultSetMetaData rsmd = rs.getMetaData();
                 int numColunas = rsmd.getColumnCount();
-                DefaultTableModel modelo = (DefaultTableModel) tblParametro.getModel();
+                DefaultTableModel modelo = new DefaultTableModel();
                 modelo.setColumnCount(0);
                 modelo.setRowCount(0);
                 String linha;
@@ -208,7 +181,7 @@ public class ImportarDb {
         return null;
     }
     
-        public static String transformarTipo(String tipoBanco, String sgbdSelecionado){
+    public static String transformarTipo(String tipoBanco, String sgbdSelecionado){
         System.out.println(tipoBanco);
         switch(sgbdSelecionado){
             case "PostgreSQL":

@@ -411,15 +411,16 @@ public class FormAddDimensao extends javax.swing.JFrame {
     }
     
     private void carregarCheckBoxesAtr(){
+        
         jPanelAtributos.setLayout(new BoxLayout(jPanelAtributos, BoxLayout.Y_AXIS));
         tabelaFato = new TabelaFato();
         for(TabelaFato t : FormGerarCuboXml.tabelasFato){
             if(t.getNomeTabela().equals(cbxTabelas.getSelectedItem().toString())){
-                System.out.println("Qtd Colunas no Jtable: " + t.getjTable().getColumnCount());
                 tabelaFato = t;
             }
         }
-        System.out.println("Qtd: " + tabelaFato.getjTable().getColumnCount());
+       
+        jPanelAtributos.removeAll();
         for(int i = 0; i < tabelaFato.getjTable().getColumnCount(); i++){
             JCheckBox checkBox = new JCheckBox();
             System.out.println(tabelaFato.getjTable().getColumnName(i));
@@ -428,14 +429,6 @@ public class FormAddDimensao extends javax.swing.JFrame {
             listaDeCheckBox.add(checkBox);
             jPanelAtributos.add(checkBox);
         }
-//        jPanelAtributos.setLayout(new BoxLayout(jPanelAtributos, BoxLayout.Y_AXIS));
-//        for(int i = 0; i < tabelaPivot.getColumnCount(); i++){
-//            JCheckBox checkBox = new JCheckBox();
-//            checkBox.setText(tabelaPivot.getColumnName(i));
-//            checkBox.setVisible(true);
-//            listaDeCheckBox.add(checkBox);
-//            jPanelAtributos.add(checkBox);
-//        }
         jPanelAtributos.updateUI();
     }
     

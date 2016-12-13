@@ -10,16 +10,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import org.apache.poi.ss.formula.functions.Column;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ImportarXlsx {
-    public static DefaultTableModel importarArquivo(JTable tbl) {
+    public JTable importarArquivo() {
         
-        DefaultTableModel modelo = (DefaultTableModel) tbl.getModel();
+        DefaultTableModel modelo = new DefaultTableModel();
 
         if (modelo.getRowCount() > 0) 
             modelo.setRowCount(0);        
@@ -36,14 +35,16 @@ public class ImportarXlsx {
             String caminho = new String();
             caminho = jfc.getSelectedFile().getPath();
             File arquivo = new File(caminho);
-            return importarXlsx(modelo, arquivo);
+            JTable jTable = new JTable();
+            jTable.setModel(importarXlsx(modelo, arquivo));
+            return jTable;
         }else{
-            modelo.setColumnCount(0);
+            //modelo.setColumnCount(0);
         }
         return null;
     }
     
-    private static DefaultTableModel importarXlsx(DefaultTableModel modelo, File arquivo){
+    private DefaultTableModel importarXlsx(DefaultTableModel modelo, File arquivo){
         try {
             FileInputStream fis = new FileInputStream(arquivo);
             //10485760 bytes == 10 Mb
@@ -89,7 +90,7 @@ public class ImportarXlsx {
         return null;
     }
     
-     private static String tiposDeCell(Cell cell) {
+     private String tiposDeCell(Cell cell) {
         String str = new String();
         if (cell == null) {
             return " ";

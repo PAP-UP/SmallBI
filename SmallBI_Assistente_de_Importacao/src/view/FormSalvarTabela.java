@@ -139,28 +139,14 @@ public class FormSalvarTabela extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(null, new GerarScriptSql().salvarTabelaPivot(tabelaPivot, 
                         nomeTabela, chavePrimaria, listaCbxTipos));
-                System.out.println("Script SQL gerado: " + GerarScriptSql.scriptSqlTabelaPivot);
-                
-                for(TabelaFato t : FormGerarCuboXml.tabelasFato){
-                    if(t.getjTable() != null){
-                        System.out.println("Qtd columns: " + t.getjTable().getColumnCount());
-                    }
-                }                
+                System.out.println("Script SQL gerado: " + GerarScriptSql.scriptSqlTabelaPivot);               
                 
                 TabelaFato tabelaFato = new TabelaFato();
                 tabelaFato.setScriptSql(GerarScriptSql.scriptSqlTabelaPivot);
                 tabelaFato.setjTable(tabelaPivot);
                 tabelaFato.setPrimaryKey(chavePrimaria);
                 tabelaFato.setNomeTabela(nomeTabela);
-                FormGerarCuboXml.tabelasFato.add(tabelaFato);
-                
-                for(TabelaFato t : FormGerarCuboXml.tabelasFato){
-                    if(t.getjTable() != null){
-                        System.out.println("Qtd columns: " + t.getjTable().getColumnCount());
-                    }
-                }
-
-                
+                FormGerarCuboXml.tabelasFato.add(tabelaFato);                
                 dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Selecione uma chave para a tabela!");
@@ -169,15 +155,7 @@ public class FormSalvarTabela extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Dê um nome para a tabela!");
         }
     }
-    
-    private void limparTblArquivo(){
-//        DefaultTableModel modelo = (DefaultTableModel) tblTabPrev.getModel();
-//        modelo.setColumnCount(0);
-//        modelo.setRowCount(0);
-//        FormPrincipal.painelAbaTabPrev_CbxTiposVariaveis.removeAll();
-//        FormPrincipal.painelAbaTabPrev_CbxTiposVariaveis.updateUI();
-    }
-    
+        
     private void carregarCbxChavePrimaria(JTable tabelaPivot){
         for(int coluna = 0; coluna < tabelaPivot.getColumnCount(); coluna++){
             cbxPainelConfTab_CamposPrimaryKey.addItem(tabelaPivot.getColumnName(coluna));

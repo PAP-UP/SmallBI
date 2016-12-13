@@ -4,6 +4,7 @@ import business.GerarScriptSql;
 import business.ImportarCsv;
 import view.percorrerAbas.PercorrerAbasFormPrincipal;
 import business.ImportarDb;
+import business.ImportarXlsx;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BoxLayout;
@@ -1007,9 +1008,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaConsulBd_InfoAjudaActionPerformed
 
     private void btnAbaTabPrev_ImportMaisDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_ImportMaisDadosActionPerformed
-        painelAbaTabPrev_painelTabela.removeAll();
-        painelAbaTabPrev_CbxTiposVariaveis.removeAll();
-        PercorrerAbasFormPrincipal.importarMaisDados();
+        importarMaisDados();
     }//GEN-LAST:event_btnAbaTabPrev_ImportMaisDadosActionPerformed
 
     private void btnAbaTabPrev_GerarCuboXmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_GerarCuboXmlActionPerformed
@@ -1033,17 +1032,18 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaConsulBd_VoltarActionPerformed
 
     private void btnAbaTabPrev_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_VoltarActionPerformed
-//        PercorrerAbasFormPrincipal.abaTabPreviewToAbaTipoImport();
-//        DefaultTableModel modelo = (DefaultTableModel) tblTabPrev.getModel();
-//        modelo = new DefaultTableModel();
-
+        PercorrerAbasFormPrincipal.abaTabPreviewToAbaTipoImport();
     }//GEN-LAST:event_btnAbaTabPrev_VoltarActionPerformed
 
     private void btnAbaTabPrev_SalvarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_SalvarTabelaActionPerformed
         salvarTabela();
     }//GEN-LAST:event_btnAbaTabPrev_SalvarTabelaActionPerformed
     
-
+    private void importarMaisDados(){
+        painelAbaTabPrev_painelTabela.removeAll();
+        painelAbaTabPrev_CbxTiposVariaveis.removeAll();
+        PercorrerAbasFormPrincipal.importarMaisDados();
+    }
     
     private void salvarTabela(){
         FormSalvarTabela frm = new FormSalvarTabela(jTableAtivo, listaDeCbxTipos);
@@ -1089,21 +1089,41 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
     
     private void importarTabelaPersonalizada(){
-//        if(ImportarDb.consultarTabela(tblTabPrev, txtAbaImportBd_ConsulPerson.getText()) == null){
-//            JOptionPane.showMessageDialog(null, "Falha ao executar Script SQL");
-//        }else{
-//            PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
-//            iniciarComboBoxTiposBanco();
-//        }
+        ImportarDb importarDb = new ImportarDb();
+        String scriptPersonalisado = txtAbaImportBd_ConsulPerson.getText();
+        JTable jTable = importarDb.consultarTabelaPersonalisada(scriptPersonalisado);
+        
+        if(jTable == null){
+            JOptionPane.showMessageDialog(null, "Falha ao executar Script SQL");
+        }else{
+            PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
+            painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
+            painelAbaTabPrev_painelTabela.add(jTable);
+            painelAbaTabPrev_painelTabela.updateUI();
+            jTableAtivo = jTable;
+            
+            //Se importa do mesmo modo que um arquivo, 
+            //pois não se sabe o nome da tabela ou poderá ser várias diferentes
+            iniciarComboBoxTiposArquivo(jTable);
+                                                
+        }
     }
     
     private void importarTabelaDefault(){
-//        if(ImportarDb.consultarTabela(cbxAbaConexBd_Tabela.getSelectedItem().toString(), tblTabPrev) == null){
-//           JOptionPane.showMessageDialog(null, "Selecione uma tabela para ser importada!");
-//        }else{
-//            PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
-//            iniciarComboBoxTiposBanco();             
-//        }
+        ImportarDb importarDb = new ImportarDb();
+        String tabelaSelecionada = cbxAbaConexBd_Tabela.getSelectedItem().toString();
+        JTable jTable = importarDb.consultarTabelaDefault(tabelaSelecionada);
+        
+        if(jTable == null){
+           JOptionPane.showMessageDialog(null, "Selecione uma tabela para ser importada!");
+        }else{
+            PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
+            painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
+            painelAbaTabPrev_painelTabela.add(jTable);
+            painelAbaTabPrev_painelTabela.updateUI();
+            jTableAtivo = jTable;
+            iniciarComboBoxTiposBanco(jTable);   
+        }
     }               
     
     private void conectarComBanco(){
@@ -1113,8 +1133,10 @@ public class FormPrincipal extends javax.swing.JFrame {
                         txtAbaConexBd_Usuario.getText(), txtPassAbaConexBd_Senha.getText(),
                             txtAbaConexBd_Endereco.getText(), txtAbaConexBd_Porta.getText());
             if(bancos != null){
-                carregarCbxTabela();
-                PercorrerAbasFormPrincipal.abaConexBancoToAbaConsulBanco();
+                boolean bancoExiste = carregarCbxTabela();
+                if(bancoExiste == true){
+                    PercorrerAbasFormPrincipal.abaConexBancoToAbaConsulBanco();
+                }
             }else{
                 JOptionPane.showMessageDialog(null, "Falha ao conectar!");
             }
@@ -1123,7 +1145,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         }
     }
     
-    private void carregarCbxTabela(){
+    private boolean carregarCbxTabela(){
         ArrayList<String> tabelas = ImportarDb.getTables(cbxAbaConexBd_Sgbd.getSelectedItem().toString(), 
                 txtAbaConexBd_Banco.getText(), txtAbaConexBd_Usuario.getText(), 
                     txtPassAbaConexBd_Senha.getText(), txtAbaConexBd_Porta.getText(), 
@@ -1136,8 +1158,10 @@ public class FormPrincipal extends javax.swing.JFrame {
                 cbxAbaConexBd_Tabela.addItem(tabela);
             }
             JOptionPane.showMessageDialog(null, "Conectado com sucesso!");
+            return true;
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível acessar este banco!");
+            return false;
         }
     }
     
@@ -1158,39 +1182,33 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
     
     private void chamarImportarXlsx(){
-//        tblTabPrev.setModel(business.ImportarXlsx.importarArquivo(tblTabPrev));
-//        if(tblTabPrev.getRowCount() > 0){
-//            iniciarComboBoxTiposArquivo();
-//            PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
-//        }
-    }
-    
-    private void chamarImportarCsv(){        
-        
-        String separador = cbxAbaImportArq_ParamSeparador.getSelectedItem().toString();
-        ImportarCsv importarCsv = new ImportarCsv(separador);
-        
-        JTable jtable = importarCsv.importarArquivo();
-        
-        if(jtable.getRowCount() > 0){
-            iniciarComboBoxTiposArquivo(jtable);
+        ImportarXlsx importarXlsx = new ImportarXlsx();
+        JTable jTable = importarXlsx.importarArquivo();
+        if(jTable.getRowCount() > 0){
+            iniciarComboBoxTiposArquivo(jTable);
             painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
-            painelAbaTabPrev_painelTabela.add(jtable);
+            painelAbaTabPrev_painelTabela.add(jTable);
             painelAbaTabPrev_painelTabela.updateUI();
-            PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
-            jTableAtivo = jtable;
-        }      
-    }
-    
-    /*
-        private void chamarImportarCsv(){
-        business.ImportarCsv.importarArquivo(tblTabPrev, cbxAbaImportArq_ParamSeparador.getSelectedItem().toString());
-        if(tblTabPrev.getRowCount() > 0){
-            iniciarComboBoxTiposArquivo();
+            jTableAtivo = jTable;
             PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
         }
     }
-    */
+    
+    private void chamarImportarCsv(){    
+        String separador = cbxAbaImportArq_ParamSeparador.getSelectedItem().toString();
+        ImportarCsv importarCsv = new ImportarCsv(separador);
+        
+        JTable jTable = importarCsv.importarArquivo();
+        
+        if(jTable.getRowCount() > 0){
+            iniciarComboBoxTiposArquivo(jTable);
+            painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
+            painelAbaTabPrev_painelTabela.add(jTable);
+            painelAbaTabPrev_painelTabela.updateUI();
+            jTableAtivo = jTable;
+            PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
+        }      
+    }
     
     private void iniciarComboBoxTiposArquivo(JTable jtable) {
         int colunas = 0;
@@ -1212,32 +1230,33 @@ public class FormPrincipal extends javax.swing.JFrame {
         }
     }
     
-    private void iniciarComboBoxTiposBanco(){
-//        ArrayList<String> tipos = buscarTipoDeCampoDoBanco();        
-//        int colunas = 0;
-//        colunas = tblTabPrev.getColumnCount();
-//        painelAbaTabPrev_CbxTiposVariaveis.removeAll();
-//        for (int i = 0; i < colunas; i++) {
-//            JComboBox cbx = new JComboBox();
-//            cbx.addItem("Texto");
-//            cbx.addItem("V/F");
-//            cbx.addItem("Inteiro");
-//            cbx.addItem("Real");
-//            cbx.addItem("Caractere");
-//            cbx.addItem("Data dd-MM-yyyy");            
-//            cbx.addItem("Data MM-dd-yyyy");
-//            listaDeCbxTipos.add(cbx);
-//            painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
-//            //cbx.setSelectedItem(transformarTipo(tipos.get(i)));
-//            cbx.setSelectedItem(ImportarDb.transformarTipo(tipos.get(i), 
-//                    cbxAbaConexBd_Sgbd.getSelectedItem().toString()));
-//            painelAbaTabPrev_CbxTiposVariaveis.updateUI();
-//        }
+    private void iniciarComboBoxTiposBanco(JTable jTable){
+        ArrayList<String> tipos = buscarTipoDeCampoDoBanco();        
+        int colunas = 0;
+        colunas = jTable.getColumnCount();
+        painelAbaTabPrev_CbxTiposVariaveis.removeAll();
+        for (int i = 0; i < colunas; i++) {
+            JComboBox cbx = new JComboBox();
+            cbx.addItem("Texto");
+            cbx.addItem("V/F");
+            cbx.addItem("Inteiro");
+            cbx.addItem("Real");
+            cbx.addItem("Caractere");
+            cbx.addItem("Data dd-MM-yyyy");            
+            cbx.addItem("Data MM-dd-yyyy");
+            listaDeCbxTipos.add(cbx);
+            painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
+            cbx.setSelectedItem(ImportarDb.transformarTipo(tipos.get(i), 
+                    cbxAbaConexBd_Sgbd.getSelectedItem().toString()));
+            painelAbaTabPrev_CbxTiposVariaveis.updateUI();
+        }
     }
     
     private ArrayList<String> buscarTipoDeCampoDoBanco(){
-        return ImportarDb.getDataType(cbxAbaConexBd_Tabela.getSelectedItem().toString(), 
-                cbxAbaConexBd_Sgbd.getSelectedItem().toString());
+        ImportarDb importarDb = new ImportarDb();        
+        String nomeTabela = cbxAbaConexBd_Tabela.getSelectedItem().toString();
+        String sgbdSelecionado =  cbxAbaConexBd_Sgbd.getSelectedItem().toString();
+        return importarDb.getDataType(nomeTabela, sgbdSelecionado);
     }
     
     private void carregarTxtPorta(){
