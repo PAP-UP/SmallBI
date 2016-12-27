@@ -47,10 +47,22 @@
 				<img src="img/user-img.png" />
 				<strong>Nome Empresa</strong>
 			</div>
-			<ul>
+			<ul class="panel-group" id="accordion">
 				<li class="fa fa-home active"><a href="#home"><span>Dashboard</span></a></li>
-				<li class="fa fa-bank"><a href="#opcao1"><span>Dados da Empresa</span></a></li>
-				<li class="fa fa-user"><a href="#opcao2"><span>Dados de Usuário</span></a></li>
+				<li class="fa fa-bank">
+					<a href="#" data-toggle="collapse" data-target="#dadosEmpresa" data-parent="#accordion"><span>Dados da Empresa</span></a>
+					<ul id="dadosEmpresa" class="collapse ulCollapse">
+						<li><a href="#"><span>Cadastrar</span></a></li>
+						<li><a href="#"><span>Listar</span></a></li>
+					</ul>
+				</li>
+				<li class="fa fa-user">
+					<a href="#" data-toggle="collapse" data-target="#dadosUsuario" data-parent="#accordion"><span>Dados do Usuário</span></a>
+					<ul id="dadosUsuario" class="collapse ulCollapse">
+						<li><a href="#"><span>Cadastrar</span></a></li>
+						<li><a href="#"><span>Listar</span></a></li>
+					</ul>
+				</li>
 				<li class="fa fa-cubes"><a href="#opcao3"><span>Cubos</span></a></li>
 				<li class="fa fa-upload"><a href="#opcao4"><span>Carregar Cubos</span></a></li>
 				<li class="fa fa-times"><a href="#opcao5"><span>Sair</span></a></li>          

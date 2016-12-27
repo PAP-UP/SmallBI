@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+	<!-- META -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	<meta property="og:title" content="" />
+	<meta property="og:description" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:image" content=""/>
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="" />
+
+	<!-- TÍTULO -->
+	<title>Painel - Small BI</title>
+
+	<!-- FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600|Montserrat" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/site.css" />
+
+	<!-- JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/geral.js"></script>
+
+	<!-- FAVICON -->
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+	<style>
+
+	</style>
+</head>
+<body style="padding-bottom: 40px;">
+
+	<div class="pg-painel">
+		<div class="menu" tabindex="0">
+			<div class="smartphone-menu-trigger"></div>
+			<div class="avatar">
+				<img src="img/user-img.png" />
+				<strong>Nome Empresa</strong>
+			</div>
+			<ul class="panel-group" id="accordion">
+				<li class="fa fa-home active"><a href="#home"><span>Dashboard</span></a></li>
+				<li class="fa fa-bank">
+					<a href="#" data-toggle="collapse" data-target="#dadosEmpresa" data-parent="#accordion"><span>Dados da Empresa</span></a>
+					<ul id="dadosEmpresa" class="collapse ulCollapse">
+						<li><a href="#"><span>Cadastrar</span></a></li>
+						<li><a href="#"><span>Editar</span></a></li>
+						<li><a href="#"><span>Listar</span></a></li>
+					</ul>
+				</li>
+				<li class="fa fa-user">
+					<a href="#" data-toggle="collapse" data-target="#dadosUsuario" data-parent="#accordion"><span>Dados do Usuário</span></a>
+					<ul id="dadosUsuario" class="collapse ulCollapse">
+						<li><a href="#"><span>Cadastrar</span></a></li>
+						<li><a href="#"><span>Editar</span></a></li>
+						<li><a href="#"><span>Listar</span></a></li>
+					</ul>
+				</li>
+				<li class="fa fa-cubes"><a href="#opcao3"><span>Cubos</span></a></li>
+				<li class="fa fa-upload"><a href="#opcao4"><span>Carregar Cubos</span></a></li>
+				<li class="fa fa-times"><a href="#opcao5"><span>Sair</span></a></li>          
+			</ul>
+		</div>
+		<!-- HOME PAINEL -->
+		<section id="home" class="text-center active">
+			<h3>Detalhes de usuário</h3>
+			<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<th>Nome completo</th>
+						<th>CPF</th>
+						<th>RG</th>
+						<th>Função</th>
+						<th>Login</th>
+						<th>Senha</th>
+						<th class="text-center">Editar</th>
+						<th class="text-center">Excluir</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="text-left">dado...</td>
+						<td class="text-left">dado...</td>
+						<td class="text-left">dado...</td>
+						<td class="text-left">dado...</td>
+						<td class="text-left">dado...</td>
+						<td class="text-left">dado...</td>
+						<td class="text-center" style="width: 56px;"><a href="#"><i class="fa fa-pencil iconeEditar text-warning"></i></a></td>
+						<td class="text-center" style="width: 63px;"><a href="#"><i class="fa fa-remove iconeRemover text-danger"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+			<a href="#" id="plus"><i class="fa fa-plus fa-lg icon"></i></a>
+			<a href="#" class="novoItem">Cadastrar novo usuário</a>
+		</section>
+
+		<footer class="rodape">
+			<ul>
+				<li><img class="logo" src="img/logo.png" alt="logo"> © SmallBI 2016</li>
+				<li><a href="#">O que é Business Intelligence?</a></li>
+				<li><a href="#">Diferenciais</a></li>
+				<li><a href="#">Serviços</a></li>
+				<li><a href="#">Quem Somos</a></li>
+				<li><a href="#">Contato</a></li>
+			</ul>
+		</footer>
+	</div>
+
+</body>
+</html>

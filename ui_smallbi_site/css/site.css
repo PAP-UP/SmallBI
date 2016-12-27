@@ -953,6 +953,20 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 				.pg-painel .rodape ul li a:hover{
 					color: #7AE2DE;
 				}
+			.ulCollapse {
+				margin-left: 40px!important;
+				padding: 0!important;
+			}
+				.ulCollapse li {
+					margin: 0!important;
+					padding: 0!important;
+				}
+ 					.ulCollapse li a {
+ 						font-size: 13px!important;
+ 						margin: 0!important;
+ 						padding: 0 10px!important;
+ 						line-height: 40px!important;
+					}
 	.pg-painel .rodape .logo {
 	    margin-bottom: 10px;
 	    width: 20px;	    
