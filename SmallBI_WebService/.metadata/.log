@@ -3191,3 +3191,78 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 
 !ENTRY org.eclipse.jface.text 2 0 2016-12-12 08:17:17.665
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+!SESSION 2016-12-27 18:48:05.018 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ui 2 0 2016-12-27 18:48:13.651
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2016-12-27 18:48:13.651
+!MESSAGE Commands should really have a category: plug-in='Jelastic_Eclipse_Plugin', id='com.jelastic.plugin.eclipse.command.deploy', categoryId='com.jelastic.plugin.eclipse.dropdown.category'
+!SUBENTRY 1 org.eclipse.ui 2 0 2016-12-27 18:48:13.652
+!MESSAGE Commands should really have a category: plug-in='Jelastic_Eclipse_Plugin', id='com.jelastic.plugin.eclipse.command.deployas', categoryId='com.jelastic.plugin.eclipse.dropdown.category'
+
+!ENTRY org.eclipse.ui 2 0 2016-12-27 18:48:14.642
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2016-12-27 18:48:14.642
+!MESSAGE Commands should really have a category: plug-in='Jelastic_Eclipse_Plugin', id='com.jelastic.plugin.eclipse.command.deploy', categoryId='com.jelastic.plugin.eclipse.dropdown.category'
+!SUBENTRY 1 org.eclipse.ui 2 0 2016-12-27 18:48:14.642
+!MESSAGE Commands should really have a category: plug-in='Jelastic_Eclipse_Plugin', id='com.jelastic.plugin.eclipse.command.deployas', categoryId='com.jelastic.plugin.eclipse.dropdown.category'
+
+!ENTRY org.eclipse.ui 2 0 2016-12-27 18:48:14.690
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2016-12-27 18:48:14.690
+!MESSAGE Cannot bind to an undefined command: plug-in='Jelastic_Eclipse_Plugin', id='com.x.sampleplugin.dropdown.command'
+!SUBENTRY 1 org.eclipse.ui 2 0 2016-12-27 18:48:14.690
+!MESSAGE Cannot bind to an undefined command: plug-in='Jelastic_Eclipse_Plugin', id='com.x.sampleplugin.dropdown.commandProfile'
+!SUBENTRY 1 org.eclipse.ui 2 0 2016-12-27 18:48:14.690
+!MESSAGE Cannot bind to an undefined command: plug-in='Jelastic_Eclipse_Plugin', id='com.x.sampleplugin.dropdown.commandLoadSite'
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:48:16.707
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deploy: {jelastic_eclipse_plugin.handlers.DeployPreviousHandler} vs {jelastic_eclipse_plugin.handlers.DeployPreviousHandler}
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:48:16.708
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deployas: {jelastic_eclipse_plugin.handlers.DeployHandler} vs {jelastic_eclipse_plugin.handlers.DeployHandler}
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:48:21.695
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deploy: {jelastic_eclipse_plugin.handlers.DeployPreviousHandler} vs {jelastic_eclipse_plugin.handlers.DeployPreviousHandler}
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:48:23.051
+!MESSAGE Plugin 'Jelastic_Eclipse_Plugin' invalid Menu Extension (Path 'sampleMenu' is invalid): com.jelastic.plugin.eclipse.sampleMenu
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:48:23.051
+!MESSAGE Plug-in 'Jelastic_Eclipse_Plugin' contributed an invalid Menu Extension (Path: 'sampleMenu' is invalid): com.jelastic.plugin.eclipse.popupMenu.project.deployProject
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:48:23.052
+!MESSAGE Plug-in 'Jelastic_Eclipse_Plugin' contributed an invalid Menu Extension (Path: 'sampleMenu' is invalid): com.jelastic.plugin.eclipse.popupMenu.project.deployProjectAs
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:48:26.305
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deploy: {jelastic_eclipse_plugin.handlers.DeployPreviousHandler} vs {jelastic_eclipse_plugin.handlers.DeployPreviousHandler}
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:49:20.693
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deploy: {jelastic_eclipse_plugin.handlers.DeployPreviousHandler} vs {jelastic_eclipse_plugin.handlers.DeployPreviousHandler}
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:49:22.992
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deploy: {jelastic_eclipse_plugin.handlers.DeployPreviousHandler} vs {jelastic_eclipse_plugin.handlers.DeployPreviousHandler}
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:49:35.318
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deploy: {jelastic_eclipse_plugin.handlers.DeployPreviousHandler} vs {jelastic_eclipse_plugin.handlers.DeployPreviousHandler}
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:53:25.763
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deploy: {jelastic_eclipse_plugin.handlers.DeployPreviousHandler} vs {jelastic_eclipse_plugin.handlers.DeployPreviousHandler}
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:54:17.100
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deploy: {jelastic_eclipse_plugin.handlers.DeployPreviousHandler} vs {jelastic_eclipse_plugin.handlers.DeployPreviousHandler}
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:55:14.518
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deploy: {jelastic_eclipse_plugin.handlers.DeployPreviousHandler} vs {jelastic_eclipse_plugin.handlers.DeployPreviousHandler}
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:55:21.723
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deploy: {jelastic_eclipse_plugin.handlers.DeployPreviousHandler} vs {jelastic_eclipse_plugin.handlers.DeployPreviousHandler}
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 18:55:26.273
+!MESSAGE Conflicting handlers for com.jelastic.plugin.eclipse.command.deploy: {jelastic_eclipse_plugin.handlers.DeployPreviousHandler} vs {jelastic_eclipse_plugin.handlers.DeployPreviousHandler}
