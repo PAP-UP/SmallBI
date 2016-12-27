@@ -7,6 +7,7 @@ public class PercorrerAbasAddDimensao extends FormAddDimensao{
     
     public static void desativarAbasInicio(){
         painelAbas.setEnabledAt(1, false);
+        painelAbas.setEnabledAt(2, false);
     }
     
     public static void tabelaToAtributos(){
@@ -28,9 +29,9 @@ public class PercorrerAbasAddDimensao extends FormAddDimensao{
     }
     
     public static void nomeChaveToAtributos(){
-        painelAbas.setEnabledAt(0, true);
-        painelAbas.setEnabledAt(1, false);
-        painelAbas.setSelectedIndex(0);
+        painelAbas.setEnabledAt(1, true);
+        painelAbas.setEnabledAt(2, false);
+        painelAbas.setSelectedIndex(1);
     }
     
     public PercorrerAbasAddDimensao(JTable tabelaPivot, String nomeTabelaPivot) {

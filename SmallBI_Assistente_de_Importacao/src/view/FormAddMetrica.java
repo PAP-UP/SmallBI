@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import model.Dimensao;
 import model.FactLink;
 import model.GrupoMetrica;
@@ -337,14 +338,11 @@ public class FormAddMetrica extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPainelConfMetri_SairActionPerformed
 
     private void btnPainelConfMetri_AdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPainelConfMetri_AdicionarActionPerformed
-        PercorrerAbasAddMetrica.metricasToPreview();
-        adicionarMetricaAoGrupo();
+        metricasToPreview();
     }//GEN-LAST:event_btnPainelConfMetri_AdicionarActionPerformed
 
     private void btnAbaGrupoMetri_ProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaGrupoMetri_ProximoActionPerformed
-        PercorrerAbasAddMetrica.grupoMetriToMetricas();
-        criarGrupoMetricas();
-        carregarCbxColunas();
+        grupoMetriToMetricas();
     }//GEN-LAST:event_btnAbaGrupoMetri_ProximoActionPerformed
 
     private void btnAbaPreviewMetri_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaPreviewMetri_SalvarActionPerformed
@@ -355,8 +353,27 @@ public class FormAddMetrica extends javax.swing.JFrame {
        maisMetricas();
     }//GEN-LAST:event_btnAbaPreviewMetri_MaisMetriActionPerformed
 
+    private void metricasToPreview(){
+        if(!txtPainelConfMetri_Nome.getText().equals("")){
+            PercorrerAbasAddMetrica.metricasToPreview();
+            adicionarMetricaAoGrupo();
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha o nome da métrica!");
+        }
+    }
+    
     private void maisMetricas(){
         PercorrerAbasAddMetrica.previewToMetricas();
+    }
+    
+    private void grupoMetriToMetricas(){
+        if(!txtAbaGrupoMetri_NomeGrupo.getText().equals("")){
+            PercorrerAbasAddMetrica.grupoMetriToMetricas();
+            criarGrupoMetricas();
+            carregarCbxColunas();
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha o nome do grupo de métricas!");
+        }
     }
     
     private void adicionarMetricaAoGrupo(){

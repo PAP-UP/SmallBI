@@ -1201,14 +1201,16 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void chamarImportarXlsx(){
         ImportarXlsx importarXlsx = new ImportarXlsx();
         JTable jTable = importarXlsx.importarArquivo();
-        if(jTable.getRowCount() > 0){
-            iniciarComboBoxTiposArquivo(jTable);
-            painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
-            JScrollPane jScrollPane = new JScrollPane(jTable);
-            painelAbaTabPrev_painelTabela.add(jScrollPane);
-            painelAbaTabPrev_painelTabela.updateUI();
-            jTableAtivo = jTable;
-            PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
+        if(jTable != null){
+            if(jTable.getRowCount() > 0){
+                iniciarComboBoxTiposArquivo(jTable);
+                painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
+                JScrollPane jScrollPane = new JScrollPane(jTable);
+                painelAbaTabPrev_painelTabela.add(jScrollPane);
+                painelAbaTabPrev_painelTabela.updateUI();
+                jTableAtivo = jTable;
+                PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
+            }
         }
     }
     
@@ -1218,15 +1220,17 @@ public class FormPrincipal extends javax.swing.JFrame {
         
         JTable jTable = importarCsv.importarArquivo();
         
-        if(jTable.getRowCount() > 0){
-            iniciarComboBoxTiposArquivo(jTable);
-            painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
-            JScrollPane jScrollPane = new JScrollPane(jTable);
-            painelAbaTabPrev_painelTabela.add(jScrollPane);
-            painelAbaTabPrev_painelTabela.updateUI();
-            jTableAtivo = jTable;
-            PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
-        }      
+        if(jTable != null){
+            if(jTable.getRowCount() > 0){
+                iniciarComboBoxTiposArquivo(jTable);
+                painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
+                JScrollPane jScrollPane = new JScrollPane(jTable);
+                painelAbaTabPrev_painelTabela.add(jScrollPane);
+                painelAbaTabPrev_painelTabela.updateUI();
+                jTableAtivo = jTable;
+                PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
+            }      
+        }
     }
     
     private void iniciarComboBoxTiposArquivo(JTable jtable) {
@@ -1322,7 +1326,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaInicio_Proximo;
     public static javax.swing.JButton btnAbaTabPrev_GerarCuboXml;
     private javax.swing.JButton btnAbaTabPrev_ImportMaisDados;
-    private javax.swing.JButton btnAbaTabPrev_SalvarTabela;
+    public static javax.swing.JButton btnAbaTabPrev_SalvarTabela;
     private javax.swing.JButton btnAbaTabPrev_ValidarTipos;
     private javax.swing.JButton btnAbaTabPrev_Voltar;
     private javax.swing.JButton btnAbaTipoImportImportarBanco;

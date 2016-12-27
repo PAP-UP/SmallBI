@@ -1,12 +1,12 @@
 package view;
 
-import java.awt.Component;
 import view.percorrerAbas.PercorrerAbasAddDimensao;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import model.Dimensao;
 import model.TabelaFato;
 
@@ -376,26 +376,31 @@ public class FormAddDimensao extends javax.swing.JFrame {
     }
         
     private void salvarDimensao(){
-        Dimensao d = new Dimensao();
-        d.setNome(txtAbaNomeChave_NomeDim.getText());
-        d.setTabela(tabelaFato.getNomeTabela());
-        d.setKey(cbxAbaNomeChave_PKs.getSelectedItem().toString());
-        List<String> atributos = new ArrayList<>();
-        for(int i = 0; i < cbxAbaNomeChave_PKs.getComponentCount(); i++){
-            if(cbxAbaNomeChave_PKs.getItemAt(i) != null){
-                atributos.add(cbxAbaNomeChave_PKs.getItemAt(i));
+    
+        if(!txtAbaNomeChave_NomeDim.getText().equals("") && cbxAbaNomeChave_PKs.getSelectedItem() != null){
+            Dimensao d = new Dimensao();
+            d.setNome(txtAbaNomeChave_NomeDim.getText());
+            d.setTabela(tabelaFato.getNomeTabela());
+            d.setKey(cbxAbaNomeChave_PKs.getSelectedItem().toString());
+            List<String> atributos = new ArrayList<>();
+            for(int i = 0; i < cbxAbaNomeChave_PKs.getComponentCount(); i++){
+                if(cbxAbaNomeChave_PKs.getItemAt(i) != null){
+                    atributos.add(cbxAbaNomeChave_PKs.getItemAt(i));
+                }
             }
+            d.setAtributos(atributos);    
+            FormGerarCuboXml.dimensoes.add(d);
+
+            JLabel l = new JLabel();
+            l.setText("Dimensão: " + d.getNome() + ", Tabela: " + d.getTabela() + ", Chave: " + d.getKey() + ";");
+            FormGerarCuboXml.painel_jtpAbaModelDim_listDims.setLayout(
+                new BoxLayout(FormGerarCuboXml.painel_jtpAbaModelDim_listDims,BoxLayout.Y_AXIS));
+            FormGerarCuboXml.painel_jtpAbaModelDim_listDims.add(l);
+            FormGerarCuboXml.painel_jtpAbaModelDim_listDims.updateUI();        
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         }
-        d.setAtributos(atributos);    
-        FormGerarCuboXml.dimensoes.add(d);
-        
-        JLabel l = new JLabel();
-        l.setText("Dimensão: " + d.getNome() + ", Tabela: " + d.getTabela() + ", Chave: " + d.getKey() + ";");
-        FormGerarCuboXml.painel_jtpAbaModelDim_listDims.setLayout(
-            new BoxLayout(FormGerarCuboXml.painel_jtpAbaModelDim_listDims,BoxLayout.Y_AXIS));
-        FormGerarCuboXml.painel_jtpAbaModelDim_listDims.add(l);
-        FormGerarCuboXml.painel_jtpAbaModelDim_listDims.updateUI();        
-        dispose();
     }
     
     private void salvarAtributosUtilizados(String atributo){        
@@ -415,15 +420,16 @@ public class FormAddDimensao extends javax.swing.JFrame {
         jPanelAtributos.setLayout(new BoxLayout(jPanelAtributos, BoxLayout.Y_AXIS));
         tabelaFato = new TabelaFato();
         for(TabelaFato t : FormGerarCuboXml.tabelasFato){
-            if(t.getNomeTabela().equals(cbxTabelas.getSelectedItem().toString())){
+            String tabelaSeleciona = cbxTabelas.getSelectedItem().toString();
+            if(t.getNomeTabela().equals(tabelaSeleciona)){
                 tabelaFato = t;
             }
         }
        
         jPanelAtributos.removeAll();
+        listaDeCheckBox.clear();
         for(int i = 0; i < tabelaFato.getjTable().getColumnCount(); i++){
             JCheckBox checkBox = new JCheckBox();
-            System.out.println(tabelaFato.getjTable().getColumnName(i));
             checkBox.setText(tabelaFato.getjTable().getColumnName(i));
             checkBox.setVisible(true);
             listaDeCheckBox.add(checkBox);

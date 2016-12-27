@@ -71,13 +71,16 @@ public class PercorrerAbasFormPrincipal extends FormPrincipal{
     public static void abaTabPreviewToAbaTipoImport(){        
         painelAbas.setSelectedIndex(1);
         painelAbas.setEnabledAt(5, false);
-        painelAbas.setEnabledAt(1, true);             
+        painelAbas.setEnabledAt(1, true);   
+        btnAbaTabPrev_GerarCuboXml.setEnabled(false);
+        btnAbaTabPrev_SalvarTabela.setEnabled(false);
     }
     
     public static void importarMaisDados(){
         painelAbas.setSelectedIndex(1);
         painelAbas.setEnabledAt(1, true);
         btnAbaTabPrev_GerarCuboXml.setEnabled(false);
+        btnAbaTabPrev_SalvarTabela.setEnabled(false);
     }
     
     public static void desativarAbasNoInicio(){

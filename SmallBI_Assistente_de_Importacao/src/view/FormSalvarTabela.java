@@ -134,7 +134,7 @@ public class FormSalvarTabela extends javax.swing.JFrame {
         String nomeTabela = txtPainelConfTab_txtNomeTab.getText();        
         String chavePrimaria = cbxPainelConfTab_CamposPrimaryKey.getSelectedItem().toString();
         
-        if(nomeTabela != null && nomeTabela != ""){
+        if(nomeTabela != null && !nomeTabela.isEmpty()){
             if(chavePrimaria != "Selecione"){
                 
                 JOptionPane.showMessageDialog(null, new GerarScriptSql().salvarTabelaPivot(tabelaPivot, 

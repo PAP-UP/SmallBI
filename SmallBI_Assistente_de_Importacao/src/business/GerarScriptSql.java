@@ -15,6 +15,8 @@ public class GerarScriptSql {
         
     public String salvarTabelaPivot(JTable tbl, String nomeTabela, String chavePrimaria,
             List<JComboBox> listaCbxTiposParametro){
+     
+        
         
         scriptSqlTabelaPivot = criarTabela(tbl, nomeTabela, chavePrimaria, listaCbxTiposParametro) + "\n" +
                 preencherTabela(tbl, nomeTabela, listaCbxTiposParametro);
@@ -25,11 +27,11 @@ public class GerarScriptSql {
             List<JComboBox> listaCbxTiposParametro) {
         
         try{
-            String sql = "CREATE TABLE " + retirarEspacos(nomeTabela) + " (";
+            String sql = "CREATE TABLE " + formatarString(nomeTabela) + " (";
             JComboBox cbx;
 
             for (int coluna = 0; coluna < tbl.getColumnCount(); coluna++) {
-                sql += retirarEspacos(tbl.getColumnName(coluna));
+                sql += formatarString(tbl.getColumnName(coluna));
                 cbx = listaCbxTiposParametro.get(coluna);
                 String tipoSQL = transformarOpcaoEmTipoDeVariavelSQL(cbx.getSelectedItem().toString());
 
@@ -51,22 +53,24 @@ public class GerarScriptSql {
         return null;
     }
 
-    private String retirarEspacos(String str) {
-        return str.replaceAll(" ", "_");
+    private String formatarString(String str) {
+        String strFormatada = str.toLowerCase();
+        strFormatada = strFormatada.replaceAll(" ", "_");
+        return strFormatada;
     }
 
     private String preencherTabela(JTable tbl, String nomeTabela, 
             List<JComboBox> listaCbxTiposParametro) {
         
         try{
-            String sql = "INSERT INTO " + retirarEspacos(nomeTabela) + " (";
+            String sql = "INSERT INTO " + formatarString(nomeTabela) + " (";
             JComboBox cbx;
 
             for (int coluna = 0; coluna < tbl.getColumnCount(); coluna++) {
                 if (coluna != tbl.getColumnCount() - 1) {
-                    sql += retirarEspacos(tbl.getColumnName(coluna)) + ",";
+                    sql += formatarString(tbl.getColumnName(coluna)) + ",";
                 } else {
-                    sql += retirarEspacos(tbl.getColumnName(coluna));
+                    sql += formatarString(tbl.getColumnName(coluna));
                 }
             }
             sql += ") VALUES ";

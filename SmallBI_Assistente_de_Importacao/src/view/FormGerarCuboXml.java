@@ -4,22 +4,17 @@ import business.GerarSchema;
 import view.percorrerAbas.PercorrerAbasFormGerarCuboXml;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JTable;
+import javax.swing.JOptionPane;
 import model.Dimensao;
 import model.GrupoMetrica;
-import model.Metrica;
 import model.Schema;
 import model.TabelaFato;
 import xmleditorkit.XMLEditorKit;
 
 public class FormGerarCuboXml extends javax.swing.JFrame {
     
-//    private JTable tabelaPivot = new JTable();
-//    private List<JComboBox> listaCbxTipos = new ArrayList<>();
     public static List<Dimensao> dimensoes = new ArrayList<>();
-//    public static List<Metrica> metricas = new ArrayList<>();
     public static List<GrupoMetrica> grupoMetricas = new ArrayList<>();
     public static List<TabelaFato> tabelasFato = new ArrayList<>();
     
@@ -259,7 +254,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
                 .addComponent(painelAbaModelMetri_ListMetri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnModelMetri_AddMetri)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         btnAbaModelMetri_Voltar.setText("Voltar");
@@ -304,12 +299,15 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
             painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaModelMetriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAbaModelMetri_ModelMetri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(painelAbaModelMetri_ModelMetri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAbaModelMetri)
-                    .addComponent(btnAbaModelMetri_Prox)
-                    .addComponent(btnAbaModelMetri_Voltar)))
+                .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAbaModelMetri)
+                        .addComponent(btnAbaModelMetri_Prox))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaModelMetriLayout.createSequentialGroup()
+                        .addComponent(btnAbaModelMetri_Voltar)
+                        .addContainerGap())))
         );
 
         jtpPainelAbas.addTab("Modelagem Métricas", painelAbaModelMetri);
@@ -411,8 +409,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaModelMetri_VoltarActionPerformed
 
     private void btnAbaModelMetri_ProxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelMetri_ProxActionPerformed
-        PercorrerAbasFormGerarCuboXml.modelMetriToCuboPreview();    
-        gerarSchemaXml();
+        modelMetriToCuboPreview();
     }//GEN-LAST:event_btnAbaModelMetri_ProxActionPerformed
 
     private void btnJtpAbaModelDim_AddDimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJtpAbaModelDim_AddDimActionPerformed
@@ -424,7 +421,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaModelDim_VoltarActionPerformed
 
     private void btnAbaModelDim_ProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelDim_ProximoActionPerformed
-        PercorrerAbasFormGerarCuboXml.modelDimToModelMetri();
+        modelDimToModelMetri();
     }//GEN-LAST:event_btnAbaModelDim_ProximoActionPerformed
 
     private void btnAbaModelDim_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelDim_SairActionPerformed
@@ -432,7 +429,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaModelDim_SairActionPerformed
 
     private void btnAbaNomeCubo_ProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaNomeCubo_ProximoActionPerformed
-        PercorrerAbasFormGerarCuboXml.nomeCuboToModelDim();
+        nomeCuboToModelDim();
     }//GEN-LAST:event_btnAbaNomeCubo_ProximoActionPerformed
 
     private void btnAbaNomeCubo_AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaNomeCubo_AnteriorActionPerformed
@@ -451,6 +448,31 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnAbaNomeCubo_SairActionPerformed
 
+    private void modelMetriToCuboPreview(){
+        if(grupoMetricas.size() > 0){
+            PercorrerAbasFormGerarCuboXml.modelMetriToCuboPreview();    
+            gerarSchemaXml();
+        }else{
+            JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
+        }
+    }
+    
+    private void modelDimToModelMetri(){
+        if(dimensoes.size() > 0){
+            PercorrerAbasFormGerarCuboXml.modelDimToModelMetri();
+        }else{
+            JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
+        }
+    }
+    
+    private void nomeCuboToModelDim(){
+        if(!txtAbaNomeCubo_NomeCubo.getText().equals("")){
+            PercorrerAbasFormGerarCuboXml.nomeCuboToModelDim();
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha o nome do cubo!");
+        }
+    }
+    
     private void gerarSchemaXml(){
         Schema schema = new Schema();
         schema.setNome("Schema " + txtAbaNomeCubo_NomeCubo.getText());

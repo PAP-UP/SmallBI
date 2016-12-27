@@ -326,12 +326,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="painelAbaModelMetri_ModelMetri" max="32767" attributes="0"/>
+                      <Component id="painelAbaModelMetri_ModelMetri" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnAbaModelMetri" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAbaModelMetri_Prox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAbaModelMetri_Voltar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnAbaModelMetri" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAbaModelMetri_Prox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnAbaModelMetri_Voltar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -373,7 +378,7 @@
                           <Component id="painelAbaModelMetri_ListMetri" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnModelMetri_AddMetri" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="266" max="32767" attributes="0"/>
+                          <EmptySpace pref="254" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
