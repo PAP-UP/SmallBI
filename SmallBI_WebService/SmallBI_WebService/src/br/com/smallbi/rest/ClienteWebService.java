@@ -14,22 +14,22 @@ import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import br.com.smallbi.business.EmpresaBusiness;
-import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.business.ClienteBusiness;
+import br.com.smallbi.entity.Cliente;
 
-@Path("/empresa")
-public class EmpresaWebService {
+@Path("/cliente")
+public class ClienteWebService {
 
-	EmpresaBusiness empresaBusiness = new EmpresaBusiness();
+	ClienteBusiness clienteBusiness = new ClienteBusiness();
 	Gson gson = new Gson();
-	Type type = new TypeToken<Empresa>() {}.getType();
+	Type type = new TypeToken<Cliente>() {}.getType();
 	
 	@GET
 	@Path("/listar")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getEmpresas(){
-		List<Empresa> empresas = empresaBusiness.list();
-		return gson.toJson(empresas);
+		List<Cliente> clientes = clienteBusiness.list();
+		return gson.toJson(clientes);
 	}
 	
 	@POST
@@ -37,8 +37,8 @@ public class EmpresaWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addEmpresa(String json){
-		Empresa empresa = gson.fromJson(json, type);
-		String response = empresaBusiness.create(empresa);
+		Cliente cliente = gson.fromJson(json, type);
+		String response = clienteBusiness.create(cliente);
 		return gson.toJson(response);
 	}
 	
@@ -47,8 +47,8 @@ public class EmpresaWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setEmpresa(String json){
-		Empresa empresa = gson.fromJson(json, type);
-		String response = empresaBusiness.update(empresa);
+		Cliente cliente = gson.fromJson(json, type);
+		String response = clienteBusiness.update(cliente);
 		return gson.toJson(response);
 	}
 	
@@ -57,8 +57,8 @@ public class EmpresaWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delEmpresa(String json){
-		Empresa empresa = gson.fromJson(json, type);
-		String response = empresaBusiness.delete(empresa.getIdEmpresa());
+		Cliente cliente = gson.fromJson(json, type);
+		String response = clienteBusiness.delete(cliente.getIdCliente());
 		return gson.toJson(response);
 	}
 	
@@ -66,7 +66,7 @@ public class EmpresaWebService {
 	@Path("/getById/{idEmpresa}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getById(@PathParam("idEmpresa") String idEmpresa){
-		Empresa empresa = empresaBusiness.getObjById(Integer.parseInt(idEmpresa));
-		return gson.toJson(empresa);
+		Cliente cliente = clienteBusiness.getObjById(Integer.parseInt(idEmpresa));
+		return gson.toJson(cliente);
 	}
 }

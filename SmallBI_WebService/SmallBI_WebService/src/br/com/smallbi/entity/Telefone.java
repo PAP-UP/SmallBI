@@ -2,14 +2,12 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.ForeignKey;
 
@@ -17,8 +15,6 @@ import org.hibernate.annotations.ForeignKey;
 public class Telefone {
 	
 	@Id
-	@SequenceGenerator(name="seq_telefone", sequenceName="seq_telefone_id", allocationSize=1)
-	@GeneratedValue(generator="seq_telefone", strategy=GenerationType.SEQUENCE)
 	private Integer idTelefone;
 	
 	private Calendar dataCadastro;
@@ -26,21 +22,23 @@ public class Telefone {
 	private Integer usuarioId;
 	
 	@ManyToOne
-	@JoinColumn(name="tipo", referencedColumnName="idTipo")
+	@JoinColumn(name="tipoId", referencedColumnName="idTipo")
 	@ForeignKey(name="fk_tipo")
 	private Tipo tipo;
 	
+	@Column(name = "ddd", columnDefinition = "int4", length=2)
 	private String ddd;
 	
+	@Column (length=9)
 	private String telefone;
 	
 	@OneToOne
-	@JoinColumn(name="empresa", referencedColumnName="idEmpresa")
-	@ForeignKey(name="fk_empresa")
-	private Empresa empresa;
+	@JoinColumn(name="clienteId", referencedColumnName="idCliente",columnDefinition="int4")
+	@ForeignKey(name="fk_cliente")
+	private Cliente cliente;
 	
 	@ManyToOne
-	@JoinColumn(name="pessoa", referencedColumnName="idPessoa")
+	@JoinColumn(name="pessoaId", referencedColumnName="idPessoa")
 	@ForeignKey(name="fk_pessoa")
 	private Pessoa pessoa;
 	
@@ -102,12 +100,12 @@ public class Telefone {
 		this.telefone = telefone;
 	}
 
-	public Empresa getEmpresa() {
-		return empresa;
+	public Cliente getEmpresa() {
+		return cliente;
 	}
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
+	public void setEmpresa(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public Pessoa getPessoa() {

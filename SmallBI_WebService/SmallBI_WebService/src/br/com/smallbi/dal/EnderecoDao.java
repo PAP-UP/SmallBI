@@ -20,6 +20,7 @@ public class EnderecoDao implements InterfaceDao<Endereco>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Endereco> list() {
 		EntityManager em = SingletonConexao.getInstance();

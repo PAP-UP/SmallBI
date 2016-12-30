@@ -16,7 +16,7 @@ public class TestFirstUser {
 	public void test1CreateFirstUser(){
 		Usuario usuario = new Usuario();
 		usuario.setDataCadastro(Calendar.getInstance());
-		usuario.setEmpresa(null);
+		usuario.setCliente(null);
 		usuario.setLogin("deynesonborba");
 		usuario.setPerfil(null);
 		usuario.setPessoa(null);

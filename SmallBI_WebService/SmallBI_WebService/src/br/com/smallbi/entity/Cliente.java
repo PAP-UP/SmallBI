@@ -2,56 +2,56 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.ForeignKey;
 
 @Entity
-public class Empresa {
+public class Cliente {
 
 	@Id
-	@SequenceGenerator(name="seq_empresa", sequenceName="seq_empresa_id", allocationSize=1)
-	@GeneratedValue(generator="seq_empresa", strategy=GenerationType.SEQUENCE)
-	private Integer idEmpresa;
+	private Integer idCliente;
 	
 	private Calendar dataCadastro;
 	
 	private Integer usuarioId;
 	
+	@Column (length=80)
 	private String razaoSocial;
 	
+	@Column (length=80)
 	private String nomeFantasia;
 	
+	@Column (length=25)
 	private String cnpj;
 	
+	@Column (length=25)
 	private String ie;
 	
 	@OneToOne
-	@JoinColumn(name="endereco", referencedColumnName="idEndereco")
+	@JoinColumn(name="enderecoId", referencedColumnName="idEndereco")
 	@ForeignKey(name="fk_endereco")
 	private Endereco endereco;
 	
 	@ManyToOne
-	@JoinColumn(name="ramoAtividade", referencedColumnName="idRamoAtividade")
+	@JoinColumn(name="ramoAtividadeId", referencedColumnName="idRamoAtividade")
 	@ForeignKey(name="fk_ramoAtividade")
 	private RamoAtividade ramoAtividade;
 	
 	private Integer tamanhoTotal;
 	
 	@ManyToOne
-	@JoinColumn(name="formaPagamento", referencedColumnName="idFormaPagamento")
+	@JoinColumn(name="formaPagamentoId", referencedColumnName="idFormaPagamento")
 	@ForeignKey(name="fk_formaPagamento")
 	private FormaPagamento formaPagamento;
 	
 	@ManyToOne
-	@JoinColumn(name="plano", referencedColumnName="idPlano")
+	@JoinColumn(name="planoId", referencedColumnName="idPlano")
 	@ForeignKey(name="fk_plano")
 	private Plano plano;
 	
@@ -65,12 +65,12 @@ public class Empresa {
 		this.status = status;
 	}
 
-	public Integer getIdEmpresa() {
-		return idEmpresa;
+	public Integer getIdCliente() {
+		return idCliente;
 	}
 
-	public void setIdEmpresa(Integer idEmpresa) {
-		this.idEmpresa = idEmpresa;
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public Calendar getDataCadastro() {

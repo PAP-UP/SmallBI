@@ -2,13 +2,11 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.ForeignKey;
 
@@ -16,27 +14,33 @@ import org.hibernate.annotations.ForeignKey;
 public class Endereco {
 
 	@Id
-	@SequenceGenerator(name="seq_endereco", sequenceName="seq_endereco_id", allocationSize=1)
-	@GeneratedValue(generator="seq_endereco", strategy=GenerationType.SEQUENCE)
 	private Integer idEndereco;
 	
 	private Calendar dataCadastro;
 
 	private Integer usuarioId;
 	
+	@Column (length=120)
 	private String endereco;
 	
+	@Column(name = "numero", columnDefinition = "int4")
 	private String numero;
 	
+	@Column (length=60)
 	private String bairro;
 	
 	@ManyToOne
-	@JoinColumn(name="cidade", referencedColumnName="idCidade")
+	@JoinColumn(name="cidadeId", referencedColumnName="idCidade")
 	@ForeignKey(name="fk_cidade")
 	private Cidade cidade;
+	
+	@ManyToOne
+	@JoinColumn(name="pessoaId", referencedColumnName="idPessoa")
+	@ForeignKey(name="fk_pessoa")
+	private Pessoa pessoa;
 
 	@ManyToOne
-	@JoinColumn(name="tipo", referencedColumnName="idTipo")
+	@JoinColumn(name="tipoId", referencedColumnName="idTipo")
 	@ForeignKey(name="fk_tipo")
 	private Tipo tipo;
 	
@@ -104,6 +108,14 @@ public class Endereco {
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	public Tipo getTipo() {

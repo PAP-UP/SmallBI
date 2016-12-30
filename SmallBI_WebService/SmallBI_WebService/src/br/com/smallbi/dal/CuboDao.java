@@ -20,6 +20,7 @@ public class CuboDao implements InterfaceDao<Cubo>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Cubo> list() {
 		EntityManager em = SingletonConexao.getInstance();

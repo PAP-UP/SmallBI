@@ -20,6 +20,7 @@ public class TelefoneDao implements InterfaceDao<Telefone>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Telefone> list() {
 		EntityManager em = SingletonConexao.getInstance();

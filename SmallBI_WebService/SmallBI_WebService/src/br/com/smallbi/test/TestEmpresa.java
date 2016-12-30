@@ -7,12 +7,12 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.smallbi.business.EmpresaBusiness;
+import br.com.smallbi.business.ClienteBusiness;
 import br.com.smallbi.business.EnderecoBusiness;
 import br.com.smallbi.business.FormaPagamentoBusiness;
 import br.com.smallbi.business.PlanoBusiness;
 import br.com.smallbi.business.RamoAtividadeBusiness;
-import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.FormaPagamento;
 import br.com.smallbi.entity.Plano;
@@ -21,12 +21,12 @@ import br.com.smallbi.entity.RamoAtividade;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestEmpresa {
 
-	EmpresaBusiness empresaBusiness = new EmpresaBusiness();
+	ClienteBusiness clienteBusiness = new ClienteBusiness();
 	public static int idTestEmpresa;
 	
 	@Test
 	public void test1CreateEmpresa(){
-		Empresa e = new Empresa();
+		Cliente e = new Cliente();
 		e.setCnpj("12.123.123/1234-12");
 		e.setDataCadastro(Calendar.getInstance());
 		
@@ -54,27 +54,27 @@ public class TestEmpresa {
 		e.setTamanhoTotal(100);
 		e.setUsuarioId(1);
 		
-		empresaBusiness.create(e);
-		idTestEmpresa = e.getIdEmpresa();
+		clienteBusiness.create(e);
+		idTestEmpresa = e.getIdCliente();
 	}
 	
 	@Test
 	public void test2ListEmpresa(){
-		List<Empresa> empresas = empresaBusiness.list();
+		List<Cliente> clientes = clienteBusiness.list();
 		System.out.println("<<Empresas:>>");
-		for(Empresa e : empresas){
+		for(Cliente e : clientes){
 			System.out.println("----------");
 			System.out.println("CNJP: " + e.getCnpj());
 			System.out.println("Ie: " + e.getIe());
 			System.out.println("Nome Fantasia: " + e.getNomeFantasia());
 			System.out.println("Razão Social: " + e.getRazaoSocial());
-			System.out.println("Id: " + e.getIdEmpresa());
+			System.out.println("Id: " + e.getIdCliente());
 			System.out.println("Tamanho total: " + e.getTamanhoTotal());
 			System.out.println("Usuário: " + e.getUsuarioId());
 			System.out.println("Data de cadastro: " + e.getDataCadastro().getTime());
 			System.out.println("Endereço: " + e.getEndereco().getEndereco());
 			System.out.println("Forma de pagamento: " + e.getFormaPagamento().getFormaPagamento());
-			System.out.println("Plano: " + e.getPlano().getDescricao());
+			System.out.println("Plano: " + e.getPlano().getNomePlano());
 			System.out.println("Ramo de atividade: " + e.getRamoAtividade().getRamoAtividade());
 			System.out.println("----------");
 		}
@@ -82,16 +82,16 @@ public class TestEmpresa {
 	
 	@Test
 	public void test3UpdateEmpresa(){
-		Empresa empresa = empresaBusiness.getObjById(idTestEmpresa);
-		empresa.setNomeFantasia("SmallBI");
-		empresaBusiness.update(empresa);
+		Cliente cliente = clienteBusiness.getObjById(idTestEmpresa);
+		cliente.setNomeFantasia("SmallBI");
+		clienteBusiness.update(cliente);
 		System.out.println("UPDATE");
 		test2ListEmpresa();
 	}
 
 	@Test
 	public void test4DeleteEmpresa(){
-		empresaBusiness.delete(idTestEmpresa);
+		clienteBusiness.delete(idTestEmpresa);
 		System.out.println("DELETE");
 		test2ListEmpresa();
 	}

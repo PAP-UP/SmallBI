@@ -2,14 +2,12 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.ForeignKey;
 
@@ -17,32 +15,32 @@ import org.hibernate.annotations.ForeignKey;
 public class Usuario {
 
 	@Id
-	@SequenceGenerator(name="seq_usuario", sequenceName="seq_usuario_id", allocationSize=1)
-	@GeneratedValue(generator="seq_usuario", strategy=GenerationType.SEQUENCE)
 	private Integer idUsuario;
 	
 	private Calendar dataCadastro;
 	
 	private Integer usuarioId;
 	
+	@Column (length=25)
 	private String login;
 	
+	@Column (length=25)
 	private String senha;
 	
 	@ManyToOne
-	@JoinColumn(name="perfil", referencedColumnName="idPerfil")
+	@JoinColumn(name="perfilId", referencedColumnName="idPerfil")
 	@ForeignKey(name="fk_perfil")
 	private Perfil perfil;
 	
 	@OneToOne
-	@JoinColumn(name="pessoa", referencedColumnName="idPessoa")
+	@JoinColumn(name="pessoaId", referencedColumnName="idPessoa")
 	@ForeignKey(name="fk_pessoa")
 	private Pessoa pessoa;
 	
 	@ManyToOne
-	@JoinColumn(name="empresa", referencedColumnName="idEmpresa")
-	@ForeignKey(name="fk_empresa")
-	private Empresa empresa;
+	@JoinColumn(name="clienteId", referencedColumnName="idCliente")
+	@ForeignKey(name="fk_cliente")
+	private Cliente cliente;
 	
 	private String usuarioSaiku;
 	
@@ -112,12 +110,12 @@ public class Usuario {
 		this.pessoa = pessoa;
 	}
 
-	public Empresa getEmpresa() {
-		return empresa;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public String getUsuarioSaiku() {

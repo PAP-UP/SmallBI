@@ -7,7 +7,7 @@ import java.util.List;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
-import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Tipo;
@@ -15,7 +15,7 @@ import br.com.smallbi.entity.Tipo;
 public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 
 	InterfaceDao<Telefone> telefoneDao = FactoryDao.createTelefoneDao();
-	InterfaceDao<Empresa> empresaDao = FactoryDao.createEmpresaDao();
+	InterfaceDao<Cliente> empresaDao = FactoryDao.createClienteDao();
 	InterfaceDao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();
 	InterfaceDao<Tipo> tipoDao = FactoryDao.createTipoDao();
 	
@@ -41,9 +41,9 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 		}
 		
 		if(t.getEmpresa() != null){
-			if(t.getEmpresa().getIdEmpresa() != null){
-				Empresa empresa = empresaDao.getObjById(t.getEmpresa().getIdEmpresa());
-				if(empresa == null){
+			if(t.getEmpresa().getIdCliente() != null){
+				Cliente cliente = empresaDao.getObjById(t.getEmpresa().getIdCliente());
+				if(cliente == null){
 //					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
 					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
 				}
@@ -145,9 +145,9 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 		}
 		
 		if(t.getEmpresa() != null){
-			if(t.getEmpresa().getIdEmpresa() != null){
-				Empresa empresa = empresaDao.getObjById(t.getEmpresa().getIdEmpresa());
-				if(empresa == null){
+			if(t.getEmpresa().getIdCliente() != null){
+				Cliente cliente = empresaDao.getObjById(t.getEmpresa().getIdCliente());
+				if(cliente == null){
 //					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
 					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
 				}

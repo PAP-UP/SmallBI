@@ -20,6 +20,7 @@ public class FuncaoDao implements InterfaceDao<Funcao>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Funcao> list() {
 		EntityManager em = SingletonConexao.getInstance();

@@ -2,26 +2,24 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Estado {
 	
 	@Id
-	@SequenceGenerator(name="seq_estado", sequenceName="seq_estado_id", allocationSize=1)
-	@GeneratedValue(generator="seq_estado", strategy=GenerationType.SEQUENCE)
 	private Integer idEstado;
 	
 	private Calendar dataCadastro;
 	
 	private Integer usuarioId;
 	
+	@Column (length=25)
 	private String nomeEstado;
 	
+	@Column (length=2)
 	private String siglaEstado;
 	
 	private boolean status;

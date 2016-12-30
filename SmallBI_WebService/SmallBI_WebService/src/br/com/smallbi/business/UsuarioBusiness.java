@@ -7,7 +7,7 @@ import java.util.List;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
-import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Perfil;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Usuario;
@@ -15,7 +15,7 @@ import br.com.smallbi.entity.Usuario;
 public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 
 	InterfaceDao<Usuario> usuarioDao = FactoryDao.createUsuarioDao();
-	InterfaceDao<Empresa> empresaDao = FactoryDao.createEmpresaDao();
+	InterfaceDao<Cliente> empresaDao = FactoryDao.createClienteDao();
 	InterfaceDao<Perfil> perfilDao = FactoryDao.createPerfilDao();
 	InterfaceDao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();
 	
@@ -35,10 +35,10 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getEmpresa() != null){
-			if(t.getEmpresa().getIdEmpresa() != null){
-				Empresa empresa = empresaDao.getObjById(t.getEmpresa().getIdEmpresa());
-				if(empresa == null){
+		if(t.getCliente() != null){
+			if(t.getCliente().getIdCliente() != null){
+				Cliente cliente = empresaDao.getObjById(t.getCliente().getIdCliente());
+				if(cliente == null){
 //					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
 					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
 				}
@@ -134,10 +134,10 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getEmpresa() != null){
-			if(t.getEmpresa().getIdEmpresa() != null){
-				Empresa empresa = empresaDao.getObjById(t.getEmpresa().getIdEmpresa());
-				if(empresa == null){
+		if(t.getCliente() != null){
+			if(t.getCliente().getIdCliente() != null){
+				Cliente cliente = empresaDao.getObjById(t.getCliente().getIdCliente());
+				if(cliente == null){
 //					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
 					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
 				}

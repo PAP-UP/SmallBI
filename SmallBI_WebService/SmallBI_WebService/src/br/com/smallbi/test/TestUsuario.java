@@ -7,11 +7,11 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.smallbi.business.EmpresaBusiness;
+import br.com.smallbi.business.ClienteBusiness;
 import br.com.smallbi.business.PerfilBusiness;
 import br.com.smallbi.business.PessoaBusiness;
 import br.com.smallbi.business.UsuarioBusiness;
-import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Perfil;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Usuario;
@@ -27,9 +27,9 @@ public class TestUsuario {
 		Usuario usuario = new Usuario();
 		usuario.setDataCadastro(Calendar.getInstance());
 		
-		List<Empresa> empresas = new EmpresaBusiness().list();
-		Empresa empresa = empresas.get(0);
-		usuario.setEmpresa(empresa);
+		List<Cliente> clientes = new ClienteBusiness().list();
+		Cliente cliente = clientes.get(0);
+		usuario.setCliente(cliente);
 		
 		usuario.setLogin("borbagato");
 		
@@ -62,7 +62,7 @@ public class TestUsuario {
 			System.out.println("Id: " + u.getIdUsuario());
 			System.out.println("Id usuário que fez o cadastro: " + u.getUsuarioId());
 			System.out.println("Data de cadastro: " + u.getDataCadastro().getTime());
-			System.out.println("Empresa: " + u.getEmpresa().getNomeFantasia());
+			System.out.println("Empresa: " + u.getCliente().getNomeFantasia());
 			System.out.println("Perfil: " + u.getPerfil().getNomePerfil());
 			System.out.println("Nome: " + u.getPessoa().getNome());
 			System.out.println("----------");

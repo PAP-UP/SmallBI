@@ -2,7 +2,7 @@ package br.com.smallbi.dal.factory;
 
 import br.com.smallbi.dal.CidadeDao;
 import br.com.smallbi.dal.CuboDao;
-import br.com.smallbi.dal.EmpresaDao;
+import br.com.smallbi.dal.ClienteDao;
 import br.com.smallbi.dal.EnderecoDao;
 import br.com.smallbi.dal.EstadoDao;
 import br.com.smallbi.dal.FormaPagamentoDao;
@@ -17,7 +17,7 @@ import br.com.smallbi.dal.UsuarioDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Cubo;
-import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Estado;
 import br.com.smallbi.entity.FormaPagamento;
@@ -40,8 +40,8 @@ public class FactoryDao {
 		return new CuboDao();
 	}
 	
-	public static InterfaceDao<Empresa> createEmpresaDao(){
-		return new EmpresaDao();
+	public static InterfaceDao<Cliente> createClienteDao(){
+		return new ClienteDao();
 	}
 	
 	public static InterfaceDao<Endereco> createEnderecoDao(){

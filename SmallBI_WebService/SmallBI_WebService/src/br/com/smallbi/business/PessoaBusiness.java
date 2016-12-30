@@ -40,7 +40,8 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getEndereco() != null){
+		/*Retirado o endereço da pessoa, pois estava invertido, uma pessoa tem vários endereços, um endereço tem uma pessoa.
+		 * if(t.getEndereco() != null){
 			if(t.getEndereco().getIdEndereco() != null){
 				Endereco endereco = enderecoDao.getObjById(t.getEndereco().getIdEndereco());
 				if(endereco == null){
@@ -54,7 +55,7 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 		}else{
 //			throw new BusinessException("A variável 'endereco' deve ser informada!");
 			return "A variável 'endereco' deve ser informada!";
-		}
+		}*/
 		
 		if(t.getFuncao() != null){
 			if(t.getFuncao().getIdFuncao() != null){
@@ -137,7 +138,8 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getEndereco() != null){
+		/*Retirado o endereço da pessoa, pois estava invertido, uma pessoa tem vários endereços, um endereço tem uma pessoa.
+		 * if(t.getEndereco() != null){
 			if(t.getEndereco().getIdEndereco() != null){
 				Endereco endereco = enderecoDao.getObjById(t.getEndereco().getIdEndereco());
 				if(endereco == null){
@@ -151,7 +153,7 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 		}else{
 //			throw new BusinessException("A variável 'endereco' deve ser informada!");
 			return "A variável 'endereco' deve ser informada!";
-		}
+		}*/
 		
 		if(t.getFuncao() != null){
 			if(t.getFuncao().getIdFuncao() != null){

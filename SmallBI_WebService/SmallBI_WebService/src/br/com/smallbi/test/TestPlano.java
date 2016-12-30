@@ -20,7 +20,7 @@ public class TestPlano {
 	public void test1CreatePlano(){
 		Plano plano = new Plano();
 		plano.setDataCadastro(Calendar.getInstance());
-		plano.setDescricao("Cheap plan");
+		plano.setNomePlano("Cheap plan");
 		plano.setStatus(true);
 		plano.setUsuarioId(1);
 		
@@ -34,7 +34,7 @@ public class TestPlano {
 		System.out.println("<<Planos>>");
 		for(Plano p : planos){
 			System.out.println("----------");
-			System.out.println("Descrição: " + p.getDescricao());
+			System.out.println("Descrição: " + p.getNomePlano());
 			System.out.println("Id: " + p.getIdPlano());
 			System.out.println("Usuário: " + p.getUsuarioId());
 			System.out.println("Data de cadastro: " + p.getDataCadastro().getTime());
@@ -45,7 +45,7 @@ public class TestPlano {
 	@Test
 	public void test3UpdatePlano(){
 		Plano p = planoBusiness.getObjById(idTestPlano);
-		p.setDescricao("Expensive plan");
+		p.setNomePlano("Expensive plan");
 		planoBusiness.update(p);
 		System.out.println("UPDATE");
 		test2ListPlano();

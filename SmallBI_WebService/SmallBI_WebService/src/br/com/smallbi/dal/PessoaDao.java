@@ -20,6 +20,7 @@ public class PessoaDao implements InterfaceDao<Pessoa>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Pessoa> list() {
 		EntityManager em = SingletonConexao.getInstance();

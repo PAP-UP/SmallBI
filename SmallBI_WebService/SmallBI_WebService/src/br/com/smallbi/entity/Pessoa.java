@@ -2,13 +2,11 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.ForeignKey;
 
@@ -16,29 +14,31 @@ import org.hibernate.annotations.ForeignKey;
 public class Pessoa {
 
 	@Id
-	@SequenceGenerator(name="seq_pessoa", sequenceName="seq_pessoa_id", allocationSize=1)
-	@GeneratedValue(generator="seq_pessoa", strategy=GenerationType.SEQUENCE)
 	private Integer idPessoa;
 	
 	private Calendar dataCadastro;
 	
 	private Integer usuarioId;
 	
+	@Column (length=60)
 	private String nome;
 	
+	@Column (length=20)
 	private String cpf;
 	
+	@Column (length=20)
 	private String rg;
 	
 	@ManyToOne
-	@JoinColumn(name="funcao", referencedColumnName="idFuncao")
+	@JoinColumn(name="funcaoId", referencedColumnName="idFuncao")
 	@ForeignKey(name="fk_funcao")
 	private Funcao funcao;
 	
-	@ManyToOne
-	@JoinColumn(name="endereco", referencedColumnName="idEndereco")
+/*	Retirado o endereço da pessoa, pois estava invertido, uma pessoa tem vários endereços, um endereço tem uma pessoa.
+ * @ManyToOne
+	@JoinColumn(name="enderecoId", referencedColumnName="idEndereco")
 	@ForeignKey(name="fk_endereco")
-	private Endereco endereco;
+	private Endereco endereco;*/
 	
 	private boolean status;
 	
@@ -106,13 +106,14 @@ public class Pessoa {
 		this.funcao = funcao;
 	}
 
-	public Endereco getEndereco() {
+/*Retirado o endereço da pessoa, pois estava invertido, uma pessoa tem vários endereços, um endereço tem uma pessoa.
+ * 	public Endereco getEndereco() {
 		return endereco;
 	}
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}
+	}*/
 
 	
 

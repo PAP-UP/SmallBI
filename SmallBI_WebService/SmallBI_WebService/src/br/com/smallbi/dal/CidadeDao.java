@@ -20,6 +20,7 @@ public class CidadeDao implements InterfaceDao<Cidade>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Cidade> list() {
 		EntityManager em = SingletonConexao.getInstance();

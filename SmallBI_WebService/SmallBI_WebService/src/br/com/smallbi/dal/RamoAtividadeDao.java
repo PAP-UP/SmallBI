@@ -20,6 +20,7 @@ public class RamoAtividadeDao implements InterfaceDao<RamoAtividade>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<RamoAtividade> list() {
 		EntityManager em = SingletonConexao.getInstance();

@@ -20,6 +20,7 @@ public class FormaPagamentoDao implements InterfaceDao<FormaPagamento>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<FormaPagamento> list() {
 		EntityManager em = SingletonConexao.getInstance();

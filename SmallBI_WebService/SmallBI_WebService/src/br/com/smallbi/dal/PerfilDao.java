@@ -20,6 +20,7 @@ public class PerfilDao implements InterfaceDao<Perfil>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Perfil> list() {
 		EntityManager em = SingletonConexao.getInstance();

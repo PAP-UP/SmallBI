@@ -20,6 +20,7 @@ public class TipoDao implements InterfaceDao<Tipo>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tipo> list() {
 		EntityManager em = SingletonConexao.getInstance();

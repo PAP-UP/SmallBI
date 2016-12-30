@@ -8,9 +8,9 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.CuboBusiness;
-import br.com.smallbi.business.EmpresaBusiness;
+import br.com.smallbi.business.ClienteBusiness;
 import br.com.smallbi.entity.Cubo;
-import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Cliente;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCubo {
@@ -23,9 +23,9 @@ public class TestCubo {
 		Cubo cubo = new Cubo();
 		cubo.setDataCadastro(Calendar.getInstance());
 		
-		List<Empresa> empresas = new EmpresaBusiness().list();
-		Empresa empresa = empresas.get(0);
-		cubo.setEmpresa(empresa);
+		List<Cliente> clientes = new ClienteBusiness().list();
+		Cliente cliente = clientes.get(0);
+		cubo.setCliente(cliente);
 		
 		cubo.setMdx("<Schema>");
 		cubo.setNomeCubo("Sales Cube");
@@ -51,7 +51,7 @@ public class TestCubo {
 			System.out.println("Tamanho: " + c.getTamanho());
 			System.out.println("Usuário: " + c.getUsuarioId());
 			System.out.println("Data de cadastro: " + c.getDataCadastro().getTime());
-			System.out.println("Empresa: " + c.getEmpresa().getNomeFantasia());
+			System.out.println("Empresa: " + c.getCliente().getNomeFantasia());
 			System.out.println("----------");
 		}
 	} 

@@ -20,6 +20,7 @@ public class EstadoDao implements InterfaceDao<Estado>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Estado> list() {
 		EntityManager em = SingletonConexao.getInstance();

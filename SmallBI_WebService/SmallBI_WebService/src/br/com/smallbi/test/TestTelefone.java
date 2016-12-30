@@ -7,11 +7,11 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.smallbi.business.EmpresaBusiness;
+import br.com.smallbi.business.ClienteBusiness;
 import br.com.smallbi.business.PessoaBusiness;
 import br.com.smallbi.business.TelefoneBusiness;
 import br.com.smallbi.business.TipoBusiness;
-import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Tipo;
@@ -28,9 +28,9 @@ public class TestTelefone {
 		telefone.setDataCadastro(Calendar.getInstance());
 		telefone.setDdd("41");
 		
-		List<Empresa> empresas = new EmpresaBusiness().list();
-		Empresa empresa = empresas.get(0);
-		telefone.setEmpresa(empresa);
+		List<Cliente> clientes = new ClienteBusiness().list();
+		Cliente cliente = clientes.get(0);
+		telefone.setEmpresa(cliente);
 		
 		List<Pessoa> pessoas = new PessoaBusiness().list();
 		Pessoa pessoa = pessoas.get(0);

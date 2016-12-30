@@ -7,29 +7,29 @@ import java.util.List;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
-import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.FormaPagamento;
 import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
 
-public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
+public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 
-	InterfaceDao<Empresa> empresaDao = FactoryDao.createEmpresaDao();
+	InterfaceDao<Cliente> clienteDao = FactoryDao.createClienteDao();
 	InterfaceDao<Endereco> enderecoDao = FactoryDao.createEnderecoDao();
 	InterfaceDao<FormaPagamento> formaPagamentoDao = FactoryDao.createFormaPagamentoDao();
 	InterfaceDao<Plano> planoDao = FactoryDao.createPlanoDao();
 	InterfaceDao<RamoAtividade> ramoAtividadeDao = FactoryDao.createRamoAtividadeDao();
 	
 	@Override
-	public String create(Empresa t){
+	public String create(Cliente t){
 		
 		if(t == null){
 //			throw new BusinessException("O objeto não pode ser null!");
 			return "O objeto não pode ser null!";
 		}
 		
-		if(t.getIdEmpresa() != null){
+		if(t.getIdCliente() != null){
 			return "A variavel ID não pode ser informada na criação de um novo objeto!";
 		}
 		
@@ -136,35 +136,35 @@ public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
-		empresaDao.create(t);
+		clienteDao.create(t);
 		return "Empresa cadastrada com sucesso!";
 	}
 
 	@Override
-	public List<Empresa> list() {
-		List<Empresa> empresas = new ArrayList<>();
-		for(Empresa e : empresaDao.list()){
+	public List<Cliente> list() {
+		List<Cliente> clientes = new ArrayList<>();
+		for(Cliente e : clienteDao.list()){
 			if(e.isStatus() == true){
-				empresas.add(e);
+				clientes.add(e);
 			}
 		}
-		return empresas;
+		return clientes;
 	}
 
 	@Override
-	public String update(Empresa t){
+	public String update(Cliente t){
 		
 		if(t == null){
 //			throw new BusinessException("O objeto não pode ser null!");
 			return "O objeto não pode ser null!";
 		}
 		
-		if(t.getIdEmpresa() == null){
+		if(t.getIdCliente() == null){
 //			throw new BusinessException("A variável 'idEmpresa' deve ser informada!");
 			return "A variável 'idEmpresa' deve ser informada!";
 		}else{
-			Empresa empresa = empresaDao.getObjById(t.getIdEmpresa());
-			if(empresa == null){
+			Cliente cliente = clienteDao.getObjById(t.getIdCliente());
+			if(cliente == null){
 //				throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
 				return "Nenhum resultado para a variável 'empresa' foi encontrado!";
 			}
@@ -273,28 +273,28 @@ public class EmpresaBusiness implements InterfaceBusiness<Empresa>{
 		t.setDataCadastro(Calendar.getInstance());
 		t.setStatus(true);
 		
-		empresaDao.update(t);
+		clienteDao.update(t);
 		return "Empresa alterada com sucesso!";
 	}
 
 	@Override
 	public String delete(Integer id){
-		Empresa empresa = empresaDao.getObjById(id);
-		if(empresa == null){
+		Cliente cliente = clienteDao.getObjById(id);
+		if(cliente == null){
 //			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Empresa'!");
 			return "Nenhum resultado foi encontrado para o objeto do tipo 'Empresa'!";
 		}
-		empresaDao.delete(empresa);
+		clienteDao.delete(cliente);
 		return "Empresa deletada com sucesso!";
 	}
 
 	@Override
-	public Empresa getObjById(Integer id){
-		Empresa empresa = empresaDao.getObjById(id);
-		if(empresa == null){
+	public Cliente getObjById(Integer id){
+		Cliente cliente = clienteDao.getObjById(id);
+		if(cliente == null){
 			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Empresa'!");
 		}
-		return empresa;
+		return cliente;
 	}
 
 }

@@ -29,7 +29,7 @@ public class PlanoBusiness implements InterfaceBusiness<Plano>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getDescricao().equals(null) || t.getDescricao().equals("")){
+		if(t.getNomePlano().equals(null) || t.getNomePlano().equals("")){
 //			throw new BusinessException("A variável 'descricao' deve ser informada!");
 			return "A variável 'descricao' deve ser informada!";
 		}
@@ -80,7 +80,7 @@ public class PlanoBusiness implements InterfaceBusiness<Plano>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getDescricao().equals(null) || t.getDescricao().equals("")){
+		if(t.getNomePlano().equals(null) || t.getNomePlano().equals("")){
 //			throw new BusinessException("A variável 'descricao' deve ser informada!");
 			return "A variável 'descricao' deve ser informada!";
 		}

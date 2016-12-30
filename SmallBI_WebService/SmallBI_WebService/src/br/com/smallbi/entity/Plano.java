@@ -2,25 +2,22 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Plano {
 
 	@Id
-	@SequenceGenerator(name="seq_plano", sequenceName="seq_plano_id", allocationSize=1)
-	@GeneratedValue(generator="seq_plano", strategy=GenerationType.SEQUENCE)
 	private Integer idPlano;
 	
 	private Calendar dataCadastro;
 	
 	private Integer usuarioId;
 	
-	private String descricao;
+	@Column(name = "descricao",length=30)
+	private String nomePlano;
 	
 	private boolean status;
 	
@@ -56,12 +53,12 @@ public class Plano {
 		this.usuarioId = usuarioId;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getNomePlano() {
+		return nomePlano;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setNomePlano(String descricao) {
+		this.nomePlano = descricao;
 	}
 
 	

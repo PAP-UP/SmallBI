@@ -2,13 +2,11 @@ package br.com.smallbi.entity;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.ForeignKey;
 
@@ -17,20 +15,20 @@ import org.hibernate.annotations.ForeignKey;
 public class Cidade {
 	
 	@Id
-	@SequenceGenerator(name="seq_cidade", sequenceName="seq_cidade_id", allocationSize=1)
-	@GeneratedValue(generator="seq_cidade", strategy=GenerationType.SEQUENCE)
 	private Integer idCidade;
 	
 	private Calendar dataCadastro;
 	
 	private Integer usuarioId;
 
+	@Column (length=50)
 	private String nomeCidade;
-
+	
+	@Column (length=6)
 	private String siglaCidade;
 	
 	@ManyToOne
-	@JoinColumn(name="estado", referencedColumnName="idEstado")
+	@JoinColumn(name="estadoId", referencedColumnName="idEstado")
 	@ForeignKey(name="fk_estado")
 	private Estado estado;
 	

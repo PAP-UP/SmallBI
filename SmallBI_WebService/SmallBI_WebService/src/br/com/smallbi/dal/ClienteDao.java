@@ -7,12 +7,12 @@ import javax.persistence.Query;
 
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.dal.singleton.SingletonConexao;
-import br.com.smallbi.entity.Empresa;
+import br.com.smallbi.entity.Cliente;
 
-public class EmpresaDao implements InterfaceDao<Empresa>{
+public class ClienteDao implements InterfaceDao<Cliente>{
 
 	@Override
-	public void create(Empresa t) {
+	public void create(Cliente t) {
 		EntityManager em = SingletonConexao.getInstance();
 		em.getTransaction().begin();
 		em.persist(t);
@@ -20,15 +20,16 @@ public class EmpresaDao implements InterfaceDao<Empresa>{
 		em.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Empresa> list() {
+	public List<Cliente> list() {
 		EntityManager em = SingletonConexao.getInstance();
-		Query q = em.createQuery("SELECT e FROM Empresa e");
+		Query q = em.createQuery("SELECT e FROM Cliente e");
 		return q.getResultList();
 	}
 
 	@Override
-	public void update(Empresa t) {
+	public void update(Cliente t) {
 		EntityManager em = SingletonConexao.getInstance();
 		em.getTransaction().begin();
 		em.merge(t);
@@ -37,15 +38,15 @@ public class EmpresaDao implements InterfaceDao<Empresa>{
 	}
 
 	@Override
-	public void delete(Empresa t) {
+	public void delete(Cliente t) {
 		t.setStatus(false);
 		update(t);
 	}
 
 	@Override
-	public Empresa getObjById(Integer id) {
+	public Cliente getObjById(Integer id) {
 		EntityManager em = SingletonConexao.getInstance();
-		return em.find(Empresa.class, id);
+		return em.find(Cliente.class, id);
 	}
 
 }
