@@ -1,0 +1,74 @@
+package br.com.smallbi.test;
+
+import java.util.Calendar;
+import java.util.List;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.smallbi.business.CuboBusiness;
+import br.com.smallbi.business.EmpresaBusiness;
+import br.com.smallbi.entity.Cubo;
+import br.com.smallbi.entity.Empresa;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestCubo {
+
+	CuboBusiness cuboBusiness = new CuboBusiness();
+	public static int idTestCubo;
+	
+	@Test
+	public void test1CreateCubo(){
+		Cubo cubo = new Cubo();
+		cubo.setDataCadastro(Calendar.getInstance());
+		
+		List<Empresa> empresas = new EmpresaBusiness().list();
+		Empresa empresa = empresas.get(0);
+		cubo.setEmpresa(empresa);
+		
+		cubo.setMdx("<Schema>");
+		cubo.setNomeCubo("Sales Cube");
+		cubo.setStatus(true);
+		cubo.setTabelaFato("SalesPivot");
+		cubo.setTamanho(30);
+		cubo.setUsuarioId(1);
+		
+		cuboBusiness.create(cubo);
+		idTestCubo = cubo.getIdCubo();
+	}
+	
+	@Test
+	public void test2ListCubo(){
+		List<Cubo> cubos = cuboBusiness.list();
+		System.out.println("<<CUBOS>>");
+		for(Cubo c : cubos){
+			System.out.println("----------");
+			System.out.println("MDX: " + c.getMdx());
+			System.out.println("Nome do cubo: " + c.getNomeCubo());
+			System.out.println("Tabela Fato: " + c.getTabelaFato());
+			System.out.println("Id: " + c.getIdCubo());
+			System.out.println("Tamanho: " + c.getTamanho());
+			System.out.println("Usuário: " + c.getUsuarioId());
+			System.out.println("Data de cadastro: " + c.getDataCadastro().getTime());
+			System.out.println("Empresa: " + c.getEmpresa().getNomeFantasia());
+			System.out.println("----------");
+		}
+	} 
+	
+	@Test
+	public void test3Update(){
+		Cubo cubo = cuboBusiness.getObjById(idTestCubo);
+		cubo.setNomeCubo("Incidents Cube");
+		cuboBusiness.update(cubo);
+		System.out.println("UPDATE");
+		test2ListCubo();
+	}
+
+	@Test
+	public void test4DeleteCubo(){
+		cuboBusiness.delete(idTestCubo);
+		System.out.println("DELETE");
+		test2ListCubo();
+	}
+}
