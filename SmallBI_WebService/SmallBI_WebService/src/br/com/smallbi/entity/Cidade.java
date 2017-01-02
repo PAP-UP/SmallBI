@@ -24,9 +24,6 @@ public class Cidade {
 	@Column (length=50)
 	private String nomeCidade;
 	
-	@Column (length=6)
-	private String siglaCidade;
-	
 	@ManyToOne
 	@JoinColumn(name="estadoId", referencedColumnName="idEstado")
 	@ForeignKey(name="fk_estado")
@@ -72,14 +69,6 @@ public class Cidade {
 
 	public void setNomeCidade(String nomeCidade) {
 		this.nomeCidade = nomeCidade;
-	}
-
-	public String getSiglaCidade() {
-		return siglaCidade;
-	}
-
-	public void setSiglaCidade(String siglaCidade) {
-		this.siglaCidade = siglaCidade;
 	}
 
 	public Estado getEstado() {
