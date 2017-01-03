@@ -29,7 +29,7 @@ public class TestCidade {
 		
 		cidade.setEstado(estado);
 		cidade.setNomeCidade("Londrina");
-		cidade.setSiglaCidade("LDRN");
+//		cidade.setSiglaCidade("LDRN");
 		cidade.setStatus(true);
 		cidade.setUsuarioId(1);		
 		cidadeBusiness.create(cidade);
@@ -43,7 +43,7 @@ public class TestCidade {
 		for(Cidade c : cidades){
 			System.out.println("----------");
 			System.out.println("Nome da Cidade: " + c.getNomeCidade());
-			System.out.println("Sigla da Cidade: " + c.getSiglaCidade());
+//			System.out.println("Sigla da Cidade: " + c.getSiglaCidade());
 			System.out.println("Data de Cadastro: " + c.getDataCadastro().getTime());
 			System.out.println("Estado: " + c.getEstado().getNomeEstado());
 			System.out.println("Id: " + c.getIdCidade());
@@ -56,7 +56,7 @@ public class TestCidade {
 	public void test3UpdadeCidade(){
 		Cidade cidade = cidadeBusiness.getObjById(idTestCidade);
 		cidade.setNomeCidade("Curitiba");
-		cidade.setSiglaCidade("CTBA");
+//		cidade.setSiglaCidade("CTBA");
 		cidadeBusiness.update(cidade);
 		System.out.println("UPDATE");
 		test2ListCidade();		

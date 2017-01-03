@@ -54,10 +54,10 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 			return "A variável 'nomeCidade' deve ser informada!";
 		}
 		
-		if(t.getSiglaCidade().equals(null) || t.getSiglaCidade().equals("")){
-			//throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
-			return "A variável 'siglaCidade' deve ser informada!";
-		}
+//		if(t.getSiglaCidade().equals(null) || t.getSiglaCidade().equals("")){
+//			//throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
+//			return "A variável 'siglaCidade' deve ser informada!";
+//		}
 		
 		if(t.getUsuarioId() == null){
 			//throw new BusinessException("A variável 'usuarioId' deve ser informada!");
@@ -126,10 +126,10 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 			return "A variável 'nomeCidade' deve ser informada!";
 		}
 		
-		if(t.getSiglaCidade().equals(null) || t.getSiglaCidade().equals("")){
-			//throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
-			return "A variável 'siglaCidade' deve ser informada!";
-		}
+//		if(t.getSiglaCidade().equals(null) || t.getSiglaCidade().equals("")){
+//			//throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
+//			return "A variável 'siglaCidade' deve ser informada!";
+//		}
 		
 		if(t.getUsuarioId() == null){
 			//throw new BusinessException("A variável 'usuarioId' deve ser informada!");
