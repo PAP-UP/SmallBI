@@ -18,7 +18,7 @@ Exemplo:
     "cpf": "123.123.123-12",
     "rg": "12.123.123-1",
     "funcao": {"idFuncao": 1},
-    "endereco": {"idEndereco": 1}
+    "cliente": {"idCliente": 1}
 }		
 Response:
 if(success){

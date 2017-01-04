@@ -7,6 +7,7 @@ import java.util.List;
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
+import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Funcao;
 import br.com.smallbi.entity.Pessoa;
@@ -16,6 +17,7 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 	InterfaceDao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();
 	InterfaceDao<Endereco> enderecoDao = FactoryDao.createEnderecoDao();
 	InterfaceDao<Funcao> funcaoDao = FactoryDao.createFuncaoDao();
+	InterfaceDao<Cliente> clienteDao = FactoryDao.createClienteDao();
 	
 	@Override
 	public String create(Pessoa t){
@@ -40,22 +42,35 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		/*Retirado o endereço da pessoa, pois estava invertido, uma pessoa tem vários endereços, um endereço tem uma pessoa.
-		 * if(t.getEndereco() != null){
-			if(t.getEndereco().getIdEndereco() != null){
-				Endereco endereco = enderecoDao.getObjById(t.getEndereco().getIdEndereco());
-				if(endereco == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
-					return "Nenhum resultado para a variável 'endereco' foi encontrado!";
+		//Retirado o endereço da pessoa, pois estava invertido, uma pessoa tem vários endereços, um endereço tem uma pessoa.
+//		  if(t.getEndereco() != null){
+//			if(t.getEndereco().getIdEndereco() != null){
+//				Endereco endereco = enderecoDao.getObjById(t.getEndereco().getIdEndereco());
+//				if(endereco == null){
+////					throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
+//					return "Nenhum resultado para a variável 'endereco' foi encontrado!";
+//				}
+//			}else{
+////				throw new BusinessException("A variável 'endereco.idEndereco' deve ser informada!");
+//				return "A variável 'endereco.idEndereco' deve ser informada!";
+//			}
+//		}else{
+////			throw new BusinessException("A variável 'endereco' deve ser informada!");
+//			return "A variável 'endereco' deve ser informada!";
+//		}
+		
+		if(t.getCliente() != null){
+			if(t.getCliente().getIdCliente() != null){
+				Cliente cliente = clienteDao.getObjById(t.getCliente().getIdCliente());
+				if(cliente == null){
+					return "Nenhum resultado para a variável 'cliente' foi encontrado!";
 				}
 			}else{
-//				throw new BusinessException("A variável 'endereco.idEndereco' deve ser informada!");
-				return "A variável 'endereco.idEndereco' deve ser informada!";
+				return "A variável 'cliente.idCliente' deve ser informada!";
 			}
 		}else{
-//			throw new BusinessException("A variável 'endereco' deve ser informada!");
-			return "A variável 'endereco' deve ser informada!";
-		}*/
+			return "A variável 'cliente' deve ser informada!";
+		}
 		
 		if(t.getFuncao() != null){
 			if(t.getFuncao().getIdFuncao() != null){

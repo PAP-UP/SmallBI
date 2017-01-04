@@ -15,9 +15,9 @@ Exemplo:
 {
     "usuarioId": 1,
     "tipo": {"idTipo": 1},
-    "ddd": "41",
+    "ddd": 41,
     "telefone": "9999-9999",
-    "empresa": {"idEmpresa": 1},
+    "cliente": {"idCliente": 1},
     "pessoa": {"idPessoa": 1}
 }
 Response:
@@ -36,9 +36,9 @@ Exemplo:
 	"idTelefone":1,
     "usuarioId": 1,
     "tipo": {"idTipo": 1},
-    "ddd": "41",
+    "ddd": 41,
     "telefone": "9999-9999",
-    "empresa": {"idEmpresa": 1},
+    "cliente": {"idCliente": 1},
     "pessoa": {"idPessoa": 1}
 }
 Response:

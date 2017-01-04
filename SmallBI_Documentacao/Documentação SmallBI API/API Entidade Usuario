@@ -18,7 +18,7 @@ Exemplo:
     "senha": "12345",
     "perfil": {"idPerfil": 1},
     "pessoa": {"idPessoa": 1},
-    "empresa": {"idEmpresa": 1},
+    "cliente": {"idCliente": 1},
     "usuarioSaiku": "none"
 }
 Response:
@@ -40,7 +40,7 @@ Exemplo:
     "senha": "12345",
     "perfil": {"idPerfil": 1},
     "pessoa": {"idPessoa": 1},
-    "empresa": {"idEmpresa": 1},
+    "cliente": {"idCliente": 1},
     "usuarioSaiku": "none"
 }
 Response:

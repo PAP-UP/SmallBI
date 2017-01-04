@@ -4,6 +4,8 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,6 +16,7 @@ import org.hibernate.annotations.ForeignKey;
 public class Endereco {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idEndereco;
 	
 	private Calendar dataCadastro;
@@ -24,7 +27,7 @@ public class Endereco {
 	private String endereco;
 	
 	@Column(name = "numero", columnDefinition = "int4")
-	private String numero;
+	private int numero;
 	
 	@Column (length=60)
 	private String bairro;
@@ -34,10 +37,16 @@ public class Endereco {
 	@ForeignKey(name="fk_cidade")
 	private Cidade cidade;
 	
+	
 	@ManyToOne
 	@JoinColumn(name="pessoaId", referencedColumnName="idPessoa")
 	@ForeignKey(name="fk_pessoa")
 	private Pessoa pessoa;
+	
+	@ManyToOne
+	@JoinColumn(name="clienteId", referencedColumnName="idCliente")
+	@ForeignKey(name="fk_cliente")
+	private Cliente cliente;
 
 	@ManyToOne
 	@JoinColumn(name="tipoId", referencedColumnName="idTipo")
@@ -46,6 +55,22 @@ public class Endereco {
 	
 	private boolean status;
 	
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	public boolean isStatus() {
 		return status;
 	}
@@ -86,11 +111,11 @@ public class Endereco {
 		this.endereco = endereco;
 	}
 
-	public String getNumero() {
+	public int getNumero() {
 		return numero;
 	}
 
-	public void setNumero(String numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 
@@ -110,13 +135,13 @@ public class Endereco {
 		this.cidade = cidade;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
+//	public Pessoa getPessoa() {
+//		return pessoa;
+//	}
+//
+//	public void setPessoa(Pessoa pessoa) {
+//		this.pessoa = pessoa;
+//	}
 
 	public Tipo getTipo() {
 		return tipo;

@@ -59,7 +59,7 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 			return "A variável 'endereco' deve ser informada!";
 		}
 		
-		if(t.getNumero() == null){
+		if(t.getNumero() <= 0){
 //			throw new BusinessException("A variável 'numero' deve ser informada!");
 			return "A variável 'numero' deve ser informada!";
 		}
@@ -152,7 +152,7 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 			return "A variável 'endereco' deve ser informada!";
 		}
 		
-		if(t.getNumero() == null){
+		if(t.getNumero() <= 0){
 //			throw new BusinessException("A variável 'numero' deve ser informada!");
 			return "A variável 'numero' deve ser informada!";
 		}

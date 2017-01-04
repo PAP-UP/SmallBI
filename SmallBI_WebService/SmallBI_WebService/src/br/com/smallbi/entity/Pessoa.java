@@ -4,6 +4,8 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,6 +16,7 @@ import org.hibernate.annotations.ForeignKey;
 public class Pessoa {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idPessoa;
 	
 	private Calendar dataCadastro;
@@ -34,14 +37,27 @@ public class Pessoa {
 	@ForeignKey(name="fk_funcao")
 	private Funcao funcao;
 	
-/*	Retirado o endereço da pessoa, pois estava invertido, uma pessoa tem vários endereços, um endereço tem uma pessoa.
- * @ManyToOne
-	@JoinColumn(name="enderecoId", referencedColumnName="idEndereco")
-	@ForeignKey(name="fk_endereco")
-	private Endereco endereco;*/
+	@ManyToOne
+	@JoinColumn(name="clienteId", referencedColumnName="idCliente")
+	@ForeignKey(name="fk_cliente")
+	private Cliente cliente;
+	
+//	Retirado o endereço da pessoa, pois estava invertido, uma pessoa tem vários endereços, um endereço tem uma pessoa.
+//	@ManyToOne
+//	@JoinColumn(name="enderecoId", referencedColumnName="idEndereco")
+//	@ForeignKey(name="fk_endereco")
+//	private Endereco endereco;
 	
 	private boolean status;
 	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	public boolean isStatus() {
 		return status;
 	}
@@ -106,14 +122,13 @@ public class Pessoa {
 		this.funcao = funcao;
 	}
 
-/*Retirado o endereço da pessoa, pois estava invertido, uma pessoa tem vários endereços, um endereço tem uma pessoa.
- * 	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}*/
+//	public Endereco getEndereco() {
+//		return endereco;
+//	}
+//
+//	public void setEndereco(Endereco endereco) {
+//		this.endereco = endereco;
+//	}
 
 	
 

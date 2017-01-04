@@ -15,7 +15,7 @@ Exemplo:
 {
     "usuarioId": 1,
     "nomeCubo": "Sales Cube",
-    "empresa": {"idEmpresa": 1},
+    "cliente": {"idCliente": 1},
     "mdx": "<Schema>",
     "tabelaFato": "SalesPivot",
     "tamanho": 30
@@ -36,7 +36,7 @@ Exemplo:
 	"idCubo":1,
     "usuarioId": 1,
     "nomeCubo": "Sales Cube",
-    "empresa": {"idEmpresa": 1},
+    "cliente": {"idCliente": 1},
     "mdx": "<Schema>",
     "tabelaFato": "SalesPivot",
     "tamanho": 30

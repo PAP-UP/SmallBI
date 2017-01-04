@@ -4,6 +4,8 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,6 +17,7 @@ import org.hibernate.annotations.ForeignKey;
 public class Telefone {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idTelefone;
 	
 	private Calendar dataCadastro;
@@ -27,7 +30,7 @@ public class Telefone {
 	private Tipo tipo;
 	
 	@Column(name = "ddd", columnDefinition = "int4", length=2)
-	private String ddd;
+	private int ddd;
 	
 	@Column (length=9)
 	private String telefone;
@@ -84,11 +87,11 @@ public class Telefone {
 		this.tipo = tipo;
 	}
 
-	public String getDdd() {
+	public int getDdd() {
 		return ddd;
 	}
 
-	public void setDdd(String ddd) {
+	public void setDdd(int ddd) {
 		this.ddd = ddd;
 	}
 

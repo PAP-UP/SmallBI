@@ -4,10 +4,11 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.ForeignKey;
 
@@ -15,6 +16,7 @@ import org.hibernate.annotations.ForeignKey;
 public class Cliente {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCliente;
 	
 	private Calendar dataCadastro;
@@ -33,10 +35,10 @@ public class Cliente {
 	@Column (length=25)
 	private String ie;
 	
-	@OneToOne
-	@JoinColumn(name="enderecoId", referencedColumnName="idEndereco")
-	@ForeignKey(name="fk_endereco")
-	private Endereco endereco;
+//	@OneToOne
+//	@JoinColumn(name="enderecoId", referencedColumnName="idEndereco")
+//	@ForeignKey(name="fk_endereco")
+//	private Endereco endereco;
 	
 	@ManyToOne
 	@JoinColumn(name="ramoAtividadeId", referencedColumnName="idRamoAtividade")
@@ -121,13 +123,13 @@ public class Cliente {
 		this.ie = ie;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
+//	public Endereco getEndereco() {
+//		return endereco;
+//	}
+//
+//	public void setEndereco(Endereco endereco) {
+//		this.endereco = endereco;
+//	}
 
 	public RamoAtividade getRamoAtividade() {
 		return ramoAtividade;

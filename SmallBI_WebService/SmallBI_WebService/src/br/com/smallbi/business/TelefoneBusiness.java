@@ -35,7 +35,7 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getDdd().equals(null) || t.getDdd().equals("")){
+		if(t.getDdd() <= 0){
 //			throw new BusinessException("A variável 'ddd' deve ser informada!");
 			return "A variável 'ddd' deve ser informada!";
 		}
@@ -139,7 +139,7 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getDdd().equals(null) || t.getDdd().equals("")){
+		if(t.getDdd() <= 0){
 //			throw new BusinessException("A variável 'ddd' deve ser informada!");
 			return "A variável 'ddd' deve ser informada!";
 		}

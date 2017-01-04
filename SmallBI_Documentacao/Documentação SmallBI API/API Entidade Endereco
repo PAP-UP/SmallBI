@@ -15,10 +15,11 @@ Exemplo:
 {
     "usuarioId": 1,
     "endereco": "Rua dos Bobos",
-    "numero": "0",
+    "numero": 1,
     "bairro": "Centro",
     "cidade": {"idCidade": 1},
-    "tipo": {"idTipo":1}
+    "tipo": {"idTipo":1},
+    "clienteId": {"idCliente": 1} ou "pessoaId": {"idPessoa": 1}
 }
 Response:
 if(success){
@@ -36,10 +37,11 @@ Exemplo:
 	"idEndereco":1,
     "usuarioId": 1,
     "endereco": "Rua dos Bobos",
-    "numero": "0",
+    "numero": 1,
     "bairro": "Centro",
     "cidade": {"idCidade": 1},
-    "tipo": {"idTipo":1}
+    "tipo": {"idTipo":1},
+    "clienteId": {"idCliente": 1} ou "pessoaId": {"idPessoa": 1}
 }
 Response:
 if(success){

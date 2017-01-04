@@ -32,7 +32,7 @@ public class TestEmpresa {
 		
 		List<Endereco> enderecos = new EnderecoBusiness().list();
 		Endereco endereco = enderecos.get(0);
-		e.setEndereco(endereco);
+//		e.setEndereco(endereco);
 		
 		List<FormaPagamento> formas = new FormaPagamentoBusiness().list();
 		FormaPagamento formaPagamento = formas.get(0);
@@ -72,7 +72,7 @@ public class TestEmpresa {
 			System.out.println("Tamanho total: " + e.getTamanhoTotal());
 			System.out.println("Usuário: " + e.getUsuarioId());
 			System.out.println("Data de cadastro: " + e.getDataCadastro().getTime());
-			System.out.println("Endereço: " + e.getEndereco().getEndereco());
+//			System.out.println("Endereço: " + e.getEndereco().getEndereco());
 			System.out.println("Forma de pagamento: " + e.getFormaPagamento().getFormaPagamento());
 			System.out.println("Plano: " + e.getPlano().getNomePlano());
 			System.out.println("Ramo de atividade: " + e.getRamoAtividade().getRamoAtividade());

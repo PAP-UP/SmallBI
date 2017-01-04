@@ -44,21 +44,21 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getEndereco() != null){
-			if(t.getEndereco().getIdEndereco() != null){
-				Endereco endereco = enderecoDao.getObjById(t.getEndereco().getIdEndereco());
-				if(endereco == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
-					return "Nenhum resultado para a variável 'endereco' foi encontrado!";
-				}
-			}else{
-//				throw new BusinessException("A variável 'endereco.idEndereco' deve ser informada!");
-				return "A variável 'endereco.idEndereco' deve ser informada!";
-			}
-		}else{
-//			throw new BusinessException("A variável 'endereco' deve ser informada!");
-			return "A variável 'endereco' deve ser informada!";
-		}
+//		if(t.getEndereco() != null){
+//			if(t.getEndereco().getIdEndereco() != null){
+//				Endereco endereco = enderecoDao.getObjById(t.getEndereco().getIdEndereco());
+//				if(endereco == null){
+////					throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
+//					return "Nenhum resultado para a variável 'endereco' foi encontrado!";
+//				}
+//			}else{
+////				throw new BusinessException("A variável 'endereco.idEndereco' deve ser informada!");
+//				return "A variável 'endereco.idEndereco' deve ser informada!";
+//			}
+//		}else{
+////			throw new BusinessException("A variável 'endereco' deve ser informada!");
+//			return "A variável 'endereco' deve ser informada!";
+//		}
 		
 		if(t.getFormaPagamento() != null){
 			if(t.getFormaPagamento().getIdFormaPagamento() != null){
@@ -137,7 +137,7 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		t.setStatus(true);
 		
 		clienteDao.create(t);
-		return "Empresa cadastrada com sucesso!";
+		return "Cliente cadastrado com sucesso!";
 	}
 
 	@Override
@@ -181,21 +181,21 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getEndereco() != null){
-			if(t.getEndereco().getIdEndereco() != null){
-				Endereco endereco = enderecoDao.getObjById(t.getEndereco().getIdEndereco());
-				if(endereco == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
-					return "Nenhum resultado para a variável 'endereco' foi encontrado!";
-				}
-			}else{
-//				throw new BusinessException("A variável 'endereco.idEndereco' deve ser informada!");
-				return "A variável 'endereco.idEndereco' deve ser informada!";
-			}
-		}else{
-//			throw new BusinessException("A variável 'endereco' deve ser informada!");
-			return "A variável 'endereco' deve ser informada!";
-		}
+//		if(t.getEndereco() != null){
+//			if(t.getEndereco().getIdEndereco() != null){
+//				Endereco endereco = enderecoDao.getObjById(t.getEndereco().getIdEndereco());
+//				if(endereco == null){
+////					throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
+//					return "Nenhum resultado para a variável 'endereco' foi encontrado!";
+//				}
+//			}else{
+////				throw new BusinessException("A variável 'endereco.idEndereco' deve ser informada!");
+//				return "A variável 'endereco.idEndereco' deve ser informada!";
+//			}
+//		}else{
+////			throw new BusinessException("A variável 'endereco' deve ser informada!");
+//			return "A variável 'endereco' deve ser informada!";
+//		}
 		
 		if(t.getFormaPagamento() != null){
 			if(t.getFormaPagamento().getIdFormaPagamento() != null){
