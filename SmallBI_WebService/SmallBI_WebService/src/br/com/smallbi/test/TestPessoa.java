@@ -7,8 +7,10 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import br.com.smallbi.business.ClienteBusiness;
 import br.com.smallbi.business.FuncaoBusiness;
 import br.com.smallbi.business.PessoaBusiness;
+import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Funcao;
 import br.com.smallbi.entity.Pessoa;
 
@@ -36,6 +38,10 @@ public class TestPessoa {
 		pessoa.setRg("12.123.123-1");
 		pessoa.setStatus(true);
 		pessoa.setUsuarioId(1);
+		
+		List<Cliente> clientes = new ClienteBusiness().list();
+		Cliente cliente = clientes.get(0);
+		pessoa.setCliente(cliente);
 		
 		pessoaBusiness.create(pessoa);
 		idTestPessoa = pessoa.getIdPessoa();

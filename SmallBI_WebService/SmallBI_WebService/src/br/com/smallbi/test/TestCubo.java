@@ -29,7 +29,7 @@ public class TestCubo {
 		
 		cubo.setMdx("<Schema>");
 		cubo.setNomeCubo("Sales Cube");
-		cubo.setStatus(true);
+		//cubo.setStatus(true);
 		cubo.setTabelaFato("SalesPivot");
 		cubo.setTamanho(30);
 		cubo.setUsuarioId(1);

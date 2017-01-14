@@ -26,7 +26,7 @@ public class TestTelefone {
 	public void test1CreateTelefone(){
 		Telefone telefone = new Telefone();
 		telefone.setDataCadastro(Calendar.getInstance());
-		telefone.setDdd("41");
+		telefone.setDdd(41);
 		
 		List<Cliente> clientes = new ClienteBusiness().list();
 		Cliente cliente = clientes.get(0);
@@ -36,7 +36,7 @@ public class TestTelefone {
 		Pessoa pessoa = pessoas.get(0);
 		telefone.setPessoa(pessoa);
 		
-		telefone.setStatus(true);
+//		telefone.setStatus(true);
 		telefone.setTelefone("1234-5678");
 		
 		List<Tipo> tipos = new TipoBusiness().list();
@@ -60,8 +60,8 @@ public class TestTelefone {
 			System.out.println("Id: " + t.getIdTelefone());
 			System.out.println("Usuário: " + t.getUsuarioId());
 			System.out.println("Data de cadastro: " + t.getDataCadastro().getTime());
-			System.out.println("Empresa: " + t.getEmpresa().getNomeFantasia());
-			System.out.println("Pessoa: " + t.getPessoa().getNome());
+			//System.out.println("Empresa: " + t.getEmpresa().getNomeFantasia());
+			//System.out.println("Pessoa: " + t.getPessoa().getNome());
 			System.out.println("Tipo: " + t.getTipo().getTipo());
 			System.out.println("----------");
 		}

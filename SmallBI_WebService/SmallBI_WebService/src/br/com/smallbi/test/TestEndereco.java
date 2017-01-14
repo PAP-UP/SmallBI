@@ -31,7 +31,7 @@ public class TestEndereco {
 		
 		endereco.setDataCadastro(Calendar.getInstance());
 		endereco.setEndereco("Rua do Zacarias");
-		endereco.setNumero("1200");
+		endereco.setNumero(1200);
 		endereco.setStatus(true);
 		
 		List<Tipo> tipos = new TipoBusiness().list();
@@ -65,7 +65,7 @@ public class TestEndereco {
 	public void test3UpdateEndereco(){
 		Endereco endereco = enderecoBusiness.getObjById(idTestEndereco);
 		endereco.setEndereco("Rua dos Bobos");
-		endereco.setNumero("0");
+		endereco.setNumero(0);
 		enderecoBusiness.update(endereco);
 		test2ListEndereco();
 	}
