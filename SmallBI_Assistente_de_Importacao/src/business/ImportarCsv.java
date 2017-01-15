@@ -26,7 +26,7 @@ public class ImportarCsv {
     public JTable importarArquivo() {
         
         JFileChooser jfc = new JFileChooser();
-        jfc.setCurrentDirectory(new File("/backup/PAPIRO/PAP/SmallBI/Arquivos/"));
+        jfc.setCurrentDirectory(new File("/home/deynesonborba/files-to-test-smallbi"));
         jfc.setDialogTitle("Procurar Arquivo CSV");
         jfc.setFileFilter(new FileNameExtensionFilter(null, "csv"));
         jfc.showOpenDialog(jfc);
@@ -35,12 +35,16 @@ public class ImportarCsv {
             String caminho;
             caminho = jfc.getSelectedFile().getPath();
             File file = new File(caminho);
-            try {
-                JTable jtable = new JTable();
-                jtable.setModel(importarCSV(file));
-                return jtable;
-            } catch (IOException ex) {
-                Logger.getLogger(ImportarCsv.class.getName()).log(Level.SEVERE, null, ex);
+            if(file.length() > 501185){
+                JOptionPane.showMessageDialog(null, "O tamanho do arquivo superior ao suportado!");
+            }else{
+                try {
+                    JTable jtable = new JTable();
+                    jtable.setModel(importarCSV(file));
+                    return jtable;
+                } catch (IOException ex) {
+                    Logger.getLogger(ImportarCsv.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }else{
             //modelo.setColumnCount(0);

@@ -45,7 +45,6 @@ public class GerarScriptSql {
                     sql += " " + tipoSQL + ");";
                 }
             }
-            //System.out.println("Print: " + sql);
             return sql;
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -76,12 +75,14 @@ public class GerarScriptSql {
             sql += ") VALUES ";
 
             for (int linha = 0; linha < tbl.getRowCount(); linha++) {
+                
                 sql += "(";
                 for (int coluna = 0; coluna < tbl.getColumnCount(); coluna++) {
 
                     cbx = listaCbxTiposParametro.get(coluna);
                     String tipoSQL = transformarOpcaoEmTipoDeVariavelSQL(cbx.getSelectedItem().toString());
-
+                    
+                    System.out.println("Linha: " + linha + " , Valor: " + tbl.getValueAt(linha, coluna));
                     switch (tipoSQL) {
                         case "BIT":
                             sql += "'" + tbl.getValueAt(linha, coluna).toString() + "'";

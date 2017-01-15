@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import model.TabelaFato;
 
@@ -1205,6 +1206,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             if(jTable.getRowCount() > 0){
                 iniciarComboBoxTiposArquivo(jTable);
                 painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
+                //jTable.setShowHorizontalLines(true);
                 JScrollPane jScrollPane = new JScrollPane(jTable);
                 painelAbaTabPrev_painelTabela.add(jScrollPane);
                 painelAbaTabPrev_painelTabela.updateUI();

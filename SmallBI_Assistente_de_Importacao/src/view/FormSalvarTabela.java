@@ -137,6 +137,8 @@ public class FormSalvarTabela extends javax.swing.JFrame {
         if(nomeTabela != null && !nomeTabela.isEmpty()){
             if(chavePrimaria != "Selecione"){
                 
+                System.out.println("Qtd linhas:" + tabelaPivot.getRowCount());
+                
                 JOptionPane.showMessageDialog(null, new GerarScriptSql().salvarTabelaPivot(tabelaPivot, 
                         nomeTabela, chavePrimaria, listaCbxTipos));
                 System.out.println("Script SQL gerado: " + GerarScriptSql.scriptSqlTabelaPivot);               

@@ -26,7 +26,7 @@ public class ImportarXlsx {
             modelo.setColumnCount(0);        
 
         JFileChooser jfc = new JFileChooser();
-        jfc.setCurrentDirectory(new File("/backup/PAPIRO/PAP/SmallBI/Arquivos/"));
+        jfc.setCurrentDirectory(new File("/home/deynesonborba/files-to-test-smallbi"));
         jfc.setDialogTitle("Procurar Arquivo CSV");
         jfc.setFileFilter(new FileNameExtensionFilter(null, "xlsx"));
         jfc.showOpenDialog(jfc);
@@ -35,11 +35,18 @@ public class ImportarXlsx {
             String caminho = new String();
             caminho = jfc.getSelectedFile().getPath();
             File arquivo = new File(caminho);
-            JTable jTable = new JTable();
-            jTable.setModel(importarXlsx(modelo, arquivo));
-            return jTable;
-        }else{
-            //modelo.setColumnCount(0);
+            
+            if(arquivo.length() > 501185){
+                //System.out.println("Maior: " + arquivo.length());
+                JOptionPane.showMessageDialog(null, "O tamanho do arquivo superior ao suportado!");
+            }else{
+                //System.out.println("Menor ou Igual: " + arquivo.length());
+                
+                JTable jTable = new JTable();
+                DefaultTableModel newModel = importarXlsx(modelo, arquivo);
+                jTable.setModel(newModel);
+                return jTable;
+            }
         }
         return null;
     }
@@ -47,7 +54,6 @@ public class ImportarXlsx {
     private DefaultTableModel importarXlsx(DefaultTableModel modelo, File arquivo){
         try {
             FileInputStream fis = new FileInputStream(arquivo);
-            //10485760 bytes == 10 Mb
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
             XSSFSheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rowIterator = sheet.iterator();
