@@ -391,22 +391,22 @@ public class FormAddMetrica extends javax.swing.JFrame {
         metricas.add(m);
         grupoMetrica.setMetricas(metricas);
         
-        List<FactLink> factLinks = new ArrayList<>();
-        if(grupoMetrica.getFactLinks() != null){
-            factLinks = grupoMetrica.getFactLinks();
-        }
-        
-        for(Dimensao d : FormGerarCuboXml.dimensoes){
-            for(String atributo : d.getAtributos()){
-                 if(atributo.equals(m.getColuna())){
-                     FactLink factLink = new FactLink();
-                     factLink.setDimension(d.getNome());
-                     factLink.setForeignKey(atributo);
-                     factLinks.add(factLink);
-                 }
-            }
-        }
-        grupoMetrica.setFactLinks(factLinks);        
+//        List<FactLink> factLinks = new ArrayList<>();
+//        if(grupoMetrica.getFactLinks() != null){
+//            factLinks = grupoMetrica.getFactLinks();
+//        }
+//        
+//        for(Dimensao d : FormGerarCuboXml.dimensoes){
+//            for(String atributo : d.getAtributos()){
+//                 if(atributo.equals(m.getColuna())){
+//                     FactLink factLink = new FactLink();
+//                     factLink.setDimension(d.getNome());
+//                     factLink.setForeignKey(atributo);
+//                     factLinks.add(factLink);
+//                 }
+//            }
+//        }
+//        grupoMetrica.setFactLinks(factLinks);        
         gerarPreview(m);
     }
     

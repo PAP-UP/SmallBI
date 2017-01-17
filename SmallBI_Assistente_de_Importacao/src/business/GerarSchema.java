@@ -97,11 +97,15 @@ public class GerarSchema {
             }
             
             schema += "</Measures><DimensionLinks>";
-            
-            for(FactLink f : gm.getFactLinks()){
-                schema += "<FactLink dimension='" + formatarString(f.getDimension()) + "' foreignKeyColumn='" +
-                        formatarString(f.getForeignKey()) + "'/>";
+  
+            for(Dimensao d : dimensoes){
+                schema += "<FactLink dimension='" + d.getNome() + "' foreignKeyColumn='" +
+                        d.getKey() + "'/>";
             }
+//            for(FactLink f : gm.getFactLinks()){
+//                schema += "<FactLink dimension='" + formatarString(f.getDimension()) + "' foreignKeyColumn='" +
+//                        formatarString(f.getForeignKey()) + "'/>";
+//            }
             
             schema += "</DimensionLinks></MeasureGroup>";   
         }
