@@ -66,8 +66,6 @@
                           <Component id="painelAbaNomeCubo_NomeCubo" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btnAbaNomeCubo_Anterior" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnAbaNomeCubo_Proximo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnAbaNomeCubo_Sair" min="-2" max="-2" attributes="0"/>
@@ -85,7 +83,6 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAbaNomeCubo_Proximo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAbaNomeCubo_Anterior" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnAbaNomeCubo_Sair" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -144,14 +141,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaNomeCubo_ProximoActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnAbaNomeCubo_Anterior">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Anterior"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaNomeCubo_AnteriorActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnAbaNomeCubo_Sair">
@@ -311,11 +300,11 @@
                           <Component id="painel_AbaRel_Rels" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnPainelRel_Voltar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnPainelRel_Prox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnPainelRel_Sair" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -329,9 +318,9 @@
                       <Component id="painel_AbaRel_Rels" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnPainelRel_Sair" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnPainelRel_Prox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnPainelRel_Voltar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -386,6 +375,9 @@
                   </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="painel_AbaRel_ListRel">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                     <Property name="columns" type="int" value="0"/>
@@ -394,23 +386,29 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btnPainelRel_Sair">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sair"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPainelRel_SairActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="btnPainelRel_Prox">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pr&#xf3;ximo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPainelRel_ProxActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="btnPainelRel_Voltar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Voltar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPainelRel_VoltarActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

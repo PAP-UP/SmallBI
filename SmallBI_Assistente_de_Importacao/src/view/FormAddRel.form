@@ -90,17 +90,15 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_dim_com_rel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_tab_com_rel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_atr_com_rel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_dim_relacionada" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_atr_relacionado" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_tab_referenciada" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="cbx_dim_com_rel" pref="227" max="32767" attributes="0"/>
+                              <Component id="cbx_tab_com_rel" pref="227" max="32767" attributes="0"/>
                               <Component id="cbx_atr_com_rel" max="32767" attributes="0"/>
-                              <Component id="cbx_dim_relacionada" max="32767" attributes="0"/>
-                              <Component id="cbx_atr_relacionado" max="32767" attributes="0"/>
+                              <Component id="cbx_tab_referenciada" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -118,8 +116,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbl_dim_com_rel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbx_dim_com_rel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_tab_com_rel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbx_tab_com_rel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -128,15 +126,10 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbl_dim_relacionada" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbx_dim_relacionada" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_tab_referenciada" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbx_tab_referenciada" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbl_atr_relacionado" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbx_atr_relacionado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="53" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnSair" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -147,12 +140,12 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lbl_dim_com_rel">
+                <Component class="javax.swing.JLabel" name="lbl_tab_com_rel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Dimens&#xe3;o com um relacionamento:"/>
+                    <Property name="text" type="java.lang.String" value="Tabela com um relacionamento:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbx_dim_com_rel">
+                <Component class="javax.swing.JComboBox" name="cbx_tab_com_rel">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -161,7 +154,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_dim_com_relActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_tab_com_relActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -188,12 +181,12 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lbl_dim_relacionada">
+                <Component class="javax.swing.JLabel" name="lbl_tab_referenciada">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Dimens&#xe3;o referenciada:"/>
+                    <Property name="text" type="java.lang.String" value="Tabela referenciada:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbx_dim_relacionada">
+                <Component class="javax.swing.JComboBox" name="cbx_tab_referenciada">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -203,28 +196,7 @@
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_dim_relacionadaActionPerformed"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbl_atr_relacionado">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Atributo referenciado:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbx_atr_relacionado">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="Selecione"/>
-                      </StringArray>
-                    </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_atr_relacionadoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_tab_referenciadaActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

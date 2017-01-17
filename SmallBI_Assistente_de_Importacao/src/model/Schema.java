@@ -8,7 +8,8 @@ public class Schema {
     private String nomeCubo;
     private List<Dimensao> dimensoes;
     private List<GrupoMetrica> grupoMetrica;
-
+    private List<Link> links;
+    
     /**
      * @return the nome
      */
@@ -77,6 +78,20 @@ public class Schema {
      */
     public void setGrupoMetrica(List<GrupoMetrica> grupoMetrica) {
         this.grupoMetrica = grupoMetrica;
+    }
+
+    /**
+     * @return the links
+     */
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    /**
+     * @param links the links to set
+     */
+    public void setLinks(List<Link> links) {
+        this.links = links;
     }
     
 }

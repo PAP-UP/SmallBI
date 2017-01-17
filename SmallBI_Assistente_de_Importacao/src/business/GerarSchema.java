@@ -9,6 +9,7 @@ import java.util.List;
 import model.Dimensao;
 import model.FactLink;
 import model.GrupoMetrica;
+import model.Link;
 import model.Metrica;
 import model.Schema;
 import model.TabelaFato;
@@ -20,7 +21,7 @@ public class GerarSchema {
         String schemaXml = new String();
         
         schemaXml += initializeSchema(schema.getNome());
-        schemaXml += setPhysicalSchema(schema.getTabelasFato());
+        schemaXml += setPhysicalSchema(schema.getTabelasFato(), schema.getLinks());
         schemaXml += setCubeName(schema.getNome());
         schemaXml += setSchemaDimensions(schema.getDimensoes());
         schemaXml += setSchemaMeasures(schema.getGrupoMetrica(), schema.getDimensoes());
@@ -40,13 +41,19 @@ public class GerarSchema {
         return "<?xml version='1.0'?><Schema name='" + formatarString(nomeSchema) + "' metamodelVersion='4.0'>";
     }
     
-    private String setPhysicalSchema(List<TabelaFato> tabelas){
+    private String setPhysicalSchema(List<TabelaFato> tabelas, List<Link>links){
         String schema = "<PhysicalSchema>";
                 
         for(TabelaFato t : tabelas){
             schema += "<Table name='" + formatarString(t.getNomeTabela()) + "'><Key><Column name='" +
                     formatarString(t.getPrimaryKey()) + "'/></Key></Table>";
         }
+        
+        for(Link l : links){
+            schema += "<Link source='" + l.getSource() + "' target='" + l.getTarget() + "'>" +
+                    "<ForeignKey><Column name='" + l.getForeignKey() + "'/></ForeignKey></Link>";
+        }
+        
         schema += "</PhysicalSchema>";
         return schema;
     }
@@ -86,7 +93,7 @@ public class GerarSchema {
             for(Metrica m : gm.getMetricas()){
                 schema += "<Measure name='" + formatarString(m.getNome()) + "' column='" + formatarString(m.getColuna())
                         + "' aggregator='" + formatarString(m.getAgregador()) + "' formatString='"
-                            + formatarString(m.getFormato()) + "' visible='true'/>";    
+                            + m.getFormato() + "' visible='true'/>";    
             }
             
             schema += "</Measures><DimensionLinks>";

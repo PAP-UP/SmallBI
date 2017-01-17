@@ -107,7 +107,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
                 .addGroup(painelConfGrupMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAbaGrupoMetri_Tabela)
                     .addComponent(cbxAbaGrupoMetri_Tabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addGroup(painelConfGrupMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbaGrupoMetri_Sair)
                     .addComponent(btnAbaGrupoMetri_Proximo))
@@ -245,11 +245,11 @@ public class FormAddMetrica extends javax.swing.JFrame {
         painelMetricas.setLayout(painelMetricasLayout);
         painelMetricasLayout.setHorizontalGroup(
             painelMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 413, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
         painelMetricasLayout.setVerticalGroup(
             painelMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 165, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
 
         abaPreviewMetri_ScrollMetricas.setViewportView(painelMetricas);
@@ -293,7 +293,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
                 .addGroup(AbaPreviewMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelMetricasAdicionadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaPreviewMetricasLayout.createSequentialGroup()
-                        .addGap(0, 293, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAbaPreviewMetri_MaisMetri)
                         .addGap(18, 18, 18)
                         .addComponent(btnAbaPreviewMetri_Salvar)))
@@ -319,14 +319,14 @@ public class FormAddMetrica extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAbas)
+                .addComponent(painelAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAbas)
+                .addComponent(painelAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

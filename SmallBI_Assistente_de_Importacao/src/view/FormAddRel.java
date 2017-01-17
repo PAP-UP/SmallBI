@@ -1,23 +1,26 @@
 package view;
 
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import model.Dimensao;
-import model.TabelaFato;
+import model.Link;
 
 public class FormAddRel extends javax.swing.JFrame {
 
     public FormAddRel() {
         initComponents();
 //        carregarTabFato();
-        carregarDim();
+        carregarTab();
     }
 
-    private void carregarDim(){
-        cbx_dim_com_rel.removeAllItems();
-        cbx_dim_com_rel.addItem("Selecione");
+    private void carregarTab(){
+        cbx_tab_com_rel.removeAllItems();
+        cbx_tab_com_rel.addItem("Selecione");
         for(Dimensao d : FormGerarCuboXml.dimensoes){
-            cbx_dim_com_rel.addItem(d.getNome());
+            cbx_tab_com_rel.addItem(d.getTabela());
+//            cbx_dim_com_rel.addItem(d.getNome());
         }
-        cbx_dim_com_rel.updateUI();
+        cbx_tab_com_rel.updateUI();
     }
     
     @SuppressWarnings("unchecked")
@@ -27,14 +30,12 @@ public class FormAddRel extends javax.swing.JFrame {
         painelAbas = new javax.swing.JTabbedPane();
         painelAbaAdd = new javax.swing.JPanel();
         painelAbaAdd_AddRel = new javax.swing.JPanel();
-        lbl_dim_com_rel = new javax.swing.JLabel();
-        cbx_dim_com_rel = new javax.swing.JComboBox<>();
+        lbl_tab_com_rel = new javax.swing.JLabel();
+        cbx_tab_com_rel = new javax.swing.JComboBox<>();
         lbl_atr_com_rel = new javax.swing.JLabel();
         cbx_atr_com_rel = new javax.swing.JComboBox<>();
-        lbl_dim_relacionada = new javax.swing.JLabel();
-        cbx_dim_relacionada = new javax.swing.JComboBox<>();
-        lbl_atr_relacionado = new javax.swing.JLabel();
-        cbx_atr_relacionado = new javax.swing.JComboBox<>();
+        lbl_tab_referenciada = new javax.swing.JLabel();
+        cbx_tab_referenciada = new javax.swing.JComboBox<>();
         btnSair = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
 
@@ -42,12 +43,12 @@ public class FormAddRel extends javax.swing.JFrame {
 
         painelAbaAdd_AddRel.setBorder(javax.swing.BorderFactory.createTitledBorder("Adicionar Relacionamento"));
 
-        lbl_dim_com_rel.setText("Dimensão com um relacionamento:");
+        lbl_tab_com_rel.setText("Tabela com um relacionamento:");
 
-        cbx_dim_com_rel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
-        cbx_dim_com_rel.addActionListener(new java.awt.event.ActionListener() {
+        cbx_tab_com_rel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cbx_tab_com_rel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_dim_com_relActionPerformed(evt);
+                cbx_tab_com_relActionPerformed(evt);
             }
         });
 
@@ -61,23 +62,13 @@ public class FormAddRel extends javax.swing.JFrame {
             }
         });
 
-        lbl_dim_relacionada.setText("Dimensão referenciada:");
+        lbl_tab_referenciada.setText("Tabela referenciada:");
 
-        cbx_dim_relacionada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
-        cbx_dim_relacionada.setEnabled(false);
-        cbx_dim_relacionada.addActionListener(new java.awt.event.ActionListener() {
+        cbx_tab_referenciada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cbx_tab_referenciada.setEnabled(false);
+        cbx_tab_referenciada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_dim_relacionadaActionPerformed(evt);
-            }
-        });
-
-        lbl_atr_relacionado.setText("Atributo referenciado:");
-
-        cbx_atr_relacionado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
-        cbx_atr_relacionado.setEnabled(false);
-        cbx_atr_relacionado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_atr_relacionadoActionPerformed(evt);
+                cbx_tab_referenciadaActionPerformed(evt);
             }
         });
 
@@ -103,16 +94,14 @@ public class FormAddRel extends javax.swing.JFrame {
             .addGroup(painelAbaAdd_AddRelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAbaAdd_AddRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_dim_com_rel)
+                    .addComponent(lbl_tab_com_rel)
                     .addComponent(lbl_atr_com_rel)
-                    .addComponent(lbl_dim_relacionada)
-                    .addComponent(lbl_atr_relacionado))
+                    .addComponent(lbl_tab_referenciada))
                 .addGap(18, 18, 18)
                 .addGroup(painelAbaAdd_AddRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbx_dim_com_rel, 0, 227, Short.MAX_VALUE)
+                    .addComponent(cbx_tab_com_rel, 0, 227, Short.MAX_VALUE)
                     .addComponent(cbx_atr_com_rel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbx_dim_relacionada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbx_atr_relacionado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cbx_tab_referenciada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaAdd_AddRelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -126,21 +115,17 @@ public class FormAddRel extends javax.swing.JFrame {
             .addGroup(painelAbaAdd_AddRelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAbaAdd_AddRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_dim_com_rel)
-                    .addComponent(cbx_dim_com_rel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_tab_com_rel)
+                    .addComponent(cbx_tab_com_rel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(painelAbaAdd_AddRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_atr_com_rel)
                     .addComponent(cbx_atr_com_rel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(painelAbaAdd_AddRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_dim_relacionada)
-                    .addComponent(cbx_dim_relacionada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(painelAbaAdd_AddRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_atr_relacionado)
-                    .addComponent(cbx_atr_relacionado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                    .addComponent(lbl_tab_referenciada)
+                    .addComponent(cbx_tab_referenciada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(painelAbaAdd_AddRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSair)
                     .addComponent(btnSalvar))
@@ -190,84 +175,72 @@ public class FormAddRel extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
-    private void cbx_dim_com_relActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_dim_com_relActionPerformed
-        if(cbx_dim_com_rel.getSelectedItem() != null && !cbx_dim_com_rel.getSelectedItem().toString().equals("Selecione")){
-            Dimensao dimComRel = new Dimensao();
+    private void cbx_tab_com_relActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_tab_com_relActionPerformed
+        if(cbx_tab_com_rel.getSelectedItem() != null && !cbx_tab_com_rel.getSelectedItem().toString().equals("Selecione")){
+            Dimensao tabComRel = new Dimensao();
             for(Dimensao d : FormGerarCuboXml.dimensoes){
-                if(d.getNome().equals(cbx_dim_com_rel.getSelectedItem().toString())){
-                    dimComRel = d;
+                if(d.getTabela().equals(cbx_tab_com_rel.getSelectedItem().toString())){
+                    tabComRel = d;
                 }
             }
             
             cbx_atr_com_rel.removeAllItems();
             cbx_atr_com_rel.addItem("Selecione");
-            for(String atr : dimComRel.getAtributos()){
+            for(String atr : tabComRel.getAtributos()){
                 cbx_atr_com_rel.addItem(atr);
             }
             cbx_atr_com_rel.updateUI();
             cbx_atr_com_rel.setEnabled(true);
             
-            cbx_dim_relacionada.removeAllItems();
-            cbx_dim_relacionada.addItem("Selecione");
-            cbx_dim_relacionada.setEnabled(false);
-            cbx_atr_relacionado.removeAllItems();
-            cbx_atr_relacionado.addItem("Selecione");
-            cbx_atr_relacionado.setEnabled(false);
+            cbx_tab_referenciada.removeAllItems();
+            cbx_tab_referenciada.addItem("Selecione");
+            cbx_tab_referenciada.setEnabled(false);
             btnSalvar.setEnabled(false);
         }
-    }//GEN-LAST:event_cbx_dim_com_relActionPerformed
+    }//GEN-LAST:event_cbx_tab_com_relActionPerformed
 
     private void cbx_atr_com_relActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_atr_com_relActionPerformed
         if(cbx_atr_com_rel.getSelectedItem() != null && !cbx_atr_com_rel.getSelectedItem().toString().equals("Selecione")){
             
-            cbx_dim_relacionada.removeAllItems();
-            cbx_dim_relacionada.addItem("Selecione");
+            cbx_tab_referenciada.removeAllItems();
+            cbx_tab_referenciada.addItem("Selecione");
             for(Dimensao d : FormGerarCuboXml.dimensoes){
-                if(!d.getNome().equals(cbx_dim_com_rel.getSelectedItem().toString())){
-                    cbx_dim_relacionada.addItem(d.getNome());
+                if(!d.getTabela().equals(cbx_tab_com_rel.getSelectedItem().toString())){
+                    cbx_tab_referenciada.addItem(d.getTabela());
                 }
             }
-            cbx_dim_relacionada.updateUI();
-            cbx_dim_relacionada.setEnabled(true);
+            cbx_tab_referenciada.updateUI();
+            cbx_tab_referenciada.setEnabled(true);
         }
     }//GEN-LAST:event_cbx_atr_com_relActionPerformed
 
-    private void cbx_dim_relacionadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_dim_relacionadaActionPerformed
-        if(cbx_dim_relacionada.getSelectedItem() != null && 
-                !cbx_dim_relacionada.getSelectedItem().toString().equals("Selecione")){
-            
-            Dimensao dimRelacionada = new Dimensao();
-            for(Dimensao d : FormGerarCuboXml.dimensoes){
-                if(d.getNome().equals(cbx_dim_relacionada.getSelectedItem().toString())){
-                    dimRelacionada = d;
-                }
-            }
-            
-            cbx_atr_relacionado.removeAllItems();
-            cbx_atr_relacionado.addItem("Selecione");
-            for(String atr : dimRelacionada.getAtributos()){
-                cbx_atr_relacionado.addItem(atr);
-            }
-            cbx_atr_relacionado.updateUI();
-            cbx_atr_relacionado.setEnabled(true);
-            btnSalvar.setEnabled(false);
-        }
-    }//GEN-LAST:event_cbx_dim_relacionadaActionPerformed
-
-    private void cbx_atr_relacionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_atr_relacionadoActionPerformed
-        if(cbx_atr_relacionado.getSelectedItem() != null && 
-                !cbx_atr_relacionado.getSelectedItem().toString().equals("Selecione")){
+    private void cbx_tab_referenciadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_tab_referenciadaActionPerformed
+        if(cbx_tab_referenciada.getSelectedItem() != null && 
+                !cbx_tab_referenciada.getSelectedItem().toString().equals("Selecione")){
             
             btnSalvar.setEnabled(true);
         }
-    }//GEN-LAST:event_cbx_atr_relacionadoActionPerformed
+    }//GEN-LAST:event_cbx_tab_referenciadaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         salvarRel();
     }//GEN-LAST:event_btnSalvarActionPerformed
     
     private void salvarRel(){
+        Link link = new Link();
+        link.setTarget(cbx_tab_com_rel.getSelectedItem().toString());
+        link.setForeignKey(cbx_atr_com_rel.getSelectedItem().toString());
+        link.setSource(cbx_tab_referenciada.getSelectedItem().toString());
         
+        FormGerarCuboXml.links.add(link);
+        
+        JLabel l = new JLabel();
+        l.setText("Relacionamento: " + link.getTarget() + "." + link.getForeignKey() + " => " + link.getSource());
+        FormGerarCuboXml.painel_AbaRel_ListRel.setLayout(
+                new BoxLayout(FormGerarCuboXml.painel_AbaRel_ListRel,BoxLayout.Y_AXIS));
+        FormGerarCuboXml.painel_AbaRel_ListRel.add(l);
+        FormGerarCuboXml.painel_AbaRel_ListRel.updateUI();
+        dispose();
     }
     
     public static void main(String args[]) {
@@ -282,13 +255,11 @@ public class FormAddRel extends javax.swing.JFrame {
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbx_atr_com_rel;
-    private javax.swing.JComboBox<String> cbx_atr_relacionado;
-    private javax.swing.JComboBox<String> cbx_dim_com_rel;
-    private javax.swing.JComboBox<String> cbx_dim_relacionada;
+    private javax.swing.JComboBox<String> cbx_tab_com_rel;
+    private javax.swing.JComboBox<String> cbx_tab_referenciada;
     private javax.swing.JLabel lbl_atr_com_rel;
-    private javax.swing.JLabel lbl_atr_relacionado;
-    private javax.swing.JLabel lbl_dim_com_rel;
-    private javax.swing.JLabel lbl_dim_relacionada;
+    private javax.swing.JLabel lbl_tab_com_rel;
+    private javax.swing.JLabel lbl_tab_referenciada;
     private javax.swing.JPanel painelAbaAdd;
     private javax.swing.JPanel painelAbaAdd_AddRel;
     private javax.swing.JTabbedPane painelAbas;
