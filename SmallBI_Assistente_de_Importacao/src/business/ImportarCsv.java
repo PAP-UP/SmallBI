@@ -46,8 +46,6 @@ public class ImportarCsv {
                     Logger.getLogger(ImportarCsv.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        }else{
-            //modelo.setColumnCount(0);
         }
         return null;
     }

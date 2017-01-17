@@ -5,7 +5,9 @@ import business.ImportarCsv;
 import view.percorrerAbas.PercorrerAbasFormPrincipal;
 import business.ImportarDb;
 import business.ImportarXlsx;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
@@ -770,6 +772,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         painelAbaTabPrev_TrabDados.setBorder(javax.swing.BorderFactory.createTitledBorder("Trabalhar Dados"));
 
         btnAbaTabPrev_ImportMaisDados.setText("Importar Mais Dados");
+        btnAbaTabPrev_ImportMaisDados.setEnabled(false);
         btnAbaTabPrev_ImportMaisDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbaTabPrev_ImportMaisDadosActionPerformed(evt);
@@ -1052,6 +1055,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaTabPrev_SalvarTabelaActionPerformed
     
     private void importarMaisDados(){
+        listaDeCbxTipos.clear();
         painelAbaTabPrev_painelTabela.removeAll();
         painelAbaTabPrev_CbxTiposVariaveis.removeAll();
         PercorrerAbasFormPrincipal.importarMaisDados();
@@ -1065,7 +1069,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         frm.setVisible(true);
     }
     
-    private void chamarFormGerarCuboXml(){       
+    private void chamarFormGerarCuboXml(){               
         FormGerarCuboXml frm = new FormGerarCuboXml();
         frm.setLocationRelativeTo(null);
         frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -1327,7 +1331,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaImportBd_ExecConsulPerson;
     private javax.swing.JButton btnAbaInicio_Proximo;
     public static javax.swing.JButton btnAbaTabPrev_GerarCuboXml;
-    private javax.swing.JButton btnAbaTabPrev_ImportMaisDados;
+    public static javax.swing.JButton btnAbaTabPrev_ImportMaisDados;
     public static javax.swing.JButton btnAbaTabPrev_SalvarTabela;
     private javax.swing.JButton btnAbaTabPrev_ValidarTipos;
     private javax.swing.JButton btnAbaTabPrev_Voltar;

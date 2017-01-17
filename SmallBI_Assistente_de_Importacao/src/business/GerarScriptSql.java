@@ -4,22 +4,25 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JTable;
 
 public class GerarScriptSql {
     
+    private static List<String> scripts = new ArrayList<>();
     public static String scriptSqlTabelaPivot;
         
     public String salvarTabelaPivot(JTable tbl, String nomeTabela, String chavePrimaria,
             List<JComboBox> listaCbxTiposParametro){
-     
-        
         
         scriptSqlTabelaPivot = criarTabela(tbl, nomeTabela, chavePrimaria, listaCbxTiposParametro) + "\n" +
                 preencherTabela(tbl, nomeTabela, listaCbxTiposParametro);
+        
+//        salvarQuerySQL(nomeTabela);
+        scripts.add(scriptSqlTabelaPivot);
+                
         return "Script salvo com sucesso!";
     }
 
@@ -142,21 +145,26 @@ public class GerarScriptSql {
         return "";
     }
     
-        private String salvarQuerySQL(String sqlCreate, String sqlInsert, String nomeTabela){
+    public void salvarQuerySQL(String nomeTabela){
         
-        JFileChooser jfc = new JFileChooser();        
-        jfc.showSaveDialog(null);     
-        File file = jfc.getSelectedFile();
+//        JFileChooser jfc = new JFileChooser();        
+//        jfc.showSaveDialog(null);     
+//        File file = jfc.getSelectedFile();
+        File file = new File("/home/deynesonborba/files-to-test-saiku/scripts/" + formatarString(nomeTabela) + ".sql");
+        
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(sqlCreate + "\n" + sqlInsert);
+            
+            for(String sql : scripts){
+                bw.write(sql);
+                bw.write("\n");
+            }
+            
             bw.flush();
             bw.close();
-            return "Script salvo com sucesso!";
         } catch (IOException ex) {
-            //Logger.getLogger(TabelaDao.class.getName()).log(Level.SEVERE, null, ex);
-            return "Erro ao salvar script!";
+            ex.printStackTrace();
         }
     }
 }

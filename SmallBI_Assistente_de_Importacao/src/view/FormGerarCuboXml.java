@@ -1,8 +1,11 @@
 package view;
 
 import business.GerarSchema;
+import business.GerarScriptSql;
+import java.text.SimpleDateFormat;
 import view.percorrerAbas.PercorrerAbasFormGerarCuboXml;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -467,6 +470,14 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     
     private void nomeCuboToModelDim(){
         if(!txtAbaNomeCubo_NomeCubo.getText().equals("")){
+
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            String data = sdf.format(calendar.getTime());
+
+            GerarScriptSql gerarScriptSql = new GerarScriptSql();
+            gerarScriptSql.salvarQuerySQL("ScriptSQL_" + txtAbaNomeCubo_NomeCubo.getText() + "_" + data);
+            
             PercorrerAbasFormGerarCuboXml.nomeCuboToModelDim();
         }else{
             JOptionPane.showMessageDialog(null, "Preencha o nome do cubo!");

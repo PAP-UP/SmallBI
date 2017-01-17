@@ -383,7 +383,9 @@ public class FormAddDimensao extends javax.swing.JFrame {
             d.setTabela(tabelaFato.getNomeTabela());
             d.setKey(cbxAbaNomeChave_PKs.getSelectedItem().toString());
             List<String> atributos = new ArrayList<>();
-            for(int i = 0; i < cbxAbaNomeChave_PKs.getComponentCount(); i++){
+            //System.out.println("Qtd atributos: " + cbxAbaNomeChave_PKs.getItemCount());
+            
+            for(int i = 0; i < cbxAbaNomeChave_PKs.getItemCount(); i++){
                 if(cbxAbaNomeChave_PKs.getItemAt(i) != null){
                     atributos.add(cbxAbaNomeChave_PKs.getItemAt(i));
                 }

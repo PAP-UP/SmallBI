@@ -1231,10 +1231,14 @@
                 <Component class="javax.swing.JButton" name="btnAbaTabPrev_ImportMaisDados">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Importar Mais Dados"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaTabPrev_ImportMaisDadosActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnAbaTabPrev_GerarCuboXml">
                   <Properties>

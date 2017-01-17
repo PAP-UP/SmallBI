@@ -1,5 +1,9 @@
 package business;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Dimensao;
@@ -20,6 +24,9 @@ public class GerarSchema {
         schemaXml += setCubeName(schema.getNome());
         schemaXml += setSchemaDimensions(schema.getDimensoes());
         schemaXml += setSchemaMeasures(schema.getGrupoMetrica(), schema.getDimensoes());
+        
+        salvarSchema(schema.getNome(), schemaXml);
+        
         return schemaXml;
     }
     
@@ -67,7 +74,7 @@ public class GerarSchema {
 
     public String setSchemaMeasures(List<GrupoMetrica> grupoMetricas, List<Dimensao> dimensoes){
         
-        List<FactLink> factLinks = new ArrayList<>();
+//        List<FactLink> factLinks = new ArrayList<>();
         String schema;
         
         schema = "<MeasureGroups>";
@@ -93,5 +100,20 @@ public class GerarSchema {
         }
         schema += "</MeasureGroups></Cube></Schema>";
         return schema;
+    }
+    
+    private void salvarSchema(String nomeSchema, String schemaXml){
+            
+        File file = new File("/home/deynesonborba/files-to-test-saiku/scripts/" + formatarString(nomeSchema) + ".xml");
+        
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(schemaXml);
+            bw.flush();
+            bw.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
