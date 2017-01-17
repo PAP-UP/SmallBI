@@ -104,7 +104,7 @@ public class GerarSchema {
     
     private void salvarSchema(String nomeSchema, String schemaXml){
             
-        File file = new File("/home/deynesonborba/files-to-test-saiku/scripts/" + formatarString(nomeSchema) + ".xml");
+        File file = new File("/home/deynesonborba/files-to-test-saiku/cubes-scripts-generated/" + formatarString(nomeSchema) + ".xml");
         
         try {
             FileWriter fw = new FileWriter(file);

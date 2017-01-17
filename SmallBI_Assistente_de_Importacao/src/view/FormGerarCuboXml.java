@@ -46,6 +46,13 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         btnAbaModelDim_Voltar = new javax.swing.JButton();
         btnAbaModelDim_Proximo = new javax.swing.JButton();
         btnAbaModelDim_Sair = new javax.swing.JButton();
+        painelAbaRel = new javax.swing.JPanel();
+        painel_AbaRel_Rels = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        painel_AbaRel_ListRel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         painelAbaModelMetri = new javax.swing.JPanel();
         painelAbaModelMetri_ModelMetri = new javax.swing.JPanel();
         btnModelMetri_AddMetri = new javax.swing.JButton();
@@ -158,10 +165,10 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
             .addGroup(painel_AbaModelDim_AtriDimLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painel_AbaModelDim_AtriDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painel_jtpAbaModelDim_listDims, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painel_jtpAbaModelDim_listDims, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
                     .addGroup(painel_AbaModelDim_AtriDimLayout.createSequentialGroup()
                         .addComponent(btnJtpAbaModelDim_AddDim)
-                        .addGap(0, 534, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         painel_AbaModelDim_AtriDimLayout.setVerticalGroup(
             painel_AbaModelDim_AtriDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,6 +232,83 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         );
 
         jtpPainelAbas.addTab("Modelagem Dimensões", paineAbaModelDim);
+
+        painel_AbaRel_Rels.setBorder(javax.swing.BorderFactory.createTitledBorder("Relacionamentos"));
+
+        jButton4.setText("Adicionar Relacionamento");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        painel_AbaRel_ListRel.setLayout(new java.awt.GridLayout());
+
+        javax.swing.GroupLayout painel_AbaRel_RelsLayout = new javax.swing.GroupLayout(painel_AbaRel_Rels);
+        painel_AbaRel_Rels.setLayout(painel_AbaRel_RelsLayout);
+        painel_AbaRel_RelsLayout.setHorizontalGroup(
+            painel_AbaRel_RelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painel_AbaRel_RelsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painel_AbaRel_RelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painel_AbaRel_ListRel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(painel_AbaRel_RelsLayout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addGap(0, 489, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        painel_AbaRel_RelsLayout.setVerticalGroup(
+            painel_AbaRel_RelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel_AbaRel_RelsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painel_AbaRel_ListRel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addContainerGap(254, Short.MAX_VALUE))
+        );
+
+        jButton1.setText("Sair");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Próximo");
+
+        jButton3.setText("Voltar");
+
+        javax.swing.GroupLayout painelAbaRelLayout = new javax.swing.GroupLayout(painelAbaRel);
+        painelAbaRel.setLayout(painelAbaRelLayout);
+        painelAbaRelLayout.setHorizontalGroup(
+            painelAbaRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAbaRelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelAbaRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painel_AbaRel_Rels, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaRelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap())
+        );
+        painelAbaRelLayout.setVerticalGroup(
+            painelAbaRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAbaRelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painel_AbaRel_Rels, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(painelAbaRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap())
+        );
+
+        jtpPainelAbas.addTab("Relacionar", painelAbaRel);
 
         painelAbaModelMetri_ModelMetri.setBorder(javax.swing.BorderFactory.createTitledBorder("Métricas"));
 
@@ -451,6 +535,22 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnAbaNomeCubo_SairActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        chamarFormAddRel();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void chamarFormAddRel(){
+        FormAddRel frm = new FormAddRel();
+        frm.setLocationRelativeTo(null);
+        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        frm.setTitle("Adicionar Novo Relacionamento");
+        frm.setVisible(true);
+    }
+    
     private void modelMetriToCuboPreview(){
         if(grupoMetricas.size() > 0){
             PercorrerAbasFormGerarCuboXml.modelMetriToCuboPreview();    
@@ -472,7 +572,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         if(!txtAbaNomeCubo_NomeCubo.getText().equals("")){
 
             Calendar calendar = Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             String data = sdf.format(calendar.getTime());
 
             GerarScriptSql gerarScriptSql = new GerarScriptSql();
@@ -542,6 +642,10 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private javax.swing.JButton btnJtpAbaModelDim_AddDim;
     private javax.swing.JButton btnModelMetri_AddMetri;
     private javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTabbedPane jtpPainelAbas;
     private javax.swing.JLabel lblAbaNomeCubo_Nomecubo;
@@ -553,7 +657,10 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     public static javax.swing.JPanel painelAbaModelMetri_ListMetri;
     public static javax.swing.JPanel painelAbaModelMetri_ModelMetri;
     private javax.swing.JPanel painelAbaNomeCubo_NomeCubo;
+    private javax.swing.JPanel painelAbaRel;
     private javax.swing.JPanel painel_AbaModelDim_AtriDim;
+    private javax.swing.JPanel painel_AbaRel_ListRel;
+    private javax.swing.JPanel painel_AbaRel_Rels;
     public static javax.swing.JPanel painel_jtpAbaModelDim_listDims;
     private javax.swing.JTextField txtAbaNomeCubo_NomeCubo;
     // End of variables declaration//GEN-END:variables

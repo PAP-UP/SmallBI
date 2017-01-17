@@ -150,7 +150,7 @@ public class GerarScriptSql {
 //        JFileChooser jfc = new JFileChooser();        
 //        jfc.showSaveDialog(null);     
 //        File file = jfc.getSelectedFile();
-        File file = new File("/home/deynesonborba/files-to-test-saiku/scripts/" + formatarString(nomeTabela) + ".sql");
+        File file = new File("/home/deynesonborba/files-to-test-saiku/cubes-scripts-generated/" + formatarString(nomeTabela) + ".sql");
         
         try {
             FileWriter fw = new FileWriter(file);
