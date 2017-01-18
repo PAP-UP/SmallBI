@@ -26,7 +26,10 @@ public class ImportarXlsx {
             modelo.setColumnCount(0);        
 
         JFileChooser jfc = new JFileChooser();
-        jfc.setCurrentDirectory(new File("/home/deynesonborba/files-to-test-smallbi"));
+        //jfc.setCurrentDirectory(new File("/home/deynesonborba/files-to-test-smallbi"));
+        jfc.setCurrentDirectory(new File(System.getProperty("user.home") + 
+                System.getProperty("file.separator") +
+                "files-to-test-saiku"));
         jfc.setDialogTitle("Procurar Arquivo CSV");
         jfc.setFileFilter(new FileNameExtensionFilter(null, "xlsx"));
         jfc.showOpenDialog(jfc);
