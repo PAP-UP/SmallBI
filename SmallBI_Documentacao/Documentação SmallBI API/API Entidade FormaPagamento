@@ -1,15 +1,15 @@
 Documentação SmallBI API
 
 Entidade Estado:
-url: "http://localhost:8080/SmallBI_WebService/rest/formaPagamento/"
+url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/formaPagamento/"
 
 Listar: 
 Método: GET
-Path: "http://localhost:8080/SmallBI_WebService/rest/formaPagamento/listar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/formaPagamento/listar"
 
 Adicionar:
 Método: POST
-Path: "http://localhost:8080/SmallBI_WebService/rest/formaPagamento/adicionar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/formaPagamento/adicionar"
 Parametros: "application/json"
 Exemplo:
 {
@@ -25,7 +25,7 @@ if(success){
 
 Alterar:
 Método: POST
-Path: "http://localhost:8080/SmallBI_WebService/rest/formaPagamento/alterar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/formaPagamento/alterar"
 Parametros: "application/json"
 Exemplo:
 {
@@ -42,7 +42,7 @@ if(success){
 
 Deletar:
 Método: POST
-Path: "http://localhost:8080/SmallBI_WebService/rest/formaPagamento/deletar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/formaPagamento/deletar"
 Parametros: "application/json"
 Exemplo:
 {
@@ -57,7 +57,7 @@ if(success){
 
 GetById:
 Método: GET
-Path: "http://localhost:8080/SmallBI_WebService/rest/formaPagamento/getById/{idFormaPagamento}"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/formaPagamento/getById/{idFormaPagamento}"
 Parametros: "application/json"
 Exemplo: 
-http://localhost:8080/SmallBI_WebService/rest/formaPagamento/getById/1
+http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/formaPagamento/getById/1

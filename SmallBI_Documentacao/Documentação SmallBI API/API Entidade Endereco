@@ -1,15 +1,15 @@
 Documentação SmallBI API
 
 Entidade Endereco:
-url: "http://localhost:8080/SmallBI_WebService/rest/endereco/"
+url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/"
 
 Listar: 
 Método: GET
-Path: "http://localhost:8080/SmallBI_WebService/rest/endereco/listar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/listar"
 
 Adicionar:
 Método: POST
-Path: "http://localhost:8080/SmallBI_WebService/rest/endereco/adicionar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/adicionar"
 Parametros: "application/json"
 Exemplo:
 {
@@ -30,7 +30,7 @@ if(success){
 
 Alterar:
 Método: POST
-Path: "http://localhost:8080/SmallBI_WebService/rest/endereco/alterar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/alterar"
 Parametros: "application/json"
 Exemplo:
 {
@@ -52,7 +52,7 @@ if(success){
 
 Deletar:
 Método: POST
-Path: "http://localhost:8080/SmallBI_WebService/rest/endereco/deletar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/deletar"
 Parametros: "application/json"
 Exemplo:
 {
@@ -67,7 +67,7 @@ if(success){
 
 GetById:
 Método: GET
-Path: "http://localhost:8080/SmallBI_WebService/rest/endereco/getById/{idEndereco}"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/getById/{idEndereco}"
 Parametros: "application/json"
 Exemplo: 
-http://localhost:8080/SmallBI_WebService/rest/endereco/getById/1
+http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/getById/1

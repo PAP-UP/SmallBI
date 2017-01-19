@@ -1,15 +1,15 @@
 Documentação SmallBI API
 
 Entidade Estado:
-url: "http://localhost:8080/SmallBI_WebService/rest/cliente/"
+url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/"
 
 Listar: 
 Método: GET
-Path: "http://localhost:8080/SmallBI_WebService/rest/cliente/listar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/listar"
 
 Adicionar:
 Método: POST
-Path: "http://localhost:8080/SmallBI_WebService/rest/cliente/adicionar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/adicionar"
 Parametros: "application/json"
 Exemplo:
 {
@@ -33,7 +33,7 @@ if(success){
 
 Alterar:
 Método: POST
-Path: "http://localhost:8080/SmallBI_WebService/rest/cliente/alterar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/alterar"
 Parametros: "application/json"
 Exemplo:
 {
@@ -58,7 +58,7 @@ if(success){
 
 Deletar:
 Método: POST
-Path: "http://localhost:8080/SmallBI_WebService/rest/cliente/deletar"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/deletar"
 Parametros: "application/json"
 Exemplo:
 {
@@ -73,7 +73,7 @@ if(success){
 
 GetById:
 Método: GET
-Path: "http://localhost:8080/SmallBI_WebService/rest/cliente/getById/{idEmpresa}"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/getById/{idEmpresa}"
 Parametros: "application/json"
 Exemplo: 
-http://localhost:8080/SmallBI_WebService/rest/cliente/getById/1
+http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/getById/1
