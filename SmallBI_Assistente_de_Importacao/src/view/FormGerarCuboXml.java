@@ -59,7 +59,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         painel_AbaRel_ListRel = new javax.swing.JPanel();
         btnPainelRel_Sair = new javax.swing.JButton();
-        btnPainelRel_Prox = new javax.swing.JButton();
+        btnPainelRel_GerarCubo = new javax.swing.JButton();
         btnPainelRel_Voltar = new javax.swing.JButton();
         painelAbaCuboPreview = new javax.swing.JPanel();
         painelAbaCuboPreview_Preview = new javax.swing.JPanel();
@@ -323,7 +323,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
             }
         });
 
-        painel_AbaRel_ListRel.setLayout(new java.awt.GridLayout());
+        painel_AbaRel_ListRel.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout painel_AbaRel_RelsLayout = new javax.swing.GroupLayout(painel_AbaRel_Rels);
         painel_AbaRel_Rels.setLayout(painel_AbaRel_RelsLayout);
@@ -355,10 +355,10 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
             }
         });
 
-        btnPainelRel_Prox.setText("Próximo");
-        btnPainelRel_Prox.addActionListener(new java.awt.event.ActionListener() {
+        btnPainelRel_GerarCubo.setText("Gerar Cubo");
+        btnPainelRel_GerarCubo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPainelRel_ProxActionPerformed(evt);
+                btnPainelRel_GerarCuboActionPerformed(evt);
             }
         });
 
@@ -381,7 +381,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnPainelRel_Voltar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPainelRel_Prox)
+                        .addComponent(btnPainelRel_GerarCubo)
                         .addGap(18, 18, 18)
                         .addComponent(btnPainelRel_Sair)))
                 .addContainerGap())
@@ -394,7 +394,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(painelAbaRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPainelRel_Sair)
-                    .addComponent(btnPainelRel_Prox)
+                    .addComponent(btnPainelRel_GerarCubo)
                     .addComponent(btnPainelRel_Voltar))
                 .addContainerGap())
         );
@@ -536,7 +536,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaCuboPreview_SairActionPerformed
 
     private void btnAbaCuboPreview_EnviarCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaCuboPreview_EnviarCuboActionPerformed
-        // TODO add your handling code here:
+        enviarCubo();
     }//GEN-LAST:event_btnAbaCuboPreview_EnviarCuboActionPerformed
 
     private void btnAbaNomeCubo_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaNomeCubo_SairActionPerformed
@@ -551,9 +551,9 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnPainelRel_SairActionPerformed
 
-    private void btnPainelRel_ProxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPainelRel_ProxActionPerformed
+    private void btnPainelRel_GerarCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPainelRel_GerarCuboActionPerformed
         addRelToCuboPreview();
-    }//GEN-LAST:event_btnPainelRel_ProxActionPerformed
+    }//GEN-LAST:event_btnPainelRel_GerarCuboActionPerformed
 
     private void btnPainelRel_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPainelRel_VoltarActionPerformed
         addRelToModelMetri();
@@ -563,6 +563,12 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         PercorrerAbasFormGerarCuboXml.cuboPrevToAddRel();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void enviarCubo(){
+        GerarSchema gerarSchema = new GerarSchema();
+        gerarSchema.salvarSchema();
+        JOptionPane.showMessageDialog(null, "Cubo salvo");
+    }
+    
     private void addRelToModelMetri(){
         PercorrerAbasFormGerarCuboXml.addRelToModelMetri();
     }
@@ -669,7 +675,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaNomeCubo_Sair;
     private javax.swing.JButton btnJtpAbaModelDim_AddDim;
     private javax.swing.JButton btnModelMetri_AddMetri;
-    private javax.swing.JButton btnPainelRel_Prox;
+    private javax.swing.JButton btnPainelRel_GerarCubo;
     private javax.swing.JButton btnPainelRel_Sair;
     private javax.swing.JButton btnPainelRel_Voltar;
     private javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;

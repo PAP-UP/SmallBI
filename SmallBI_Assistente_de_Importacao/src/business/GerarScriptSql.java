@@ -169,6 +169,7 @@ public class GerarScriptSql {
             
             bw.flush();
             bw.close();
+            System.out.println("Script salvo");
         } catch (IOException ex) {
             ex.printStackTrace();
         }

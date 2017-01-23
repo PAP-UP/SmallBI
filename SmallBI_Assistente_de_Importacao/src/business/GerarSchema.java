@@ -16,17 +16,19 @@ import model.TabelaFato;
 
 public class GerarSchema {
     
+    private static String schemaXml = new String();
+    private static String nomeSchema = new String();
+    
     public String createSchema(Schema schema){
-        
-        String schemaXml = new String();
-        
+                
         schemaXml += initializeSchema(schema.getNome());
         schemaXml += setPhysicalSchema(schema.getTabelasFato(), schema.getLinks());
         schemaXml += setCubeName(schema.getNome());
         schemaXml += setSchemaDimensions(schema.getDimensoes());
         schemaXml += setSchemaMeasures(schema.getGrupoMetrica(), schema.getDimensoes());
         
-        salvarSchema(schema.getNome(), schemaXml);
+        nomeSchema = schema.getNome();
+        //salvarSchema(schema.getNome(), schemaXml);
         
         return schemaXml;
     }
@@ -113,7 +115,7 @@ public class GerarSchema {
         return schema;
     }
     
-    private void salvarSchema(String nomeSchema, String schemaXml){
+    public void salvarSchema(){
         File file = new File(System.getProperty("user.home") + 
                 System.getProperty("file.separator") +
                 "files-to-test-saiku" +
