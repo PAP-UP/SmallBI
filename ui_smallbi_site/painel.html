@@ -73,129 +73,84 @@
 			<div class="content">
 				<div class="container-fluid" style=" padding-bottom: 64px; ">
 					<div class="row">
-						<div class="col-md-4">
-							<div class="card">
-								<div class="header">
-									<h4 class="title">Email Statistics</h4>
-									<p class="category">Last Campaign Performance</p>
-								</div>
-								<div class="content">
-									<div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-
-									<div class="footer">
-										<div class="legend">
-											<i class="fa fa-circle text-info"></i> Open
-											<i class="fa fa-circle text-danger"></i> Bounce
-											<i class="fa fa-circle text-warning"></i> Unsubscribe
-										</div>
-										<hr>
-										<div class="stats">
-											<i class="fa fa-clock-o"></i> Campaign sent 2 days ago
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-md-8">
-							<div class="card">
-								<div class="header">
-									<h4 class="title">Users Behavior</h4>
-									<p class="category">24 Hours performance</p>
-								</div>
-								<div class="content">
-									<div id="chartHours" class="ct-chart"></div>
-									<div class="footer">
-										<div class="legend">
-											<i class="fa fa-circle text-info"></i> Open
-											<i class="fa fa-circle text-danger"></i> Click
-											<i class="fa fa-circle text-warning"></i> Click Second Time
-										</div>
-										<hr>
-										<div class="stats">
-											<i class="fa fa-history"></i> Updated 3 minutes ago
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-					<div class="row">
 						<div class="col-md-12">
-							<div class="card ">
-								<div class="header">
-									<h4 class="title">2014 Sales</h4>
-									<p class="category">All products including Taxes</p>
+							<a href="#" title="Capacidade de dados consumido" class="btn-info" style="line-height: inherit; display: block; position: relative; height: auto; padding: 0; text-align: center; border-width: 1px; border-style: solid;border-radius: 3px;">
+								<span style="font-size: 19px; font-weight: 700; line-height: 45px; display: inline-block; min-width: 45px; height: 45px; text-align: center; vertical-align: baseline; white-space: nowrap; color: #fff; border-radius: 100%; position: absolute; z-index: 5; left: auto; right: 10px; top: 19px; background: rgba(0,0,0,.5);">64%</span>
+								<div style="background: 0 0; padding: 0; position: absolute; right: 70px; bottom: 19px; font-size: 30px; font-weight: 400;">Consumo</div>
+								<div style="position: relative; overflow: hidden; padding: 10px;padding: 0; min-height: 80px;">
+									<i class="fa fa-upload" style="font-size: 35px; line-height: 70px; position: absolute; top: 50%; left: 15px; height: 70px; margin-top: -36px; opacity: .3;position: absolute; left: 15px; top: 43px;"></i>
 								</div>
-								<div class="content">
-									<div id="chartActivity" class="ct-chart"></div>
-
-									<div class="footer">
-										<div class="legend">
-											<i class="fa fa-circle text-info"></i> Tesla Model S
-											<i class="fa fa-circle text-danger"></i> BMW 5 Series
-										</div>
-										<hr>
-										<div class="stats">
-											<i class="fa fa-check"></i> Data information certified
-										</div>
-									</div>
-								</div>
-							</div>
+							</a>
 						</div>
+						
 					</div>
-
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-md-6" style="padding: 60px 40px;">
+							<div class="tituloTabela">
+								<i class="fa fa-users" ng-class="icon"></i><span> Usuários</span>
+							</div>
 							<table class="table table-bordered table-striped table-condensed">
 								<thead>
 									<tr>
 										<th>Nome</th>
-										<th class="text-center">Editar</th>
-										<th class="text-center">Excluir</th>
+										<th class="text-center">Ver</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<td class="text-left">Item</td>
-										<td class="text-center"><a href="#"><i class="fa fa-pencil iconeEditar text-warning"></i></a></td>
-										<td class="text-center"><a href="#"><i class="fa fa-remove iconeRemover text-danger	"></i></a></td>
+										<td class="text-center"><a href="#"><i class="fa fa-eye iconeEditar text-success"></i></a></td>
 									</tr>
+									<tr>
+										<td class="text-left">Item</td>
+										<td class="text-center"><a href="#"><i class="fa fa-eye iconeEditar text-success"></i></a></td>
+									</tr>
+									<tr>
+										<td class="text-left">Item</td>
+										<td class="text-center"><a href="#"><i class="fa fa-eye iconeEditar text-success"></i></a></td>
+									</tr>
+									<tr>
+										<td class="text-left">Item</td>
+										<td class="text-center"><a href="#"><i class="fa fa-eye iconeEditar text-success"></i></a></td>
+									</tr>
+
 								</tbody>
 							</table>
-							<a href="#" id="plus"><i class="fa fa-plus fa-lg icon"></i></a>
-							<a href="#" class="novoItem">Cadastrar novo item</a>
-							
+						</div>
+						<div class="col-md-6" style="padding: 60px 40px;">
+							<div class="tituloTabela">
+								<i class="fa fa-cubes" ng-class="icon"></i><span> Cubos</span>
+							</div>
+							<table class="table table-bordered table-striped table-condensed">
+								<thead>
+									<tr>
+										<th>Nome</th>
+										<th class="text-center">Ver</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="text-left">Item</td>
+										<td class="text-center"><a href="#"><i class="fa fa-eye iconeEditar text-success"></i></a></td>
+									</tr>
+									<tr>
+										<td class="text-left">Item</td>
+										<td class="text-center"><a href="#"><i class="fa fa-eye iconeEditar text-success"></i></a></td>
+									</tr>
+									<tr>
+										<td class="text-left">Item</td>
+										<td class="text-center"><a href="#"><i class="fa fa-eye iconeEditar text-success"></i></a></td>
+									</tr>
+									<tr>
+										<td class="text-left">Item</td>
+										<td class="text-center"><a href="#"><i class="fa fa-eye iconeEditar text-success"></i></a></td>
+									</tr>
+									
+								</tbody>
+							</table>
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-12">
-							<form action="" method="post">
-								<div class="form-group">
-									<label class="text-left" style="display: block;" for="nomeCadastro">Nome Completo</label>
-									<input type="text" class="form-control" id="nomeCadastro" name="nomeCadastro">
-								</div>
-								<div class="form-group">
-									<label class="text-left" style="display: block;" for="emailCadastro">Email</label>
-									<input type="email" class="form-control" id="emailCadastro" name="emailCadastro">
-								</div>
-								<div class="form-group">
-									<label class="text-left" style="display: block;" for="loginCadastro">Login</label>
-									<input type="text" class="form-control" id="loginCadastro" name="loginCadastro">
-								</div>
-								<div class="form-group">
-									<label class="text-left" style="display: block;" for="senhaCadastro">Senha</label>
-									<input type="password" class="form-control" id="senhaCadastro" name="senhaCadastro">
-								</div>
-								<button type="submit" class="btn btn-success" style="float: right;">Enviar</button>
-							</form>
-						</div>
-					</div>	
-				</div>
 			</div>
 		</section>
 
