@@ -22,5 +22,8 @@
 			console.log('oi');
 			$(".dialog").css({"opacity": 0, "visibility":"hidden"});
 		});
-		
+		var $myGroup = $('#accordion');
+		$myGroup.on('show.bs.collapse','.collapse', function() {
+			$myGroup.find('.collapse.in').collapse('hide');
+		});
 	});
