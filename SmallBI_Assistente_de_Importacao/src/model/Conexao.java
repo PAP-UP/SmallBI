@@ -31,6 +31,10 @@ public class Conexao {
         con = null;
     }
     
+    public static Connection checkConnection(){
+        return con;
+    }
+    
     public static PreparedStatement getPreparedStatement(String sql){       
         try {
             return con.prepareStatement(sql);

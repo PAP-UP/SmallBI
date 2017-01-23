@@ -52,6 +52,10 @@ public class ImportarDb {
         return null;
     }
     
+    public Connection checkConexao(){
+        return Conexao.checkConnection();
+    }
+    
     public void desconectar(){
         Conexao.fecharConexao();
     }

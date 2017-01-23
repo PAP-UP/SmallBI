@@ -80,12 +80,12 @@ public class FormPrincipal extends javax.swing.JFrame {
         lblAbaConexBd_Senha = new javax.swing.JLabel();
         txtPassAbaConexBd_Senha = new javax.swing.JPasswordField();
         btnAbaConexBd_Conectar = new javax.swing.JButton();
-        btnAbaConexBd_Desconectar = new javax.swing.JButton();
         painelAbaConexBd_InfoConex = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtAreaAbaConexBd_InfoConex = new javax.swing.JTextArea();
         btnAbaConexBd_Ajuda = new javax.swing.JButton();
         btnAbaConexBd_Voltar = new javax.swing.JButton();
+        btnAbaConexBd_Prox = new javax.swing.JButton();
         painelAbaConsulBanco = new javax.swing.JPanel();
         painelAbaConsulBd_ConsultarBd = new javax.swing.JPanel();
         painelAbaConexBd_ConsulDefault = new javax.swing.JPanel();
@@ -454,13 +454,6 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnAbaConexBd_Desconectar.setText("Desconectar");
-        btnAbaConexBd_Desconectar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAbaConexBd_DesconectarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout painelAbaConexBd_ConexaoLayout = new javax.swing.GroupLayout(painelAbaConexBd_Conexao);
         painelAbaConexBd_Conexao.setLayout(painelAbaConexBd_ConexaoLayout);
         painelAbaConexBd_ConexaoLayout.setHorizontalGroup(
@@ -482,7 +475,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                                         .addComponent(txtAbaConexBd_Usuario)
                                         .addComponent(txtAbaConexBd_Endereco))))
                             .addComponent(lblAbaConexBd_Usuario))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
                         .addGroup(painelAbaConexBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAbaConexBd_Banco)
                             .addComponent(lblABaConexBd_Porta)
@@ -490,9 +483,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                     .addGroup(painelAbaConexBd_ConexaoLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAbaConexBd_Conectar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAbaConexBd_Desconectar)
-                        .addGap(3, 3, 3)))
+                        .addGap(104, 104, 104)))
                 .addGroup(painelAbaConexBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtAbaConexBd_Banco)
                     .addComponent(txtAbaConexBd_Porta)
@@ -524,9 +515,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                         .addComponent(lblAbaConexBd_Senha)
                         .addComponent(txtPassAbaConexBd_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(painelAbaConexBd_ConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAbaConexBd_Conectar)
-                    .addComponent(btnAbaConexBd_Desconectar))
+                .addComponent(btnAbaConexBd_Conectar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -576,6 +565,14 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnAbaConexBd_Prox.setText("Próximo");
+        btnAbaConexBd_Prox.setEnabled(false);
+        btnAbaConexBd_Prox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbaConexBd_ProxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelAbaConexBancoLayout = new javax.swing.GroupLayout(painelAbaConexBanco);
         painelAbaConexBanco.setLayout(painelAbaConexBancoLayout);
         painelAbaConexBancoLayout.setHorizontalGroup(
@@ -587,6 +584,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                     .addComponent(painelAbaConexBd_Conexao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaConexBancoLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAbaConexBd_Prox)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAbaConexBd_Voltar)))
                 .addContainerGap())
         );
@@ -598,7 +597,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(painelAbaConexBd_Conexao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(btnAbaConexBd_Voltar)
+                .addGroup(painelAbaConexBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAbaConexBd_Voltar)
+                    .addComponent(btnAbaConexBd_Prox))
                 .addContainerGap())
         );
 
@@ -980,6 +981,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     private void btnAbaTipoImportImportarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTipoImportImportarBancoActionPerformed
         PercorrerAbasFormPrincipal.abaTipoImportToConexBanco();
+        checarConexao();
     }//GEN-LAST:event_btnAbaTipoImportImportarBancoActionPerformed
 
     private void btnAbaImportArq_ProcurarArquivoCsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaImportArq_ProcurarArquivoCsvActionPerformed
@@ -1001,10 +1003,6 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void btnAbaImportBd_ExecConsulPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaImportBd_ExecConsulPersonActionPerformed
         importarTabelaPersonalizada();
     }//GEN-LAST:event_btnAbaImportBd_ExecConsulPersonActionPerformed
-
-    private void btnAbaConexBd_DesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaConexBd_DesconectarActionPerformed
-        desconectarDoBanco();
-    }//GEN-LAST:event_btnAbaConexBd_DesconectarActionPerformed
 
     private void btnAbaTabPrev_ValidarTiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_ValidarTiposActionPerformed
         validarTiposDeDados();
@@ -1044,6 +1042,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     private void btnAbaConsulBd_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaConsulBd_VoltarActionPerformed
         PercorrerAbasFormPrincipal.abaConsulBancoToAbaConexBanco();
+        checarConexao();
     }//GEN-LAST:event_btnAbaConsulBd_VoltarActionPerformed
 
     private void btnAbaTabPrev_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_VoltarActionPerformed
@@ -1053,6 +1052,21 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void btnAbaTabPrev_SalvarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_SalvarTabelaActionPerformed
         salvarTabela();
     }//GEN-LAST:event_btnAbaTabPrev_SalvarTabelaActionPerformed
+
+    private void btnAbaConexBd_ProxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaConexBd_ProxActionPerformed
+        PercorrerAbasFormPrincipal.abaConexBancoToAbaConsulBanco();
+        carregarCbxTabela();
+    }//GEN-LAST:event_btnAbaConexBd_ProxActionPerformed
+    
+    private void checarConexao(){
+        ImportarDb importarDb = new ImportarDb();
+        if(importarDb.checkConexao() == null){
+            btnAbaConexBd_Conectar.setText("Conectar");
+        }else{
+            btnAbaConexBd_Conectar.setText("Desconectar");
+            btnAbaConexBd_Prox.setEnabled(true);
+        }
+    }
     
     private void importarMaisDados(){
         listaDeCbxTipos.clear();
@@ -1100,12 +1114,6 @@ public class FormPrincipal extends javax.swing.JFrame {
         } 
     }
     
-    private void desconectarDoBanco(){
-        ImportarDb importarDb = new ImportarDb();
-        importarDb.desconectar();
-        JOptionPane.showMessageDialog(null, "Desconectado com sucesso!");
-    }
-    
     private void importarTabelaPersonalizada(){
         ImportarDb importarDb = new ImportarDb();
         String scriptPersonalisado = txtAbaImportBd_ConsulPerson.getText();
@@ -1147,22 +1155,29 @@ public class FormPrincipal extends javax.swing.JFrame {
     }               
     
     private void conectarComBanco(){
-        if(validarCamposConexao()){
-            ImportarDb importarDb = new ImportarDb();
-            ArrayList<String> bancos = importarDb.setarVariaveisConexao(
-                    cbxAbaConexBd_Sgbd.getSelectedItem().toString(), 
-                        txtAbaConexBd_Usuario.getText(), txtPassAbaConexBd_Senha.getText(),
-                            txtAbaConexBd_Endereco.getText(), txtAbaConexBd_Porta.getText());
-            if(bancos != null){
-                boolean bancoExiste = carregarCbxTabela();
-                if(bancoExiste == true){
-                    PercorrerAbasFormPrincipal.abaConexBancoToAbaConsulBanco();
+        ImportarDb importarDb = new ImportarDb();
+        if(btnAbaConexBd_Conectar.getText().equals("Conectar")){
+            if(validarCamposConexao()){            
+                ArrayList<String> bancos = importarDb.setarVariaveisConexao(
+                        cbxAbaConexBd_Sgbd.getSelectedItem().toString(), 
+                            txtAbaConexBd_Usuario.getText(), txtPassAbaConexBd_Senha.getText(),
+                                txtAbaConexBd_Endereco.getText(), txtAbaConexBd_Porta.getText());
+                if(bancos != null){
+                    boolean bancoExiste = carregarCbxTabela();
+                    if(bancoExiste == true){
+                        PercorrerAbasFormPrincipal.abaConexBancoToAbaConsulBanco();
+                        btnAbaConexBd_Prox.setEnabled(true);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Falha ao conectar!");
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Falha ao conectar!");
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            importarDb.desconectar();
+            JOptionPane.showMessageDialog(null, "Desconectado com sucesso!");
+            btnAbaConexBd_Conectar.setText("Conectar");
         }
     }
     
@@ -1179,7 +1194,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             for(String tabela : tabelas){
                 cbxAbaConexBd_Tabela.addItem(tabela);
             }
-            JOptionPane.showMessageDialog(null, "Conectado com sucesso!");
+//            JOptionPane.showMessageDialog(null, "Conectado com sucesso!");
             return true;
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível acessar este banco!");
@@ -1320,8 +1335,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbaConexBd_Ajuda;
     private javax.swing.JButton btnAbaConexBd_Conectar;
-    private javax.swing.JButton btnAbaConexBd_Desconectar;
     private javax.swing.JButton btnAbaConexBd_ImportTabela;
+    private javax.swing.JButton btnAbaConexBd_Prox;
     private javax.swing.JButton btnAbaConexBd_Voltar;
     private javax.swing.JButton btnAbaConsulBd_InfoAjuda;
     private javax.swing.JButton btnAbaConsulBd_Voltar;
