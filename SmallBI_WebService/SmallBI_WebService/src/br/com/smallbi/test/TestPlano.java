@@ -1,6 +1,5 @@
 package br.com.smallbi.test;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
@@ -9,6 +8,7 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.PlanoBusiness;
 import br.com.smallbi.entity.Plano;
+import br.com.smallbi.util.Util;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPlano {
@@ -19,7 +19,7 @@ public class TestPlano {
 	@Test
 	public void test1CreatePlano(){
 		Plano plano = new Plano();
-		plano.setDataCadastro(Calendar.getInstance());
+		plano.setDataCadastro(Util.getDate());
 		plano.setNomePlano("Cheap plan");
 		plano.setStatus(true);
 		plano.setUsuarioId(1);
@@ -37,7 +37,7 @@ public class TestPlano {
 			System.out.println("Descrição: " + p.getNomePlano());
 			System.out.println("Id: " + p.getIdPlano());
 			System.out.println("Usuário: " + p.getUsuarioId());
-			System.out.println("Data de cadastro: " + p.getDataCadastro().getTime());
+			System.out.println("Data de cadastro: " + Util.formatDate(p.getDataCadastro()));
 			System.out.println("----------");
 		}
 	}

@@ -1,6 +1,5 @@
 package br.com.smallbi.test;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
@@ -8,15 +7,14 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.ClienteBusiness;
-import br.com.smallbi.business.EnderecoBusiness;
 import br.com.smallbi.business.FormaPagamentoBusiness;
 import br.com.smallbi.business.PlanoBusiness;
 import br.com.smallbi.business.RamoAtividadeBusiness;
 import br.com.smallbi.entity.Cliente;
-import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.FormaPagamento;
 import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
+import br.com.smallbi.util.Util;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCliente {
@@ -28,11 +26,7 @@ public class TestCliente {
 	public void test1CreateEmpresa(){
 		Cliente e = new Cliente();
 		e.setCnpj("12.123.123/1234-12");
-		e.setDataCadastro(Calendar.getInstance());
-		
-		List<Endereco> enderecos = new EnderecoBusiness().list();
-		Endereco endereco = enderecos.get(0);
-//		e.setEndereco(endereco);
+		e.setDataCadastro(Util.getDate());
 		
 		List<FormaPagamento> formas = new FormaPagamentoBusiness().list();
 		FormaPagamento formaPagamento = formas.get(0);
@@ -71,7 +65,7 @@ public class TestCliente {
 			System.out.println("Id: " + e.getIdCliente());
 			System.out.println("Tamanho total: " + e.getTamanhoTotal());
 			System.out.println("Usuário: " + e.getUsuarioId());
-			System.out.println("Data de cadastro: " + e.getDataCadastro().getTime());
+			System.out.println("Data de cadastro: " + Util.formatDate(e.getDataCadastro()));
 //			System.out.println("Endereço: " + e.getEndereco().getEndereco());
 			System.out.println("Forma de pagamento: " + e.getFormaPagamento().getFormaPagamento());
 			System.out.println("Plano: " + e.getPlano().getNomePlano());

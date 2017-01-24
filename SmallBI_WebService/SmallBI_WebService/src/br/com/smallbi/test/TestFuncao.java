@@ -1,6 +1,5 @@
 package br.com.smallbi.test;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
@@ -9,6 +8,7 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.FuncaoBusiness;
 import br.com.smallbi.entity.Funcao;
+import br.com.smallbi.util.Util;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestFuncao {
@@ -19,7 +19,7 @@ public class TestFuncao {
 	@Test
 	public void test1CreateFuncao(){
 		Funcao funcao = new Funcao();
-		funcao.setDataCadastro(Calendar.getInstance());
+		funcao.setDataCadastro(Util.getDate());
 		funcao.setNomeFuncao("Data Scientist");
 		funcao.setStatus(true);
 		funcao.setUsuarioId(1);
@@ -37,7 +37,7 @@ public class TestFuncao {
 			System.out.println("Função: " + f.getNomeFuncao());
 			System.out.println("Id: " + f.getIdFuncao());
 			System.out.println("Usuário: " + f.getUsuarioId());
-			System.out.println("Data de cadastro: " + f.getDataCadastro().getTime());
+			System.out.println("Data de cadastro: " + Util.formatDate(f.getDataCadastro()));
 			System.out.println("----------");
 		}
 	}

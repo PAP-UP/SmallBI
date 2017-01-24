@@ -44,7 +44,7 @@ public class TestCidade {
 			System.out.println("----------");
 			System.out.println("Nome da Cidade: " + c.getNomeCidade());
 //			System.out.println("Sigla da Cidade: " + c.getSiglaCidade());
-			System.out.println("Data de Cadastro: " + c.getDataCadastro().getTime());
+			System.out.println("Data de Cadastro: " + Util.formatDate(c.getDataCadastro()));
 			System.out.println("Estado: " + c.getEstado().getNomeEstado());
 			System.out.println("Id: " + c.getIdCidade());
 			System.out.println("Usuário: " + c.getUsuarioId());

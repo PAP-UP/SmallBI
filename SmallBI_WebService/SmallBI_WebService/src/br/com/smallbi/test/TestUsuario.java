@@ -1,6 +1,5 @@
 package br.com.smallbi.test;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
@@ -15,6 +14,7 @@ import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Perfil;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Usuario;
+import br.com.smallbi.util.Util;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestUsuario {
@@ -25,7 +25,7 @@ public class TestUsuario {
 	@Test
 	public void test1CreateUsuario(){
 		Usuario usuario = new Usuario();
-		usuario.setDataCadastro(Calendar.getInstance());
+		usuario.setDataCadastro(Util.getDate());
 		
 		List<Cliente> clientes = new ClienteBusiness().list();
 		Cliente cliente = clientes.get(0);
@@ -61,7 +61,7 @@ public class TestUsuario {
 			System.out.println("Usuário Saiku: " + u.getUsuarioSaiku());
 			System.out.println("Id: " + u.getIdUsuario());
 			System.out.println("Id usuário que fez o cadastro: " + u.getUsuarioId());
-			System.out.println("Data de cadastro: " + u.getDataCadastro().getTime());
+			System.out.println("Data de cadastro: " + Util.formatDate(u.getDataCadastro()));
 			System.out.println("Empresa: " + u.getCliente().getNomeFantasia());
 			System.out.println("Perfil: " + u.getPerfil().getNomePerfil());
 			System.out.println("Nome: " + u.getPessoa().getNome());

@@ -1,6 +1,5 @@
 package br.com.smallbi.test;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
@@ -17,10 +16,6 @@ public class TestEstado{
 	EstadoBusiness estadoBusiness = new EstadoBusiness();
 	public static int idTestEstado;
 
-//	@Test
-//	public void testDate(){
-//		Util.getDate();
-//	}
 	@Test
 	public void test1CreateEstado(){
 		Estado estado = new Estado();

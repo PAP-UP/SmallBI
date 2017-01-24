@@ -1,6 +1,5 @@
 package br.com.smallbi.test;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
@@ -9,6 +8,7 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.RamoAtividadeBusiness;
 import br.com.smallbi.entity.RamoAtividade;
+import br.com.smallbi.util.Util;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestRamoAtividade {
@@ -19,7 +19,7 @@ public class TestRamoAtividade {
 	@Test
 	public void test1CreateRamoAtividade(){
 		RamoAtividade ramoAtividade = new RamoAtividade();
-		ramoAtividade.setDataCadastro(Calendar.getInstance());
+		ramoAtividade.setDataCadastro(Util.getDate());
 		ramoAtividade.setRamoAtividade("Rain cookie sales");
 		ramoAtividade.setStatus(true);
 		ramoAtividade.setUsuarioId(1);
@@ -37,7 +37,7 @@ public class TestRamoAtividade {
 			System.out.println("Ramo de atividade: " + r.getRamoAtividade());
 			System.out.println("Id: " + r.getIdRamoAtividade());
 			System.out.println("Usuário: " + r.getUsuarioId());
-			System.out.println("Data de Cadastro: " + r.getDataCadastro().getTime()); 
+			System.out.println("Data de Cadastro: " + Util.formatDate(r.getDataCadastro())); 
 			System.out.println("----------");
 		}
 	}

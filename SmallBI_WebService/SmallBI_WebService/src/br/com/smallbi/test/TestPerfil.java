@@ -1,6 +1,5 @@
 package br.com.smallbi.test;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
@@ -9,6 +8,7 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.PerfilBusiness;
 import br.com.smallbi.entity.Perfil;
+import br.com.smallbi.util.Util;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPerfil {
@@ -19,7 +19,7 @@ public class TestPerfil {
 	@Test
 	public void test1CreatePerfil(){
 		Perfil perfil = new Perfil();
-		perfil.setDataCadastro(Calendar.getInstance());
+		perfil.setDataCadastro(Util.getDate());
 		perfil.setNomePerfil("Adm");
 		perfil.setStatus(true);
 		perfil.setUsuarioId(1);
@@ -37,7 +37,7 @@ public class TestPerfil {
 			System.out.println("Perfil: " + p.getNomePerfil());
 			System.out.println("Id: " + p.getIdPerfil());
 			System.out.println("Usuário: " + p.getUsuarioId());
-			System.out.println("data de cadastro: " + p.getDataCadastro().getTime());
+			System.out.println("data de cadastro: " + Util.formatDate(p.getDataCadastro()));
 			System.out.println("----------");
 		}
 	}

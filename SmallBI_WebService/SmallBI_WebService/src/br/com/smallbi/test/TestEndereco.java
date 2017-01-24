@@ -64,7 +64,7 @@ public class TestEndereco {
 			System.out.println("Endereço: " + e.getEndereco());
 			System.out.println("Número: " + e.getNumero());
 			System.out.println("Cidade: " + e.getCidade().getNomeCidade());
-			System.out.println("Data de cadastro: " + e.getDataCadastro().getTime());
+			System.out.println("Data de cadastro: " + Util.formatDate(e.getDataCadastro()));
 			System.out.println("Tipo de endereço: " + e.getTipo().getTipo());
 			System.out.println("Usuário: " + e.getUsuarioId());
 			System.out.println("----------");

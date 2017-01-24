@@ -1,13 +1,12 @@
 package br.com.smallbi.test;
 
-import java.util.Calendar;
-
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.UsuarioBusiness;
 import br.com.smallbi.entity.Usuario;
+import br.com.smallbi.util.Util;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestFirstUser {
@@ -15,7 +14,7 @@ public class TestFirstUser {
 	@Test
 	public void test1CreateFirstUser(){
 		Usuario usuario = new Usuario();
-		usuario.setDataCadastro(Calendar.getInstance());
+		usuario.setDataCadastro(Util.getDate());
 		usuario.setCliente(null);
 		usuario.setLogin("deynesonborba");
 		usuario.setPerfil(null);
