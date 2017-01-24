@@ -1,7 +1,6 @@
 package br.com.smallbi.business;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
@@ -11,6 +10,7 @@ import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Tipo;
+import br.com.smallbi.util.Util;
 
 public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 
@@ -98,7 +98,7 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Calendar.getInstance());
+		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
 		telefoneDao.create(t);
@@ -202,7 +202,7 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Calendar.getInstance());
+		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
 		telefoneDao.update(t);

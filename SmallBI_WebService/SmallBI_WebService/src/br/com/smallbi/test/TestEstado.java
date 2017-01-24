@@ -9,13 +9,18 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.EstadoBusiness;
 import br.com.smallbi.entity.Estado;
+import br.com.smallbi.util.Util;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestEstado{
 
 	EstadoBusiness estadoBusiness = new EstadoBusiness();
 	public static int idTestEstado;
-	
+
+//	@Test
+//	public void testDate(){
+//		Util.getDate();
+//	}
 	@Test
 	public void test1CreateEstado(){
 		Estado estado = new Estado();
@@ -23,7 +28,8 @@ public class TestEstado{
 		estado.setSiglaEstado("RS");
 		estado.setStatus(true);
 		estado.setUsuarioId(1);
-		estado.setDataCadastro(Calendar.getInstance());		
+//		estado.setDataCadastro(Calendar.getInstance());
+		estado.setDataCadastro(Util.getDate());
 		estadoBusiness.create(estado);
 		idTestEstado = estado.getIdEstado();
 	}
@@ -38,7 +44,8 @@ public class TestEstado{
 			System.out.println("Sigla: " + e.getSiglaEstado());
 			System.out.println("Id: " + e.getIdEstado());
 			System.out.println("Usuário: " + e.getUsuarioId());
-			System.out.println("Data de Cadastro: " + e.getDataCadastro().getTime());
+			System.out.println("Data de Cadastro sem formatar: " + e.getDataCadastro().getTime());
+			System.out.println("Data de Cadastro formatada: " + Util.formatDate(e.getDataCadastro()));
 			System.out.println("----------");
 		}
 	}

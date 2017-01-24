@@ -1,6 +1,5 @@
 package br.com.smallbi.test;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
@@ -8,11 +7,14 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.CidadeBusiness;
+import br.com.smallbi.business.ClienteBusiness;
 import br.com.smallbi.business.EnderecoBusiness;
 import br.com.smallbi.business.TipoBusiness;
 import br.com.smallbi.entity.Cidade;
+import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Tipo;
+import br.com.smallbi.util.Util;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestEndereco {
@@ -29,7 +31,7 @@ public class TestEndereco {
 		Cidade cidade = cidades.get(0);
 		endereco.setCidade(cidade);
 		
-		endereco.setDataCadastro(Calendar.getInstance());
+		endereco.setDataCadastro(Util.getDate());
 		endereco.setEndereco("Rua do Zacarias");
 		endereco.setNumero(1200);
 		endereco.setStatus(true);
@@ -39,6 +41,14 @@ public class TestEndereco {
 		endereco.setTipo(tipo);
 		
 		endereco.setUsuarioId(1);
+		
+//		PessoaBusiness pessoaBusiness = new PessoaBusiness();
+//		List<Pessoa> pessoas = pessoaBusiness.list();
+//		endereco.setPessoa(pessoas.get(0));
+
+//		ClienteBusiness clienteBusiness = new ClienteBusiness();
+//		List<Cliente> clientes = clienteBusiness.list();
+//		endereco.setCliente(clientes.get(0));
 		
 		enderecoBusiness.create(endereco);
 		idTestEndereco = endereco.getIdEndereco();

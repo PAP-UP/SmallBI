@@ -6,6 +6,14 @@ url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/tipo/"
 Listar: 
 Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/tipo/listar"
+Retorno:
+  {
+    "idTipo": 3,
+    "dataCadastro": "Jan 2, 2017 12:00:00 AM",
+    "usuarioId": 1,
+    "tipo": "Residencial",
+    "status": true
+  }
 
 Adicionar:
 Método: POST

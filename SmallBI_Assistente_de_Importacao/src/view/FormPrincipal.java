@@ -1046,7 +1046,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaConsulBd_VoltarActionPerformed
 
     private void btnAbaTabPrev_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_VoltarActionPerformed
-        PercorrerAbasFormPrincipal.abaTabPreviewToAbaTipoImport();
+        importarMaisDados();
     }//GEN-LAST:event_btnAbaTabPrev_VoltarActionPerformed
 
     private void btnAbaTabPrev_SalvarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTabPrev_SalvarTabelaActionPerformed
@@ -1072,7 +1072,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         listaDeCbxTipos.clear();
         painelAbaTabPrev_painelTabela.removeAll();
         painelAbaTabPrev_CbxTiposVariaveis.removeAll();
-        PercorrerAbasFormPrincipal.importarMaisDados();
+        PercorrerAbasFormPrincipal.abaTabPreviewToAbaTipoImport();
     }
     
     private void salvarTabela(){
@@ -1080,6 +1080,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         frm.setLocationRelativeTo(null);
         frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Assistente para Salvar Tabela Importada");
+//        this.setVisible(false);
         frm.setVisible(true);
     }
     

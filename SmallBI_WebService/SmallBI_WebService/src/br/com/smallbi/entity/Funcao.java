@@ -1,6 +1,6 @@
 package br.com.smallbi.entity;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +15,7 @@ public class Funcao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idFuncao;
 	
-	private Calendar dataCadastro;
+	private Date dataCadastro;
 	
 	private Integer usuarioId;
 	
@@ -40,11 +40,11 @@ public class Funcao {
 		this.idFuncao = idFuncao;
 	}
 
-	public Calendar getDataCadastro() {
+	public Date getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(Calendar dataCadastro) {
+	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 

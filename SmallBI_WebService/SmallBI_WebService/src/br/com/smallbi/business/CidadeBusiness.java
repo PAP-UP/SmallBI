@@ -1,7 +1,6 @@
 package br.com.smallbi.business;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
@@ -10,6 +9,7 @@ import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Estado;
 import br.com.smallbi.entity.Usuario;
+import br.com.smallbi.util.Util;
 
 public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 
@@ -64,7 +64,7 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Calendar.getInstance());
+		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
 		cidadeDao.create(t);
@@ -76,6 +76,10 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 		List<Cidade> cidades = new ArrayList<>();
 		for(Cidade c : cidadeDao.list()){
 			if(c.isStatus() == true){
+				
+//				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//				c.setDataCadastro(sdf.format(sdf.format(c.getDataCadastro())));
+				
 				cidades.add(c);
 			}
 		}
@@ -136,7 +140,7 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Calendar.getInstance());
+		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
 		cidadeDao.update(t);

@@ -6,6 +6,102 @@ url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/telefone/"
 Listar: 
 Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/telefone/listar"
+Retorno:
+  {
+    "idTelefone": 7,
+    "dataCadastro": "Jan 13, 2017 10:23:01 PM",
+    "usuarioId": 1,
+    "tipo": {
+      "idTipo": 1,
+      "dataCadastro": "Jan 2, 2017 12:00:00 AM",
+      "usuarioId": 1,
+      "tipo": "Cobrança",
+      "status": true
+    },
+    "ddd": 41,
+    "telefone": "1234-5678",
+    "cliente": {
+      "idCliente": 1,
+      "dataCadastro": "Jan 13, 2017 10:07:52 PM",
+      "usuarioId": 1,
+      "razaoSocial": "Deyneson Borba Ltda",
+      "nomeFantasia": "SmallBI",
+      "cnpj": "12.123.123/1234-12",
+      "ie": "I don't know what this!",
+      "ramoAtividade": {
+        "idRamoAtividade": 1,
+        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
+        "usuarioId": 1,
+        "ramoAtividade": "Altarquia",
+        "status": true
+      },
+      "tamanhoTotal": 100,
+      "formaPagamento": {
+        "idFormaPagamento": 1,
+        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
+        "usuarioId": 1,
+        "formaPagamento": "Cartão Crédito",
+        "status": true
+      },
+      "plano": {
+        "idPlano": 1,
+        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
+        "usuarioId": 1,
+        "nomePlano": "Iniciante",
+        "status": true
+      },
+      "status": true
+    },
+    "pessoa": {
+      "idPessoa": 1,
+      "dataCadastro": "Jan 13, 2017 10:14:08 PM",
+      "usuarioId": 1,
+      "nome": "Zezinho",
+      "cpf": "123.123.123-12",
+      "rg": "12.123.123-1",
+      "funcao": {
+        "idFuncao": 1,
+        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
+        "usuarioId": 1,
+        "nomeFuncao": "Diretoria",
+        "status": true
+      },
+      "cliente": {
+        "idCliente": 1,
+        "dataCadastro": "Jan 13, 2017 10:07:52 PM",
+        "usuarioId": 1,
+        "razaoSocial": "Deyneson Borba Ltda",
+        "nomeFantasia": "SmallBI",
+        "cnpj": "12.123.123/1234-12",
+        "ie": "I don't know what this!",
+        "ramoAtividade": {
+          "idRamoAtividade": 1,
+          "dataCadastro": "Jan 2, 2017 12:00:00 AM",
+          "usuarioId": 1,
+          "ramoAtividade": "Altarquia",
+          "status": true
+        },
+        "tamanhoTotal": 100,
+        "formaPagamento": {
+          "idFormaPagamento": 1,
+          "dataCadastro": "Jan 2, 2017 12:00:00 AM",
+          "usuarioId": 1,
+          "formaPagamento": "Cartão Crédito",
+          "status": true
+        },
+        "plano": {
+          "idPlano": 1,
+          "dataCadastro": "Jan 2, 2017 12:00:00 AM",
+          "usuarioId": 1,
+          "nomePlano": "Iniciante",
+          "status": true
+        },
+        "status": true
+      },
+      "status": true
+    },
+    "status": true
+  }
 
 Adicionar:
 Método: POST

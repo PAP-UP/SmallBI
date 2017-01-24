@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.junit.Test"/>
-<fullyQualifiedTypeName name="java.util.Calendar"/>
-<fullyQualifiedTypeName name="br.com.smallbi.rest.CidadeWebService"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.EstadoBusiness"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.CidadeBusiness"/>
-<fullyQualifiedTypeName name="com.sun.faces.mgbean.ManagedBeanPreProcessingException.Type"/>
 <fullyQualifiedTypeName name="br.com.smallbi.business.TipoBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.business.EnderecoBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.business.PerfilBusiness"/>
@@ -60,4 +54,10 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="br.com.smallbi.business.ClienteBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Cliente"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
+<fullyQualifiedTypeName name="java.time.format.FormatStyle"/>
+<fullyQualifiedTypeName name="br.com.smallbi.util.Util"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
 </qualifiedTypeNameHistroy>

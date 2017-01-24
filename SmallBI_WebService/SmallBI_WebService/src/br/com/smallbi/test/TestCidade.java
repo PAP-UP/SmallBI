@@ -1,6 +1,5 @@
 package br.com.smallbi.test;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
@@ -11,6 +10,7 @@ import br.com.smallbi.business.CidadeBusiness;
 import br.com.smallbi.business.EstadoBusiness;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Estado;
+import br.com.smallbi.util.Util;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCidade {
@@ -21,7 +21,7 @@ public class TestCidade {
 	@Test
 	public void test1CreateCidade(){
 		Cidade cidade = new Cidade();
-		cidade.setDataCadastro(Calendar.getInstance());
+		cidade.setDataCadastro(Util.getDate());
 		
 		List<Estado> estados = new EstadoBusiness().list();
 		Estado estado = estados.get(0);

@@ -1,13 +1,13 @@
 package br.com.smallbi.business;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Estado;
+import br.com.smallbi.util.Util;
 
 public class EstadoBusiness implements InterfaceBusiness<Estado>{
 
@@ -40,7 +40,8 @@ public class EstadoBusiness implements InterfaceBusiness<Estado>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Calendar.getInstance());
+		
+		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
 		estadoDao.create(t);
@@ -97,7 +98,7 @@ public class EstadoBusiness implements InterfaceBusiness<Estado>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Calendar.getInstance());
+		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		estadoDao.update(t);
 		return "Estado alterado com sucesso!";

@@ -6,6 +6,15 @@ url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/estado/"
 Listar: 
 Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/estado/listar"
+Retorno:
+  {
+    "idEstado": 1,
+    "dataCadastro": "Jan 2, 2017 12:00:00 AM",
+    "usuarioId": 1,
+    "nomeEstado": "Acre",
+    "siglaEstado": "AC",
+    "status": true
+  }
 
 Adicionar:
 Método: POST

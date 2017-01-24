@@ -76,13 +76,6 @@ public class PercorrerAbasFormPrincipal extends FormPrincipal{
         btnAbaTabPrev_SalvarTabela.setEnabled(false);
     }
     
-    public static void importarMaisDados(){
-        painelAbas.setSelectedIndex(1);
-        painelAbas.setEnabledAt(1, true);
-        btnAbaTabPrev_GerarCuboXml.setEnabled(false);
-        btnAbaTabPrev_SalvarTabela.setEnabled(false);
-    }
-    
     public static void desativarAbasNoInicio(){
         painelAbas.setEnabledAt(1, false);
         painelAbas.setEnabledAt(2, false);
