@@ -1,13 +1,10 @@
 package view;
 
-import business.GerarScriptSql;
 import business.ImportarCsv;
 import view.percorrerAbas.PercorrerAbasFormPrincipal;
 import business.ImportarDb;
 import business.ImportarXlsx;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
@@ -15,16 +12,12 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.EtchedBorder;
-import javax.swing.table.DefaultTableModel;
-import model.TabelaFato;
 
 public class FormPrincipal extends javax.swing.JFrame {
 
     private List<JComboBox> listaDeCbxTipos = new ArrayList<>();
     public static boolean importandoDeArquivo = true;
-    private JTable jTableAtivo = new JTable();
-    
+    private JTable jTableAtivo = new JTable();    
     
     public FormPrincipal() {
         initComponents();

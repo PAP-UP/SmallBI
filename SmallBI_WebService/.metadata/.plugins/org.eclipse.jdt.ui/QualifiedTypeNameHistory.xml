@@ -17,7 +17,6 @@
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Plano"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.RamoAtividade"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Tipo"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.PessoaBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Pessoa"/>
 <fullyQualifiedTypeName name="br.com.smallbi.business.EmpresaBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Empresa"/>
@@ -49,15 +48,16 @@
 <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
 <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
 <fullyQualifiedTypeName name="org.hibernate.annotations.ForeignKey"/>
-<fullyQualifiedTypeName name="br.com.smallbi.dal.interfaceDal.InterfaceDao"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.factory.FactoryDao"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.ClienteBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Cliente"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
 <fullyQualifiedTypeName name="java.time.format.FormatStyle"/>
-<fullyQualifiedTypeName name="br.com.smallbi.util.Util"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="br.com.smallbi.dal.interfaceDal.InterfaceDao"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.PessoaBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.ClienteBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.util.Util"/>
 </qualifiedTypeNameHistroy>
