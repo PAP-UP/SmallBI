@@ -48,5 +48,4 @@ public class UsuarioDao implements InterfaceDao<Usuario>{
 		EntityManager em = SingletonConexao.getInstance();
 		return em.find(Usuario.class, id);
 	}
-
 }

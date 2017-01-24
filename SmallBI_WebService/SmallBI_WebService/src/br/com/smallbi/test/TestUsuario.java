@@ -22,6 +22,12 @@ public class TestUsuario {
 	UsuarioBusiness usuarioBusiness = new UsuarioBusiness();
 	public static int idTestusuario;
 	
+//	@Test
+//	public void testGetByUsername(){
+//		Usuario usuario = usuarioBusiness.getByUsername("smallbi");
+//		System.out.println("Senha: " + usuario.getSenha());
+//	}
+	
 	@Test
 	public void test1CreateUsuario(){
 		Usuario usuario = new Usuario();

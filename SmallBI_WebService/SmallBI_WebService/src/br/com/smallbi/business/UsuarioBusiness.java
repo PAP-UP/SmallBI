@@ -1,9 +1,12 @@
 package br.com.smallbi.business;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import br.com.smallbi.dal.UsuarioDao;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cliente;
@@ -18,6 +21,7 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 	InterfaceDao<Cliente> empresaDao = FactoryDao.createClienteDao();
 	InterfaceDao<Perfil> perfilDao = FactoryDao.createPerfilDao();
 	InterfaceDao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();
+	private Random random = new SecureRandom();
 	
 	@Override
 	public String create(Usuario t){
@@ -111,6 +115,9 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
+		
+		//Call here encryption method
+		//t.setSenha(Util.makePasswordHash(t.getSenha(), Integer.toString(random.nextInt())));
 		
 		usuarioDao.create(t);
 		return "Usuario cadastrado com sucesso!";
@@ -218,6 +225,9 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
+		//Call here encryption method
+		//t.setSenha(Util.makePasswordHash(t.getSenha(), Integer.toString(random.nextInt())))
+		
 		usuarioDao.update(t);
 		return "Usuario alterado com sucesso!";
 	}
@@ -241,8 +251,26 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		}
 		return usuario;
 	}
+	
+	public Usuario getByUsername(String username){		
+		List<Usuario> usuarios = usuarioDao.list();		
+		for(Usuario u : usuarios){
+			if(u.getLogin().equals(username))
+				return u;
+		}
+		return null;
+	}
 
 	public void createFirstUser(Usuario usuario){
 		usuarioDao.create(usuario);
+	}
+	
+	public String validarLogin(String login, String senha){
+		Usuario usuario = Util.validateLogin(login, senha);
+		if(usuario == null)
+			return "Usuário ou senha inválidos!";
+		
+		//Chamar metodo que permite acesso ao site
+		return null;
 	}
 }
