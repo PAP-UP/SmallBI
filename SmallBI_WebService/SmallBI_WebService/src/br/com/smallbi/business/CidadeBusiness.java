@@ -145,20 +145,21 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 	
 	@Override
 	public String delete(Integer id){
-		Cidade cidade = cidadeDao.getObjById(id);
+		Cidade cidade = getObjById(id);
 		if(cidade == null){
 			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cidade'!");
-			return "Nenhum resultado foi encontrado para o objeto do tipo 'Cidade'!";
+			return "Nenhum resultado foi encontrado na tabela Cidade com o id {"+id+"}";
 		}
 		cidadeDao.delete(cidade);
 		return "Cidade deletada com sucesso!";
 	}
+	
 	@Override
 	public Cidade getObjById(Integer id){
 		Cidade cidade = cidadeDao.getObjById(id);
-		if(cidade == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cidade'!");
+		if(cidade != null && cidade.isStatus() != false){
+			return cidade;
 		}
-		return cidade;
+		return null;
 	}
 }

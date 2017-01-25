@@ -7,38 +7,18 @@ Listar:
 Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/listar"
 Retorno:
-{
-"idCliente": 1,
-"dataCadastro": "Jan 13, 2017 10:07:52 PM",
-"usuarioId": 1,
-"razaoSocial": "Deyneson Borba Ltda",
-"nomeFantasia": "SmallBI",
-"cnpj": "12.123.123/1234-12",
-"ie": "I don't know what this!",
-"ramoAtividade": {
-  "idRamoAtividade": 1,
-  "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-  "usuarioId": 1,
-  "ramoAtividade": "Altarquia",
-  "status": true
-},
-"tamanhoTotal": 100,
-"formaPagamento": {
-  "idFormaPagamento": 1,
-  "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-  "usuarioId": 1,
-  "formaPagamento": "Cartão Crédito",
-  "status": true
-},
-"plano": {
-  "idPlano": 1,
-  "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-  "usuarioId": 1,
-  "nomePlano": "Iniciante",
-  "status": true
-},
-"status": true
-}
+  {
+    "plano": "Iniciante",
+    "ie": "I don't know what this!",
+    "usuarioId": 1,
+    "cnpj": "12.123.123/1234-12",
+    "idCliente": 1,
+    "formaPagamento": "Cartão Crédito",
+    "nomeFantasia": "SmallBI",
+    "tamamhoTotal": 100,
+    "ramoAtividade": "Altarquia",
+    "razaoSocial": "Deyneson Borba Ltda"
+  }
 
 Adicionar:
 Método: POST
@@ -46,22 +26,15 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/adici
 Parametros: "application/json"
 Exemplo:
 {
-    "usuarioId": 1,
-    "razaoSocial": "Deyneson Borba",
-    "nomeFantasia": "SmallBI",
-    "cnpj": "12.123.123/1234-12",
-    "ie": "I don't know what this!",
-    "endereco": {"idEndereco": 1},
-    "ramoAtividade": {"idRamoAtividade": 1},
-    "tamanhoTotal": 100,
-    "formaPagamento": {"idFormaPagamento": 1},
-    "plano": {"idPlano": 1}
-}		
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+  "usuarioId": "1",
+  "razaoSocial": "Deyneson Borba",
+  "nomeFantasia": "SmallBI",
+  "cnpj": "12.123.123/1234-12",
+  "ie": "I don't know what this!",
+  "idRamoAtividade": "1",
+  "tamanhoTotal": 100,
+  "idFormaPagamento": "1",
+  "idPlano": 1
 }
 
 Alterar:
@@ -70,24 +43,17 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/alter
 Parametros: "application/json"
 Exemplo:
 {
-	"idEmpresa":1,
-    "usuarioId": 1,
-    "razaoSocial": "Deyneson Borba",
-    "nomeFantasia": "SmallBI",
-    "cnpj": "12.123.123/1234-12",
-    "ie": "I don't know what this!",
-    "endereco": {"idEndereco": 1},
-    "ramoAtividade": {"idRamoAtividade": 1},
-    "tamanhoTotal": 100,
-    "formaPagamento": {"idFormaPagamento": 1},
-    "plano": {"idPlano": 1}
+	"idCliente":1,
+  "usuarioId": "1",
+  "razaoSocial": "Deyneson Borba",
+  "nomeFantasia": "SmallBI",
+  "cnpj": "12.123.123/1234-12",
+  "ie": "I don't know what this!",
+  "idRamoAtividade": "1",
+  "tamanhoTotal": 100,
+  "idFormaPagamento": "1",
+  "idPlano": 1
 }	
-Response:
-if(success){
-	return true;
-}else{
-	return false;
-}
 
 Deletar:
 Método: POST
@@ -95,18 +61,25 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/delet
 Parametros: "application/json"
 Exemplo:
 {
-    "idEmpresa": "1"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+    "idCliente": "1"
 }
 
 GetById:
 Método: GET
-Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/getById/{idEmpresa}"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/getById/{idCliente}"
 Parametros: "application/json"
 Exemplo: 
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/getById/1
+Retorno:
+{
+  "plano": "Iniciante",
+  "ie": "I don't know what this!",
+  "usuarioId": 1,
+  "cnpj": "12.123.123/1234-12",
+  "idCliente": 1,
+  "formaPagamento": "Cartão Crédito",
+  "nomeFantasia": "SmallBI",
+  "tamamhoTotal": 100,
+  "ramoAtividade": "Altarquia",
+  "razaoSocial": "Deyneson Borba Ltda"
+}

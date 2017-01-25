@@ -1307,3 +1307,9 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 
 !ENTRY org.eclipse.jface.text 2 0 2017-01-24 21:38:03.181
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jst.server.core 4 0 2017-01-25 13:26:53.761
+!MESSAGE Could not launch in profiling mode because no profilers are configured.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2017-01-25 13:26:57.194
+!MESSAGE Server Tomcat v7.0 Server at localhost failed to start.
