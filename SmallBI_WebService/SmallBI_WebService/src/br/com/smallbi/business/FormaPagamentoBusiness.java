@@ -99,10 +99,9 @@ public class FormaPagamentoBusiness implements InterfaceBusiness<FormaPagamento>
 
 	@Override
 	public String delete(Integer id){
-		FormaPagamento formaPagamento = formaPagamentoDao.getObjById(id);
+		FormaPagamento formaPagamento = getObjById(id);
 		if(formaPagamento == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'FormaPagamento'!");
-			return "Nenhum resultado foi encontrado para o objeto do tipo 'FormaPagamento'!";
+			return "Nenhum resultado foi encontrado na tabela FormaPagamento com o id {"+id+"}";
 		}
 		formaPagamentoDao.delete(formaPagamento);
 		return "Forma de Pagamento deletada com sucesso!";
@@ -111,10 +110,10 @@ public class FormaPagamentoBusiness implements InterfaceBusiness<FormaPagamento>
 	@Override
 	public FormaPagamento getObjById(Integer id){
 		FormaPagamento formaPagamento = formaPagamentoDao.getObjById(id);
-		if(formaPagamento == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'FormaPagamento'!");
+		if(formaPagamento != null && formaPagamento.isStatus() != false){
+			return formaPagamento;
 		}
-		return formaPagamento;
+		return null;
 	}
 
 }
