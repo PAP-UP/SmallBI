@@ -8,11 +8,8 @@ Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/funcao/listar"
 Retorno:
   {
-    "idFuncao": 1,
-    "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-    "usuarioId": 1,
-    "nomeFuncao": "Diretoria",
-    "status": true
+    "descricao": "Diretoria",
+    "idFuncao": 1
   }
 
 Adicionar:
@@ -21,14 +18,8 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/funcao/adicio
 Parametros: "application/json"
 Exemplo:
 {
-	"usuarioId": 1,
-	"nomeFuncao": "Data Science"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+	"usuarioId": "1",
+	"descrcao": "Data Science"
 }
 
 Alterar:
@@ -37,15 +28,9 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/funcao/altera
 Parametros: "application/json"
 Exemplo:
 {
-	"idFuncao":1,
-	"usuarioId": 1,
-	"nomeFuncao": "Data Science"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+	"idFuncao":"1",
+	"usuarioId": "1",
+	"descrcao": "Data Science"
 }
 
 Deletar:
@@ -56,12 +41,6 @@ Exemplo:
 {
     "idFuncao": "1"
 }
-Response:
-if(success){
-	return true;
-}else{
-	return false;
-}
 
 GetById:
 Método: GET
@@ -69,3 +48,8 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/funcao/getByI
 Parametros: "application/json"
 Exemplo: 
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/funcao/getById/1
+Retorno:
+  {
+    "descricao": "Diretoria",
+    "idFuncao": 1
+  }

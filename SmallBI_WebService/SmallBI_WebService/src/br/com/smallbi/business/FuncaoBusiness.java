@@ -99,10 +99,9 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 
 	@Override
 	public String delete(Integer id){
-		Funcao funcao = funcaoDao.getObjById(id);
+		Funcao funcao = getObjById(id);
 		if(funcao == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Funcao'!");
-			return "Nenhum resultado foi encontrado para o objeto do tipo 'Funcao'!";
+			return "Nenhum resultado foi encontrado na tabela Função com o id {"+id+"}";
 		}
 		funcaoDao.delete(funcao);
 		return "Funcao deletada com sucesso!";
@@ -111,10 +110,10 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 	@Override
 	public Funcao getObjById(Integer id){
 		Funcao funcao = funcaoDao.getObjById(id);
-		if(funcao == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Funcao'!");
+		if(funcao != null && funcao.isStatus() != false){
+			return funcao;
 		}
-		return funcao;
+		return null;
 	}
 
 }
