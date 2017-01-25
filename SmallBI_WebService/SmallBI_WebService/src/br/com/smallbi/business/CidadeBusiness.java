@@ -76,10 +76,6 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 		List<Cidade> cidades = new ArrayList<>();
 		for(Cidade c : cidadeDao.list()){
 			if(c.isStatus() == true){
-				
-//				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-//				c.setDataCadastro(sdf.format(sdf.format(c.getDataCadastro())));
-				
 				cidades.add(c);
 			}
 		}

@@ -8,19 +8,8 @@ Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cidade/listar"
 Retorno:
 {
-"idCidade": 1,
-"dataCadastro": "Jan 2, 2017 12:00:00 AM",
-"usuarioId": 1,
-"nomeCidade": "Acrelândia",
-"estado": {
-  "idEstado": 1,
-  "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-  "usuarioId": 1,
-  "nomeEstado": "Acre",
-  "siglaEstado": "AC",
-  "status": true
-},
-"status": true
+	"idCidade": 1,
+	"nomeCidade": "Acrelândia"
 }
 
 Adicionar:
@@ -31,9 +20,7 @@ Exemplo:
 {
     "usuarioId": "1",
     "nomeCidade": "Curitiba",
-    "siglaCidade": "CTBA",
-    "estado":{"idEstado":"1"},
-    "status": "true"
+    "estado":{"idEstado":"1"}
 }
 Response:
 if(success){

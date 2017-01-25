@@ -1,7 +1,10 @@
 package br.com.smallbi.rest;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -11,11 +14,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.CidadeBusiness;
 import br.com.smallbi.entity.Cidade;
+import br.com.smallbi.entity.Estado;
 
 @Path("/cidade")
 public class CidadeWebService {
@@ -29,7 +36,16 @@ public class CidadeWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getCidade(){
 		List<Cidade> cidades = cidadeBusiness.list();
-		return gson.toJson(cidades);
+		List<Hashtable<String, Object>> hashCidades = new ArrayList<>();
+		
+		for(Cidade c : cidades){
+			Hashtable<String, Object> hashCidade = new Hashtable<>();
+			hashCidade.put("idCidade", c.getIdCidade().toString());
+			hashCidade.put("nomeCidade", c.getNomeCidade());
+			hashCidades.add(hashCidade);
+		}
+		
+		return gson.toJson(hashCidades);
 	}
 	
 	@POST
@@ -37,9 +53,21 @@ public class CidadeWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addCidade(String json){
-		Cidade cidade = gson.fromJson(json, type);
-		String response = cidadeBusiness.create(cidade);
-		return gson.toJson(response);
+		Hashtable<String, String> hashCidade = new Hashtable<>();
+		try {
+			JSONObject jsonObject = new JSONObject(json);
+			Cidade cidade = new Cidade();
+			cidade.setUsuarioId(jsonObject.getInt("usuarioId"));
+			cidade.setNomeCidade(jsonObject.getString("nomeCidade"));
+			Estado estado = new Estado();
+			estado.setIdEstado(jsonObject.getInt("idEstado"));
+			cidade.setEstado(estado);
+			String response = cidadeBusiness.create(cidade);
+			return gson.toJson(response);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 	
 	
