@@ -14,83 +14,14 @@ Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/listar"
 Retorno:
 {
-"idEndereco": 3,
-"dataCadastro": "Jan 24, 2017 1:12:51 PM",
-"usuarioId": 1,
-"endereco": "Rua do Zacarias",
-"numero": 1200,
-"bairro": "Centro",
-"cidade": {
-  "idCidade": 1,
-  "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-  "usuarioId": 1,
-  "nomeCidade": "Acrelândia",
-  "estado": {
-    "idEstado": 1,
-    "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-    "usuarioId": 1,
-    "nomeEstado": "Acre",
-    "siglaEstado": "AC",
-    "status": true
-  },
-  "status": true
-},
-                        "pessoa": {
-                          "idPessoa": 1,
-                          "dataCadastro": "Jan 13, 2017 10:14:08 PM",
-                          "usuarioId": 1,
-                          "nome": "Zezinho",
-                          "cpf": "123.123.123-12",
-                          "rg": "12.123.123-1",
-                          "funcao": {
-                            "idFuncao": 1,
-                            "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-                            "usuarioId": 1,
-                            "nomeFuncao": "Diretoria",
-                            "status": true
-                          },
-                                                          "cliente": {
-                                                            "idCliente": 1,
-                                                            "dataCadastro": "Jan 13, 2017 10:07:52 PM",
-                                                            "usuarioId": 1,
-                                                            "razaoSocial": "Deyneson Borba Ltda",
-                                                            "nomeFantasia": "SmallBI",
-                                                            "cnpj": "12.123.123/1234-12",
-                                                            "ie": "I don't know what this!",
-                                                            "ramoAtividade": {
-                                                              "idRamoAtividade": 1,
-                                                              "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-                                                              "usuarioId": 1,
-                                                              "ramoAtividade": "Altarquia",
-                                                              "status": true
-                                                            },
-                                                            "tamanhoTotal": 100,
-                                                            "formaPagamento": {
-                                                              "idFormaPagamento": 1,
-                                                              "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-                                                              "usuarioId": 1,
-                                                              "formaPagamento": "Cartão Crédito",
-                                                              "status": true
-                                                            },
-                                                            "plano": {
-                                                              "idPlano": 1,
-                                                              "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-                                                              "usuarioId": 1,
-                                                              "nomePlano": "Iniciante",
-                                                              "status": true
-                                                            },
-                                                            "status": true
-                                                          },
-                          "status": true
-                        },
-"tipo": {
-  "idTipo": 1,
-  "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-  "usuarioId": 1,
+  "numero": 1200,
+  "pessoa": "Zezinho",
   "tipo": "Cobrança",
-  "status": true
-},
-"status": true
+  "cliente": "SmallBI",
+  "bairro": "Centro",
+  "idEndereco": 3,
+  "cidade": "Acrelândia",
+  "endereco": "Rua do Zacarias"
 }
 
 Adicionar:
@@ -98,57 +29,40 @@ Método: POST
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/adicionar"
 Parametros: "application/json"
 Exemplo:
-{
-    "usuarioId": 1,
-    "endereco": "Rua dos Bobos",
-    "numero": 1,
+  {
+    "usuarioId":"1",
+    "endereco": "Rua do Zacarias",
+    "numero": 1200,
     "bairro": "Centro",
-    "cidade": {"idCidade": 1},
-    "tipo": {"idTipo":1},
-    "clienteId": {"idCliente": 1} ou "pessoaId": {"idPessoa": 1}
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
-}
+    "idCidade":"1",
+    "idPessoa":"1" ou "idCliente":"1",
+    "idTipo": "1"
+  }
 
 Alterar:
 Método: POST
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/alterar"
 Parametros: "application/json"
 Exemplo:
-{
-	"idEndereco":1,
-    "usuarioId": 1,
-    "endereco": "Rua dos Bobos",
-    "numero": 1,
+  {
+    "idEndereco":"1",
+    "usuarioId":"1",
+    "endereco": "Rua do Zacarias",
+    "numero": 1200,
     "bairro": "Centro",
-    "cidade": {"idCidade": 1},
-    "tipo": {"idTipo":1},
-    "clienteId": {"idCliente": 1} ou "pessoaId": {"idPessoa": 1}
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
-}
+    "idCidade":"1",
+    "idPessoa":"1" ou "idCliente":"1",
+    "idTipo": "1"
+  }
+
 
 Deletar:
-Método: POST
+Método: DELETE
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/deletar"
 Parametros: "application/json"
 Exemplo:
 {
 	"idEndereco":1
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
 }
 
 GetById:
@@ -157,3 +71,14 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/getB
 Parametros: "application/json"
 Exemplo: 
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/getById/1
+Retorno:
+{
+  "numero": 1200,
+  "pessoa": "Zezinho",
+  "tipo": "Cobrança",
+  "cliente": "SmallBI",
+  "bairro": "Centro",
+  "idEndereco": 3,
+  "cidade": "Acrelândia",
+  "endereco": "Rua do Zacarias"
+}

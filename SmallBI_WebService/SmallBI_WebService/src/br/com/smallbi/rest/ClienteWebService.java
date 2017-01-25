@@ -60,7 +60,7 @@ public class ClienteWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setEmpresa(String json) throws JSONException{
-		Cliente cliente = updateGetObjectFromHash(json);
+		Cliente cliente = getObjectFromHash(json);
 		String response = clienteBusiness.update(cliente);
 		return gson.toJson(response);
 	}
@@ -87,35 +87,12 @@ public class ClienteWebService {
 		return gson.toJson("Nenhum resultado foi encontrado na tabela Cliente com o id {"+idCliente+"}");
 	}
 	
-	public Cliente updateGetObjectFromHash(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
-		Cliente c = new Cliente();
-		c.setIdCliente(jsonObject.getInt("idCliente"));
-		c.setUsuarioId(jsonObject.getInt("usuarioId"));
-		c.setRazaoSocial(jsonObject.getString("razaoSocial"));
-		c.setNomeFantasia(jsonObject.getString("nomeFantasia"));
-		c.setCnpj(jsonObject.getString("cnpj"));
-		c.setIe(jsonObject.getString("ie"));
-		
-		RamoAtividade ramoAtividade = new RamoAtividade();
-		ramoAtividade.setIdRamoAtividade(jsonObject.getInt("idRamoAtividade"));
-		c.setRamoAtividade(ramoAtividade);
-		
-		c.setTamanhoTotal(jsonObject.getInt("tamanhoTotal"));
-		
-		FormaPagamento formaPagamento = new FormaPagamento();
-		formaPagamento.setIdFormaPagamento(jsonObject.getInt("idFormaPagamento"));
-		c.setFormaPagamento(formaPagamento);
-		
-		Plano plano = new Plano();
-		plano.setIdPlano(jsonObject.getInt("idPlano"));
-		c.setPlano(plano);
-		return c;
-	}
-	
 	public Cliente getObjectFromHash(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
 		Cliente c = new Cliente();
+		if(!jsonObject.isNull("idCliente")){
+			c.setIdCliente(jsonObject.getInt("idCidade"));
+		}
 		c.setUsuarioId(jsonObject.getInt("usuarioId"));
 		c.setRazaoSocial(jsonObject.getString("razaoSocial"));
 		c.setNomeFantasia(jsonObject.getString("nomeFantasia"));

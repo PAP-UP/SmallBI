@@ -147,7 +147,6 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 	public String delete(Integer id){
 		Cidade cidade = getObjById(id);
 		if(cidade == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cidade'!");
 			return "Nenhum resultado foi encontrado na tabela Cidade com o id {"+id+"}";
 		}
 		cidadeDao.delete(cidade);

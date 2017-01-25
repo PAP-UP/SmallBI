@@ -187,10 +187,9 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 
 	@Override
 	public String delete(Integer id){
-		Endereco endereco = enderecoDao.getObjById(id);
+		Endereco endereco = getObjById(id);
 		if(endereco == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Endereco'!");
-			return "Nenhum resultado foi encontrado para o objeto do tipo 'Endereco'!";
+			return "Nenhum resultado foi encontrado na tabela Endereco com o id {"+id+"}";
 		}
 		enderecoDao.delete(endereco);
 		return "Endereco deletado com sucesso!";
@@ -199,10 +198,10 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 	@Override
 	public Endereco getObjById(Integer id){
 		Endereco endereco = enderecoDao.getObjById(id);
-		if(endereco == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Endereco'!");
+		if(endereco != null && endereco.isStatus() != false){
+			return endereco;
 		}
-		return endereco;
+		return null;
 	}
 
 }

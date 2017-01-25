@@ -56,9 +56,8 @@ public class CidadeWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setCidade(String json) throws JSONException{
-		Cidade cidade = updateGetObjectFromHash(json);
-		String response = cidadeBusiness.update(cidade);
-		return gson.toJson(response);
+		Cidade cidade = getObjectFromHash(json);
+		return gson.toJson(cidadeBusiness.update(cidade));
 	}
 	
 	@DELETE
@@ -84,21 +83,12 @@ public class CidadeWebService {
 		}
 	}
 	
-	public Cidade updateGetObjectFromHash(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
-		Cidade c = new Cidade();
-		c.setIdCidade(jsonObject.getInt("idCidade"));
-		c.setUsuarioId(jsonObject.getInt("usuarioId"));
-		c.setNomeCidade(jsonObject.getString("nomeCidade"));
-		Estado estado = new Estado();
-		estado.setIdEstado(jsonObject.getInt("idEstado"));
-		c.setEstado(estado);
-		return c;
-	}
-	
 	public Cidade getObjectFromHash(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
 		Cidade c = new Cidade();
+		if(!jsonObject.isNull("idCidade")){
+			c.setIdCidade(jsonObject.getInt("idCidade"));
+		}
 		c.setUsuarioId(jsonObject.getInt("usuarioId"));
 		c.setNomeCidade(jsonObject.getString("nomeCidade"));
 		Estado estado = new Estado();

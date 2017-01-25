@@ -56,7 +56,7 @@ Exemplo:
 }	
 
 Deletar:
-Método: POST
+Método: DELETE
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/deletar"
 Parametros: "application/json"
 Exemplo:
