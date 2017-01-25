@@ -106,9 +106,8 @@ public class EstadoBusiness implements InterfaceBusiness<Estado>{
 
 	@Override
 	public String delete(Integer id){
-		Estado estado = estadoDao.getObjById(id);
+		Estado estado = getObjById(id);
 		if(estado == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Estado'!");
 			return "Nenhum resultado foi encontrado para o objeto do tipo 'Estado'!";
 		}
 		estadoDao.delete(estado);
@@ -118,10 +117,10 @@ public class EstadoBusiness implements InterfaceBusiness<Estado>{
 	@Override
 	public Estado getObjById(Integer id){
 		Estado estado = estadoDao.getObjById(id);
-		if(estado == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Estado'!");
+		if(estado != null && estado.isStatus() != false){
+			return estado;
 		}
-		return estado;
+		return null;
 	}
 
 	

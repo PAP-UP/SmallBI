@@ -51,8 +51,7 @@ public class ClienteWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addEmpresa(String json) throws JSONException{
 		Cliente cliente = getObjectFromHash(json);
-		String response = clienteBusiness.create(cliente);
-		return gson.toJson(response);
+		return gson.toJson(clienteBusiness.create(cliente));
 	}
 	
 	@POST
@@ -61,8 +60,7 @@ public class ClienteWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setEmpresa(String json) throws JSONException{
 		Cliente cliente = getObjectFromHash(json);
-		String response = clienteBusiness.update(cliente);
-		return gson.toJson(response);
+		return gson.toJson(clienteBusiness.update(cliente));
 	}
 	
 	@DELETE

@@ -47,8 +47,7 @@ public class CidadeWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addCidade(String json) throws JSONException{
 		Cidade cidade = getObjectFromHash(json);
-		String response = cidadeBusiness.create(cidade);
-		return gson.toJson(response);
+		return gson.toJson(cidadeBusiness.create(cidade));
 	}
 		
 	@POST
