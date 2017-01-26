@@ -99,10 +99,9 @@ public class PerfilBusiness implements InterfaceBusiness<Perfil>{
 
 	@Override
 	public String delete(Integer id){
-		Perfil perfil = perfilDao.getObjById(id);
+		Perfil perfil = getObjById(id);
 		if(perfil == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Perfil'!");
-			return "Nenhum resultado foi encontrado para o objeto do tipo 'Perfil'!";
+			return "Nenhum resultado foi encontrado na tabela Pefil com o id {"+id+"}";
 		}
 		perfilDao.delete(perfil);
 		return "Perfil deletado com sucesso!";
@@ -111,10 +110,10 @@ public class PerfilBusiness implements InterfaceBusiness<Perfil>{
 	@Override
 	public Perfil getObjById(Integer id){
 		Perfil perfil = perfilDao.getObjById(id);
-		if(perfil == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Perfil'!");
+		if(perfil != null && perfil.isStatus() != false){
+			return perfil;
 		}
-		return perfil;
+		return null;
 	}
 
 }
