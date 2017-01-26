@@ -24,7 +24,7 @@ Exemplo:
 {
 	"usuarioId":1,
 	"nomeCubo":"Sales",
-	"cliente":"Smallbi",
+	"idCliente":"1",
 	"mdx":"<Schema>",
 	"tabelaFato":"???",
 	"tamanho":40
@@ -39,7 +39,7 @@ Exemplo:
 	"idCubo":1,
 	"usuarioId":1,	
 	"nomeCubo":"Sales",
-	"cliente":"Smallbi",
+	"idCliente":"1",
 	"mdx":"<Schema>",
 	"tabelaFato":"???",
 	"tamanho":40

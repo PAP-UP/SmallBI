@@ -3,6 +3,9 @@ package br.com.smallbi.business;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.hamcrest.core.StringEndsWith;
+
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
@@ -51,6 +54,9 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 //			throw new BusinessException("A variável 'mdx' deve ser informada!");
 			return "A variável 'mdx' deve ser informada!";
 		}
+			
+//		t.setMdx(t.getMdx() + "::xml");
+		
 		
 		if(t.getNomeCubo().equals(null) || t.getNomeCubo().equals("")){
 //			throw new BusinessException("A variável 'nomeCubo' deve ser informada!");

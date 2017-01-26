@@ -97,10 +97,10 @@ public class CuboWebService {
 	public Cubo getObjectFromHash(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
 		Cubo c = new Cubo();
-		if(jsonObject.isNull("idCubo")){
+		if(!jsonObject.isNull("idCubo")){
 			c.setIdCubo(jsonObject.getInt("idCubo"));
 		}
-		c.setUsuarioId(jsonObject.getInt("usurioId"));
+		c.setUsuarioId(jsonObject.getInt("usuarioId"));
 		c.setNomeCubo(jsonObject.getString("nomeCubo"));
 		
 		Cliente cliente = new Cliente();
