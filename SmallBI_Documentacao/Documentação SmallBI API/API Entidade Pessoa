@@ -8,52 +8,12 @@ Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/pessoa/listar"
 Retorno:
   {
-    "idPessoa": 1,
-    "dataCadastro": "Jan 13, 2017 10:14:08 PM",
-    "usuarioId": 1,
-    "nome": "Zezinho",
     "cpf": "123.123.123-12",
+    "idPessoa": 1,
+    "funcao": "Diretoria",
+    "nome": "Zezinho",
     "rg": "12.123.123-1",
-    "funcao": {
-      "idFuncao": 1,
-      "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-      "usuarioId": 1,
-      "nomeFuncao": "Diretoria",
-      "status": true
-    },
-    "cliente": {
-      "idCliente": 1,
-      "dataCadastro": "Jan 13, 2017 10:07:52 PM",
-      "usuarioId": 1,
-      "razaoSocial": "Deyneson Borba Ltda",
-      "nomeFantasia": "SmallBI",
-      "cnpj": "12.123.123/1234-12",
-      "ie": "I don't know what this!",
-      "ramoAtividade": {
-        "idRamoAtividade": 1,
-        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-        "usuarioId": 1,
-        "ramoAtividade": "Altarquia",
-        "status": true
-      },
-      "tamanhoTotal": 100,
-      "formaPagamento": {
-        "idFormaPagamento": 1,
-        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-        "usuarioId": 1,
-        "formaPagamento": "Cartão Crédito",
-        "status": true
-      },
-      "plano": {
-        "idPlano": 1,
-        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-        "usuarioId": 1,
-        "nomePlano": "Iniciante",
-        "status": true
-      },
-      "status": true
-    },
-    "status": true
+    "cliente": "SmallBI"
   }
 
 Adicionar:
@@ -66,8 +26,9 @@ Exemplo:
     "nome": "Huguinho",
     "cpf": "123.123.123-12",
     "rg": "12.123.123-1",
-    "funcao": {"idFuncao": 1},
-    "cliente": {"idCliente": 1}
+    "idCliente": "1",
+    "idFuncao": "1"
+    
 }		
 Response:
 if(success){
@@ -118,3 +79,12 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/pessoa/getByI
 Parametros: "application/json"
 Exemplo: 
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/pessoa/getById/1
+Retorno:
+  {
+    "cpf": "123.123.123-12",
+    "idPessoa": 1,
+    "funcao": "Diretoria",
+    "nome": "Zezinho",
+    "rg": "12.123.123-1",
+    "cliente": "SmallBI"
+  }

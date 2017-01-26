@@ -90,6 +90,7 @@ public class CidadeWebService {
 		}
 		c.setUsuarioId(jsonObject.getInt("usuarioId"));
 		c.setNomeCidade(jsonObject.getString("nomeCidade"));
+		
 		Estado estado = new Estado();
 		estado.setIdEstado(jsonObject.getInt("idEstado"));
 		c.setEstado(estado);

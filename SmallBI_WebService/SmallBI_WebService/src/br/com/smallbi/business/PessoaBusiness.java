@@ -212,10 +212,9 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 
 	@Override
 	public String delete(Integer id){
-		Pessoa pessoa = pessoaDao.getObjById(id);
+		Pessoa pessoa = getObjById(id);
 		if(pessoa == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Pessoa'!");
-			return "Nenhum resultado foi encontrado para o objeto do tipo 'Pessoa'!";
+			return "Nenhum resultado foi encontrado na tabela Pessoa com o id {"+id+"}";
 		}
 		pessoaDao.delete(pessoa);
 		return "Pessoa deletada com sucesso!";
@@ -224,10 +223,10 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 	@Override
 	public Pessoa getObjById(Integer id){
 		Pessoa pessoa = pessoaDao.getObjById(id);
-		if(pessoa == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Pessoa'!");
+		if(pessoa != null && pessoa.isStatus() != false){
+			return pessoa;
 		}
-		return pessoa;
+		return null;
 	}
 
 }
