@@ -163,10 +163,9 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 
 	@Override
 	public String delete(Integer id){
-		Cubo cubo = cuboDao.getObjById(id);
+		Cubo cubo = getObjById(id);
 		if(cubo == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cubo'!");
-			return "Nenhum resultado foi encontrado para o objeto do tipo 'Cubo'!";
+			return "Nenhum resultado foi encontrado na tabela Cubo com o id {"+id+"}";
 		}
 		cuboDao.delete(cubo);
 		return "Cubo deletado com sucesso!";
@@ -175,10 +174,10 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 	@Override
 	public Cubo getObjById(Integer id){
 		Cubo cubo = cuboDao.getObjById(id);
-		if(cubo == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Cubo'!");
+		if(cubo != null && cubo.isStatus() != false){
+			return cubo;
 		}
-		return cubo;
+		return null;
 	}
 
 }
