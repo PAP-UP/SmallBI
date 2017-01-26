@@ -103,11 +103,11 @@ public class Telefone {
 		this.telefone = telefone;
 	}
 
-	public Cliente getEmpresa() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 
-	public void setEmpresa(Cliente cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 

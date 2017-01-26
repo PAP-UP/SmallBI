@@ -1,5 +1,11 @@
 Documentação SmallBI API
 
+Obs: A classe telefone podera estar atrelada a um cliente ou uma pessoa ou nenhum dos dois.
+Caso nao esteja atrelada a nenhum: O objeto pessoa e cliente nao estarao presentes no JSON;
+Caso estaja atrelada ao cliente: O objeto cliente estaram presente no JSON;
+Caso esteja atrelada a pessoa: O objeto pessoa e cliente estaram presentes no JSON, pois uma pessoa sempre 
+pertence a um cliente;
+
 Entidade Telefone:
 url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/telefone/"
 
@@ -8,99 +14,12 @@ Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/telefone/listar"
 Retorno:
   {
-    "idTelefone": 7,
-    "dataCadastro": "Jan 13, 2017 10:23:01 PM",
-    "usuarioId": 1,
-    "tipo": {
-      "idTipo": 1,
-      "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-      "usuarioId": 1,
-      "tipo": "Cobrança",
-      "status": true
-    },
-    "ddd": 41,
     "telefone": "1234-5678",
-    "cliente": {
-      "idCliente": 1,
-      "dataCadastro": "Jan 13, 2017 10:07:52 PM",
-      "usuarioId": 1,
-      "razaoSocial": "Deyneson Borba Ltda",
-      "nomeFantasia": "SmallBI",
-      "cnpj": "12.123.123/1234-12",
-      "ie": "I don't know what this!",
-      "ramoAtividade": {
-        "idRamoAtividade": 1,
-        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-        "usuarioId": 1,
-        "ramoAtividade": "Altarquia",
-        "status": true
-      },
-      "tamanhoTotal": 100,
-      "formaPagamento": {
-        "idFormaPagamento": 1,
-        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-        "usuarioId": 1,
-        "formaPagamento": "Cartão Crédito",
-        "status": true
-      },
-      "plano": {
-        "idPlano": 1,
-        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-        "usuarioId": 1,
-        "nomePlano": "Iniciante",
-        "status": true
-      },
-      "status": true
-    },
-    "pessoa": {
-      "idPessoa": 1,
-      "dataCadastro": "Jan 13, 2017 10:14:08 PM",
-      "usuarioId": 1,
-      "nome": "Zezinho",
-      "cpf": "123.123.123-12",
-      "rg": "12.123.123-1",
-      "funcao": {
-        "idFuncao": 1,
-        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-        "usuarioId": 1,
-        "nomeFuncao": "Diretoria",
-        "status": true
-      },
-      "cliente": {
-        "idCliente": 1,
-        "dataCadastro": "Jan 13, 2017 10:07:52 PM",
-        "usuarioId": 1,
-        "razaoSocial": "Deyneson Borba Ltda",
-        "nomeFantasia": "SmallBI",
-        "cnpj": "12.123.123/1234-12",
-        "ie": "I don't know what this!",
-        "ramoAtividade": {
-          "idRamoAtividade": 1,
-          "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-          "usuarioId": 1,
-          "ramoAtividade": "Altarquia",
-          "status": true
-        },
-        "tamanhoTotal": 100,
-        "formaPagamento": {
-          "idFormaPagamento": 1,
-          "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-          "usuarioId": 1,
-          "formaPagamento": "Cartão Crédito",
-          "status": true
-        },
-        "plano": {
-          "idPlano": 1,
-          "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-          "usuarioId": 1,
-          "nomePlano": "Iniciante",
-          "status": true
-        },
-        "status": true
-      },
-      "status": true
-    },
-    "status": true
+    "pessoa": "Zezinho",
+    "cliente": "SmallBI",
+    "tipo": "Cobrança",
+    "ddd": 41,
+    "idTelefone": 8
   }
 
 Adicionar:
@@ -110,17 +29,10 @@ Parametros: "application/json"
 Exemplo:
 {
     "usuarioId": 1,
-    "tipo": {"idTipo": 1},
+    "idTipo": 1,
     "ddd": 41,
     "telefone": "9999-9999",
-    "cliente": {"idCliente": 1},
-    "pessoa": {"idPessoa": 1}
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+    "idPessoa": 1 ou "idCliente": 1    
 }
 
 Alterar:
@@ -129,34 +41,21 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/telefone/alte
 Parametros: "application/json"
 Exemplo:
 {
-	"idTelefone":1,
+    "idTelefone": 1,
     "usuarioId": 1,
-    "tipo": {"idTipo": 1},
+    "idTipo": 1,
     "ddd": 41,
     "telefone": "9999-9999",
-    "cliente": {"idCliente": 1},
-    "pessoa": {"idPessoa": 1}
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+    "idPessoa": 1 ou "idCliente": 1    
 }
 
 Deletar:
-Método: POST
+Método: DELETE
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/telefone/deletar"
 Parametros: "application/json"
 Exemplo:
 {
     "idTelefone": "1"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
 }
 
 GetById:
@@ -165,3 +64,12 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/telefone/getB
 Parametros: "application/json"
 Exemplo: 
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/telefone/getById/1
+Retorno:
+  {
+    "telefone": "1234-5678",
+    "pessoa": "Zezinho",
+    "cliente": "SmallBI",
+    "tipo": "Cobrança",
+    "ddd": 41,
+    "idTelefone": 8
+  }
