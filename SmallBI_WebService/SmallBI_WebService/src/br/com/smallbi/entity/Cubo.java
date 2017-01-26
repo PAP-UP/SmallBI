@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ForeignKey;
+import org.hibernate.annotations.Type;
 
 @Entity
 public class Cubo {
@@ -32,6 +33,7 @@ public class Cubo {
 	private Cliente cliente;
 	
 	@Column(name = "mdx", columnDefinition = "xml")
+	@Type(type="br.com.smallbi.util.SQLXMLType")
 	private String mdx;
 	
 	@Column (length=25)
