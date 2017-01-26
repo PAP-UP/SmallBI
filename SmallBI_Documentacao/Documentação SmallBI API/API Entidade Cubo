@@ -6,6 +6,15 @@ url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/"
 Listar: 
 Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/listar"
+Retorno:
+{
+	"idCubo":1,
+	"nomeCubo":"Sales",
+	"cliente":"Smallbi",
+	"mdx":"<Schema>",
+	"tabelaFato":"???",
+	"tamanho":40
+}
 
 Adicionar:
 Método: POST
@@ -13,18 +22,12 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/adiciona
 Parametros: "application/json"
 Exemplo:
 {
-    "usuarioId": 1,
-    "nomeCubo": "Sales Cube",
-    "cliente": {"idCliente": 1},
-    "mdx": "<Schema>",
-    "tabelaFato": "SalesPivot",
-    "tamanho": 30
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+	"usuarioId":1,
+	"nomeCubo":"Sales",
+	"cliente":"Smallbi",
+	"mdx":"<Schema>",
+	"tabelaFato":"???",
+	"tamanho":40
 }
 
 Alterar:
@@ -34,33 +37,21 @@ Parametros: "application/json"
 Exemplo:
 {
 	"idCubo":1,
-    "usuarioId": 1,
-    "nomeCubo": "Sales Cube",
-    "cliente": {"idCliente": 1},
-    "mdx": "<Schema>",
-    "tabelaFato": "SalesPivot",
-    "tamanho": 30
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+	"usuarioId":1,	
+	"nomeCubo":"Sales",
+	"cliente":"Smallbi",
+	"mdx":"<Schema>",
+	"tabelaFato":"???",
+	"tamanho":40
 }
 
 Deletar:
-Método: POST
+Método: DELETE
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/deletar"
 Parametros: "application/json"
 Exemplo:
 {
     "idCubo": "1"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
 }
 
 GetById:
@@ -69,3 +60,12 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/getById/
 Parametros: "application/json"
 Exemplo: 
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/getById/1
+Retorno:
+{
+	"idCubo":1,
+	"nomeCubo":"Sales",
+	"cliente":"Smallbi",
+	"mdx":"<Schema>",
+	"tabelaFato":"???",
+	"tamanho":40
+}
