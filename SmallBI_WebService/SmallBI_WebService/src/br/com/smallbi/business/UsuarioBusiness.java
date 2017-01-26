@@ -21,7 +21,7 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 	InterfaceDao<Cliente> empresaDao = FactoryDao.createClienteDao();
 	InterfaceDao<Perfil> perfilDao = FactoryDao.createPerfilDao();
 	InterfaceDao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();
-	private Random random = new SecureRandom();
+//	private Random random = new SecureRandom();
 	
 	@Override
 	public String create(Usuario t){
