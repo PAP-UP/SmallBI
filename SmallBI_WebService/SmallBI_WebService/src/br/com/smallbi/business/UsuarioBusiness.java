@@ -39,21 +39,21 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getCliente() != null){
-			if(t.getCliente().getIdCliente() != null){
-				Cliente cliente = empresaDao.getObjById(t.getCliente().getIdCliente());
-				if(cliente == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
-					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
-				}
-			}else{
-//				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
-				return "A variável 'empresa.idEmpresa' deve ser informada!";
-			}
-		}else{
-//			throw new BusinessException("A variável 'empresa' deve ser informada!");
-			return "A variável 'empresa' deve ser informada!";
-		}
+//		if(t.getCliente() != null){
+//			if(t.getCliente().getIdCliente() != null){
+//				Cliente cliente = empresaDao.getObjById(t.getCliente().getIdCliente());
+//				if(cliente == null){
+////					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+//					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
+//				}
+//			}else{
+////				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
+//				return "A variável 'empresa.idEmpresa' deve ser informada!";
+//			}
+//		}else{
+////			throw new BusinessException("A variável 'empresa' deve ser informada!");
+//			return "A variável 'empresa' deve ser informada!";
+//		}
 		
 		if(t.getUsuarioId() == null){
 //			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
@@ -141,21 +141,21 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
 		}*/
 		
-		if(t.getCliente() != null){
-			if(t.getCliente().getIdCliente() != null){
-				Cliente cliente = empresaDao.getObjById(t.getCliente().getIdCliente());
-				if(cliente == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
-					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
-				}
-			}else{
-//				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
-				return "A variável 'empresa.idEmpresa' deve ser informada!";
-			}
-		}else{
-//			throw new BusinessException("A variável 'empresa' deve ser informada!");
-			return "A variável 'empresa' deve ser informada!";
-		}
+//		if(t.getCliente() != null){
+//			if(t.getCliente().getIdCliente() != null){
+//				Cliente cliente = empresaDao.getObjById(t.getCliente().getIdCliente());
+//				if(cliente == null){
+////					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
+//					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
+//				}
+//			}else{
+////				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
+//				return "A variável 'empresa.idEmpresa' deve ser informada!";
+//			}
+//		}else{
+////			throw new BusinessException("A variável 'empresa' deve ser informada!");
+//			return "A variável 'empresa' deve ser informada!";
+//		}
 		
 		if(t.getIdUsuario() == null){
 //			throw new BusinessException("A variável 'idUsuario' deve ser informada!");
@@ -234,10 +234,9 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 
 	@Override
 	public String delete(Integer id){
-		Usuario usuario = usuarioDao.getObjById(id);
+		Usuario usuario = getObjById(id);
 		if(usuario == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Usuario'!");
-			return "Nenhum resultado foi encontrado para o objeto do tipo 'Usuario'!";
+			return "Nenhum resultado foi encontrado na tabela Usuario com o id {"+id+"}";
 		}
 		usuarioDao.delete(usuario);
 		return "Usuario deletado com sucesso!";
@@ -246,10 +245,10 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 	@Override
 	public Usuario getObjById(Integer id) {
 		Usuario usuario = usuarioDao.getObjById(id);
-		if(usuario == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Usuario'!");
+		if(usuario != null && usuario.isStatus() != false){
+			return usuario;
 		}
-		return usuario;
+		return null;
 	}
 	
 	public Usuario getByUsername(String username){		

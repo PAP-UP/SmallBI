@@ -8,100 +8,13 @@ Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/listar"
 Retorno:
   {
-    "idUsuario": 3,
-    "dataCadastro": "Jan 13, 2017 10:27:55 PM",
-    "usuarioId": 1,
-    "login": "borbagato",
-    "senha": "123",
-    "perfil": {
-      "idPerfil": 1,
-      "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-      "usuarioId": 1,
-      "nomePerfil": "root",
-      "status": true
-    },
-    "pessoa": {
-      "idPessoa": 1,
-      "dataCadastro": "Jan 13, 2017 10:14:08 PM",
-      "usuarioId": 1,
-      "nome": "Zezinho",
-      "cpf": "123.123.123-12",
-      "rg": "12.123.123-1",
-      "funcao": {
-        "idFuncao": 1,
-        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-        "usuarioId": 1,
-        "nomeFuncao": "Diretoria",
-        "status": true
-      },
-      "cliente": {
-        "idCliente": 1,
-        "dataCadastro": "Jan 13, 2017 10:07:52 PM",
-        "usuarioId": 1,
-        "razaoSocial": "Deyneson Borba Ltda",
-        "nomeFantasia": "SmallBI",
-        "cnpj": "12.123.123/1234-12",
-        "ie": "I don't know what this!",
-        "ramoAtividade": {
-          "idRamoAtividade": 1,
-          "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-          "usuarioId": 1,
-          "ramoAtividade": "Altarquia",
-          "status": true
-        },
-        "tamanhoTotal": 100,
-        "formaPagamento": {
-          "idFormaPagamento": 1,
-          "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-          "usuarioId": 1,
-          "formaPagamento": "Cartão Crédito",
-          "status": true
-        },
-        "plano": {
-          "idPlano": 1,
-          "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-          "usuarioId": 1,
-          "nomePlano": "Iniciante",
-          "status": true
-        },
-        "status": true
-      },
-      "status": true
-    },
-    "cliente": {
-      "idCliente": 1,
-      "dataCadastro": "Jan 13, 2017 10:07:52 PM",
-      "usuarioId": 1,
-      "razaoSocial": "Deyneson Borba Ltda",
-      "nomeFantasia": "SmallBI",
-      "cnpj": "12.123.123/1234-12",
-      "ie": "I don't know what this!",
-      "ramoAtividade": {
-        "idRamoAtividade": 1,
-        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-        "usuarioId": 1,
-        "ramoAtividade": "Altarquia",
-        "status": true
-      },
-      "tamanhoTotal": 100,
-      "formaPagamento": {
-        "idFormaPagamento": 1,
-        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-        "usuarioId": 1,
-        "formaPagamento": "Cartão Crédito",
-        "status": true
-      },
-      "plano": {
-        "idPlano": 1,
-        "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-        "usuarioId": 1,
-        "nomePlano": "Iniciante",
-        "status": true
-      },
-      "status": true
-    },
-    "usuarioSaiku": "borbasaiku",
-    "status": true
+    "perfil": "root",
+    "pessoa": "Zezinho",
+    "senha": "smallbi",
+    "login": "smallbi",
+    "cliente": "SmallBI",
+    "idUsuario": 1,
+    "usuarioSaiku": "smallbi"
   }
 
 Adicionar:
@@ -113,16 +26,9 @@ Exemplo:
     "usuarioId": 1,
     "login": "deynesonborba",
     "senha": "12345",
-    "perfil": {"idPerfil": 1},
-    "pessoa": {"idPessoa": 1},
-    "cliente": {"idCliente": 1},
-    "usuarioSaiku": "none"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+    "usuarioSaiku": "none",
+    "idPerfil": 1,
+    "idPessoa": 1 
 }
 
 Alterar:
@@ -131,35 +37,22 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/alter
 Parametros: "application/json"
 Exemplo:
 {
-	"idUsuario":1,
+    "idUsuario":5,
     "usuarioId": 1,
     "login": "deynesonborba",
     "senha": "12345",
-    "perfil": {"idPerfil": 1},
-    "pessoa": {"idPessoa": 1},
-    "cliente": {"idCliente": 1},
-    "usuarioSaiku": "none"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+    "usuarioSaiku": "none",
+    "idPerfil": 1,
+    "idPessoa": 1 
 }
 
 Deletar:
-Método: POST
+Método: DELETE
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/deletar"
 Parametros: "application/json"
 Exemplo:
 {
     "idUsuario": "1"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
 }
 
 GetById:
@@ -168,3 +61,13 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/getBy
 Parametros: "application/json"
 Exemplo: 
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/getById/1
+Retorno:
+  {
+    "perfil": "root",
+    "pessoa": "Zezinho",
+    "senha": "smallbi",
+    "login": "smallbi",
+    "cliente": "SmallBI",
+    "idUsuario": 1,
+    "usuarioSaiku": "smallbi"
+  }
