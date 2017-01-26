@@ -99,10 +99,9 @@ public class PlanoBusiness implements InterfaceBusiness<Plano>{
 
 	@Override
 	public String delete(Integer id){
-		Plano plano = planoDao.getObjById(id);
+		Plano plano = getObjById(id);
 		if(plano == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Plano'!");
-			return "Nenhum resultado foi encontrado para o objeto do tipo 'Plano'!";
+			return "Nenhum resultado foi encontrado na tabela Plano com o id {"+id+"}";
 		}
 		planoDao.delete(plano);
 		return "Plano deletado com sucesso!";
@@ -111,10 +110,10 @@ public class PlanoBusiness implements InterfaceBusiness<Plano>{
 	@Override
 	public Plano getObjById(Integer id){
 		Plano plano = planoDao.getObjById(id);
-		if(plano == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Plano'!");
+		if(plano != null && plano.isStatus() != false){
+			return plano;
 		}
-		return plano;
+		return null;
 	}
 
 }

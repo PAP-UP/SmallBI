@@ -8,11 +8,8 @@ Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/plano/listar"
 Retorno:
   {
-    "idPlano": 1,
-    "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-    "usuarioId": 1,
-    "nomePlano": "Iniciante",
-    "status": true
+    "descricao": "Iniciante",
+    "idPlano": 1
   }
 
 Adicionar:
@@ -22,13 +19,7 @@ Parametros: "application/json"
 Exemplo:
 {
 	"usuarioId": 1,
-	"descricao": "Ultra Expensive plan"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+	"descricao": "Expensive plan"
 }
 
 Alterar:
@@ -39,17 +30,11 @@ Exemplo:
 {
 	"idPlano":1,
 	"usuarioId": 1,
-	"descricao": "Ultra Expensive Plan High Tech"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+	"descricao": "Ultra Expensive Plan"
 }
 
 Deletar:
-Método: POST
+Método: DELETE
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/plano/deletar"
 Parametros: "application/json"
 Exemplo:
@@ -63,3 +48,8 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/plano/getById
 Parametros: "application/json"
 Exemplo: 
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/plano/getById/1
+Retorno:
+  {
+    "descricao": "Iniciante",
+    "idPlano": 1
+  }
