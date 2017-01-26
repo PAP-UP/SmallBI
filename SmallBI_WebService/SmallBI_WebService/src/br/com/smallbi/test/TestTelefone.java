@@ -30,7 +30,7 @@ public class TestTelefone {
 		
 		List<Cliente> clientes = new ClienteBusiness().list();
 		Cliente cliente = clientes.get(0);
-		telefone.setEmpresa(cliente);
+		telefone.setCliente(cliente);
 		
 		List<Pessoa> pessoas = new PessoaBusiness().list();
 		Pessoa pessoa = pessoas.get(0);

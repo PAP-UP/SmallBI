@@ -99,10 +99,9 @@ public class TipoBusiness implements InterfaceBusiness<Tipo>{
 
 	@Override
 	public String delete(Integer id){
-		Tipo tipo = tipoDao.getObjById(id);
+		Tipo tipo = getObjById(id);
 		if(tipo == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Tipo'!");
-			return "Nenhum resultado foi encontrado para o objeto do tipo 'Tipo'!";
+			return "Nenhum resultado foi encontrado na tabela Tipo com o id {"+id+"}";
 		}
 		tipoDao.delete(tipo);
 		return "Tipo deletado com sucesso!";
@@ -111,10 +110,10 @@ public class TipoBusiness implements InterfaceBusiness<Tipo>{
 	@Override
 	public Tipo getObjById(Integer id){
 		Tipo tipo = tipoDao.getObjById(id);
-		if(tipo == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'Tipo'!");
+		if(tipo != null && tipo.isStatus() != false){
+			return tipo;
 		}
-		return tipo;
+		return null;
 	}
 
 }

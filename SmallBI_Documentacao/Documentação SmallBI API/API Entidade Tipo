@@ -8,11 +8,8 @@ Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/tipo/listar"
 Retorno:
   {
-    "idTipo": 3,
-    "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-    "usuarioId": 1,
-    "tipo": "Residencial",
-    "status": true
+    "descricao": "Cobrança",
+    "idTipo": 1
   }
 
 Adicionar:
@@ -22,13 +19,7 @@ Parametros: "application/json"
 Exemplo:
 {
 	"usuarioId": 1,
-	"tipo": "Comercial"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+	"descricao": "Comercial"
 }
 
 Alterar:
@@ -39,28 +30,16 @@ Exemplo:
 {
 	"idTipo":1,
 	"usuarioId": 1,
-	"tipo": "Comercial"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+	"descricao": "Comercial"
 }
 
 Deletar:
-Método: POST
+Método: DELETE
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cidade/deletar"
 Parametros: "application/json"
 Exemplo:
 {
 	"idTipo":1
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
 }
 
 GetById:
@@ -69,3 +48,8 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/tipo/getById/
 Parametros: "application/json"
 Exemplo: 
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/tipo/getById/1
+Retorno:
+  {
+    "descricao": "Cobrança",
+    "idTipo": 1
+  }
