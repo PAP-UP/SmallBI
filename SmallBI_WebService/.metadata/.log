@@ -1329,3 +1329,9 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 
 !ENTRY org.eclipse.wst.server.discovery 1 0 2017-01-26 09:59:51.819
 !MESSAGE already installed: org.eclipse.jst.server.generic.jonas4
+
+!ENTRY org.eclipse.jface.text 2 0 2017-01-26 10:52:18.389
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-01-26 10:52:18.415
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

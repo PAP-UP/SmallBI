@@ -99,10 +99,9 @@ public class RamoAtividadeBusiness implements InterfaceBusiness<RamoAtividade>{
 
 	@Override
 	public String delete(Integer id){
-		RamoAtividade ramoAtividade = ramoAtividadeDao.getObjById(id);
+		RamoAtividade ramoAtividade = getObjById(id);
 		if(ramoAtividade == null){
-//			throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'RamoAtividade'!");
-			return "Nenhum resultado foi encontrado para o objeto do tipo 'RamoAtividade'!";
+			return "Nenhum resultado foi encontrado na tabela RamoAtividade com o id {"+id+"}";
 		}
 		ramoAtividadeDao.delete(ramoAtividade);
 		return "Ramo de Atividade deletado com sucesso!";
@@ -111,10 +110,10 @@ public class RamoAtividadeBusiness implements InterfaceBusiness<RamoAtividade>{
 	@Override
 	public RamoAtividade getObjById(Integer id){
 		RamoAtividade ramoAtividade = ramoAtividadeDao.getObjById(id);
-		if(ramoAtividade == null){
-			//throw new BusinessException("Nenhum resultado foi encontrado para o objeto do tipo 'RamoAtividade'!");
+		if(ramoAtividade != null && ramoAtividade.isStatus() != false){
+			return ramoAtividade;
 		}
-		return ramoAtividade;
+		return null;
 	}
 
 }

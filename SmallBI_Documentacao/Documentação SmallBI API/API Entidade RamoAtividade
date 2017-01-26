@@ -8,11 +8,8 @@ Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/ramoAtividade/listar"
 Retorno:
   {
-    "idRamoAtividade": 1,
-    "dataCadastro": "Jan 2, 2017 12:00:00 AM",
-    "usuarioId": 1,
-    "ramoAtividade": "Altarquia",
-    "status": true
+    "descricao": "Altarquia",
+    "idRamoAtividade": 1
   }
 
 Adicionar:
@@ -22,13 +19,7 @@ Parametros: "application/json"
 Exemplo:
 {
 	"usuarioId": 1,
-	"ramoAtividade": "Your branch of activity"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+	"descricao": "Your branch of activity"
 }
 
 Alterar:
@@ -39,17 +30,11 @@ Exemplo:
 {
 	"idRamoAtividade":1,
 	"usuarioId": 1,
-	"ramoAtividade": "Your branch of activity"
-}
-Response:
-if(success){
-	return true;
-}else{
-	return false;
+	"descricao": "Your branch of activity"
 }
 
 Deletar:
-Método: POST
+Método: DELETE
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/ramoAtividade/deletar"
 Parametros: "application/json"
 Exemplo:
@@ -63,3 +48,8 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/ramoAtividade
 Parametros: "application/json"
 Exemplo: 
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/ramoAtividade/getById/1
+Retorno:
+  {
+    "descricao": "Altarquia",
+    "idRamoAtividade": 1
+  }
