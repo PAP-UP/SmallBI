@@ -91,8 +91,11 @@ public class UsuarioWebService {
 		hash.put("senha", u.getSenha());
 		hash.put("usuarioSaiku", u.getUsuarioSaiku());
 		hash.put("perfil", u.getPerfil().getNomePerfil());
-		hash.put("pessoa", u.getPessoa().getNome());
-		hash.put("cliente", u.getPessoa().getCliente().getNomeFantasia());
+		
+		if(u.getPessoa() != null){
+			hash.put("pessoa", u.getPessoa().getNome());
+			hash.put("cliente", u.getPessoa().getCliente().getNomeFantasia());
+		}
 		return hash;
 	}
 	
