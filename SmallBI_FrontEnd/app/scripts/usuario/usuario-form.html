@@ -1,0 +1,61 @@
+<div class="pg-painel">
+  <div class="menu" tabindex="0">
+    <div class="smartphone-menu-trigger"></div>
+    <div class="avatar">
+      <img src="img/user-img.png" />
+      <strong>Nome Empresa</strong>
+    </div>
+    <ul class="panel-group" id="accordion">
+      <li class="fa fa-home active"><a href="#home"><span>Dashboard</span></a></li>
+      <li class="fa fa-bank">
+        <a href="#" data-toggle="collapse" data-target="#dadosEmpresa" data-parent="#accordion"><span>Dados da Empresa</span></a>
+        <ul id="dadosEmpresa" class="collapse ulCollapse">
+          <li><a href="#"><span>Cadastrar</span></a></li>
+          <li><a href="#"><span>Editar</span></a></li>
+          <li><a href="#"><span>Listar</span></a></li>
+        </ul>
+      </li>
+      <li class="fa fa-user">
+        <a href="#" data-toggle="collapse" data-target="#dadosUsuario" data-parent="#accordion"><span>Dados do Usuário</span></a>
+        <ul id="dadosUsuario" class="collapse ulCollapse">
+          <li><a href="#"><span>Cadastrar</span></a></li>
+          <li><a href="#"><span>Editar</span></a></li>
+          <li><a href="#"><span>Listar</span></a></li>
+        </ul>
+      </li>
+      <li class="fa fa-cubes"><a href="#opcao3"><span>Cubos</span></a></li>
+      <li class="fa fa-upload"><a href="#opcao4"><span>Carregar Cubos</span></a></li>
+      <li class="fa fa-times"><a href="#opcao5"><span>Sair</span></a></li>
+    </ul>
+  </div>
+  <!-- HOME PAINEL -->
+  <section id="home" class="text-center active">
+    <h3>Cadastro de usuário</h3>
+    <form action="" method="post">
+      <div class="form-group">
+        <label class="text-left" style="display: block;" for="nome">Nome completo</label>
+        <input type="text" class="form-control" id="nome" name="nome">
+      </div>
+      <div class="form-group">
+        <label class="text-left" style="display: block;" for="cpf">CPF</label>
+        <input type="text" class="form-control" id="cpf" name="cpf">
+      </div>
+      <div class="form-group">
+        <label class="text-left" style="display: block;" for="rg">RG</label>
+        <input type="text" class="form-control" id="rg" name="rg">
+      </div>
+      <div class="form-group">
+        <label class="text-left" style="display: block;" for="nomeFuncao">Função</label>
+        <input type="text" class="form-control" id="nomeFuncao" name="nomeFuncao">
+      </div>
+      <div class="form-group">
+        <label class="text-left" style="display: block;" for="login">Login</label>
+        <input type="text" class="form-control" id="login" name="login">
+      </div>
+      <div class="form-group">
+        <label class="text-left" style="display: block;" for="senha">Senha</label>
+        <input type="password" class="form-control" id="senha" name="senha">
+      </div>
+      <button type="submit" class="btn btn-success" style="float: right;">Enviar</button>
+    </form>
+  </section>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- META -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content=""/>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="" />
+
+    <!-- TÍTULO -->
+    <title>Small BI</title>
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600|Montserrat" rel="stylesheet">
+
+    <base href="/">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/font-awesome.min.css" />
+    <link rel="stylesheet" href="styles/site.css" />
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/geral.js"></script>
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+  </head>
+
+  <body ng-app="SmallBIApp">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ui-view class="ng-scope"></div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+
+        <!--Usuarios-->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/usuario/usuario-listar.controller.js"></script>
+        <script src="scripts/usuario/usuario-editar.controller.js"></script>
+        <script src="scripts/usuario/usuario-cadastrar.controller.js"></script>
+        <script src="scripts/usuario/usuario.resource.js"></script>
+
+</body>
+</html>
