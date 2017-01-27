@@ -24,6 +24,7 @@ import br.com.smallbi.business.CuboBusiness;
 import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Cubo;
 
+
 @Path("/cubo")
 public class CuboWebService {
 
