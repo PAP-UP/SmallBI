@@ -1133,18 +1133,23 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void importarTabelaDefault(){
         ImportarDb importarDb = new ImportarDb();
         String tabelaSelecionada = cbxAbaConexBd_Tabela.getSelectedItem().toString();
-        JTable jTable = importarDb.consultarTabelaDefault(tabelaSelecionada);
         
-        if(jTable == null){
-           JOptionPane.showMessageDialog(null, "Selecione uma tabela para ser importada!");
+        if(tabelaSelecionada != null && !tabelaSelecionada.equals("Selecione")){
+            JTable jTable = importarDb.consultarTabelaDefault(tabelaSelecionada);
+
+            if(jTable == null){
+               JOptionPane.showMessageDialog(null, "Selecione uma tabela para ser importada!");
+            }else{
+                PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
+                painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
+                JScrollPane jScrollPane = new JScrollPane(jTable);
+                painelAbaTabPrev_painelTabela.add(jScrollPane);
+                painelAbaTabPrev_painelTabela.updateUI();
+                jTableAtivo = jTable;
+                iniciarComboBoxTiposBanco(jTable);   
+            }
         }else{
-            PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
-            painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
-            JScrollPane jScrollPane = new JScrollPane(jTable);
-            painelAbaTabPrev_painelTabela.add(jScrollPane);
-            painelAbaTabPrev_painelTabela.updateUI();
-            jTableAtivo = jTable;
-            iniciarComboBoxTiposBanco(jTable);   
+            JOptionPane.showMessageDialog(null, "Selecione uma tabela!");
         }
     }               
     

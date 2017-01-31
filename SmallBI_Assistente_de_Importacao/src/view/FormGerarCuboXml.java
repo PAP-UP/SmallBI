@@ -566,7 +566,11 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private void enviarCubo(){
         GerarSchema gerarSchema = new GerarSchema();
         gerarSchema.salvarSchema();
-        JOptionPane.showMessageDialog(null, "Cubo salvo");
+//        JOptionPane.showMessageDialog(null, "Cubo salvo");
+        FormEnviarCubo frm = new FormEnviarCubo();
+        frm.setLocationRelativeTo(null);
+        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        frm.setVisible(true);
     }
     
     private void addRelToModelMetri(){
