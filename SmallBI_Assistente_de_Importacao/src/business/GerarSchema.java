@@ -16,8 +16,8 @@ import model.TabelaFato;
 
 public class GerarSchema {
     
-    private static String schemaXml = new String();
-    private static String nomeSchema = new String();
+    public static String schemaXml = new String();
+    public static String nomeSchema = new String();
     
     public String createSchema(Schema schema){
                 

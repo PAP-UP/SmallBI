@@ -1,5 +1,7 @@
 package view;
 
+import business.GerarSchema;
+import business.GerarScriptSql;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -129,11 +131,16 @@ public class FormEnviarCubo extends javax.swing.JFrame {
             
             String login = txtAuten_Login.getText();
             String senha = txtAuten_Senha.getText();
+            String mdx = GerarSchema.schemaXml;
+            String nomeCubo = GerarSchema.nomeSchema;
+            
             Hashtable<String, Object> hash = new Hashtable<>();
             hash.put("login", login);
             hash.put("senha", senha);
+            hash.put("mdx", mdx);
+            hash.put("nomeCubo", nomeCubo);
   
-            String url = "http://localhost:8080/SmallBI_WebService/rest/autenticar";
+            String url = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
             HttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost httpPost = new HttpPost(url);
             Gson gson = new Gson();

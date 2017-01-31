@@ -54,6 +54,16 @@ public class CuboWebService {
 	}
 	
 	@POST
+	@Path("/addCubeFromAssistent")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String addCuboFromAssis(String json) throws JSONException{
+		JSONObject jsonObject = new JSONObject(json);
+		cuboBusiness.createFromAssistent(jsonObject);
+		return "";
+	}
+	
+	@POST
 	@Path("/alterar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
