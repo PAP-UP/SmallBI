@@ -17,7 +17,7 @@
       return $http.get("http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/listar");
     }
 
-    function insereUsuario(dataParam) {
+      function insereUsuario(dataParam) {
 
    return $http({
         url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/adicionar",

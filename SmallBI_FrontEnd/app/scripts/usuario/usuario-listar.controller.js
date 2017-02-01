@@ -4,36 +4,18 @@
   angular.module('SmallBIApp')
     .controller('usuarioListarController', usuarioListarController);
 
-  function usuarioListarController($scope, usuarioResource) {
+  function usuarioListarController(usuarioResource) {
 
+    var vm = this;
 
-    var service = {
-      // adicionarUsuario: adicionarUsuario
-    }
-
-    return service;
-
-
-    function activate() {
-      listarUsuarios();
-    }
-
-    function listarUsuarios() {
+    function init() {
       usuarioResource.listaUsuario().then(function (result) {
-        $scope.data = result.data;
+        vm.listaUsuarios = result.data;
       });
     }
 
-    // function adicionarUsuario() {
-    //   clienteService.insereCliente(item).then(
-    //     function (result) {
-    //       $scope.msgSucesso = true;
-    //     }, function (response) {
-    //
-    //     });
-    // }
+    init();
 
-    activate();
   }
 })();
 

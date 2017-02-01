@@ -6,14 +6,14 @@
       'ngAnimate',
       'ngResource',
       'ui.router'
-    ]).config(routes, providers);
+    ]).config(routes);
 
-  function providers($httpProvider) {
-    $httpProvider.defaults.headers.common = {};
-    $httpProvider.defaults.headers.post = {};
-    $httpProvider.defaults.headers.put = {};
-    $httpProvider.defaults.headers.patch = {};
-  }
+  // function providers($httpProvider) {
+  //   $httpProvider.defaults.headers.common = {};
+  //   $httpProvider.defaults.headers.post = {};
+  //   $httpProvider.defaults.headers.put = {};
+  //   $httpProvider.defaults.headers.patch = {};
+  // }
 
   function routes($stateProvider, $locationProvider) {
 
@@ -21,43 +21,50 @@
 
     $locationProvider.html5Mode(true);
 
-    $stateProvider
-      .state('inicio', {
-        url: '/inicio',
-        template: '<h2>Área inicial em desenvolvimento</h2>'
-      });
-
 
     var usuario = {
       name: 'usuario',
       url: '/usuario',
-      template: '<div ui-view class="ng-scope"></div>',
-      children: [
-        {
-          name: 'listar',
-          url: '/listar',
-          templateUrl: 'scripts/usuario/usuario-lista.html',
-          controller: 'usuarioListarController'
-        },
-        {
-          name: 'editar',
-          url: '/editar',
-          templateUrl: 'scripts/usuario/usuario-form.html',
-          controller: 'usuarioEditarController'
-        },
-        {
-          name: 'cadastrar',
-          url: '/cadastrar',
-          templateUrl: 'scripts/usuario/usuario-form.html',
-          controller: 'usuarioCadastrarController'
-        }
-
-        ],
+      templateUrl: 'scripts/usuario/usuario-lista.html',
+      controller: 'usuarioListarController',
+      controllerAs: 'vm'
+      // children: [
+      //   {
+      //     name: 'listar',
+      //     url: '/listar',
+      //     templateUrl: 'scripts/usuario/usuario-lista.html',
+      //     controller: 'usuarioListarController',
+      //     controllerAs: 'vm'
+      //   },
+      //   {
+      //     name: 'editar',
+      //     url: '/editar',
+      //     templateUrl: 'scripts/usuario/usuario-form.html',
+      //     controller: 'usuarioEditarController',
+      //     controllerAs: 'vm'
+      //   },
+      //   {
+      //     name: 'cadastrar',
+      //     url: '/cadastrar',
+      //     templateUrl: 'scripts/usuario/usuario-form.html',
+      //     controller: 'usuarioCadastrarController',
+      //     controllerAs: 'vm'
+      //   }
+      //
+      //   ],
 
     };
 
+    var cubo = {
+      name: 'cubo',
+      url: '/cubo',
+      templateUrl: 'scripts/cubo/cubo-lista.html',
+      controller: 'cuboListarController',
+      controllerAs: 'vm'
+    };
 
     $stateProvider.state(usuario);
+    $stateProvider.state(cubo);
 
   }
 

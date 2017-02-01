@@ -1,4 +1,4 @@
-<div class="pg-painel">
+  <div class="pg-painel" ng-controller="usuarioCadastrarController">
   <div class="menu" tabindex="0">
     <div class="smartphone-menu-trigger"></div>
     <div class="avatar">
@@ -31,31 +31,32 @@
   <!-- HOME PAINEL -->
   <section id="home" class="text-center active">
     <h3>Cadastro de usuário</h3>
-    <form action="" method="post">
+    <form  novalidate>
       <div class="form-group">
         <label class="text-left" style="display: block;" for="nome">Nome completo</label>
-        <input type="text" class="form-control" id="nome" name="nome">
+        <input type="text" class="form-control" id="nome" name="nome" ng-model="vm.dadosUsuario.nome">
       </div>
       <div class="form-group">
         <label class="text-left" style="display: block;" for="cpf">CPF</label>
-        <input type="text" class="form-control" id="cpf" name="cpf">
+        <input type="text" class="form-control" id="cpf" name="cpf" ng-model="vm.dadosUsuario.cpf">
       </div>
       <div class="form-group">
         <label class="text-left" style="display: block;" for="rg">RG</label>
-        <input type="text" class="form-control" id="rg" name="rg">
+        <input type="text" class="form-control" id="rg" name="rg" ng-model="vm.dadosUsuario.rg">
       </div>
       <div class="form-group">
         <label class="text-left" style="display: block;" for="nomeFuncao">Função</label>
-        <input type="text" class="form-control" id="nomeFuncao" name="nomeFuncao">
+        <input type="text" class="form-control" id="nomeFuncao" name="nomeFuncao" ng-model="vm.dadosUsuario.funcao">
       </div>
       <div class="form-group">
         <label class="text-left" style="display: block;" for="login">Login</label>
-        <input type="text" class="form-control" id="login" name="login">
+        <input type="text" class="form-control" id="login" name="login" ng-model="vm.dadosUsuario.login">
       </div>
       <div class="form-group">
         <label class="text-left" style="display: block;" for="senha">Senha</label>
-        <input type="password" class="form-control" id="senha" name="senha">
+        <input type="password" class="form-control" id="senha" name="senha" ng-model="vm.dadosUsuario.senha">
       </div>
-      <button type="submit" class="btn btn-success" style="float: right;">Enviar</button>
+      <button type="button" class="btn btn-success" style="float: right;" ng-click="vm.usuarioSalvar()">Enviar</button>
     </form>
   </section>
+</div>

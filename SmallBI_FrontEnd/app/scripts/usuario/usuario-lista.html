@@ -45,18 +45,18 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in $scope.data">
-            <td>{{item.perfil}}</td>
-            <td>{{item.pessoa}}</td>
-            <td>{{item.senha}}</td>
-            <td>{{item.login}}</td>
-            <td>{{item.cliente}}</td>
-            <td>{{item.usuarioSaiku}}</td>
+					<tr ng-repeat="u in vm.listaUsuarios">
+            <td>{{u.perfil}}</td>
+            <td>{{u.pessoa}}</td>
+            <td>{{u.senha}}</td>
+            <td>{{u.login}}</td>
+            <td>{{u.cliente}}</td>
+            <td>{{u.usuarioSaiku}}</td>
           </tr>
 				</tbody>
 			</table>
 			<a href="#" id="plus"><i class="fa fa-plus fa-lg icon"></i></a>
-			<a href="#" class="novoItem">Cadastrar novo usuário</a>
+			<a href="#" class="novou">Cadastrar novo usuário</a>
 		</section>
 
 		<footer class="rodape">
