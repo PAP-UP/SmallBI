@@ -20,7 +20,10 @@ import org.codehaus.jettison.json.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import br.com.smallbi.business.PessoaBusiness;
 import br.com.smallbi.business.UsuarioBusiness;
+import br.com.smallbi.entity.Cliente;
+import br.com.smallbi.entity.Funcao;
 import br.com.smallbi.entity.Perfil;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Usuario;
@@ -100,12 +103,35 @@ public class UsuarioWebService {
 	}
 	
 	public Usuario getObjectFromHash(String json) throws JSONException{
+		
 		JSONObject jsonObject = new JSONObject(json);
+		
+		Pessoa p = new Pessoa();
+		if(!jsonObject.isNull("idPessoa")){
+			p.setIdPessoa(jsonObject.getInt("idPessoa"));
+		}
+		int usuarioId = jsonObject.getInt("usuarioId");	//Atribuido à variavel para ser reutilizado no objeto u;
+		p.setUsuarioId(usuarioId);
+		p.setNome(jsonObject.getString("nome"));
+		p.setCpf(jsonObject.getString("cpf"));
+		p.setRg(jsonObject.getString("rg"));
+		
+		Cliente c = new Cliente();
+		c.setIdCliente(jsonObject.getInt("idCliente"));
+		p.setCliente(c);
+		
+		Funcao f = new Funcao();
+		f.setIdFuncao(jsonObject.getInt("idFuncao"));
+		p.setFuncao(f);
+		
+		new PessoaBusiness().create(p);
+		
 		Usuario u = new Usuario();
 		if(!jsonObject.isNull("idUsuario")){
 			u.setIdUsuario(jsonObject.getInt("idUsuario"));
 		}
-		u.setUsuarioId(jsonObject.getInt("usuarioId"));
+		u.setPessoa(p);
+		u.setUsuarioId(usuarioId);
 		u.setLogin(jsonObject.getString("login"));
 		u.setSenha(jsonObject.getString("senha"));
 		u.setUsuarioSaiku(jsonObject.getString("usuarioSaiku"));
@@ -113,11 +139,29 @@ public class UsuarioWebService {
 		Perfil perfil = new Perfil();
 		perfil.setIdPerfil(jsonObject.getInt("idPerfil"));
 		u.setPerfil(perfil);
-		
-		Pessoa pessoa = new Pessoa();
-		pessoa.setIdPessoa(jsonObject.getInt("idPessoa"));
-		u.setPessoa(pessoa);
-		
+
 		return u;
 	}
+/*	public Usuario getObjectUsuarioFromHash(String json) throws JSONException{
+	JSONObject jsonObject = new JSONObject(json);
+	Usuario u = new Usuario();
+	if(!jsonObject.isNull("idUsuario")){
+		u.setIdUsuario(jsonObject.getInt("idUsuario"));
+	}
+	u.setUsuarioId(jsonObject.getInt("usuarioId"));
+	u.setLogin(jsonObject.getString("login"));
+	u.setSenha(jsonObject.getString("senha"));
+	u.setUsuarioSaiku(jsonObject.getString("usuarioSaiku"));
+	
+	Perfil perfil = new Perfil();
+	perfil.setIdPerfil(jsonObject.getInt("idPerfil"));
+	u.setPerfil(perfil);
+	
+	
+//	Pessoa pessoa = new Pessoa();
+//	pessoa.setIdPessoa(jsonObject.getInt("idPessoa"));
+//	u.setPessoa(pessoa);
+	
+	return u;
+}*/
 }

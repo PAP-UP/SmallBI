@@ -103,13 +103,13 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 		if(t.getUsuarioId() == null){
 //			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 			return "A variável 'usuarioId' deve ser informada!";
-		}
+		}	
 		
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
 		pessoaDao.create(t);
-		return "Pessoa cadastrada com sucesso!";
+		return "Pessoa cadastrada com sucesso! => ID: " + t.getIdPessoa();
 	}
 
 	@Override
