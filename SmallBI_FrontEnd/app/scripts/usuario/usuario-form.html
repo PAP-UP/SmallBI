@@ -46,7 +46,10 @@
       </div>
       <div class="form-group">
         <label class="text-left" style="display: block;" for="nomeFuncao">Função</label>
-        <input type="text" class="form-control" id="nomeFuncao" name="nomeFuncao" ng-model="vm.dadosUsuario.funcao">
+        <select id="nomeFuncao" class="form-control" ng-model="vm.dadosUsuario.idFuncao"
+        ng-options="func.idFuncao as func.descricao for func in vm.dadosFuncao">
+          <option value="">Selecione</option>
+        </select>
       </div>
       <div class="form-group">
         <label class="text-left" style="display: block;" for="login">Login</label>

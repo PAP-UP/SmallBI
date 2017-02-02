@@ -8,10 +8,18 @@
 
     var vm = this;
 
-    function init() {
+    angular.extend(vm, {
+      listaUsuarios: listaUsuarios
+    });
+
+    function listaUsuarios() {
       usuarioResource.listaUsuario().then(function (result) {
         vm.listaUsuarios = result.data;
       });
+    }
+
+    function init() {
+      listaUsuarios();
     }
 
     init();
