@@ -22,5 +22,5 @@
 			console.log('oi');
 			$(".dialog").css({"opacity": 0, "visibility":"hidden"});
 		});
-		
+
 	});

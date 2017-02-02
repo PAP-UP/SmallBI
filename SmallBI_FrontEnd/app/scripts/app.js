@@ -5,7 +5,8 @@
     .module('SmallBIApp', [
       'ngAnimate',
       'ngResource',
-      'ui.router'
+      'ui.router',
+      'ui.router.stateHelper'
     ]).config(routes);
 
   // function providers($httpProvider) {
@@ -15,19 +16,34 @@
   //   $httpProvider.defaults.headers.patch = {};
   // }
 
-  function routes($stateProvider, $locationProvider) {
+  function routes($stateProvider, $locationProvider, stateHelperProvider) {
 
     var baseUrl = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/";
 
     $locationProvider.html5Mode(true);
 
 
-    var usuario = {
-      name: 'usuario',
-      url: '/usuario',
+    var listar = {
+      name: 'listar',
+      url: '/listar',
       templateUrl: 'scripts/usuario/usuario-lista.html',
-      controller: 'usuarioListarController',
-      controllerAs: 'vm'
+      controller: 'usuarioListarController as vm',
+    };
+
+    var editar = {
+      name: 'editar',
+          url: '/editar',
+          templateUrl: 'scripts/usuario/usuario-form.html',
+          controller: 'usuarioEditarController as vm',
+    };
+
+    var cadastrar = {
+      name: 'cadastrar',
+          url: '/cadastrar',
+          templateUrl: 'scripts/usuario/usuario-form.html',
+          controller: 'usuarioCadastrarController as vm',
+    };
+
       // children: [
       //   {
       //     name: 'listar',
@@ -53,8 +69,6 @@
       //
       //   ],
 
-    };
-
     var cubo = {
       name: 'cubo',
       url: '/cubo',
@@ -63,8 +77,16 @@
       controllerAs: 'vm'
     };
 
-    $stateProvider.state(usuario);
-    $stateProvider.state(cubo);
+    stateHelperProvider.setNestedState({
+      name: 'usuario',
+      url: '/usuario',
+      template: '<div ui-view></div>',
+      abstract: true,
+      children: [listar, editar, cadastrar]
+    });
+
+    // $stateProvider.state(usuario);
+    // $stateProvider.state(cubo);
 
   }
 
