@@ -231,8 +231,22 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 	public Telefone getByPessoa(Integer idPessoa){
 		List<Telefone> telefones = list();
 		for(Telefone t : telefones){
-			if(t.getPessoa().getIdPessoa() == idPessoa){
-				return t;
+			if(t.getPessoa() != null){
+				if(t.getPessoa().getIdPessoa() == idPessoa){
+					return t;
+				}
+			}
+		}
+		return null;
+	}
+	
+	public Telefone getByCliente(Integer idCliente){
+		List<Telefone> telefones = list();
+		for(Telefone t : telefones){
+			if(t.getCliente() != null){
+				if(t.getCliente().getIdCliente() == idCliente){
+					return t;
+				}
 			}
 		}
 		return null;

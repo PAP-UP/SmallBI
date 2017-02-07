@@ -59,7 +59,9 @@ public class UsuarioWebService {
 	public String addUsuario(String json) throws JSONException{
 		Usuario usuario = getObjectFromHash(json);
 		String response = usuarioBusiness.create(usuario);
+		
 		appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+		
 		return gson.toJson(response);
 	}
 	
@@ -70,7 +72,9 @@ public class UsuarioWebService {
 	public String setUsuario(String json) throws JSONException{
 		Usuario usuario = getObjectFromHash(json);
 		String response = usuarioBusiness.update(usuario);
+		
 		appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+		
 		return gson.toJson(response);
 	}
 	
@@ -113,18 +117,22 @@ public class UsuarioWebService {
 		hash.put("idPerfil", u.getPerfil().getIdPerfil());
 		
 		Endereco e = new EnderecoBusiness().getByPessoa(u.getPessoa().getIdPessoa());
-		hash.put("idEndereco", e.getIdEndereco());
-		hash.put("endereco", e.getEndereco());
-		hash.put("numero", e.getNumero());
-		hash.put("bairro", e.getBairro());
-		hash.put("idCidade", e.getCidade().getIdCidade());
-		hash.put("idTipoEndereco", e.getTipo().getIdTipo());
+		if(e != null){
+			hash.put("idEndereco", e.getIdEndereco());
+			hash.put("endereco", e.getEndereco());
+			hash.put("numero", e.getNumero());
+			hash.put("bairro", e.getBairro());
+			hash.put("idCidade", e.getCidade().getIdCidade());
+			hash.put("idTipoEndereco", e.getTipo().getIdTipo());
+		}
 		
 		Telefone t = new TelefoneBusiness().getByPessoa(u.getPessoa().getIdPessoa());
-		hash.put("idTelefone", t.getIdTelefone());
-		hash.put("idTipoTelefone", t.getTipo().getIdTipo());
-		hash.put("ddd", t.getDdd());
-		hash.put("telefone", t.getTelefone());
+		if(t != null){
+			hash.put("idTelefone", t.getIdTelefone());
+			hash.put("idTipoTelefone", t.getTipo().getIdTipo());
+			hash.put("ddd", t.getDdd());
+			hash.put("telefone", t.getTelefone());
+		}
 		
 		return hash;
 	}

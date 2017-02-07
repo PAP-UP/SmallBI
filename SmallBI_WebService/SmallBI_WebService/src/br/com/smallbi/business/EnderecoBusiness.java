@@ -192,8 +192,22 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 	public Endereco getByPessoa(Integer idPessoa){
 		List<Endereco> enderecos = list();
 		for(Endereco e : enderecos){
-			if(e.getPessoa().getIdPessoa() == idPessoa){
-				return e;
+			if(e.getPessoa() != null){
+				if(e.getPessoa().getIdPessoa() == idPessoa){
+					return e;
+				}
+			}			
+		}
+		return null;
+	}
+	
+	public Endereco getByCliente(Integer idCliente){
+		List<Endereco> enderecos = list();
+		for(Endereco e : enderecos){
+			if(e.getCliente() != null){
+				if(e.getCliente().getIdCliente() == idCliente){
+					return e;
+				}
 			}
 		}
 		return null;
