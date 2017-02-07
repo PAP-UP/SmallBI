@@ -80,9 +80,23 @@ public class ClienteWebService {
 	public String getById(@PathParam("idCliente") String idCliente){
 		Cliente cliente = clienteBusiness.getObjById(Integer.parseInt(idCliente));
 		if(cliente != null){
-			return gson.toJson(getHashFromObject(cliente));
+			return gson.toJson(getHashById(cliente));
 		}
 		return gson.toJson("Nenhum resultado foi encontrado na tabela Cliente com o id {"+idCliente+"}");
+	}
+	
+	public Hashtable<String, Object> getHashById(Cliente c){
+		Hashtable<String, Object> hash = new Hashtable<>();
+		hash.put("idCliente", c.getIdCliente());
+		hash.put("razaosocial", c.getRazaoSocial());
+		hash.put("nomeFantasia", c.getNomeFantasia());
+		hash.put("cnpj", c.getCnpj());
+		hash.put("ie", c.getIe());
+		hash.put("idRamoAtividade", c.getRamoAtividade().getIdRamoAtividade());
+		hash.put("tamanhoTotal", c.getTamanhoTotal());
+		hash.put("idFormaPagamento", c.getFormaPagamento().getIdFormaPagamento());
+		hash.put("idPlano", c.getPlano().getIdPlano());
+		return hash;
 	}
 	
 	public Cliente getObjectFromHash(String json) throws JSONException{

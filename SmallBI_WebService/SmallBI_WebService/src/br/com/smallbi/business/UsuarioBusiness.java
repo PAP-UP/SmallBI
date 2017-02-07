@@ -27,7 +27,6 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 	public String create(Usuario t){
 		
 		if(t == null){
-//			throw new BusinessException("O objeto não pode ser null!");
 			return "O objeto não pode ser null!";
 		}
 		
@@ -56,12 +55,10 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 //		}
 		
 		if(t.getUsuarioId() == null){
-//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		if(t.getLogin().equals(null)|| t.getLogin().equals("")){
-//			throw new BusinessException("A variável 'login' deve ser informada!");
 			return "A variável 'login' deve ser informada!";
 		}
 		
@@ -69,15 +66,12 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			if(t.getPerfil().getIdPerfil() != null){
 				Perfil perfil = perfilDao.getObjById(t.getPerfil().getIdPerfil());
 				if(perfil == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'perfil' foi encontrado!");
 					return "Nenhum resultado para a variável 'perfil' foi encontrado!";
 				}
 			}else{
-//				throw new BusinessException("A variável 'perfil.idPerfil' deve ser informada!");
 				return "A variável 'perfil.idPerfil' deve ser informada!";
 			}
 		}else{
-//			throw new BusinessException("A variável 'perfil' deve ser informada!");
 			return "A variável 'perfil' deve ser informada!";
 		}
 		
@@ -85,31 +79,25 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			if(t.getPessoa().getIdPessoa() != null){
 				Pessoa pessoa = pessoaDao.getObjById(t.getPessoa().getIdPessoa());
 				if(pessoa == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'pessoa' foi encontrado!");
 					return "Nenhum resultado para a variável 'pessoa' foi encontrado!";
 				}
 			}else{
-//				throw new BusinessException("A variável 'pessoa.idPessoa' deve ser informada!");
 				return "A variável 'pessoa.idPessoa' deve ser informada!";
 			}
 		}else{
-//			throw new BusinessException("A variável 'pessoa' deve ser informada!");]
 			return "A variável 'pessoa' deve ser informada!";
 		}
 
 		
 		if(t.getSenha().equals(null) || t.getSenha().equals("")){
-//			throw new BusinessException("A variável 'senha' deve ser informada!");
 			return "A variável 'senha' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		if(t.getUsuarioSaiku().equals(null) || t.getUsuarioSaiku().equals("")){
-//			throw new BusinessException("A variável 'usuarioSaiku' deve ser informada!");
 			return "A variável 'usuarioSaiku' deve ser informada!";
 		}	
 		
@@ -158,18 +146,15 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 //		}
 		
 		if(t.getIdUsuario() == null){
-//			throw new BusinessException("A variável 'idUsuario' deve ser informada!");
 			return "A variável 'idUsuario' deve ser informada!";
 		}else{
 			Usuario usuario = usuarioDao.getObjById(t.getIdUsuario());
 			if(usuario == null){
-//				throw new BusinessException("Nenhum resultado para a variável 'usuario' foi encontrado!");
 				return "Nenhum resultado para a variável 'usuario' foi encontrado!";
 			}
 		}
 		
 		if(t.getLogin().equals(null)|| t.getLogin().equals("")){
-//			throw new BusinessException("A variável 'login' deve ser informada!");
 			return "A variável 'login' deve ser informada!";
 		}
 		
@@ -177,15 +162,12 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			if(t.getPerfil().getIdPerfil() != null){
 				Perfil perfil = perfilDao.getObjById(t.getPerfil().getIdPerfil());
 				if(perfil == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'perfil' foi encontrado!");
 					return "Nenhum resultado para a variável 'perfil' foi encontrado!";
 				}
 			}else{
-//				throw new BusinessException("A variável 'perfil.idPerfil' deve ser informada!");
 				return "A variável 'perfil.idPerfil' deve ser informada!";
 			}
 		}else{
-//			throw new BusinessException("A variável 'perfil' deve ser informada!");
 			return "A variável 'perfil' deve ser informada!";
 		}
 		
@@ -193,32 +175,28 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			if(t.getPessoa().getIdPessoa() != null){
 				Pessoa pessoa = pessoaDao.getObjById(t.getPessoa().getIdPessoa());
 				if(pessoa == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'pessoa' foi encontrado!");
 					return "Nenhum resultado para a variável 'pessoa' foi encontrado!";
+				}else{
+					new PessoaBusiness().update(t.getPessoa());
 				}
 			}else{
-//				throw new BusinessException("A variável 'pessoa.idPessoa' deve ser informada!");
 				return "A variável 'pessoa.idPessoa' deve ser informada!";
 			}
 		}else{
-//			throw new BusinessException("A variável 'pessoa' deve ser informada!");
 			return "A variável 'pessoa' deve ser informada!";
 		}
 
 		
 		if(t.getSenha().equals(null) || t.getSenha().equals("")){
-//			throw new BusinessException("A variável 'senha' deve ser informada!");
 			return "A variável 'senha' deve ser informada!";
 		}
 		
 		//Usuário que está alterando estas informações
 		if(t.getUsuarioId().equals(null)){
-//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
 		if(t.getUsuarioSaiku().equals(null) || t.getUsuarioSaiku().equals("")){
-//			throw new BusinessException("A variável 'usuarioSaiku' deve ser informada!");
 			return "A variável 'usuarioSaiku' deve ser informada!";
 		}	
 		

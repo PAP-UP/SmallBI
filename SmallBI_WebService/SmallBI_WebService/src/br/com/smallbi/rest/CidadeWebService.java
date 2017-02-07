@@ -101,6 +101,8 @@ public class CidadeWebService {
 		Hashtable<String, Object> hashCidade = new Hashtable<>();
 		hashCidade.put("idCidade", c.getIdCidade().toString());
 		hashCidade.put("nomeCidade", c.getNomeCidade());
+		hashCidade.put("idEstado", c.getEstado().getIdEstado());
+		hashCidade.put("estado", c.getEstado().getNomeEstado());
 		return hashCidade;
 	}
 }

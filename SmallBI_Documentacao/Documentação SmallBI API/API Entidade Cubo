@@ -64,6 +64,7 @@ Retorno:
 {
 	"idCubo":1,
 	"nomeCubo":"Sales",
+	"idCliente":"1",
 	"cliente":"Smallbi",
 	"mdx":"<Schema>",
 	"tabelaFato":"???",

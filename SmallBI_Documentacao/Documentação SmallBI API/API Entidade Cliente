@@ -72,14 +72,13 @@ Exemplo:
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cliente/getById/1
 Retorno:
 {
-  "plano": "Iniciante",
   "ie": "I don't know what this!",
-  "usuarioId": 1,
+  "tamanhoTotal": 100,
+  "idPlano": 1,
+  "idFormaPagamento": 1,
   "cnpj": "12.123.123/1234-12",
   "idCliente": 1,
-  "formaPagamento": "Cartão Crédito",
   "nomeFantasia": "SmallBI",
-  "tamamhoTotal": 100,
-  "ramoAtividade": "Altarquia",
-  "razaoSocial": "Deyneson Borba Ltda"
+  "razaosocial": "Deyneson Borba Ltda",
+  "idRamoAtividade": 1
 }

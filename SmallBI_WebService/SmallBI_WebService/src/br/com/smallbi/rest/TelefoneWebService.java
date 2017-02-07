@@ -80,9 +80,27 @@ public class TelefoneWebService {
 	public String getById(@PathParam("idTelefone") String idTelefone){
 		Telefone telefone = telefoneBusiness.getObjById(Integer.parseInt(idTelefone));
 		if(telefone != null){
-			return gson.toJson(getHashFromObject(telefone));
+			return gson.toJson(getHashById(telefone));
 		}
 		return "Nenhum resultado foi encontrado na tabela Telefone com o id {"+idTelefone+"}";
+	}
+	
+	public Hashtable<String, Object> getHashById(Telefone t){
+		Hashtable<String, Object> hash = new Hashtable<>();
+		hash.put("idTelefone", t.getIdTelefone());
+		hash.put("idTipo", t.getTipo().getIdTipo());
+		hash.put("ddd", t.getDdd());
+		hash.put("telefone", t.getTelefone());
+		
+		if(t.getPessoa() != null){
+			hash.put("idPessoa", t.getPessoa().getIdPessoa());
+		}
+		
+		if(t.getCliente() != null){
+			hash.put("idCliente", t.getCliente().getIdCliente());
+		}
+		
+		return hash;
 	}
 	
 	public Hashtable<String, Object> getHashFromObject(Telefone t){

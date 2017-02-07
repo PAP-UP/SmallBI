@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.io.OutputStream"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.io.ByteArrayOutputStream"/>
 <fullyQualifiedTypeName name="java.nio.ByteBuffer"/>
@@ -57,7 +56,8 @@
 <fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Usuario"/>
 <fullyQualifiedTypeName name="br.com.smallbi.util.Util"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Cubo"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.PessoaBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Usuario"/>
 </qualifiedTypeNameHistroy>

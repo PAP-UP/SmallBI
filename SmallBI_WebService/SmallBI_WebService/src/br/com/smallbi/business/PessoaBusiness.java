@@ -127,23 +127,19 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 	public String update(Pessoa t){
 		
 		if(t == null){
-//			throw new BusinessException("O objeto não pode ser null!");
 			return "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdPessoa() == null){
-//			throw new BusinessException("A variável 'idPessoa' deve ser informada!");
 			return "A variável 'idPessoa' deve ser informada!";
 		}else{
 			Pessoa pessoa = pessoaDao.getObjById(t.getIdPessoa());
 			if(pessoa == null){
-//				throw new BusinessException("Nenhum resultado para a variável 'pessoa' foi encontrado!");
 				return "Nenhum resultado para a variável 'pessoa' foi encontrado!";
 			}
 		}
 		
 		if(t.getCpf().equals(null) || t.getCpf().equals("")){
-//			throw new BusinessException("A variável 'cpf' deve ser informada!");
 			return "A variável 'cpf' deve ser informada!";
 		}else{
 			//VALIDAR CPF
@@ -174,32 +170,26 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 			if(t.getFuncao().getIdFuncao() != null){
 				Funcao funcao = funcaoDao.getObjById(t.getFuncao().getIdFuncao());
 				if(funcao == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'funcao' foi encontrado!");
 					return "Nenhum resultado para a variável 'funcao' foi encontrado!";
 				}
 			}else{
-//				throw new BusinessException("A variável 'funcao.idFuncao' deve ser informada!");
 				return "A variável 'funcao.idFuncao' deve ser informada!";
 			}
 		}else{
-//			throw new BusinessException("A variável 'funcao' deve ser informada!");
 			return "A variável 'funcao' deve ser informada!";
 		}
 		
 		if(t.getNome().equals(null) || t.getNome().equals("")){
-//			throw new BusinessException("A variável 'nome' deve ser informada!");
 			return "A variável 'nome' deve ser informada!";
 		}
 		
 		if(t.getRg().equals(null) || t.getRg().equals("")){
-//			throw new BusinessException("A variável 'rg' deve ser informada!");
 			return "A variável 'rg' deve ser informada!";
 		}else{
 			//VALIDAR RG
 		}
 		
 		if(t.getUsuarioId() == null){
-//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		

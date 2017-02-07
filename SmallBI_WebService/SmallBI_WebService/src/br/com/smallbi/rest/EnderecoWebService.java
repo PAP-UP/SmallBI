@@ -81,9 +81,31 @@ public class EnderecoWebService {
 	public String getById(@PathParam("idEndereco") String idEndereco){
 		Endereco endereco = enderecoBusiness.getObjById(Integer.parseInt(idEndereco));
 		if(endereco != null){
-			return gson.toJson(getHashFromObject(endereco));
+			return gson.toJson(getHashById(endereco));
 		}
 		return gson.toJson("Nenhum resultado foi encontrado na tabela Endereço com o id {"+idEndereco+"}");
+	}
+	
+	public Hashtable<String, Object> getHashById(Endereco e){
+	
+		Hashtable<String, Object> hash = new Hashtable<>();
+		hash.put("idEndereco", e.getIdEndereco());
+		hash.put("endereco", e.getEndereco());
+		hash.put("numero", e.getNumero());
+		hash.put("bairro", e.getBairro());
+		hash.put("idCidade", e.getCidade().getIdCidade());
+		
+		if(e.getPessoa() != null){
+			hash.put("idPessoa", e.getPessoa().getIdPessoa());
+		}
+		
+		if(e.getCliente() != null){
+			hash.put("idCliente", e.getCliente().getIdCliente());
+		}
+		
+		hash.put("idTipo", e.getTipo().getIdTipo());
+		
+		return hash;
 	}
 	
 	public Endereco getObjectFromHash(String json) throws JSONException{

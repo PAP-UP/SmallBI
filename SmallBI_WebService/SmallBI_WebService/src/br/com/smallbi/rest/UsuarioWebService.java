@@ -82,9 +82,28 @@ public class UsuarioWebService {
 	public String getById(@PathParam("idUsuario") String idUsuario){
 		Usuario usuario = usuarioBusiness.getObjById(Integer.parseInt(idUsuario));
 		if(usuario != null){
-			return gson.toJson(getHashFromObject(usuario));
+			return gson.toJson(getHashById(usuario));
 		}
 		return "Nenhum resultado foi encontrado na tabela Usuario com o id {"+idUsuario+"}";
+	}
+	
+	public Hashtable<String, Object> getHashById(Usuario u){
+		Hashtable<String, Object> hash = new Hashtable<>();
+		hash.put("idPessoa", u.getPessoa().getIdPessoa());
+		hash.put("usuarioId", u.getUsuarioId());
+		hash.put("nome", u.getPessoa().getNome());
+		hash.put("cpf", u.getPessoa().getCpf());
+		hash.put("rg", u.getPessoa().getRg());
+		hash.put("idCliente", u.getPessoa().getCliente().getIdCliente());
+		hash.put("idFuncao", u.getPessoa().getFuncao().getIdFuncao());
+		
+		hash.put("idUsuario", u.getIdUsuario());
+		hash.put("login", u.getLogin());
+		hash.put("senha", u.getSenha());
+		hash.put("usuarioSaiku", u.getUsuarioSaiku());
+		hash.put("idPerfil", u.getPerfil().getIdPerfil());
+		
+		return hash;
 	}
 	
 	public Hashtable<String, Object> getHashFromObject(Usuario u){
@@ -142,26 +161,4 @@ public class UsuarioWebService {
 
 		return u;
 	}
-/*	public Usuario getObjectUsuarioFromHash(String json) throws JSONException{
-	JSONObject jsonObject = new JSONObject(json);
-	Usuario u = new Usuario();
-	if(!jsonObject.isNull("idUsuario")){
-		u.setIdUsuario(jsonObject.getInt("idUsuario"));
-	}
-	u.setUsuarioId(jsonObject.getInt("usuarioId"));
-	u.setLogin(jsonObject.getString("login"));
-	u.setSenha(jsonObject.getString("senha"));
-	u.setUsuarioSaiku(jsonObject.getString("usuarioSaiku"));
-	
-	Perfil perfil = new Perfil();
-	perfil.setIdPerfil(jsonObject.getInt("idPerfil"));
-	u.setPerfil(perfil);
-	
-	
-//	Pessoa pessoa = new Pessoa();
-//	pessoa.setIdPessoa(jsonObject.getInt("idPessoa"));
-//	u.setPessoa(pessoa);
-	
-	return u;
-}*/
 }

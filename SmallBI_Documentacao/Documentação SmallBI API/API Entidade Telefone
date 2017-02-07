@@ -65,11 +65,10 @@ Parametros: "application/json"
 Exemplo: 
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/telefone/getById/1
 Retorno:
-  {
-    "telefone": "1234-5678",
-    "pessoa": "Zezinho",
-    "cliente": "SmallBI",
-    "tipo": "Cobrança",
-    "ddd": 41,
-    "idTelefone": 8
-  }
+{
+  "telefone": "1234-5678",
+  "idCliente": 1,
+  "idTipo": 1,
+  "ddd": 41,
+  "idTelefone": 11
+}

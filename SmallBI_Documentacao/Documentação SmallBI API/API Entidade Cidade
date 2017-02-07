@@ -8,8 +8,10 @@ Método: GET
 Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cidade/listar"
 Retorno:
 {
-	"idCidade": 1,
-	"nomeCidade": "Acrelândia"
+  "nomeCidade": "Feijó",
+  "idEstado": 1,
+  "idCidade": "8",
+  "estado": "Acre"
 }
 
 Adicionar:
@@ -52,6 +54,8 @@ Exemplo:
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cidade/getById/1
 Response:
 {
-	"idCidade": 1,
-	"nomeCidade": "Acrelândia"
+  "nomeCidade": "Feijó",
+  "idEstado": 1,
+  "idCidade": "8",
+  "estado": "Acre"
 }

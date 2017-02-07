@@ -98,6 +98,7 @@ public class CuboWebService {
 		Hashtable<String, Object> hash = new Hashtable<>();
 		hash.put("idCubo", c.getIdCubo());
 		hash.put("nomeCubo", c.getNomeCubo());
+		hash.put("idCliente", c.getCliente().getIdCliente());
 		hash.put("cliente", c.getCliente().getNomeFantasia());
 		hash.put("mdx", c.getMdx());
 		hash.put("tabelaFato", c.getTabelaFato());
