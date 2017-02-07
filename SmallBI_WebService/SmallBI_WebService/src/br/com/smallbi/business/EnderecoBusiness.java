@@ -188,5 +188,14 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 		}
 		return null;
 	}
-
+	
+	public Endereco getByPessoa(Integer idPessoa){
+		List<Endereco> enderecos = list();
+		for(Endereco e : enderecos){
+			if(e.getPessoa().getIdPessoa() == idPessoa){
+				return e;
+			}
+		}
+		return null;
+	}
 }

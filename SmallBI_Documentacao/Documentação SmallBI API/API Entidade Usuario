@@ -56,18 +56,35 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/alter
 Parametros: "application/json"
 Exemplo:
 {
-	"idPessoa":1,
+    //Dados Pessoa
+    "idPessoa": 1,
     "usuarioId": 1,
-    "nome":"Deyneson", //Dado referente a pessoa
-    "cpf":"123.456.789-09", //Dado referente a pessoa
-    "rg":"12.123.123-1", //Dado referente a pessoa
-    "idCliente":"1", //Dado referente a pessoa
-    "idFuncao":"1", //Dado referente a pessoa
-    "idUsuario":5,
+    "nome":"Deyneson", 
+    "cpf":"123.456.789-09",
+    "rg":"12.123.123-1",
+    "idCliente":"1",
+    "idFuncao":"1", 
+    
+    //Dados Usuario
+    "idUsuario": 1,
     "login": "deynesonborba",
     "senha": "12345",
     "usuarioSaiku": "none",
-    "idPerfil": 1
+    "idPerfil": 1,
+
+    //Dados Endereco
+    "idEndereco": 1,
+    "endereco": "Rua do Zacarias",
+    "numero": 1200,
+    "bairro": "Centro",
+    "idCidade":"1",
+    "idTipoEndereco": "1",
+    
+    //Dados Telefone
+    "idTelefone": 1,
+    "idTipoTelefone": 1,
+    "ddd": 41,
+    "telefone": "9999-9999"
 }
 
 Deletar:
@@ -87,16 +104,33 @@ Exemplo:
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/getById/1
 Retorno:
 {
-  "nome": "Zezinho da Silva",
-  "cpf": "123.123.123-12",
-  "senha": "123",
-  "usuarioId": 1,
-  "idPessoa": 1,
-  "idPerfil": 1,
-  "idCliente": 1,
-  "login": "borbagato",
-  "idUsuario": 3,
-  "rg": "12.123.123-1",
-  "idFuncao": 1,
-  "usuarioSaiku": "borbasaiku"
+    //Dados Pessoa
+    "idPessoa": 1,
+    "usuarioId": 1,
+    "nome":"Deyneson", 
+    "cpf":"123.456.789-09",
+    "rg":"12.123.123-1",
+    "idCliente":"1",
+    "idFuncao":"1", 
+    
+    //Dados Usuario
+    "idUsuario": 1,
+    "login": "deynesonborba",
+    "senha": "12345",
+    "usuarioSaiku": "none",
+    "idPerfil": 1,
+
+    //Dados Endereco
+    "idEndereco": 1,
+    "endereco": "Rua do Zacarias",
+    "numero": 1200,
+    "bairro": "Centro",
+    "idCidade":"1",
+    "idTipoEndereco": "1",
+    
+    //Dados Telefone
+    "idTelefone": 1,
+    "idTipoTelefone": 1,
+    "ddd": 41,
+    "telefone": "9999-9999"
 }

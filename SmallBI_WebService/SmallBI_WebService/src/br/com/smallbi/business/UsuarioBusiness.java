@@ -230,7 +230,7 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 	}
 	
 	public Usuario getByUsername(String username){		
-		List<Usuario> usuarios = usuarioDao.list();		
+		List<Usuario> usuarios = list();		
 		for(Usuario u : usuarios){
 			if(u.getLogin().equals(username))
 				return u;

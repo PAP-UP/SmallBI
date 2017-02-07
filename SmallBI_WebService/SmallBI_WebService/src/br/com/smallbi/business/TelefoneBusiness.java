@@ -227,5 +227,14 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 		}
 		return null;
 	}
-
+	
+	public Telefone getByPessoa(Integer idPessoa){
+		List<Telefone> telefones = list();
+		for(Telefone t : telefones){
+			if(t.getPessoa().getIdPessoa() == idPessoa){
+				return t;
+			}
+		}
+		return null;
+	}
 }

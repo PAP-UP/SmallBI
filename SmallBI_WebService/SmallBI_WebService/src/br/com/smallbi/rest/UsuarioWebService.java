@@ -69,7 +69,9 @@ public class UsuarioWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setUsuario(String json) throws JSONException{
 		Usuario usuario = getObjectFromHash(json);
-		return gson.toJson(usuarioBusiness.update(usuario));
+		String response = usuarioBusiness.update(usuario);
+		appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+		return gson.toJson(response);
 	}
 	
 	@DELETE
@@ -110,6 +112,20 @@ public class UsuarioWebService {
 		hash.put("usuarioSaiku", u.getUsuarioSaiku());
 		hash.put("idPerfil", u.getPerfil().getIdPerfil());
 		
+		Endereco e = new EnderecoBusiness().getByPessoa(u.getPessoa().getIdPessoa());
+		hash.put("idEndereco", e.getIdEndereco());
+		hash.put("endereco", e.getEndereco());
+		hash.put("numero", e.getNumero());
+		hash.put("bairro", e.getBairro());
+		hash.put("idCidade", e.getCidade().getIdCidade());
+		hash.put("idTipoEndereco", e.getTipo().getIdTipo());
+		
+		Telefone t = new TelefoneBusiness().getByPessoa(u.getPessoa().getIdPessoa());
+		hash.put("idTelefone", t.getIdTelefone());
+		hash.put("idTipoTelefone", t.getTipo().getIdTipo());
+		hash.put("ddd", t.getDdd());
+		hash.put("telefone", t.getTelefone());
+		
 		return hash;
 	}
 	
@@ -122,8 +138,17 @@ public class UsuarioWebService {
 			jsonObject.remove("idCliente");
 		}		
 		
-		new EnderecoWebService().addEndereco(jsonObject.toString());
-		new TelefoneWebService().addTelefone(jsonObject.toString());
+		if(jsonObject.isNull("idEndereco")){
+			new EnderecoWebService().addEndereco(jsonObject.toString());
+		}else{
+			new EnderecoWebService().setEndereco(jsonObject.toString());
+		}
+		
+		if(jsonObject.isNull("idTelefone")){
+			new TelefoneWebService().addTelefone(jsonObject.toString());
+		}else{
+			new TelefoneWebService().setTelefone(jsonObject.toString());
+		}		
 	}
 	
 	public Hashtable<String, Object> getHashFromObject(Usuario u){
