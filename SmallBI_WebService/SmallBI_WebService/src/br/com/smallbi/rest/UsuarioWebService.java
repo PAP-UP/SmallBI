@@ -97,7 +97,7 @@ public class UsuarioWebService {
 		if(usuario != null){
 			return gson.toJson(getHashById(usuario));
 		}
-		return "Nenhum resultado foi encontrado na tabela Usuario com o id {"+idUsuario+"}";
+		return gson.toJson("Nenhum resultado foi encontrado na tabela Usuario com o id {"+idUsuario+"}");
 	}
 	
 	public Hashtable<String, Object> getHashById(Usuario u){
