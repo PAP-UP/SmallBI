@@ -20,12 +20,17 @@ import org.codehaus.jettison.json.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import br.com.smallbi.business.EnderecoBusiness;
 import br.com.smallbi.business.PessoaBusiness;
+import br.com.smallbi.business.TelefoneBusiness;
 import br.com.smallbi.business.UsuarioBusiness;
+import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Cliente;
+import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Funcao;
 import br.com.smallbi.entity.Perfil;
 import br.com.smallbi.entity.Pessoa;
+import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Usuario;
 
 @Path("/usuario")
@@ -53,7 +58,9 @@ public class UsuarioWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addUsuario(String json) throws JSONException{
 		Usuario usuario = getObjectFromHash(json);
-		return gson.toJson(usuarioBusiness.create(usuario));
+		String response = usuarioBusiness.create(usuario);
+		appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+		return gson.toJson(response);
 	}
 	
 	@POST
@@ -104,6 +111,19 @@ public class UsuarioWebService {
 		hash.put("idPerfil", u.getPerfil().getIdPerfil());
 		
 		return hash;
+	}
+	
+	public void appendEnderecoTelefone(String json, int idPessoa, int usuarioId) throws JSONException{
+		
+		JSONObject jsonObject = new JSONObject(json);
+		jsonObject.put("idPessoa", idPessoa);
+		
+		if(!jsonObject.isNull("idCliente")){
+			jsonObject.remove("idCliente");
+		}		
+		
+		new EnderecoWebService().addEndereco(jsonObject.toString());
+		new TelefoneWebService().addTelefone(jsonObject.toString());
 	}
 	
 	public Hashtable<String, Object> getHashFromObject(Usuario u){
@@ -158,7 +178,6 @@ public class UsuarioWebService {
 		Perfil perfil = new Perfil();
 		perfil.setIdPerfil(jsonObject.getInt("idPerfil"));
 		u.setPerfil(perfil);
-
 		return u;
 	}
 }

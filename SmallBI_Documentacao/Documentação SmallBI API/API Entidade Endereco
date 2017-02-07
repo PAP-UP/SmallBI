@@ -36,7 +36,7 @@ Exemplo:
     "bairro": "Centro",
     "idCidade":"1",
     "idPessoa":"1" ou "idCliente":"1",
-    "idTipo": "1"
+    "idTipoEndereco": "1"
   }
 
 Alterar:
@@ -52,7 +52,7 @@ Exemplo:
     "bairro": "Centro",
     "idCidade":"1",
     "idPessoa":"1" ou "idCliente":"1",
-    "idTipo": "1"
+    "idTipoEndereco": "1"
   }
 
 
@@ -73,12 +73,11 @@ Exemplo:
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/getById/1
 Retorno:
 {
+  "idPessoa": 1,
   "numero": 1200,
-  "pessoa": "Zezinho",
-  "tipo": "Cobrança",
-  "cliente": "SmallBI",
+  "idTipoEndereco": 1,
   "bairro": "Centro",
+  "idCidade": 1,
   "idEndereco": 3,
-  "cidade": "Acrelândia",
   "endereco": "Rua do Zacarias"
 }

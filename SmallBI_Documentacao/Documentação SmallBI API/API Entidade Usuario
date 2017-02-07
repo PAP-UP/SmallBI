@@ -23,16 +23,31 @@ Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/adici
 Parametros: "application/json"
 Exemplo:
 {
+    //Dados Pessoa
     "usuarioId": 1,
-    "nome":"Deyneson", //Dado referente a pessoa
-    "cpf":"123.456.789-09", //Dado referente a pessoa
-    "rg":"12.123.123-1", //Dado referente a pessoa
-    "idCliente":"1", //Dado referente a pessoa
-    "idFuncao":"1", //Dado referente a pessoa
+    "nome":"Deyneson", 
+    "cpf":"123.456.789-09",
+    "rg":"12.123.123-1",
+    "idCliente":"1",
+    "idFuncao":"1", 
+    
+    //Dados Usuario
     "login": "deynesonborba",
     "senha": "12345",
     "usuarioSaiku": "none",
-    "idPerfil": 1
+    "idPerfil": 1,
+
+    //Dados Endereco
+    "endereco": "Rua do Zacarias",
+    "numero": 1200,
+    "bairro": "Centro",
+    "idCidade":"1",
+    "idTipoEndereco": "1",
+    
+    //Dados Telefone
+    "idTipoTelefone": 1,
+    "ddd": 41,
+    "telefone": "9999-9999"
 }
 
 Alterar:

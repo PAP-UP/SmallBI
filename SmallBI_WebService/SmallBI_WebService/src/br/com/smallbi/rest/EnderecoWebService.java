@@ -103,7 +103,7 @@ public class EnderecoWebService {
 			hash.put("idCliente", e.getCliente().getIdCliente());
 		}
 		
-		hash.put("idTipo", e.getTipo().getIdTipo());
+		hash.put("idTipoEndereco", e.getTipo().getIdTipo());
 		
 		return hash;
 	}
@@ -138,7 +138,7 @@ public class EnderecoWebService {
 		}
 
 		Tipo tipo = new Tipo();
-		tipo.setIdTipo(jsonObject.getInt("idTipo"));
+		tipo.setIdTipo(jsonObject.getInt("idTipoEndereco"));
 		e.setTipo(tipo);
 
 		return e;
@@ -158,7 +158,7 @@ public class EnderecoWebService {
 		if(e.getCliente() != null){
 			hashtable.put("cliente", e.getCliente().getNomeFantasia());
 		}
-		hashtable.put("tipo", e.getTipo().getTipo());		
+		hashtable.put("idTipoEndereco", e.getTipo().getTipo());		
 		return hashtable;
 	}
 }

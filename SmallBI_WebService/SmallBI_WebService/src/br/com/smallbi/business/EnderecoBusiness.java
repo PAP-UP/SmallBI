@@ -21,7 +21,6 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 	public String create(Endereco t){
 		
 		if(t == null){
-//			throw new BusinessException("O objeto não pode ser null!");
 			return "O objeto não pode ser null!";
 		}
 		
@@ -30,7 +29,6 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 		}
 		
 		if(t.getBairro().equals(null) || t.getBairro().equals("")){
-//			throw new BusinessException("A variável 'bairro' deve ser informada!");
 			return "A variável 'bairro' deve ser informada!";
 		}
 		
@@ -38,29 +36,20 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 			if(t.getCidade().getIdCidade() != null){
 				Cidade cidade = cidadeDao.getObjById(t.getCidade().getIdCidade());
 				if(cidade == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'cidade' foi encontrado!");
 					return "Nenhum resultado para a variável 'cidade' foi encontrado!";
 				}
 			}else{
-//				throw new BusinessException("A variável 'cidade.idCidade' deve ser informada!");
 				return "A variável 'cidade.idCidade' deve ser informada!";
 			}
 		}else{
-//			throw new BusinessException("A variável 'cidade' deve ser informada!");
 			return "A variável 'cidade' deve ser informada!";
 		}
 		
-/*		if(t.getDataCadastro() == null){
-			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}*/
-		
 		if(t.getEndereco().equals(null) || t.getEndereco().equals("")){
-//			throw new BusinessException("A variável 'endereco' deve ser informada!");
 			return "A variável 'endereco' deve ser informada!";
 		}
 		
 		if(t.getNumero() <= 0){
-//			throw new BusinessException("A variável 'numero' deve ser informada!");
 			return "A variável 'numero' deve ser informada!";
 		}
 		
@@ -68,20 +57,16 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 			if(t.getTipo().getIdTipo() != null){
 				Tipo tipo = tipoDao.getObjById(t.getTipo().getIdTipo());
 				if(tipo == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'tipo' foi encontrado!");
 					return "Nenhum resultado para a variável 'tipo' foi encontrado!";
 				}
 			}else{
-//				throw new BusinessException("A variável 'tipo.idTipo' deve ser informada!");
 				return "A variável 'tipo.idTipo' deve ser informada!";
 			}
 		}else{
-//			throw new BusinessException("A variável 'tipo' deve ser informada!");
 			return "A variável 'tipo' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		

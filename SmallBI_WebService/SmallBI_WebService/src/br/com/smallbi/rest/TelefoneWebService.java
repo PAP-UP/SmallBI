@@ -88,7 +88,7 @@ public class TelefoneWebService {
 	public Hashtable<String, Object> getHashById(Telefone t){
 		Hashtable<String, Object> hash = new Hashtable<>();
 		hash.put("idTelefone", t.getIdTelefone());
-		hash.put("idTipo", t.getTipo().getIdTipo());
+		hash.put("idTipoTelefone", t.getTipo().getIdTipo());
 		hash.put("ddd", t.getDdd());
 		hash.put("telefone", t.getTelefone());
 		
@@ -128,7 +128,7 @@ public class TelefoneWebService {
 		t.setUsuarioId(jsonObject.getInt("usuarioId"));
 		
 		Tipo tipo = new Tipo();
-		tipo.setIdTipo(jsonObject.getInt("idTipo"));
+		tipo.setIdTipo(jsonObject.getInt("idTipoTelefone"));
 		t.setTipo(tipo);
 		
 		t.setDdd(jsonObject.getInt("ddd"));

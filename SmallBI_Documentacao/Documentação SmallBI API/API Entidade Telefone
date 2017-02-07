@@ -29,7 +29,7 @@ Parametros: "application/json"
 Exemplo:
 {
     "usuarioId": 1,
-    "idTipo": 1,
+    "idTipoTelefone": 1,
     "ddd": 41,
     "telefone": "9999-9999",
     "idPessoa": 1 ou "idCliente": 1    
@@ -43,7 +43,7 @@ Exemplo:
 {
     "idTelefone": 1,
     "usuarioId": 1,
-    "idTipo": 1,
+    "idTipoTelefone": 1,
     "ddd": 41,
     "telefone": "9999-9999",
     "idPessoa": 1 ou "idCliente": 1    
@@ -68,7 +68,7 @@ Retorno:
 {
   "telefone": "1234-5678",
   "idCliente": 1,
-  "idTipo": 1,
+  "idTipoTelefone": 1,
   "ddd": 41,
   "idTelefone": 11
 }
