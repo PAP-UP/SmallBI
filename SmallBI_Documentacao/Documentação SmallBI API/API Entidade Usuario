@@ -1,6 +1,6 @@
 Documentação SmallBI API
 
-Entidade Usu´ario:
+Entidade Usuário:
 url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/"
 
 Listar: 
@@ -104,6 +104,7 @@ Exemplo:
 http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/getById/1
 Retorno:
 {
+<<<<<<< HEAD
     //Dados Pessoa
     "idPessoa": 1,
     "usuarioId": 1,
@@ -134,3 +135,18 @@ Retorno:
     "ddd": 41,
     "telefone": "9999-9999"
 }
+=======
+  "nome": "Zezinho da Silva",
+  "cpf": "123.123.123-12",
+  "senha": "123",
+  "usuarioId": 1,
+  "idPessoa": 1,
+  "idPerfil": 1,
+  "idCliente": 1,
+  "login": "borbagato",
+  "idUsuario": 3,
+  "rg": "12.123.123-1",
+  "idFuncao": 1,
+  "usuarioSaiku": "borbasaiku"
+}
+>>>>>>> 2816fad6e7cc4c7d777433d2e398272a0753afb0
