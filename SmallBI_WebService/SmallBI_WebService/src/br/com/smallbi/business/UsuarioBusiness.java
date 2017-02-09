@@ -13,6 +13,7 @@ import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Perfil;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Usuario;
+import br.com.smallbi.util.SaikuConnection;
 import br.com.smallbi.util.Util;
 
 public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
@@ -33,26 +34,6 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		if(t.getIdUsuario() != null){
 			return "A variavel ID não pode ser informada na criação de um novo objeto!";
 		}
-		
-/*		if(t.getDataCadastro() == null){
-			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}*/
-		
-//		if(t.getCliente() != null){
-//			if(t.getCliente().getIdCliente() != null){
-//				Cliente cliente = empresaDao.getObjById(t.getCliente().getIdCliente());
-//				if(cliente == null){
-////					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
-//					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
-//				}
-//			}else{
-////				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
-//				return "A variável 'empresa.idEmpresa' deve ser informada!";
-//			}
-//		}else{
-////			throw new BusinessException("A variável 'empresa' deve ser informada!");
-//			return "A variável 'empresa' deve ser informada!";
-//		}
 		
 		if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
@@ -104,6 +85,12 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
+		int code = SaikuConnection.addUsuarioSaiku(t.getUsuarioSaiku(), t.getSenha());
+		
+		if(code != 200){
+			return "Falha ao adicionar usuário ao sistema Saiku!" + " Código da API do Saiku: " + code;
+		}
+		
 		//Call here encryption method
 		//t.setSenha(Util.makePasswordHash(t.getSenha(), Integer.toString(random.nextInt())));
 		
@@ -124,26 +111,6 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 
 	@Override
 	public String update(Usuario t){
-		
-/*		if(t.getDataCadastro() == null){
-			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}*/
-		
-//		if(t.getCliente() != null){
-//			if(t.getCliente().getIdCliente() != null){
-//				Cliente cliente = empresaDao.getObjById(t.getCliente().getIdCliente());
-//				if(cliente == null){
-////					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
-//					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
-//				}
-//			}else{
-////				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
-//				return "A variável 'empresa.idEmpresa' deve ser informada!";
-//			}
-//		}else{
-////			throw new BusinessException("A variável 'empresa' deve ser informada!");
-//			return "A variável 'empresa' deve ser informada!";
-//		}
 		
 		if(t.getIdUsuario() == null){
 			return "A variável 'idUsuario' deve ser informada!";

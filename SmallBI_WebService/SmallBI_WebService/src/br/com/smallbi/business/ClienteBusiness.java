@@ -12,6 +12,7 @@ import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.FormaPagamento;
 import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
+import br.com.smallbi.util.SaikuConnection;
 import br.com.smallbi.util.Util;
 
 public class ClienteBusiness implements InterfaceBusiness<Cliente>{

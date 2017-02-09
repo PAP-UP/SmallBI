@@ -29,6 +29,7 @@ import br.com.smallbi.entity.FormaPagamento;
 import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
 import br.com.smallbi.entity.Telefone;
+import br.com.smallbi.util.SaikuConnection;
 
 @Path("/cliente")
 public class ClienteWebService {
@@ -36,6 +37,16 @@ public class ClienteWebService {
 	ClienteBusiness clienteBusiness = new ClienteBusiness();
 	Gson gson = new Gson();
 	Type type = new TypeToken<Cliente>() {}.getType();
+	
+	@POST
+	@Path("/test")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String test(String json) throws JSONException{
+		JSONObject jsonObject = new JSONObject(json);
+		
+		return gson.toJson(SaikuConnection.addUsuarioSaiku(jsonObject.getString("login"), 
+				jsonObject.getString("senha")));
+	}
 	
 	@GET
 	@Path("/listar")
