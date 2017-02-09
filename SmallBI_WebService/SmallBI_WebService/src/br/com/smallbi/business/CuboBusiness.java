@@ -7,6 +7,7 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import br.com.smallbi.dal.ConexaoDao;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cubo;
@@ -51,13 +52,13 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			return "A variável 'nomeCubo' deve ser informada!";
 		}
 		
-		if(t.getTabelaFato().equals(null) || t.getTabelaFato().equals("")){
+/*		if(t.getTabelaFato().equals(null) || t.getTabelaFato().equals("")){
 			return "A variável 'tabelaFato' deve ser informada!";
 		}
 		
 		if(t.getTamanho() == null){
 			return "A variável 'tamanho' deve ser informada!";
-		}
+		}*/
 		
 		if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
@@ -75,21 +76,27 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 		Usuario usuario = Util.validateLogin(jsonObject.getString("login"), jsonObject.getString("senha"));
 		
 		if(usuario != null){
-			Cubo cubo = new Cubo();			
-			cubo.setCliente(usuario.getCliente());
-			cubo.setMdx(jsonObject.getString("mdx"));
-			cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
-//			cubo.setTabelaFato();
-//			cubo.setTamanho();
-			cubo.setUsuarioId(usuario.getIdUsuario());
 			
-			create(cubo);//Ocorrerá um erro pois não tem TabelaFato nem Tabamho ainda.
+			String scriptSql = jsonObject.getString("scriptSql");
+			String cliente = usuario.getPessoa().getCliente().getNomeFantasia();
+			Integer id = usuario.getPessoa().getCliente().getIdCliente();
+			boolean result = ConexaoDao.salvarScript(cliente, id, scriptSql);
 			
-			//SALVAR SCRIPT SQL NO BANCO DO USUÁRIO!
-//			String scriptSql = jsonObject.getString("scriptSql");
-		}
-		
-		return "";
+			if(result == true){
+				Cubo cubo = new Cubo();			
+				cubo.setCliente(usuario.getPessoa().getCliente());
+				cubo.setMdx(jsonObject.getString("mdx"));
+				cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
+				cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
+				cubo.setTamanho(0); //Provisório
+				cubo.setUsuarioId(usuario.getIdUsuario());
+				
+				create(cubo);
+			}else{
+				return "Falha ao salvar tabelas no bando de dados do cliente!";
+			}
+		}		
+		return "Usuário ou senha inválidos";
 	}
 	
 	@Override
@@ -107,63 +114,48 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 	public String update(Cubo t){
 		
 		if(t == null){
-//			throw new BusinessException("O objeto não pode ser null!");
 			return "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdCubo() == null){
-//			throw new BusinessException("A variável 'idCidade' deve ser informada!");
 			return "A variável 'idCidade' deve ser informada!";
 		}else{
 			Cubo cubo = cuboDao.getObjById(t.getIdCubo());
 			if(cubo == null){
-//				throw new BusinessException("Nenhum resultado para a variável 'cubo' foi encontrado!");
 				return "Nenhum resultado para a variável 'cubo' foi encontrado!";
 			}
 		}
-		
-/*		if(t.getDataCadastro() == null){
-			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}*/
 		
 		if(t.getCliente() != null){
 			if(t.getCliente().getIdCliente() != null){
 				Cliente cliente = empresaDao.getObjById(t.getCliente().getIdCliente());
 				if(cliente == null){
-//					throw new BusinessException("Nenhum resultado para a variável 'empresa' foi encontrado!");
 					return "Nenhum resultado para a variável 'empresa' foi encontrado!";
 				}
 			}else{
-//				throw new BusinessException("A variável 'empresa.idEmpresa' deve ser informada!");
 				return "A variável 'empresa.idEmpresa' deve ser informada!";
 			}
 		}else{
-//			throw new BusinessException("A variável 'empresa' deve ser informada!");
 			return "A variável 'empresa' deve ser informada!";
 		}
 		
 		if(t.getMdx().equals(null) || t.getMdx().equals("")){
-//			throw new BusinessException("A variável 'mdx' deve ser informada!");
 			return "A variável 'mdx' deve ser informada!";
 		}
 		
 		if(t.getNomeCubo().equals(null) || t.getNomeCubo().equals("")){
-//			throw new BusinessException("A variável 'nomeCubo' deve ser informada!");
 			return "A variável 'nomeCubo' deve ser informada!";
 		}
 		
 		if(t.getTabelaFato().equals(null) || t.getTabelaFato().equals("")){
-//			throw new BusinessException("A variável 'tabelaFato' deve ser informada!");
 			return "A variável 'tabelaFato' deve ser informada!";
 		}
 		
 		if(t.getTamanho() == null){
-//			throw new BusinessException("A variável 'tamanho' deve ser informada!");
 			return "A variável 'tamanho' deve ser informada!";
 		}
 		
 		if(t.getUsuarioId() == null){
-//			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		

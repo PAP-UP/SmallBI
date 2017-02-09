@@ -133,14 +133,19 @@ public class FormEnviarCubo extends javax.swing.JFrame {
             String senha = txtAuten_Senha.getText();
             String mdx = GerarSchema.schemaXml;
             String nomeCubo = GerarSchema.nomeSchema;
+            String scriptSql = new String();
+            for(String s : GerarScriptSql.scripts){
+                scriptSql += s;
+            }
             
             Hashtable<String, Object> hash = new Hashtable<>();
             hash.put("login", login);
             hash.put("senha", senha);
             hash.put("mdx", mdx);
             hash.put("nomeCubo", nomeCubo);
+            hash.put("scriptSql", scriptSql);
   
-            String url = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+            String url = "http://localhost:8081/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
             HttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost httpPost = new HttpPost(url);
             Gson gson = new Gson();

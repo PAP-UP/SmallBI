@@ -59,8 +59,7 @@ public class CuboWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addCuboFromAssis(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
-		cuboBusiness.createFromAssistent(jsonObject);
-		return "";
+		return gson.toJson(cuboBusiness.createFromAssistent(jsonObject));
 	}
 	
 	@POST

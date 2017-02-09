@@ -12,7 +12,6 @@ import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.FormaPagamento;
 import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
-import br.com.smallbi.util.SaikuConnection;
 import br.com.smallbi.util.Util;
 
 public class ClienteBusiness implements InterfaceBusiness<Cliente>{
@@ -104,7 +103,11 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		
 		clienteDao.create(t);
 		
-		ConexaoDao.criarDatabase(t.getNomeFantasia(), t.getIdCliente());
+		boolean result = ConexaoDao.criarDatabase(t.getNomeFantasia(), t.getIdCliente());
+		
+		if(result == false){
+			return "Falha ao criar banco de dados do cliente!";
+		}
 		
 		return "Cliente cadastrado com sucesso!";
 	}

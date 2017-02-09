@@ -43,15 +43,22 @@ public class Util {
     	
     	if(usuario == null){
     		System.out.println("Usuário não existe no banco de dados.");
+    		return null;
+    	}else{        	
+        	if(!usuario.getSenha().equals(password)){
+        		return null;
+        	}
     	}
     	
-    	String hashedAndSalted = usuario.getSenha();    	
+    	
+    	
+    	/*String hashedAndSalted = usuario.getSenha();    	
     	String salt = hashedAndSalted.split(",")[1];
     	
     	if(!hashedAndSalted.equals(makePasswordHash(password, salt))){
     		System.out.println("A senha informada não corresponde ao usuário.");
     		return null;
-    	}    	
+    	} */   	
     	return usuario;
     }
 }

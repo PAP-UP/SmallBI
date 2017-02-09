@@ -11,7 +11,7 @@ import javax.swing.JTable;
 
 public class GerarScriptSql {
     
-    private static List<String> scripts = new ArrayList<>();
+    public static List<String> scripts = new ArrayList<>();
     public static String scriptSqlTabelaPivot;
         
     public String salvarTabelaPivot(JTable tbl, String nomeTabela, String chavePrimaria,
