@@ -32,8 +32,9 @@ public class SaikuConnection {
 		}		
 		
 		System.out.println(jsonObject);
-		
-		String url = "http://localhost:8080/saiku/rest/saiku/admin/users/";
+		//http://backend.smallbi.com.br:28080/
+		//http://localhost:8080/
+		String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/users/";
 		HttpClient httpClient = HttpClientBuilder.create().build();
 		HttpPost httpPost = new HttpPost(url);
 

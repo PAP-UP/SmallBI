@@ -145,7 +145,7 @@ public class FormEnviarCubo extends javax.swing.JFrame {
             hash.put("nomeCubo", nomeCubo);
             hash.put("scriptSql", scriptSql);
   
-            String url = "http://localhost:8081/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+            String url = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
             HttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost httpPost = new HttpPost(url);
             Gson gson = new Gson();

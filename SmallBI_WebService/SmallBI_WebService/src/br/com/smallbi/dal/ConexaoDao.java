@@ -2,7 +2,6 @@ package br.com.smallbi.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -61,6 +60,7 @@ public class ConexaoDao {
     private static String formatarString(String str) {
         String strFormatada = str.toLowerCase();
         strFormatada = strFormatada.replaceAll(" ", "_");
+        strFormatada = strFormatada.replaceAll("-", "_");
         return strFormatada;
     }
 }
