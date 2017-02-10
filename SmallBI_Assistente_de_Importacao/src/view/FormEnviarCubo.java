@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -154,14 +155,30 @@ public class FormEnviarCubo extends javax.swing.JFrame {
                 httpPost.setEntity(postingString);
                 httpPost.setHeader("Content-Type", "application/json");
                 HttpResponse response = httpClient.execute(httpPost);
+                
+                int cod = response.getStatusLine().getStatusCode();
+                JOptionPane.showMessageDialog(null, "Código: " + cod + ". " + getResponse(cod));
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+            }            
         }
     }
+    
+    private String getResponse(int cod){
+        switch(cod){
+            case 200: 
+                return "Cubo enviado com sucesso!";
+            case 404:
+                return "Falha ao enviar cubo. Servidor não encontrado";
+            case 500:
+                return "Falha ao enviar cubo. Erro interno na API";
+            
+        }
+        return "";
+    }
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
