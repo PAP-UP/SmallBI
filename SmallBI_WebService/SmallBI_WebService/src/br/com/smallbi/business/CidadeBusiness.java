@@ -21,13 +21,8 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 	public String create(Cidade t){
 		
 		if(t == null){
-			//throw new BusinessException("O objeto não pode ser null!");
 			return "O objeto não pode ser null!";
 		}
-		
-/*		if(t.getDataCadastro() == null){
-			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}*/
 		
 		if(t.getIdCidade() != null){
 			return "A variavel ID não pode ser informada na criação de um novo objeto!";
@@ -37,30 +32,20 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 			if(t.getEstado().getIdEstado() != null){
 				Estado estado = estadoDao.getObjById(t.getEstado().getIdEstado());
 				if(estado == null){
-					//throw new BusinessException("Nenhum resultado para a variável 'estado' foi encontrado!");
 					return "Nenhum resultado para a variável 'estado' foi encontrado!";
 				}
 			}else{
-				//throw new BusinessException("A variável 'estado.idEstado' deve ser informada!");
 				return "A variável 'estado.idEstado' deve ser informada!";
 			}
 		}else{
-			//throw new BusinessException("A variável 'estado' deve ser informada!");
 			return "A variável 'estado' deve ser informada!";
 		}
 		
 		if(t.getNomeCidade().equals(null) || t.getNomeCidade().equals("")){
-			//throw new BusinessException("A variável 'nomeCidade' deve ser informada!");
 			return "A variável 'nomeCidade' deve ser informada!";
 		}
 		
-//		if(t.getSiglaCidade().equals(null) || t.getSiglaCidade().equals("")){
-//			//throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
-//			return "A variável 'siglaCidade' deve ser informada!";
-//		}
-		
 		if(t.getUsuarioId() == null){
-			//throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
@@ -86,53 +71,36 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 	public String update(Cidade t){
 
 		if(t == null){
-			//throw new BusinessException("O objeto não pode ser null!");
 			return "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdCidade() == null){
-			//throw new BusinessException("A variável 'idCidade' deve ser informada!");
 			return "A variável 'idCidade' deve ser informada!";
 		}else{
 			Cidade cidade = cidadeDao.getObjById(t.getIdCidade());
 			if(cidade == null){
-				//throw new BusinessException("Nenhum resultado para a variável 'cidade' foi encontrado!");
 				return "Nenhum resultado para a variável 'cidade' foi encontrado!";
 			}
 		}
-		
-/*		if(t.getDataCadastro() == null){
-			throw new BusinessException("A variável 'dataCadastro' deve ser informada!");
-		}*/
 		
 		if(t.getEstado() != null){
 			if(t.getEstado().getIdEstado() != null){
 				Estado estado = estadoDao.getObjById(t.getEstado().getIdEstado());
 				if(estado == null){
-					//throw new BusinessException("Nenhum resultado para a variável 'estado' foi encontrado!");
 					return "Nenhum resultado para a variável 'estado' foi encontrado!";
 				}
 			}else{
-				//throw new BusinessException("A variável 'estado.idEstado' deve ser informada!");
 				return "A variável 'estado.idEstado' deve ser informada!";
 			}
 		}else{
-			//throw new BusinessException("A variável 'estado' deve ser informada!");
 			return "A variável 'estado' deve ser informada!";
 		}
 		
 		if(t.getNomeCidade().equals(null) || t.getNomeCidade().equals("")){
-			//throw new BusinessException("A variável 'nomeCidade' deve ser informada!");
 			return "A variável 'nomeCidade' deve ser informada!";
 		}
 		
-//		if(t.getSiglaCidade().equals(null) || t.getSiglaCidade().equals("")){
-//			//throw new BusinessException("A variável 'siglaCidade' deve ser informada!");
-//			return "A variável 'siglaCidade' deve ser informada!";
-//		}
-		
 		if(t.getUsuarioId() == null){
-			//throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		

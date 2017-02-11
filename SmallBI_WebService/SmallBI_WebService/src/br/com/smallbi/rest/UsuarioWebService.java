@@ -130,7 +130,7 @@ public class UsuarioWebService {
 		if(t != null){
 			hash.put("idTelefone", t.getIdTelefone());
 			hash.put("idTipoTelefone", t.getTipo().getIdTipo());
-			hash.put("ddd", t.getDdd());
+			//hash.put("ddd", t.getDdd());
 			hash.put("telefone", t.getTelefone());
 		}
 		
@@ -146,11 +146,15 @@ public class UsuarioWebService {
 			jsonObject.remove("idCliente");
 		}		
 		
-		if(jsonObject.isNull("idEndereco")){
+		//AGUARDANDO DEFINIÇÃO
+		if(!jsonObject.isNull("endereco")){
+			new EnderecoWebService().addEndereco(jsonObject.toString());
+		}
+/*		if(jsonObject.isNull("idEndereco")){
 			new EnderecoWebService().addEndereco(jsonObject.toString());
 		}else{
 			new EnderecoWebService().setEndereco(jsonObject.toString());
-		}
+		}*/
 		
 		if(jsonObject.isNull("idTelefone")){
 			new TelefoneWebService().addTelefone(jsonObject.toString());

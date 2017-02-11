@@ -17,8 +17,8 @@ Retorno:
     "telefone": "1234-5678",
     "pessoa": "Zezinho",
     "cliente": "SmallBI",
-    "tipo": "Cobrança",
-    "ddd": 41,
+								    "tipo": "Cobrança", //REMOVIDO
+								    "ddd": 41, //REMOVIDO
     "idTelefone": 8
   }
 
@@ -29,8 +29,8 @@ Parametros: "application/json"
 Exemplo:
 {
     "usuarioId": 1,
-    "idTipoTelefone": 1,
-    "ddd": 41,
+								    "idTipoTelefone": 1,//REMOVIDO
+								    "ddd": 41,//REMOVIDO
     "telefone": "9999-9999",
     "idPessoa": 1 ou "idCliente": 1    
 }
@@ -43,8 +43,8 @@ Exemplo:
 {
     "idTelefone": 1,
     "usuarioId": 1,
-    "idTipoTelefone": 1,
-    "ddd": 41,
+								    "idTipoTelefone": 1,//REMOVIDO
+								    "ddd": 41,//REMOVIDO
     "telefone": "9999-9999",
     "idPessoa": 1 ou "idCliente": 1    
 }
@@ -68,7 +68,7 @@ Retorno:
 {
   "telefone": "1234-5678",
   "idCliente": 1,
-  "idTipoTelefone": 1,
-  "ddd": 41,
+						  "idTipoTelefone": 1,//REMOVIDO
+						  "ddd": 41,//REMOVIDO
   "idTelefone": 11
 }

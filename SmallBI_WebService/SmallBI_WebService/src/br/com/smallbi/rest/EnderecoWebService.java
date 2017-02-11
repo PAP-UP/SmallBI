@@ -20,10 +20,13 @@ import org.codehaus.jettison.json.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import br.com.smallbi.business.CidadeBusiness;
 import br.com.smallbi.business.EnderecoBusiness;
+import br.com.smallbi.dal.EstadoDao;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Endereco;
+import br.com.smallbi.entity.Estado;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Tipo;
 
@@ -121,9 +124,20 @@ public class EnderecoWebService {
 		e.setNumero(jsonObject.getInt("numero"));
 		e.setBairro(jsonObject.getString("bairro"));
 		
-		Cidade cidade = new Cidade();
-		cidade.setIdCidade(jsonObject.getInt("idCidade"));
-		e.setCidade(cidade);
+		if(!jsonObject.isNull("idEstado")){
+			Estado estado = new EstadoDao().getObjById(jsonObject.getInt("idEstado"));
+			
+			if(estado != null){
+				Cidade cidade = new Cidade();
+				cidade.setEstado(estado);
+				cidade.setNomeCidade(jsonObject.getString("nomeCidade"));
+				cidade.setUsuarioId(jsonObject.getInt("usuarioId"));
+				
+				new CidadeBusiness().create(cidade);
+				
+				e.setCidade(cidade);
+			}
+		}
 		
 		if(!jsonObject.isNull("idPessoa")){
 			Pessoa pessoa = new Pessoa();
@@ -137,9 +151,9 @@ public class EnderecoWebService {
 			e.setCliente(cliente);
 		}
 
-		Tipo tipo = new Tipo();
+/*		Tipo tipo = new Tipo();
 		tipo.setIdTipo(jsonObject.getInt("idTipoEndereco"));
-		e.setTipo(tipo);
+		e.setTipo(tipo);*/
 
 		return e;
 	}
