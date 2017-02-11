@@ -78,15 +78,17 @@ public class UsuarioWebService {
 		return gson.toJson(response);
 	}
 	
-	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@GET
+	@Path("/deletar/{idUsuario}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delUsuario(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
-		Usuario usuario = new Usuario();
-		usuario.setIdUsuario(jsonObject.getInt("idUsuario"));
-		return gson.toJson(usuarioBusiness.delete(usuario.getIdUsuario()));
+	public String delUsuario(@PathParam("idUsuario") String idUsuario) throws JSONException{
+		//JSONObject jsonObject = new JSONObject(json);
+		//Usuario usuario = new Usuario();
+		//usuario.setIdUsuario(jsonObject.getInt("idUsuario"));
+		
+		//return gson.toJson(usuarioBusiness.delete(usuario.getIdUsuario()));
+		return gson.toJson(usuarioBusiness.delete(Integer.parseInt(idUsuario)));
 	}
 	
 	@GET

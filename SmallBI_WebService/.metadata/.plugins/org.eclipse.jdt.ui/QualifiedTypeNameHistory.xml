@@ -11,9 +11,7 @@
 <fullyQualifiedTypeName name="javax.ws.rs.POST"/>
 <fullyQualifiedTypeName name="br.com.smallbi.util.Util"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Cubo"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.PessoaBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Cliente"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Cidade"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Usuario"/>
 <fullyQualifiedTypeName name="br.com.smallbi.rest.TelefoneWebService"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Endereco"/>
@@ -28,7 +26,6 @@
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.util.Hashtable"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Path"/>
 <fullyQualifiedTypeName name="org.apache.http.impl.client.HttpClientBuilder"/>
@@ -58,6 +55,9 @@
 <fullyQualifiedTypeName name="br.com.smallbi.rest.EnderecoWebService"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Estado"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.EstadoDao"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.CidadeBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Tipo"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Cidade"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.CidadeBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.PessoaBusiness"/>
 </qualifiedTypeNameHistroy>
