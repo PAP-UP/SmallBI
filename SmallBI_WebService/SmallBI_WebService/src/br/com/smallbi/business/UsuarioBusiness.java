@@ -61,6 +61,8 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 				Pessoa pessoa = pessoaDao.getObjById(t.getPessoa().getIdPessoa());
 				if(pessoa == null){
 					return "Nenhum resultado para a variável 'pessoa' foi encontrado!";
+				}else{
+					t.setPessoa(pessoa);
 				}
 			}else{
 				return "A variável 'pessoa.idPessoa' deve ser informada!";
@@ -85,7 +87,8 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
-		int code = SaikuConnection.addUsuarioSaiku(t.getUsuarioSaiku(), t.getSenha());
+		int code = SaikuConnection.addUsuarioSaiku(t.getUsuarioSaiku(), t.getSenha(), 
+				t.getPessoa().getCliente().getNomeFantasia(), t.getPessoa().getCliente().getIdCliente());
 		
 		if(code != 200){
 			return "Falha ao adicionar usuário ao sistema Saiku!" + " Código da API do Saiku: " + code;

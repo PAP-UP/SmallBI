@@ -17,7 +17,7 @@ import org.codehaus.jettison.json.JSONObject;
 public class SaikuConnection {
 
 	@SuppressWarnings("deprecation")
-	public static int addUsuarioSaiku(String login, String senha){
+	public static int addUsuarioSaiku(String login, String senha, String cliente, Integer idCliente){
 		
 		JSONObject jsonObject = new JSONObject();
 		try {
@@ -25,7 +25,8 @@ public class SaikuConnection {
 			jsonObject.put("email", login);
 			jsonObject.put("password", senha);
 			List<String> roles = new ArrayList<>();
-			roles.add(login);
+			//roles.add(login);
+			roles.add("cliente_" + cliente + "_id_" + idCliente);
 			jsonObject.put("roles", roles);
 		} catch (JSONException e1) {
 			e1.printStackTrace();
