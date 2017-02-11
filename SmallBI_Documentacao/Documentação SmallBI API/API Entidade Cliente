@@ -40,12 +40,9 @@ Exemplo:
   "endereco": "Rua do Cliente",
   "numero": 1200,
   "bairro": "Centro",
-  "idCidade":"1",
-  "idTipoEndereco": "1",
+  "nomeCidade":"Curitiba",
   
   //Dados Telefone
-  "idTipoTelefone": 1,
-  "ddd": 41,
   "telefone": "3333-3333"
 }
 
@@ -70,13 +67,10 @@ Exemplo:
   "endereco": "Rua do Cliente",
   "numero": 1200,
   "bairro": "Centro",
-  "idCidade":"1",
-  "idTipoEndereco": "1",
+  "nomeCidade":"Curitiba",
   
   //Dados Telefone
   "idTelefone":1,
-  "idTipoTelefone": 1,
-  "ddd": 41,
   "telefone": "3333-3333"
 }	
 
@@ -113,11 +107,8 @@ Retorno:
   "numero": 1200,
   "bairro": "Centro",
   "idCidade":"1",
-  "idTipoEndereco": "1",
   
   //Dados Telefone
   "idTelefone":1,
-  "idTipoTelefone": 1,
-  "ddd": 41,
   "telefone": "3333-3333"
 } 

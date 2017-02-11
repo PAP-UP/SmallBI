@@ -37,19 +37,13 @@ Exemplo:
     "usuarioSaiku": "none",
     "idPerfil": 1,
 
-                            //ALTERADO
-                            //Dados Endereco
-                            "endereco": "Rua do Zacarias",
-                            "numero": 1200,
-                            "bairro": "Centro",
-                            "idEstado":1,
-                            "nomeCidade":"Curitiba",
-                                                        "idCidade":"1",//REMOVIDO
-                                                        "idTipoEndereco": "1",//REMOVIDO
+    //Dados Endereco
+    "endereco": "Rua do Zacarias",
+    "numero": 1200,
+    "bairro": "Centro",
+    "nomeCidade":"Curitiba",
     
     //Dados Telefone
-                            "idTipoTelefone": 1,//REMOVIDO
-                            "ddd": 41,//REMOVIDO
     "telefone": "9999-9999"
 }
 
@@ -75,19 +69,15 @@ Exemplo:
     "usuarioSaiku": "none",
     "idPerfil": 1,
 
-                            //REMOVIDO
-                            //Dados Endereco
-                            "idEndereco": 1,
-                            "endereco": "Rua do Zacarias",
-                            "numero": 1200,
-                            "bairro": "Centro",
-                            "idCidade":"1",
-                            "idTipoEndereco": "1",
+    //Dados Endereco
+    "idEndereco": 1,
+    "endereco": "Rua do Zacarias",
+    "numero": 1200,
+    "bairro": "Centro",
+    "nomeCidade":"Curitiba",
     
     //Dados Telefone
     "idTelefone": 1,
-                            "idTipoTelefone": 1,//REMOVIDO
-                            "ddd": 41,//REMOVIDO
     "telefone": "9999-9999"
 }
 
@@ -125,19 +115,15 @@ Retorno:
     "usuarioSaiku": "none",
     "idPerfil": 1,
 
-                                //REMOVIDO
-                                //Dados Endereco
-                                "idEndereco": 1,
-                                "endereco": "Rua do Zacarias",
-                                "numero": 1200,
-                                "bairro": "Centro",
-                                "idCidade":"1",
-                                "idTipoEndereco": "1",
+    //Dados Endereco
+    "idEndereco": 1,
+    "endereco": "Rua do Zacarias",
+    "numero": 1200,
+    "bairro": "Centro",
+    "idCidade":"1",
     
     //Dados Telefone
     "idTelefone": 1,
-                                "idTipoTelefone": 1,//REMOVIDO
-                                "ddd": 41,//REMOVIDO
     "telefone": "9999-9999"
 }
 =======

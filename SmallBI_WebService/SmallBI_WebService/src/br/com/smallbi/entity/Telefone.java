@@ -29,9 +29,6 @@ public class Telefone {
 	@ForeignKey(name="fk_tipo")
 	private Tipo tipo;
 	
-	@Column(name = "ddd", columnDefinition = "int4", length=2)
-	private int ddd;
-	
 	@Column (length=9)
 	private String telefone;
 	
@@ -85,14 +82,6 @@ public class Telefone {
 
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
-	}
-
-	public int getDdd() {
-		return ddd;
-	}
-
-	public void setDdd(int ddd) {
-		this.ddd = ddd;
 	}
 
 	public String getTelefone() {

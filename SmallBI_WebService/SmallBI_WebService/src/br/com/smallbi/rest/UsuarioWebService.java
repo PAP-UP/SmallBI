@@ -123,13 +123,13 @@ public class UsuarioWebService {
 			hash.put("numero", e.getNumero());
 			hash.put("bairro", e.getBairro());
 			hash.put("idCidade", e.getCidade().getIdCidade());
-			hash.put("idTipoEndereco", e.getTipo().getIdTipo());
+			//hash.put("idTipoEndereco", e.getTipo().getIdTipo());
 		}
 		
 		Telefone t = new TelefoneBusiness().getByPessoa(u.getPessoa().getIdPessoa());
 		if(t != null){
 			hash.put("idTelefone", t.getIdTelefone());
-			hash.put("idTipoTelefone", t.getTipo().getIdTipo());
+			//hash.put("idTipoTelefone", t.getTipo().getIdTipo());
 			//hash.put("ddd", t.getDdd());
 			hash.put("telefone", t.getTelefone());
 		}
@@ -148,6 +148,7 @@ public class UsuarioWebService {
 		
 		//AGUARDANDO DEFINIÇÃO
 		if(!jsonObject.isNull("endereco")){
+			jsonObject.put("idTipoEndereco", 3);
 			new EnderecoWebService().addEndereco(jsonObject.toString());
 		}
 /*		if(jsonObject.isNull("idEndereco")){
@@ -156,6 +157,7 @@ public class UsuarioWebService {
 			new EnderecoWebService().setEndereco(jsonObject.toString());
 		}*/
 		
+		jsonObject.put("idTipoTelefone", 3);
 		if(jsonObject.isNull("idTelefone")){
 			new TelefoneWebService().addTelefone(jsonObject.toString());
 		}else{
@@ -183,9 +185,7 @@ public class UsuarioWebService {
 		JSONObject jsonObject = new JSONObject(json);
 		
 		Pessoa p = new Pessoa();
-		if(!jsonObject.isNull("idPessoa")){
-			p.setIdPessoa(jsonObject.getInt("idPessoa"));
-		}
+
 		int usuarioId = jsonObject.getInt("usuarioId");	//Atribuido à variavel para ser reutilizado no objeto u;
 		p.setUsuarioId(usuarioId);
 		p.setNome(jsonObject.getString("nome"));
@@ -200,7 +200,13 @@ public class UsuarioWebService {
 		f.setIdFuncao(jsonObject.getInt("idFuncao"));
 		p.setFuncao(f);
 		
-		new PessoaBusiness().create(p);
+		if(!jsonObject.isNull("idPessoa")){
+			p.setIdPessoa(jsonObject.getInt("idPessoa"));
+			new PessoaBusiness().create(p);
+		}else{
+			new PessoaBusiness().update(p);
+		}
+		
 		
 		Usuario u = new Usuario();
 		if(!jsonObject.isNull("idUsuario")){

@@ -129,4 +129,14 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 		}
 		return null;
 	}
+	
+	public Cidade getByName(String nomeCidade){
+		List<Cidade> cidades = list();
+		for(Cidade c : cidades){
+			if(c.getNomeCidade().equals(nomeCidade)){
+				return c;
+			}
+		}
+		return null;
+	}
 }

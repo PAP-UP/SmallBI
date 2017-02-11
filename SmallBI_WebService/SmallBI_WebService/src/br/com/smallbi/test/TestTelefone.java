@@ -26,7 +26,6 @@ public class TestTelefone {
 	public void test1CreateTelefone(){
 		Telefone telefone = new Telefone();
 		telefone.setDataCadastro(Util.getDate());
-		telefone.setDdd(41);
 		
 		List<Cliente> clientes = new ClienteBusiness().list();
 		Cliente cliente = clientes.get(0);
@@ -55,7 +54,6 @@ public class TestTelefone {
 		System.out.println("<<Telefones>>");
 		for(Telefone t : telefones){
 			System.out.println("----------");
-			System.out.println("DDD: " + t.getDdd());
 			System.out.println("Telefone: " + t.getTelefone());
 			System.out.println("Id: " + t.getIdTelefone());
 			System.out.println("Usuário: " + t.getUsuarioId());

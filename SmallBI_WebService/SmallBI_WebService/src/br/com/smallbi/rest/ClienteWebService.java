@@ -133,8 +133,8 @@ public class ClienteWebService {
 		Telefone t = new TelefoneBusiness().getByCliente(c.getIdCliente());
 		if(t != null){
 			hash.put("idTelefone", t.getIdTelefone());
-			hash.put("idTipoTelefone", t.getTipo().getIdTipo());
-			hash.put("ddd", t.getDdd());
+//			hash.put("idTipoTelefone", t.getTipo().getIdTipo());
+//			hash.put("ddd", t.getDdd());
 			hash.put("telefone", t.getTelefone());
 		}
 		return hash;
@@ -177,12 +177,18 @@ public class ClienteWebService {
 			jsonObject.remove("idPessoa");
 		}		
 		
-		if(jsonObject.isNull("idEndereco")){
+		//AGUARDANDO DEFINIÇÃO
+		if(!jsonObject.isNull("endereco")){
+			jsonObject.put("idTipoEndereco", 2);
+			new EnderecoWebService().addEndereco(jsonObject.toString());
+		}
+/*		if(jsonObject.isNull("idEndereco")){
 			new EnderecoWebService().addEndereco(jsonObject.toString());
 		}else{
 			new EnderecoWebService().setEndereco(jsonObject.toString());
-		}
+		}*/
 		
+		jsonObject.put("idTipoTelefone", 2);
 		if(jsonObject.isNull("idTelefone")){
 			new TelefoneWebService().addTelefone(jsonObject.toString());
 		}else{

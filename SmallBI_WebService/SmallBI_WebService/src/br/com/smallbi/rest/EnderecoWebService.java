@@ -124,7 +124,7 @@ public class EnderecoWebService {
 		e.setNumero(jsonObject.getInt("numero"));
 		e.setBairro(jsonObject.getString("bairro"));
 		
-		if(!jsonObject.isNull("idEstado")){
+/*		if(!jsonObject.isNull("idEstado")){
 			Estado estado = new EstadoDao().getObjById(jsonObject.getInt("idEstado"));
 			
 			if(estado != null){
@@ -132,12 +132,19 @@ public class EnderecoWebService {
 				cidade.setEstado(estado);
 				cidade.setNomeCidade(jsonObject.getString("nomeCidade"));
 				cidade.setUsuarioId(jsonObject.getInt("usuarioId"));
-				
 				new CidadeBusiness().create(cidade);
 				
-				e.setCidade(cidade);
+								
+				
+				
 			}
+		}*/
+		
+		Cidade cidade = new CidadeBusiness().getByName(jsonObject.getString("nomeCidade"));
+		if(cidade != null){
+			e.setCidade(cidade);
 		}
+		
 		
 		if(!jsonObject.isNull("idPessoa")){
 			Pessoa pessoa = new Pessoa();
@@ -151,9 +158,9 @@ public class EnderecoWebService {
 			e.setCliente(cliente);
 		}
 
-/*		Tipo tipo = new Tipo();
+		Tipo tipo = new Tipo();
 		tipo.setIdTipo(jsonObject.getInt("idTipoEndereco"));
-		e.setTipo(tipo);*/
+		e.setTipo(tipo);
 
 		return e;
 	}

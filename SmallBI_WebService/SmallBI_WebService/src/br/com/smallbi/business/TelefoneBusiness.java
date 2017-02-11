@@ -64,7 +64,7 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 			return "A variável 'telefone' deve ser informada!";
 		}
 		
-/*		if(t.getTipo() != null){
+		if(t.getTipo() != null){
 			if(t.getTipo().getIdTipo() != null){
 				Tipo tipo = tipoDao.getObjById(t.getTipo().getIdTipo());
 				if(tipo == null){
@@ -79,7 +79,7 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 		
 		if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
-		}*/
+		}
 		
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);

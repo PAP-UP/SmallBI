@@ -127,9 +127,9 @@ public class TelefoneWebService {
 		}
 		t.setUsuarioId(jsonObject.getInt("usuarioId"));
 		
-/*		Tipo tipo = new Tipo();
+		Tipo tipo = new Tipo();
 		tipo.setIdTipo(jsonObject.getInt("idTipoTelefone"));
-		t.setTipo(tipo);*/
+		t.setTipo(tipo);
 		
 		//t.setDdd(jsonObject.getInt("ddd"));
 		t.setTelefone(jsonObject.getString("telefone"));
