@@ -1,0 +1,30 @@
+<h3>Detalhes do Cliente</h3>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+  <tr>
+    <th>Plano</th>
+    <th>CNPJ</th>
+    <th>I.E</th>
+    <th>Nome Fantasia</th>
+    <th>Ramo Atividade</th>
+    <th>Razão Social</th>
+    <th class="text-center">Editar</th>
+    <th class="text-center">Excluir</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="c in vm.listaClientes">
+    <td>{{c.plano}}</td>
+    <td>{{c.cnpj}}</td>
+    <td>{{c.ie}}</td>
+    <td>{{c.nomeFantasia}}</td>
+    <td>{{c.ramoAtividade}}</td>
+    <td>{{c.razaoSocial}}</td>
+    <td><a ui-sref="cliente.editar({id : c.idUsuario})">Editar</a></td>
+    <td><a href="" ng-click="vm.excluirCliente(c.idUsuario)">Excluir</a></td>
+  </tr>
+  </tbody>
+</table>
+<a href="#" id="plus"><i class="fa fa-plus fa-lg icon"></i></a>
+<a ui-sref="cliente.cadastrar" class="novou">Cadastrar novo cliente</a>
+

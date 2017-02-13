@@ -1,0 +1,59 @@
+<h3>Cadastro de clientes</h3>
+<form  novalidate ng-controller="clienteCadastrarController">
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="razao">Razão Social</label>
+    <input type="text" class="form-control" id="razao" name="razao" ng-model="vm.dadosCliente.razaoSocial">
+  </div>
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="fantasia">Nome Fantasia</label>
+    <input type="text" class="form-control" id="fantasia" name="fantasia" ng-model="vm.dadosCliente.nomeFantasia">
+  </div>
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="cnpj">CNPJ</label>
+    <input type="text" class="form-control" id="cnpj" name="cnpj" ng-model="vm.dadosCliente.cnpj">
+  </div>
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="ie">Inscrição Estadual</label>
+    <input type="text" class="form-control" id="ie" name="ie" ng-model="vm.dadosCliente.ie">
+  </div>
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="tamanho">Tamanho Total</label>
+    <input type="text" class="form-control" id="tamanho" name="tamanho" ng-model="vm.dadosCliente.tamanhoTotal">
+  </div>
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="formaPagamento">Forma de Pagamento</label>
+      <select id="formaPagamento" class="form-control" ng-model="vm.dadosCliente.idFormaPagamento"
+        ng-options="form.idFormaPagamaneto as form.descricao for form in vm.dadosFormaPagamento">
+        <option value="">Selecione</option>
+      </select>
+    </div>
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="plano">Plano</label>
+    <select id="plano" class="form-control" ng-model="vm.dadosCliente.idPlano"
+            ng-options="plan.idPlano as plan.descricao for plan in vm.dadosPlano">
+      <option value="">Selecione</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="endereco">Endereço</label>
+    <input type="text" class="form-control" id="endereco" name="endereco" ng-model="vm.dadosCliente.endereco">
+  </div>
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="numero">Número</label>
+    <input type="text" class="form-control" id="numero" name="numero" ng-model="vm.dadosCliente.numero">
+  </div>
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="bairro">Bairro</label>
+    <input type="text" class="form-control" id="bairro" name="bairro" ng-model="vm.dadosCliente.bairro">
+  </div>
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="cidade">Cidade</label>
+    <input type="text" class="form-control" id="cidade" name="cidade" ng-model="vm.dadosCliente.cidade">
+  </div>
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="telefone">Telefone</label>
+    <input type="text" class="form-control" id="telefone" name="telefone" ng-model="vm.dadosCliente.telefone">
+  </div>
+    <button type="button" class="btn btn-success" style="float: right;" ng-click="vm.clienteSalvar()">Enviar</button>
+</form>
+
