@@ -1,30 +1,44 @@
 (function () {
-  'use strict';
+	'use strict';
 
-  angular.module('SmallBIApp')
-    .factory('usuarioResource', usuarioResource);
+	angular.module('SmallBIApp')
+		.factory('usuarioResource', usuarioResource);
 
-  function usuarioResource($http) {
+	function usuarioResource(Service) {
 
-    var service = {
-      listaUsuario: listaUsuario,
-      insereUsuario: insereUsuario
-    };
+		var service = {
+			listaUsuario: listaUsuario,
+			insereUsuario: insereUsuario,
+      alteraUsuario: alteraUsuario,
+			getUserById: getUserById,
+      deleteUser: deleteUser
+		};
 
-    return service;
+		return service;
 
-    function listaUsuario() {
-      return $http.get("http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/listar");
+		function listaUsuario() {
+			var url = 'usuario/listar';
+			return Service.serviceGet(url);
+		}
+
+			function insereUsuario(dataParam) {
+         var url = 'usuario/adicionar';
+         return Service.servicePost(dataParam, url);
+		}
+
+    function alteraUsuario(dataParam) {
+      var url = 'usuario/alterar';
+      return Service.servicePost(dataParam, url);
     }
 
-      function insereUsuario(dataParam) {
+		function getUserById(param) {
+		  var url = 'usuario/getById/';
+			return Service.serviceGetById(param, url);
+		}
 
-   return $http({
-        url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/adicionar",
-        method : "POST",
-        data :  dataParam,
-        headers: {'Content-Type': 'application/json'}
-      });
+    function deleteUser(param) {
+      var url = 'usuario/deletar/';
+      return Service.serviceDelete(param, url);
     }
-  }
+	}
 })();

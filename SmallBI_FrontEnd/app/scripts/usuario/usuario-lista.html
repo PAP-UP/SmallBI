@@ -1,36 +1,4 @@
-<div class="pg-painel">
-		<div class="menu" tabindex="0">
-			<div class="smartphone-menu-trigger"></div>
-			<div class="avatar">
-				<img src="img/user-img.png" />
-				<strong>Nome Empresa</strong>
-			</div>
-			<ul class="panel-group" id="accordion">
-				<li class="fa fa-home active"><a href="#home"><span>Dashboard</span></a></li>
-				<li class="fa fa-bank">
-					<a href="#" data-toggle="collapse" data-target="#dadosEmpresa" data-parent="#accordion"><span>Dados da Empresa</span></a>
-					<ul id="dadosEmpresa" class="collapse ulCollapse">
-						<li><a href="#"><span>Cadastrar</span></a></li>
-						<li><a href="#"><span>Editar</span></a></li>
-						<li><a href="#"><span>Listar</span></a></li>
-					</ul>
-				</li>
-				<li class="fa fa-user">
-					<a href="#" data-toggle="collapse" data-target="#dadosUsuario" data-parent="#accordion"><span>Dados do Usuário</span></a>
-					<ul id="dadosUsuario" class="collapse ulCollapse">
-						<li><a href="#"><span>Cadastrar</span></a></li>
-						<li><a href="#"><span>Editar</span></a></li>
-						<li><a href="#"><span>Listar</span></a></li>
-					</ul>
-				</li>
-				<li class="fa fa-cubes"><a href="#opcao3"><span>Cubos</span></a></li>
-				<li class="fa fa-upload"><a href="#opcao4"><span>Carregar Cubos</span></a></li>
-				<li class="fa fa-times"><a href="#opcao5"><span>Sair</span></a></li>
-			</ul>
-		</div>
-		<!-- HOME PAINEL -->
-		<section id="home" class="text-center active">
-			<h3>Detalhes de usuário</h3>
+<h3>Detalhes de usuário</h3>
 			<table class="table table-bordered table-striped table-condensed">
 				<thead>
 					<tr>
@@ -52,21 +20,10 @@
             <td>{{u.login}}</td>
             <td>{{u.cliente}}</td>
             <td>{{u.usuarioSaiku}}</td>
+            <td><a ui-sref="usuario.editar({id : u.idUsuario})">Editar</a></td>
+            <td><a href="" ng-click="vm.excluirUsuario(u.idUsuario)">Excluir</a></td>
           </tr>
 				</tbody>
 			</table>
 			<a href="#" id="plus"><i class="fa fa-plus fa-lg icon"></i></a>
-			<a href="#" class="novou">Cadastrar novo usuário</a>
-		</section>
-
-		<footer class="rodape">
-			<ul>
-				<li><img class="logo" src="img/logo.png" alt="logo"> © SmallBI 2016</li>
-				<li><a href="#">O que é Business Intelligence?</a></li>
-				<li><a href="#">Diferenciais</a></li>
-				<li><a href="#">Serviços</a></li>
-				<li><a href="#">Quem Somos</a></li>
-				<li><a href="#">Contato</a></li>
-			</ul>
-		</footer>
-	</div>
+			<a ui-sref="usuario.cadastrar" class="novou">Cadastrar novo usuário</a>

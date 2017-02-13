@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('usuarioCadastrarController', usuarioCadastrarController);
 
-  function usuarioCadastrarController(usuarioResource, funcaoResource) {
+  function usuarioCadastrarController(usuarioResource, funcaoResource, estadoResource) {
 
     var vm = this;
 
@@ -23,6 +23,7 @@
         vm.dadosUsuario.idPerfil = 1
 
       usuarioResource.insereUsuario(vm.dadosUsuario).then(function (result) {
+        $state.transitionTo('usuario.listar');
         console.log(result);
       },function (resolve) {
         console.log(resolve);
@@ -36,13 +37,18 @@
         });
     }
 
+    function listarEstado() {
+      estadoResource.listaEstado().then(
+        function (result) {
+          vm.dadosEstado = result.data;
+        });
+    }
+
     function init() {
       listarFuncao();
+      //listarEstado();
     }
 
     init();
   }
 })();
-
-
-

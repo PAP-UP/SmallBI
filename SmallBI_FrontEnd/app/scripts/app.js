@@ -9,67 +9,44 @@
       'ui.router.stateHelper'
     ]).config(routes);
 
-  // function providers($httpProvider) {
-  //   $httpProvider.defaults.headers.common = {};
-  //   $httpProvider.defaults.headers.post = {};
-  //   $httpProvider.defaults.headers.put = {};
-  //   $httpProvider.defaults.headers.patch = {};
-  // }
-
-  function routes($stateProvider, $locationProvider, stateHelperProvider) {
-
-    var baseUrl = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/";
+  function routes($locationProvider, stateHelperProvider) {
 
     $locationProvider.html5Mode(true);
 
 
-    var listar = {
+    // USUÁRIO ROUTE
+
+    var listarUsuario = {
       name: 'listar',
       url: '/listar',
       templateUrl: 'scripts/usuario/usuario-lista.html',
       controller: 'usuarioListarController as vm',
     };
 
-    var editar = {
+    var editarUsuario = {
       name: 'editar',
-          url: '/editar',
+          url: '/editar/:id',
           templateUrl: 'scripts/usuario/usuario-form.html',
           controller: 'usuarioEditarController as vm',
     };
 
-    var cadastrar = {
+    var cadastrarUsuario = {
       name: 'cadastrar',
           url: '/cadastrar',
           templateUrl: 'scripts/usuario/usuario-form.html',
           controller: 'usuarioCadastrarController as vm',
     };
 
-      // children: [
-      //   {
-      //     name: 'listar',
-      //     url: '/listar',
-      //     templateUrl: 'scripts/usuario/usuario-lista.html',
-      //     controller: 'usuarioListarController',
-      //     controllerAs: 'vm'
-      //   },
-      //   {
-      //     name: 'editar',
-      //     url: '/editar',
-      //     templateUrl: 'scripts/usuario/usuario-form.html',
-      //     controller: 'usuarioEditarController',
-      //     controllerAs: 'vm'
-      //   },
-      //   {
-      //     name: 'cadastrar',
-      //     url: '/cadastrar',
-      //     templateUrl: 'scripts/usuario/usuario-form.html',
-      //     controller: 'usuarioCadastrarController',
-      //     controllerAs: 'vm'
-      //   }
-      //
-      //   ],
+    stateHelperProvider.setNestedState({
+      name: 'usuario',
+      url: '/usuario',
+      templateUrl: 'views/main.html',
+      children: [listarUsuario, editarUsuario, cadastrarUsuario]
+    });
 
-    var cubo = {
+    // CUBO ROUTE
+
+    var listarCubo = {
       name: 'cubo',
       url: '/cubo',
       templateUrl: 'scripts/cubo/cubo-lista.html',
@@ -78,15 +55,44 @@
     };
 
     stateHelperProvider.setNestedState({
-      name: 'usuario',
-      url: '/usuario',
-      template: '<div ui-view></div>',
-      abstract: true,
-      children: [listar, editar, cadastrar]
+      name: 'cubo',
+      url: '/cubo',
+      templateUrl: 'views/main.html',
+      children: [listarCubo]
     });
 
-    // $stateProvider.state(usuario);
-    // $stateProvider.state(cubo);
+    // CLIENTE ROUTE
+
+    var listarCliente = {
+      name: 'listar',
+      url: '/listar',
+      templateUrl: 'scripts/cliente/cliente-listar.html',
+      controller: 'clienteListarController',
+      controllerAs: 'vm'
+    };
+
+    var editarCliente = {
+      name: 'editar',
+      url: '/editar',
+      templateUrl: 'scripts/cliente/cliente-form.html',
+      controller: 'clienteEditarController',
+      controllerAs: 'vm'
+    };
+
+    var cadastrarCliente = {
+      name: 'cadastrar',
+      url: '/cadastrar',
+      templateUrl: 'scripts/cliente/cliente-form.html',
+      controller: 'clienteCadastrarController',
+      controllerAs: 'vm'
+    };
+
+    stateHelperProvider.setNestedState({
+      name: 'cliente',
+      url: '/cliente',
+      templateUrl: 'views/main.html',
+      children: [listarCliente, editarCliente, cadastrarCliente]
+    });
 
   }
 

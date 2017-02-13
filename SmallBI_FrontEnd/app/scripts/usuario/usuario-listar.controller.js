@@ -9,7 +9,8 @@
     var vm = this;
 
     angular.extend(vm, {
-      listaUsuarios: listaUsuarios
+      listaUsuarios: listaUsuarios,
+      excluirUsuario: excluirUsuario
     });
 
     function listaUsuarios() {
@@ -18,8 +19,16 @@
       });
     }
 
+    function excluirUsuario(id) {
+      usuarioResource.deleteUser(id).then(
+        function (result) {
+        console.log(result);
+      });
+    }
+
     function init() {
       listaUsuarios();
+
     }
 
     init();
