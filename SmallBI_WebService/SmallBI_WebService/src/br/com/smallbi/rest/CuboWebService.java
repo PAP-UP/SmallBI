@@ -72,14 +72,15 @@ public class CuboWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idCubo}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delCubo(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
+	public String delCubo(@PathParam("idCubo") String idCubo) throws JSONException{
+		/*JSONObject jsonObject = new JSONObject(json);
 		Cubo cubo = new Cubo();
 		cubo.setIdCubo(jsonObject.getInt("idCubo"));
-		return gson.toJson(cuboBusiness.delete(cubo.getIdCubo()));
+		return gson.toJson(cuboBusiness.delete(cubo.getIdCubo()));*/
+		return gson.toJson(cuboBusiness.delete(Integer.parseInt(idCubo)));
 	}
 	
 	@GET

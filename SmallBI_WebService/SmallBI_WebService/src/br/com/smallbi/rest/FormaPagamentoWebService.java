@@ -61,14 +61,15 @@ public class FormaPagamentoWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idFormaPagamento}")
+//	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delFormaPag(String json) throws JSONException {
-		JSONObject jsonObject = new JSONObject(json);
+	public String delFormaPag(@PathParam("idFormaPagamento") String idFormaPagamento) throws JSONException {
+		/*JSONObject jsonObject = new JSONObject(json);
 		FormaPagamento forma = new FormaPagamento();
 		forma.setIdFormaPagamento(jsonObject.getInt("idFormaPagamento"));
-		return gson.toJson(formaPagamentoBusiness.delete(forma.getIdFormaPagamento()));
+		return gson.toJson(formaPagamentoBusiness.delete(forma.getIdFormaPagamento()));*/
+		return gson.toJson(formaPagamentoBusiness.delete(Integer.parseInt(idFormaPagamento)));
 	}
 	
 	@GET

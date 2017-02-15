@@ -58,12 +58,7 @@ Exemplo:
 
 Deletar:
 Método: DELETE
-Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/deletar"
-Parametros: "application/json"
-Exemplo:
-{
-	"idEndereco":1
-}
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/endereco/deletar/{id}"
 
 GetById:
 Método: GET

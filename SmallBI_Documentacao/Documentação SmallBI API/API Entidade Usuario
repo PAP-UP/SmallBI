@@ -83,7 +83,7 @@ Exemplo:
 
 Deletar:
 Método: GET
-Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/deletar/2"
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/deletar/{id}"
 
 GetById:
 Método: GET

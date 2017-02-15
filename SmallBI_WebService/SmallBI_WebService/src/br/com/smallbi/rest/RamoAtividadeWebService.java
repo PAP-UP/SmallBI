@@ -61,14 +61,15 @@ public class RamoAtividadeWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idRamoAtividade}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delRamo(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
+	public String delRamo(@PathParam("idRamoAtividade") String idRamoAtividade) throws JSONException{
+		/*JSONObject jsonObject = new JSONObject(json);
 		RamoAtividade ramoAtividade = new RamoAtividade();
 		ramoAtividade.setIdRamoAtividade(jsonObject.getInt("idRamoAtividade"));
-		return gson.toJson(ramoAtividadeBusiness.delete(ramoAtividade.getIdRamoAtividade()));
+		return gson.toJson(ramoAtividadeBusiness.delete(ramoAtividade.getIdRamoAtividade()));*/
+		return gson.toJson(ramoAtividadeBusiness.delete(Integer.parseInt(idRamoAtividade)));
 	}
 	
 	@GET

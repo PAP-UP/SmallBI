@@ -61,14 +61,15 @@ public class PlanoWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idPlano}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delPlano(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
+	public String delPlano(@PathParam("idPlano") String idPlano) throws JSONException{
+		/*JSONObject jsonObject = new JSONObject(json);
 		Plano plano = new Plano();
 		plano.setIdPlano(jsonObject.getInt("idPlano"));
-		return gson.toJson(planoBusiness.delete(plano.getIdPlano()));
+		return gson.toJson(planoBusiness.delete(plano.getIdPlano()));*/
+		return gson.toJson(planoBusiness.delete(Integer.parseInt(idPlano)));
 	}
 	
 	@GET

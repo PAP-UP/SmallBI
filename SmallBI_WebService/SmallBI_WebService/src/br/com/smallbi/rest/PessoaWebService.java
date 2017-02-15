@@ -63,14 +63,15 @@ public class PessoaWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idPessoa}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delPessoa(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
+	public String delPessoa(@PathParam("idPessoa") String idPessoa) throws JSONException{
+		/*JSONObject jsonObject = new JSONObject(json);
 		Pessoa pessoa = new Pessoa();
 		pessoa.setIdPessoa(jsonObject.getInt("idPessoa"));
-		return gson.toJson(pessoaBusiness.delete(pessoa.getIdPessoa()));
+		return gson.toJson(pessoaBusiness.delete(pessoa.getIdPessoa()));*/
+		return gson.toJson(pessoaBusiness.delete(Integer.parseInt(idPessoa)));
 	}
 	
 	@GET

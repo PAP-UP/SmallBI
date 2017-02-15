@@ -61,14 +61,15 @@ public class TipoWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idTipo}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delTipo(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
+	public String delTipo(@PathParam("idTipo") String idTipo) throws JSONException{
+		/*JSONObject jsonObject = new JSONObject(json);
 		Tipo tipo = new Tipo();
 		tipo.setIdTipo(jsonObject.getInt("idTipo"));
-		return gson.toJson(tipoBusiness.delete(tipo.getIdTipo()));
+		return gson.toJson(tipoBusiness.delete(tipo.getIdTipo()));*/
+		return gson.toJson(tipoBusiness.delete(Integer.parseInt(idTipo)));
 	}
 	
 	@GET

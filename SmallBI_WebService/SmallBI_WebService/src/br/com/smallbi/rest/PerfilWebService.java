@@ -61,14 +61,15 @@ public class PerfilWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idPerfil}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delPerfil(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
+	public String delPerfil(@PathParam("idPerfil") String idPerfil) throws JSONException{
+		/*JSONObject jsonObject = new JSONObject(json);
 		Perfil perfil = new Perfil();
 		perfil.setIdPerfil(jsonObject.getInt("idPerfil"));
-		return gson.toJson(perfilBusiness.delete(perfil.getIdPerfil()));
+		return gson.toJson(perfilBusiness.delete(perfil.getIdPerfil()));*/
+		return gson.toJson(perfilBusiness.delete(Integer.parseInt(idPerfil)));
 	}
 	
 	@GET

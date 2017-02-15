@@ -61,14 +61,15 @@ public class FuncaoWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idFuncao}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delFuncao(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
+	public String delFuncao(@PathParam("idFuncao") String idFuncao) throws JSONException{
+/*		JSONObject jsonObject = new JSONObject(json);
 		Funcao funcao = new Funcao();
 		funcao.setIdFuncao(jsonObject.getInt("idFuncao"));
-		return gson.toJson(funcaoBusiness.delete(funcao.getIdFuncao()));
+		return gson.toJson(funcaoBusiness.delete(funcao.getIdFuncao()));*/
+		return gson.toJson(funcaoBusiness.delete(Integer.parseInt(idFuncao)));
 	}
 	
 	@GET

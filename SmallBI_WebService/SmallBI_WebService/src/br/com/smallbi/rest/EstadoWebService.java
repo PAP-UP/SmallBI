@@ -61,14 +61,15 @@ public class EstadoWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idEstado}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delEstado(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
+	public String delEstado(@PathParam("idEstado") String idEstado) throws JSONException{
+		/*JSONObject jsonObject = new JSONObject(json);
 		Estado e = new Estado();
 		e.setIdEstado(jsonObject.getInt("idEstado"));
-		return gson.toJson(estadoBusiness.delete(e.getIdEstado()));
+		return gson.toJson(estadoBusiness.delete(e.getIdEstado()));*/
+		return gson.toJson(estadoBusiness.delete(Integer.parseInt(idEstado)));
 	}
 	
 	@GET

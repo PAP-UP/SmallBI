@@ -22,11 +22,9 @@ import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.CidadeBusiness;
 import br.com.smallbi.business.EnderecoBusiness;
-import br.com.smallbi.dal.EstadoDao;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Endereco;
-import br.com.smallbi.entity.Estado;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Tipo;
 
@@ -68,14 +66,15 @@ public class EnderecoWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idEndereco}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delEndereco(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
+	public String delEndereco(@PathParam("idEndereco") String idEndereco) throws JSONException{
+		/*JSONObject jsonObject = new JSONObject(json);
 		Endereco endereco = new Endereco();
 		endereco.setIdEndereco(jsonObject.getInt("idEndereco"));
-		return gson.toJson(enderecoBusiness.delete(endereco.getIdEndereco()));
+		return gson.toJson(enderecoBusiness.delete(endereco.getIdEndereco()));*/
+		return gson.toJson(enderecoBusiness.delete(Integer.parseInt(idEndereco)));
 	}
 	
 	@GET

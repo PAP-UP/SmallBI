@@ -29,7 +29,6 @@ import br.com.smallbi.entity.FormaPagamento;
 import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
 import br.com.smallbi.entity.Telefone;
-import br.com.smallbi.util.SaikuConnection;
 
 @Path("/cliente")
 public class ClienteWebService {
@@ -87,14 +86,15 @@ public class ClienteWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idCliente}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delEmpresa(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
+	public String delEmpresa(@PathParam("idCliente") String idCliente) throws JSONException{
+		/*JSONObject jsonObject = new JSONObject(json);
 		Cliente c = new Cliente();
 		c.setIdCliente(jsonObject.getInt("idCliente"));
-		return gson.toJson(clienteBusiness.delete(c.getIdCliente()));
+		return gson.toJson(clienteBusiness.delete(c.getIdCliente()));*/
+		return gson.toJson(clienteBusiness.delete(Integer.parseInt(idCliente)));
 	}
 	
 	@GET

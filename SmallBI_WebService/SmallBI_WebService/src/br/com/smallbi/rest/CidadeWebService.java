@@ -60,14 +60,15 @@ public class CidadeWebService {
 	}
 	
 	@DELETE
-	@Path("/deletar")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/deletar/{idCidade}")
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String delCidade(String idCidade) throws JSONException{
-		JSONObject jsonObject = new JSONObject(idCidade);
+	public String delCidade(@PathParam("idCidade") String idCidade) throws JSONException{
+/*		JSONObject jsonObject = new JSONObject(idCidade);
 		Cidade c = new Cidade();
 		c.setIdCidade(jsonObject.getInt("idCidade"));		
-		return gson.toJson(cidadeBusiness.delete(c.getIdCidade()));
+		return gson.toJson(cidadeBusiness.delete(c.getIdCidade()));*/
+		return gson.toJson(cidadeBusiness.delete(Integer.parseInt(idCidade)));
 	}
 	
 	@GET

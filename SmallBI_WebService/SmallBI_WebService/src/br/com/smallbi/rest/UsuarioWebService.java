@@ -78,7 +78,7 @@ public class UsuarioWebService {
 		return gson.toJson(response);
 	}
 	
-	@GET
+	@DELETE
 	@Path("/deletar/{idUsuario}")
 	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -202,10 +202,10 @@ public class UsuarioWebService {
 		f.setIdFuncao(jsonObject.getInt("idFuncao"));
 		p.setFuncao(f);
 		
-		if(!jsonObject.isNull("idPessoa")){
-			p.setIdPessoa(jsonObject.getInt("idPessoa"));
+		if(jsonObject.isNull("idPessoa")){
 			new PessoaBusiness().create(p);
 		}else{
+			p.setIdPessoa(jsonObject.getInt("idPessoa"));
 			new PessoaBusiness().update(p);
 		}
 		
