@@ -1111,22 +1111,26 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void importarTabelaPersonalizada(){
         ImportarDb importarDb = new ImportarDb();
         String scriptPersonalisado = txtAbaImportBd_ConsulPerson.getText();
-        JTable jTable = importarDb.consultarTabelaPersonalisada(scriptPersonalisado);
         
-        if(jTable == null){
-            JOptionPane.showMessageDialog(null, "Falha ao executar Script SQL");
-        }else{
-            PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
-            painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
-            JScrollPane jScrollPane = new JScrollPane(jTable);
-            painelAbaTabPrev_painelTabela.add(jScrollPane);
-            painelAbaTabPrev_painelTabela.updateUI();
-            jTableAtivo = jTable;
+        if(scriptPersonalisado != null && !scriptPersonalisado.equals("")){
             
-            //Se importa do mesmo modo que um arquivo, 
-            //pois não se sabe o nome da tabela ou poderá ser várias diferentes
-            iniciarComboBoxTiposArquivo(jTable);
-                                                
+            JTable jTable = importarDb.consultarTabelaPersonalisada(scriptPersonalisado);
+
+            if(jTable == null){
+                JOptionPane.showMessageDialog(null, "Falha ao executar Script SQL");
+                //Mensagem em Conexao.getResultSet;
+            }else{
+                PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
+                painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
+                JScrollPane jScrollPane = new JScrollPane(jTable);
+                painelAbaTabPrev_painelTabela.add(jScrollPane);
+                painelAbaTabPrev_painelTabela.updateUI();
+                jTableAtivo = jTable;
+
+                //Se importa do mesmo modo que um arquivo, 
+                //pois não se sabe o nome da tabela ou poderá ser várias diferentes
+                iniciarComboBoxTiposArquivo(jTable);                                        
+            }
         }
     }
     

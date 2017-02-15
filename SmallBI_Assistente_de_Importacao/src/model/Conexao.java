@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class Conexao {
     public static String banco = null;
@@ -51,7 +52,9 @@ public class Conexao {
             return rs;
         } catch (SQLException ex) {
             //Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Erro ao executar query");
+            ex.printStackTrace();
+            System.out.println("Erro ao executar query: " + ex.getMessage());
+            //JOptionPane.showMessageDialog(null, "Erro ao executar query: " + ex.getMessage());
             return null;
         }
     }

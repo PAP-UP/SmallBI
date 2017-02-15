@@ -57,6 +57,11 @@ public class ConexaoDao {
 		return true;
 	}
 	
+	public static Integer getTamanhoTabela(){
+		//Implementar
+		return 0;
+	}
+	
     private static String formatarString(String str) {
         String strFormatada = str.toLowerCase();
         strFormatada = strFormatada.replaceAll(" ", "_");

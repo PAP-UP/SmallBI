@@ -140,9 +140,14 @@ public class ImportarDb {
     }
     
     public JTable consultarTabelaPersonalisada(String scriptPersonalisado){
-        JTable jTable = new JTable();
-        jTable.setModel(consultarTabela(scriptPersonalisado));
-        return jTable;
+        
+        DefaultTableModel dtm = consultarTabela(scriptPersonalisado);
+        if(dtm != null){
+            JTable jTable = new JTable();
+            jTable.setModel(dtm);
+            return jTable;
+        }
+        return null;
     }
     
     private DefaultTableModel consultarTabela(String scriptParametro ){

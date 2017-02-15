@@ -85,9 +85,13 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			if(result == true){
 				Cubo cubo = new Cubo();			
 				cubo.setCliente(usuario.getPessoa().getCliente());
+				
+				//Criar método para adicionar o ROLE pertinente à este cliente
 				cubo.setMdx(jsonObject.getString("mdx"));
 				cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
 				cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
+				
+				//Fazer consulta do tamanho da tabela
 				cubo.setTamanho(0); //Provisório
 				cubo.setUsuarioId(usuario.getIdUsuario());
 				
