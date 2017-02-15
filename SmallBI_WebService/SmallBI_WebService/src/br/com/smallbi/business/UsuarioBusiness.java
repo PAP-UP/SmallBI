@@ -1,17 +1,16 @@
 package br.com.smallbi.business;
 
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
-import br.com.smallbi.dal.UsuarioDao;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cliente;
+import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Perfil;
 import br.com.smallbi.entity.Pessoa;
+import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Usuario;
 import br.com.smallbi.util.SaikuConnection;
 import br.com.smallbi.util.Util;
@@ -62,7 +61,7 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 				if(pessoa == null){
 					return "Nenhum resultado para a variável 'pessoa' foi encontrado!";
 				}else{
-					t.setPessoa(pessoa);
+					//t.setPessoa(pessoa);
 				}
 			}else{
 				return "A variável 'pessoa.idPessoa' deve ser informada!";
@@ -84,18 +83,19 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			return "A variável 'usuarioSaiku' deve ser informada!";
 		}	
 		
-		t.setDataCadastro(Util.getDate());
-		t.setStatus(true);
-		
 		int code = SaikuConnection.addUsuarioSaiku(t.getUsuarioSaiku(), t.getSenha(), 
 				t.getPessoa().getCliente().getNomeFantasia(), t.getPessoa().getCliente().getIdCliente());
 		
 		if(code != 200){
+			new PessoaBusiness().delete(t.getPessoa().getIdPessoa());
 			return "Falha ao adicionar usuário ao sistema Saiku!" + " Código da API do Saiku: " + code;
 		}
 		
 		//Call here encryption method
 		//t.setSenha(Util.makePasswordHash(t.getSenha(), Integer.toString(random.nextInt())));
+		
+		t.setDataCadastro(Util.getDate());
+		t.setStatus(true);
 		
 		usuarioDao.create(t);
 		return "Usuario cadastrado com sucesso!";
@@ -187,6 +187,21 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			return "Nenhum resultado foi encontrado na tabela Usuario com o id {"+id+"}";
 		}
 		usuarioDao.delete(usuario);
+		
+		//Del Pessoa
+		new PessoaBusiness().delete(usuario.getPessoa().getIdPessoa());
+		
+		//Del Telefone
+		EnderecoBusiness enderecoBusiness = new EnderecoBusiness();
+		Endereco e = enderecoBusiness.getByPessoa(usuario.getPessoa().getIdPessoa());
+		enderecoBusiness.delete(e.getIdEndereco());
+		
+		//Del Endereço
+		TelefoneBusiness telefoneBusiness = new TelefoneBusiness();
+		Telefone telefone = telefoneBusiness.getByPessoa(usuario.getPessoa().getIdPessoa());
+		telefoneBusiness.delete(telefone.getIdTelefone());
+		
+		
 		return "Usuario deletado com sucesso!";
 	}
 

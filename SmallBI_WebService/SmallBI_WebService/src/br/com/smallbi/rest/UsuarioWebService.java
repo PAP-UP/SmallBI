@@ -60,7 +60,9 @@ public class UsuarioWebService {
 		Usuario usuario = getObjectFromHash(json);
 		String response = usuarioBusiness.create(usuario);
 		
-		appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+		if(response.equals("Usuario cadastrado com sucesso!")){
+			appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+		}
 		
 		return gson.toJson(response);
 	}
