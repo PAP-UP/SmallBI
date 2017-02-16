@@ -87,7 +87,11 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 				cubo.setCliente(usuario.getPessoa().getCliente());
 				
 				//Criar método para adicionar o ROLE pertinente à este cliente
-				cubo.setMdx(jsonObject.getString("mdx"));
+				
+				//cubo.setMdx(jsonObject.getString("mdx"));
+				String mdx = adicionarRoleAoCubo(jsonObject.getString("mdx"), cliente, id);
+				cubo.setMdx(mdx);
+				
 				cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
 				cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
 				
@@ -101,6 +105,18 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			}
 		}		
 		return "Usuário ou senha inválidos";
+	}
+	
+	private String adicionarRoleAoCubo(String mdx, String cliente, Integer id){
+		String perfil = "cliente_" + cliente + "_id_" + id;	//Mesmo formato do nome do banco de dados de cada cliente;
+		/*
+	    <Role name='Access’>
+    		<SchemaGrant access='all'/>
+    	</Role>
+		 */
+		
+		mdx += "<Role name='"+perfil+"'><SchemaGrant access='all'/></Role></Schema>";
+		return mdx;
 	}
 	
 	@Override

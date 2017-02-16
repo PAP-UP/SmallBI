@@ -138,7 +138,7 @@ public class FormSalvarTabela extends javax.swing.JFrame {
                 
                 //Consulta à memória aqui
                 boolean existeNaMem = false;
-                for(TabelaFato t : FormGerarCuboXml.tabelasFato){
+                for(TabelaFato t : FormAssistenteModelagem.tabelasFato){
                     if(t.getNomeTabela().equals(nomeTabela)){
                         existeNaMem = true;
                     }
@@ -156,9 +156,9 @@ public class FormSalvarTabela extends javax.swing.JFrame {
                     tabelaFato.setjTable(tabelaPivot);
                     tabelaFato.setPrimaryKey(chavePrimaria);
                     tabelaFato.setNomeTabela(nomeTabela);
-                    FormGerarCuboXml.tabelasFato.add(tabelaFato);    
-                    FormPrincipal.btnAbaTabPrev_GerarCuboXml.setEnabled(true);
-                    FormPrincipal.btnAbaTabPrev_ImportMaisDados.setEnabled(true);
+                    FormAssistenteModelagem.tabelasFato.add(tabelaFato);    
+                    FormAssistenteImportacao.btnAbaTabPrev_GerarCuboXml.setEnabled(true);
+                    FormAssistenteImportacao.btnAbaTabPrev_ImportMaisDados.setEnabled(true);
                     dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "Você não pode ter mais de uma tabela com o mesmo nome!");

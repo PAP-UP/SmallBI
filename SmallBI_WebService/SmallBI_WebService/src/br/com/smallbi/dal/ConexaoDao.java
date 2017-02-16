@@ -31,7 +31,7 @@ public class ConexaoDao {
 	
 	public static boolean criarDatabase(String cliente, Integer id){
 		try{
-			String nomeBanco = "cliente_" + cliente + "_id_" + id;
+			String nomeBanco = "id_" + id;
 			String sql = "CREATE DATABASE " + formatarString(nomeBanco);
 			Connection connection = getConexao(null);
 			Statement statement = connection.createStatement();

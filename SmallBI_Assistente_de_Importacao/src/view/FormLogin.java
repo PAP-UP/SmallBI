@@ -1,7 +1,5 @@
 package view;
 
-import business.GerarSchema;
-import business.GerarScriptSql;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -9,19 +7,25 @@ import java.util.Hashtable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
-public class FormEnviarCubo extends javax.swing.JFrame {
+public class FormLogin extends javax.swing.JFrame {
 
-    public FormEnviarCubo() {
+    public static Integer idCliente = 0;
+    
+    public FormLogin() {
         initComponents();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -31,11 +35,10 @@ public class FormEnviarCubo extends javax.swing.JFrame {
         lblAuten_Senha = new javax.swing.JLabel();
         txtAuten_Login = new javax.swing.JTextField();
         txtAuten_Senha = new javax.swing.JPasswordField();
-        btnAuten_Enviar = new javax.swing.JButton();
+        btnAuten_Login = new javax.swing.JButton();
         btnAuten_Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Enviar cubo para SmallBI");
 
         painelAutenti.setBorder(javax.swing.BorderFactory.createTitledBorder("Autenticação"));
 
@@ -43,10 +46,10 @@ public class FormEnviarCubo extends javax.swing.JFrame {
 
         lblAuten_Senha.setText("Senha:");
 
-        btnAuten_Enviar.setText("Enviar");
-        btnAuten_Enviar.addActionListener(new java.awt.event.ActionListener() {
+        btnAuten_Login.setText("Login");
+        btnAuten_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAuten_EnviarActionPerformed(evt);
+                btnAuten_LoginActionPerformed(evt);
             }
         });
 
@@ -71,14 +74,12 @@ public class FormEnviarCubo extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(painelAutentiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtAuten_Login)
-                            .addComponent(txtAuten_Senha, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtAuten_Senha, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAutentiLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAuten_Cancelar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAuten_Enviar)))
-                .addContainerGap())
+                        .addComponent(btnAuten_Login)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelAutentiLayout.setVerticalGroup(
             painelAutentiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +94,7 @@ public class FormEnviarCubo extends javax.swing.JFrame {
                     .addComponent(txtAuten_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(painelAutentiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAuten_Enviar)
+                    .addComponent(btnAuten_Login)
                     .addComponent(btnAuten_Cancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -104,49 +105,40 @@ public class FormEnviarCubo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAutenti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(painelAutenti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAutenti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(painelAutenti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAuten_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuten_LoginActionPerformed
+        login();
+    }//GEN-LAST:event_btnAuten_LoginActionPerformed
+
     private void btnAuten_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuten_CancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btnAuten_CancelarActionPerformed
 
-    private void btnAuten_EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuten_EnviarActionPerformed
-        enviar();
-    }//GEN-LAST:event_btnAuten_EnviarActionPerformed
-
-    private void enviar(){
+    private void login(){
         if(txtAuten_Login != null && !txtAuten_Login.equals("") &&
                 txtAuten_Senha != null && !txtAuten_Senha.equals("")){
             
             String login = txtAuten_Login.getText();
             String senha = txtAuten_Senha.getText();
-            String mdx = GerarSchema.schemaXml;
-            String nomeCubo = GerarSchema.nomeSchema;
-            String scriptSql = new String();
-            for(String s : GerarScriptSql.scripts){
-                scriptSql += s;
-            }
             
             Hashtable<String, Object> hash = new Hashtable<>();
             hash.put("login", login);
             hash.put("senha", senha);
-            hash.put("mdx", mdx);
-            hash.put("nomeCubo", nomeCubo);
-            hash.put("scriptSql", scriptSql);
-  
-            String url = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+            
+            String url = "http://localhost:8080/SmallBI_WebService/rest/usuario/login";
             HttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost httpPost = new HttpPost(url);
             Gson gson = new Gson();
@@ -156,39 +148,60 @@ public class FormEnviarCubo extends javax.swing.JFrame {
                 httpPost.setHeader("Content-Type", "application/json");
                 HttpResponse response = httpClient.execute(httpPost);
                 
+                HttpEntity httpEntity = response.getEntity();
+                String json = EntityUtils.toString(httpEntity);
+                JSONObject jSONObject = new JSONObject(json);
+                String jsonMyHashMap = jSONObject.getJSONObject("myHashMap").toString();
+                jSONObject = new JSONObject(jsonMyHashMap);
+                idCliente = jSONObject.getInt("idCliente");
+                //System.out.println("ID: " + idCliente);
+                
                 int cod = response.getStatusLine().getStatusCode();
-                JOptionPane.showMessageDialog(null, "Código: " + cod + ". " + getResponse(cod));
+                getResponse(cod);
+                
+                System.out.println(response);
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (JSONException ex) {
+                Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
             }            
         }
     }
     
-    private String getResponse(int cod){
+    private void getResponse(int cod){
         switch(cod){
             case 200: 
-                return "Cubo enviado com sucesso!";
+                this.dispose();
+                FormAssistenteImportacao frm = new FormAssistenteImportacao();
+                frm.setLocationRelativeTo(null);
+                //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+                frm.setVisible(true); 
+                break;
             case 404:
-                return "Falha ao enviar cubo. Servidor não encontrado";
+                JOptionPane.showMessageDialog(null, "Servidor indisponível!");
+                break;
             case 500:
-                return "Falha ao enviar cubo. Erro interno na API";            
+                JOptionPane.showMessageDialog(null, "Erro interno no servidor!");
+                break;
         }
-        return "";
     }
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormEnviarCubo().setVisible(true);
+                //new FormLogin().setVisible(true);
+                FormLogin form = new FormLogin();
+                form.setLocationRelativeTo(null);
+                form.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAuten_Cancelar;
-    private javax.swing.JButton btnAuten_Enviar;
+    private javax.swing.JButton btnAuten_Login;
     private javax.swing.JLabel lblAuten_Login;
     private javax.swing.JLabel lblAuten_Senha;
     private javax.swing.JPanel painelAutenti;

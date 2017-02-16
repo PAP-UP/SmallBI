@@ -13,13 +13,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class FormPrincipal extends javax.swing.JFrame {
+public class FormAssistenteImportacao extends javax.swing.JFrame {
 
     private List<JComboBox> listaDeCbxTipos = new ArrayList<>();
     public static boolean importandoDeArquivo = true;
     private JTable jTableAtivo = new JTable();    
     
-    public FormPrincipal() {
+    public FormAssistenteImportacao() {
         initComponents();
         PercorrerAbasFormPrincipal.desativarAbasNoInicio();
     }
@@ -1071,16 +1071,16 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void salvarTabela(){
         FormSalvarTabela frm = new FormSalvarTabela(jTableAtivo, listaDeCbxTipos);
         frm.setLocationRelativeTo(null);
-        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Assistente para Salvar Tabela Importada");
 //        this.setVisible(false);
         frm.setVisible(true);
     }
     
     private void chamarFormGerarCuboXml(){               
-        FormGerarCuboXml frm = new FormGerarCuboXml();
+        FormAssistenteModelagem frm = new FormAssistenteModelagem();
         frm.setLocationRelativeTo(null);
-        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Assistente de Modelagem do Cubo");
         frm.setVisible(true);        
     }
@@ -1088,7 +1088,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void ajudaAreaConsulBanco(){
         FormAjudaConsulBanco frm = new FormAjudaConsulBanco();
         frm.setLocationRelativeTo(null);
-        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setVisible(true);       
     }
     
@@ -1118,7 +1118,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
             if(jTable == null){
                 JOptionPane.showMessageDialog(null, "Falha ao executar Script SQL");
-                //Mensagem em Conexao.getResultSet;
+                //Mensagem em Conexao.getResultSet pode trazer mais detalhes;
             }else{
                 PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
                 painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
@@ -1327,8 +1327,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new FormPrincipal().setVisible(true);
-                FormPrincipal form = new FormPrincipal();
+                //new FormAssistenteImportacao().setVisible(true);
+                FormAssistenteImportacao form = new FormAssistenteImportacao();
                 form.setLocationRelativeTo(null);
                 form.setVisible(true);
             }

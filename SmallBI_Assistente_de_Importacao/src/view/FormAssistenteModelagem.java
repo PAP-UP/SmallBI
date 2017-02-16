@@ -16,7 +16,7 @@ import model.Schema;
 import model.TabelaFato;
 import xmleditorkit.XMLEditorKit;
 
-public class FormGerarCuboXml extends javax.swing.JFrame {
+public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     public static List<Dimensao> dimensoes = new ArrayList<>();
     public static List<GrupoMetrica> grupoMetricas = new ArrayList<>();
@@ -24,7 +24,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     public static List<Link> links = new ArrayList<>();
     
 
-    public FormGerarCuboXml() {
+    public FormAssistenteModelagem() {
         initComponents();
         PercorrerAbasFormGerarCuboXml.desativarAbasInicio();       
     }
@@ -49,11 +49,12 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
         btnAbaModelDim_Sair = new javax.swing.JButton();
         painelAbaModelMetri = new javax.swing.JPanel();
         painelAbaModelMetri_ModelMetri = new javax.swing.JPanel();
-        btnModelMetri_AddMetri = new javax.swing.JButton();
-        painelAbaModelMetri_ListMetri = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         btnAbaModelMetri_Voltar = new javax.swing.JButton();
         btnAbaModelMetri_Prox = new javax.swing.JButton();
         btnAbaModelMetri = new javax.swing.JButton();
+        btnModelMetri_AddMetri = new javax.swing.JButton();
+        painelAbaModelMetri_ListMetri = new javax.swing.JPanel();
         painelAbaRel = new javax.swing.JPanel();
         painel_AbaRel_Rels = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
@@ -227,36 +228,21 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
 
         painelAbaModelMetri_ModelMetri.setBorder(javax.swing.BorderFactory.createTitledBorder("Métricas"));
 
-        btnModelMetri_AddMetri.setText("Adicionar Métrica");
-        btnModelMetri_AddMetri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModelMetri_AddMetriActionPerformed(evt);
-            }
-        });
-
-        painelAbaModelMetri_ListMetri.setLayout(new java.awt.GridLayout(1, 0));
-
         javax.swing.GroupLayout painelAbaModelMetri_ModelMetriLayout = new javax.swing.GroupLayout(painelAbaModelMetri_ModelMetri);
         painelAbaModelMetri_ModelMetri.setLayout(painelAbaModelMetri_ModelMetriLayout);
         painelAbaModelMetri_ModelMetriLayout.setHorizontalGroup(
             painelAbaModelMetri_ModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaModelMetri_ModelMetriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelAbaModelMetri_ModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelAbaModelMetri_ModelMetriLayout.createSequentialGroup()
-                        .addComponent(btnModelMetri_AddMetri)
-                        .addGap(0, 536, Short.MAX_VALUE))
-                    .addComponent(painelAbaModelMetri_ListMetri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         painelAbaModelMetri_ModelMetriLayout.setVerticalGroup(
             painelAbaModelMetri_ModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaModelMetri_ModelMetriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAbaModelMetri_ListMetri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnModelMetri_AddMetri)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         btnAbaModelMetri_Voltar.setText("Voltar");
@@ -280,6 +266,15 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
             }
         });
 
+        btnModelMetri_AddMetri.setText("Adicionar Métrica");
+        btnModelMetri_AddMetri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModelMetri_AddMetriActionPerformed(evt);
+            }
+        });
+
+        painelAbaModelMetri_ListMetri.setLayout(new java.awt.GridLayout(1, 0));
+
         javax.swing.GroupLayout painelAbaModelMetriLayout = new javax.swing.GroupLayout(painelAbaModelMetri);
         painelAbaModelMetri.setLayout(painelAbaModelMetriLayout);
         painelAbaModelMetriLayout.setHorizontalGroup(
@@ -289,7 +284,11 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
                 .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelAbaModelMetri_ModelMetri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaModelMetriLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 296, Short.MAX_VALUE)
+                        .addComponent(painelAbaModelMetri_ListMetri, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnModelMetri_AddMetri)
+                        .addGap(65, 65, 65)
                         .addComponent(btnAbaModelMetri_Voltar)
                         .addGap(18, 18, 18)
                         .addComponent(btnAbaModelMetri_Prox)
@@ -307,9 +306,12 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
                     .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAbaModelMetri)
                         .addComponent(btnAbaModelMetri_Prox))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaModelMetriLayout.createSequentialGroup()
-                        .addComponent(btnAbaModelMetri_Voltar)
-                        .addContainerGap())))
+                    .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAbaModelMetri_Voltar)
+                            .addComponent(btnModelMetri_AddMetri))
+                        .addComponent(painelAbaModelMetri_ListMetri, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         jtpPainelAbas.addTab("Modelagem Métricas", painelAbaModelMetri);
@@ -569,7 +571,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
 //        JOptionPane.showMessageDialog(null, "Cubo salvo");
         FormEnviarCubo frm = new FormEnviarCubo();
         frm.setLocationRelativeTo(null);
-        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setVisible(true);
     }
     
@@ -585,7 +587,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private void chamarFormAddRel(){
         FormAddRel frm = new FormAddRel();
         frm.setLocationRelativeTo(null);
-        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Adicionar Novo Relacionamento");
         frm.setVisible(true);
     }
@@ -653,7 +655,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private void chamarFormAddDim(){      
         FormAddDimensao frm = new FormAddDimensao();
         frm.setLocationRelativeTo(null);
-        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Adicionar Nova Dimensão");
         frm.setVisible(true);
     }
@@ -661,7 +663,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormGerarCuboXml().setVisible(true);
+                new FormAssistenteModelagem().setVisible(true);
             }
         });
     }
@@ -686,6 +688,7 @@ public class FormGerarCuboXml extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     public static javax.swing.JTabbedPane jtpPainelAbas;
     private javax.swing.JLabel lblAbaNomeCubo_Nomecubo;
     private javax.swing.JPanel paineAbaModelDim;

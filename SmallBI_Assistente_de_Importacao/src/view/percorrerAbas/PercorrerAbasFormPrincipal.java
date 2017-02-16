@@ -1,10 +1,10 @@
 package view.percorrerAbas;
 
 import javax.swing.table.DefaultTableModel;
-import view.FormPrincipal;
-import static view.FormPrincipal.painelAbas;
+import view.FormAssistenteImportacao;
+import static view.FormAssistenteImportacao.painelAbas;
 
-public class PercorrerAbasFormPrincipal extends FormPrincipal{
+public class PercorrerAbasFormPrincipal extends FormAssistenteImportacao{
     
     public static void abaIniToAbaTipoImport(){
         painelAbas.setSelectedIndex(1);

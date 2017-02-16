@@ -16,7 +16,7 @@ public class FormAddRel extends javax.swing.JFrame {
     private void carregarTab(){
         cbx_tab_com_rel.removeAllItems();
         cbx_tab_com_rel.addItem("Selecione");
-        for(Dimensao d : FormGerarCuboXml.dimensoes){
+        for(Dimensao d : FormAssistenteModelagem.dimensoes){
             cbx_tab_com_rel.addItem(d.getTabela());
 //            cbx_dim_com_rel.addItem(d.getNome());
         }
@@ -178,7 +178,7 @@ public class FormAddRel extends javax.swing.JFrame {
     private void cbx_tab_com_relActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_tab_com_relActionPerformed
         if(cbx_tab_com_rel.getSelectedItem() != null && !cbx_tab_com_rel.getSelectedItem().toString().equals("Selecione")){
             Dimensao tabComRel = new Dimensao();
-            for(Dimensao d : FormGerarCuboXml.dimensoes){
+            for(Dimensao d : FormAssistenteModelagem.dimensoes){
                 if(d.getTabela().equals(cbx_tab_com_rel.getSelectedItem().toString())){
                     tabComRel = d;
                 }
@@ -204,7 +204,7 @@ public class FormAddRel extends javax.swing.JFrame {
             
             cbx_tab_referenciada.removeAllItems();
             cbx_tab_referenciada.addItem("Selecione");
-            for(Dimensao d : FormGerarCuboXml.dimensoes){
+            for(Dimensao d : FormAssistenteModelagem.dimensoes){
                 if(!d.getTabela().equals(cbx_tab_com_rel.getSelectedItem().toString())){
                     cbx_tab_referenciada.addItem(d.getTabela());
                 }
@@ -232,14 +232,14 @@ public class FormAddRel extends javax.swing.JFrame {
         link.setForeignKey(cbx_atr_com_rel.getSelectedItem().toString());
         link.setSource(cbx_tab_referenciada.getSelectedItem().toString());
         
-        FormGerarCuboXml.links.add(link);
+        FormAssistenteModelagem.links.add(link);
         
         JLabel l = new JLabel();
         l.setText("Relacionamento: " + link.getTarget() + "." + link.getForeignKey() + " => " + link.getSource());
-        FormGerarCuboXml.painel_AbaRel_ListRel.setLayout(
-                new BoxLayout(FormGerarCuboXml.painel_AbaRel_ListRel,BoxLayout.Y_AXIS));
-        FormGerarCuboXml.painel_AbaRel_ListRel.add(l);
-        FormGerarCuboXml.painel_AbaRel_ListRel.updateUI();
+        FormAssistenteModelagem.painel_AbaRel_ListRel.setLayout(
+                new BoxLayout(FormAssistenteModelagem.painel_AbaRel_ListRel,BoxLayout.Y_AXIS));
+        FormAssistenteModelagem.painel_AbaRel_ListRel.add(l);
+        FormAssistenteModelagem.painel_AbaRel_ListRel.updateUI();
         dispose();
     }
     

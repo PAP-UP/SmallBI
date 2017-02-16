@@ -3,9 +3,9 @@ package view.percorrerAbas;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
-import view.FormGerarCuboXml;
+import view.FormAssistenteModelagem;
 
-public class PercorrerAbasFormGerarCuboXml extends FormGerarCuboXml{
+public class PercorrerAbasFormGerarCuboXml extends FormAssistenteModelagem{
     
     public static void desativarAbasInicio(){
         for(int i = 0; i < jtpPainelAbas.getComponentCount(); i++){

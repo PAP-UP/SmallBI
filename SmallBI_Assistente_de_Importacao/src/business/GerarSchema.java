@@ -111,7 +111,7 @@ public class GerarSchema {
             
             schema += "</DimensionLinks></MeasureGroup>";   
         }
-        schema += "</MeasureGroups></Cube></Schema>";//Quebrar no </Schema> para adicionar o ROLE na API;
+        schema += "</MeasureGroups></Cube>";//</Schema>";//Quebrar no </Schema> para adicionar o ROLE na API;
         return schema;
     }
     

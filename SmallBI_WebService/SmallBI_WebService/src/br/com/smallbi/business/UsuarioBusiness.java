@@ -227,12 +227,22 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		usuarioDao.create(usuario);
 	}
 	
-	public String validarLogin(String login, String senha){
+	/*public String validarLogin(String login, String senha){
 		Usuario usuario = Util.validateLogin(login, senha);
 		if(usuario == null)
 			return "Usuário ou senha inválidos!";
 		
 		//Chamar metodo que permite acesso ao site
 		return null;
+	}*/
+	
+	public Integer login(String login, String senha){
+		Usuario u = Util.validateLogin(login, senha);
+		
+		if(u != null){
+			return u.getPessoa().getCliente().getIdCliente();
+		}else{
+			return 0;
+		}
 	}
 }

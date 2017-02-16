@@ -104,6 +104,17 @@ public class UsuarioWebService {
 		return gson.toJson("Nenhum resultado foi encontrado na tabela Usuario com o id {"+idUsuario+"}");
 	}
 	
+	@POST
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String login(String json) throws JSONException{
+		JSONObject jsonObject = new JSONObject(json);
+		int idCLiente = usuarioBusiness.login(jsonObject.getString("login"), jsonObject.getString("senha"));
+		jsonObject = new JSONObject().put("idCliente", idCLiente);
+		return gson.toJson(jsonObject);
+	}
+	
 	public Hashtable<String, Object> getHashById(Usuario u){
 		Hashtable<String, Object> hash = new Hashtable<>();
 		hash.put("idPessoa", u.getPessoa().getIdPessoa());

@@ -396,7 +396,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
 //            factLinks = grupoMetrica.getFactLinks();
 //        }
 //        
-//        for(Dimensao d : FormGerarCuboXml.dimensoes){
+//        for(Dimensao d : FormAssistenteModelagem.dimensoes){
 //            for(String atributo : d.getAtributos()){
 //                 if(atributo.equals(m.getColuna())){
 //                     FactLink factLink = new FactLink();
@@ -416,14 +416,14 @@ public class FormAddMetrica extends javax.swing.JFrame {
     }
     
     private void salvarGrupoMetrica(){
-        FormGerarCuboXml.grupoMetricas.add(grupoMetrica);
+        FormAssistenteModelagem.grupoMetricas.add(grupoMetrica);
         
         JLabel l = new JLabel();
         l.setText("Grupo de métricas: " + grupoMetrica.getNome());
-        FormGerarCuboXml.painelAbaModelMetri_ListMetri.setLayout(
-            new BoxLayout(FormGerarCuboXml.painelAbaModelMetri_ListMetri, BoxLayout.Y_AXIS));
-        FormGerarCuboXml.painelAbaModelMetri_ListMetri.add(l);
-                FormGerarCuboXml.painelAbaModelMetri_ListMetri.updateUI();
+        FormAssistenteModelagem.painelAbaModelMetri_ListMetri.setLayout(
+            new BoxLayout(FormAssistenteModelagem.painelAbaModelMetri_ListMetri, BoxLayout.Y_AXIS));
+        FormAssistenteModelagem.painelAbaModelMetri_ListMetri.add(l);
+                FormAssistenteModelagem.painelAbaModelMetri_ListMetri.updateUI();
         dispose();
     }
     
@@ -438,7 +438,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
     
     private void carregarTabelasSalvas(){
         cbxAbaGrupoMetri_Tabela.removeAllItems();
-        for(TabelaFato t : FormGerarCuboXml.tabelasFato){
+        for(TabelaFato t : FormAssistenteModelagem.tabelasFato){
             cbxAbaGrupoMetri_Tabela.addItem(t.getNomeTabela());
         }
     }

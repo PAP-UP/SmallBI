@@ -359,7 +359,7 @@ public class FormAddDimensao extends javax.swing.JFrame {
     
     private void carregarTabelasSalvas(){
         cbxTabelas.removeAllItems();
-        for(TabelaFato t : FormGerarCuboXml.tabelasFato){
+        for(TabelaFato t : FormAssistenteModelagem.tabelasFato){
             cbxTabelas.addItem(t.getNomeTabela());
         }
     }
@@ -391,14 +391,14 @@ public class FormAddDimensao extends javax.swing.JFrame {
                 }
             }
             d.setAtributos(atributos);    
-            FormGerarCuboXml.dimensoes.add(d);
+            FormAssistenteModelagem.dimensoes.add(d);
 
             JLabel l = new JLabel();
             l.setText("Dimensão: " + d.getNome() + ", Tabela: " + d.getTabela() + ", Chave: " + d.getKey() + ";");
-            FormGerarCuboXml.painel_jtpAbaModelDim_listDims.setLayout(
-                new BoxLayout(FormGerarCuboXml.painel_jtpAbaModelDim_listDims,BoxLayout.Y_AXIS));
-            FormGerarCuboXml.painel_jtpAbaModelDim_listDims.add(l);
-            FormGerarCuboXml.painel_jtpAbaModelDim_listDims.updateUI();        
+            FormAssistenteModelagem.painel_jtpAbaModelDim_listDims.setLayout(
+                new BoxLayout(FormAssistenteModelagem.painel_jtpAbaModelDim_listDims,BoxLayout.Y_AXIS));
+            FormAssistenteModelagem.painel_jtpAbaModelDim_listDims.add(l);
+            FormAssistenteModelagem.painel_jtpAbaModelDim_listDims.updateUI();        
             dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
@@ -421,7 +421,7 @@ public class FormAddDimensao extends javax.swing.JFrame {
         
         jPanelAtributos.setLayout(new BoxLayout(jPanelAtributos, BoxLayout.Y_AXIS));
         tabelaFato = new TabelaFato();
-        for(TabelaFato t : FormGerarCuboXml.tabelasFato){
+        for(TabelaFato t : FormAssistenteModelagem.tabelasFato){
             String tabelaSeleciona = cbxTabelas.getSelectedItem().toString();
             if(t.getNomeTabela().equals(tabelaSeleciona)){
                 tabelaFato = t;

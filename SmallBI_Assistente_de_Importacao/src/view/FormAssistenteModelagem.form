@@ -299,7 +299,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="painelAbaModelMetri_ModelMetri" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="296" max="32767" attributes="0"/>
+                              <Component id="painelAbaModelMetri_ListMetri" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnModelMetri_AddMetri" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                               <Component id="btnAbaModelMetri_Voltar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnAbaModelMetri_Prox" min="-2" max="-2" attributes="0"/>
@@ -322,11 +326,15 @@
                               <Component id="btnAbaModelMetri" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnAbaModelMetri_Prox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnAbaModelMetri_Voltar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                  <Component id="btnAbaModelMetri_Voltar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnModelMetri_AddMetri" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="painelAbaModelMetri_ListMetri" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -347,15 +355,9 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="btnModelMetri_AddMetri" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="536" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="painelAbaModelMetri_ListMetri" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jTabbedPane1" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -364,32 +366,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="painelAbaModelMetri_ListMetri" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTabbedPane1" pref="279" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnModelMetri_AddMetri" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="254" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="btnModelMetri_AddMetri">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Adicionar M&#xe9;trica"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModelMetri_AddMetriActionPerformed"/>
-                  </Events>
-                </Component>
-                <Container class="javax.swing.JPanel" name="painelAbaModelMetri_ListMetri">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                  </AuxValues>
+                <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
 
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                    <Property name="columns" type="int" value="0"/>
-                    <Property name="rows" type="int" value="1"/>
-                  </Layout>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                 </Container>
               </SubComponents>
             </Container>
@@ -417,6 +403,24 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaModelMetriActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnModelMetri_AddMetri">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar M&#xe9;trica"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModelMetri_AddMetriActionPerformed"/>
+              </Events>
+            </Component>
+            <Container class="javax.swing.JPanel" name="painelAbaModelMetri_ListMetri">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                <Property name="columns" type="int" value="0"/>
+                <Property name="rows" type="int" value="1"/>
+              </Layout>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="painelAbaRel">
