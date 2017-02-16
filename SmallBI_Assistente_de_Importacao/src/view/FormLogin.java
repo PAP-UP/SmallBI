@@ -120,14 +120,19 @@ public class FormLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAuten_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuten_LoginActionPerformed
-        login();
+        
+        //Chamando direto sem validar para otimizar o trabalho
+        FormAssistenteImportacao frm = new FormAssistenteImportacao();
+        frm.setLocationRelativeTo(null);
+        frm.setVisible(true); 
+        //login();
     }//GEN-LAST:event_btnAuten_LoginActionPerformed
 
     private void btnAuten_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuten_CancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btnAuten_CancelarActionPerformed
-
-    private void login(){
+    
+    private void login(){        
         if(txtAuten_Login != null && !txtAuten_Login.equals("") &&
                 txtAuten_Senha != null && !txtAuten_Senha.equals("")){
             
@@ -176,7 +181,6 @@ public class FormLogin extends javax.swing.JFrame {
                 this.dispose();
                 FormAssistenteImportacao frm = new FormAssistenteImportacao();
                 frm.setLocationRelativeTo(null);
-                //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
                 frm.setVisible(true); 
                 break;
             case 404:

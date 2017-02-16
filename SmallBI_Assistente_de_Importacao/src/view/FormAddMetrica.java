@@ -420,10 +420,10 @@ public class FormAddMetrica extends javax.swing.JFrame {
         
         JLabel l = new JLabel();
         l.setText("Grupo de métricas: " + grupoMetrica.getNome());
-        FormAssistenteModelagem.painelAbaModelMetri_ListMetri.setLayout(
-            new BoxLayout(FormAssistenteModelagem.painelAbaModelMetri_ListMetri, BoxLayout.Y_AXIS));
-        FormAssistenteModelagem.painelAbaModelMetri_ListMetri.add(l);
-                FormAssistenteModelagem.painelAbaModelMetri_ListMetri.updateUI();
+//        FormAssistenteModelagem.painelAbaModelMetri_ListMetri.setLayout(
+//            new BoxLayout(FormAssistenteModelagem.painelAbaModelMetri_ListMetri, BoxLayout.Y_AXIS));
+//        FormAssistenteModelagem.painelAbaModelMetri_ListMetri.add(l);
+//                FormAssistenteModelagem.painelAbaModelMetri_ListMetri.updateUI();
         dispose();
     }
     
@@ -435,7 +435,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
         painelMetricas.add(l);
         painelMetricas.updateUI();
     }
-    
+    //---------------
     private void carregarTabelasSalvas(){
         cbxAbaGrupoMetri_Tabela.removeAllItems();
         for(TabelaFato t : FormAssistenteModelagem.tabelasFato){

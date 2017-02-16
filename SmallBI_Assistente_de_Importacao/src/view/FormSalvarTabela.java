@@ -18,7 +18,7 @@ public class FormSalvarTabela extends javax.swing.JFrame {
         carregarCbxChavePrimaria(tabelaPivot);
         this.tabelaPivot = tabelaPivot;
         this.listaCbxTipos = listaCbxTipos;
-        txtPainelConfTab_txtNomeTab.setText("MinhaTabelaFato");
+        //txtPainelConfTab_txtNomeTab.setText("MinhaTabelaFato");
     }
 
     @SuppressWarnings("unchecked")
@@ -40,6 +40,8 @@ public class FormSalvarTabela extends javax.swing.JFrame {
         cbxPainelConfTab_lblPrimaryKey.setText("Chave Primária:");
 
         cbxPainelConfTab_CamposPrimaryKey.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione" }));
+
+        txtPainelConfTab_txtNomeTab.setToolTipText("");
 
         cbxPainelConfTab_lblNomeTab.setText("Nome da Tabela:");
 

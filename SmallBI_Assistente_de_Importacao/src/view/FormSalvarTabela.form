@@ -123,6 +123,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPainelConfTab_txtNomeTab">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="cbxPainelConfTab_lblNomeTab">
           <Properties>

@@ -2,16 +2,20 @@ package view;
 
 import business.GerarSchema;
 import business.GerarScriptSql;
+import java.awt.Component;
 import java.text.SimpleDateFormat;
 import view.percorrerAbas.PercorrerAbasFormGerarCuboXml;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import model.Dimensao;
 import model.GrupoMetrica;
 import model.Link;
+import model.Metrica;
 import model.Schema;
 import model.TabelaFato;
 import xmleditorkit.XMLEditorKit;
@@ -23,16 +27,18 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     public static List<TabelaFato> tabelasFato = new ArrayList<>();
     public static List<Link> links = new ArrayList<>();
     
-
     public FormAssistenteModelagem() {
         initComponents();
-        PercorrerAbasFormGerarCuboXml.desativarAbasInicio();       
+        PercorrerAbasFormGerarCuboXml.desativarAbasInicio();  
+        carregarAgregadores();
+        carregarFormatos();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jtpPainelAbas = new javax.swing.JTabbedPane();
         paineAbaNomeCubo = new javax.swing.JPanel();
         painelAbaNomeCubo_NomeCubo = new javax.swing.JPanel();
@@ -48,13 +54,27 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         btnAbaModelDim_Proximo = new javax.swing.JButton();
         btnAbaModelDim_Sair = new javax.swing.JButton();
         painelAbaModelMetri = new javax.swing.JPanel();
-        painelAbaModelMetri_ModelMetri = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        painelGerenciarMetricas = new javax.swing.JPanel();
+        jTabbedPane_Metricas = new javax.swing.JTabbedPane();
+        painelAddMetri = new javax.swing.JPanel();
+        lblNomeMetrica = new javax.swing.JLabel();
+        txtNomeMetrica = new javax.swing.JTextField();
+        cbxColunaMetrica = new javax.swing.JComboBox<>();
+        lblColunaMetrica = new javax.swing.JLabel();
+        lblAgregadorMetrica = new javax.swing.JLabel();
+        cbxAgregadorMetrica = new javax.swing.JComboBox<>();
+        cbxFormatoMetrica = new javax.swing.JComboBox<>();
+        lblFormatoMetrica = new javax.swing.JLabel();
+        lblTabelaMetrica = new javax.swing.JLabel();
+        cbxTabelaMetrica = new javax.swing.JComboBox<>();
+        btnAdicionarMetrica = new javax.swing.JButton();
+        painelMetricas = new javax.swing.JPanel();
+        btnSalvarMetricas = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        painelListaMetricas = new javax.swing.JPanel();
         btnAbaModelMetri_Voltar = new javax.swing.JButton();
         btnAbaModelMetri_Prox = new javax.swing.JButton();
         btnAbaModelMetri = new javax.swing.JButton();
-        btnModelMetri_AddMetri = new javax.swing.JButton();
-        painelAbaModelMetri_ListMetri = new javax.swing.JPanel();
         painelAbaRel = new javax.swing.JPanel();
         painel_AbaRel_Rels = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
@@ -69,6 +89,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         btnAbaCuboPreview_Sair = new javax.swing.JButton();
         btnAbaCuboPreview_EnviarCubo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,7 +117,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addGroup(painelAbaNomeCubo_NomeCuboLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAbaNomeCubo_Nomecubo)
                     .addComponent(txtAbaNomeCubo_NomeCubo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
 
         btnAbaNomeCubo_Proximo.setText("Próximo");
@@ -170,7 +193,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addComponent(painel_jtpAbaModelDim_listDims, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnJtpAbaModelDim_AddDim)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(297, Short.MAX_VALUE))
         );
 
         btnAbaModelDim_Voltar.setText("Voltar");
@@ -226,22 +249,147 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
         jtpPainelAbas.addTab("Modelagem Dimensões", paineAbaModelDim);
 
-        painelAbaModelMetri_ModelMetri.setBorder(javax.swing.BorderFactory.createTitledBorder("Métricas"));
+        painelGerenciarMetricas.setBorder(javax.swing.BorderFactory.createTitledBorder("Métricas"));
 
-        javax.swing.GroupLayout painelAbaModelMetri_ModelMetriLayout = new javax.swing.GroupLayout(painelAbaModelMetri_ModelMetri);
-        painelAbaModelMetri_ModelMetri.setLayout(painelAbaModelMetri_ModelMetriLayout);
-        painelAbaModelMetri_ModelMetriLayout.setHorizontalGroup(
-            painelAbaModelMetri_ModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAbaModelMetri_ModelMetriLayout.createSequentialGroup()
+        lblNomeMetrica.setText("Nome: ");
+
+        cbxColunaMetrica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblColunaMetrica.setText("Coluna: ");
+
+        lblAgregadorMetrica.setText("Agregador: ");
+
+        cbxAgregadorMetrica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbxFormatoMetrica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblFormatoMetrica.setText("Formato: ");
+
+        lblTabelaMetrica.setText("Tabela: ");
+
+        cbxTabelaMetrica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxTabelaMetrica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTabelaMetricaActionPerformed(evt);
+            }
+        });
+
+        btnAdicionarMetrica.setText("Adicionar Métrica");
+        btnAdicionarMetrica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarMetricaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelAddMetriLayout = new javax.swing.GroupLayout(painelAddMetri);
+        painelAddMetri.setLayout(painelAddMetriLayout);
+        painelAddMetriLayout.setHorizontalGroup(
+            painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAddMetriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addGroup(painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelAddMetriLayout.createSequentialGroup()
+                        .addGroup(painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblAgregadorMetrica, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblFormatoMetrica, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, Short.MAX_VALUE)
+                        .addGroup(painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxFormatoMetrica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxAgregadorMetrica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddMetriLayout.createSequentialGroup()
+                        .addGroup(painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblColunaMetrica)
+                            .addComponent(lblNomeMetrica)
+                            .addComponent(lblTabelaMetrica))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbxTabelaMetrica, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNomeMetrica, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                            .addComponent(cbxColunaMetrica, 0, 233, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddMetriLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAdicionarMetrica)))
                 .addContainerGap())
         );
-        painelAbaModelMetri_ModelMetriLayout.setVerticalGroup(
-            painelAbaModelMetri_ModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAbaModelMetri_ModelMetriLayout.createSequentialGroup()
+        painelAddMetriLayout.setVerticalGroup(
+            painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAddMetriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                .addGroup(painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNomeMetrica)
+                    .addComponent(txtNomeMetrica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTabelaMetrica)
+                    .addComponent(cbxTabelaMetrica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblColunaMetrica)
+                    .addComponent(cbxColunaMetrica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAgregadorMetrica)
+                    .addComponent(cbxAgregadorMetrica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFormatoMetrica)
+                    .addComponent(cbxFormatoMetrica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAdicionarMetrica)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane_Metricas.addTab("Adicionar Métrica", painelAddMetri);
+
+        btnSalvarMetricas.setText("Salvar");
+        btnSalvarMetricas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarMetricasActionPerformed(evt);
+            }
+        });
+
+        painelListaMetricas.setLayout(new java.awt.GridLayout());
+        jScrollPane2.setViewportView(painelListaMetricas);
+
+        javax.swing.GroupLayout painelMetricasLayout = new javax.swing.GroupLayout(painelMetricas);
+        painelMetricas.setLayout(painelMetricasLayout);
+        painelMetricasLayout.setHorizontalGroup(
+            painelMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelMetricasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelMetricasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSalvarMetricas)))
+                .addContainerGap())
+        );
+        painelMetricasLayout.setVerticalGroup(
+            painelMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelMetricasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalvarMetricas)
+                .addContainerGap())
+        );
+
+        jTabbedPane_Metricas.addTab("Métricas", painelMetricas);
+
+        javax.swing.GroupLayout painelGerenciarMetricasLayout = new javax.swing.GroupLayout(painelGerenciarMetricas);
+        painelGerenciarMetricas.setLayout(painelGerenciarMetricasLayout);
+        painelGerenciarMetricasLayout.setHorizontalGroup(
+            painelGerenciarMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelGerenciarMetricasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane_Metricas)
+                .addContainerGap())
+        );
+        painelGerenciarMetricasLayout.setVerticalGroup(
+            painelGerenciarMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelGerenciarMetricasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane_Metricas)
                 .addContainerGap())
         );
 
@@ -266,15 +414,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             }
         });
 
-        btnModelMetri_AddMetri.setText("Adicionar Métrica");
-        btnModelMetri_AddMetri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModelMetri_AddMetriActionPerformed(evt);
-            }
-        });
-
-        painelAbaModelMetri_ListMetri.setLayout(new java.awt.GridLayout(1, 0));
-
         javax.swing.GroupLayout painelAbaModelMetriLayout = new javax.swing.GroupLayout(painelAbaModelMetri);
         painelAbaModelMetri.setLayout(painelAbaModelMetriLayout);
         painelAbaModelMetriLayout.setHorizontalGroup(
@@ -282,13 +421,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             .addGroup(painelAbaModelMetriLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelAbaModelMetri_ModelMetri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelGerenciarMetricas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaModelMetriLayout.createSequentialGroup()
-                        .addGap(0, 296, Short.MAX_VALUE)
-                        .addComponent(painelAbaModelMetri_ListMetri, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnModelMetri_AddMetri)
-                        .addGap(65, 65, 65)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAbaModelMetri_Voltar)
                         .addGap(18, 18, 18)
                         .addComponent(btnAbaModelMetri_Prox)
@@ -300,18 +435,13 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaModelMetriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAbaModelMetri_ModelMetri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelGerenciarMetricas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAbaModelMetri)
-                        .addComponent(btnAbaModelMetri_Prox))
-                    .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAbaModelMetri_Voltar)
-                            .addComponent(btnModelMetri_AddMetri))
-                        .addComponent(painelAbaModelMetri_ListMetri, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(btnAbaModelMetri)
+                    .addComponent(btnAbaModelMetri_Prox)
+                    .addComponent(btnAbaModelMetri_Voltar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jtpPainelAbas.addTab("Modelagem Métricas", painelAbaModelMetri);
@@ -347,7 +477,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addComponent(painel_AbaRel_ListRel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(297, Short.MAX_VALUE))
         );
 
         btnPainelRel_Sair.setText("Sair");
@@ -490,16 +620,16 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jtpPainelAbas, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtpPainelAbas, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnModelMetri_AddMetriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModelMetri_AddMetriActionPerformed
-        chamarFormAddMetri();
-    }//GEN-LAST:event_btnModelMetri_AddMetriActionPerformed
+    private void btnAdicionarMetricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarMetricaActionPerformed
+        adicionarMetrica();
+    }//GEN-LAST:event_btnAdicionarMetricaActionPerformed
 
     private void btnAbaModelMetriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelMetriActionPerformed
         this.dispose();
@@ -565,6 +695,101 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         PercorrerAbasFormGerarCuboXml.cuboPrevToAddRel();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cbxTabelaMetricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTabelaMetricaActionPerformed
+        carregarCbxColunasMetrica();
+    }//GEN-LAST:event_cbxTabelaMetricaActionPerformed
+
+    private void btnSalvarMetricasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarMetricasActionPerformed
+        salvarMetricas();
+    }//GEN-LAST:event_btnSalvarMetricasActionPerformed
+
+    private void salvarMetricas(){
+        Component[] components = painelListaMetricas.getComponents();
+        for(Component c : components){
+            if(c.getClass().equals(JCheckBox.class)){
+                System.out.println("Achou um componente " + c.getName());
+            }
+        }
+    }
+    
+    private void carregarAgregadores(){
+        cbxAgregadorMetrica.removeAllItems();
+        cbxAgregadorMetrica.addItem("count");
+        cbxAgregadorMetrica.addItem("sum");
+        cbxAgregadorMetrica.addItem("avg");
+        cbxAgregadorMetrica.addItem("max");
+    }
+    
+    private void carregarFormatos(){
+        cbxFormatoMetrica.removeAllItems();
+        cbxFormatoMetrica.addItem("Standard");
+        cbxFormatoMetrica.addItem("#,###.00");
+    }
+    
+    private void carregarCbxColunasMetrica(){
+        cbxColunaMetrica.removeAllItems();
+        for(String s : FormAddDimensao.atributosUtilizadosNoCubo){
+            cbxColunaMetrica.addItem(s);
+        }
+    }
+    
+    private void adicionarMetrica(){
+        if(txtNomeMetrica != null && !txtNomeMetrica.equals("")){
+            Metrica metrica = new Metrica();
+            metrica.setNome(txtNomeMetrica.getText());
+            metrica.setColuna(cbxColunaMetrica.getSelectedItem().toString());
+            metrica.setAgregador(cbxAgregadorMetrica.getSelectedItem().toString());
+            metrica.setFormato(cbxFormatoMetrica.getSelectedItem().toString());        
+
+            GrupoMetrica gm = getGrupoUsandoMesmaTabela(cbxTabelaMetrica.getSelectedItem().toString());
+            if(gm == null){
+                gm = new GrupoMetrica();
+                gm.setNome("Grupo_" + metrica.getNome());
+                gm.setTabela(cbxTabelaMetrica.getSelectedItem().toString());
+
+                List<Metrica> metricas = new ArrayList<>();            
+                metricas.add(metrica);
+                gm.setMetricas(metricas);
+
+                grupoMetricas.add(gm);
+            }else{
+                List<Metrica> metricas = gm.getMetricas();
+                metricas.add(metrica);
+                gm.setMetricas(metricas);
+
+                grupoMetricas.set(grupoMetricas.indexOf(gm), gm);
+            }
+            autalizarListaMetricas();
+            jTabbedPane_Metricas.setSelectedIndex(1);
+        }else{
+            JOptionPane.showMessageDialog(null, "Defina um nome para a métrica!");
+        }
+    }
+    
+    private void autalizarListaMetricas(){
+        painelListaMetricas.removeAll();
+        for(GrupoMetrica gm : grupoMetricas){
+            List<Metrica> metricas = gm.getMetricas();
+            for(Metrica m : metricas){
+                JCheckBox checkBox = new JCheckBox();
+                checkBox.setText("Métrica: " + m.getNome());
+                checkBox.setSelected(true);
+                painelListaMetricas.setLayout(new BoxLayout(painelListaMetricas, BoxLayout.Y_AXIS));
+                painelListaMetricas.add(checkBox);
+                painelListaMetricas.updateUI();
+            }
+        }
+    }
+    
+    private GrupoMetrica getGrupoUsandoMesmaTabela(String tabSelecionada){
+        for(GrupoMetrica gm : grupoMetricas){
+            if(gm.getTabela().equals(tabSelecionada)){
+                return gm;
+            }
+        }
+        return null;
+    }
+    
     private void enviarCubo(){
         GerarSchema gerarSchema = new GerarSchema();
         gerarSchema.salvarSchema();
@@ -602,6 +827,13 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     private void modelDimToModelMetri(){
         if(dimensoes.size() > 0){
+            
+            //Carregar Tabelas para serem utilizadas na gerencia de metricas;
+            cbxTabelaMetrica.removeAllItems();
+            for(TabelaFato t : tabelasFato){
+                cbxTabelaMetrica.addItem(t.getNomeTabela());
+            }
+            
             PercorrerAbasFormGerarCuboXml.modelDimToModelMetri();
         }else{
             JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
@@ -644,14 +876,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
           edtPaneAbaCuboPreview_XmlPreview.setText(schemaXml);
     }
     
-    private void chamarFormAddMetri(){
-        FormAddMetrica frm = new FormAddMetrica();
-        frm.setLocationRelativeTo(null);
-        frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        frm.setTitle("Adicionar Nova Métrica");
-        frm.setVisible(true);
-    }
-    
     private void chamarFormAddDim(){      
         FormAddDimensao frm = new FormAddDimensao();
         frm.setLocationRelativeTo(null);
@@ -679,31 +903,46 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaModelMetri_Voltar;
     private javax.swing.JButton btnAbaNomeCubo_Proximo;
     private javax.swing.JButton btnAbaNomeCubo_Sair;
+    private javax.swing.JButton btnAdicionarMetrica;
     private javax.swing.JButton btnJtpAbaModelDim_AddDim;
-    private javax.swing.JButton btnModelMetri_AddMetri;
     private javax.swing.JButton btnPainelRel_GerarCubo;
     private javax.swing.JButton btnPainelRel_Sair;
     private javax.swing.JButton btnPainelRel_Voltar;
+    private javax.swing.JButton btnSalvarMetricas;
+    private javax.swing.JComboBox<String> cbxAgregadorMetrica;
+    private javax.swing.JComboBox<String> cbxColunaMetrica;
+    private javax.swing.JComboBox<String> cbxFormatoMetrica;
+    private javax.swing.JComboBox<String> cbxTabelaMetrica;
     private javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane_Metricas;
     public static javax.swing.JTabbedPane jtpPainelAbas;
     private javax.swing.JLabel lblAbaNomeCubo_Nomecubo;
+    private javax.swing.JLabel lblAgregadorMetrica;
+    private javax.swing.JLabel lblColunaMetrica;
+    private javax.swing.JLabel lblFormatoMetrica;
+    private javax.swing.JLabel lblNomeMetrica;
+    private javax.swing.JLabel lblTabelaMetrica;
     private javax.swing.JPanel paineAbaModelDim;
     private javax.swing.JPanel paineAbaNomeCubo;
     private javax.swing.JPanel painelAbaCuboPreview;
     private javax.swing.JPanel painelAbaCuboPreview_Preview;
     private javax.swing.JPanel painelAbaModelMetri;
-    public static javax.swing.JPanel painelAbaModelMetri_ListMetri;
-    public static javax.swing.JPanel painelAbaModelMetri_ModelMetri;
     private javax.swing.JPanel painelAbaNomeCubo_NomeCubo;
     private javax.swing.JPanel painelAbaRel;
+    private javax.swing.JPanel painelAddMetri;
+    public static javax.swing.JPanel painelGerenciarMetricas;
+    private javax.swing.JPanel painelListaMetricas;
+    private javax.swing.JPanel painelMetricas;
     private javax.swing.JPanel painel_AbaModelDim_AtriDim;
     public static javax.swing.JPanel painel_AbaRel_ListRel;
     private javax.swing.JPanel painel_AbaRel_Rels;
     public static javax.swing.JPanel painel_jtpAbaModelDim_listDims;
     private javax.swing.JTextField txtAbaNomeCubo_NomeCubo;
+    private javax.swing.JTextField txtNomeMetrica;
     // End of variables declaration//GEN-END:variables
 }
