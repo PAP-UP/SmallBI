@@ -4,13 +4,13 @@
   angular.module('SmallBIApp')
     .controller('clienteListarController', clienteListarController);
 
-  function clienteListarController(clienteResource) {
+  function clienteListarController(clienteResource, $state) {
 
     var vm = this;
 
     angular.extend(vm, {
       listaClientes: listaClientes,
-      // excluirUsuario: excluirUsuario
+      excluirCliente: excluirCliente
     });
 
     function listaClientes() {
@@ -18,13 +18,14 @@
         vm.listaClientes = result.data;
       });
     }
-    //
-    // function excluirUsuario(id) {
-    //   usuarioResource.deleteUser(id).then(
-    //     function (result) {
-    //       console.log(result);
-    //     });
-    // }
+
+    function excluirCliente(id) {
+      clienteResource.deleteCliente(id).then(
+        function (result) {
+          console.log(result.data);
+          $state.reload();
+        });
+    }
 
     function init() {
       listaClientes();

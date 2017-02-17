@@ -73,7 +73,7 @@
 
     var editarCliente = {
       name: 'editar',
-      url: '/editar',
+      url: '/editar/:id',
       templateUrl: 'scripts/cliente/cliente-form.html',
       controller: 'clienteEditarController',
       controllerAs: 'vm'
@@ -92,6 +92,39 @@
       url: '/cliente',
       templateUrl: 'views/main.html',
       children: [listarCliente, editarCliente, cadastrarCliente]
+    });
+
+    // PLANO ROUTE
+
+    var listarPlanos = {
+      name: 'listar',
+      url: '/listar',
+      templateUrl: 'scripts/plano/plano-listar.html',
+      controller: 'planoListarController',
+      controllerAs: 'vm'
+    };
+
+    var editarPlano = {
+      name: 'editar',
+      url: '/editar/:id',
+      templateUrl: 'scripts/plano/plano-form.html',
+      controller: 'planoEditarController',
+      controllerAs: 'vm'
+    };
+
+    var cadastrarPlano = {
+      name: 'cadastrar',
+      url: '/cadastrar',
+      templateUrl: 'scripts/plano/plano-form.html',
+      controller: 'planoCadastrarController',
+      controllerAs: 'vm'
+    };
+
+    stateHelperProvider.setNestedState({
+      name: 'plano',
+      url: '/plano',
+      templateUrl: 'views/main.html',
+      children: [listarPlanos, editarPlano, cadastrarPlano]
     });
 
   }

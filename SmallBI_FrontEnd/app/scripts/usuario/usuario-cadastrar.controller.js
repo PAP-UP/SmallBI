@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('usuarioCadastrarController', usuarioCadastrarController);
 
-  function usuarioCadastrarController(usuarioResource, funcaoResource, estadoResource) {
+  function usuarioCadastrarController(usuarioResource, funcaoResource, estadoResource, $state) {
 
     var vm = this;
 

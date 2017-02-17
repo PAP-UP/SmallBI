@@ -8,10 +8,10 @@
 
     var service = {
       listaCliente: listaCliente,
-      insereCliente: insereCliente
-      // alteraUsuario: alteraUsuario,
-      // getUserById: getUserById,
-      // deleteUser: deleteUser
+      insereCliente: insereCliente,
+      alteraCliente: alteraCliente,
+      getClienteById: getClienteById,
+      deleteCliente: deleteCliente
     };
 
     return service;
@@ -25,20 +25,20 @@
       var url = 'cliente/adicionar';
       return Service.servicePost(dataParam, url);
     }
-    //
-    // function alteraUsuario(dataParam) {
-    //   var url = 'usuario/alterar';
-    //   return Service.servicePost(dataParam, url);
-    // }
-    //
-    // function getUserById(param) {
-    //   var url = 'usuario/getById/';
-    //   return Service.serviceGetById(param, url);
-    // }
-    //
-    // function deleteUser(param) {
-    //   var url = 'usuario/deletar/';
-    //   return Service.serviceDelete(param, url);
-    // }
+
+    function alteraCliente(dataParam) {
+      var url = 'cliente/alterar';
+      return Service.servicePost(dataParam, url);
+    }
+
+    function getClienteById(param) {
+      var url = 'cliente/getById/';
+      return Service.serviceGetById(param, url);
+    }
+
+    function deleteCliente(param) {
+      var url = 'cliente/deletar/';
+      return Service.serviceDelete(param, url);
+    }
   }
 })();

@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('usuarioListarController', usuarioListarController);
 
-  function usuarioListarController(usuarioResource) {
+  function usuarioListarController(usuarioResource, $state) {
 
     var vm = this;
 
@@ -23,6 +23,7 @@
       usuarioResource.deleteUser(id).then(
         function (result) {
         console.log(result);
+        $state.reload();
       });
     }
 
