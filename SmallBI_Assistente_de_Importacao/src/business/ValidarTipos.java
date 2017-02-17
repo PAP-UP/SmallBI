@@ -5,6 +5,8 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
+import view.FormAssistenteImportacao;
+import static view.FormAssistenteImportacao.painelAbaTabPrev_CbxTiposVariaveis;
 
 public class ValidarTipos {
     public static int tamanhoCampoVarchar = 0;
@@ -134,6 +136,10 @@ public class ValidarTipos {
                                     }
                                 }
                             }
+                            
+                        case "Não importar":
+                            erro = false;
+                            break;
                     }
                     if (erro) {
                         return msg;
@@ -148,12 +154,41 @@ public class ValidarTipos {
     }
     
     public static void removerColunasIndesejadas(JTable jtable, List<JComboBox> listaDeCbx){
+        int qtdCbxParaRemover = 0;
         for(JComboBox cbx : listaDeCbx){
+            System.out.println(cbx.getSelectedItem().toString());
             if(cbx.getSelectedItem().toString().equals("Não importar")){
                 int index = listaDeCbx.indexOf(cbx);
-                TableColumn column = jtable.getColumn(index);
+                TableColumn column = jtable.getColumnModel().getColumn(index);
                 jtable.removeColumn(column);
+                qtdCbxParaRemover++;
+                cbx.setSelectedIndex(0);
             }
         }
+        
+        for(int i = 0; i < qtdCbxParaRemover; i++){
+            painelAbaTabPrev_CbxTiposVariaveis.remove(i);
+            listaDeCbx.remove(i);
+            painelAbaTabPrev_CbxTiposVariaveis.updateUI();
+        }
+        
+    }
+    
+    private static void atualizarComboBoxTiposArquivo(List<JComboBox> listaCbx){
+        painelAbaTabPrev_CbxTiposVariaveis.removeAll();
+        for(int i = 0; i < listaCbx.size(); i++){
+            JComboBox cbx = new JComboBox();
+            cbx.addItem("Texto");
+            cbx.addItem("V/F");
+            cbx.addItem("Inteiro");
+            cbx.addItem("Real");
+            cbx.addItem("Caractere");
+            cbx.addItem("Data dd-MM-yyyy");            
+            cbx.addItem("Data MM-dd-yyyy");
+            cbx.addItem("Data yyyy-MM-dd");
+            cbx.addItem("Não importar");
+            painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
+        }
+        painelAbaTabPrev_CbxTiposVariaveis.updateUI();
     }
 }

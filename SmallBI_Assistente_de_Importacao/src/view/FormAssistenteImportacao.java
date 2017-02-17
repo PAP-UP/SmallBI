@@ -15,7 +15,7 @@ import javax.swing.JTable;
 
 public class FormAssistenteImportacao extends javax.swing.JFrame {
 
-    private List<JComboBox> listaDeCbxTipos = new ArrayList<>();
+    public List<JComboBox> listaDeCbxTipos = new ArrayList<>();
     public static boolean importandoDeArquivo = true;
     private JTable jTableAtivo = new JTable();    
     
@@ -1100,6 +1100,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
     }
     
     private void validarTiposDeDados(){
+        business.ValidarTipos.removerColunasIndesejadas(jTableAtivo, listaDeCbxTipos);
         String msg = business.ValidarTipos.validarTipagemDosCampos(jTableAtivo, listaDeCbxTipos);                
         JOptionPane.showMessageDialog(null, msg);
         if (msg.equals("Campos validados com sucesso!")) {
@@ -1272,6 +1273,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             cbx.addItem("Data dd-MM-yyyy");            
             cbx.addItem("Data MM-dd-yyyy");
             cbx.addItem("Data yyyy-MM-dd");
+            cbx.addItem("Não importar");
             listaDeCbxTipos.add(cbx);
             painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
             painelAbaTabPrev_CbxTiposVariaveis.updateUI();
@@ -1294,6 +1296,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             cbx.addItem("Data dd-MM-yyyy");            
             cbx.addItem("Data MM-dd-yyyy");
             cbx.addItem("Data yyyy-MM-dd");
+            cbx.addItem("Não importar");
             listaDeCbxTipos.add(cbx);
             painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
             cbx.setSelectedItem(importarDb.transformarTipo(tipos.get(i), 
