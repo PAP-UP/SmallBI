@@ -117,6 +117,22 @@ public class ValidarTipos {
                                 }
                             }                                
                             break;
+                            
+                        case "Data yyyy-MM-dd":
+                            if(strValorCampo.equals(" ")){
+                                erro = false;
+                            }else{
+                                if(strValorCampo.length() > 0){
+                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                    sdf.setLenient(false);
+                                    try{
+                                        sdf.parse(strValorCampo);
+                                        erro = false;
+                                    }catch(Exception e){
+                                        erro = true;
+                                    }
+                                }
+                            }
                     }
                     if (erro) {
                         return msg;

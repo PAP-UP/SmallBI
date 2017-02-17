@@ -1271,6 +1271,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             cbx.addItem("Caractere");
             cbx.addItem("Data dd-MM-yyyy");            
             cbx.addItem("Data MM-dd-yyyy");
+            cbx.addItem("Data yyyy-MM-dd");
             listaDeCbxTipos.add(cbx);
             painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
             painelAbaTabPrev_CbxTiposVariaveis.updateUI();
