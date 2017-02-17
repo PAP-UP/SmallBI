@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.table.TableColumn;
 
 public class ValidarTipos {
     public static int tamanhoCampoVarchar = 0;
@@ -143,6 +144,16 @@ public class ValidarTipos {
             return msg = "Campos validados com sucesso!";
         } catch (Exception e) {
             return msg;
+        }
+    }
+    
+    public static void removerColunasIndesejadas(JTable jtable, List<JComboBox> listaDeCbx){
+        for(JComboBox cbx : listaDeCbx){
+            if(cbx.getSelectedItem().toString().equals("Não importar")){
+                int index = listaDeCbx.indexOf(cbx);
+                TableColumn column = jtable.getColumn(index);
+                jtable.removeColumn(column);
+            }
         }
     }
 }
