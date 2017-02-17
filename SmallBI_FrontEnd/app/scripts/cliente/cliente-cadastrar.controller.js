@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('clienteCadastrarController', clienteCadastrarController);
 
-  function clienteCadastrarController(clienteResource, planoResource, pagamentoResource) {
+  function clienteCadastrarController(clienteResource, planoResource, pagamentoResource, ramoResource) {
 
     var vm = this;
 
@@ -39,9 +39,16 @@
       });
     }
 
+    function listaRamoAtividade() {
+      ramoResource.listaRamos().then(function (result) {
+        vm.dadosRamoAtividade = result.data;
+      });
+    }
+
     function init() {
       listaPlanos();
       listaFormasPagamento();
+      listaRamoAtividade();
     }
 
     init();
