@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.Dimensao;
 import model.GrupoMetrica;
@@ -348,7 +349,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             }
         });
 
-        painelListaMetricas.setLayout(new java.awt.GridLayout());
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        painelListaMetricas.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane2.setViewportView(painelListaMetricas);
 
         javax.swing.GroupLayout painelMetricasLayout = new javax.swing.GroupLayout(painelMetricas);
@@ -706,10 +709,28 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private void salvarMetricas(){
         Component[] components = painelListaMetricas.getComponents();
         for(Component c : components){
-            if(c.getClass().equals(JCheckBox.class)){
-                System.out.println("Achou um componente " + c.getName());
+            if(c instanceof JCheckBox){
+                JCheckBox checkBox = (JCheckBox) c;
+                if(checkBox.isSelected() != true){
+                    delMetricaByName(checkBox.getText());
+                }
             }
         }
+        PercorrerAbasFormGerarCuboXml.modelMetriToAddRel();
+    }
+    
+    //Foi colocado a assinatura boolean apenas para quebrar o for quando remover a métrica indesejada;
+    private boolean delMetricaByName(String nome){
+        for(GrupoMetrica gm : grupoMetricas){
+            List<Metrica> metricas = gm.getMetricas();
+            for(Metrica m : metricas){
+                if(m.getNome().equals(nome)){
+                    metricas.remove(m);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     
     private void carregarAgregadores(){
@@ -761,6 +782,18 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             }
             autalizarListaMetricas();
             jTabbedPane_Metricas.setSelectedIndex(1);
+            
+            //Apenas para controle e teste;
+            System.out.println("Inicio");
+            for(GrupoMetrica grupo : grupoMetricas){
+                System.out.println("Nome GrupoMetrica: " + grupo.getNome() + ", Tabela: " + grupo.getTabela());
+                List<Metrica> ms = grupo.getMetricas();
+                for(Metrica m : ms){
+                    System.out.println("Métrica: " + m.getNome());
+                }
+                System.out.println("-------------------------");
+            }
+            System.out.println("Fim");
         }else{
             JOptionPane.showMessageDialog(null, "Defina um nome para a métrica!");
         }
@@ -772,10 +805,14 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             List<Metrica> metricas = gm.getMetricas();
             for(Metrica m : metricas){
                 JCheckBox checkBox = new JCheckBox();
-                checkBox.setText("Métrica: " + m.getNome());
+                checkBox.setText(m.getNome());
+                JLabel label = new JLabel();
+                label.setText("Métrica: ");
+//                checkBox.setText("Métrica: " + m.getNome());
                 checkBox.setSelected(true);
-                painelListaMetricas.setLayout(new BoxLayout(painelListaMetricas, BoxLayout.Y_AXIS));
+                painelListaMetricas.add(label);
                 painelListaMetricas.add(checkBox);
+                painelListaMetricas.setLayout(new BoxLayout(painelListaMetricas, BoxLayout.Y_AXIS));
                 painelListaMetricas.updateUI();
             }
         }
@@ -802,6 +839,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     private void addRelToModelMetri(){
         PercorrerAbasFormGerarCuboXml.addRelToModelMetri();
+        painelListaMetricas.updateUI();
     }
     
     private void addRelToCuboPreview(){

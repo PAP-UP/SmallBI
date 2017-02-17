@@ -125,6 +125,7 @@ public class FormLogin extends javax.swing.JFrame {
         FormAssistenteImportacao frm = new FormAssistenteImportacao();
         frm.setLocationRelativeTo(null);
         frm.setVisible(true); 
+        this.dispose();
         //login();
     }//GEN-LAST:event_btnAuten_LoginActionPerformed
 
@@ -159,7 +160,6 @@ public class FormLogin extends javax.swing.JFrame {
                 String jsonMyHashMap = jSONObject.getJSONObject("myHashMap").toString();
                 jSONObject = new JSONObject(jsonMyHashMap);
                 idCliente = jSONObject.getInt("idCliente");
-                //System.out.println("ID: " + idCliente);
                 
                 int cod = response.getStatusLine().getStatusCode();
                 getResponse(cod);
