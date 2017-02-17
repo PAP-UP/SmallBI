@@ -43,9 +43,9 @@ public class ConexaoDao {
 		return true;
 	}
 	
-	public static boolean salvarScript(String cliente, Integer id, String script){
+	public static boolean salvarScript(Integer id, String script){
 		
-		String banco = "cliente_" + cliente + "_id_" + id;
+		String banco = "id_" + id;
 		try{
 			Connection connection = getConexao(banco);
 			Statement statement = connection.createStatement();

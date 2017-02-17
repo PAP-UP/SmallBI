@@ -40,6 +40,13 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		
 		if(t.getLogin().equals(null)|| t.getLogin().equals("")){
 			return "A variável 'login' deve ser informada!";
+		}else{
+			List<Usuario> usuarios = list();
+			for(Usuario u : usuarios){
+				if(u.getLogin().equals(t.getLogin())){
+					return "Já existe um usuário com esse login!";
+				}
+			}
 		}
 		
 		if(t.getPerfil() != null){
@@ -126,6 +133,13 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		
 		if(t.getLogin().equals(null)|| t.getLogin().equals("")){
 			return "A variável 'login' deve ser informada!";
+		}else{
+			List<Usuario> usuarios = list();
+			for(Usuario u : usuarios){
+				if(u.getLogin().equals(t.getLogin())){
+					return "Já existe um usuário com esse login!";
+				}
+			}
 		}
 		
 		if(t.getPerfil() != null){

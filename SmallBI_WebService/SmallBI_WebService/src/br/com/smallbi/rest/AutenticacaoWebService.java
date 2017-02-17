@@ -14,7 +14,7 @@ import javax.ws.rs.Path;
 @Path("/autenticar")
 public class AutenticacaoWebService {
 
-	@POST
+	/*@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String autenticarUsuario(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
@@ -22,5 +22,5 @@ public class AutenticacaoWebService {
 		String senha = jsonObject.getString("senha");
 		
 		return new UsuarioBusiness().validarLogin(login, senha);
-	}
+	}*/
 }
