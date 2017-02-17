@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import model.TabelaFato;
+import model.TabelaImportada;
 
 public class FormSalvarTabela extends javax.swing.JFrame {
 
@@ -140,7 +140,7 @@ public class FormSalvarTabela extends javax.swing.JFrame {
                 
                 //Consulta à memória aqui
                 boolean existeNaMem = false;
-                for(TabelaFato t : FormAssistenteModelagem.tabelasFato){
+                for(TabelaImportada t : FormAssistenteModelagem.tabelasImportadas){
                     if(t.getNomeTabela().equals(nomeTabela)){
                         existeNaMem = true;
                     }
@@ -153,12 +153,12 @@ public class FormSalvarTabela extends javax.swing.JFrame {
                             nomeTabela, chavePrimaria, listaCbxTipos));
                     System.out.println("Script SQL gerado: " + GerarScriptSql.scriptSqlTabelaPivot);               
 
-                    TabelaFato tabelaFato = new TabelaFato();
+                    TabelaImportada tabelaFato = new TabelaImportada();
                     tabelaFato.setScriptSql(GerarScriptSql.scriptSqlTabelaPivot);
                     tabelaFato.setjTable(tabelaPivot);
                     tabelaFato.setPrimaryKey(chavePrimaria);
                     tabelaFato.setNomeTabela(nomeTabela);
-                    FormAssistenteModelagem.tabelasFato.add(tabelaFato);    
+                    FormAssistenteModelagem.tabelasImportadas.add(tabelaFato);    
                     FormAssistenteImportacao.btnAbaTabPrev_GerarCuboXml.setEnabled(true);
                     FormAssistenteImportacao.btnAbaTabPrev_ImportMaisDados.setEnabled(true);
                     dispose();

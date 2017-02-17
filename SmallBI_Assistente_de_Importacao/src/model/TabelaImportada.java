@@ -2,7 +2,7 @@ package model;
 
 import javax.swing.JTable;
 
-public class TabelaFato {
+public class TabelaImportada {
     
     private String nomeTabela;
     private String scriptSql;

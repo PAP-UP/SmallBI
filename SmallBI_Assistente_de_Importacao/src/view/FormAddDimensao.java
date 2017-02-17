@@ -8,13 +8,13 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.Dimensao;
-import model.TabelaFato;
+import model.TabelaImportada;
 
 public class FormAddDimensao extends javax.swing.JFrame {
 
     private List<JCheckBox> listaDeCheckBox = new ArrayList<>();
     public static List<String> atributosUtilizadosNoCubo = new ArrayList<>();
-    private TabelaFato tabelaFato;
+    private TabelaImportada tabelaFato;
     
     public FormAddDimensao() {
         initComponents();
@@ -60,6 +60,11 @@ public class FormAddDimensao extends javax.swing.JFrame {
         lblTabelas_selecione.setText("Selecione uma tabela: ");
 
         cbxTabelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxTabelas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTabelasActionPerformed(evt);
+            }
+        });
 
         btnPainelTabelas_Sair.setText("Sair");
         btnPainelTabelas_Sair.addActionListener(new java.awt.event.ActionListener() {
@@ -356,10 +361,14 @@ public class FormAddDimensao extends javax.swing.JFrame {
     private void btnAbaAtributos_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaAtributos_VoltarActionPerformed
         PercorrerAbasAddDimensao.atributosToTabela();
     }//GEN-LAST:event_btnAbaAtributos_VoltarActionPerformed
+
+    private void cbxTabelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTabelasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxTabelasActionPerformed
     
     private void carregarTabelasSalvas(){
         cbxTabelas.removeAllItems();
-        for(TabelaFato t : FormAssistenteModelagem.tabelasFato){
+        for(TabelaImportada t : FormAssistenteModelagem.tabelasImportadas){
             cbxTabelas.addItem(t.getNomeTabela());
         }
     }
@@ -395,10 +404,10 @@ public class FormAddDimensao extends javax.swing.JFrame {
 
             JLabel l = new JLabel();
             l.setText("Dimensão: " + d.getNome() + ", Tabela: " + d.getTabela() + ", Chave: " + d.getKey() + ";");
-            FormAssistenteModelagem.painel_jtpAbaModelDim_listDims.setLayout(
-                new BoxLayout(FormAssistenteModelagem.painel_jtpAbaModelDim_listDims,BoxLayout.Y_AXIS));
-            FormAssistenteModelagem.painel_jtpAbaModelDim_listDims.add(l);
-            FormAssistenteModelagem.painel_jtpAbaModelDim_listDims.updateUI();        
+//            FormAssistenteModelagem.painel_jtpAbaModelDim_listDims.setLayout(
+//                new BoxLayout(FormAssistenteModelagem.painel_jtpAbaModelDim_listDims,BoxLayout.Y_AXIS));
+//            FormAssistenteModelagem.painel_jtpAbaModelDim_listDims.add(l);
+//            FormAssistenteModelagem.painel_jtpAbaModelDim_listDims.updateUI();        
             dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
@@ -420,8 +429,8 @@ public class FormAddDimensao extends javax.swing.JFrame {
     private void carregarCheckBoxesAtr(){
         
         jPanelAtributos.setLayout(new BoxLayout(jPanelAtributos, BoxLayout.Y_AXIS));
-        tabelaFato = new TabelaFato();
-        for(TabelaFato t : FormAssistenteModelagem.tabelasFato){
+        tabelaFato = new TabelaImportada();
+        for(TabelaImportada t : FormAssistenteModelagem.tabelasImportadas){
             String tabelaSeleciona = cbxTabelas.getSelectedItem().toString();
             if(t.getNomeTabela().equals(tabelaSeleciona)){
                 tabelaFato = t;

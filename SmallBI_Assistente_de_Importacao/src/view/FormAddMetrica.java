@@ -5,11 +5,9 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import model.Dimensao;
-import model.FactLink;
 import model.GrupoMetrica;
 import model.Metrica;
-import model.TabelaFato;
+import model.TabelaImportada;
 import view.percorrerAbas.PercorrerAbasAddMetrica;
 
 public class FormAddMetrica extends javax.swing.JFrame {
@@ -438,7 +436,7 @@ public class FormAddMetrica extends javax.swing.JFrame {
     //---------------
     private void carregarTabelasSalvas(){
         cbxAbaGrupoMetri_Tabela.removeAllItems();
-        for(TabelaFato t : FormAssistenteModelagem.tabelasFato){
+        for(TabelaImportada t : FormAssistenteModelagem.tabelasImportadas){
             cbxAbaGrupoMetri_Tabela.addItem(t.getNomeTabela());
         }
     }

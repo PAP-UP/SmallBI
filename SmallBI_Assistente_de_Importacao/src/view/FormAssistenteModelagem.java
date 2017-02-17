@@ -10,29 +10,30 @@ import java.util.Calendar;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import model.Dimensao;
 import model.GrupoMetrica;
 import model.Link;
 import model.Metrica;
 import model.Schema;
-import model.TabelaFato;
+import model.TabelaImportada;
 import xmleditorkit.XMLEditorKit;
 
 public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     public static List<Dimensao> dimensoes = new ArrayList<>();
     public static List<GrupoMetrica> grupoMetricas = new ArrayList<>();
-    public static List<TabelaFato> tabelasFato = new ArrayList<>();
+    public static List<TabelaImportada> tabelasImportadas = new ArrayList<>();
     public static List<Link> links = new ArrayList<>();
     
     public FormAssistenteModelagem() {
         initComponents();
         PercorrerAbasFormGerarCuboXml.desativarAbasInicio();  
-        carregarAgregadores();
-        carregarFormatos();
+        carregarAgregadoresModelMetri();
+        carregarFormatosModelMetri();
+        carregarTabelasModelDim();
     }
 
     @SuppressWarnings("unchecked")
@@ -40,7 +41,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jtpPainelAbas = new javax.swing.JTabbedPane();
+        lbl = new javax.swing.JTabbedPane();
         paineAbaNomeCubo = new javax.swing.JPanel();
         painelAbaNomeCubo_NomeCubo = new javax.swing.JPanel();
         lblAbaNomeCubo_Nomecubo = new javax.swing.JLabel();
@@ -48,9 +49,21 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         btnAbaNomeCubo_Proximo = new javax.swing.JButton();
         btnAbaNomeCubo_Sair = new javax.swing.JButton();
         paineAbaModelDim = new javax.swing.JPanel();
-        painel_AbaModelDim_AtriDim = new javax.swing.JPanel();
-        painel_jtpAbaModelDim_listDims = new javax.swing.JPanel();
-        btnJtpAbaModelDim_AddDim = new javax.swing.JButton();
+        painelGerenciarDimensões = new javax.swing.JPanel();
+        jTabbedPane_Dimensoes = new javax.swing.JTabbedPane();
+        painelAddDimensao = new javax.swing.JPanel();
+        painelListaAtributos = new javax.swing.JPanel();
+        lblTabelaDimensao = new javax.swing.JLabel();
+        cbxTabelaDimensao = new javax.swing.JComboBox<>();
+        lblNomeDimensao = new javax.swing.JLabel();
+        txtNomeDimensao = new javax.swing.JTextField();
+        lblChaveDimensao = new javax.swing.JLabel();
+        cbxChaveDimensao = new javax.swing.JComboBox<>();
+        btnAddDimensao = new javax.swing.JButton();
+        painelDimensoes = new javax.swing.JPanel();
+        btnSalvarDimensoes = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        painelListaDimensoes = new javax.swing.JPanel();
         btnAbaModelDim_Voltar = new javax.swing.JButton();
         btnAbaModelDim_Proximo = new javax.swing.JButton();
         btnAbaModelDim_Sair = new javax.swing.JButton();
@@ -75,7 +88,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         painelListaMetricas = new javax.swing.JPanel();
         btnAbaModelMetri_Voltar = new javax.swing.JButton();
         btnAbaModelMetri_Prox = new javax.swing.JButton();
-        btnAbaModelMetri = new javax.swing.JButton();
+        btnAbaModelMetri_Sair = new javax.swing.JButton();
         painelAbaRel = new javax.swing.JPanel();
         painel_AbaRel_Rels = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
@@ -162,39 +175,137 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jtpPainelAbas.addTab("Nome do Cubo", paineAbaNomeCubo);
+        lbl.addTab("Nome do Cubo", paineAbaNomeCubo);
 
-        painel_AbaModelDim_AtriDim.setBorder(javax.swing.BorderFactory.createTitledBorder("Dimensões"));
+        painelGerenciarDimensões.setBorder(javax.swing.BorderFactory.createTitledBorder("Dimensões"));
 
-        painel_jtpAbaModelDim_listDims.setLayout(new java.awt.GridLayout(1, 0));
+        painelListaAtributos.setBorder(javax.swing.BorderFactory.createTitledBorder("Atributos"));
+        painelListaAtributos.setLayout(new java.awt.GridLayout(1, 0));
 
-        btnJtpAbaModelDim_AddDim.setText("Adicionar Dimensão");
-        btnJtpAbaModelDim_AddDim.addActionListener(new java.awt.event.ActionListener() {
+        lblTabelaDimensao.setText("Tabela: ");
+
+        cbxTabelaDimensao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cbxTabelaDimensao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJtpAbaModelDim_AddDimActionPerformed(evt);
+                cbxTabelaDimensaoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout painel_AbaModelDim_AtriDimLayout = new javax.swing.GroupLayout(painel_AbaModelDim_AtriDim);
-        painel_AbaModelDim_AtriDim.setLayout(painel_AbaModelDim_AtriDimLayout);
-        painel_AbaModelDim_AtriDimLayout.setHorizontalGroup(
-            painel_AbaModelDim_AtriDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painel_AbaModelDim_AtriDimLayout.createSequentialGroup()
+        lblNomeDimensao.setText("Nome:");
+
+        lblChaveDimensao.setText("Chave Primária");
+
+        cbxChaveDimensao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+
+        btnAddDimensao.setText("Adicionar Dimensão");
+        btnAddDimensao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDimensaoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelAddDimensaoLayout = new javax.swing.GroupLayout(painelAddDimensao);
+        painelAddDimensao.setLayout(painelAddDimensaoLayout);
+        painelAddDimensaoLayout.setHorizontalGroup(
+            painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddDimensaoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painel_AbaModelDim_AtriDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painel_jtpAbaModelDim_listDims, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
-                    .addGroup(painel_AbaModelDim_AtriDimLayout.createSequentialGroup()
-                        .addComponent(btnJtpAbaModelDim_AddDim)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelAddDimensaoLayout.createSequentialGroup()
+                        .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblChaveDimensao)
+                            .addComponent(lblTabelaDimensao)
+                            .addComponent(lblNomeDimensao))
+                        .addGap(18, 18, 18)
+                        .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNomeDimensao)
+                            .addComponent(cbxTabelaDimensao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxChaveDimensao, 0, 204, Short.MAX_VALUE)))
+                    .addGroup(painelAddDimensaoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAddDimensao)))
+                .addGap(18, 18, 18)
+                .addComponent(painelListaAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        painel_AbaModelDim_AtriDimLayout.setVerticalGroup(
-            painel_AbaModelDim_AtriDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel_AbaModelDim_AtriDimLayout.createSequentialGroup()
+        painelAddDimensaoLayout.setVerticalGroup(
+            painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAddDimensaoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painel_jtpAbaModelDim_listDims, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelListaAtributos, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                    .addGroup(painelAddDimensaoLayout.createSequentialGroup()
+                        .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNomeDimensao)
+                            .addComponent(txtNomeDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbxTabelaDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTabelaDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblChaveDimensao)
+                            .addComponent(cbxChaveDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddDimensao)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        jTabbedPane_Dimensoes.addTab("Adicionar Dimensão", painelAddDimensao);
+
+        btnSalvarDimensoes.setText("Salvar");
+        btnSalvarDimensoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarDimensoesActionPerformed(evt);
+            }
+        });
+
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        painelListaDimensoes.setLayout(new java.awt.GridLayout());
+        jScrollPane3.setViewportView(painelListaDimensoes);
+
+        javax.swing.GroupLayout painelDimensoesLayout = new javax.swing.GroupLayout(painelDimensoes);
+        painelDimensoes.setLayout(painelDimensoesLayout);
+        painelDimensoesLayout.setHorizontalGroup(
+            painelDimensoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelDimensoesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelDimensoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelDimensoesLayout.createSequentialGroup()
+                        .addGap(0, 564, Short.MAX_VALUE)
+                        .addComponent(btnSalvarDimensoes))
+                    .addComponent(jScrollPane3))
+                .addContainerGap())
+        );
+        painelDimensoesLayout.setVerticalGroup(
+            painelDimensoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDimensoesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnJtpAbaModelDim_AddDim)
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addComponent(btnSalvarDimensoes)
+                .addContainerGap())
+        );
+
+        jTabbedPane_Dimensoes.addTab("Dimensões", painelDimensoes);
+
+        javax.swing.GroupLayout painelGerenciarDimensõesLayout = new javax.swing.GroupLayout(painelGerenciarDimensões);
+        painelGerenciarDimensões.setLayout(painelGerenciarDimensõesLayout);
+        painelGerenciarDimensõesLayout.setHorizontalGroup(
+            painelGerenciarDimensõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelGerenciarDimensõesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane_Dimensoes)
+                .addContainerGap())
+        );
+        painelGerenciarDimensõesLayout.setVerticalGroup(
+            painelGerenciarDimensõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelGerenciarDimensõesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane_Dimensoes)
+                .addContainerGap())
         );
 
         btnAbaModelDim_Voltar.setText("Voltar");
@@ -225,7 +336,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             .addGroup(paineAbaModelDimLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paineAbaModelDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painel_AbaModelDim_AtriDim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelGerenciarDimensões, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paineAbaModelDimLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAbaModelDim_Voltar)
@@ -239,7 +350,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             paineAbaModelDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paineAbaModelDimLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painel_AbaModelDim_AtriDim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(painelGerenciarDimensões, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(paineAbaModelDimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbaModelDim_Sair)
@@ -248,13 +359,11 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jtpPainelAbas.addTab("Modelagem Dimensões", paineAbaModelDim);
+        lbl.addTab("Modelagem Dimensões", paineAbaModelDim);
 
         painelGerenciarMetricas.setBorder(javax.swing.BorderFactory.createTitledBorder("Métricas"));
 
         lblNomeMetrica.setText("Nome: ");
-
-        cbxColunaMetrica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblColunaMetrica.setText("Coluna: ");
 
@@ -268,7 +377,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
         lblTabelaMetrica.setText("Tabela: ");
 
-        cbxTabelaMetrica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxTabelaMetrica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxTabelaMetricaActionPerformed(evt);
@@ -335,7 +443,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addGroup(painelAddMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFormatoMetrica)
                     .addComponent(cbxFormatoMetrica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAdicionarMetrica)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -410,10 +518,10 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             }
         });
 
-        btnAbaModelMetri.setText("Sair");
-        btnAbaModelMetri.addActionListener(new java.awt.event.ActionListener() {
+        btnAbaModelMetri_Sair.setText("Sair");
+        btnAbaModelMetri_Sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAbaModelMetriActionPerformed(evt);
+                btnAbaModelMetri_SairActionPerformed(evt);
             }
         });
 
@@ -431,7 +539,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnAbaModelMetri_Prox)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAbaModelMetri)))
+                        .addComponent(btnAbaModelMetri_Sair)))
                 .addContainerGap())
         );
         painelAbaModelMetriLayout.setVerticalGroup(
@@ -441,13 +549,13 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addComponent(painelGerenciarMetricas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAbaModelMetri)
+                    .addComponent(btnAbaModelMetri_Sair)
                     .addComponent(btnAbaModelMetri_Prox)
                     .addComponent(btnAbaModelMetri_Voltar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jtpPainelAbas.addTab("Modelagem Métricas", painelAbaModelMetri);
+        lbl.addTab("Modelagem Métricas", painelAbaModelMetri);
 
         painel_AbaRel_Rels.setBorder(javax.swing.BorderFactory.createTitledBorder("Relacionamentos"));
 
@@ -534,7 +642,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jtpPainelAbas.addTab("Relacionar", painelAbaRel);
+        lbl.addTab("Relacionar", painelAbaRel);
 
         painelAbaCuboPreview_Preview.setBorder(javax.swing.BorderFactory.createTitledBorder("Preview do Cubo"));
 
@@ -608,7 +716,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jtpPainelAbas.addTab("Preview", painelAbaCuboPreview);
+        lbl.addTab("Preview", painelAbaCuboPreview);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -616,14 +724,14 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jtpPainelAbas)
+                .addComponent(lbl)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jtpPainelAbas, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -634,9 +742,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         adicionarMetrica();
     }//GEN-LAST:event_btnAdicionarMetricaActionPerformed
 
-    private void btnAbaModelMetriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelMetriActionPerformed
+    private void btnAbaModelMetri_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelMetri_SairActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnAbaModelMetriActionPerformed
+    }//GEN-LAST:event_btnAbaModelMetri_SairActionPerformed
 
     private void btnAbaModelMetri_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelMetri_VoltarActionPerformed
         PercorrerAbasFormGerarCuboXml.modelMetriToModelDim();
@@ -646,9 +754,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         modelMetriToAddRel();
     }//GEN-LAST:event_btnAbaModelMetri_ProxActionPerformed
 
-    private void btnJtpAbaModelDim_AddDimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJtpAbaModelDim_AddDimActionPerformed
-        chamarFormAddDim();
-    }//GEN-LAST:event_btnJtpAbaModelDim_AddDimActionPerformed
+    private void btnAddDimensaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDimensaoActionPerformed
+        adicionarDimensao();
+    }//GEN-LAST:event_btnAddDimensaoActionPerformed
 
     private void btnAbaModelDim_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelDim_VoltarActionPerformed
         PercorrerAbasFormGerarCuboXml.modelDimToNomeCubo();
@@ -706,12 +814,155 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         salvarMetricas();
     }//GEN-LAST:event_btnSalvarMetricasActionPerformed
 
+    private void cbxTabelaDimensaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTabelaDimensaoActionPerformed
+        getTabSelecionada();
+    }//GEN-LAST:event_cbxTabelaDimensaoActionPerformed
+
+    private void btnSalvarDimensoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDimensoesActionPerformed
+        salvarDimensoes();
+    }//GEN-LAST:event_btnSalvarDimensoesActionPerformed
+
+    private void salvarDimensoes(){
+        Component[] components = painelListaDimensoes.getComponents();
+        for(Component c : components){
+            if(c instanceof JCheckBox){
+                JCheckBox checkBox = (JCheckBox) c;
+                if(!checkBox.isSelected()){
+                    delDimByName(checkBox.getText());
+                }
+            }
+        }
+                    
+        //Carregar Tabelas para serem utilizadas na gerencia de metricas;
+        for(Dimensao d : dimensoes){
+            cbxTabelaMetrica.addItem(d.getTabela());
+        }
+        cbxTabelaMetrica.setSelectedIndex(0);
+        PercorrerAbasFormGerarCuboXml.modelDimToModelMetri();
+    }
+    
+    //Foi colocado a assinatura boolean apenas para quebrar o For quando remover a dimensão indesejada;
+    private boolean delDimByName(String nomeDim){
+        for(Dimensao d : dimensoes){
+            if(d.getNome().equals(nomeDim)){
+                dimensoes.remove(d);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private void atualizarListaDimensoes(){
+        painelListaDimensoes.removeAll();
+        for(Dimensao d : dimensoes){
+            JCheckBox checkBox = new JCheckBox();
+            checkBox.setText(d.getNome());
+            checkBox.setSelected(true);
+            JLabel label = new JLabel();
+            label.setText("Dimensão: ");
+            painelListaDimensoes.add(label);
+            painelListaDimensoes.add(checkBox);
+        }
+        painelListaDimensoes.setLayout(new BoxLayout(painelListaDimensoes, BoxLayout.Y_AXIS));
+        painelListaDimensoes.updateUI();
+    }
+    
+    private void adicionarDimensao(){
+        String nomeDim = txtNomeDimensao.getText();
+        String tabela = cbxTabelaDimensao.getSelectedItem().toString();
+        String chave = cbxChaveDimensao.getSelectedItem().toString();
+        
+        if(nomeDim != null && !nomeDim.equals("") &&
+                tabela != null && !tabela.equals("") && !tabela.equals("Selecione") &&
+                    chave != null && !chave.equals("") && !chave.equals("Selecione")){
+        
+            if(nomeJaExistente()){
+                JOptionPane.showMessageDialog(null, "Já existe uma dimensão com este nome!");
+            }else{            
+                List<String> atributosSelecionados = new ArrayList<>();
+                Component[] components = painelListaAtributos.getComponents();
+                for(Component c : components){
+                    if(c instanceof JCheckBox){
+                        JCheckBox checkBox = (JCheckBox) c;
+                        if(checkBox.isSelected()){
+                            atributosSelecionados.add(checkBox.getText());
+                        }
+                    }
+                }
+
+                if(atributosSelecionados.size() > 0){
+                    Dimensao d = new Dimensao();
+                    d.setNome(nomeDim);
+                    d.setTabela(tabela);
+                    d.setKey(chave);
+                    d.setAtributos(atributosSelecionados);
+
+                    dimensoes.add(d);
+                    atualizarListaDimensoes();
+                    jTabbedPane_Dimensoes.setSelectedIndex(1);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Selecione ao menos um atributo!");
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        }
+    }
+    
+    private boolean nomeJaExistente(){
+        for(Dimensao d : dimensoes){
+            if(d.getNome().equals(txtNomeDimensao.getText())){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private void getTabSelecionada(){
+        TabelaImportada tabSelecionada = new TabelaImportada();
+        for(TabelaImportada t : tabelasImportadas){
+            if(t.getNomeTabela().equals(cbxTabelaDimensao.getSelectedItem().toString())){
+                tabSelecionada = t;
+            }
+        }
+        carregarAtributosModelDim(tabSelecionada);
+        carregarChavesModelDim(tabSelecionada);
+    }
+    
+    private void carregarChavesModelDim(TabelaImportada tabSelecionada){
+        cbxChaveDimensao.removeAllItems();
+        cbxChaveDimensao.addItem("Selecione");
+        JTable jTable = tabSelecionada.getjTable();
+        for(int i = 0; i < jTable.getColumnCount(); i++){
+            cbxChaveDimensao.addItem(jTable.getColumnName(i));
+        }
+        cbxChaveDimensao.updateUI();
+    }
+    
+    private void carregarAtributosModelDim(TabelaImportada tabSelecionada){
+        painelListaAtributos.removeAll();
+        JTable jTable = tabSelecionada.getjTable();
+        for(int i = 0; i < jTable.getColumnCount(); i++){
+            JCheckBox checkBox = new JCheckBox();
+            checkBox.setText(jTable.getColumnName(i));
+            painelListaAtributos.add(checkBox);
+        }
+        painelListaAtributos.setLayout(new BoxLayout(painelListaAtributos, BoxLayout.Y_AXIS));
+        painelListaAtributos.updateUI();
+    }
+    
+    private void carregarTabelasModelDim(){
+        for(TabelaImportada t : tabelasImportadas){
+            cbxTabelaDimensao.addItem(t.getNomeTabela());
+        }
+    }
+    
     private void salvarMetricas(){
         Component[] components = painelListaMetricas.getComponents();
         for(Component c : components){
             if(c instanceof JCheckBox){
                 JCheckBox checkBox = (JCheckBox) c;
-                if(checkBox.isSelected() != true){
+                if(!checkBox.isSelected()){
                     delMetricaByName(checkBox.getText());
                 }
             }
@@ -719,7 +970,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         PercorrerAbasFormGerarCuboXml.modelMetriToAddRel();
     }
     
-    //Foi colocado a assinatura boolean apenas para quebrar o for quando remover a métrica indesejada;
+    //Foi colocado a assinatura boolean apenas para quebrar o For quando remover a métrica indesejada;
     private boolean delMetricaByName(String nome){
         for(GrupoMetrica gm : grupoMetricas){
             List<Metrica> metricas = gm.getMetricas();
@@ -733,7 +984,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         return false;
     }
     
-    private void carregarAgregadores(){
+    private void carregarAgregadoresModelMetri(){
         cbxAgregadorMetrica.removeAllItems();
         cbxAgregadorMetrica.addItem("count");
         cbxAgregadorMetrica.addItem("sum");
@@ -741,7 +992,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         cbxAgregadorMetrica.addItem("max");
     }
     
-    private void carregarFormatos(){
+    private void carregarFormatosModelMetri(){
         cbxFormatoMetrica.removeAllItems();
         cbxFormatoMetrica.addItem("Standard");
         cbxFormatoMetrica.addItem("#,###.00");
@@ -749,8 +1000,15 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     private void carregarCbxColunasMetrica(){
         cbxColunaMetrica.removeAllItems();
-        for(String s : FormAddDimensao.atributosUtilizadosNoCubo){
-            cbxColunaMetrica.addItem(s);
+        Dimensao dimSelecionada = new Dimensao();
+        for(Dimensao d : dimensoes){
+            if(cbxTabelaMetrica.getSelectedItem().toString().equals(d.getTabela())){
+                dimSelecionada = d;
+            }
+        }
+        
+        for(String atr : dimSelecionada.getAtributos()){
+            cbxColunaMetrica.addItem(atr);
         }
     }
     
@@ -806,10 +1064,10 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             for(Metrica m : metricas){
                 JCheckBox checkBox = new JCheckBox();
                 checkBox.setText(m.getNome());
-                JLabel label = new JLabel();
-                label.setText("Métrica: ");
 //                checkBox.setText("Métrica: " + m.getNome());
                 checkBox.setSelected(true);
+                JLabel label = new JLabel();
+                label.setText("Métrica: ");
                 painelListaMetricas.add(label);
                 painelListaMetricas.add(checkBox);
                 painelListaMetricas.setLayout(new BoxLayout(painelListaMetricas, BoxLayout.Y_AXIS));
@@ -833,7 +1091,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 //        JOptionPane.showMessageDialog(null, "Cubo salvo");
         FormEnviarCubo frm = new FormEnviarCubo();
         frm.setLocationRelativeTo(null);
-        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setVisible(true);
     }
     
@@ -850,7 +1107,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private void chamarFormAddRel(){
         FormAddRel frm = new FormAddRel();
         frm.setLocationRelativeTo(null);
-        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Adicionar Novo Relacionamento");
         frm.setVisible(true);
     }
@@ -865,13 +1121,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     private void modelDimToModelMetri(){
         if(dimensoes.size() > 0){
-            
-            //Carregar Tabelas para serem utilizadas na gerencia de metricas;
-            cbxTabelaMetrica.removeAllItems();
-            for(TabelaFato t : tabelasFato){
-                cbxTabelaMetrica.addItem(t.getNomeTabela());
-            }
-            
             PercorrerAbasFormGerarCuboXml.modelDimToModelMetri();
         }else{
             JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
@@ -897,7 +1146,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private void gerarSchemaXml(){
         Schema schema = new Schema();
         schema.setNome("Schema " + txtAbaNomeCubo_NomeCubo.getText());
-        schema.setTabelasFato(tabelasFato);
+        schema.setTabelasFato(tabelasImportadas);
         schema.setNomeCubo(txtAbaNomeCubo_NomeCubo.getText());
         schema.setDimensoes(dimensoes);
         schema.setGrupoMetrica(grupoMetricas);
@@ -914,14 +1163,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
           edtPaneAbaCuboPreview_XmlPreview.setText(schemaXml);
     }
     
-    private void chamarFormAddDim(){      
-        FormAddDimensao frm = new FormAddDimensao();
-        frm.setLocationRelativeTo(null);
-        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        frm.setTitle("Adicionar Nova Dimensão");
-        frm.setVisible(true);
-    }
-    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -936,20 +1177,23 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaModelDim_Proximo;
     private javax.swing.JButton btnAbaModelDim_Sair;
     private javax.swing.JButton btnAbaModelDim_Voltar;
-    private javax.swing.JButton btnAbaModelMetri;
     private javax.swing.JButton btnAbaModelMetri_Prox;
+    private javax.swing.JButton btnAbaModelMetri_Sair;
     private javax.swing.JButton btnAbaModelMetri_Voltar;
     private javax.swing.JButton btnAbaNomeCubo_Proximo;
     private javax.swing.JButton btnAbaNomeCubo_Sair;
+    private javax.swing.JButton btnAddDimensao;
     private javax.swing.JButton btnAdicionarMetrica;
-    private javax.swing.JButton btnJtpAbaModelDim_AddDim;
     private javax.swing.JButton btnPainelRel_GerarCubo;
     private javax.swing.JButton btnPainelRel_Sair;
     private javax.swing.JButton btnPainelRel_Voltar;
+    private javax.swing.JButton btnSalvarDimensoes;
     private javax.swing.JButton btnSalvarMetricas;
     private javax.swing.JComboBox<String> cbxAgregadorMetrica;
+    private javax.swing.JComboBox<String> cbxChaveDimensao;
     private javax.swing.JComboBox<String> cbxColunaMetrica;
     private javax.swing.JComboBox<String> cbxFormatoMetrica;
+    private javax.swing.JComboBox<String> cbxTabelaDimensao;
     private javax.swing.JComboBox<String> cbxTabelaMetrica;
     private javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;
     private javax.swing.JButton jButton1;
@@ -957,13 +1201,18 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane_Dimensoes;
     private javax.swing.JTabbedPane jTabbedPane_Metricas;
-    public static javax.swing.JTabbedPane jtpPainelAbas;
+    public static javax.swing.JTabbedPane lbl;
     private javax.swing.JLabel lblAbaNomeCubo_Nomecubo;
     private javax.swing.JLabel lblAgregadorMetrica;
+    private javax.swing.JLabel lblChaveDimensao;
     private javax.swing.JLabel lblColunaMetrica;
     private javax.swing.JLabel lblFormatoMetrica;
+    private javax.swing.JLabel lblNomeDimensao;
     private javax.swing.JLabel lblNomeMetrica;
+    private javax.swing.JLabel lblTabelaDimensao;
     private javax.swing.JLabel lblTabelaMetrica;
     private javax.swing.JPanel paineAbaModelDim;
     private javax.swing.JPanel paineAbaNomeCubo;
@@ -972,15 +1221,19 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JPanel painelAbaModelMetri;
     private javax.swing.JPanel painelAbaNomeCubo_NomeCubo;
     private javax.swing.JPanel painelAbaRel;
+    private javax.swing.JPanel painelAddDimensao;
     private javax.swing.JPanel painelAddMetri;
+    private javax.swing.JPanel painelDimensoes;
+    private javax.swing.JPanel painelGerenciarDimensões;
     public static javax.swing.JPanel painelGerenciarMetricas;
+    private javax.swing.JPanel painelListaAtributos;
+    private javax.swing.JPanel painelListaDimensoes;
     private javax.swing.JPanel painelListaMetricas;
     private javax.swing.JPanel painelMetricas;
-    private javax.swing.JPanel painel_AbaModelDim_AtriDim;
     public static javax.swing.JPanel painel_AbaRel_ListRel;
     private javax.swing.JPanel painel_AbaRel_Rels;
-    public static javax.swing.JPanel painel_jtpAbaModelDim_listDims;
     private javax.swing.JTextField txtAbaNomeCubo_NomeCubo;
+    private javax.swing.JTextField txtNomeDimensao;
     private javax.swing.JTextField txtNomeMetrica;
     // End of variables declaration//GEN-END:variables
 }

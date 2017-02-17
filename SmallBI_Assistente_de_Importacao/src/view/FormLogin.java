@@ -39,6 +39,7 @@ public class FormLogin extends javax.swing.JFrame {
         btnAuten_Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
         painelAutenti.setBorder(javax.swing.BorderFactory.createTitledBorder("Autenticação"));
 

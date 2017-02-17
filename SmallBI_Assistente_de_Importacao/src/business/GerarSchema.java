@@ -10,7 +10,7 @@ import model.GrupoMetrica;
 import model.Link;
 import model.Metrica;
 import model.Schema;
-import model.TabelaFato;
+import model.TabelaImportada;
 
 public class GerarSchema {
     
@@ -41,10 +41,10 @@ public class GerarSchema {
         return "<?xml version='1.0'?><Schema name='" + formatarString(nomeSchema) + "' metamodelVersion='4.0'>";
     }
     
-    private String setPhysicalSchema(List<TabelaFato> tabelas, List<Link>links){
+    private String setPhysicalSchema(List<TabelaImportada> tabelas, List<Link>links){
         String schema = "<PhysicalSchema>";
                 
-        for(TabelaFato t : tabelas){
+        for(TabelaImportada t : tabelas){
             schema += "<Table name='" + formatarString(t.getNomeTabela()) + "'><Key><Column name='" +
                     formatarString(t.getPrimaryKey()) + "'/></Key></Table>";
         }
