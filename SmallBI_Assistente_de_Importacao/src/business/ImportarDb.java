@@ -176,10 +176,10 @@ public class ImportarDb {
                         if(i == numColunas + 1){
                             linha += rs.getString(i);
                         }else{
-                            linha += rs.getString(i) + ",";
+                            linha += rs.getString(i) + "','";
                         }
                     }
-                    obj = linha.split(",");
+                    obj = linha.split("','");
                     modelo.addRow(obj);
                 }
                 return modelo;
