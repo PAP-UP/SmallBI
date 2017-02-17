@@ -2,12 +2,18 @@ package view;
 
 import business.GerarSchema;
 import business.GerarScriptSql;
+import com.google.gson.Gson;
 import java.awt.Component;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import view.percorrerAbas.PercorrerAbasFormGerarCuboXml;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -19,6 +25,11 @@ import model.Link;
 import model.Metrica;
 import model.Schema;
 import model.TabelaImportada;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
 import xmleditorkit.XMLEditorKit;
 
 public class FormAssistenteModelagem extends javax.swing.JFrame {
@@ -1086,12 +1097,50 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }
     
     private void enviarCubo(){
-        GerarSchema gerarSchema = new GerarSchema();
-        gerarSchema.salvarSchema();
-//        JOptionPane.showMessageDialog(null, "Cubo salvo");
-        FormEnviarCubo frm = new FormEnviarCubo();
-        frm.setLocationRelativeTo(null);
-        frm.setVisible(true);
+        String mdx = GerarSchema.schemaXml;
+        String nomeCubo = GerarSchema.nomeSchema;
+        String scriptSql = new String();
+        for(String s : GerarScriptSql.scripts){
+            scriptSql += s;
+        }
+
+        Hashtable<String, Object> hash = new Hashtable<>();
+        hash.put("login", FormLogin.login);
+        hash.put("senha", FormLogin.senha);
+        hash.put("idCliente", FormLogin.idCliente);
+        hash.put("mdx", mdx);
+        hash.put("nomeCubo", nomeCubo);
+        hash.put("scriptSql", scriptSql);
+
+        String url = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        HttpPost httpPost = new HttpPost(url);
+        Gson gson = new Gson();
+        try {
+            StringEntity postingString = new StringEntity(gson.toJson(hash));
+            httpPost.setEntity(postingString);
+            httpPost.setHeader("Content-Type", "application/json");
+            HttpResponse response = httpClient.execute(httpPost);
+
+            int cod = response.getStatusLine().getStatusCode();
+            JOptionPane.showMessageDialog(null, "Código: " + cod + ". " + getResponseEnviarCubo(cod));
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private String getResponseEnviarCubo(int cod){
+        switch(cod){
+            case 200: 
+                return "Cubo enviado com sucesso!";
+            case 404:
+                return "Falha ao enviar cubo. Servidor não encontrado";
+            case 500:
+                return "Falha ao enviar cubo. Erro interno na API";            
+        }
+        return "";
     }
     
     private void addRelToModelMetri(){

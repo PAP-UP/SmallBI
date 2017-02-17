@@ -21,6 +21,7 @@ import org.json.JSONObject;
 public class FormLogin extends javax.swing.JFrame {
 
     public static Integer idCliente = 0;
+    public static String login, senha = new String();
     
     public FormLogin() {
         initComponents();
@@ -138,8 +139,8 @@ public class FormLogin extends javax.swing.JFrame {
         if(txtAuten_Login != null && !txtAuten_Login.equals("") &&
                 txtAuten_Senha != null && !txtAuten_Senha.equals("")){
             
-            String login = txtAuten_Login.getText();
-            String senha = txtAuten_Senha.getText();
+            login = txtAuten_Login.getText();
+            senha = txtAuten_Senha.getText();
             
             Hashtable<String, Object> hash = new Hashtable<>();
             hash.put("login", login);

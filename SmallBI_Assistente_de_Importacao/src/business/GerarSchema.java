@@ -11,6 +11,7 @@ import model.Link;
 import model.Metrica;
 import model.Schema;
 import model.TabelaImportada;
+import view.FormLogin;
 
 public class GerarSchema {
     
@@ -24,6 +25,7 @@ public class GerarSchema {
         schemaXml += setCubeName(schema.getNome());
         schemaXml += setSchemaDimensions(schema.getDimensoes());
         schemaXml += setSchemaMeasures(schema.getGrupoMetrica(), schema.getDimensoes());
+        schemaXml += setRoles(FormLogin.idCliente);
         
         nomeSchema = schema.getNome();
         //salvarSchema(schema.getNome(), schemaXml);
@@ -109,7 +111,17 @@ public class GerarSchema {
             
             schema += "</DimensionLinks></MeasureGroup>";   
         }
-        schema += "</MeasureGroups></Cube></Schema>";//Quebrar no </Schema> para adicionar o ROLE na API;
+        schema += "</MeasureGroups></Cube>";
+        
+        
+        
+        //schema += "</Schema>";//Quebrar no </Schema> para adicionar o ROLE na API;
+        return schema;
+    }
+    
+    private String setRoles(int idCliente){
+        String schema;
+        schema = "<Role name='id_" + idCliente + "'><SchemaGrant access='all'/></Role></Schema>";
         return schema;
     }
     

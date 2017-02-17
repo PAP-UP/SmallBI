@@ -156,7 +156,6 @@ public class ValidarTipos {
     public static void removerColunasIndesejadas(JTable jtable, List<JComboBox> listaDeCbx){
         int qtdCbxParaRemover = 0;
         for(JComboBox cbx : listaDeCbx){
-            System.out.println(cbx.getSelectedItem().toString());
             if(cbx.getSelectedItem().toString().equals("Não importar")){
                 int index = listaDeCbx.indexOf(cbx);
                 TableColumn column = jtable.getColumnModel().getColumn(index);
