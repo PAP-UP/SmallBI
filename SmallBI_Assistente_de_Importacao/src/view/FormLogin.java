@@ -124,11 +124,11 @@ public class FormLogin extends javax.swing.JFrame {
     private void btnAuten_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuten_LoginActionPerformed
         
         //Chamando direto sem validar para otimizar o trabalho
-//        FormAssistenteImportacao frm = new FormAssistenteImportacao();
-//        frm.setLocationRelativeTo(null);
-//        frm.setVisible(true); 
-//        this.dispose();
-        login();
+        FormAssistenteImportacao frm = new FormAssistenteImportacao();
+        frm.setLocationRelativeTo(null);
+        frm.setVisible(true); 
+        this.dispose();
+   //     login();
     }//GEN-LAST:event_btnAuten_LoginActionPerformed
 
     private void btnAuten_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuten_CancelarActionPerformed
@@ -136,12 +136,9 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAuten_CancelarActionPerformed
     
     private void login(){        
-        if(txtAuten_Login != null && !txtAuten_Login.equals("") &&
-                txtAuten_Senha != null && !txtAuten_Senha.equals("")){
-            
-            login = txtAuten_Login.getText();
-            senha = txtAuten_Senha.getText();
-            
+        login = txtAuten_Login.getText();
+        senha = txtAuten_Senha.getText();
+        if(!login.equals("") && !senha.equals("")){            
             Hashtable<String, Object> hash = new Hashtable<>();
             hash.put("login", login);
             hash.put("senha", senha);
@@ -171,6 +168,7 @@ public class FormLogin extends javax.swing.JFrame {
                 Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Não foi possível se conectar com o servidor!");
             } catch (JSONException ex) {
                 Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
             }            

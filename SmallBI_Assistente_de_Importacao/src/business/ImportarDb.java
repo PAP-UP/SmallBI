@@ -179,6 +179,11 @@ public class ImportarDb {
                             linha += rs.getString(i) + "','";
                         }
                     }
+                    /*
+                                                strValorCampo = strValorCampo.replace(".", "");
+                            strValorCampo = strValorCampo.replace(",", ".");
+                            strValorCampo = strValorCampo.replace("R$", "");
+                    */
                     obj = linha.split("','");
                     modelo.addRow(obj);
                 }

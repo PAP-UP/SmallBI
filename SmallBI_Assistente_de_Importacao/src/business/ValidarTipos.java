@@ -65,6 +65,9 @@ public class ValidarTipos {
                             break;
 
                         case "Real":
+                            strValorCampo = strValorCampo.replace(".", "");
+                            strValorCampo = strValorCampo.replace(",", ".");
+                            strValorCampo = strValorCampo.replace("R$", "");
                             if(strValorCampo.equals(" ")){
                                 erro = false;
                             }else{
