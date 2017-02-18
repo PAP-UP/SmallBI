@@ -2,6 +2,7 @@ package br.com.smallbi.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -30,14 +31,22 @@ public class ConexaoDao {
 	}
 	
 	public static boolean criarDatabase(String cliente, Integer id){
+		String nomeBanco = "id_" + id;
 		try{
-			String nomeBanco = "id_" + id;
 			String sql = "CREATE DATABASE " + formatarString(nomeBanco);
 			Connection connection = getConexao(null);
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(sql);
 		}catch (Exception e) {
 			e.printStackTrace();
+			try {
+				Connection connection = getConexao(null);
+				Statement statement;
+				statement = connection.createStatement();
+				statement.executeUpdate("DROP DATABASE " + nomeBanco);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			return false;
 		}
 		return true;
@@ -57,8 +66,19 @@ public class ConexaoDao {
 		return true;
 	}
 	
-	public static Integer getTamanhoTabela(){
+	public static Integer getTamanhoBanco(Integer id){
 		//Implementar
+		String banco = "id_" + id;
+		Connection connection = getConexao(banco);
+		Statement statement;
+		try {
+			statement = connection.createStatement();
+			String query = "SELECT pg_size_pretty(pg_database_size('" + banco + "'));";
+			ResultSet resultSet = statement.executeQuery(query);
+			//int tam = (int) resultSet.getLong("pg_size_pretty");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 	

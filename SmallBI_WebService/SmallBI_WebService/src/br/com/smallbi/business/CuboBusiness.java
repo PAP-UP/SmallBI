@@ -83,6 +83,10 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			boolean result = ConexaoDao.salvarScript(id, scriptSql);
 			
 			if(result == true){
+				
+				usuario.getCliente().setTamanhoTotal(ConexaoDao.getTamanhoBanco(id));
+				new ClienteBusiness().update(usuario.getCliente());
+				
 				Cubo cubo = new Cubo();			
 				cubo.setCliente(usuario.getPessoa().getCliente());
 				
