@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jnlp codebase="http://backend.smallbi.com.br:18080/SmallBI_WebService/SmallBIAssistenteImportacao" href="launch.jnlp" spec="1.0+">
+    <information>
+        <title>SmallBI_Assistente_de_Importacao</title>
+        <vendor>Development</vendor>
+        <homepage href="http://www.smallbi.com.br"/>
+        <description>SmallBI_Assistente_de_Importacao</description>
+        <description kind="short">SmallBI_Assistente_de_Importacao</description>
+    <icon href="icone_assistente_importação.png" kind="default"/>
+</information>
+    <update check="always"/>
+    <security>
+<all-permissions/>
+</security>
+    <resources>
+        <j2se version="1.8+"/>
+        <jar href="SmallBI_Assistente_de_Importacao.jar" main="true"/>
+    <jar href="lib/AbsoluteLayout.jar"/>
+<jar href="lib/dom4j-1.6.1.jar"/>
+<jar href="lib/mysql-connector-java-5.1.39-bin.jar"/>
+<jar href="lib/poi-3.10.1-20140818.jar"/>
+<jar href="lib/poi-ooxml-3.10.1-20140818.jar"/>
+<jar href="lib/poi-ooxml-schemas-3.10.1.jar"/>
+<jar href="lib/postgresql-9.4.1208.jre6.jar"/>
+<jar href="lib/stax-api-1.0.1.jar"/>
+<jar href="lib/xmleditorkit.jar"/>
+<jar href="lib/opencsv-3.8.jar"/>
+<jar href="lib/gson-2.3.1.jar"/>
+<jar href="lib/commons-codec-1.9.jar"/>
+<jar href="lib/commons-logging-1.2.jar"/>
+<jar href="lib/fluent-hc-4.5.3.jar"/>
+<jar href="lib/httpclient-4.5.3.jar"/>
+<jar href="lib/httpclient-cache-4.5.3.jar"/>
+<jar href="lib/httpclient-win-4.5.3.jar"/>
+<jar href="lib/httpcore-4.4.6.jar"/>
+<jar href="lib/httpmime-4.5.3.jar"/>
+<jar href="lib/jna-4.1.0.jar"/>
+<jar href="lib/jna-platform-4.1.0.jar"/>
+<jar href="lib/java-json.jar"/>
+<extension href="jnlpcomponent1.jnlp"/>
+</resources>
+    <application-desc main-class="view.FormLogin">
+    </application-desc>
+</jnlp>
