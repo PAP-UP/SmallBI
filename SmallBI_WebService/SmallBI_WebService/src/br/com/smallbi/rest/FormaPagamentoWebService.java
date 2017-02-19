@@ -85,7 +85,7 @@ public class FormaPagamentoWebService {
 	
 	public Hashtable<String, Object> getHashFromObject(FormaPagamento fp){
 		Hashtable<String, Object> hashtable = new Hashtable<>();
-		hashtable.put("idFormaPagamaneto", fp.getIdFormaPagamento());
+		hashtable.put("idFormaPagamento", fp.getIdFormaPagamento());
 		hashtable.put("descricao", fp.getFormaPagamento());
 		return hashtable;
 	}
