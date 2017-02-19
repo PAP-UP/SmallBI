@@ -1,0 +1,8 @@
+<h3>Cadastro de Formas de Pagamento</h3>
+<form  novalidate ng-controller="pagamentoCadastrarController">
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="nome">Nome da forma de pagamento</label>
+    <input type="text" class="form-control" id="nome" name="nome" ng-model="vm.dadosPagamento.descricao">
+  </div>
+  <button type="button" class="btn btn-success" style="float: right;" ng-click="vm.pagamentoSalvar()">Enviar</button>
+</form>

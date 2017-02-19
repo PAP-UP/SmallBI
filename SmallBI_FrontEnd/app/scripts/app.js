@@ -127,6 +127,39 @@
       children: [listarPlanos, editarPlano, cadastrarPlano]
     });
 
+      // FORMA DE PAGAMENTO ROUTE
+
+    var listarFormas = {
+      name: 'listar',
+      url: '/listar',
+      templateUrl: 'scripts/formaPagamento/forma-pagamento-listar.html',
+      controller: 'pagamentoListarController',
+      controllerAs: 'vm'
+    };
+
+    var editarForma = {
+      name: 'editar',
+      url: '/editar/:id',
+      templateUrl: 'scripts/formaPagamento/forma-pagamento-form.html',
+      controller: 'pagamentoEditarController',
+      controllerAs: 'vm'
+    };
+
+    var cadastrarForma = {
+      name: 'cadastrar',
+      url: '/cadastrar',
+      templateUrl: 'scripts/formaPagamento/forma-pagamento-form.html',
+      controller: 'pagamentoCadastrarController',
+      controllerAs: 'vm'
+    };
+
+    stateHelperProvider.setNestedState({
+      name: 'forma-pagamento',
+      url: '/forma-pagamento',
+      templateUrl: 'views/main.html',
+      children: [listarFormas, editarForma, cadastrarForma]
+    });
+
   }
 
 })();
