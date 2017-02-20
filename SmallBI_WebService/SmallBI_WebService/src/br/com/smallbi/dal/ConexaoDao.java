@@ -75,9 +75,16 @@ public class ConexaoDao {
 			statement = connection.createStatement();
 			String query = "SELECT pg_size_pretty(pg_database_size('" + banco + "'));";
 			ResultSet resultSet = statement.executeQuery(query);
-			//int tam = (int) resultSet.getLong("pg_size_pretty");
+			while(resultSet.next()){
+				String strTamBd = (String) resultSet.getObject("pg_size_pretty");
+				strTamBd = strTamBd.replace("MB", "");
+				strTamBd = strTamBd.replace("kB", "");
+				strTamBd = strTamBd.replace(" ", "");
+				return Integer.parseInt(strTamBd);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return 0;
 		}
 		return 0;
 	}

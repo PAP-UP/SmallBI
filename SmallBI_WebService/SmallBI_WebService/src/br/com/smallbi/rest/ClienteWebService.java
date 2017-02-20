@@ -80,7 +80,9 @@ public class ClienteWebService {
 		Cliente cliente = getObjectFromHash(json);
 		String response = clienteBusiness.update(cliente);
 		
-		appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
+		if(response.equals("Cliente cadastrado com sucesso!")){
+			appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
+		}
 		
 		return gson.toJson(response);
 	}
@@ -156,7 +158,7 @@ public class ClienteWebService {
 		ramoAtividade.setIdRamoAtividade(jsonObject.getInt("idRamoAtividade"));
 		c.setRamoAtividade(ramoAtividade);
 		
-		c.setTamanhoTotal(jsonObject.getInt("tamanhoTotal"));
+		//c.setTamanhoTotal(jsonObject.getInt("tamanhoTotal"));
 		
 		FormaPagamento formaPagamento = new FormaPagamento();
 		formaPagamento.setIdFormaPagamento(jsonObject.getInt("idFormaPagamento"));

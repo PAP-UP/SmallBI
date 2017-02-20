@@ -95,7 +95,7 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 				cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
 				cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
 				
-				//Fazer consulta do tamanho da tabela
+				//Fazer consulta do tamanho das tabelas
 				cubo.setTamanho(0); //Provisório
 				cubo.setUsuarioId(usuario.getIdUsuario());
 				
