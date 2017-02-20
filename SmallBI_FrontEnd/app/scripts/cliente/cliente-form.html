@@ -17,10 +17,6 @@
     <input type="text" class="form-control" id="ie" name="ie" ng-model="vm.dadosCliente.ie">
   </div>
   <div class="form-group">
-    <label class="text-left" style="display: block;" for="tamanho">Tamanho Total</label>
-    <input type="text" class="form-control" id="tamanho" name="tamanho" ng-model="vm.dadosCliente.tamanhoTotal">
-  </div>
-  <div class="form-group">
     <label class="text-left" style="display: block;" for="ramoAtividade">Ramo de Atividade</label>
     <select id="ramoAtividade" class="form-control" ng-model="vm.dadosCliente.idRamoAtividade"
             ng-options="ramo.idRamoAtividade as ramo.descricao for ramo in vm.dadosRamoAtividade">
