@@ -37,6 +37,7 @@
 <jar href="lib/jna-4.1.0.jar"/>
 <jar href="lib/jna-platform-4.1.0.jar"/>
 <jar href="lib/java-json.jar"/>
+<jar href="lib/xmlbeans-2.4.0.jar"/>
 <extension href="jnlpcomponent1.jnlp"/>
 </resources>
     <application-desc main-class="view.FormLogin">
