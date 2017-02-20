@@ -63,6 +63,16 @@ public class CuboWebService {
 	}
 	
 	@POST
+	@Path("/analisar")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String analisarCubo(String json) throws JSONException{
+		JSONObject jsonObject = new JSONObject(json);
+		
+		return "";
+	}
+	
+	@POST
 	@Path("/alterar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

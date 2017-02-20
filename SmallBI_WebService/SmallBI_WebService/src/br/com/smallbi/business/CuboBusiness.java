@@ -107,6 +107,12 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 		return "Usuário ou senha inválidos";
 	}
 	
+	public String analisarCubo(){
+		
+//		if()
+		return "";
+	}
+	
 	@Override
 	public List<Cubo> list() {
 		List<Cubo> cubos = new ArrayList<>();

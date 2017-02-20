@@ -129,6 +129,7 @@ public class ClienteWebService {
 			hash.put("numero", e.getNumero());
 			hash.put("bairro", e.getBairro());
 			hash.put("idCidade", e.getCidade().getIdCidade());
+			hash.put("cidade", e.getCidade().getNomeCidade());
 			hash.put("idTipoEndereco", e.getTipo().getIdTipo());
 		}
 		
@@ -210,6 +211,7 @@ public class ClienteWebService {
 		hashCliente.put("tamamhoTotal", c.getTamanhoTotal());
 		hashCliente.put("formaPagamento", c.getFormaPagamento().getFormaPagamento());
 		hashCliente.put("plano", c.getPlano().getNomePlano());
+		
 		return hashCliente;
 	}
 }

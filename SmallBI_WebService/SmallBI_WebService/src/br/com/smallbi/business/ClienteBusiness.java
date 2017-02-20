@@ -113,7 +113,7 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		Integer tamBd = ConexaoDao.getTamanhoBanco(t.getIdCliente());
 		if(tamBd <= 0){
 			t.setNomeFantasia(t.getNomeFantasia() + "Erro Tam Bd");
-			update(t);
+			clienteDao.update(t);
 			delete(t.getIdCliente());
 			return "Falha ao definir tamanho do Banco de Dados do cliete";
 		}else{
@@ -217,10 +217,22 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
+		t.setTamanhoTotal(0);
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
-		clienteDao.update(t);
+		Integer tamBd = ConexaoDao.getTamanhoBanco(t.getIdCliente());
+		if(tamBd <= 0){
+			t.setNomeFantasia(t.getNomeFantasia() + "Erro Tam Bd");
+			clienteDao.update(t);
+			delete(t.getIdCliente());
+			return "Falha ao definir tamanho do Banco de Dados do cliete";
+		}else{
+			t.setTamanhoTotal(tamBd);
+			clienteDao.update(t);
+		}
+		
+		//clienteDao.update(t);
 		return "Empresa alterada com sucesso!";
 	}
 
