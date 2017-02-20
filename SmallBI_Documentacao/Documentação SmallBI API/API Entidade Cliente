@@ -102,6 +102,7 @@ Retorno:
   "numero": 1200,
   "bairro": "Centro",
   "idCidade":"1",
+  "cidade":"Curitiba",
   
   //Dados Telefone
   "idTelefone":1,
