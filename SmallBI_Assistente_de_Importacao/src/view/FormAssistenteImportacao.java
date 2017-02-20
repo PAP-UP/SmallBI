@@ -18,6 +18,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
     public List<JComboBox> listaDeCbxTipos = new ArrayList<>();
     public static boolean importandoDeArquivo = true;
     private JTable jTableAtivo = new JTable();    
+    public static Integer tamMaxArquivo = 501185; //502096; //501185
     
     public FormAssistenteImportacao() {
         initComponents();
