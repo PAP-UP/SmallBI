@@ -124,11 +124,12 @@ public class FormLogin extends javax.swing.JFrame {
     private void btnAuten_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuten_LoginActionPerformed
         
         //Chamando direto sem validar para otimizar o trabalho
-        FormAssistenteImportacao frm = new FormAssistenteImportacao();
-        frm.setLocationRelativeTo(null);
-        frm.setVisible(true); 
-        this.dispose();
-   //     login();
+//        FormAssistenteImportacao frm = new FormAssistenteImportacao();
+//        frm.setLocationRelativeTo(null);
+//        frm.setResizable(false);
+//        frm.setVisible(true); 
+//        this.dispose();
+        login();
     }//GEN-LAST:event_btnAuten_LoginActionPerformed
 
     private void btnAuten_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuten_CancelarActionPerformed
@@ -142,8 +143,9 @@ public class FormLogin extends javax.swing.JFrame {
             Hashtable<String, Object> hash = new Hashtable<>();
             hash.put("login", login);
             hash.put("senha", senha);
-            
-            String url = "http://localhost:8080/SmallBI_WebService/rest/usuario/login";
+            //http://backend.smallbi.com.br:18080/
+            //"http://localhost:8080/SmallBI_WebService/rest/usuario/login"
+            String url = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
             HttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost httpPost = new HttpPost(url);
             Gson gson = new Gson();
@@ -181,6 +183,7 @@ public class FormLogin extends javax.swing.JFrame {
                 this.dispose();
                 FormAssistenteImportacao frm = new FormAssistenteImportacao();
                 frm.setLocationRelativeTo(null);
+                frm.setResizable(false);
                 frm.setVisible(true); 
                 break;
             case 404:
@@ -198,6 +201,7 @@ public class FormLogin extends javax.swing.JFrame {
                 //new FormLogin().setVisible(true);
                 FormLogin form = new FormLogin();
                 form.setLocationRelativeTo(null);
+                form.setResizable(false);
                 form.setVisible(true);
             }
         });

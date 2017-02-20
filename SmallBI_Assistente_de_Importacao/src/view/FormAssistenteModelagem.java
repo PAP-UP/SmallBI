@@ -38,6 +38,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     public static List<GrupoMetrica> grupoMetricas = new ArrayList<>();
     public static List<TabelaImportada> tabelasImportadas = new ArrayList<>();
     public static List<Link> links = new ArrayList<>();
+    private static Integer idLink = 0;
     
     public FormAssistenteModelagem() {
         initComponents();
@@ -45,6 +46,10 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         carregarAgregadoresModelMetri();
         carregarFormatosModelMetri();
         carregarTabelasModelDim();
+        carregarTabelasRelacionamentos();
+        atualizarListaDimensoes();
+        atualizarListaRelacionamentos();
+        atualizarListaMetricas();
     }
 
     @SuppressWarnings("unchecked")
@@ -75,6 +80,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         btnSalvarDimensoes = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         painelListaDimensoes = new javax.swing.JPanel();
+        btnVoltarDimensoes = new javax.swing.JButton();
         btnAbaModelDim_Voltar = new javax.swing.JButton();
         btnAbaModelDim_Proximo = new javax.swing.JButton();
         btnAbaModelDim_Sair = new javax.swing.JButton();
@@ -97,13 +103,26 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         btnSalvarMetricas = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         painelListaMetricas = new javax.swing.JPanel();
+        btnVoltarMetricas = new javax.swing.JButton();
         btnAbaModelMetri_Voltar = new javax.swing.JButton();
         btnAbaModelMetri_Prox = new javax.swing.JButton();
         btnAbaModelMetri_Sair = new javax.swing.JButton();
         painelAbaRel = new javax.swing.JPanel();
-        painel_AbaRel_Rels = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        painel_AbaRel_ListRel = new javax.swing.JPanel();
+        painelGerenciarRelacionamentos = new javax.swing.JPanel();
+        jTabbedPane_Relacionamentos = new javax.swing.JTabbedPane();
+        painelAddRelacionamento = new javax.swing.JPanel();
+        lblTabelaRel = new javax.swing.JLabel();
+        cbxTabelaRelacionamento = new javax.swing.JComboBox<>();
+        lblAtributoRel = new javax.swing.JLabel();
+        cbxAtributoRelacionado = new javax.swing.JComboBox<>();
+        lblTabelaRef = new javax.swing.JLabel();
+        cbxTabelaReferenciada = new javax.swing.JComboBox<>();
+        btnAdicionarRel = new javax.swing.JButton();
+        painelRelacionamentos = new javax.swing.JPanel();
+        btnSalvarRelacionamentos = new javax.swing.JButton();
+        btnVoltarRelacionamentos = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        painelListaRelacionamentos = new javax.swing.JPanel();
         btnPainelRel_Sair = new javax.swing.JButton();
         btnPainelRel_GerarCubo = new javax.swing.JButton();
         btnPainelRel_Voltar = new javax.swing.JButton();
@@ -119,6 +138,11 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         painelAbaNomeCubo_NomeCubo.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome do Cubo"));
 
@@ -254,9 +278,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                             .addComponent(cbxTabelaDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTabelaDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblChaveDimensao)
-                            .addComponent(cbxChaveDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbxChaveDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblChaveDimensao))
                         .addGap(18, 18, 18)
                         .addComponent(btnAddDimensao)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -274,8 +298,15 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        painelListaDimensoes.setLayout(new java.awt.GridLayout());
+        painelListaDimensoes.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane3.setViewportView(painelListaDimensoes);
+
+        btnVoltarDimensoes.setText("Voltar");
+        btnVoltarDimensoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarDimensoesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelDimensoesLayout = new javax.swing.GroupLayout(painelDimensoes);
         painelDimensoes.setLayout(painelDimensoesLayout);
@@ -285,7 +316,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(painelDimensoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelDimensoesLayout.createSequentialGroup()
-                        .addGap(0, 564, Short.MAX_VALUE)
+                        .addGap(0, 501, Short.MAX_VALUE)
+                        .addComponent(btnVoltarDimensoes)
+                        .addGap(18, 18, 18)
                         .addComponent(btnSalvarDimensoes))
                     .addComponent(jScrollPane3))
                 .addContainerGap())
@@ -296,7 +329,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalvarDimensoes)
+                .addGroup(painelDimensoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarDimensoes)
+                    .addComponent(btnVoltarDimensoes))
                 .addContainerGap())
         );
 
@@ -473,6 +508,13 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         painelListaMetricas.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane2.setViewportView(painelListaMetricas);
 
+        btnVoltarMetricas.setText("Voltar");
+        btnVoltarMetricas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarMetricasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelMetricasLayout = new javax.swing.GroupLayout(painelMetricas);
         painelMetricas.setLayout(painelMetricasLayout);
         painelMetricasLayout.setHorizontalGroup(
@@ -482,7 +524,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addGroup(painelMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelMetricasLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 501, Short.MAX_VALUE)
+                        .addComponent(btnVoltarMetricas)
+                        .addGap(18, 18, 18)
                         .addComponent(btnSalvarMetricas)))
                 .addContainerGap())
         );
@@ -492,7 +536,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalvarMetricas)
+                .addGroup(painelMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarMetricas)
+                    .addComponent(btnVoltarMetricas))
                 .addContainerGap())
         );
 
@@ -511,7 +557,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             painelGerenciarMetricasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelGerenciarMetricasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane_Metricas)
+                .addComponent(jTabbedPane_Metricas, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -557,49 +603,159 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaModelMetriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelGerenciarMetricas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelGerenciarMetricas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelAbaModelMetriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbaModelMetri_Sair)
                     .addComponent(btnAbaModelMetri_Prox)
                     .addComponent(btnAbaModelMetri_Voltar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         lbl.addTab("Modelagem Métricas", painelAbaModelMetri);
 
-        painel_AbaRel_Rels.setBorder(javax.swing.BorderFactory.createTitledBorder("Relacionamentos"));
+        painelGerenciarRelacionamentos.setBorder(javax.swing.BorderFactory.createTitledBorder("Relacionamentos"));
 
-        jButton4.setText("Adicionar Relacionamento");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        lblTabelaRel.setText("Tabela com base:");
+
+        cbxTabelaRelacionamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cbxTabelaRelacionamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                cbxTabelaRelacionamentoActionPerformed(evt);
             }
         });
 
-        painel_AbaRel_ListRel.setLayout(new java.awt.GridLayout(1, 0));
+        lblAtributoRel.setText("Vínculo com a tabela alvo:");
 
-        javax.swing.GroupLayout painel_AbaRel_RelsLayout = new javax.swing.GroupLayout(painel_AbaRel_Rels);
-        painel_AbaRel_Rels.setLayout(painel_AbaRel_RelsLayout);
-        painel_AbaRel_RelsLayout.setHorizontalGroup(
-            painel_AbaRel_RelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painel_AbaRel_RelsLayout.createSequentialGroup()
+        cbxAtributoRelacionado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cbxAtributoRelacionado.setEnabled(false);
+        cbxAtributoRelacionado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAtributoRelacionadoActionPerformed(evt);
+            }
+        });
+
+        lblTabelaRef.setText("Tabela alvo:");
+
+        cbxTabelaReferenciada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cbxTabelaReferenciada.setEnabled(false);
+
+        btnAdicionarRel.setText("Adicionar");
+        btnAdicionarRel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarRelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelAddRelacionamentoLayout = new javax.swing.GroupLayout(painelAddRelacionamento);
+        painelAddRelacionamento.setLayout(painelAddRelacionamentoLayout);
+        painelAddRelacionamentoLayout.setHorizontalGroup(
+            painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAddRelacionamentoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painel_AbaRel_RelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painel_AbaRel_ListRel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(painel_AbaRel_RelsLayout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(0, 489, Short.MAX_VALUE)))
+                .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelAddRelacionamentoLayout.createSequentialGroup()
+                        .addComponent(lblTabelaRel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                        .addComponent(cbxTabelaRelacionamento, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddRelacionamentoLayout.createSequentialGroup()
+                        .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTabelaRef)
+                            .addComponent(lblAtributoRel, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbxTabelaReferenciada, javax.swing.GroupLayout.Alignment.TRAILING, 0, 306, Short.MAX_VALUE)
+                            .addComponent(cbxAtributoRelacionado, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddRelacionamentoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAdicionarRel)))
                 .addContainerGap())
         );
-        painel_AbaRel_RelsLayout.setVerticalGroup(
-            painel_AbaRel_RelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel_AbaRel_RelsLayout.createSequentialGroup()
+        painelAddRelacionamentoLayout.setVerticalGroup(
+            painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAddRelacionamentoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painel_AbaRel_ListRel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTabelaRel)
+                    .addComponent(cbxTabelaRelacionamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxAtributoRelacionado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAtributoRel))
+                .addGap(18, 18, 18)
+                .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxTabelaReferenciada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTabelaRef))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(btnAdicionarRel)
+                .addContainerGap())
+        );
+
+        jTabbedPane_Relacionamentos.addTab("Adicionar Relacionamento", painelAddRelacionamento);
+
+        btnSalvarRelacionamentos.setText("Salvar");
+        btnSalvarRelacionamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarRelacionamentosActionPerformed(evt);
+            }
+        });
+
+        btnVoltarRelacionamentos.setText("Voltar");
+        btnVoltarRelacionamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarRelacionamentosActionPerformed(evt);
+            }
+        });
+
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        painelListaRelacionamentos.setLayout(new java.awt.GridLayout(1, 0));
+        jScrollPane4.setViewportView(painelListaRelacionamentos);
+
+        javax.swing.GroupLayout painelRelacionamentosLayout = new javax.swing.GroupLayout(painelRelacionamentos);
+        painelRelacionamentos.setLayout(painelRelacionamentosLayout);
+        painelRelacionamentosLayout.setHorizontalGroup(
+            painelRelacionamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelRelacionamentosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelRelacionamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelRelacionamentosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVoltarRelacionamentos)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvarRelacionamentos))
+                    .addComponent(jScrollPane4))
+                .addContainerGap())
+        );
+        painelRelacionamentosLayout.setVerticalGroup(
+            painelRelacionamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelRelacionamentosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addGroup(painelRelacionamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarRelacionamentos)
+                    .addComponent(btnVoltarRelacionamentos))
+                .addContainerGap())
+        );
+
+        jTabbedPane_Relacionamentos.addTab("Relacionamentos", painelRelacionamentos);
+
+        javax.swing.GroupLayout painelGerenciarRelacionamentosLayout = new javax.swing.GroupLayout(painelGerenciarRelacionamentos);
+        painelGerenciarRelacionamentos.setLayout(painelGerenciarRelacionamentosLayout);
+        painelGerenciarRelacionamentosLayout.setHorizontalGroup(
+            painelGerenciarRelacionamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelGerenciarRelacionamentosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane_Relacionamentos)
+                .addContainerGap())
+        );
+        painelGerenciarRelacionamentosLayout.setVerticalGroup(
+            painelGerenciarRelacionamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelGerenciarRelacionamentosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane_Relacionamentos)
+                .addContainerGap())
         );
 
         btnPainelRel_Sair.setText("Sair");
@@ -630,7 +786,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             .addGroup(painelAbaRelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAbaRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painel_AbaRel_Rels, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelGerenciarRelacionamentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaRelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnPainelRel_Voltar)
@@ -644,7 +800,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             painelAbaRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaRelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painel_AbaRel_Rels, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(painelGerenciarRelacionamentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(painelAbaRelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPainelRel_Sair)
@@ -672,7 +828,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             painelAbaCuboPreview_PreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaCuboPreview_PreviewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -718,7 +874,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             painelAbaCuboPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaCuboPreviewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAbaCuboPreview_Preview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelAbaCuboPreview_Preview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(painelAbaCuboPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbaCuboPreview_Sair)
@@ -797,10 +953,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnAbaNomeCubo_SairActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        chamarFormAddRel();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void btnPainelRel_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPainelRel_SairActionPerformed
         dispose();
     }//GEN-LAST:event_btnPainelRel_SairActionPerformed
@@ -833,23 +985,177 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         salvarDimensoes();
     }//GEN-LAST:event_btnSalvarDimensoesActionPerformed
 
-    private void salvarDimensoes(){
-        Component[] components = painelListaDimensoes.getComponents();
-        for(Component c : components){
-            if(c instanceof JCheckBox){
-                JCheckBox checkBox = (JCheckBox) c;
-                if(!checkBox.isSelected()){
-                    delDimByName(checkBox.getText());
+    private void btnVoltarDimensoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDimensoesActionPerformed
+        jTabbedPane_Dimensoes.setSelectedIndex(0);
+    }//GEN-LAST:event_btnVoltarDimensoesActionPerformed
+
+    private void btnVoltarMetricasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarMetricasActionPerformed
+        jTabbedPane_Metricas.setSelectedIndex(0);
+    }//GEN-LAST:event_btnVoltarMetricasActionPerformed
+
+    private void cbxTabelaRelacionamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTabelaRelacionamentoActionPerformed
+        carregarAtributosRel();
+    }//GEN-LAST:event_cbxTabelaRelacionamentoActionPerformed
+
+    private void cbxAtributoRelacionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAtributoRelacionadoActionPerformed
+       ativarTabelaReferenciada();
+    }//GEN-LAST:event_cbxAtributoRelacionadoActionPerformed
+
+    private void btnAdicionarRelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarRelActionPerformed
+        adicionarRelacionamento();
+    }//GEN-LAST:event_btnAdicionarRelActionPerformed
+
+    private void btnVoltarRelacionamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarRelacionamentosActionPerformed
+        jTabbedPane_Relacionamentos.setSelectedIndex(0);
+    }//GEN-LAST:event_btnVoltarRelacionamentosActionPerformed
+
+    private void btnSalvarRelacionamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarRelacionamentosActionPerformed
+        salvarRelacionamentos();
+    }//GEN-LAST:event_btnSalvarRelacionamentosActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+//        limparSchema();
+    }//GEN-LAST:event_formWindowClosing
+
+    
+    private void salvarRelacionamentos(){
+        if(links.size() > 0){
+            Component[] components = painelListaRelacionamentos.getComponents();
+            if(components.length > 0){
+                for(Component c : components){
+                    if(c instanceof JCheckBox){
+                        JCheckBox checkBox = (JCheckBox) c;
+                        if(!checkBox.isSelected()){
+                            delRel(checkBox);
+                        }
+                    }
                 }
             }
+            addRelToCuboPreview();
+        }else{
+            JOptionPane.showMessageDialog(null, "Adicione ao menos um relacionamento!");
         }
-                    
-        //Carregar Tabelas para serem utilizadas na gerencia de metricas;
+    }
+    
+    //Foi colocado a assinatura boolean apenas para quebrar o For quando remover o relacionamento indesejado;
+    private boolean delRel(JCheckBox checkBox){
+        for(Link l : links){
+            if(l.getIdLink().toString().equals(checkBox.getName())){
+                links.remove(l);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private void adicionarRelacionamento(){
+        String tabRelacionamento = cbxTabelaRelacionamento.getSelectedItem().toString();
+        String atrRelacionado = cbxAtributoRelacionado.getSelectedItem().toString();
+        String tabReferenciada = cbxTabelaReferenciada.getSelectedItem().toString();
+        
+        if(!tabRelacionamento.equals("Selecione") &&
+                !atrRelacionado.equals("Selecione") &&
+                    !tabReferenciada.equals("Selecione")){
+            
+            Link linkRel = new Link();
+            linkRel.setIdLink(idLink + 1);
+            linkRel.setTarget(tabRelacionamento);
+            linkRel.setForeignKey(atrRelacionado);
+            linkRel.setSource(tabReferenciada);
+            links.add(linkRel);
+            
+            atualizarListaRelacionamentos();
+            jTabbedPane_Relacionamentos.setSelectedIndex(1);
+        }
+    }
+    
+    private void atualizarListaRelacionamentos(){
+        
+        painelListaRelacionamentos.removeAll();
+        for(Link rel : links){
+            JLabel label = new JLabel();
+            label.setText("Relacionamento: ");
+            
+            JCheckBox checkBox = new JCheckBox();
+            checkBox.setName(String.valueOf(rel.getIdLink()));
+            checkBox.setText(rel.getTarget() + "." + rel.getForeignKey() + " => " + rel.getSource());
+            checkBox.setSelected(true);
+            
+            painelListaRelacionamentos.add(label);
+            painelListaRelacionamentos.add(checkBox);
+        }
+        painelListaRelacionamentos.setLayout(new BoxLayout(painelListaRelacionamentos, BoxLayout.Y_AXIS));
+        painelListaRelacionamentos.updateUI();
+    }
+    
+    private void ativarTabelaReferenciada(){
+        //Essa condicional está declarada para evitar uma Exeption quando o comando
+        //cbxAtributosRelacionado.removeAllItens(); for executado.
+        if(cbxAtributoRelacionado.getModel().getSelectedItem() != null){            
+            String atrRelacionado = cbxAtributoRelacionado.getSelectedItem().toString();
+            if(!atrRelacionado.equals("") && !atrRelacionado.equals("Selecione")){
+                cbxTabelaReferenciada.setEnabled(true);
+            }
+        }
+    }
+    
+    private void carregarAtributosRel(){
+        if(!cbxTabelaRelacionamento.getSelectedItem().toString().equals("Selecione")){
+            Dimensao dimUsada = new Dimensao();
+            for(Dimensao d : dimensoes){
+                if(d.getTabela().equals(cbxTabelaRelacionamento.getSelectedItem().toString())){
+                    dimUsada = d;
+                }
+            }
+            
+            cbxAtributoRelacionado.removeAllItems();
+            cbxAtributoRelacionado.addItem("Selecione");
+            for(String atr : dimUsada.getAtributos()){
+                cbxAtributoRelacionado.addItem(atr);
+            }
+            cbxAtributoRelacionado.setEnabled(true);
+            cbxAtributoRelacionado.updateUI();
+            carregarTabelasReferenciadas();
+        }
+    }
+    
+    private void carregarTabelasReferenciadas(){
+        cbxTabelaReferenciada.removeAllItems();
+        cbxTabelaReferenciada.addItem("Selecione");
         for(Dimensao d : dimensoes){
-            cbxTabelaMetrica.addItem(d.getTabela());
+            if(!d.getTabela().equals(cbxTabelaRelacionamento.getSelectedItem().toString())){
+                cbxTabelaReferenciada.addItem(d.getTabela());
+            }
         }
-        cbxTabelaMetrica.setSelectedIndex(0);
-        PercorrerAbasFormGerarCuboXml.modelDimToModelMetri();
+    }
+    
+    private void carregarTabelasRelacionamentos(){
+        for(TabelaImportada t : tabelasImportadas){
+            cbxTabelaRelacionamento.addItem(t.getNomeTabela());
+        }
+    }
+    
+    private void salvarDimensoes(){
+        Component[] components = painelListaDimensoes.getComponents();
+        if(components.length > 0){
+            for(Component c : components){
+                if(c instanceof JCheckBox){
+                    JCheckBox checkBox = (JCheckBox) c;
+                    if(!checkBox.isSelected()){
+                        delDimByName(checkBox.getText());
+                    }
+                }
+            }
+                    
+            //Carregar Tabelas para serem utilizadas na gerencia de metricas;
+            for(Dimensao d : dimensoes){
+                cbxTabelaMetrica.addItem(d.getTabela());
+            }
+            cbxTabelaMetrica.setSelectedIndex(0);
+            PercorrerAbasFormGerarCuboXml.modelDimToModelMetri();
+        }else{
+            JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
+        }
     }
     
     //Foi colocado a assinatura boolean apenas para quebrar o For quando remover a dimensão indesejada;
@@ -970,15 +1276,19 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     private void salvarMetricas(){
         Component[] components = painelListaMetricas.getComponents();
-        for(Component c : components){
-            if(c instanceof JCheckBox){
-                JCheckBox checkBox = (JCheckBox) c;
-                if(!checkBox.isSelected()){
-                    delMetricaByName(checkBox.getText());
+        if(components.length > 0){
+            for(Component c : components){
+                if(c instanceof JCheckBox){
+                    JCheckBox checkBox = (JCheckBox) c;
+                    if(!checkBox.isSelected()){
+                        delMetricaByName(checkBox.getText());
+                    }
                 }
             }
+            PercorrerAbasFormGerarCuboXml.modelMetriToAddRel();
+        }else{
+            JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
         }
-        PercorrerAbasFormGerarCuboXml.modelMetriToAddRel();
     }
     
     //Foi colocado a assinatura boolean apenas para quebrar o For quando remover a métrica indesejada;
@@ -1049,7 +1359,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
                 grupoMetricas.set(grupoMetricas.indexOf(gm), gm);
             }
-            autalizarListaMetricas();
+            atualizarListaMetricas();
             jTabbedPane_Metricas.setSelectedIndex(1);
             
             //Apenas para controle e teste;
@@ -1068,7 +1378,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         }
     }
     
-    private void autalizarListaMetricas(){
+    private void atualizarListaMetricas(){
         painelListaMetricas.removeAll();
         for(GrupoMetrica gm : grupoMetricas){
             List<Metrica> metricas = gm.getMetricas();
@@ -1081,10 +1391,10 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 label.setText("Métrica: ");
                 painelListaMetricas.add(label);
                 painelListaMetricas.add(checkBox);
-                painelListaMetricas.setLayout(new BoxLayout(painelListaMetricas, BoxLayout.Y_AXIS));
-                painelListaMetricas.updateUI();
             }
         }
+        painelListaMetricas.setLayout(new BoxLayout(painelListaMetricas, BoxLayout.Y_AXIS));
+        painelListaMetricas.updateUI();
     }
     
     private GrupoMetrica getGrupoUsandoMesmaTabela(String tabSelecionada){
@@ -1097,8 +1407,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }
     
     private void enviarCubo(){
-        String mdx = GerarSchema.schemaXml;
-        String nomeCubo = GerarSchema.nomeSchema;
+        String mdx = GerarSchema.getSchemaXml();
+        String nomeCubo = GerarSchema.getNomeSchema();
         String scriptSql = new String();
         for(String s : GerarScriptSql.scripts){
             scriptSql += s;
@@ -1111,6 +1421,13 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         hash.put("mdx", mdx);
         hash.put("nomeCubo", nomeCubo);
         hash.put("scriptSql", scriptSql);
+        
+        List<String> tabelasCubo = new ArrayList<>();
+        for(TabelaImportada t : tabelasImportadas){
+            tabelasCubo.add(t.getNomeTabela());
+        }
+        
+        hash.put("tabelasCubo", tabelasCubo);
 
         String url = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
         HttpClient httpClient = HttpClientBuilder.create().build();
@@ -1151,13 +1468,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private void addRelToCuboPreview(){
         PercorrerAbasFormGerarCuboXml.addRelToCuboPreview();
         gerarSchemaXml();
-    }
-    
-    private void chamarFormAddRel(){
-        FormAddRel frm = new FormAddRel();
-        frm.setLocationRelativeTo(null);
-        frm.setTitle("Adicionar Novo Relacionamento");
-        frm.setVisible(true);
     }
     
     private void modelMetriToAddRel(){
@@ -1233,29 +1543,39 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaNomeCubo_Sair;
     private javax.swing.JButton btnAddDimensao;
     private javax.swing.JButton btnAdicionarMetrica;
+    private javax.swing.JButton btnAdicionarRel;
     private javax.swing.JButton btnPainelRel_GerarCubo;
     private javax.swing.JButton btnPainelRel_Sair;
     private javax.swing.JButton btnPainelRel_Voltar;
     private javax.swing.JButton btnSalvarDimensoes;
     private javax.swing.JButton btnSalvarMetricas;
+    private javax.swing.JButton btnSalvarRelacionamentos;
+    private javax.swing.JButton btnVoltarDimensoes;
+    private javax.swing.JButton btnVoltarMetricas;
+    private javax.swing.JButton btnVoltarRelacionamentos;
     private javax.swing.JComboBox<String> cbxAgregadorMetrica;
+    private javax.swing.JComboBox<String> cbxAtributoRelacionado;
     private javax.swing.JComboBox<String> cbxChaveDimensao;
     private javax.swing.JComboBox<String> cbxColunaMetrica;
     private javax.swing.JComboBox<String> cbxFormatoMetrica;
     private javax.swing.JComboBox<String> cbxTabelaDimensao;
     private javax.swing.JComboBox<String> cbxTabelaMetrica;
+    private javax.swing.JComboBox<String> cbxTabelaReferenciada;
+    private javax.swing.JComboBox<String> cbxTabelaRelacionamento;
     private javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane_Dimensoes;
     private javax.swing.JTabbedPane jTabbedPane_Metricas;
+    private javax.swing.JTabbedPane jTabbedPane_Relacionamentos;
     public static javax.swing.JTabbedPane lbl;
     private javax.swing.JLabel lblAbaNomeCubo_Nomecubo;
     private javax.swing.JLabel lblAgregadorMetrica;
+    private javax.swing.JLabel lblAtributoRel;
     private javax.swing.JLabel lblChaveDimensao;
     private javax.swing.JLabel lblColunaMetrica;
     private javax.swing.JLabel lblFormatoMetrica;
@@ -1263,6 +1583,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JLabel lblNomeMetrica;
     private javax.swing.JLabel lblTabelaDimensao;
     private javax.swing.JLabel lblTabelaMetrica;
+    private javax.swing.JLabel lblTabelaRef;
+    private javax.swing.JLabel lblTabelaRel;
     private javax.swing.JPanel paineAbaModelDim;
     private javax.swing.JPanel paineAbaNomeCubo;
     private javax.swing.JPanel painelAbaCuboPreview;
@@ -1272,15 +1594,17 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JPanel painelAbaRel;
     private javax.swing.JPanel painelAddDimensao;
     private javax.swing.JPanel painelAddMetri;
+    private javax.swing.JPanel painelAddRelacionamento;
     private javax.swing.JPanel painelDimensoes;
     private javax.swing.JPanel painelGerenciarDimensões;
     public static javax.swing.JPanel painelGerenciarMetricas;
+    private javax.swing.JPanel painelGerenciarRelacionamentos;
     private javax.swing.JPanel painelListaAtributos;
     private javax.swing.JPanel painelListaDimensoes;
     private javax.swing.JPanel painelListaMetricas;
+    private javax.swing.JPanel painelListaRelacionamentos;
     private javax.swing.JPanel painelMetricas;
-    public static javax.swing.JPanel painel_AbaRel_ListRel;
-    private javax.swing.JPanel painel_AbaRel_Rels;
+    private javax.swing.JPanel painelRelacionamentos;
     private javax.swing.JTextField txtAbaNomeCubo_NomeCubo;
     private javax.swing.JTextField txtNomeDimensao;
     private javax.swing.JTextField txtNomeMetrica;

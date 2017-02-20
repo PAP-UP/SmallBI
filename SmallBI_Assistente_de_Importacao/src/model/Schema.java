@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Schema {
     private String nome;
-    private List<TabelaImportada> tabelasFato;
+    private List<TabelaImportada> tabelas;
     private String nomeCubo;
     private List<Dimensao> dimensoes;
     private List<GrupoMetrica> grupoMetrica;
@@ -56,14 +56,14 @@ public class Schema {
      * @return the tabelasFato
      */
     public List<TabelaImportada> getTabelasFato() {
-        return tabelasFato;
+        return tabelas;
     }
 
     /**
      * @param tabelasFato the tabelasFato to set
      */
     public void setTabelasFato(List<TabelaImportada> tabelasFato) {
-        this.tabelasFato = tabelasFato;
+        this.tabelas = tabelasFato;
     }
 
     /**

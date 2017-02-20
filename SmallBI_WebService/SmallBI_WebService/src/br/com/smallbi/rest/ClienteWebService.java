@@ -37,16 +37,6 @@ public class ClienteWebService {
 	Gson gson = new Gson();
 	Type type = new TypeToken<Cliente>() {}.getType();
 	
-/*	@POST
-	@Path("/test")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public String test(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
-		
-		return gson.toJson(SaikuConnection.addUsuarioSaiku(jsonObject.getString("login"), 
-				jsonObject.getString("senha")));
-	}*/
-	
 	@GET
 	@Path("/listar")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -80,7 +70,9 @@ public class ClienteWebService {
 		Cliente cliente = getObjectFromHash(json);
 		String response = clienteBusiness.update(cliente);
 		
-		appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
+		if(response.equals("Cliente cadastrado com sucesso!")){
+			appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
+		}
 		
 		return gson.toJson(response);
 	}
@@ -127,6 +119,7 @@ public class ClienteWebService {
 			hash.put("numero", e.getNumero());
 			hash.put("bairro", e.getBairro());
 			hash.put("idCidade", e.getCidade().getIdCidade());
+			hash.put("nomeCidade", e.getCidade().getNomeCidade());
 			hash.put("idTipoEndereco", e.getTipo().getIdTipo());
 		}
 		
@@ -156,7 +149,7 @@ public class ClienteWebService {
 		ramoAtividade.setIdRamoAtividade(jsonObject.getInt("idRamoAtividade"));
 		c.setRamoAtividade(ramoAtividade);
 		
-		c.setTamanhoTotal(jsonObject.getInt("tamanhoTotal"));
+		//c.setTamanhoTotal(jsonObject.getInt("tamanhoTotal"));
 		
 		FormaPagamento formaPagamento = new FormaPagamento();
 		formaPagamento.setIdFormaPagamento(jsonObject.getInt("idFormaPagamento"));
@@ -208,6 +201,7 @@ public class ClienteWebService {
 		hashCliente.put("tamamhoTotal", c.getTamanhoTotal());
 		hashCliente.put("formaPagamento", c.getFormaPagamento().getFormaPagamento());
 		hashCliente.put("plano", c.getPlano().getNomePlano());
+		
 		return hashCliente;
 	}
 }

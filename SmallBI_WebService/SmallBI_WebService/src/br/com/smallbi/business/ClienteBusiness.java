@@ -90,9 +90,9 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 			return "A variável 'razaoSocial' deve ser informada!";
 		}
 		
-		if(t.getTamanhoTotal() == null){
+		/*if(t.getTamanhoTotal() == null){
 			return "A variável 'tamahoTotal' deve ser informada!";
-		}
+		}*/
 		
 		if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
@@ -100,13 +100,26 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
-		
+		//O campo Tamanho Total está definido como NOT NULL;
+		t.setTamanhoTotal(0);
 		clienteDao.create(t);
 		
-		boolean result = ConexaoDao.criarDatabase(t.getNomeFantasia(), t.getIdCliente());
+		boolean result = ConexaoDao.criarDatabaseCliente(t.getNomeFantasia(), t.getIdCliente());
 		
 		if(result == false){
 			return "Falha ao criar banco de dados do cliente!";
+		}
+		
+		Integer tamBd = ConexaoDao.getTamanhoBancoCliente(t.getIdCliente());
+		if(tamBd <= 0){
+			t.setNomeFantasia(t.getNomeFantasia() + "Erro Tam Bd");
+			clienteDao.update(t);
+			delete(t.getIdCliente());
+			return "Falha ao definir tamanho do Banco de Dados do cliete";
+		}else{
+			t.setTamanhoTotal(tamBd);
+//			update(t);
+			clienteDao.update(t);
 		}
 		
 		return "Cliente cadastrado com sucesso!";
@@ -196,18 +209,30 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 			return "A variável 'razaoSocial' deve ser informada!";
 		}
 		
-		if(t.getTamanhoTotal() == null){
+/*		if(t.getTamanhoTotal() == null){
 			return "A variável 'tamahoTotal' deve ser informada!";
-		}
+		}*/
 		
 		if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
+		t.setTamanhoTotal(0);
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
-		clienteDao.update(t);
+		Integer tamBd = ConexaoDao.getTamanhoBancoCliente(t.getIdCliente());
+		if(tamBd <= 0){
+			t.setNomeFantasia(t.getNomeFantasia() + "Erro Tam Bd");
+			clienteDao.update(t);
+			delete(t.getIdCliente());
+			return "Falha ao definir tamanho do Banco de Dados do cliete";
+		}else{
+			t.setTamanhoTotal(tamBd);
+			clienteDao.update(t);
+		}
+		
+		//clienteDao.update(t);
 		return "Empresa alterada com sucesso!";
 	}
 

@@ -14,6 +14,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import view.FormAssistenteImportacao;
 
 public class ImportarXlsx {
     public JTable importarArquivo() {
@@ -39,7 +40,7 @@ public class ImportarXlsx {
             caminho = jfc.getSelectedFile().getPath();
             File arquivo = new File(caminho);
             
-            if(arquivo.length() > 501185){
+            if(arquivo.length() > FormAssistenteImportacao.tamMaxArquivo){
                 //System.out.println("Maior: " + arquivo.length());
                 JOptionPane.showMessageDialog(null, "O tamanho do arquivo superior ao suportado!");
             }else{

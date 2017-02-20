@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import view.FormAssistenteImportacao;
 
 public class ImportarCsv {
     
@@ -38,7 +39,7 @@ public class ImportarCsv {
             String caminho;
             caminho = jfc.getSelectedFile().getPath();
             File file = new File(caminho);
-            if(file.length() > 501185){
+            if(file.length() > FormAssistenteImportacao.tamMaxArquivo){
                 JOptionPane.showMessageDialog(null, "O tamanho do arquivo superior ao suportado!");
             }else{
                 try {

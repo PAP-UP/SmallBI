@@ -153,12 +153,12 @@ public class FormSalvarTabela extends javax.swing.JFrame {
                             nomeTabela, chavePrimaria, listaCbxTipos));
                     System.out.println("Script SQL gerado: " + GerarScriptSql.scriptSqlTabelaPivot);               
 
-                    TabelaImportada tabelaFato = new TabelaImportada();
-                    tabelaFato.setScriptSql(GerarScriptSql.scriptSqlTabelaPivot);
-                    tabelaFato.setjTable(tabelaPivot);
-                    tabelaFato.setPrimaryKey(chavePrimaria);
-                    tabelaFato.setNomeTabela(nomeTabela);
-                    FormAssistenteModelagem.tabelasImportadas.add(tabelaFato);    
+                    TabelaImportada tabelaImportada = new TabelaImportada();
+                    tabelaImportada.setScriptSql(GerarScriptSql.scriptSqlTabelaPivot);
+                    tabelaImportada.setjTable(tabelaPivot);
+                    tabelaImportada.setPrimaryKey(chavePrimaria);
+                    tabelaImportada.setNomeTabela(nomeTabela);
+                    FormAssistenteModelagem.tabelasImportadas.add(tabelaImportada);    
                     FormAssistenteImportacao.btnAbaTabPrev_GerarCuboXml.setEnabled(true);
                     FormAssistenteImportacao.btnAbaTabPrev_ImportMaisDados.setEnabled(true);
                     dispose();
