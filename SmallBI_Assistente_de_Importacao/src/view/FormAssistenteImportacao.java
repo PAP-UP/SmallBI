@@ -1072,15 +1072,14 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
     private void salvarTabela(){
         FormSalvarTabela frm = new FormSalvarTabela(jTableAtivo, listaDeCbxTipos);
         frm.setLocationRelativeTo(null);
-        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Assistente para Salvar Tabela Importada");
-//        this.setVisible(false);
         frm.setVisible(true);
     }
     
     private void chamarFormGerarCuboXml(){               
         FormAssistenteModelagem frm = new FormAssistenteModelagem();
         frm.setLocationRelativeTo(null);
+        frm.setResizable(false);
         //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Assistente de Modelagem do Cubo");
         frm.setVisible(true);        

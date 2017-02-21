@@ -1,6 +1,7 @@
 package model;
 
 public class Link {
+    private Integer idLink;
     private String source;
     private String target;
     private String foreignKey;
@@ -45,6 +46,20 @@ public class Link {
      */
     public void setForeignKey(String foreignKey) {
         this.foreignKey = foreignKey;
+    }
+
+    /**
+     * @return the idLink
+     */
+    public Integer getIdLink() {
+        return idLink;
+    }
+
+    /**
+     * @param idLink the idLink to set
+     */
+    public void setIdLink(Integer idLink) {
+        this.idLink = idLink;
     }
     
     

@@ -236,10 +236,10 @@ public class FormAddRel extends javax.swing.JFrame {
         
         JLabel l = new JLabel();
         l.setText("Relacionamento: " + link.getTarget() + "." + link.getForeignKey() + " => " + link.getSource());
-        FormAssistenteModelagem.painel_AbaRel_ListRel.setLayout(
-                new BoxLayout(FormAssistenteModelagem.painel_AbaRel_ListRel,BoxLayout.Y_AXIS));
-        FormAssistenteModelagem.painel_AbaRel_ListRel.add(l);
-        FormAssistenteModelagem.painel_AbaRel_ListRel.updateUI();
+//        FormAssistenteModelagem.painel_AbaRel_ListRel.setLayout(
+//                new BoxLayout(FormAssistenteModelagem.painel_AbaRel_ListRel,BoxLayout.Y_AXIS));
+//        FormAssistenteModelagem.painel_AbaRel_ListRel.add(l);
+//        FormAssistenteModelagem.painel_AbaRel_ListRel.updateUI();
         dispose();
     }
     

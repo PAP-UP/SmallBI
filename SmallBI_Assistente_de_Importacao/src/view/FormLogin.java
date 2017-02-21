@@ -126,6 +126,7 @@ public class FormLogin extends javax.swing.JFrame {
         //Chamando direto sem validar para otimizar o trabalho
         FormAssistenteImportacao frm = new FormAssistenteImportacao();
         frm.setLocationRelativeTo(null);
+        frm.setResizable(false);
         frm.setVisible(true); 
         this.dispose();
    //     login();
@@ -181,6 +182,7 @@ public class FormLogin extends javax.swing.JFrame {
                 this.dispose();
                 FormAssistenteImportacao frm = new FormAssistenteImportacao();
                 frm.setLocationRelativeTo(null);
+                frm.setResizable(false);
                 frm.setVisible(true); 
                 break;
             case 404:
@@ -198,6 +200,7 @@ public class FormLogin extends javax.swing.JFrame {
                 //new FormLogin().setVisible(true);
                 FormLogin form = new FormLogin();
                 form.setLocationRelativeTo(null);
+                form.setResizable(false);
                 form.setVisible(true);
             }
         });
