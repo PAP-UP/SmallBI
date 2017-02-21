@@ -47,6 +47,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         carregarFormatosModelMetri();
         carregarTabelasModelDim();
         carregarTabelasRelacionamentos();
+        atualizarListaDimensoes();
+        atualizarListaRelacionamentos();
+        atualizarListaMetricas();
     }
 
     @SuppressWarnings("unchecked")
@@ -135,6 +138,11 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         painelAbaNomeCubo_NomeCubo.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome do Cubo"));
 
@@ -701,7 +709,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
         jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        painelListaRelacionamentos.setLayout(new java.awt.GridLayout());
+        painelListaRelacionamentos.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane4.setViewportView(painelListaRelacionamentos);
 
         javax.swing.GroupLayout painelRelacionamentosLayout = new javax.swing.GroupLayout(painelRelacionamentos);
@@ -1005,6 +1013,11 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         salvarRelacionamentos();
     }//GEN-LAST:event_btnSalvarRelacionamentosActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+//        limparSchema();
+    }//GEN-LAST:event_formWindowClosing
+
+    
     private void salvarRelacionamentos(){
         if(links.size() > 0){
             Component[] components = painelListaRelacionamentos.getComponents();
@@ -1346,7 +1359,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
                 grupoMetricas.set(grupoMetricas.indexOf(gm), gm);
             }
-            autalizarListaMetricas();
+            atualizarListaMetricas();
             jTabbedPane_Metricas.setSelectedIndex(1);
             
             //Apenas para controle e teste;
@@ -1365,7 +1378,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         }
     }
     
-    private void autalizarListaMetricas(){
+    private void atualizarListaMetricas(){
         painelListaMetricas.removeAll();
         for(GrupoMetrica gm : grupoMetricas){
             List<Metrica> metricas = gm.getMetricas();
@@ -1378,10 +1391,10 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 label.setText("Métrica: ");
                 painelListaMetricas.add(label);
                 painelListaMetricas.add(checkBox);
-                painelListaMetricas.setLayout(new BoxLayout(painelListaMetricas, BoxLayout.Y_AXIS));
-                painelListaMetricas.updateUI();
             }
         }
+        painelListaMetricas.setLayout(new BoxLayout(painelListaMetricas, BoxLayout.Y_AXIS));
+        painelListaMetricas.updateUI();
     }
     
     private GrupoMetrica getGrupoUsandoMesmaTabela(String tabSelecionada){
@@ -1394,8 +1407,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }
     
     private void enviarCubo(){
-        String mdx = GerarSchema.schemaXml;
-        String nomeCubo = GerarSchema.nomeSchema;
+        String mdx = GerarSchema.getSchemaXml();
+        String nomeCubo = GerarSchema.getNomeSchema();
         String scriptSql = new String();
         for(String s : GerarScriptSql.scripts){
             scriptSql += s;

@@ -15,11 +15,19 @@ import view.FormLogin;
 
 public class GerarSchema {
     
-    public static String schemaXml = new String();
-    public static String nomeSchema = new String();
+    private static String schemaXml = new String();
+    private static String nomeSchema = new String();
+    
+    public static String getSchemaXml(){
+        return schemaXml;
+    }
+    
+    public static String getNomeSchema(){
+        return nomeSchema;
+    }
     
     public String createSchema(Schema schema){
-                
+        schemaXml = new String();
         schemaXml += initializeSchema(schema.getNome());
         schemaXml += setPhysicalSchema(schema.getTabelasFato(), schema.getLinks());
         schemaXml += setCubeName(schema.getNome());
