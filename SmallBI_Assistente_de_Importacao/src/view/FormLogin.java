@@ -143,8 +143,9 @@ public class FormLogin extends javax.swing.JFrame {
             Hashtable<String, Object> hash = new Hashtable<>();
             hash.put("login", login);
             hash.put("senha", senha);
-            
-            String url = "http://localhost:8080/SmallBI_WebService/rest/usuario/login";
+            //http://backend.smallbi.com.br:18080/
+            //"http://localhost:8080/SmallBI_WebService/rest/usuario/login"
+            String url = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
             HttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost httpPost = new HttpPost(url);
             Gson gson = new Gson();
