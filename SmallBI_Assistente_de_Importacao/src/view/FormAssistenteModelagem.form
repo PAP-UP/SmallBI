@@ -951,13 +951,13 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="lblTabelaRel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="146" max="32767" attributes="0"/>
+                                          <EmptySpace pref="207" max="32767" attributes="0"/>
                                           <Component id="cbxTabelaRelacionamento" min="-2" pref="306" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblAtributoRel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblTabelaRef" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblTabelaRef" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblAtributoRel" min="-2" pref="157" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1002,7 +1002,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="lblTabelaRel">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Tabela com relacionamento:"/>
+                            <Property name="text" type="java.lang.String" value="Tabela com base:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbxTabelaRelacionamento">
@@ -1022,7 +1022,7 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblAtributoRel">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Atributo com relacionamento:"/>
+                            <Property name="text" type="java.lang.String" value="V&#xed;nculo com a tabela alvo:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbxAtributoRelacionado">
@@ -1043,7 +1043,7 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblTabelaRef">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Tabela referenciada:"/>
+                            <Property name="text" type="java.lang.String" value="Tabela alvo:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbxTabelaReferenciada">

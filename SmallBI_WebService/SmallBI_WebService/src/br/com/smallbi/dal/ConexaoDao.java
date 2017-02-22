@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class ConexaoDao {
 
@@ -30,7 +31,7 @@ public class ConexaoDao {
 		return null;
 	}
 	
-	public static boolean criarDatabase(String cliente, Integer id){
+	public static boolean criarDatabaseCliente(String cliente, Integer id){
 		String nomeBanco = "id_" + id;
 		try{
 			String sql = "CREATE DATABASE " + formatarString(nomeBanco);
@@ -52,9 +53,9 @@ public class ConexaoDao {
 		return true;
 	}
 	
-	public static boolean salvarScript(Integer id, String script){
+	public static boolean salvarScriptCubo(Integer idCliente, String script){
 		
-		String banco = "id_" + id;
+		String banco = "id_" + idCliente;
 		try{
 			Connection connection = getConexao(banco);
 			Statement statement = connection.createStatement();
@@ -66,9 +67,8 @@ public class ConexaoDao {
 		return true;
 	}
 	
-	public static Integer getTamanhoBanco(Integer id){
-		//Implementar
-		String banco = "id_" + id;
+	public static Integer getTamanhoBancoCliente(Integer idCliente){
+		String banco = "id_" + idCliente;
 		Connection connection = getConexao(banco);
 		Statement statement;
 		try {
@@ -79,12 +79,41 @@ public class ConexaoDao {
 				String strTamBd = (String) resultSet.getObject("pg_size_pretty");
 				strTamBd = strTamBd.replace("MB", "");
 				strTamBd = strTamBd.replace("kB", "");
+				strTamBd = strTamBd.replace("bytes", "");
 				strTamBd = strTamBd.replace(" ", "");
 				return Integer.parseInt(strTamBd);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return 0;
+		}
+		return 0;
+	}
+	
+	public static Integer getTamanhoCubo(Integer idCliente, List<String> tabelasCubo){
+		String banco = "id_" + idCliente;
+		Connection connection = getConexao(banco);
+		
+		Integer tamCubo = 0;
+		try{
+			Statement statement = connection.createStatement();
+			for(String tab : tabelasCubo){
+				//SELECT pg_size_pretty(pg_relation_size('table_name')); 
+				String query = "SELECT pg_size_pretty(pg_relation_size('" + tab + "'));";
+				ResultSet resultSet = statement.executeQuery(query);
+				while(resultSet.next()){
+//					tamCubo += (Integer) resultSet.getObject("pg_size_pretty");		
+					String sTamCubo = (String) resultSet.getObject("pg_size_pretty");
+					sTamCubo = sTamCubo.replace("MB", "");
+					sTamCubo = sTamCubo.replace("kB", "");
+					sTamCubo = sTamCubo.replace("bytes", "");
+					sTamCubo = sTamCubo.replace(" ", "");
+					tamCubo += Integer.parseInt(sTamCubo);
+				}
+			}
+			return tamCubo;
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return 0;
 	}

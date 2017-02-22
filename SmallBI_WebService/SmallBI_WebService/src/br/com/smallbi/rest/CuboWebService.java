@@ -32,6 +32,16 @@ public class CuboWebService {
 	Gson gson = new Gson();
 	Type type = new TypeToken<Cubo>() {}.getType();
 	
+	@POST
+	@Path("/test")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String test(String json) throws JSONException{
+		JSONObject jsonObject = new JSONObject(json);
+		
+		return "";
+	}
+	
 	@GET
 	@Path("/listar")
 	@Produces(MediaType.APPLICATION_JSON)

@@ -132,8 +132,8 @@ public class FormEnviarCubo extends javax.swing.JFrame {
             
             String login = txtAuten_Login.getText();
             String senha = txtAuten_Senha.getText();
-            String mdx = GerarSchema.schemaXml;
-            String nomeCubo = GerarSchema.nomeSchema;
+            String mdx = GerarSchema.getSchemaXml();
+            String nomeCubo = GerarSchema.getNomeSchema();
             String scriptSql = new String();
             for(String s : GerarScriptSql.scripts){
                 scriptSql += s;

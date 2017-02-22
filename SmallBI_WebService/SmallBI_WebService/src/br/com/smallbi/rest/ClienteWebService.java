@@ -37,16 +37,6 @@ public class ClienteWebService {
 	Gson gson = new Gson();
 	Type type = new TypeToken<Cliente>() {}.getType();
 	
-/*	@POST
-	@Path("/test")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public String test(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
-		
-		return gson.toJson(SaikuConnection.addUsuarioSaiku(jsonObject.getString("login"), 
-				jsonObject.getString("senha")));
-	}*/
-	
 	@GET
 	@Path("/listar")
 	@Produces(MediaType.APPLICATION_JSON)

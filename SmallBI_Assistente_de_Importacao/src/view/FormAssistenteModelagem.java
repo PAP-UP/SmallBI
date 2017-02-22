@@ -616,7 +616,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
         painelGerenciarRelacionamentos.setBorder(javax.swing.BorderFactory.createTitledBorder("Relacionamentos"));
 
-        lblTabelaRel.setText("Tabela com relacionamento:");
+        lblTabelaRel.setText("Tabela com base:");
 
         cbxTabelaRelacionamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
         cbxTabelaRelacionamento.addActionListener(new java.awt.event.ActionListener() {
@@ -625,7 +625,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             }
         });
 
-        lblAtributoRel.setText("Atributo com relacionamento:");
+        lblAtributoRel.setText("Vínculo com a tabela alvo:");
 
         cbxAtributoRelacionado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
         cbxAtributoRelacionado.setEnabled(false);
@@ -635,7 +635,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             }
         });
 
-        lblTabelaRef.setText("Tabela referenciada:");
+        lblTabelaRef.setText("Tabela alvo:");
 
         cbxTabelaReferenciada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
         cbxTabelaReferenciada.setEnabled(false);
@@ -656,12 +656,12 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelAddRelacionamentoLayout.createSequentialGroup()
                         .addComponent(lblTabelaRel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
                         .addComponent(cbxTabelaRelacionamento, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddRelacionamentoLayout.createSequentialGroup()
                         .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAtributoRel)
-                            .addComponent(lblTabelaRef))
+                            .addComponent(lblTabelaRef)
+                            .addComponent(lblAtributoRel, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbxTabelaReferenciada, javax.swing.GroupLayout.Alignment.TRAILING, 0, 306, Short.MAX_VALUE)
@@ -1421,6 +1421,13 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         hash.put("mdx", mdx);
         hash.put("nomeCubo", nomeCubo);
         hash.put("scriptSql", scriptSql);
+        
+        List<String> tabelasCubo = new ArrayList<>();
+        for(TabelaImportada t : tabelasImportadas){
+            tabelasCubo.add(t.getNomeTabela());
+        }
+        
+        hash.put("tabelasCubo", tabelasCubo);
 
         String url = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
         HttpClient httpClient = HttpClientBuilder.create().build();

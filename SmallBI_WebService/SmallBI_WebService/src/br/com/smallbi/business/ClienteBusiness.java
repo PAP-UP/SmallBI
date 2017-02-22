@@ -104,13 +104,13 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		t.setTamanhoTotal(0);
 		clienteDao.create(t);
 		
-		boolean result = ConexaoDao.criarDatabase(t.getNomeFantasia(), t.getIdCliente());
+		boolean result = ConexaoDao.criarDatabaseCliente(t.getNomeFantasia(), t.getIdCliente());
 		
 		if(result == false){
 			return "Falha ao criar banco de dados do cliente!";
 		}
 		
-		Integer tamBd = ConexaoDao.getTamanhoBanco(t.getIdCliente());
+		Integer tamBd = ConexaoDao.getTamanhoBancoCliente(t.getIdCliente());
 		if(tamBd <= 0){
 			t.setNomeFantasia(t.getNomeFantasia() + "Erro Tam Bd");
 			clienteDao.update(t);
@@ -221,7 +221,7 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
 		
-		Integer tamBd = ConexaoDao.getTamanhoBanco(t.getIdCliente());
+		Integer tamBd = ConexaoDao.getTamanhoBancoCliente(t.getIdCliente());
 		if(tamBd <= 0){
 			t.setNomeFantasia(t.getNomeFantasia() + "Erro Tam Bd");
 			clienteDao.update(t);

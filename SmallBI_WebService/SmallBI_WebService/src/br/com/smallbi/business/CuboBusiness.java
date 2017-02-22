@@ -3,8 +3,11 @@ package br.com.smallbi.business;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+
+import com.google.gson.JsonObject;
 
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.ConexaoDao;
@@ -79,13 +82,21 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			
 			String scriptSql = jsonObject.getString("scriptSql");
 //			Integer id = usuario.getPessoa().getCliente().getIdCliente();
-			Integer id = jsonObject.getInt("idCliente");
-			boolean result = ConexaoDao.salvarScript(id, scriptSql);
+			Integer idCliente = jsonObject.getInt("idCliente");
+
+			List<String> tabelasCubo = new ArrayList<>();
+			JSONArray jsonArray = jsonObject.getJSONArray("tabelasCubo");
+			for(int i = 0; i < jsonArray.length(); i++){
+				String s = (String) jsonArray.get(i);
+				tabelasCubo.add(s);
+			}
+			
+			boolean result = ConexaoDao.salvarScriptCubo(idCliente, scriptSql);
 			
 			if(result == true){
 				
-				usuario.getCliente().setTamanhoTotal(ConexaoDao.getTamanhoBanco(id));
-				new ClienteBusiness().update(usuario.getCliente());
+				usuario.getPessoa().getCliente().setTamanhoTotal(ConexaoDao.getTamanhoBancoCliente(idCliente));
+				new ClienteBusiness().update(usuario.getPessoa().getCliente());
 				
 				Cubo cubo = new Cubo();			
 				cubo.setCliente(usuario.getPessoa().getCliente());
@@ -96,7 +107,9 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 				cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
 				
 				//Fazer consulta do tamanho das tabelas
-				cubo.setTamanho(0); //Provisório
+				//cubo.setTamanho(0); //Provisório
+				Integer tamCubo = ConexaoDao.getTamanhoCubo(idCliente, tabelasCubo);
+				cubo.setTamanho(tamCubo);
 				cubo.setUsuarioId(usuario.getIdUsuario());
 				
 				create(cubo);
@@ -109,7 +122,35 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 	
 	public String analisarCubo(){
 		
-//		if()
+		/*public void salvarQuerySQL(String nomeTabela){
+        
+//      JFileChooser jfc = new JFileChooser();        
+//      jfc.showSaveDialog(null);     
+//      File file = jfc.getSelectedFile();
+      //File file = new File("/home/deynesonborba/files-to-test-saiku/cubes-scripts-generated/" + formatarString(nomeTabela) + ".sql");
+      File file = new File(System.getProperty("user.home") + 
+              System.getProperty("file.separator") +
+              "files-to-test-saiku" +
+              System.getProperty("file.separator") +
+              "cubes-scripts-generated"+
+              System.getProperty("file.separator") + 
+              formatarString(nomeTabela) + ".sql");
+      try {
+          FileWriter fw = new FileWriter(file);
+          BufferedWriter bw = new BufferedWriter(fw);
+          
+          for(String sql : scripts){
+              bw.write(sql);
+              bw.write("\n");
+          }
+          
+          bw.flush();
+          bw.close();
+          System.out.println("Script salvo");
+      } catch (IOException ex) {
+          ex.printStackTrace();
+      }
+  }*/
 		return "";
 	}
 	
@@ -198,5 +239,4 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 		}
 		return null;
 	}
-
 }
