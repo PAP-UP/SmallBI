@@ -16,7 +16,6 @@
 <fullyQualifiedTypeName name="org.apache.commons.codec.binary.Base64"/>
 <fullyQualifiedTypeName name="org.apache.http.impl.auth.BasicScheme"/>
 <fullyQualifiedTypeName name="org.apache.http.auth.UsernamePasswordCredentials"/>
-<fullyQualifiedTypeName name="br.com.smallbi.util.SaikuConnection"/>
 <fullyQualifiedTypeName name="br.com.smallbi.rest.EnderecoWebService"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Estado"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.EstadoDao"/>
@@ -48,7 +47,6 @@
 <fullyQualifiedTypeName name="br.com.smallbi.dal.ConexaoDao"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
-<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
 <fullyQualifiedTypeName name="com.google.gson.JsonObject"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONArray"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
@@ -58,6 +56,8 @@
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="br.com.smallbi.util.Util"/>
+<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
+<fullyQualifiedTypeName name="br.com.smallbi.util.SaikuConnection"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>

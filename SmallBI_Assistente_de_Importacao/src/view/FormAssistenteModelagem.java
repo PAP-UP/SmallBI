@@ -1419,7 +1419,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         hash.put("senha", FormLogin.senha);
         hash.put("idCliente", FormLogin.idCliente);
         hash.put("mdx", mdx);
-        hash.put("nomeCubo", nomeCubo);
+        hash.put("nomeCubo", formatarString(nomeCubo));
         hash.put("scriptSql", scriptSql);
         
         List<String> tabelasCubo = new ArrayList<>();

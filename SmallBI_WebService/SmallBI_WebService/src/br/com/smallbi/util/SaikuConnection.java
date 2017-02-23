@@ -46,15 +46,7 @@ public class SaikuConnection {
 		String connection = new String();
 		String endereco = "localhost/";
 		//Montar conexão:
-		connection = "type=OLAP\n"
-					+ "name=" + nomeSchema + "\n"
-					+ "driver=mondrian.olap4j.MondrianOlap4jDriver\n"
-					+ "location=jdbc:mondrian:Jdbc=jdbc:postgresql://" + endereco + "id_" + idCliente + ";"
-					+ "Catalog=/datasources/" + "id_" + idCliente + "/" + nomeSchema + ".xml;"
-					+ "JdbcDrivers=org.postgresql.Driver;\n"
-					+ "username=postgres\n"
-					+ "password=postgres\n"
-					+ "security.enabled=false\n";
+		connection = "type=OLAP\n" + "name=" + nomeSchema + "\n" + "driver=mondrian.olap4j.MondrianOlap4jDriver\n" + "location=jdbc:mondrian:Jdbc=jdbc:postgresql://" + endereco + "id_" + idCliente + ";"	+ "Catalog=/datasources/" + "id_" + idCliente + "/" + nomeSchema + ".xml;" + "JdbcDrivers=org.postgresql.Driver;\n"	+ "username=postgres\n"	+ "password=postgres\n"	+ "security.enabled=false\n";
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("connectionname", nomeSchema);
