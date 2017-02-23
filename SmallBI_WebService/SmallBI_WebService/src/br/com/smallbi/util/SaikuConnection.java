@@ -53,7 +53,7 @@ public class SaikuConnection {
 		jsonObject.put("advanced", connection);
 		
 		//String url = "http://localhost:8080/saiku/rest/saiku/admin/datasources/";
-		String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/adimin/datasources/";
+		String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/datasources/";
 		return sendToSaiku(url, jsonObject.toString());
 	}
 	
