@@ -15,6 +15,7 @@ import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cubo;
 import br.com.smallbi.entity.Usuario;
+import br.com.smallbi.util.SaikuConnection;
 import br.com.smallbi.util.Util;
 import br.com.smallbi.entity.Cliente;
 
@@ -102,21 +103,27 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 					usuario.getPessoa().getCliente().setTamanhoTotal(ConexaoDao.getTamanhoBancoCliente(idCliente));
 					new ClienteBusiness().update(usuario.getPessoa().getCliente());
 					
-					Cubo cubo = new Cubo();			
-					cubo.setCliente(usuario.getPessoa().getCliente());
+					int saikuResponse = SaikuConnection.addDatasourceSaiku(idCliente, jsonObject.getString("nomeCubo"));
 					
-					cubo.setMdx(jsonObject.getString("mdx"));
-					
-					cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
-					cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
-					
-					//Fazer consulta do tamanho das tabelas
-					//cubo.setTamanho(0); //Provisório
-					Integer tamCubo = ConexaoDao.getTamanhoCubo(idCliente, tabelasCubo);
-					cubo.setTamanho(tamCubo);
-					cubo.setUsuarioId(usuario.getIdUsuario());
-					
-					create(cubo);
+					if(saikuResponse == 200){
+						Cubo cubo = new Cubo();			
+						cubo.setCliente(usuario.getPessoa().getCliente());
+						
+						cubo.setMdx(jsonObject.getString("mdx"));
+						
+						cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
+						cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
+						
+						//Fazer consulta do tamanho das tabelas
+						//cubo.setTamanho(0); //Provisório
+						Integer tamCubo = ConexaoDao.getTamanhoCubo(idCliente, tabelasCubo);
+						cubo.setTamanho(tamCubo);
+						cubo.setUsuarioId(usuario.getIdUsuario());
+						
+						create(cubo);
+					}else{
+						return "Falha ao enviar cubo ao Saiku!";
+					}
 				}else{
 					return "Falha ao salvar MDX no servidor!";
 				}
