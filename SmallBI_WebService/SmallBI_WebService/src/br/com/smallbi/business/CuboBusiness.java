@@ -91,28 +91,35 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 				tabelasCubo.add(s);
 			}
 			
-			boolean result = ConexaoDao.salvarScriptCubo(idCliente, scriptSql);
+			boolean scriptsalvo = ConexaoDao.salvarScriptCubo(idCliente, scriptSql);
 			
-			if(result == true){
+			if(scriptsalvo){
 				
-				usuario.getPessoa().getCliente().setTamanhoTotal(ConexaoDao.getTamanhoBancoCliente(idCliente));
-				new ClienteBusiness().update(usuario.getPessoa().getCliente());
+				boolean mdxSalvo = Util.saveSchemaInSaiku(idCliente, jsonObject.getString("nomeCubo"), 
+						jsonObject.getString("mdx"));
 				
-				Cubo cubo = new Cubo();			
-				cubo.setCliente(usuario.getPessoa().getCliente());
-				
-				cubo.setMdx(jsonObject.getString("mdx"));
-				
-				cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
-				cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
-				
-				//Fazer consulta do tamanho das tabelas
-				//cubo.setTamanho(0); //Provisório
-				Integer tamCubo = ConexaoDao.getTamanhoCubo(idCliente, tabelasCubo);
-				cubo.setTamanho(tamCubo);
-				cubo.setUsuarioId(usuario.getIdUsuario());
-				
-				create(cubo);
+				if(mdxSalvo){
+					usuario.getPessoa().getCliente().setTamanhoTotal(ConexaoDao.getTamanhoBancoCliente(idCliente));
+					new ClienteBusiness().update(usuario.getPessoa().getCliente());
+					
+					Cubo cubo = new Cubo();			
+					cubo.setCliente(usuario.getPessoa().getCliente());
+					
+					cubo.setMdx(jsonObject.getString("mdx"));
+					
+					cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
+					cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
+					
+					//Fazer consulta do tamanho das tabelas
+					//cubo.setTamanho(0); //Provisório
+					Integer tamCubo = ConexaoDao.getTamanhoCubo(idCliente, tabelasCubo);
+					cubo.setTamanho(tamCubo);
+					cubo.setUsuarioId(usuario.getIdUsuario());
+					
+					create(cubo);
+				}else{
+					return "Falha ao salvar MDX no servidor!";
+				}
 			}else{
 				return "Falha ao salvar tabelas no bando de dados do cliente!";
 			}
