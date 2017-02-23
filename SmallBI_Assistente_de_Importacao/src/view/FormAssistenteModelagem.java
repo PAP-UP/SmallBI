@@ -1429,7 +1429,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         
         hash.put("tabelasCubo", tabelasCubo);
 
-        String url = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+        //String url = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+        String url = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpPost httpPost = new HttpPost(url);
         Gson gson = new Gson();
