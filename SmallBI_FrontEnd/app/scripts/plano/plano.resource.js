@@ -2,42 +2,42 @@
   'use strict';
 
   angular.module('SmallBIApp')
-    .factory('ramoResource', ramoResource);
+    .factory('planoResource', planoResource);
 
-  function ramoResource(Service) {
+  function planoResource(Service) {
 
     var service = {
-      listaRamos: listaRamos,
-	  insereRamo:insereRamo,
-	  alteraRamo: alteraRamo,
-	  getRamoById: getRamoById,
-	  deleteRamo: deleteRamo
+      listaPlanos: listaPlanos,
+	    inserePlano:inserePlano,
+	    alteraPlano: alteraPlano,
+      getPlanoById: getPlanoById,
+	    deletePlano: deletePlano
     };
 
     return service;
 
-    function listaRamos() {
-      var url = 'ramoAtividade/listar';
+    function listaPlanos() {
+      var url = 'plano/listar';
       return Service.serviceGet(url);
     }
 	
-	function insereRamo(dataParam) {
-      var url = 'ramoAtividade/adicionar';
+	function inserePlano(dataParam) {
+      var url = 'plano/adicionar';
       return Service.servicePost(dataParam, url);
 	}
 
-	function alteraRamo(dataParam) {
-		  var url = 'ramoAtividade/alterar';
+	function alteraPlano(dataParam) {
+		  var url = 'plano/alterar';
 		  return Service.servicePost(dataParam, url);
 	}
 	
-	function getRamoById(param) {
-      var url = 'ramoAtividade/getById/';
+	function getPlanoById(param) {
+      var url = 'plano/getById/';
       return Service.serviceGetById(param, url);
 	}
 	
-	function deleteRamo(param) {
-      var url = 'ramoAtividade/deletar/';
+	function deletePlano(param) {
+      var url = 'plano/deletar/';
       return Service.serviceDelete(param, url);
 	}
   }

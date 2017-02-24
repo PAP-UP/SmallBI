@@ -14,7 +14,7 @@
       ramoSalvar: ramoSalvar
     });
 
-    function getPlano() {
+    function getRamo() {
       ramoResource.getRamoById(vm.id).then(
         function (result) {
           vm.dadosRamo = result.data;
@@ -27,7 +27,7 @@
       vm.dadosRamo.usuarioId = 1;
 
       ramoResource.alteraRamo(vm.dadosRamo).then(function (result) {
-        $state.transitionTo('ramo.listar');
+        $state.transitionTo('ramo-atividade.listar');
         console.log(result);
       },function (resolve) {
         console.log(resolve);

@@ -160,6 +160,72 @@
       children: [listarFormas, editarForma, cadastrarForma]
     });
 
+    // RAMO DE ATIVIDADE ROUTE
+
+    var listarRamo = {
+      name: 'listar',
+      url: '/listar',
+      templateUrl: 'scripts/ramoAtividade/ramo-atividade-listar.html',
+      controller: 'ramoListarController',
+      controllerAs: 'vm'
+    };
+
+    var editarRamo = {
+      name: 'editar',
+      url: '/editar/:id',
+      templateUrl: 'scripts/ramoAtividade/ramo-atividade-form.html',
+      controller: 'ramoEditarController',
+      controllerAs: 'vm'
+    };
+
+    var cadastrarRamo = {
+      name: 'cadastrar',
+      url: '/cadastrar',
+      templateUrl: 'scripts/ramoAtividade/ramo-atividade-form.html',
+      controller: 'ramoCadastrarController',
+      controllerAs: 'vm'
+    };
+
+    stateHelperProvider.setNestedState({
+      name: 'ramo-atividade',
+      url: '/ramo-atividade',
+      templateUrl: 'views/main.html',
+      children: [listarRamo, editarRamo, cadastrarRamo]
+    });
+
+    // FUNÇÃO ROUTE
+
+    var listarFuncao = {
+      name: 'listar',
+      url: '/listar',
+      templateUrl: 'scripts/funcao/funcao-listar.html',
+      controller: 'funcaoListarController',
+      controllerAs: 'vm'
+    };
+
+    var editarFuncao = {
+      name: 'editar',
+      url: '/editar/:id',
+      templateUrl: 'scripts/funcao/funcao-form.html',
+      controller: 'funcaoEditarController',
+      controllerAs: 'vm'
+    };
+
+    var cadastrarFuncao = {
+      name: 'cadastrar',
+      url: '/cadastrar',
+      templateUrl: 'scripts/funcao/funcao-form.html',
+      controller: 'funcaoCadastrarController',
+      controllerAs: 'vm'
+    };
+
+    stateHelperProvider.setNestedState({
+      name: 'funcao',
+      url: '/funcao',
+      templateUrl: 'views/main.html',
+      children: [listarFuncao, editarFuncao, cadastrarFuncao]
+    });
+
   }
 
 })();
