@@ -1419,7 +1419,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         hash.put("senha", FormLogin.senha);
         hash.put("idCliente", FormLogin.idCliente);
         hash.put("mdx", mdx);
-        hash.put("nomeCubo", nomeCubo);
+        hash.put("nomeCubo", formatarString(nomeCubo));
         hash.put("scriptSql", scriptSql);
         
         List<String> tabelasCubo = new ArrayList<>();
@@ -1429,7 +1429,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         
         hash.put("tabelasCubo", tabelasCubo);
 
-        String url = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+        //String url = "http://localhost:8081/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+        String url = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpPost httpPost = new HttpPost(url);
         Gson gson = new Gson();
@@ -1488,25 +1489,33 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     private void nomeCuboToModelDim(){
         if(!txtAbaNomeCubo_NomeCubo.getText().equals("")){
+            if(txtAbaNomeCubo_NomeCubo.getText().length() < 25){
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                String data = sdf.format(calendar.getTime());
 
-            Calendar calendar = Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-            String data = sdf.format(calendar.getTime());
-
-            GerarScriptSql gerarScriptSql = new GerarScriptSql();
-            gerarScriptSql.salvarQuerySQL("ScriptSQL_" + txtAbaNomeCubo_NomeCubo.getText() + "_" + data);
-            
-            PercorrerAbasFormGerarCuboXml.nomeCuboToModelDim();
+                GerarScriptSql gerarScriptSql = new GerarScriptSql();
+                gerarScriptSql.salvarQuerySQL("ScriptSQL_" + formatarString(txtAbaNomeCubo_NomeCubo.getText()) + "_" + data);
+                PercorrerAbasFormGerarCuboXml.nomeCuboToModelDim();
+            }else{
+                JOptionPane.showMessageDialog(null, "O nome do cubo não pode ser superior a 25 caracteres!");
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Preencha o nome do cubo!");
         }
     }
     
+    private String formatarString(String str){
+        String strFormatada = str.toLowerCase();
+        strFormatada = strFormatada.replaceAll(" ", "_");
+        return strFormatada;
+    }
+    
     private void gerarSchemaXml(){
         Schema schema = new Schema();
-        schema.setNome("Schema " + txtAbaNomeCubo_NomeCubo.getText());
+        schema.setNome("Schema " + formatarString(txtAbaNomeCubo_NomeCubo.getText()));
         schema.setTabelasFato(tabelasImportadas);
-        schema.setNomeCubo(txtAbaNomeCubo_NomeCubo.getText());
+        schema.setNomeCubo(formatarString(txtAbaNomeCubo_NomeCubo.getText()));
         schema.setDimensoes(dimensoes);
         schema.setGrupoMetrica(grupoMetricas);
         schema.setLinks(links);

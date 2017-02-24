@@ -143,8 +143,7 @@ public class FormLogin extends javax.swing.JFrame {
             Hashtable<String, Object> hash = new Hashtable<>();
             hash.put("login", login);
             hash.put("senha", senha);
-            //http://backend.smallbi.com.br:18080/
-            //"http://localhost:8080/SmallBI_WebService/rest/usuario/login"
+            //String url = "http://localhost:8081/SmallBI_WebService/rest/usuario/login";
             String url = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
             HttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost httpPost = new HttpPost(url);
@@ -166,6 +165,7 @@ public class FormLogin extends javax.swing.JFrame {
                 getResponse(cod);
                 
                 System.out.println(response);
+                System.out.println("Id obtido: " + idCliente);
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
