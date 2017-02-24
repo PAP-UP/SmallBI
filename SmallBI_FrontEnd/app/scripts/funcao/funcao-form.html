@@ -1,0 +1,8 @@
+<h3>Cadastro de Função</h3>
+<form  novalidate ng-controller="funcaoCadastrarController">
+  <div class="form-group">
+    <label class="text-left" style="display: block;" for="nome">Nome da função</label>
+    <input type="text" class="form-control" id="nome" name="nome" ng-model="vm.dadosFuncao.descricao">
+  </div>
+  <button type="button" class="btn btn-success" style="float: right;" ng-click="vm.funcaoSalvar()">Enviar</button>
+</form>

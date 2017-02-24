@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('funcaoListarController', funcaoListarController);
 
-  function funcaoListarController(ramoResource, $state) {
+  function funcaoListarController(funcaoResource, $state) {
 
     var vm = this;
 

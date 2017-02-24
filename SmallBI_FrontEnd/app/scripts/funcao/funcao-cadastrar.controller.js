@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('funcaoCadastrarController', funcaoCadastrarController);
 
-  function funcaoCadastrarController(ramoResource, $state) {
+  function funcaoCadastrarController(funcaoResource, $state) {
 
     var vm = this;
 
