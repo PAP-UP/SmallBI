@@ -57,7 +57,12 @@ public class ClienteWebService {
 		Cliente cliente = getObjectFromHash(json);		
 		String response = clienteBusiness.create(cliente);
 		
-		appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
+		if(response.equals("Cliente cadastrado com sucesso!")){
+			boolean endTelAdd = appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
+			if(endTelAdd){
+				//chamar add usuario
+			}
+		}
 		
 		return gson.toJson(response);
 	}
@@ -70,7 +75,7 @@ public class ClienteWebService {
 		Cliente cliente = getObjectFromHash(json);
 		String response = clienteBusiness.update(cliente);
 		
-		if(response.equals("Cliente cadastrado com sucesso!")){
+		if(response.equals("Cliente alterado com sucesso!")){
 			appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
 		}
 		
@@ -139,7 +144,7 @@ public class ClienteWebService {
 		if(!jsonObject.isNull("idCliente")){
 			c.setIdCliente(jsonObject.getInt("idCliente"));
 		}
-		c.setUsuarioId(jsonObject.getInt("usuarioId"));
+		//c.setUsuarioId(jsonObject.getInt("usuarioId"));
 		c.setRazaoSocial(jsonObject.getString("razaoSocial"));
 		c.setNomeFantasia(jsonObject.getString("nomeFantasia"));
 		c.setCnpj(jsonObject.getString("cnpj"));
@@ -161,32 +166,38 @@ public class ClienteWebService {
 		return c;
 	}
 	
-	public void appendEnderecoTelefone(String json, int idCliente, int usuarioId) throws JSONException{
+	public boolean appendEnderecoTelefone(String json, int idCliente, int usuarioId) throws JSONException{
 		
-		JSONObject jsonObject = new JSONObject(json);
-		jsonObject.put("idCliente", idCliente);
-		
-		if(!jsonObject.isNull("idPessoa")){
-			jsonObject.remove("idPessoa");
-		}		
-		
-		//AGUARDANDO DEFINIÇÃO
-		if(!jsonObject.isNull("endereco")){
-			jsonObject.put("idTipoEndereco", 2);
-			new EnderecoWebService().addEndereco(jsonObject.toString());
+		try{
+			JSONObject jsonObject = new JSONObject(json);
+			jsonObject.put("idCliente", idCliente);
+			
+			if(!jsonObject.isNull("idPessoa")){
+				jsonObject.remove("idPessoa");
+			}		
+			
+			//AGUARDANDO DEFINIÇÃO
+			if(!jsonObject.isNull("endereco")){
+				jsonObject.put("idTipoEndereco", 2);
+				new EnderecoWebService().addEndereco(jsonObject.toString());
+			}
+	/*		if(jsonObject.isNull("idEndereco")){
+				new EnderecoWebService().addEndereco(jsonObject.toString());
+			}else{
+				new EnderecoWebService().setEndereco(jsonObject.toString());
+			}*/
+			
+			jsonObject.put("idTipoTelefone", 2);
+			if(jsonObject.isNull("idTelefone")){
+				new TelefoneWebService().addTelefone(jsonObject.toString());
+			}else{
+				new TelefoneWebService().setTelefone(jsonObject.toString());
+			}
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
 		}
-/*		if(jsonObject.isNull("idEndereco")){
-			new EnderecoWebService().addEndereco(jsonObject.toString());
-		}else{
-			new EnderecoWebService().setEndereco(jsonObject.toString());
-		}*/
-		
-		jsonObject.put("idTipoTelefone", 2);
-		if(jsonObject.isNull("idTelefone")){
-			new TelefoneWebService().addTelefone(jsonObject.toString());
-		}else{
-			new TelefoneWebService().setTelefone(jsonObject.toString());
-		}		
 	}
 	
 	public Hashtable<String, Object> getHashFromObject(Cliente c){

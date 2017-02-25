@@ -94,9 +94,11 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 			return "A variável 'tamahoTotal' deve ser informada!";
 		}*/
 		
-		if(t.getUsuarioId() == null){
+		/*if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
-		}
+		}*/
+		
+		t.setUsuarioId(0);
 		
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
@@ -233,7 +235,7 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		}
 		
 		//clienteDao.update(t);
-		return "Empresa alterada com sucesso!";
+		return "Cliente alterado com sucesso!";
 	}
 
 	@Override

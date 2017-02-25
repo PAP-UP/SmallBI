@@ -75,7 +75,9 @@ public class UsuarioWebService {
 		Usuario usuario = getObjectFromHash(json);
 		String response = usuarioBusiness.update(usuario);
 		
-		appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+		if(response.equals("Usuario alterado com sucesso!")){
+			appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+		}
 		
 		return gson.toJson(response);
 	}
