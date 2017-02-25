@@ -9,9 +9,10 @@
       'ui.router.stateHelper'
     ]).config(routes);
 
-  function routes($locationProvider, stateHelperProvider) {
+  function routes($locationProvider, stateHelperProvider, $urlRouterProvider) {
 
     $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise('index');
 
 
     // USUÁRIO ROUTE
@@ -47,8 +48,8 @@
     // CUBO ROUTE
 
     var listarCubo = {
-      name: 'cubo',
-      url: '/cubo',
+      name: 'listar',
+      url: '/listar',
       templateUrl: 'scripts/cubo/cubo-lista.html',
       controller: 'cuboListarController',
       controllerAs: 'vm'
@@ -256,6 +257,23 @@
       name: 'perfil',
       url: '/perfil',
       templateUrl: 'views/main.html',
+      children: [listarPerfil, editarPerfil, cadastrarPerfil]
+    });
+
+    // SITE ROUTE
+
+    var listarPerfil = {
+      name: '',
+      url: '',
+      templateUrl: 'scripts/perfil/perfil-listar.html',
+      controller: 'indexController',
+      controllerAs: 'vm'
+    };
+
+    stateHelperProvider.setNestedState({
+      name: 'index',
+      url: '/index',
+      templateUrl: 'views/site.html',
       children: [listarPerfil, editarPerfil, cadastrarPerfil]
     });
 

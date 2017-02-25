@@ -44,8 +44,8 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 		background: -webkit-linear-gradient(-45deg,  #7ae2de 0%,#ffffff 100%);
 		background: linear-gradient(135deg,  #7ae2de 0%,#ffffff 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ae2de', endColorstr='#ffffff',GradientType=1 );
-		
-	    
+
+
 
 	}*/
 		a {
@@ -186,7 +186,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 						    -o-transform: translateY(-50%);
 						    transform: translateY(-50%);
 
-						    background:url(../img/logo.png) no-repeat;
+						    background:url(../images/logo.png) no-repeat;
 						    background-size: cover;
 						}
 
@@ -291,7 +291,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 					}
 						.rodape .navRodape ul li:last-child{
 							margin-right: 0px;
-						} 
+						}
 						.rodape .navRodape ul li a{
 							color: #fff;
 							-webkit-transition-timing-function: ease;
@@ -563,7 +563,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 				}
 			.pg-inicial .sessaoDiferenciais{
 				padding: 120px 0;
-				background: url("../img/sessaoDiferenciais.png") no-repeat center center;
+				background: url("../images/sessaoDiferenciais.png") no-repeat center center;
 				background-size: cover;
 			}
 				.pg-inicial .sessaoDiferenciais .diferencial {
@@ -656,14 +656,14 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 									-webkit-transition-duration: 200ms;
 									transition-duration: 200ms;
 									margin-top: 30px;
-								}	
+								}
 
 									.pg-inicial .sessaoPrecos .areaPrecos .precoServico .btnComprar:hover {
 										color: #fff;
 										background-color: #71D5D2;
 										border-color: #71D5D2;
 									}
-				
+
 			.pg-inicial .sessaoQuemSomos{
 				padding: 125px 0;
 				background-color: #F4F6F9;
@@ -687,7 +687,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 					width: 100%;
 					height: 100%;
 					content: ' ';
-					background-image: url(../img/texture-shapes-bg.png);
+					background-image: url(../images/texture-shapes-bg.png);
 				}
 				.pg-inicial .sessaoComeceAgora h6{
 					font-size: 28px;
@@ -735,7 +735,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 
 	/* PG CADASTRO */
 		.pg-cadastro{
-			
+
 
 		}
 		.pg-cadastro .formContainer{
@@ -771,7 +771,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 					}
 						.pg-cadastro .navRodape ul li:last-child{
 							margin-right: 0px;
-						} 
+						}
 						.pg-cadastro .navRodape ul li a{
 							color: #fff;
 							-webkit-transition-timing-function: ease;
@@ -880,7 +880,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 		color: #333333;
 		font-weight: 300;
 	}
-	.pg-painel section .card .category, 
+	.pg-painel section .card .category,
 	.pg-painel section .card label {
 		font-size: 14px;
 		font-weight: 400;
@@ -940,7 +940,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 		}
 			.pg-painel .rodape ul li:last-child{
 				margin-right: 0px;
-			} 
+			}
 			.pg-painel .rodape ul li a{
 				color: #fff;
 				-webkit-transition-timing-function: ease;
@@ -969,7 +969,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 					}
 	.pg-painel .rodape .logo {
 	    margin-bottom: 10px;
-	    width: 20px;	    
+	    width: 20px;
     	vertical-align: -webkit-baseline-middle;
 	}
 	.pg-painel .iconeEditar{
@@ -1112,7 +1112,7 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 		}
 	}
 
-		
+
 	/* @MEDIA */
 		@media screen and (max-width: 991px) {
 
