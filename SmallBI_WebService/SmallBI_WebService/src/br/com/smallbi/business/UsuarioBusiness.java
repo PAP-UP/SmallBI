@@ -250,13 +250,13 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		return null;
 	}*/
 	
-	public Integer login(String login, String senha){
+	public Usuario login(String login, String senha){
 		Usuario u = Util.validateLogin(login, senha);
 		
 		if(u != null){
-			return u.getPessoa().getCliente().getIdCliente();
+			return u;
 		}else{
-			return 0;
+			return null;
 		}
 	}
 }

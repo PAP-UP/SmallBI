@@ -110,9 +110,15 @@ public class UsuarioWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String login(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
-		int idCLiente = usuarioBusiness.login(jsonObject.getString("login"), jsonObject.getString("senha"));
-		jsonObject = new JSONObject().put("idCliente", idCLiente);
-		return gson.toJson(jsonObject);
+		Usuario u = usuarioBusiness.login(jsonObject.getString("login"), jsonObject.getString("senha"));
+		if(u != null){
+			JSONObject jsonResponse = new JSONObject();
+			jsonResponse.put("idCliente", u.getPessoa().getCliente().getIdCliente());
+			jsonResponse.put("idUsuario", u.getIdUsuario()); 
+			return jsonResponse.toString();
+		}else{
+			return "Usuário ou senha inválidos!";
+		}
 	}
 	
 	public Hashtable<String, Object> getHashById(Usuario u){
