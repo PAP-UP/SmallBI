@@ -226,6 +226,39 @@
       children: [listarFuncao, editarFuncao, cadastrarFuncao]
     });
 
+    // PERFIL ROUTE
+
+    var listarPerfil = {
+      name: 'listar',
+      url: '/listar',
+      templateUrl: 'scripts/perfil/perfil-listar.html',
+      controller: 'perfilListarController',
+      controllerAs: 'vm'
+    };
+
+    var editarPerfil = {
+      name: 'editar',
+      url: '/editar/:id',
+      templateUrl: 'scripts/perfil/perfil-form.html',
+      controller: 'perfilEditarController',
+      controllerAs: 'vm'
+    };
+
+    var cadastrarPerfil = {
+      name: 'cadastrar',
+      url: '/cadastrar',
+      templateUrl: 'scripts/perfil/perfil-form.html',
+      controller: 'perfilCadastrarController',
+      controllerAs: 'vm'
+    };
+
+    stateHelperProvider.setNestedState({
+      name: 'perfil',
+      url: '/perfil',
+      templateUrl: 'views/main.html',
+      children: [listarPerfil, editarPerfil, cadastrarPerfil]
+    });
+
   }
 
 })();
