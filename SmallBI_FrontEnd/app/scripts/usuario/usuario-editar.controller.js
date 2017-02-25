@@ -24,7 +24,7 @@
     }
 
     function listarFuncao() {
-      funcaoResource.listaFuncao().then(
+      funcaoResource.listaFuncoes().then(
         function (result) {
           vm.dadosFuncao = result.data;
         });
