@@ -6,7 +6,8 @@
       'ngAnimate',
       'ngResource',
       'ui.router',
-      'ui.router.stateHelper'
+      'ui.router.stateHelper',
+      'ngCookies'
     ]).config(routes);
 
   function routes($locationProvider, stateHelperProvider, $urlRouterProvider) {
@@ -262,7 +263,7 @@
 
     // SITE ROUTE
 
-    var listarPerfil = {
+    var index = {
       name: '',
       url: '',
       templateUrl: 'scripts/perfil/perfil-listar.html',
@@ -274,7 +275,7 @@
       name: 'index',
       url: '/index',
       templateUrl: 'views/site.html',
-      children: [listarPerfil, editarPerfil, cadastrarPerfil]
+      children: [index]
     });
 
   }
