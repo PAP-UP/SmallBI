@@ -76,6 +76,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         lblChaveDimensao = new javax.swing.JLabel();
         cbxChaveDimensao = new javax.swing.JComboBox<>();
         btnAddDimensao = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
         painelDimensoes = new javax.swing.JPanel();
         btnSalvarDimensoes = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -138,11 +139,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
 
         painelAbaNomeCubo_NomeCubo.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome do Cubo"));
 
@@ -239,6 +235,13 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox1.setText("jcbSelecTodos");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelAddDimensaoLayout = new javax.swing.GroupLayout(painelAddDimensao);
         painelAddDimensao.setLayout(painelAddDimensaoLayout);
         painelAddDimensaoLayout.setHorizontalGroup(
@@ -260,20 +263,22 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAddDimensao)))
                 .addGap(18, 18, 18)
-                .addComponent(painelListaAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelListaAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1))
                 .addContainerGap())
         );
         painelAddDimensaoLayout.setVerticalGroup(
             painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddDimensaoLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNomeDimensao)
+                    .addComponent(txtNomeDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1))
+                .addGap(18, 18, 18)
                 .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelListaAtributos, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                     .addGroup(painelAddDimensaoLayout.createSequentialGroup()
-                        .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNomeDimensao)
-                            .addComponent(txtNomeDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbxTabelaDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTabelaDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,9 +287,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                             .addComponent(cbxChaveDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblChaveDimensao))
                         .addGap(18, 18, 18)
-                        .addComponent(btnAddDimensao)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(btnAddDimensao))
+                    .addComponent(painelListaAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jTabbedPane_Dimensoes.addTab("Adicionar Dimensão", painelAddDimensao);
@@ -1013,9 +1017,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         salvarRelacionamentos();
     }//GEN-LAST:event_btnSalvarRelacionamentosActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-//        limparSchema();
-    }//GEN-LAST:event_formWindowClosing
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        System.out.println("Clicou!");
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     
     private void salvarRelacionamentos(){
@@ -1573,6 +1577,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxTabelaRelacionamento;
     private javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

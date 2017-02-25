@@ -155,36 +155,47 @@ public class FormLogin extends javax.swing.JFrame {
                 HttpResponse response = httpClient.execute(httpPost);
                 
                 HttpEntity httpEntity = response.getEntity();
-                String json = EntityUtils.toString(httpEntity);
-                JSONObject jSONObject = new JSONObject(json);
-                String jsonMyHashMap = jSONObject.getJSONObject("myHashMap").toString();
-                jSONObject = new JSONObject(jsonMyHashMap);
-                idCliente = jSONObject.getInt("idCliente");
-                
                 int cod = response.getStatusLine().getStatusCode();
                 getResponse(cod);
                 
+                if(cod == 200){
+                    String json = EntityUtils.toString(httpEntity);
+                    JSONObject jSONObject;
+                    try {
+                        jSONObject = new JSONObject(json);
+//                        String jsonMyHashMap = jSONObject.getJSONObject("myHashMap").toString();
+//                        jSONObject = new JSONObject(jsonMyHashMap);
+                        idCliente = jSONObject.getInt("idCliente");
+                        System.out.println("Id obtido: " + idCliente);
+                        
+                        this.dispose();
+                        FormAssistenteImportacao frm = new FormAssistenteImportacao();
+                        frm.setLocationRelativeTo(null);
+                        frm.setResizable(false);
+                        frm.setVisible(true); 
+                    } catch (JSONException ex) {
+    //                    Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, json);
+                    }
+                }
                 System.out.println(response);
-                System.out.println("Id obtido: " + idCliente);
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, "Não foi possível se conectar com o servidor!");
-            } catch (JSONException ex) {
-                Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
-            }            
+            }           
         }
     }
     
     private void getResponse(int cod){
         switch(cod){
             case 200: 
-                this.dispose();
-                FormAssistenteImportacao frm = new FormAssistenteImportacao();
-                frm.setLocationRelativeTo(null);
-                frm.setResizable(false);
-                frm.setVisible(true); 
+//                this.dispose();
+//                FormAssistenteImportacao frm = new FormAssistenteImportacao();
+//                frm.setLocationRelativeTo(null);
+//                frm.setResizable(false);
+//                frm.setVisible(true); 
                 break;
             case 404:
                 JOptionPane.showMessageDialog(null, "Servidor indisponível!");
