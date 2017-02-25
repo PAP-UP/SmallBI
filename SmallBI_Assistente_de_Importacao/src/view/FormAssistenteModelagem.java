@@ -1018,9 +1018,17 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarRelacionamentosActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        System.out.println("Clicou!");
+        selecionarTodosAtributos();
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+    private void selecionarTodosAtributos(){
+        Component[] components = painelListaAtributos.getComponents();
+        for(Component c : components){
+            if(c instanceof JCheckBox){
+                ((JCheckBox) c).setSelected(true);
+            }
+        }
+    }
     
     private void salvarRelacionamentos(){
         if(links.size() > 0){
