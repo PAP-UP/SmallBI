@@ -65,3 +65,31 @@ Retorno:
 	"tabelaFato":"???",
 	"tamanho":40
 }
+
+Analisar Cubo:
+Metodo: POST
+Path: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/analisar"
+Parametros: "application/json"
+Exemplo:
+{
+	"nomeCubo":"vendas" ou "idCubo":12
+}
+Retorno: 
+"Mensagem"
+
+Adicionar a partir do Assistente:
+Metodo: POST
+Path:"http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent"
+Parametros: "application/json"
+Exemplo:
+{
+	"login":"deyneson@gmail.com",
+	"senha":"123",
+	"idCliente":3,
+	"mdx":"<Schema>...",
+	"nomeCubo":"vendas",
+	"scriptSql":"CREATE TABLE...",
+	"tabelasCubo": ["tab01", "tab02"]
+}
+Retorno:
+"Mensagem"

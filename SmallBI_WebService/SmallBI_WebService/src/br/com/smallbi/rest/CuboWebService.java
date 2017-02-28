@@ -23,6 +23,8 @@ import com.google.gson.reflect.TypeToken;
 import br.com.smallbi.business.CuboBusiness;
 import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Cubo;
+import br.com.smallbi.util.SaikuConnection;
+import br.com.smallbi.util.Util;
 
 
 @Path("/cubo")
@@ -31,16 +33,6 @@ public class CuboWebService {
 	CuboBusiness cuboBusiness = new CuboBusiness();
 	Gson gson = new Gson();
 	Type type = new TypeToken<Cubo>() {}.getType();
-	
-	@POST
-	@Path("/test")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public String test(String json) throws JSONException{
-		JSONObject jsonObject = new JSONObject(json);
-		
-		return "";
-	}
 	
 	@GET
 	@Path("/listar")
@@ -77,8 +69,35 @@ public class CuboWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String analisarCubo(String json) throws JSONException{
+		Cubo cubo = new Cubo();
 		JSONObject jsonObject = new JSONObject(json);
+		if(!jsonObject.isNull("idCubo")){
+			cubo = cuboBusiness.getObjById(jsonObject.getInt("idCubo"));
+		}else if(!jsonObject.isNull("nomeCubo")){
+			cubo = cuboBusiness.getCuboByName(jsonObject.getString("nomeCubo"));
+		}			
 		
+		if(cubo != null){
+			boolean mdxSalvo = SaikuConnection.saveSchemaInSaikuServer(cubo.getCliente().getIdCliente(),
+					cubo.getNomeCubo(), cubo.getMdx());
+			
+			if(mdxSalvo){
+				int code = SaikuConnection.addDatasourceSaiku(cubo.getCliente().getIdCliente(), cubo.getNomeCubo());
+				switch(code){
+					case 200:
+						return "Cubo adicionado com sucesso!";
+					case 404:
+						return "Falha ao adicionar datasource no Saiku. Servidor Saiku não encontrado!";
+					case 500:
+						return "Falha ao adicionar datasource no Saiku. Erro interno no Saiku API!";
+				}
+			}else{
+				return "Falha ao salvar MDX no servidor Saiku!";
+			}
+			
+		}else{
+			return "Nenhum cubo encontrado com esse nome!";
+		}
 		return "";
 	}
 	

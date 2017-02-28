@@ -1,5 +1,9 @@
 package br.com.smallbi.util;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +41,7 @@ public class SaikuConnection {
 		//http://localhost:8080/
 		String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/users/";
 //		String url = "http://localhost:8080/saiku/rest/saiku/admin/users/";
-		return sendToSaiku(url, jsonObject.toString());
+		return sendToSaikuApi(url, jsonObject.toString());
 	}
 	
 	public static int addDatasourceSaiku(Integer idCliente, 
@@ -46,7 +50,15 @@ public class SaikuConnection {
 		String connection = new String();
 		String endereco = "localhost/";
 		//Montar conexão:
-		connection = "type=OLAP\n" + "name=" + nomeSchema + "\n" + "driver=mondrian.olap4j.MondrianOlap4jDriver\n" + "location=jdbc:mondrian:Jdbc=jdbc:postgresql://" + endereco + "id_" + idCliente + ";"	+ "Catalog=/datasources/" + "id_" + idCliente + "/" + nomeSchema + ".xml;" + "JdbcDrivers=org.postgresql.Driver;\n"	+ "username=postgres\n"	+ "password=postgres\n"	+ "security.enabled=false\n";
+		connection = "type=OLAP\n" 
+				+ "name=" + nomeSchema + "\n" 
+				+ "driver=mondrian.olap4j.MondrianOlap4jDriver\n" 
+				+ "location=jdbc:mondrian:Jdbc=jdbc:postgresql://" + endereco + "id_" + idCliente + ";"	
+				+ "Catalog=/datasources/" + "id_" + idCliente + "/" + nomeSchema + ".xml;" 
+				+ "JdbcDrivers=org.postgresql.Driver;\n"	
+				+ "username=postgres\n"	
+				+ "password=postgres\n"	
+				+ "security.enabled=false\n";
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("connectionname", nomeSchema);
@@ -54,11 +66,11 @@ public class SaikuConnection {
 		
 		//String url = "http://localhost:8080/saiku/rest/saiku/admin/datasources/";
 		String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/datasources/";
-		return sendToSaiku(url, jsonObject.toString());
+		return sendToSaikuApi(url, jsonObject.toString());
 	}
 	
 	@SuppressWarnings("deprecation")
-	private static int sendToSaiku(String url, String json){
+	private static int sendToSaikuApi(String url, String json){
 		HttpClient httpClient = HttpClientBuilder.create().build();
 		HttpPost httpPost = new HttpPost(url);
 
@@ -77,4 +89,30 @@ public class SaikuConnection {
 		}
 		return 0;
 	}
+	
+    public static boolean saveSchemaInSaikuServer(Integer idCliente, String schemaName, String schema){
+    	
+    	File clienteDir = new File("/datasources/id_" + idCliente);
+    	if(!clienteDir.exists()){    		
+    		try{
+    			clienteDir.mkdir();
+    		}catch(SecurityException se){
+    			se.printStackTrace();
+    			return false;
+    		}
+    	}
+    	
+		File fileMdx = new File(clienteDir.getAbsolutePath() + "/" + schemaName + ".xml");
+		try{
+			FileWriter fw = new FileWriter(fileMdx);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(schema);
+			bw.flush();
+			bw.close();
+			return true;
+		}catch(IOException ex){
+			ex.printStackTrace();
+			return false;
+		}
+    }
 }
