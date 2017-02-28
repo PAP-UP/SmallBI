@@ -20,7 +20,6 @@ import org.codehaus.jettison.json.JSONObject;
 
 public class SaikuConnection {
 
-	@SuppressWarnings("deprecation")
 	public static int addUsuarioSaiku(String login, String senha, String cliente, Integer idCliente){
 		
 		JSONObject jsonObject = new JSONObject();

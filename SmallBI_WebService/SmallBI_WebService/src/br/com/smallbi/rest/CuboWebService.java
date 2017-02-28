@@ -24,7 +24,6 @@ import br.com.smallbi.business.CuboBusiness;
 import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Cubo;
 import br.com.smallbi.util.SaikuConnection;
-import br.com.smallbi.util.Util;
 
 
 @Path("/cubo")
@@ -61,7 +60,9 @@ public class CuboWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addCuboFromAssis(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
-		return gson.toJson(cuboBusiness.createFromAssistent(jsonObject));
+		String response = cuboBusiness.createFromAssistent(jsonObject);
+		jsonObject = new JSONObject().put("msg", response);
+		return jsonObject.toString();
 	}
 	
 	@POST

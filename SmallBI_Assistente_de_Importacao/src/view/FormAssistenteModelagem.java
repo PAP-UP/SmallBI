@@ -7,7 +7,7 @@ import java.awt.Component;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
-import view.percorrerAbas.PercorrerAbasFormGerarCuboXml;
+import view.percorrerAbas.PercorrerAbasFormAssistenteModelagem;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Hashtable;
@@ -25,11 +25,16 @@ import model.Link;
 import model.Metrica;
 import model.Schema;
 import model.TabelaImportada;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.ParseException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 import xmleditorkit.XMLEditorKit;
 
 public class FormAssistenteModelagem extends javax.swing.JFrame {
@@ -39,10 +44,12 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     public static List<TabelaImportada> tabelasImportadas = new ArrayList<>();
     public static List<Link> links = new ArrayList<>();
     private static Integer idLink = 0;
+    String urlApiAddCubo = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+    //String urlApiAddCubo = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
     
     public FormAssistenteModelagem() {
         initComponents();
-        PercorrerAbasFormGerarCuboXml.desativarAbasInicio();  
+        PercorrerAbasFormAssistenteModelagem.desativarAbasInicio();  
         carregarAgregadoresModelMetri();
         carregarFormatosModelMetri();
         carregarTabelasModelDim();
@@ -76,7 +83,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         lblChaveDimensao = new javax.swing.JLabel();
         cbxChaveDimensao = new javax.swing.JComboBox<>();
         btnAddDimensao = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        jcbSelecTodos = new javax.swing.JCheckBox();
         painelDimensoes = new javax.swing.JPanel();
         btnSalvarDimensoes = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -235,10 +242,10 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setText("jcbSelecTodos");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        jcbSelecTodos.setText("Selecionar Todos");
+        jcbSelecTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                jcbSelecTodosActionPerformed(evt);
             }
         });
 
@@ -265,7 +272,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelListaAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addComponent(jcbSelecTodos))
                 .addContainerGap())
         );
         painelAddDimensaoLayout.setVerticalGroup(
@@ -275,7 +282,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNomeDimensao)
                     .addComponent(txtNomeDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addComponent(jcbSelecTodos))
                 .addGap(18, 18, 18)
                 .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelAddDimensaoLayout.createSequentialGroup()
@@ -665,7 +672,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddRelacionamentoLayout.createSequentialGroup()
                         .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTabelaRef)
-                            .addComponent(lblAtributoRel, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAtributoRel, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbxTabelaReferenciada, javax.swing.GroupLayout.Alignment.TRAILING, 0, 306, Short.MAX_VALUE)
@@ -918,7 +925,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaModelMetri_SairActionPerformed
 
     private void btnAbaModelMetri_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelMetri_VoltarActionPerformed
-        PercorrerAbasFormGerarCuboXml.modelMetriToModelDim();
+        PercorrerAbasFormAssistenteModelagem.modelMetriToModelDim();
     }//GEN-LAST:event_btnAbaModelMetri_VoltarActionPerformed
 
     private void btnAbaModelMetri_ProxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelMetri_ProxActionPerformed
@@ -930,7 +937,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddDimensaoActionPerformed
 
     private void btnAbaModelDim_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelDim_VoltarActionPerformed
-        PercorrerAbasFormGerarCuboXml.modelDimToNomeCubo();
+        PercorrerAbasFormAssistenteModelagem.modelDimToNomeCubo();
     }//GEN-LAST:event_btnAbaModelDim_VoltarActionPerformed
 
     private void btnAbaModelDim_ProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelDim_ProximoActionPerformed
@@ -970,7 +977,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPainelRel_VoltarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PercorrerAbasFormGerarCuboXml.cuboPrevToAddRel();
+        PercorrerAbasFormAssistenteModelagem.cuboPrevToAddRel();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbxTabelaMetricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTabelaMetricaActionPerformed
@@ -1017,9 +1024,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         salvarRelacionamentos();
     }//GEN-LAST:event_btnSalvarRelacionamentosActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void jcbSelecTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSelecTodosActionPerformed
         selecionarTodosAtributos();
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_jcbSelecTodosActionPerformed
 
     private void selecionarTodosAtributos(){
         Component[] components = painelListaAtributos.getComponents();
@@ -1164,7 +1171,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 cbxTabelaMetrica.addItem(d.getTabela());
             }
             cbxTabelaMetrica.setSelectedIndex(0);
-            PercorrerAbasFormGerarCuboXml.modelDimToModelMetri();
+            PercorrerAbasFormAssistenteModelagem.modelDimToModelMetri();
         }else{
             JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
         }
@@ -1297,7 +1304,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                     }
                 }
             }
-            PercorrerAbasFormGerarCuboXml.modelMetriToAddRel();
+            PercorrerAbasFormAssistenteModelagem.modelMetriToAddRel();
         }else{
             JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
         }
@@ -1441,10 +1448,10 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         
         hash.put("tabelasCubo", tabelasCubo);
 
-        //String url = "http://localhost:8081/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
-        String url = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+//        String url = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+        //String url = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
         HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPost httpPost = new HttpPost(url);
+        HttpPost httpPost = new HttpPost(urlApiAddCubo);
         Gson gson = new Gson();
         try {
             StringEntity postingString = new StringEntity(gson.toJson(hash));
@@ -1453,39 +1460,56 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             HttpResponse response = httpClient.execute(httpPost);
 
             int cod = response.getStatusLine().getStatusCode();
-            JOptionPane.showMessageDialog(null, "Código: " + cod + ". " + getResponseEnviarCubo(cod));
+            HttpEntity httpEntity = response.getEntity();
+            getResponseEnviarCubo(cod, httpEntity);
+            
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FormAssistenteModelagem.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FormAssistenteModelagem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    private String getResponseEnviarCubo(int cod){
+    private String getResponseEnviarCubo(int cod, HttpEntity httpEntity){
         switch(cod){
             case 200: 
-                return "Cubo enviado com sucesso!";
+                try {
+                    String json = EntityUtils.toString(httpEntity);
+                    JSONObject jSONObject = new JSONObject(json);
+                    String msg = jSONObject.getString("msg");
+                    JOptionPane.showMessageDialog(null, msg);
+
+                } catch (IOException ex) {
+                    Logger.getLogger(FormAssistenteModelagem.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(FormAssistenteModelagem.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (JSONException ex) {
+                    Logger.getLogger(FormAssistenteModelagem.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
             case 404:
-                return "Falha ao enviar cubo. Servidor não encontrado";
+                JOptionPane.showMessageDialog(null, "Falha ao enviar cubo. Servidor não encontrado");
+                break;
             case 500:
-                return "Falha ao enviar cubo. Erro interno na API";            
+                JOptionPane.showMessageDialog(null, "Falha ao enviar cubo. Erro interno na API");
+                break;
         }
         return "";
     }
     
     private void addRelToModelMetri(){
-        PercorrerAbasFormGerarCuboXml.addRelToModelMetri();
+        PercorrerAbasFormAssistenteModelagem.addRelToModelMetri();
         painelListaMetricas.updateUI();
     }
     
     private void addRelToCuboPreview(){
-        PercorrerAbasFormGerarCuboXml.addRelToCuboPreview();
+        PercorrerAbasFormAssistenteModelagem.addRelToCuboPreview();
         gerarSchemaXml();
     }
     
     private void modelMetriToAddRel(){
         if(grupoMetricas.size() > 0){
-            PercorrerAbasFormGerarCuboXml.modelMetriToAddRel();            
+            PercorrerAbasFormAssistenteModelagem.modelMetriToAddRel();            
         }else{
             JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
         }
@@ -1493,7 +1517,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     private void modelDimToModelMetri(){
         if(dimensoes.size() > 0){
-            PercorrerAbasFormGerarCuboXml.modelDimToModelMetri();
+            PercorrerAbasFormAssistenteModelagem.modelDimToModelMetri();
         }else{
             JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
         }
@@ -1508,7 +1532,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
                 GerarScriptSql gerarScriptSql = new GerarScriptSql();
                 gerarScriptSql.salvarQuerySQL("ScriptSQL_" + formatarString(txtAbaNomeCubo_NomeCubo.getText()) + "_" + data);
-                PercorrerAbasFormGerarCuboXml.nomeCuboToModelDim();
+                PercorrerAbasFormAssistenteModelagem.nomeCuboToModelDim();
             }else{
                 JOptionPane.showMessageDialog(null, "O nome do cubo não pode ser superior a 25 caracteres!");
             }
@@ -1585,7 +1609,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxTabelaRelacionamento;
     private javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1594,6 +1617,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane_Dimensoes;
     private javax.swing.JTabbedPane jTabbedPane_Metricas;
     private javax.swing.JTabbedPane jTabbedPane_Relacionamentos;
+    private javax.swing.JCheckBox jcbSelecTodos;
     public static javax.swing.JTabbedPane lbl;
     private javax.swing.JLabel lblAbaNomeCubo_Nomecubo;
     private javax.swing.JLabel lblAgregadorMetrica;

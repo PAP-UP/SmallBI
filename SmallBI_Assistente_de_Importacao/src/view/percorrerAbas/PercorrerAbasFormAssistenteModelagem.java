@@ -5,7 +5,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import view.FormAssistenteModelagem;
 
-public class PercorrerAbasFormGerarCuboXml extends FormAssistenteModelagem{
+public class PercorrerAbasFormAssistenteModelagem extends FormAssistenteModelagem{
     
     public static void desativarAbasInicio(){
         for(int i = 0; i < lbl.getComponentCount(); i++){
@@ -62,7 +62,7 @@ public class PercorrerAbasFormGerarCuboXml extends FormAssistenteModelagem{
         lbl.setEnabledAt(4, false);         
     }
     
-    public PercorrerAbasFormGerarCuboXml(JTable tbl, List<JComboBox> listaCbxTiposParametro) {
+    public PercorrerAbasFormAssistenteModelagem(JTable tbl, List<JComboBox> listaCbxTiposParametro) {
         super();
     }    
 }

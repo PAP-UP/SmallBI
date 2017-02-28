@@ -13,7 +13,6 @@ import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cubo;
 import br.com.smallbi.entity.Usuario;
-import br.com.smallbi.util.SaikuConnection;
 import br.com.smallbi.util.Util;
 import br.com.smallbi.entity.Cliente;
 
@@ -113,13 +112,13 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 						cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
 						cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
 						
-						//Fazer consulta do tamanho das tabelas
-						//cubo.setTamanho(0); //Provisório
 						Integer tamCubo = ConexaoDao.getTamanhoCubo(idCliente, tabelasCubo);
 						cubo.setTamanho(tamCubo);
 						cubo.setUsuarioId(usuario.getIdUsuario());
 						
 						create(cubo);
+						
+						return "Cubo cadastrado com sucesso!";
 					/*}else{
 						return "Falha ao enviar cubo ao Saiku!";
 					}*/
@@ -131,40 +130,6 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			}
 		}		
 		return "Usuário ou senha inválidos";
-	}
-	
-	public String analisarCubo(){
-		
-		/*public void salvarQuerySQL(String nomeTabela){
-        
-//      JFileChooser jfc = new JFileChooser();        
-//      jfc.showSaveDialog(null);     
-//      File file = jfc.getSelectedFile();
-      //File file = new File("/home/deynesonborba/files-to-test-saiku/cubes-scripts-generated/" + formatarString(nomeTabela) + ".sql");
-      File file = new File(System.getProperty("user.home") + 
-              System.getProperty("file.separator") +
-              "files-to-test-saiku" +
-              System.getProperty("file.separator") +
-              "cubes-scripts-generated"+
-              System.getProperty("file.separator") + 
-              formatarString(nomeTabela) + ".sql");
-      try {
-          FileWriter fw = new FileWriter(file);
-          BufferedWriter bw = new BufferedWriter(fw);
-          
-          for(String sql : scripts){
-              bw.write(sql);
-              bw.write("\n");
-          }
-          
-          bw.flush();
-          bw.close();
-          System.out.println("Script salvo");
-      } catch (IOException ex) {
-          ex.printStackTrace();
-      }
-  }*/
-		return "";
 	}
 	
 	@Override

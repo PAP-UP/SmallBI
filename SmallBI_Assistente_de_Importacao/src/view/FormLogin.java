@@ -22,6 +22,8 @@ public class FormLogin extends javax.swing.JFrame {
 
     public static Integer idCliente = 0;
     public static String login, senha = new String();
+    String urlApiLogin = "http://localhost:8080/SmallBI_WebService/rest/usuario/login";
+    //String urlApiLogin = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
     
     public FormLogin() {
         initComponents();
@@ -143,10 +145,9 @@ public class FormLogin extends javax.swing.JFrame {
             Hashtable<String, Object> hash = new Hashtable<>();
             hash.put("login", login);
             hash.put("senha", senha);
-            //String url = "http://localhost:8081/SmallBI_WebService/rest/usuario/login";
-            String url = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
+
             HttpClient httpClient = HttpClientBuilder.create().build();
-            HttpPost httpPost = new HttpPost(url);
+            HttpPost httpPost = new HttpPost(urlApiLogin);
             Gson gson = new Gson();
             try {
                 StringEntity postingString = new StringEntity(gson.toJson(hash));
@@ -180,11 +181,12 @@ public class FormLogin extends javax.swing.JFrame {
                 }
                 System.out.println(response);
             } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
-                Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, "Não foi possível se conectar com o servidor!");
-            }           
+            }
+            
         }
     }
     

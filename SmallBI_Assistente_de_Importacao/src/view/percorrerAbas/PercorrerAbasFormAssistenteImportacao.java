@@ -4,7 +4,7 @@ import javax.swing.table.DefaultTableModel;
 import view.FormAssistenteImportacao;
 import static view.FormAssistenteImportacao.painelAbas;
 
-public class PercorrerAbasFormPrincipal extends FormAssistenteImportacao{
+public class PercorrerAbasFormAssistenteImportacao extends FormAssistenteImportacao{
     
     public static void abaIniToAbaTipoImport(){
         painelAbas.setSelectedIndex(1);

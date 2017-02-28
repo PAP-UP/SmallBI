@@ -98,7 +98,7 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}*/
 		
-		t.setUsuarioId(0);
+		t.setUsuarioId(1);
 		
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);

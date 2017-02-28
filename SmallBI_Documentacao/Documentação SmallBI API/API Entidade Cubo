@@ -92,4 +92,6 @@ Exemplo:
 	"tabelasCubo": ["tab01", "tab02"]
 }
 Retorno:
-"Mensagem"
+{
+	"msg":"Mensagem"
+}

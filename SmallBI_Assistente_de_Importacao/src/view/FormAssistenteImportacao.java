@@ -1,7 +1,7 @@
 package view;
 
 import business.ImportarCsv;
-import view.percorrerAbas.PercorrerAbasFormPrincipal;
+import view.percorrerAbas.PercorrerAbasFormAssistenteImportacao;
 import business.ImportarDb;
 import business.ImportarXlsx;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
     
     public FormAssistenteImportacao() {
         initComponents();
-        PercorrerAbasFormPrincipal.desativarAbasNoInicio();
+        PercorrerAbasFormAssistenteImportacao.desativarAbasNoInicio();
     }
     
     @SuppressWarnings("unchecked")
@@ -966,15 +966,15 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAbaInicio_ProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaInicio_ProximoActionPerformed
-        PercorrerAbasFormPrincipal.abaIniToAbaTipoImport();
+        PercorrerAbasFormAssistenteImportacao.abaIniToAbaTipoImport();
     }//GEN-LAST:event_btnAbaInicio_ProximoActionPerformed
 
     private void btnAbaTipoImport_ImportarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTipoImport_ImportarArquivoActionPerformed
-        PercorrerAbasFormPrincipal.abaTipoImportToAbaImportArq();
+        PercorrerAbasFormAssistenteImportacao.abaTipoImportToAbaImportArq();
     }//GEN-LAST:event_btnAbaTipoImport_ImportarArquivoActionPerformed
 
     private void btnAbaTipoImportImportarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTipoImportImportarBancoActionPerformed
-        PercorrerAbasFormPrincipal.abaTipoImportToConexBanco();
+        PercorrerAbasFormAssistenteImportacao.abaTipoImportToConexBanco();
         checarConexao();
     }//GEN-LAST:event_btnAbaTipoImportImportarBancoActionPerformed
 
@@ -1023,19 +1023,19 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaTabPrev_GerarCuboXmlActionPerformed
 
     private void btnAbaTipoImport_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaTipoImport_VoltarActionPerformed
-        PercorrerAbasFormPrincipal.abaTipoImportToAbaIni();
+        PercorrerAbasFormAssistenteImportacao.abaTipoImportToAbaIni();
     }//GEN-LAST:event_btnAbaTipoImport_VoltarActionPerformed
 
     private void btnAbaImportArq_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaImportArq_VoltarActionPerformed
-        PercorrerAbasFormPrincipal.abaImportArqToAbaTipoImport();
+        PercorrerAbasFormAssistenteImportacao.abaImportArqToAbaTipoImport();
     }//GEN-LAST:event_btnAbaImportArq_VoltarActionPerformed
 
     private void btnAbaConexBd_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaConexBd_VoltarActionPerformed
-        PercorrerAbasFormPrincipal.abaConexBancoToAbaTipoImport();
+        PercorrerAbasFormAssistenteImportacao.abaConexBancoToAbaTipoImport();
     }//GEN-LAST:event_btnAbaConexBd_VoltarActionPerformed
 
     private void btnAbaConsulBd_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaConsulBd_VoltarActionPerformed
-        PercorrerAbasFormPrincipal.abaConsulBancoToAbaConexBanco();
+        PercorrerAbasFormAssistenteImportacao.abaConsulBancoToAbaConexBanco();
         checarConexao();
     }//GEN-LAST:event_btnAbaConsulBd_VoltarActionPerformed
 
@@ -1048,7 +1048,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaTabPrev_SalvarTabelaActionPerformed
 
     private void btnAbaConexBd_ProxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaConexBd_ProxActionPerformed
-        PercorrerAbasFormPrincipal.abaConexBancoToAbaConsulBanco();
+        PercorrerAbasFormAssistenteImportacao.abaConexBancoToAbaConsulBanco();
         carregarCbxTabela();
     }//GEN-LAST:event_btnAbaConexBd_ProxActionPerformed
     
@@ -1066,7 +1066,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
         listaDeCbxTipos.clear();
         painelAbaTabPrev_painelTabela.removeAll();
         painelAbaTabPrev_CbxTiposVariaveis.removeAll();
-        PercorrerAbasFormPrincipal.abaTabPreviewToAbaTipoImport();
+        PercorrerAbasFormAssistenteImportacao.abaTabPreviewToAbaTipoImport();
     }
     
     private void salvarTabela(){
@@ -1121,7 +1121,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Falha ao executar Script SQL");
                 //Mensagem em Conexao.getResultSet pode trazer mais detalhes;
             }else{
-                PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
+                PercorrerAbasFormAssistenteImportacao.abaConsulBancoToAbaTabPreview();
                 painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
                 JScrollPane jScrollPane = new JScrollPane(jTable);
                 painelAbaTabPrev_painelTabela.add(jScrollPane);
@@ -1145,7 +1145,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             if(jTable == null){
                JOptionPane.showMessageDialog(null, "Selecione uma tabela para ser importada!");
             }else{
-                PercorrerAbasFormPrincipal.abaConsulBancoToAbaTabPreview();
+                PercorrerAbasFormAssistenteImportacao.abaConsulBancoToAbaTabPreview();
                 painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
                 JScrollPane jScrollPane = new JScrollPane(jTable);
                 painelAbaTabPrev_painelTabela.add(jScrollPane);
@@ -1169,7 +1169,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
                 if(bancos != null){
                     boolean bancoExiste = carregarCbxTabela();
                     if(bancoExiste == true){
-                        PercorrerAbasFormPrincipal.abaConexBancoToAbaConsulBanco();
+                        PercorrerAbasFormAssistenteImportacao.abaConexBancoToAbaConsulBanco();
                         btnAbaConexBd_Prox.setEnabled(true);
                     }
                 }else{
@@ -1234,7 +1234,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
                 painelAbaTabPrev_painelTabela.add(jScrollPane);
                 painelAbaTabPrev_painelTabela.updateUI();
                 jTableAtivo = jTable;
-                PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
+                PercorrerAbasFormAssistenteImportacao.abaImportArqToTabPreview();
             }
         }
     }
@@ -1253,7 +1253,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
                 painelAbaTabPrev_painelTabela.add(jScrollPane);
                 painelAbaTabPrev_painelTabela.updateUI();
                 jTableAtivo = jTable;
-                PercorrerAbasFormPrincipal.abaImportArqToTabPreview();
+                PercorrerAbasFormAssistenteImportacao.abaImportArqToTabPreview();
             }      
         }
     }
