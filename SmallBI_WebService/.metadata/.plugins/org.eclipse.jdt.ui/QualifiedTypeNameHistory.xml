@@ -40,7 +40,6 @@
 <fullyQualifiedTypeName name="javax.ws.rs.Path"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="java.sql.Statement"/>
-<fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.ConexaoDao"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
 <fullyQualifiedTypeName name="com.google.gson.JsonObject"/>
@@ -57,7 +56,8 @@
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
-<fullyQualifiedTypeName name="br.com.smallbi.util.SaikuConnection"/>
-<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
 <fullyQualifiedTypeName name="br.com.smallbi.util.Util"/>
+<fullyQualifiedTypeName name="br.com.smallbi.util.SaikuConnection"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
 </qualifiedTypeNameHistroy>

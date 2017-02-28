@@ -44,8 +44,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     public static List<TabelaImportada> tabelasImportadas = new ArrayList<>();
     public static List<Link> links = new ArrayList<>();
     private static Integer idLink = 0;
-    String urlApiAddCubo = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
-    //String urlApiAddCubo = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+    //String urlApiAddCubo = "http://localhost:8080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+    String urlApiAddCubo = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
     
     public FormAssistenteModelagem() {
         initComponents();
@@ -1030,10 +1030,18 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
     private void selecionarTodosAtributos(){
         Component[] components = painelListaAtributos.getComponents();
-        for(Component c : components){
-            if(c instanceof JCheckBox){
-                ((JCheckBox) c).setSelected(true);
+        if(jcbSelecTodos.isSelected()){
+            for(Component c : components){
+                if(c instanceof JCheckBox){
+                    ((JCheckBox) c).setSelected(true);
+                }
             }
+        }else{
+            for(Component c : components){
+                if(c instanceof JCheckBox){
+                    ((JCheckBox) c).setSelected(false);
+                }
+            }            
         }
     }
     
