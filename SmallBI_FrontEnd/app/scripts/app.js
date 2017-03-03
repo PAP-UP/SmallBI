@@ -8,7 +8,24 @@
       'ui.router',
       'ui.router.stateHelper',
       'ngCookies'
-    ]).config(routes);
+    ]).config(routes).run(rotas);
+
+  function rotas($rootScope) {
+    $rootScope.$on('$stateChangeStart',function(evt,next,current){
+      if (next.authorize) {
+        if (!AuthService.getToken()) {
+          /* Ugly way
+           event.preventDefault();
+           $location.path('/login');
+           ========================== */
+
+          $rootScope.$evalAsync(function () {
+            $location.path('/signin');
+          })
+        }
+      }
+    });
+  }
 
   function routes($locationProvider, stateHelperProvider, $urlRouterProvider) {
 
@@ -23,6 +40,7 @@
       url: '/listar',
       templateUrl: 'scripts/usuario/usuario-lista.html',
       controller: 'usuarioListarController as vm',
+      authorize: true
     };
 
     var editarUsuario = {
