@@ -22,6 +22,8 @@ public class FormLogin extends javax.swing.JFrame {
 
     public static Integer idCliente = 0;
     public static String login, senha = new String();
+    //String urlApiLogin = "http://localhost:8080/SmallBI_WebService/rest/usuario/login";
+    String urlApiLogin = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
     
     public FormLogin() {
         initComponents();
@@ -143,10 +145,9 @@ public class FormLogin extends javax.swing.JFrame {
             Hashtable<String, Object> hash = new Hashtable<>();
             hash.put("login", login);
             hash.put("senha", senha);
-            //String url = "http://localhost:8081/SmallBI_WebService/rest/usuario/login";
-            String url = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
+
             HttpClient httpClient = HttpClientBuilder.create().build();
-            HttpPost httpPost = new HttpPost(url);
+            HttpPost httpPost = new HttpPost(urlApiLogin);
             Gson gson = new Gson();
             try {
                 StringEntity postingString = new StringEntity(gson.toJson(hash));
@@ -155,36 +156,48 @@ public class FormLogin extends javax.swing.JFrame {
                 HttpResponse response = httpClient.execute(httpPost);
                 
                 HttpEntity httpEntity = response.getEntity();
-                String json = EntityUtils.toString(httpEntity);
-                JSONObject jSONObject = new JSONObject(json);
-                String jsonMyHashMap = jSONObject.getJSONObject("myHashMap").toString();
-                jSONObject = new JSONObject(jsonMyHashMap);
-                idCliente = jSONObject.getInt("idCliente");
-                
                 int cod = response.getStatusLine().getStatusCode();
                 getResponse(cod);
                 
+                if(cod == 200){
+                    String json = EntityUtils.toString(httpEntity);
+                    JSONObject jSONObject;
+                    try {
+                        jSONObject = new JSONObject(json);
+//                        String jsonMyHashMap = jSONObject.getJSONObject("myHashMap").toString();
+//                        jSONObject = new JSONObject(jsonMyHashMap);
+                        idCliente = jSONObject.getInt("idCliente");
+                        System.out.println("Id obtido: " + idCliente);
+                        
+                        this.dispose();
+                        FormAssistenteImportacao frm = new FormAssistenteImportacao();
+                        frm.setLocationRelativeTo(null);
+                        frm.setResizable(false);
+                        frm.setVisible(true); 
+                    } catch (JSONException ex) {
+    //                    Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, json);
+                    }
+                }
                 System.out.println(response);
-                System.out.println("Id obtido: " + idCliente);
             } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(FormEnviarCubo.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, "Não foi possível se conectar com o servidor!");
-            } catch (JSONException ex) {
                 Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
-            }            
+            } catch (IOException ex) {
+                Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Não foi possível se conectar com o servidor!");
+            }
+            
         }
     }
     
     private void getResponse(int cod){
         switch(cod){
             case 200: 
-                this.dispose();
-                FormAssistenteImportacao frm = new FormAssistenteImportacao();
-                frm.setLocationRelativeTo(null);
-                frm.setResizable(false);
-                frm.setVisible(true); 
+//                this.dispose();
+//                FormAssistenteImportacao frm = new FormAssistenteImportacao();
+//                frm.setLocationRelativeTo(null);
+//                frm.setResizable(false);
+//                frm.setVisible(true); 
                 break;
             case 404:
                 JOptionPane.showMessageDialog(null, "Servidor indisponível!");

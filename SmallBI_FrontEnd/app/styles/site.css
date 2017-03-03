@@ -1144,3 +1144,210 @@ ESTRUTURAÇÃO BASE (Palupa Framework v1)
 				color: #7AE2DE;
 			}
 		}
+
+/* CORRECOES */
+.form-footer {
+  margin-top: 1em;
+}
+
+.ui-input {
+  position: relative;
+  padding: 0;
+  border: 0;
+}
+
+.ui-input input,
+.ui-input select {
+  border: 0;
+  background: none;
+  font-size: 15px;
+  padding: 6px 12px;
+  outline: 0;
+  width: 100%;
+  tap-highlight-color: transparent;
+  touch-callout: none;
+}
+.ui-input select{
+    height: 33px;
+    color: #7AE2DE;
+}
+.ui-input input + label,
+.ui-input select + label {
+  position: relative;
+  display: block;
+  padding: 8px 0 8px 0;
+  font-size: 14px;
+  letter-spacing: .0875em;
+  font-weight: 500;
+  text-align: left;
+}
+.ui-input input + label::before, .ui-input input + label::after,
+.ui-input select + label::before, .ui-input select + label::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 1px;
+}
+.ui-input input + label::before,
+.ui-input select + label::before {
+  background-color: rgba(9,58,77,.2);
+}
+.ui-input input + label::after,
+.ui-input select + label::after {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  background-color: #093a4d;
+  height: 2px;
+}
+.ui-input input + label span,
+.ui-input select + label span {
+  position: relative;
+  color: rgba(9,58,77,.5);/*#093a4d;*/
+  transition: color 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.ui-input input + label span::after,
+.ui-input select + label span::after {
+  content: attr(data-text);
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  transform: scaleX(1);
+  white-space: nowrap;
+  color: #fff;
+  background-image: linear-gradient(to right, #4A90E2 50%, rgba(255, 255, 255, 0) 0%);
+  background-position: 100% 50%;
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  backface-visibility: hidden;
+  perspective: 1000;
+  transform: translateZ(0);
+  transition: background-position 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.ui-input input:focus + label::after,
+.ui-input input.error + label::after,
+.ui-input input:invalid + label::after,
+.ui-input input.filled + label::after,
+.ui-input select:focus + label::after,
+.ui-input select.error + label::after,
+.ui-input select:invalid + label::after,
+.ui-input select.filled + label::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.ui-input input:focus + label span::after,
+.ui-input input.error + label span::after,
+.ui-input input:invalid + label span::after,
+.ui-input input.filled + label span::after,
+.ui-input select:focus + label span::after,
+.ui-input select.error + label span::after,
+.ui-input select:invalid + label span::after,
+.ui-input select.filled + label span::after {
+  background-image: linear-gradient(to right, white 50%, rgba(255, 255, 255, 0) 0%);
+  background-position: 0% 50%;
+}
+
+.ui-input input.filled,
+.ui-input select.filled {
+  color: #ffffff;
+}
+.ui-input input.filled + label::after,
+.ui-input select.filled + label::after {
+  background-color: #ffffff;
+}
+.ui-input input.filled + label span::after,
+.ui-input select.filled + label span::after {
+  background-image: linear-gradient(to right, #ffffff 50%, rgba(255, 255, 255, 0) 0%);
+  background-position: 0% 50%;
+}
+
+.ui-input input:focus,
+.ui-input select:focus {
+  color: #093a4d;
+}
+.ui-input input:focus + label::after,
+.ui-input select:focus + label::after {
+  background-color: #093a4d;
+}
+.ui-input input:focus + label span::after,
+.ui-input select:focus + label span::after {
+  background-image: linear-gradient(to right, #093a4d 50%, rgba(255, 255, 255, 0) 0%);
+  background-position: 0% 50%;
+}
+
+.ui-input input.error,
+.ui-input input:invalid,
+.ui-input select.error,
+.ui-input select:invalid {
+  color: #E66161;
+}
+.ui-input input.error + label::after,
+.ui-input input:invalid + label::after,
+.ui-input select.error + label::after,
+.ui-input select:invalid + label::after {
+  background-color: #E66161;
+}
+.ui-input input.error + label span::after,
+.ui-input input:invalid + label span::after,
+.ui-input select.error + label span::after,
+.ui-input select:invalid + label span::after {
+  background-image: linear-gradient(to right, #E66161 50%, rgba(255, 255, 255, 0) 0%);
+  background-position: 0% 50%;
+}
+
+form .btn {
+  border: 0;
+  background-color: #50617A;
+  padding: 10px 30px 10px 30px;
+  text-transform: uppercase;
+  letter-spacing: .0875em;
+  font-weight: 500;
+  outline: 0;
+  transition: background-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), color 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+form .btn:focus, form .btn:active,
+form .btn:hover {
+  background-color: #093a4d;
+  color: white;
+}
+
+.__first, .__second, .__third, .__fourth {
+  animation-name: fadeIn;
+  animation-duration: 180ms;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+.__first {
+  animation-delay: 0;
+}
+
+.__second {
+  animation-delay: 80ms;
+}
+
+.__third {
+  animation-delay: 180ms;
+}
+
+.__fourth {
+  animation-delay: 360ms;
+}
+.padding15px {
+    padding: 0 15px;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -25%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

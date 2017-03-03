@@ -136,3 +136,18 @@ Retorno:
   "usuarioSaiku": "borbasaiku"
 }
 >>>>>>> 2816fad6e7cc4c7d777433d2e398272a0753afb0
+
+Login:
+Metodo: POST
+Path: http://localhost:8080/SmallBI_WebService/rest/usuario/login
+Parametros: "application/json"
+Exemplo:
+{
+	"login":"borba@hd.com",
+	"senha":"12345"
+}
+Retorno:
+{
+  "idCliente": 22,
+  "idUsuario": 6
+}

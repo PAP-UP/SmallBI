@@ -59,6 +59,7 @@ public class ConexaoDao {
 		try{
 			Connection connection = getConexao(banco);
 			Statement statement = connection.createStatement();
+			//statement.executeUpdate(script);
 			statement.executeUpdate(script);
 		}catch (Exception e) {
 			e.printStackTrace();

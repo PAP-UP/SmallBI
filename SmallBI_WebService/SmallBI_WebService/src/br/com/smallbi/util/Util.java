@@ -1,9 +1,5 @@
 package br.com.smallbi.util;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -54,8 +50,6 @@ public class Util {
         	}
     	}
     	
-    	
-    	
     	/*String hashedAndSalted = usuario.getSenha();    	
     	String salt = hashedAndSalted.split(",")[1];
     	
@@ -64,31 +58,5 @@ public class Util {
     		return null;
     	} */   	
     	return usuario;
-    }
-    
-    public static boolean saveSchemaInSaiku(Integer idCliente, String schemaName, String schema){
-    	
-    	File clienteDir = new File("/datasources/id_" + idCliente);
-    	if(!clienteDir.exists()){    		
-    		try{
-    			clienteDir.mkdir();
-    		}catch(SecurityException se){
-    			se.printStackTrace();
-    			return false;
-    		}
-    	}
-    	
-		File fileMdx = new File(clienteDir.getAbsolutePath() + "/" + schemaName + ".xml");
-		try{
-			FileWriter fw = new FileWriter(fileMdx);
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(schema);
-			bw.flush();
-			bw.close();
-			return true;
-		}catch(IOException ex){
-			ex.printStackTrace();
-			return false;
-		}
     }
 }

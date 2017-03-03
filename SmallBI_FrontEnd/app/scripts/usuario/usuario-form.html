@@ -1,58 +1,70 @@
 <h3>Cadastro de usuário</h3>
-    <form  novalidate ng-controller="usuarioCadastrarController">
-      <div class="form-group">
-        <label class="text-left" style="display: block;" for="nome">Nome completo</label>
-        <input type="text" class="form-control" id="nome" name="nome" ng-model="vm.dadosUsuario.nome">
-      </div>
-      <div class="form-group">
-        <label class="text-left" style="display: block;" for="cpf">CPF</label>
-        <input type="text" class="form-control" id="cpf" name="cpf" ng-model="vm.dadosUsuario.cpf">
-      </div>
-      <div class="form-group">
-        <label class="text-left" style="display: block;" for="rg">RG</label>
-        <input type="text" class="form-control" id="rg" name="rg" ng-model="vm.dadosUsuario.rg">
-      </div>
-      <div class="form-group">
-        <label class="text-left" style="display: block;" for="nomeFuncao">Função</label>
-        <select id="nomeFuncao" class="form-control" ng-model="vm.dadosUsuario.idFuncao"
-        ng-options="func.idFuncao as func.descricao for func in vm.dadosFuncao">
-          <option value="">Selecione</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="text-left" style="display: block;" for="endereco">Endereço</label>
-        <input type="text" class="form-control" id="endereco" name="endereco" ng-model="vm.dadosUsuario.endereco">
-      </div>
-      <div class="form-group">
-        <label class="text-left" style="display: block;" for="numero">Número</label>
-        <input type="text" class="form-control" id="numero" name="numero" ng-model="vm.dadosUsuario.numero">
-      </div>
-      <div class="form-group">
-        <label class="text-left" style="display: block;" for="bairro">Bairro</label>
-        <input type="text" class="form-control" id="bairro" name="bairro" ng-model="vm.dadosUsuario.bairro">
-      </div>
-      <div class="form-group">
-        <label class="text-left" style="display: block;" for="cidade">Cidade</label>
-        <input type="text" class="form-control" id="cidade" name="cidade" ng-model="vm.dadosUsuario.cidade">
-      </div>
-      <!--<div class="form-group">-->
-        <!--<label class="text-left" style="display: block;" for="estado">Estado</label>-->
-        <!--<select id="estado" class="form-control" ng-model="vm.dadosUsuario.idEstado"-->
-                <!--ng-options="est.idEstado as est.nomeEstado for est in vm.dadosEstado">-->
-          <!--<option value="">Selecione</option>-->
-        <!--</select>-->
-      <!--</div>-->
-      <div class="form-group">
-        <label class="text-left" style="display: block;" for="telefone">Telefone</label>
-        <input type="text" class="form-control" id="telefone" name="telefone" ng-model="vm.dadosUsuario.telefone">
-      </div>
-      <div class="form-group">
-        <label class="text-left" style="display: block;" for="login">Login</label>
-        <input type="text" class="form-control" id="login" name="login" ng-model="vm.dadosUsuario.login">
-      </div>
-      <div class="form-group">
-        <label class="text-left" style="display: block;" for="senha">Senha</label>
-        <input type="password" class="form-control" id="senha" name="senha" ng-model="vm.dadosUsuario.senha">
-      </div>
-      <button type="button" class="btn btn-success" style="float: right;" ng-click="vm.usuarioSalvar()">Enviar</button>
-    </form>
+<form  novalidate ng-controller="usuarioCadastrarController">
+    <div class="row">
+        <div class="col-md-6 padding15px">
+            <fieldset class="form-fieldset ui-input">
+                <input type="text" class="" id="nome" name="nome" ng-model="vm.dadosUsuario.nome">
+                <label class="text-left" for="nome"><span data-text="Nome completo">Nome completo</span></label>
+            </fieldset>
+
+            <fieldset class="form-fieldset ui-input">
+                <input type="text" class="" id="cpf" name="cpf" ng-model="vm.dadosUsuario.cpf">
+                <label class="text-left" for="cpf"><span data-text="CPF">CPF</span></label>
+            </fieldset>
+
+            <fieldset class="form-fieldset ui-input">
+                <input type="text" class="" id="rg" name="rg" ng-model="vm.dadosUsuario.rg">
+                <label class="text-left" for="rg"><span data-text="RG">RG</span></label>
+            </fieldset>
+
+            <fieldset class="form-fieldset ui-input">
+                <select id="nomeFuncao" class="" ng-model="vm.dadosUsuario.idFuncao" ng-options="func.idFuncao as func.descricao for func in vm.dadosFuncao">
+                    <option value="">Selecione</option>
+                </select>
+                <label class="text-left" for="nomeFuncao"><span data-text="Função">Função</span></label>
+            </fieldset>
+            <fieldset class="form-fieldset ui-input">
+                <input type="text" class="" id="login" name="login" ng-model="vm.dadosUsuario.login">
+                <label class="text-left" for="login"><span data-text="Login">Login</span></label>
+            </fieldset>
+
+            <fieldset class="form-fieldset ui-input">
+                <input type="password" class="" id="senha" name="senha" ng-model="vm.dadosUsuario.senha">
+                <label class="text-left" for="senha"><span data-text="Senha">Senha</span></label>
+            </fieldset>            
+        </div>
+        <div class="col-md-6 padding15px">            
+            <fieldset class="form-fieldset ui-input">
+                <input type="text" class="" id="endereco" name="endereco" ng-model="vm.dadosUsuario.endereco">
+                <label class="text-left" for="endereco"><span data-text="Endereço">Endereço</span></label>
+            </fieldset>
+
+            <fieldset class="form-fieldset ui-input">
+                <input type="text" class="" id="numero" name="numero" ng-model="vm.dadosUsuario.numero">
+                <label class="text-left" for="numero"><span data-text="Número">Número</span></label>
+            </fieldset>
+            <fieldset class="form-fieldset ui-input">
+                <input type="text" class="" id="bairro" name="bairro" ng-model="vm.dadosUsuario.bairro">
+                <label class="text-left" for="bairro"><span data-text="Bairro">Bairro</span></label>
+            </fieldset>
+
+            <fieldset class="form-fieldset ui-input">
+                <input type="text" class="" id="cidade" name="cidade" ng-model="vm.dadosUsuario.cidade">
+                <label class="text-left" for="cidade"><span data-text="Cidade">Cidade</span></label>
+            </fieldset>
+
+            <!--<fieldset class="form-fieldset ui-input">-->
+            <!--<select id="estado" class="" ng-model="vm.dadosUsuario.idEstado"-->
+            <!--ng-options="est.idEstado as est.nomeEstado for est in vm.dadosEstado">-->
+            <!--<option value="">Selecione</option>-->
+            <!--</select>-->
+            <!-- <label class="text-left" for="estado"><span data-text="Estado">Estado</span></label>-->
+            <!-- </fieldset>-->
+            <fieldset class="form-fieldset ui-input">
+                <input type="text" class="" id="telefone" name="telefone" ng-model="vm.dadosUsuario.telefone">
+                <label class="text-left" for="telefone"><span data-text="Telefone">Telefone</span></label>
+            </fieldset>
+        </div>
+    </div>
+    <button type="button" class="btn btn-success" style="float: right;" ng-click="vm.usuarioSalvar()">Enviar</button>
+</form>

@@ -7,15 +7,12 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-import com.google.gson.JsonObject;
-
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.ConexaoDao;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cubo;
 import br.com.smallbi.entity.Usuario;
-import br.com.smallbi.util.SaikuConnection;
 import br.com.smallbi.util.Util;
 import br.com.smallbi.entity.Cliente;
 
@@ -82,8 +79,8 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 		if(usuario != null){
 			
 			String scriptSql = jsonObject.getString("scriptSql");
-//			Integer id = usuario.getPessoa().getCliente().getIdCliente();
-			Integer idCliente = jsonObject.getInt("idCliente");
+			Integer idCliente = usuario.getPessoa().getCliente().getIdCliente();
+//			Integer idCliente = jsonObject.getInt("idCliente");
 
 			List<String> tabelasCubo = new ArrayList<>();
 			JSONArray jsonArray = jsonObject.getJSONArray("tabelasCubo");
@@ -96,16 +93,17 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			
 			if(scriptsalvo){
 				
-				boolean mdxSalvo = Util.saveSchemaInSaiku(idCliente, jsonObject.getString("nomeCubo"), 
-						jsonObject.getString("mdx"));
+				/*boolean mdxSalvo = SaikuConnection.saveSchemaInSaikuServer(idCliente, jsonObject.getString("nomeCubo"), 
+						jsonObject.getString("mdx"));*/
 				
-				if(mdxSalvo){
+				//if(mdxSalvo){
 					usuario.getPessoa().getCliente().setTamanhoTotal(ConexaoDao.getTamanhoBancoCliente(idCliente));
 					new ClienteBusiness().update(usuario.getPessoa().getCliente());
 					
-					int saikuResponse = SaikuConnection.addDatasourceSaiku(idCliente, jsonObject.getString("nomeCubo"));
+					/*int saikuResponse = SaikuConnection.addDatasourceSaiku(idCliente, 
+							jsonObject.getString("nomeCubo"));*/
 					
-					if(saikuResponse == 200){
+//					if(saikuResponse == 200){
 						Cubo cubo = new Cubo();			
 						cubo.setCliente(usuario.getPessoa().getCliente());
 						
@@ -114,58 +112,24 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 						cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
 						cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
 						
-						//Fazer consulta do tamanho das tabelas
-						//cubo.setTamanho(0); //Provisório
 						Integer tamCubo = ConexaoDao.getTamanhoCubo(idCliente, tabelasCubo);
 						cubo.setTamanho(tamCubo);
 						cubo.setUsuarioId(usuario.getIdUsuario());
 						
 						create(cubo);
-					}else{
+						
+						return "Cubo cadastrado com sucesso!";
+					/*}else{
 						return "Falha ao enviar cubo ao Saiku!";
-					}
-				}else{
+					}*/
+/*				}else{
 					return "Falha ao salvar MDX no servidor!";
-				}
+				}*/
 			}else{
 				return "Falha ao salvar tabelas no bando de dados do cliente!";
 			}
 		}		
 		return "Usuário ou senha inválidos";
-	}
-	
-	public String analisarCubo(){
-		
-		/*public void salvarQuerySQL(String nomeTabela){
-        
-//      JFileChooser jfc = new JFileChooser();        
-//      jfc.showSaveDialog(null);     
-//      File file = jfc.getSelectedFile();
-      //File file = new File("/home/deynesonborba/files-to-test-saiku/cubes-scripts-generated/" + formatarString(nomeTabela) + ".sql");
-      File file = new File(System.getProperty("user.home") + 
-              System.getProperty("file.separator") +
-              "files-to-test-saiku" +
-              System.getProperty("file.separator") +
-              "cubes-scripts-generated"+
-              System.getProperty("file.separator") + 
-              formatarString(nomeTabela) + ".sql");
-      try {
-          FileWriter fw = new FileWriter(file);
-          BufferedWriter bw = new BufferedWriter(fw);
-          
-          for(String sql : scripts){
-              bw.write(sql);
-              bw.write("\n");
-          }
-          
-          bw.flush();
-          bw.close();
-          System.out.println("Script salvo");
-      } catch (IOException ex) {
-          ex.printStackTrace();
-      }
-  }*/
-		return "";
 	}
 	
 	@Override
@@ -250,6 +214,16 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 		Cubo cubo = cuboDao.getObjById(id);
 		if(cubo != null && cubo.isStatus() != false){
 			return cubo;
+		}
+		return null;
+	}
+	
+	public Cubo getCuboByName(String nome){
+		List<Cubo> cubos = list();
+		for(Cubo c : cubos){
+			if(c.getNomeCubo().equals(nome)){
+				return c;
+			}
 		}
 		return null;
 	}
