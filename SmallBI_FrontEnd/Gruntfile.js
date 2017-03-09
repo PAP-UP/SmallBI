@@ -24,7 +24,8 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    module: require('./bower.json').moduleName,
+    dist: 'dist/'
   };
 
   // Define the configuration for all the tasks
@@ -40,7 +41,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/s/{,**/}*.js'],
+        files: ['<%= yeoman.app %>/scripts/{,**/}*.js'],
         tasks: ['newer:jshint:all', 'newer:jscs:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -51,8 +52,8 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
       },
       styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'postcss']
+        files: ['<%= yeoman.app %>/styles/{,**/}*.css'],
+        tasks: ['styles', 'postcss:server']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -62,7 +63,7 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
+          '<%= yeoman.app %>/{,**/}*.html',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
@@ -123,7 +124,7 @@ module.exports = function (grunt) {
                     modRewrite(['^[^\\.]*$ /index.html [L]']),
                     connect.static(appConfig.dist)
                 ];
-            }            
+            }
         }
       }
     },
@@ -157,7 +158,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/s/{,*/}*.js'
+          '<%= yeoman.app %>/scripts/{,*/}*.js'
         ]
       },
       test: {
@@ -184,7 +185,7 @@ module.exports = function (grunt) {
     postcss: {
       options: {
         processors: [
-          require('autoprefixer-core')({browsers: ['last 1 version']})
+          require('autoprefixer-core')({browsers: ['last 2 version']})
         ]
       },
       server: {
@@ -236,10 +237,11 @@ module.exports = function (grunt) {
     filerev: {
       dist: {
         src: [
-          '<%= yeoman.dist %>/s/{,*/}*.js',
+          '<%= yeoman.dist %>/scripts/{,*/}*.js',
           '<%= yeoman.dist %>/styles/{,*/}*.css',
           '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/styles/fonts/*'
+          '<%= yeoman.dist %>/fonts/{,**/}*.*',
+          '<%= yeoman.dist %>/data/*.json',
         ]
       }
     },
@@ -272,10 +274,16 @@ module.exports = function (grunt) {
         assetsDirs: [
           '<%= yeoman.dist %>',
           '<%= yeoman.dist %>/images',
-          '<%= yeoman.dist %>/styles'
+          '<%= yeoman.dist %>/fonts/{,**/}',
+          '<%= yeoman.dist %>/styles',
+          '<%= yeoman.dist %>/data'
         ],
         patterns: {
-          js: [[/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images']]
+          js: [
+            [/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images'],
+            [/(data\/[^''""]*\.(json))/g, 'Replacing references to data files'],
+          ]
+
         }
       }
     },
@@ -284,27 +292,27 @@ module.exports = function (grunt) {
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/s/s.js': [
-    //         '<%= yeoman.dist %>/s/s.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
+    cssmin: {
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/styles/main.css': [
+            '.tmp/styles/{,**/}*.css'
+          ]
+        }
+      }
+    },
+    uglify: {
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/scripts/scripts.js': [
+            '<%= yeoman.dist %>/scripts/scripts.js'
+          ]
+        }
+      }
+    },
+    concat: {
+      dist: {}
+    },
 
     imagemin: {
       dist: {
@@ -350,10 +358,10 @@ module.exports = function (grunt) {
         options: {
           module: 'SmallBIApp',
           htmlmin: '<%= htmlmin.dist.options %>',
-          usemin: 's/s.js'
+          usemin: 'scripts/main.js'
         },
         cwd: '<%= yeoman.app %>',
-        src: ['views/{,*/}*.html', 's/{,**/}*.html'],
+        src: 'scripts/{,**/}*.html',
         dest: '.tmp/templateCache.js'
       }
     },
@@ -389,8 +397,9 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '*.html',
+            'data/*.json',
             'images/{,*/}*.{webp}',
-            'styles/fonts/{,*/}*.*'
+            'fonts/{,**/}*.*'
           ]
         }, {
           expand: true,

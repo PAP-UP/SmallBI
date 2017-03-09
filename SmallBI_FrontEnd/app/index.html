@@ -22,16 +22,14 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600|Montserrat" rel="stylesheet">
 
     <base href="/">
-    
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-+    <!-- build:css(.) styles/vendor.css -->
-+    <!-- bower:css -->
-     <!-- CSS -->
+
+
     <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="styles/font-awesome.min.css" />
     <link rel="stylesheet" href="styles/site.css" />
-+    <!-- endbower -->
-+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
@@ -63,17 +61,16 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-ui-router.stateHelper/statehelper.js"></script>
     <!-- endbower -->
-
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!-- build:js({.tmp,app}) scripts/main.js -->
         <!-- JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="scripts/bootstrap.min.js"></script>
         <script src="scripts/jquery.maskedinput.min.js"></script>
         <script src="scripts/geral.js"></script>
-    
+
         <!--Serviços-->
         <script src="scripts/app.js"></script>
         <script src="scripts/Services.js"></script>

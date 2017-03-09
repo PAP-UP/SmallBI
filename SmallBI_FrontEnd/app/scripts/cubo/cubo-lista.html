@@ -4,8 +4,6 @@
       <tr>
         <th>Nome</th>
         <th>Cliente</th>
-        <th>MDX</th>
-        <th>Tabela fato</th>
         <th>Tamanho</th>
         <th class="text-center">Visualizar</th>
         <th class="text-center">Excluir</th>
@@ -15,11 +13,7 @@
       <tr ng-repeat="item in vm.listaCubos">
         <td>{{item.nomeCubo}}</td>
         <td>{{item.cliente}}</td>
-        <td>{{item.mdx}}</td>
-        <td>{{item.tabelaFato}}</td>
         <td>{{item.tamanho}}</td>
       </tr>
       </tbody>
     </table>
-    <a href="#" id="plus"><i class="fa fa-plus fa-lg icon"></i></a>
-    <a href="#" class="novoItem">Cadastrar novo cubo</a>
