@@ -56,8 +56,16 @@ public class SaikuConnection {
 				+ "Catalog=/datasources/" + "id_" + idCliente + "/" + nomeSchema + ".xml;" 
 				+ "JdbcDrivers=org.postgresql.Driver;\n"	
 				+ "username=postgres\n"	
-				+ "password=postgres\n"	
-				+ "security.enabled=false\n";
+				+ "password=postgres\n"
+				+ "security.enabled=false";
+//				+ "security.enabled=true"
+//				+ "security.type=lookup\n";
+				/*
+					security.mapping=
+					ROLE_USER=No Access People;
+					ROLE_ADMIN=Access People;
+					ROLE_CUSTOM=Access People\n",				 
+				 */
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("connectionname", nomeSchema);

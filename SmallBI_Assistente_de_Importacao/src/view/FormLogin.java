@@ -168,6 +168,7 @@ public class FormLogin extends javax.swing.JFrame {
 //                        jSONObject = new JSONObject(jsonMyHashMap);
                         idCliente = jSONObject.getInt("idCliente");
                         System.out.println("Id obtido: " + idCliente);
+                        System.out.println("idUsuario: " + jSONObject.getInt("idUsuario"));
                         
                         this.dispose();
                         FormAssistenteImportacao frm = new FormAssistenteImportacao();

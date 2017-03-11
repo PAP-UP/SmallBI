@@ -1483,15 +1483,20 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             case 200: 
                 try {
                     String json = EntityUtils.toString(httpEntity);
-                    JSONObject jSONObject = new JSONObject(json);
-                    String msg = jSONObject.getString("msg");
-                    JOptionPane.showMessageDialog(null, msg);
+                    String msg = new String();
+                    try {
+                        JSONObject jSONObject = new JSONObject(json);
+                        msg = jSONObject.getString("msg");
+                    } catch (JSONException ex) {
+                        msg = json;
+                        //Logger.getLogger(FormAssistenteModelagem.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                   JOptionPane.showMessageDialog(null, msg);
 
                 } catch (IOException ex) {
                     Logger.getLogger(FormAssistenteModelagem.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {
-                    Logger.getLogger(FormAssistenteModelagem.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (JSONException ex) {
                     Logger.getLogger(FormAssistenteModelagem.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 break;
