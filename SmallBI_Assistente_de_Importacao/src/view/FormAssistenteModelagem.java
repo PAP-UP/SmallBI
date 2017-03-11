@@ -2,6 +2,7 @@ package view;
 
 import business.GerarSchema;
 import business.GerarScriptSql;
+import business.Util;
 import com.google.gson.Gson;
 import java.awt.Component;
 import java.io.IOException;
@@ -44,6 +45,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     public static List<TabelaImportada> tabelasImportadas = new ArrayList<>();
     public static List<Link> links = new ArrayList<>();
     private static Integer idLink = 0;
+    //private static Util util = new Util();
     String urlApiAddCubo = "http://localhost:8081/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
     //String urlApiAddCubo = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
     
@@ -1446,7 +1448,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         hash.put("senha", FormLogin.senha);
         hash.put("idCliente", FormLogin.idCliente);
         hash.put("mdx", mdx);
-        hash.put("nomeCubo", formatarString(nomeCubo));
+        hash.put("nomeCubo", Util.formatarString(nomeCubo));
         hash.put("scriptSql", scriptSql);
         
         List<String> tabelasCubo = new ArrayList<>();
@@ -1544,7 +1546,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 String data = sdf.format(calendar.getTime());
 
                 GerarScriptSql gerarScriptSql = new GerarScriptSql();
-                gerarScriptSql.salvarQuerySQL("ScriptSQL_" + formatarString(txtAbaNomeCubo_NomeCubo.getText()) + "_" + data);
+                gerarScriptSql.salvarQuerySQL("ScriptSQL_" + Util.formatarString(txtAbaNomeCubo_NomeCubo.getText()) + "_" + data);
                 PercorrerAbasFormAssistenteModelagem.nomeCuboToModelDim();
             }else{
                 JOptionPane.showMessageDialog(null, "O nome do cubo não pode ser superior a 25 caracteres!");
@@ -1554,17 +1556,11 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         }
     }
     
-    private String formatarString(String str){
-        String strFormatada = str.toLowerCase();
-        strFormatada = strFormatada.replaceAll(" ", "_");
-        return strFormatada;
-    }
-    
     private void gerarSchemaXml(){
         Schema schema = new Schema();
-        schema.setNome("Schema " + formatarString(txtAbaNomeCubo_NomeCubo.getText()));
+        schema.setNome("Schema " + Util.formatarString(txtAbaNomeCubo_NomeCubo.getText()));
         schema.setTabelasFato(tabelasImportadas);
-        schema.setNomeCubo(formatarString(txtAbaNomeCubo_NomeCubo.getText()));
+        schema.setNomeCubo(Util.formatarString(txtAbaNomeCubo_NomeCubo.getText()));
         schema.setDimensoes(dimensoes);
         schema.setGrupoMetrica(grupoMetricas);
         schema.setLinks(links);

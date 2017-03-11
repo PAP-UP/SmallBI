@@ -1,6 +1,7 @@
 package view;
 
 import business.GerarScriptSql;
+import business.Util;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -143,8 +144,8 @@ public class FormSalvarTabela extends javax.swing.JFrame {
                 Calendar calendar = Calendar.getInstance();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 String data = sdf.format(calendar.getTime());
-                nomeTabela = nomeTabela + "_" + data;
-                System.out.println("Nome tabela: " + nomeTabela);
+                nomeTabela = Util.formatarString(nomeTabela + "_" + data);
+                
                 //Consulta à memória aqui
                 boolean existeNaMem = false;
                 for(TabelaImportada t : FormAssistenteModelagem.tabelasImportadas){

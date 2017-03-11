@@ -86,18 +86,18 @@ public class CuboWebService {
 				int code = SaikuConnection.addDatasourceSaiku(cubo.getCliente().getIdCliente(), cubo.getNomeCubo());
 				switch(code){
 					case 200:
-						return "Cubo adicionado com sucesso!";
+						return gson.toJson("Cubo adicionado com sucesso!");
 					case 404:
-						return "Falha ao adicionar datasource no Saiku. Servidor Saiku não encontrado!";
+						return gson.toJson("Falha ao adicionar datasource no Saiku. Servidor Saiku não encontrado!");
 					case 500:
-						return "Falha ao adicionar datasource no Saiku. Erro interno no Saiku API!";
+						return gson.toJson("Falha ao adicionar datasource no Saiku. Erro interno no Saiku API!");
 				}
 			}else{
-				return "Falha ao salvar MDX no servidor Saiku!";
+				return gson.toJson("Falha ao salvar MDX no servidor Saiku!");
 			}
 			
 		}else{
-			return "Nenhum cubo encontrado com esse nome!";
+			return gson.toJson("Nenhum cubo encontrado com esse nome!");
 		}
 		return "";
 	}
