@@ -4,7 +4,10 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.UUID;
 
+import javax.jws.WebService;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -24,7 +27,6 @@ import br.com.smallbi.business.EnderecoBusiness;
 import br.com.smallbi.business.PessoaBusiness;
 import br.com.smallbi.business.TelefoneBusiness;
 import br.com.smallbi.business.UsuarioBusiness;
-import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Funcao;
@@ -114,6 +116,13 @@ public class UsuarioWebService {
 		JSONObject jsonObject = new JSONObject(json);
 		Usuario u = usuarioBusiness.login(jsonObject.getString("login"), jsonObject.getString("senha"));
 		if(u != null){
+			
+			//Gerando Token uuid
+			//String uuid = UUID.randomUUID().toString();
+			//System.out.println(uuid);
+			
+			
+			
 			JSONObject jsonResponse = new JSONObject();
 			jsonResponse.put("idCliente", u.getPessoa().getCliente().getIdCliente());
 			jsonResponse.put("idUsuario", u.getIdUsuario()); 
@@ -122,7 +131,7 @@ public class UsuarioWebService {
 			return "Usuário ou senha inválidos!";
 		}
 	}
-	
+		
 	public Hashtable<String, Object> getHashById(Usuario u){
 		Hashtable<String, Object> hash = new Hashtable<>();
 		hash.put("idPessoa", u.getPessoa().getIdPessoa());

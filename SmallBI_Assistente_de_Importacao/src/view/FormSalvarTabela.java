@@ -1,7 +1,9 @@
 package view;
 
 import business.GerarScriptSql;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -138,6 +140,11 @@ public class FormSalvarTabela extends javax.swing.JFrame {
         if(nomeTabela != null && !nomeTabela.isEmpty()){
             if(chavePrimaria != "Selecione"){
                 
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                String data = sdf.format(calendar.getTime());
+                nomeTabela = nomeTabela + "_" + data;
+                System.out.println("Nome tabela: " + nomeTabela);
                 //Consulta à memória aqui
                 boolean existeNaMem = false;
                 for(TabelaImportada t : FormAssistenteModelagem.tabelasImportadas){

@@ -22,7 +22,7 @@ public class FormLogin extends javax.swing.JFrame {
 
     public static Integer idCliente = 0;
     public static String login, senha = new String();
-    //String urlApiLogin = "http://localhost:8080/SmallBI_WebService/rest/usuario/login";
+    //String urlApiLogin = "http://localhost:8081/SmallBI_WebService/rest/usuario/login";
     String urlApiLogin = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
     
     public FormLogin() {

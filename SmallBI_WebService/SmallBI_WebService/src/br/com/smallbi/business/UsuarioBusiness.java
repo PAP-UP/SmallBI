@@ -90,13 +90,13 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			return "A variável 'usuarioSaiku' deve ser informada!";
 		}	
 		
-		/*int code = SaikuConnection.addUsuarioSaiku(t.getUsuarioSaiku(), t.getSenha(), 
-				t.getPessoa().getCliente().getNomeFantasia(), t.getPessoa().getCliente().getIdCliente());
+		int code = SaikuConnection.addUsuarioSaiku(t.getUsuarioSaiku(), t.getSenha(), 
+				t.getPessoa().getCliente().getIdCliente());
 		
 		if(code != 200){
 			new PessoaBusiness().delete(t.getPessoa().getIdPessoa());
 			return "Falha ao adicionar usuário ao sistema Saiku!" + " Código da API do Saiku: " + code;
-		}*/
+		}
 		
 		//Call here encryption method
 		//t.setSenha(Util.makePasswordHash(t.getSenha(), Integer.toString(random.nextInt())));
@@ -259,4 +259,6 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			return null;
 		}
 	}
+	
+	
 }

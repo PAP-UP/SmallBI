@@ -20,7 +20,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 public class SaikuConnection {
 
-	public static int addUsuarioSaiku(String login, String senha, String cliente, Integer idCliente){
+	public static int addUsuarioSaiku(String login, String senha, Integer idCliente){
 		
 		JSONObject jsonObject = new JSONObject();
 		try {
@@ -29,17 +29,15 @@ public class SaikuConnection {
 			jsonObject.put("password", senha);
 			List<String> roles = new ArrayList<>();
 			//roles.add(login);
-			roles.add("cliente_" + cliente + "_id_" + idCliente);
+			roles.add("role_id_" + idCliente);
 			jsonObject.put("roles", roles);
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}		
 		
 		System.out.println(jsonObject);
-		//http://backend.smallbi.com.br:28080/
-		//http://localhost:8080/
 		String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/users/";
-//		String url = "http://localhost:8080/saiku/rest/saiku/admin/users/";
+		//String url = "http://localhost:8080/saiku/rest/saiku/admin/users/";
 		return sendToSaikuApi(url, jsonObject.toString());
 	}
 	
@@ -57,7 +55,11 @@ public class SaikuConnection {
 				+ "JdbcDrivers=org.postgresql.Driver;\n"	
 				+ "username=postgres\n"	
 				+ "password=postgres\n"
-				+ "security.enabled=false";
+				+ "security.enabled=true\n"
+				+ "security.type=lookup\n"
+				+ "security.mapping="
+				+ "role_id_" + idCliente + "=access_id_" + idCliente;
+//				+ "security.enabled=false";
 //				+ "security.enabled=true"
 //				+ "security.type=lookup\n";
 				/*
@@ -78,6 +80,10 @@ public class SaikuConnection {
 	
 	@SuppressWarnings("deprecation")
 	private static int sendToSaikuApi(String url, String json){
+	
+		//---------------------------------------------------
+		//Por algum motivo, este método que antes funcionava agora só retorna erro 400 bad request
+		//---------------------------------------------------
 		HttpClient httpClient = HttpClientBuilder.create().build();
 		HttpPost httpPost = new HttpPost(url);
 
@@ -85,9 +91,11 @@ public class SaikuConnection {
 			StringEntity stringEntity = new StringEntity(json);
 			httpPost.setEntity(stringEntity);
 			httpPost.setHeader("Content-Type", "application/json");
-			httpPost.setHeader(BasicScheme.authenticate(new UsernamePasswordCredentials("admin","admin"),
-					"UTF-8", false));		
 			
+			httpPost.setHeader(BasicScheme.authenticate(new UsernamePasswordCredentials("admin","admin"),
+					"UTF-8",false));		
+			
+			System.out.println(httpPost);
 			HttpResponse response = httpClient.execute(httpPost);
 			System.out.println("Response: " + response.toString());
 			return response.getStatusLine().getStatusCode();
