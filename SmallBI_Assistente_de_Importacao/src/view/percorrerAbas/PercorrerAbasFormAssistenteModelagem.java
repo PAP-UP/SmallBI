@@ -44,6 +44,12 @@ public class PercorrerAbasFormAssistenteModelagem extends FormAssistenteModelage
         lbl.setEnabledAt(2, false);  
     }
     
+    public static void modelMetriToCuboPreview(){
+        lbl.setSelectedIndex(4);
+        lbl.setEnabledAt(4, true);
+        lbl.setEnabledAt(2, false);
+    }
+    
     public static void addRelToModelMetri(){
         lbl.setSelectedIndex(2);
         lbl.setEnabledAt(2, true);
@@ -60,6 +66,12 @@ public class PercorrerAbasFormAssistenteModelagem extends FormAssistenteModelage
         lbl.setSelectedIndex(3);
         lbl.setEnabledAt(3, true);
         lbl.setEnabledAt(4, false);         
+    }
+    
+    public static void cuboPreviewToModelMetri(){
+        lbl.setSelectedIndex(2);
+        lbl.setEnabledAt(2, true);
+        lbl.setEnabledAt(4, false);
     }
     
     public PercorrerAbasFormAssistenteModelagem(JTable tbl, List<JComboBox> listaCbxTiposParametro) {

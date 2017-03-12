@@ -133,3 +133,5 @@ Caused by: org.apache.http.conn.ConnectTimeoutException: Connect to download.ecl
 2017-03-12 06:09:10,549 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@2da64c8d{/wse,null,AVAILABLE}
 2017-03-12 06:09:10,595 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@6690629e{HTTP/1.1,[http/1.1]}{0.0.0.0:36685}
 2017-03-12 06:09:10,596 [main] INFO  org.eclipse.jetty.server.Server - Started @1001017ms
+2017-03-12 06:19:52,336 [Framework stop] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@6690629e{HTTP/1.1,[http/1.1]}{0.0.0.0:0}
+2017-03-12 06:19:52,414 [Framework stop] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@2da64c8d{/wse,null,UNAVAILABLE}
