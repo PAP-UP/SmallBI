@@ -58,8 +58,8 @@ public class SaikuConnection {
 				+ "security.enabled=true\n"
 				+ "security.type=lookup\n"
 				+ "security.mapping="
-				+ "role_id_" + idCliente + "=access_id_" + idCliente
-				+ ";ROLE_USER=role_user_no_access";
+				+ "ROLE_USER=No Access;"
+				+ "role_id_" + idCliente + "=access_id_" + idCliente;
 //				+ "security.enabled=false";
 //				+ "security.enabled=true"
 //				+ "security.type=lookup\n";
@@ -74,10 +74,9 @@ public class SaikuConnection {
 		jsonObject.put("connectionname", nomeSchema);
 		jsonObject.put("advanced", connection);
 		
-		String url = "http://localhost:8080/saiku/rest/saiku/admin/datasources/";
-		/*
-		 * //String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/datasources/";
-		 */
+		//String url = "http://localhost:8080/saiku/rest/saiku/admin/datasources/";
+		String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/datasources/";
+		 
 		return sendToSaikuApi(url, jsonObject.toString());
 	}
 	

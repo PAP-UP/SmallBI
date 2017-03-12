@@ -129,7 +129,8 @@ public class GerarSchema {
     
     private String setRoles(int idCliente){
         String schema;
-        schema = "<Role name='access_id_" + idCliente + "'><SchemaGrant access='all'/></Role></Schema>";
+        schema = "<Role name='No Access'><SchemaGrant access='none'/></Role>";
+        schema += "<Role name='access_id_" + idCliente + "'><SchemaGrant access='all'/></Role></Schema>";
         return schema;
     }
     
