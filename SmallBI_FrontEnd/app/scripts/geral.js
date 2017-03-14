@@ -1,4 +1,4 @@
-$(window).load(function() {
+$(window).on('load', function() {
 	$(function(){
 
 		var windowWidth = $(window).width() / 2 + 125;
@@ -25,10 +25,10 @@ $(window).load(function() {
 		});
 
 
-		/*$("#numero").keyup(function () { 
+		/*$("#numero").keyup(function () {
 		    this.value = this.value.replace(/[^0-9\.]/g,'');
 		});*/
-		
+
 		$('#data').mask('99/99/9999');
 		$('#cep').mask('99999-999');
 		$('#cpf').mask('999.999.999-99');

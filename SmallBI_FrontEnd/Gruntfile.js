@@ -301,15 +301,15 @@ module.exports = function (grunt) {
         }
       }
     },
-    uglify: {
-      dist: {
-        files: {
-          '<%= yeoman.dist %>/scripts/scripts.js': [
-            '<%= yeoman.dist %>/scripts/scripts.js'
-          ]
-        }
-      }
-    },
+    //uglify: {
+     // dist: {
+     //   files: {
+     //     '<%= yeoman.dist %>_/scripts/scripts.js': [
+     //       '<%= yeoman.dist %>_/scripts/scripts.js'
+     //     ]
+     //   }
+     // }
+    //},
     concat: {
       dist: {}
     },
@@ -368,7 +368,7 @@ module.exports = function (grunt) {
 
     // ng-annotate tries to make the code safe for minification automatically
     // by using the Angular long form for dependency injection.
-    ngAnnotate: {
+   /* ngAnnotate: {
       dist: {
         files: [{
           expand: true,
@@ -377,7 +377,7 @@ module.exports = function (grunt) {
           dest: '.tmp/concat/s'
         }]
       }
-    },
+    },*/
 
     // Replace Google CDN references
     cdnify: {
@@ -478,7 +478,7 @@ module.exports = function (grunt) {
     'postcss',
     'ngtemplates',
     'concat',
-    'ngAnnotate',
+    //'ngAnnotate',
     'copy:dist',
     'cdnify',
     'cssmin',

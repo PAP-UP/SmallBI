@@ -4,7 +4,6 @@
   angular
     .module('SmallBIApp', [
       'ngAnimate',
-      'ngResource',
       'ui.router',
       'ui.router.stateHelper',
       'ngCookies'
