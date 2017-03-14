@@ -115,17 +115,15 @@ public class UsuarioWebService {
 	public String login(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
 		Usuario u = usuarioBusiness.login(jsonObject.getString("login"), jsonObject.getString("senha"));
+		
+		//--------------------------------------------
+		//Mudar para retornar um objeto usuario logado
+		//--------------------------------------------
 		if(u != null){
-			
-			//Gerando Token uuid
-			//String uuid = UUID.randomUUID().toString();
-			//System.out.println(uuid);
-			
-			
-			
 			JSONObject jsonResponse = new JSONObject();
 			jsonResponse.put("idCliente", u.getPessoa().getCliente().getIdCliente());
 			jsonResponse.put("idUsuario", u.getIdUsuario()); 
+			//jsonResponse.put("token", value);
 			return jsonResponse.toString();
 		}else{
 			return "Usuário ou senha inválidos!";

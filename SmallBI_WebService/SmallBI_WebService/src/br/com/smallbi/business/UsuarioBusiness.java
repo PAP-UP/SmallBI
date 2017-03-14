@@ -2,8 +2,10 @@ package br.com.smallbi.business;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import br.com.smallbi.dal.UsuarioLogadoDao;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cliente;
@@ -12,7 +14,7 @@ import br.com.smallbi.entity.Perfil;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Usuario;
-import br.com.smallbi.util.SaikuConnection;
+import br.com.smallbi.entity.UsuarioLogado;
 import br.com.smallbi.util.Util;
 
 public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
@@ -21,7 +23,6 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 	InterfaceDao<Cliente> empresaDao = FactoryDao.createClienteDao();
 	InterfaceDao<Perfil> perfilDao = FactoryDao.createPerfilDao();
 	InterfaceDao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();
-//	private Random random = new SecureRandom();
 	
 	@Override
 	public String create(Usuario t){
@@ -99,7 +100,10 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		}*/
 		
 		//Call here encryption method
-		//t.setSenha(Util.makePasswordHash(t.getSenha(), Integer.toString(random.nextInt())));
+		String hashSenha = Util.makePasswordHash(t.getSenha());
+		if(hashSenha != null && !hashSenha.equals(""))
+			t.setSenha(hashSenha);
+		System.out.println(t.getSenha());
 		
 		t.setDataCadastro(Util.getDate());
 		t.setStatus(true);
@@ -188,7 +192,10 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		t.setStatus(true);
 		
 		//Call here encryption method
-		//t.setSenha(Util.makePasswordHash(t.getSenha(), Integer.toString(random.nextInt())))
+		String hashSenha = Util.makePasswordHash(t.getSenha());
+		if(hashSenha != null && !hashSenha.equals(""))
+			t.setSenha(hashSenha);
+		System.out.println(t.getSenha());
 		
 		usuarioDao.update(t);
 		return "Usuario alterado com sucesso!";
@@ -241,25 +248,19 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		usuarioDao.create(usuario);
 	}
 	
-	/*public String validarLogin(String login, String senha){
-		Usuario usuario = Util.validateLogin(login, senha);
-		if(usuario == null)
-			return "Usuário ou senha inválidos!";
-		
-		//Chamar metodo que permite acesso ao site
-		return null;
-	}*/
-	
 	public Usuario login(String login, String senha){
-		
-/*		Usuario u = Util.validateLogin(login, senha);*/
-		
 		Usuario u = getByUsername(login);
+		String hashSenha = Util.makePasswordHash(senha);
 		if(u != null){
-			if(u.getSenha().equals(senha)){
+			if(u.getSenha().equals(hashSenha)){
 				
-				//Controlar session aqui...
+				UsuarioLogado ul = new UsuarioLogado();
+				ul.setIdUsuarioAtivo(u.getIdUsuario());
+				ul.setClienteId(u.getPessoa().getCliente().getIdCliente());
+				ul.setData(Util.getDate());
+				ul.setToken(criarToken());
 				
+				new UsuarioLogadoDao().create(ul);
 				
 				return u;
 			}
@@ -269,5 +270,9 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		return null;
 	}
 	
-	
+	public String criarToken(){
+		String uuid = UUID.randomUUID().toString();
+		System.out.println("uuid = " + uuid);
+		return uuid;
+	}
 }

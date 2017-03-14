@@ -8,9 +8,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import br.com.smallbi.business.UsuarioBusiness;
-import br.com.smallbi.entity.Usuario;
-
 public class Util {
 
 	public static Date getDate(){
@@ -23,40 +20,26 @@ public class Util {
 		return format.format(date);
 	}
 	
-    public static String makePasswordHash(String password, String salt) {
+    public static String makePasswordHash(String password) {
         try {
-            String saltedAndHashed = password + "," + salt;
-            MessageDigest digest = MessageDigest.getInstance("MD5");
-            digest.update(saltedAndHashed.getBytes());
-            BASE64Encoder encoder = new BASE64Encoder();
-            byte hashedBytes[] = (new String(digest.digest(), "UTF-8")).getBytes();
-            return encoder.encode(hashedBytes) + "," + salt;
+        	
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes("UTF-8"));
+            StringBuffer hexString = new StringBuffer();
+
+            for (int i = 0; i < hash.length; i++) {
+                String hex = Integer.toHexString(0xff & hash[i]);
+                if(hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+            
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("MD5 is not available", e);
+            e.printStackTrace();
+            return "";
         } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("UTF-8 unavailable?  Not a chance", e);
+            e.printStackTrace();
+            return "";
         }
-    }
-    
-    public static Usuario validateLogin(String username, String password){
-    	Usuario usuario = new UsuarioBusiness().getByUsername(username);
-    	
-    	if(usuario == null){
-    		System.out.println("Usuário não existe no banco de dados.");
-    		return null;
-    	}else{        	
-        	if(!usuario.getSenha().equals(password)){
-        		return null;
-        	}
-    	}
-    	
-    	/*String hashedAndSalted = usuario.getSenha();    	
-    	String salt = hashedAndSalted.split(",")[1];
-    	
-    	if(!hashedAndSalted.equals(makePasswordHash(password, salt))){
-    		System.out.println("A senha informada não corresponde ao usuário.");
-    		return null;
-    	} */   	
-    	return usuario;
     }
 }
