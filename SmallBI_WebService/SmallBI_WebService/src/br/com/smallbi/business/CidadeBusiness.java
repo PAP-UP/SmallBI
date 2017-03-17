@@ -9,7 +9,7 @@ import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Estado;
 import br.com.smallbi.entity.Usuario;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 
@@ -49,7 +49,7 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		cidadeDao.create(t);
@@ -104,7 +104,7 @@ public class CidadeBusiness implements InterfaceBusiness<Cidade>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		cidadeDao.update(t);

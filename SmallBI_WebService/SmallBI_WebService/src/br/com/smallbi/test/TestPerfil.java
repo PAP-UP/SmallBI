@@ -8,7 +8,7 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.PerfilBusiness;
 import br.com.smallbi.entity.Perfil;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPerfil {
@@ -19,7 +19,7 @@ public class TestPerfil {
 	@Test
 	public void test1CreatePerfil(){
 		Perfil perfil = new Perfil();
-		perfil.setDataCadastro(Util.getDate());
+		perfil.setDataCadastro(Data.getDate());
 		perfil.setNomePerfil("Adm");
 		perfil.setStatus(true);
 		perfil.setUsuarioId(1);
@@ -37,7 +37,7 @@ public class TestPerfil {
 			System.out.println("Perfil: " + p.getNomePerfil());
 			System.out.println("Id: " + p.getIdPerfil());
 			System.out.println("Usuário: " + p.getUsuarioId());
-			System.out.println("data de cadastro: " + Util.formatDate(p.getDataCadastro()));
+			System.out.println("data de cadastro: " + Data.formatDate(p.getDataCadastro()));
 			System.out.println("----------");
 		}
 	}

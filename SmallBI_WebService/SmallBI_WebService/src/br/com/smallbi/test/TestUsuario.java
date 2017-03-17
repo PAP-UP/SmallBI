@@ -14,7 +14,7 @@ import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Perfil;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Usuario;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestUsuario {
@@ -31,7 +31,7 @@ public class TestUsuario {
 	@Test
 	public void test1CreateUsuario(){
 		Usuario usuario = new Usuario();
-		usuario.setDataCadastro(Util.getDate());
+		usuario.setDataCadastro(Data.getDate());
 		
 		List<Cliente> clientes = new ClienteBusiness().list();
 		Cliente cliente = clientes.get(0);
@@ -67,7 +67,7 @@ public class TestUsuario {
 			System.out.println("Usuário Saiku: " + u.getUsuarioSaiku());
 			System.out.println("Id: " + u.getIdUsuario());
 			System.out.println("Id usuário que fez o cadastro: " + u.getUsuarioId());
-			System.out.println("Data de cadastro: " + Util.formatDate(u.getDataCadastro()));
+			System.out.println("Data de cadastro: " + Data.formatDate(u.getDataCadastro()));
 			System.out.println("Empresa: " + u.getCliente().getNomeFantasia());
 			System.out.println("Perfil: " + u.getPerfil().getNomePerfil());
 			System.out.println("Nome: " + u.getPessoa().getNome());

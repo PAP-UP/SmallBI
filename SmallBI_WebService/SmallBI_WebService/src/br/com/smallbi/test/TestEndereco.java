@@ -12,7 +12,7 @@ import br.com.smallbi.business.TipoBusiness;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Tipo;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestEndereco {
@@ -29,7 +29,7 @@ public class TestEndereco {
 		Cidade cidade = cidades.get(0);
 		endereco.setCidade(cidade);
 		
-		endereco.setDataCadastro(Util.getDate());
+		endereco.setDataCadastro(Data.getDate());
 		endereco.setEndereco("Rua do Zacarias");
 		endereco.setNumero(1200);
 		endereco.setStatus(true);
@@ -62,7 +62,7 @@ public class TestEndereco {
 			System.out.println("Endereço: " + e.getEndereco());
 			System.out.println("Número: " + e.getNumero());
 			System.out.println("Cidade: " + e.getCidade().getNomeCidade());
-			System.out.println("Data de cadastro: " + Util.formatDate(e.getDataCadastro()));
+			System.out.println("Data de cadastro: " + Data.formatDate(e.getDataCadastro()));
 			System.out.println("Tipo de endereço: " + e.getTipo().getTipo());
 			System.out.println("Usuário: " + e.getUsuarioId());
 			System.out.println("----------");

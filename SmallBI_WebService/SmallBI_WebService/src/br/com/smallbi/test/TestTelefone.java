@@ -14,7 +14,7 @@ import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Tipo;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestTelefone {
@@ -25,7 +25,7 @@ public class TestTelefone {
 	@Test
 	public void test1CreateTelefone(){
 		Telefone telefone = new Telefone();
-		telefone.setDataCadastro(Util.getDate());
+		telefone.setDataCadastro(Data.getDate());
 		
 		List<Cliente> clientes = new ClienteBusiness().list();
 		Cliente cliente = clientes.get(0);
@@ -57,7 +57,7 @@ public class TestTelefone {
 			System.out.println("Telefone: " + t.getTelefone());
 			System.out.println("Id: " + t.getIdTelefone());
 			System.out.println("Usuário: " + t.getUsuarioId());
-			System.out.println("Data de cadastro: " + Util.formatDate(t.getDataCadastro()));
+			System.out.println("Data de cadastro: " + Data.formatDate(t.getDataCadastro()));
 			//System.out.println("Empresa: " + t.getEmpresa().getNomeFantasia());
 			//System.out.println("Pessoa: " + t.getPessoa().getNome());
 			System.out.println("Tipo: " + t.getTipo().getTipo());

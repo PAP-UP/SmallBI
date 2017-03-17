@@ -7,7 +7,7 @@ import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Perfil;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 public class PerfilBusiness implements InterfaceBusiness<Perfil>{
 
@@ -39,7 +39,7 @@ public class PerfilBusiness implements InterfaceBusiness<Perfil>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		perfilDao.create(t);
@@ -90,7 +90,7 @@ public class PerfilBusiness implements InterfaceBusiness<Perfil>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		perfilDao.update(t);

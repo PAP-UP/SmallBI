@@ -12,7 +12,7 @@ import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.FormaPagamento;
 import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 
@@ -100,7 +100,7 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		
 		t.setUsuarioId(1);
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		//O campo Tamanho Total está definido como NOT NULL;
 		t.setTamanhoTotal(0);
@@ -220,7 +220,7 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		}
 		
 		t.setTamanhoTotal(0);
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		Integer tamBd = ConexaoDao.getTamanhoBancoCliente(t.getIdCliente());

@@ -9,7 +9,7 @@ import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Tipo;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 
@@ -70,7 +70,7 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		enderecoDao.create(t);
@@ -163,7 +163,7 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		enderecoDao.update(t);

@@ -6,11 +6,11 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.smallbi.business.CuboBusiness;
 import br.com.smallbi.business.ClienteBusiness;
-import br.com.smallbi.entity.Cubo;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.business.CuboBusiness;
 import br.com.smallbi.entity.Cliente;
+import br.com.smallbi.entity.Cubo;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCubo {
@@ -21,7 +21,7 @@ public class TestCubo {
 	@Test
 	public void test1CreateCubo(){
 		Cubo cubo = new Cubo();
-		cubo.setDataCadastro(Util.getDate());
+		cubo.setDataCadastro(Data.getDate());
 		
 		List<Cliente> clientes = new ClienteBusiness().list();
 		Cliente cliente = clientes.get(0);
@@ -50,7 +50,7 @@ public class TestCubo {
 			System.out.println("Id: " + c.getIdCubo());
 			System.out.println("Tamanho: " + c.getTamanho());
 			System.out.println("Usuário: " + c.getUsuarioId());
-			System.out.println("Data de cadastro: " + Util.formatDate(c.getDataCadastro()));
+			System.out.println("Data de cadastro: " + Data.formatDate(c.getDataCadastro()));
 			System.out.println("Empresa: " + c.getCliente().getNomeFantasia());
 			System.out.println("----------");
 		}

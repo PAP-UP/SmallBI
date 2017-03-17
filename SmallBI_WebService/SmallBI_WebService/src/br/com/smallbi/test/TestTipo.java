@@ -8,7 +8,7 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.TipoBusiness;
 import br.com.smallbi.entity.Tipo;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestTipo {
@@ -19,7 +19,7 @@ public class TestTipo {
 	@Test
 	public void test1CreateTipo(){
 		Tipo tipo = new Tipo();
-		tipo.setDataCadastro(Util.getDate());
+		tipo.setDataCadastro(Data.getDate());
 		tipo.setStatus(true);
 		tipo.setTipo("Residencial");
 		tipo.setUsuarioId(1);
@@ -35,7 +35,7 @@ public class TestTipo {
 		for(Tipo t : tipos){
 			System.out.println("----------");
 			System.out.println("Tipo: " + t.getTipo());
-			System.out.println("Data de Cadastro: " + Util.formatDate(t.getDataCadastro()));
+			System.out.println("Data de Cadastro: " + Data.formatDate(t.getDataCadastro()));
 			System.out.println("Usuário: " + t.getUsuarioId());
 			System.out.println("id gerado:" + idTestTipo);
 			System.out.println("----------");

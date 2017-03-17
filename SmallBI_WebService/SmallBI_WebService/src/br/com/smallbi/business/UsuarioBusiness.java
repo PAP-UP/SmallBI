@@ -15,7 +15,8 @@ import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Usuario;
 import br.com.smallbi.entity.UsuarioLogado;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
+import br.com.smallbi.util.HashSenha;
 
 public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 
@@ -42,6 +43,9 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		if(t.getLogin().equals(null)|| t.getLogin().equals("")){
 			return "A variável 'login' deve ser informada!";
 		}else{
+			
+			
+			
 			List<Usuario> usuarios = list();
 			for(Usuario u : usuarios){
 				if(u.getLogin().equals(t.getLogin())){
@@ -87,6 +91,7 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
+		//MUDAR PARA SETAR usuarioSaiku COM DADOS DO LOGIN
 		if(t.getUsuarioSaiku().equals(null) || t.getUsuarioSaiku().equals("")){
 			return "A variável 'usuarioSaiku' deve ser informada!";
 		}	
@@ -100,12 +105,12 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		}*/
 		
 		//Call here encryption method
-		String hashSenha = Util.makePasswordHash(t.getSenha());
+		String hashSenha = HashSenha.makePasswordHash(t.getSenha());
 		if(hashSenha != null && !hashSenha.equals(""))
 			t.setSenha(hashSenha);
 		System.out.println(t.getSenha());
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		usuarioDao.create(t);
@@ -188,11 +193,11 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			return "A variável 'usuarioSaiku' deve ser informada!";
 		}	
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		//Call here encryption method
-		String hashSenha = Util.makePasswordHash(t.getSenha());
+		String hashSenha = HashSenha.makePasswordHash(t.getSenha());
 		if(hashSenha != null && !hashSenha.equals(""))
 			t.setSenha(hashSenha);
 		System.out.println(t.getSenha());
@@ -254,7 +259,7 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		Usuario u = getByUsername(login);
 		if(u != null){
 			
-			String hashSenha = Util.makePasswordHash(senha);
+			String hashSenha = HashSenha.makePasswordHash(senha);
 			if(u.getSenha().equals(hashSenha)){
 				return u;
 			}
@@ -270,13 +275,13 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		
 		Usuario u = getByUsername(login);
 		if(u != null){
-			String hashSenha = Util.makePasswordHash(senha);
+			String hashSenha = HashSenha.makePasswordHash(senha);
 			if(u.getSenha().equals(hashSenha)){
 				
 				UsuarioLogado ul = new UsuarioLogado();
 				ul.setIdUsuarioLogado(u.getIdUsuario());
 				ul.setClienteId(u.getPessoa().getCliente().getIdCliente());
-				ul.setData(Util.getDate());
+				ul.setData(Data.getDate());
 				ul.setToken(criarToken());
 				
 				new UsuarioLogadoDao().create(ul);
@@ -320,7 +325,7 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		if(ul == null)
 			return "Sessão já encerrada!";
 		
-		ul.setData(Util.getDate());
+		ul.setData(Data.getDate());
 		return new UsuarioLogadoBusiness().update(ul);
 	}
 }

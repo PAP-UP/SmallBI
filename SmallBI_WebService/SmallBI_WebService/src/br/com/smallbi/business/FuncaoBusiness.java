@@ -7,7 +7,7 @@ import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Funcao;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 
@@ -39,7 +39,7 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		funcaoDao.create(t);
@@ -90,7 +90,7 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		funcaoDao.update(t);

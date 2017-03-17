@@ -7,7 +7,7 @@ import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.FormaPagamento;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 public class FormaPagamentoBusiness implements InterfaceBusiness<FormaPagamento>{
 
@@ -39,7 +39,7 @@ public class FormaPagamentoBusiness implements InterfaceBusiness<FormaPagamento>
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		formaPagamentoDao.create(t);
@@ -90,7 +90,7 @@ public class FormaPagamentoBusiness implements InterfaceBusiness<FormaPagamento>
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		formaPagamentoDao.update(t);

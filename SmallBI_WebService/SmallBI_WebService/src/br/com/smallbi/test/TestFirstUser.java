@@ -6,7 +6,7 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.UsuarioBusiness;
 import br.com.smallbi.entity.Usuario;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestFirstUser {
@@ -14,7 +14,7 @@ public class TestFirstUser {
 	@Test
 	public void test1CreateFirstUser(){
 		Usuario usuario = new Usuario();
-		usuario.setDataCadastro(Util.getDate());
+		usuario.setDataCadastro(Data.getDate());
 		usuario.setCliente(null);
 		usuario.setLogin("deynesonborba");
 		usuario.setPerfil(null);

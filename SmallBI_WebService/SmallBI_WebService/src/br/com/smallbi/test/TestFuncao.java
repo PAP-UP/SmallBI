@@ -8,7 +8,7 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.FuncaoBusiness;
 import br.com.smallbi.entity.Funcao;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestFuncao {
@@ -19,7 +19,7 @@ public class TestFuncao {
 	@Test
 	public void test1CreateFuncao(){
 		Funcao funcao = new Funcao();
-		funcao.setDataCadastro(Util.getDate());
+		funcao.setDataCadastro(Data.getDate());
 		funcao.setNomeFuncao("Data Scientist");
 		funcao.setStatus(true);
 		funcao.setUsuarioId(1);
@@ -37,7 +37,7 @@ public class TestFuncao {
 			System.out.println("Função: " + f.getNomeFuncao());
 			System.out.println("Id: " + f.getIdFuncao());
 			System.out.println("Usuário: " + f.getUsuarioId());
-			System.out.println("Data de cadastro: " + Util.formatDate(f.getDataCadastro()));
+			System.out.println("Data de cadastro: " + Data.formatDate(f.getDataCadastro()));
 			System.out.println("----------");
 		}
 	}

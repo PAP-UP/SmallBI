@@ -29,7 +29,7 @@ public class Servico implements javax.servlet.ServletContextListener{
             @Override
             public void run() {
             	
-            	Date dataAtual = Util.getDate();
+            	Date dataAtual = Data.getDate();
             	System.out.println("-------------------------------------------------------");
             	System.out.println("Checando as: " + dataAtual);
             	

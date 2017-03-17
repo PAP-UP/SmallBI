@@ -10,7 +10,7 @@ import br.com.smallbi.business.CidadeBusiness;
 import br.com.smallbi.business.EstadoBusiness;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Estado;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCidade {
@@ -21,7 +21,7 @@ public class TestCidade {
 	@Test
 	public void test1CreateCidade(){
 		Cidade cidade = new Cidade();
-		cidade.setDataCadastro(Util.getDate());
+		cidade.setDataCadastro(Data.getDate());
 		
 		List<Estado> estados = new EstadoBusiness().list();
 		Estado estado = estados.get(0);
@@ -44,7 +44,7 @@ public class TestCidade {
 			System.out.println("----------");
 			System.out.println("Nome da Cidade: " + c.getNomeCidade());
 //			System.out.println("Sigla da Cidade: " + c.getSiglaCidade());
-			System.out.println("Data de Cadastro: " + Util.formatDate(c.getDataCadastro()));
+			System.out.println("Data de Cadastro: " + Data.formatDate(c.getDataCadastro()));
 			System.out.println("Estado: " + c.getEstado().getNomeEstado());
 			System.out.println("Id: " + c.getIdCidade());
 			System.out.println("Usuário: " + c.getUsuarioId());

@@ -8,7 +8,7 @@ import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.FormaPagamentoBusiness;
 import br.com.smallbi.entity.FormaPagamento;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestFormaPagamento {
@@ -19,7 +19,7 @@ public class TestFormaPagamento {
 	@Test
 	public void test1CreateFormaPagamento(){
 		FormaPagamento formaPagamento = new FormaPagamento();
-		formaPagamento.setDataCadastro(Util.getDate());
+		formaPagamento.setDataCadastro(Data.getDate());
 		formaPagamento.setFormaPagamento("Credit");
 		formaPagamento.setStatus(true);
 		formaPagamento.setUsuarioId(1);
@@ -36,7 +36,7 @@ public class TestFormaPagamento {
 			System.out.println("Forma de pag: " + f.getFormaPagamento());
 			System.out.println("Id: " + f.getIdFormaPagamento());
 			System.out.println("Usuário: " + f.getUsuarioId());
-			System.out.println("Data de cadastro: " + Util.formatDate(f.getDataCadastro()));
+			System.out.println("Data de cadastro: " + Data.formatDate(f.getDataCadastro()));
 			System.out.println("----------");
 		}
 	}

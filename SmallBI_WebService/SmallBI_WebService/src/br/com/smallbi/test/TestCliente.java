@@ -14,7 +14,7 @@ import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.FormaPagamento;
 import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCliente {
@@ -26,7 +26,7 @@ public class TestCliente {
 	public void test1CreateEmpresa(){
 		Cliente e = new Cliente();
 		e.setCnpj("12.123.123/1234-12");
-		e.setDataCadastro(Util.getDate());
+		e.setDataCadastro(Data.getDate());
 		
 		List<FormaPagamento> formas = new FormaPagamentoBusiness().list();
 		FormaPagamento formaPagamento = formas.get(0);
@@ -65,7 +65,7 @@ public class TestCliente {
 			System.out.println("Id: " + e.getIdCliente());
 			System.out.println("Tamanho total: " + e.getTamanhoTotal());
 			System.out.println("Usuário: " + e.getUsuarioId());
-			System.out.println("Data de cadastro: " + Util.formatDate(e.getDataCadastro()));
+			System.out.println("Data de cadastro: " + Data.formatDate(e.getDataCadastro()));
 //			System.out.println("Endereço: " + e.getEndereco().getEndereco());
 			System.out.println("Forma de pagamento: " + e.getFormaPagamento().getFormaPagamento());
 			System.out.println("Plano: " + e.getPlano().getNomePlano());

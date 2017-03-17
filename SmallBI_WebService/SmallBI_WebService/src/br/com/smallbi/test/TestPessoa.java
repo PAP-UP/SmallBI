@@ -12,7 +12,7 @@ import br.com.smallbi.business.PessoaBusiness;
 import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Funcao;
 import br.com.smallbi.entity.Pessoa;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPessoa {
@@ -24,7 +24,7 @@ public class TestPessoa {
 	public void test1CreatePessoa(){
 		Pessoa pessoa = new Pessoa();
 		pessoa.setCpf("123.123.123-12");
-		pessoa.setDataCadastro(Util.getDate());
+		pessoa.setDataCadastro(Data.getDate());
 		
 		/*List<Endereco> enderecos = new EnderecoBusiness().list();
 		Endereco endereco = enderecos.get(0);
@@ -58,7 +58,7 @@ public class TestPessoa {
 			System.out.println("RG: " + p.getRg());
 			System.out.println("Id: "+ p.getIdPessoa());
 			System.out.println("Usuário: " + p.getUsuarioId());
-			System.out.println("Data de cadastro: " + Util.formatDate(p.getDataCadastro()));
+			System.out.println("Data de cadastro: " + Data.formatDate(p.getDataCadastro()));
 			/*System.out.println("Endereço: " + p.getEndereco().getEndereco());*/
 			System.out.println("Função: " + p.getFuncao().getNomeFuncao());
 			System.out.println("----------");

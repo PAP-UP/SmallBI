@@ -10,7 +10,7 @@ import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Tipo;
-import br.com.smallbi.util.Util;
+import br.com.smallbi.util.Data;
 
 public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 
@@ -81,7 +81,7 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		telefoneDao.create(t);
@@ -166,7 +166,7 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 			return "A variável 'usuarioId' deve ser informada!";
 		}
 		
-		t.setDataCadastro(Util.getDate());
+		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		telefoneDao.update(t);
