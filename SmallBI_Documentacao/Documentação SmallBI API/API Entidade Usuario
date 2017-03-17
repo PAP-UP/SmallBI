@@ -169,3 +169,11 @@ Parametros: "application/json"
 {
     "token":"945ce905-f9b8-4012-92d4-df00262f5f56"
 }
+
+Logout:
+Metodo: POST
+Path: http://localhost:8080/SmallBI_WebService/rest/usuario/logout
+Parametros: "application/json"
+{
+    "token":"945ce905-f9b8-4012-92d4-df00262f5f56"
+}

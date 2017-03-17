@@ -2,7 +2,7 @@ package br.com.smallbi.business;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.regex.Pattern;
 
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.UsuarioLogadoDao;
@@ -44,7 +44,10 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			return "A variável 'login' deve ser informada!";
 		}else{
 			
-			
+			Pattern pattern = Pattern.compile("^[A-Za-z, ]++$");
+			if(!pattern.matcher(t.getLogin()).matches()){
+				return "Erro";
+			}
 			
 			List<Usuario> usuarios = list();
 			for(Usuario u : usuarios){
@@ -100,6 +103,7 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 				t.getPessoa().getCliente().getIdCliente());
 		
 		if(code != 200){
+			//chamar delete fisico
 			new PessoaBusiness().delete(t.getPessoa().getIdPessoa());
 			return "Falha ao adicionar usuário ao sistema Saiku!" + " Código da API do Saiku: " + code;
 		}*/
@@ -282,7 +286,7 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 				ul.setIdUsuarioLogado(u.getIdUsuario());
 				ul.setClienteId(u.getPessoa().getCliente().getIdCliente());
 				ul.setData(Data.getDate());
-				ul.setToken(criarToken());
+				ul.setToken(new UsuarioLogadoBusiness().criarToken());
 				
 				new UsuarioLogadoDao().create(ul);
 				
@@ -295,37 +299,5 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		return null;
 	}
 	
-	public String criarToken(){
-		String uuid = UUID.randomUUID().toString();
-		System.out.println("uuid = " + uuid);
-		return uuid;
-	}
-	
-	public UsuarioLogado getUsuarioLogado(String token){
-		List<UsuarioLogado> logados = new UsuarioLogadoDao().list();
-		for(UsuarioLogado ul : logados){
-			if(ul.getToken().equals(token)){
-				return ul;
-			}
-		}
-		return null;
-	}
-	
-	private UsuarioLogado getUsuarioLogadoByToken(String token){
-		List<UsuarioLogado> uls = new UsuarioLogadoBusiness().list();
-		for(UsuarioLogado ul : uls){
-			if(ul.getToken().equals(token))
-				return ul;
-		}
-		return null;
-	}
-	
-	public String renovarToken(String token){
-		UsuarioLogado ul = getUsuarioLogadoByToken(token);
-		if(ul == null)
-			return "Sessão já encerrada!";
-		
-		ul.setData(Data.getDate());
-		return new UsuarioLogadoBusiness().update(ul);
-	}
+
 }

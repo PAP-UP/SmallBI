@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Pessoa"/>
-<fullyQualifiedTypeName name="br.com.smallbi.dal.factory.FactoryDao"/>
-<fullyQualifiedTypeName name="br.com.smallbi.dal.PessoaDaoUtil"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.ClienteBusiness"/>
-<fullyQualifiedTypeName name="javax.ws.rs.POST"/>
-<fullyQualifiedTypeName name="javax.ws.rs.Path"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="java.sql.Statement"/>
-<fullyQualifiedTypeName name="br.com.smallbi.dal.ConexaoDao"/>
-<fullyQualifiedTypeName name="com.google.gson.JsonObject"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONArray"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.lang.SecurityException"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
@@ -43,21 +32,32 @@
 <fullyQualifiedTypeName name="javax.servlet.ServletContextListener"/>
 <fullyQualifiedTypeName name="javax.persistence.Entity"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.interfaceDal.InterfaceDao"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.UsuarioDao"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
 <fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
-<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
-<fullyQualifiedTypeName name="br.com.smallbi.dal.singleton.SingletonConexao"/>
 <fullyQualifiedTypeName name="java.math.BigInteger"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Usuario"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioBusiness"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
-<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
+<fullyQualifiedTypeName name="java.util.Timer"/>
+<fullyQualifiedTypeName name="java.util.TimerTask"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.interfaceBusiness.InterfaceBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.UsuarioLogadoDao"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+<fullyQualifiedTypeName name="br.com.smallbi.dal.singleton.SingletonConexao"/>
+<fullyQualifiedTypeName name="org.hibernate.mapping.UnionSubclass"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.UsuarioLogado"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioLogadoBusiness"/>
+<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
+<fullyQualifiedTypeName name="br.com.smallbi.util.HashSenha"/>
+<fullyQualifiedTypeName name="br.com.smallbi.util.Data"/>
+<fullyQualifiedTypeName name="java.util.regex.Pattern"/>
 </qualifiedTypeNameHistroy>

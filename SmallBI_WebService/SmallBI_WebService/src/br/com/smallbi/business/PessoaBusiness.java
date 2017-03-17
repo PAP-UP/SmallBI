@@ -197,6 +197,10 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 		pessoaDao.delete(pessoa);
 		return "Pessoa deletada com sucesso!";
 	}
+	
+	public String deleteFisico(Integer id){
+		return "";
+	}
 
 	@Override
 	public Pessoa getObjById(Integer id){

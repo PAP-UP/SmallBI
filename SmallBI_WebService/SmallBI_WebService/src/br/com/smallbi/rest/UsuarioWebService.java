@@ -24,6 +24,7 @@ import br.com.smallbi.business.EnderecoBusiness;
 import br.com.smallbi.business.PessoaBusiness;
 import br.com.smallbi.business.TelefoneBusiness;
 import br.com.smallbi.business.UsuarioBusiness;
+import br.com.smallbi.business.UsuarioLogadoBusiness;
 import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Funcao;
@@ -126,7 +127,7 @@ public class UsuarioWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String checarToken(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
-		UsuarioLogado ul = usuarioBusiness.getUsuarioLogado(jsonObject.getString("token"));
+		UsuarioLogado ul = new UsuarioLogadoBusiness().getUsuarioLogadoByToken(jsonObject.getString("token"));
 		if(ul != null){
 			JSONObject jsonResponse = new JSONObject();
 			jsonResponse.put("idUsuario", ul.getIdUsuarioLogado());
@@ -143,9 +144,19 @@ public class UsuarioWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String renovarToken(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
-		return gson.toJson(usuarioBusiness.renovarToken(jsonObject.getString("token")));
+		return gson.toJson(new UsuarioLogadoBusiness().renovarToken(jsonObject.getString("token")));
 	}
 		
+	@POST
+	@Path("/logout")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String logout(String json) throws JSONException{
+		JSONObject jsonObject = new JSONObject(json);
+		String response = new UsuarioLogadoBusiness().encerrarSessao(jsonObject.getString("token"));
+		return gson.toJson(response);
+	}
+	
 	public Hashtable<String, Object> getHashById(Usuario u){
 		Hashtable<String, Object> hash = new Hashtable<>();
 		hash.put("idPessoa", u.getPessoa().getIdPessoa());
