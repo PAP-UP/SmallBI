@@ -1,44 +1,67 @@
 package br.com.smallbi.util;
 
-import javax.servlet.ServletContextEvent;
+import java.util.Date;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import br.com.smallbi.business.UsuarioBusiness;
+import br.com.smallbi.business.UsuarioLogadoBusiness;
+import br.com.smallbi.entity.UsuarioLogado;
+
+import javax.servlet.ServletContextEvent;
 
 public class Servico implements javax.servlet.ServletContextListener{
 
+	private UsuarioLogadoBusiness business = new UsuarioLogadoBusiness();
+	
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("Inicializando Tomcat!!!");
-		//UsuarioBusiness business = new UsuarioBusiness();
-		//business.criarToken();
-		//Consultar tokens no banco
 		
-		/*Timer timer = new Timer();
-	        TimerTask timerTask = new TimerTask() {
-	            @Override
-	            public void run() {
-	                
-	                Calendar calendar = Calendar.getInstance();
-	                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-	                String data = sdf.format(calendar.getTime());
-	                
-	                System.out.println("Hello World!" + data);
-	                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	            }
-	        };        
-	                                    //1*1000 == cada segundo
-	                                    //10*1000 == cada 10 seg
-	                                    //1 * 60 * 1000 cada min
-	                                    //2 * 60 * 1000 cada 2 min
-	        timer.schedule(timerTask, 01, 30 * 60 * 1000); 
-	    }*/
-	}
+		System.out.println("Inicializando Tomcat!!!");
+		
+		Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+            	
+            	Date dataAtual = Util.getDate();
+            	System.out.println("-------------------------------------------------------");
+            	System.out.println("Checando as: " + dataAtual);
+            	
+                List<UsuarioLogado> uls = business.list();
+                for(UsuarioLogado ul : uls){
+                	long differenceInMillis = dataAtual.getTime() - ul.getData().getTime();
+                	long diffMinutes = differenceInMillis / (60 * 1000) % 60;
+                	System.out.println("Diferença: " + diffMinutes);
+                	if(diffMinutes >= 1){
+                		System.out.println("Passou mais de um minuto: " + ul.getData() + 
+                				" Usuário: " + ul.getIdUsuarioLogado());
+                		business.delete(ul.getId());
+                		System.out.println("Token deletado...");
+                	}else{
+                		System.out.println("Não passou um minuto: " + ul.getData() + " Usuário: " + ul.getIdUsuarioLogado());
+                	}
+                }
+                System.out.println("-------------------------------------------------------");
+            }
+        };        
+            
+        //A cada segundo
+        //timer.schedule(timerTask, 01, 1 * 1000);
 
+        //A cada 10 seg
+        timer.schedule(timerTask, 01, 10 * 1000);
+        
+        //A cada 1 min
+        //timer.schedule(timerTask, 01, 1 * 60 * 1000);
+        
+        //A cada 30 min
+        //timer.schedule(timerTask, 01, 30 * 60 * 1000); 
+    }
 }
+

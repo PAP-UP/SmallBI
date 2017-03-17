@@ -24,30 +24,32 @@ public class UsuarioLogadoDao implements InterfaceDao<UsuarioLogado>{
 	@Override
 	public List<UsuarioLogado> list() {
 		EntityManager em = SingletonConexao.getInstance();
-		em.getTransaction().begin();
 		Query q = em.createQuery("SELECT ul FROM UsuarioLogado ul");
 		return q.getResultList();
 	}
 
 	@Override
 	public void update(UsuarioLogado t) {
-		// TODO Auto-generated method stub
-		
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.merge(t);
+		em.getTransaction().commit();
+		em.clear();
 	}
 
 	@Override
 	public void delete(UsuarioLogado t) {
 		EntityManager em = SingletonConexao.getInstance();
 		em.getTransaction().begin();
-		em.remove(t);
+		em.remove(em.contains(t) ? t : em.merge(t));
 		em.getTransaction().commit();
 		em.close();
 	}
 
 	@Override
 	public UsuarioLogado getObjById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = SingletonConexao.getInstance();
+		return em.find(UsuarioLogado.class, id);
 	}
 
 }

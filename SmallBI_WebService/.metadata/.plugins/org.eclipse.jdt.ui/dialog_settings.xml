@@ -34,9 +34,9 @@
 		<item value="false" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_USE_PERSISTED_LOCATION"/>
 	</section>
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
-		<item value="639" key="DIALOG_WIDTH"/>
-		<item value="1|Cantarell|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="710" key="DIALOG_HEIGHT"/>
+		<item value="545" key="DIALOG_WIDTH"/>
+		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="741" key="DIALOG_HEIGHT"/>
 		<item value="70" key="DIALOG_X_ORIGIN"/>
 		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>
@@ -50,6 +50,13 @@
 	<section name="RefactoringWizard.preview">
 		<item value="1225" key="width"/>
 		<item value="513" key="height"/>
+	</section>
+	<section name="DialogBounds_AddDelegateMethodsDialog">
+		<item value="563" key="DIALOG_WIDTH"/>
+		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="593" key="DIALOG_HEIGHT"/>
+		<item value="403" key="DIALOG_X_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="SourceActionDialog.methods">
 		<item value="false" key="SynchronizedModifier"/>

@@ -30,11 +30,11 @@ public class UsuarioLogado {
 		this.id = id;
 	}
 	
-	public Integer getIdUsuarioAtivo() {
+	public Integer getIdUsuarioLogado() {
 		return idUsuarioLogado;
 	}
 
-	public void setIdUsuarioAtivo(Integer idUsuarioAtivo) {
+	public void setIdUsuarioLogado(Integer idUsuarioAtivo) {
 		this.idUsuarioLogado = idUsuarioAtivo;
 	}
 

@@ -7,11 +7,9 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.smallbi.business.CidadeBusiness;
-import br.com.smallbi.business.ClienteBusiness;
 import br.com.smallbi.business.EnderecoBusiness;
 import br.com.smallbi.business.TipoBusiness;
 import br.com.smallbi.entity.Cidade;
-import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Endereco;
 import br.com.smallbi.entity.Tipo;
 import br.com.smallbi.util.Util;

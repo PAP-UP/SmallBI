@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="br.com.smallbi.rest.EnderecoWebService"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Estado"/>
-<fullyQualifiedTypeName name="br.com.smallbi.dal.EstadoDao"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Tipo"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Cidade"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.CidadeBusiness"/>
-<fullyQualifiedTypeName name="javax.ws.rs.DELETE"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="javax.swing.text.html.HTMLDocument.HTMLReader.ParagraphAction"/>
-<fullyQualifiedTypeName name="javax.ws.rs.PathParam"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.EnderecoBusiness"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Endereco"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.TelefoneBusiness"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.PessoaBusiness"/>
-<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
-<fullyQualifiedTypeName name="br.com.smallbi.dal.singleton.SingletonConexao"/>
-<fullyQualifiedTypeName name="br.com.smallbi.dal.interfaceDal.InterfaceDao"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Pessoa"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.factory.FactoryDao"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.PessoaDaoUtil"/>
@@ -26,7 +9,6 @@
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="java.sql.Statement"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.ConexaoDao"/>
-<fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
 <fullyQualifiedTypeName name="com.google.gson.JsonObject"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONArray"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
@@ -36,14 +18,9 @@
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Usuario"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
-<fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
-<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
 <fullyQualifiedTypeName name="br.com.smallbi.util.Util"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
 <fullyQualifiedTypeName name="javax.security.auth.login.CredentialNotFoundException"/>
 <fullyQualifiedTypeName name="org.apache.http.auth.Credentials"/>
 <fullyQualifiedTypeName name="org.apache.http.auth.UsernamePasswordCredentials"/>
@@ -60,4 +37,27 @@
 <fullyQualifiedTypeName name="java.util.UUID"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="javax.jws.WebService"/>
+<fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletContextListener"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="br.com.smallbi.dal.interfaceDal.InterfaceDao"/>
+<fullyQualifiedTypeName name="br.com.smallbi.dal.UsuarioDao"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+<fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+<fullyQualifiedTypeName name="br.com.smallbi.dal.singleton.SingletonConexao"/>
+<fullyQualifiedTypeName name="java.math.BigInteger"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Usuario"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioBusiness"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
+<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
+<fullyQualifiedTypeName name="br.com.smallbi.dal.UsuarioLogadoDao"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.UsuarioLogado"/>
 </qualifiedTypeNameHistroy>

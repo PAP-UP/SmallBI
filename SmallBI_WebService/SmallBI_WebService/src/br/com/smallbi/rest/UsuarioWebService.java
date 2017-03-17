@@ -4,10 +4,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.UUID;
 
-import javax.jws.WebService;
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -34,6 +31,7 @@ import br.com.smallbi.entity.Perfil;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Usuario;
+import br.com.smallbi.entity.UsuarioLogado;
 
 @Path("/usuario")
 public class UsuarioWebService {
@@ -89,11 +87,6 @@ public class UsuarioWebService {
 	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delUsuario(@PathParam("idUsuario") String idUsuario) throws JSONException{
-		//JSONObject jsonObject = new JSONObject(json);
-		//Usuario usuario = new Usuario();
-		//usuario.setIdUsuario(jsonObject.getInt("idUsuario"));
-		
-		//return gson.toJson(usuarioBusiness.delete(usuario.getIdUsuario()));
 		return gson.toJson(usuarioBusiness.delete(Integer.parseInt(idUsuario)));
 	}
 	
@@ -114,20 +107,43 @@ public class UsuarioWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String login(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
-		Usuario u = usuarioBusiness.login(jsonObject.getString("login"), jsonObject.getString("senha"));
+		UsuarioLogado ul = usuarioBusiness.login(jsonObject.getString("login"), jsonObject.getString("senha"));
 		
-		//--------------------------------------------
-		//Mudar para retornar um objeto usuario logado
-		//--------------------------------------------
-		if(u != null){
+		if(ul != null){
 			JSONObject jsonResponse = new JSONObject();
-			jsonResponse.put("idCliente", u.getPessoa().getCliente().getIdCliente());
-			jsonResponse.put("idUsuario", u.getIdUsuario()); 
-			//jsonResponse.put("token", value);
+			jsonResponse.put("idUsuario", ul.getIdUsuarioLogado());
+			jsonResponse.put("idCliente", ul.getClienteId());
+			jsonResponse.put("token", ul.getToken());
 			return jsonResponse.toString();
 		}else{
-			return "Usuário ou senha inválidos!";
+			return gson.toJson("Usuário ou senha inválidos!");
 		}
+	}
+	
+	@POST
+	@Path("/checarToken")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String checarToken(String json) throws JSONException{
+		JSONObject jsonObject = new JSONObject(json);
+		UsuarioLogado ul = usuarioBusiness.getUsuarioLogado(jsonObject.getString("token"));
+		if(ul != null){
+			JSONObject jsonResponse = new JSONObject();
+			jsonResponse.put("idUsuario", ul.getIdUsuarioLogado());
+			jsonResponse.put("idCliente", ul.getClienteId());
+			jsonResponse.put("token", ul.getToken());
+			return jsonResponse.toString();
+		}
+		return gson.toJson("Sessão encerrada!");
+	}
+	
+	@POST
+	@Path("/renovarToken")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String renovarToken(String json) throws JSONException{
+		JSONObject jsonObject = new JSONObject(json);
+		return gson.toJson(usuarioBusiness.renovarToken(jsonObject.getString("token")));
 	}
 		
 	public Hashtable<String, Object> getHashById(Usuario u){

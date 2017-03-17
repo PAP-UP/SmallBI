@@ -74,7 +74,7 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 
 	public String createFromAssistent(JSONObject jsonObject) throws JSONException{
 				
-		Usuario usuario = Util.validateLogin(jsonObject.getString("login"), jsonObject.getString("senha"));
+		Usuario usuario = new UsuarioBusiness().getUsuario(jsonObject.getString("login"), jsonObject.getString("senha"));
 		
 		if(usuario != null){
 			

@@ -248,23 +248,43 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		usuarioDao.create(usuario);
 	}
 	
-	public Usuario login(String login, String senha){
+	//Método utilizado na classe CuboBusiness para validação.
+	public Usuario getUsuario(String login, String senha){
+		
 		Usuario u = getByUsername(login);
-		String hashSenha = Util.makePasswordHash(senha);
 		if(u != null){
+			
+			String hashSenha = Util.makePasswordHash(senha);
+			if(u.getSenha().equals(hashSenha)){
+				return u;
+			}
+			
+			System.out.println("Senha inválida!");
+			return null;
+		}
+		System.out.println("Usuário não encontrado!");
+		return null;
+	}
+	
+	public UsuarioLogado login(String login, String senha){
+		
+		Usuario u = getByUsername(login);
+		if(u != null){
+			String hashSenha = Util.makePasswordHash(senha);
 			if(u.getSenha().equals(hashSenha)){
 				
 				UsuarioLogado ul = new UsuarioLogado();
-				ul.setIdUsuarioAtivo(u.getIdUsuario());
+				ul.setIdUsuarioLogado(u.getIdUsuario());
 				ul.setClienteId(u.getPessoa().getCliente().getIdCliente());
 				ul.setData(Util.getDate());
 				ul.setToken(criarToken());
 				
 				new UsuarioLogadoDao().create(ul);
 				
-				return u;
+				return ul;
 			}
 			System.out.println("Senha inválida!");
+			return null;
 		}
 		System.out.println("Usuário não encontrado!");
 		return null;
@@ -274,5 +294,33 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		String uuid = UUID.randomUUID().toString();
 		System.out.println("uuid = " + uuid);
 		return uuid;
+	}
+	
+	public UsuarioLogado getUsuarioLogado(String token){
+		List<UsuarioLogado> logados = new UsuarioLogadoDao().list();
+		for(UsuarioLogado ul : logados){
+			if(ul.getToken().equals(token)){
+				return ul;
+			}
+		}
+		return null;
+	}
+	
+	private UsuarioLogado getUsuarioLogadoByToken(String token){
+		List<UsuarioLogado> uls = new UsuarioLogadoBusiness().list();
+		for(UsuarioLogado ul : uls){
+			if(ul.getToken().equals(token))
+				return ul;
+		}
+		return null;
+	}
+	
+	public String renovarToken(String token){
+		UsuarioLogado ul = getUsuarioLogadoByToken(token);
+		if(ul == null)
+			return "Sessão já encerrada!";
+		
+		ul.setData(Util.getDate());
+		return new UsuarioLogadoBusiness().update(ul);
 	}
 }

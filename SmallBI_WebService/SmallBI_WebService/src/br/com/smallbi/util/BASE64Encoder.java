@@ -22,7 +22,7 @@ public class BASE64Encoder extends CharacterEncoder {
         if(var4 == 1) {
             var5 = var2[var3];
             byte var6 = 0;
-            boolean var7 = false;
+            //boolean var7 = false;
             var1.write(pem_array[var5 >>> 2 & 63]);
             var1.write(pem_array[(var5 << 4 & 48) + (var6 >>> 4 & 15)]);
             var1.write(61);

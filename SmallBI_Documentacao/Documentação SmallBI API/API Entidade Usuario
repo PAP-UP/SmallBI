@@ -148,6 +148,24 @@ Exemplo:
 }
 Retorno:
 {
-  "idCliente": 22,
-  "idUsuario": 6
+  "idUsuario": 16,
+  "idCliente": 27,
+  "token": "29950182-7ac5-499b-aa74-cfc4ef386c15"
+}
+
+Checar Token:
+Metodo: POST
+Path: http://localhost:8080/SmallBI_WebService/rest/usuario/checarToken
+Parametros: "application/json"
+Exemplo:
+{
+    "token": "29950182-7ac5-499b-aa74-cfc4ef386c15"
+}
+
+Renovar Token:
+Metodo: POST
+Path: http://localhost:8080/SmallBI_WebService/rest/usuario/renovarToken
+Parametros: "application/json"
+{
+    "token":"945ce905-f9b8-4012-92d4-df00262f5f56"
 }
