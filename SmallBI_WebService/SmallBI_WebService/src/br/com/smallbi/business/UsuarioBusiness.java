@@ -2,6 +2,7 @@ package br.com.smallbi.business;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
@@ -44,9 +45,17 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			return "A variável 'login' deve ser informada!";
 		}else{
 			
-			Pattern pattern = Pattern.compile("^[A-Za-z, ]++$");
-			if(!pattern.matcher(t.getLogin()).matches()){
-				return "Erro";
+			String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+					+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(t.getLogin());
+			boolean match = matcher.matches();
+			
+			if(match == true){
+				System.out.println("corresponde");
+			}else{
+				System.out.println("Não corresponde");
+				return "Email inválido!";
 			}
 			
 			List<Usuario> usuarios = list();
