@@ -26,10 +26,6 @@ public class TestPessoa {
 		pessoa.setCpf("123.123.123-12");
 		pessoa.setDataCadastro(Data.getDate());
 		
-		/*List<Endereco> enderecos = new EnderecoBusiness().list();
-		Endereco endereco = enderecos.get(0);
-		pessoa.setEndereco(endereco);*/
-		
 		List<Funcao> funcoes = new FuncaoBusiness().list();
 		Funcao funcao = funcoes.get(0);
 		pessoa.setFuncao(funcao);
@@ -59,7 +55,6 @@ public class TestPessoa {
 			System.out.println("Id: "+ p.getIdPessoa());
 			System.out.println("Usuário: " + p.getUsuarioId());
 			System.out.println("Data de cadastro: " + Data.formatDate(p.getDataCadastro()));
-			/*System.out.println("Endereço: " + p.getEndereco().getEndereco());*/
 			System.out.println("Função: " + p.getFuncao().getNomeFuncao());
 			System.out.println("----------");
 		}

@@ -27,13 +27,17 @@ public class TestTelefone {
 		Telefone telefone = new Telefone();
 		telefone.setDataCadastro(Data.getDate());
 		
-		List<Cliente> clientes = new ClienteBusiness().list();
-		Cliente cliente = clientes.get(0);
-		telefone.setCliente(cliente);
 		
-		List<Pessoa> pessoas = new PessoaBusiness().list();
+		//---------------------------------------------		
+		//ATRIBUI ESTE TELEFONE A UMA PESSOA OU CLIENTE
+		//---------------------------------------------
+		/*List<Cliente> clientes = new ClienteBusiness().list();
+		Cliente cliente = clientes.get(0);
+		telefone.setCliente(cliente);*/
+		
+		/*List<Pessoa> pessoas = new PessoaBusiness().list();
 		Pessoa pessoa = pessoas.get(0);
-		telefone.setPessoa(pessoa);
+		telefone.setPessoa(pessoa);*/
 		
 //		telefone.setStatus(true);
 		telefone.setTelefone("1234-5678");
@@ -58,8 +62,6 @@ public class TestTelefone {
 			System.out.println("Id: " + t.getIdTelefone());
 			System.out.println("Usuário: " + t.getUsuarioId());
 			System.out.println("Data de cadastro: " + Data.formatDate(t.getDataCadastro()));
-			//System.out.println("Empresa: " + t.getEmpresa().getNomeFantasia());
-			//System.out.println("Pessoa: " + t.getPessoa().getNome());
 			System.out.println("Tipo: " + t.getTipo().getTipo());
 			System.out.println("----------");
 		}

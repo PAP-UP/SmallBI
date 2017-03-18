@@ -22,12 +22,6 @@ public class TestUsuario {
 	UsuarioBusiness usuarioBusiness = new UsuarioBusiness();
 	public static int idTestusuario;
 	
-//	@Test
-//	public void testGetByUsername(){
-//		Usuario usuario = usuarioBusiness.getByUsername("smallbi");
-//		System.out.println("Senha: " + usuario.getSenha());
-//	}
-	
 	@Test
 	public void test1CreateUsuario(){
 		Usuario usuario = new Usuario();
@@ -37,7 +31,7 @@ public class TestUsuario {
 		Cliente cliente = clientes.get(0);
 		usuario.setCliente(cliente);
 		
-		usuario.setLogin("borbagato");
+		usuario.setLogin("deyneson@email.com");
 		
 		List<Perfil> perfis = new PerfilBusiness().list();
 		Perfil perfil = perfis.get(0);
@@ -68,7 +62,7 @@ public class TestUsuario {
 			System.out.println("Id: " + u.getIdUsuario());
 			System.out.println("Id usuário que fez o cadastro: " + u.getUsuarioId());
 			System.out.println("Data de cadastro: " + Data.formatDate(u.getDataCadastro()));
-			System.out.println("Empresa: " + u.getCliente().getNomeFantasia());
+			System.out.println("Cliente: " + u.getPessoa().getCliente().getNomeFantasia());
 			System.out.println("Perfil: " + u.getPerfil().getNomePerfil());
 			System.out.println("Nome: " + u.getPessoa().getNome());
 			System.out.println("----------");
@@ -78,7 +72,7 @@ public class TestUsuario {
 	@Test
 	public void test3UpdateUsuario(){
 		Usuario u = usuarioBusiness.getObjById(idTestusuario);
-		u.setLogin("borba_1993");
+		u.setLogin("borba@email.com");
 		u.setSenha("1234567890");
 		usuarioBusiness.update(u);
 		System.out.println("UPDATE");

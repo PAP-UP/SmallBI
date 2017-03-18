@@ -40,13 +40,16 @@ public class TestEndereco {
 		
 		endereco.setUsuarioId(1);
 		
-//		PessoaBusiness pessoaBusiness = new PessoaBusiness();
-//		List<Pessoa> pessoas = pessoaBusiness.list();
-//		endereco.setPessoa(pessoas.get(0));
+		//---------------------------------------------		
+		//ATRIBUI ESTE ENDEREÇO A UMA PESSOA OU CLIENTE
+		//---------------------------------------------
+/*		PessoaBusiness pessoaBusiness = new PessoaBusiness();
+		List<Pessoa> pessoas = pessoaBusiness.list();
+		endereco.setPessoa(pessoas.get(0))*/;
 
-//		ClienteBusiness clienteBusiness = new ClienteBusiness();
-//		List<Cliente> clientes = clienteBusiness.list();
-//		endereco.setCliente(clientes.get(0));
+/*		ClienteBusiness clienteBusiness = new ClienteBusiness();
+		List<Cliente> clientes = clienteBusiness.list();
+		endereco.setCliente(clientes.get(0));*/
 		
 		enderecoBusiness.create(endereco);
 		idTestEndereco = endereco.getIdEndereco();

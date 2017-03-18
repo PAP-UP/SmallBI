@@ -23,7 +23,6 @@ public class TestEstado{
 		estado.setSiglaEstado("RS");
 		estado.setStatus(true);
 		estado.setUsuarioId(1);
-//		estado.setDataCadastro(Calendar.getInstance());
 		estado.setDataCadastro(Data.getDate());
 		estadoBusiness.create(estado);
 		idTestEstado = estado.getIdEstado();

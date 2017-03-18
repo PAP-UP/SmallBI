@@ -104,9 +104,10 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		}
 		
 		//MUDAR PARA SETAR usuarioSaiku COM DADOS DO LOGIN
-		if(t.getUsuarioSaiku().equals(null) || t.getUsuarioSaiku().equals("")){
+		t.setUsuarioSaiku(t.getLogin());
+		/*if(t.getUsuarioSaiku().equals(null) || t.getUsuarioSaiku().equals("")){
 			return "A variável 'usuarioSaiku' deve ser informada!";
-		}	
+		}*/	
 		
 		/*int code = SaikuConnection.addUsuarioSaiku(t.getUsuarioSaiku(), t.getSenha(), 
 				t.getPessoa().getCliente().getIdCliente());
@@ -156,6 +157,20 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		if(t.getLogin().equals(null)|| t.getLogin().equals("")){
 			return "A variável 'login' deve ser informada!";
 		}else{
+			
+			String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+					+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(t.getLogin());
+			boolean match = matcher.matches();
+			
+			if(match == true){
+				System.out.println("corresponde");
+			}else{
+				System.out.println("Não corresponde");
+				return "Email inválido!";
+			}
+			
 			List<Usuario> usuarios = list();
 			for(Usuario u : usuarios){
 				if(u.getLogin().equals(t.getLogin())){
@@ -262,9 +277,9 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		return null;
 	}
 
-	public void createFirstUser(Usuario usuario){
+/*	public void createFirstUser(Usuario usuario){
 		usuarioDao.create(usuario);
-	}
+	}*/
 	
 	//Método utilizado na classe CuboBusiness para validação.
 	public Usuario getUsuario(String login, String senha){

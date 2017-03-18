@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONArray"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.lang.SecurityException"/>
@@ -54,10 +53,11 @@
 <fullyQualifiedTypeName name="br.com.smallbi.dal.singleton.SingletonConexao"/>
 <fullyQualifiedTypeName name="org.hibernate.mapping.UnionSubclass"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.UsuarioLogado"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioBusiness"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioLogadoBusiness"/>
-<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
 <fullyQualifiedTypeName name="br.com.smallbi.util.HashSenha"/>
 <fullyQualifiedTypeName name="br.com.smallbi.util.Data"/>
 <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
+<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioLogadoBusiness"/>
+<fullyQualifiedTypeName name="java.util.regex.Matcher"/>
 </qualifiedTypeNameHistroy>

@@ -19,7 +19,8 @@ public class SQLXMLType implements org.hibernate.usertype.UserType {
         return sqlTypesSupported;
     }
  
-    @Override
+    @SuppressWarnings("rawtypes")
+	@Override
     public Class returnedClass() {
         return String.class;
     }
