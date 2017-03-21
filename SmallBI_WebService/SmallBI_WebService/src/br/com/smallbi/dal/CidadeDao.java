@@ -49,4 +49,10 @@ public class CidadeDao implements InterfaceDao<Cidade>{
 		return em.find(Cidade.class, id);
 	}
 
+	@Override
+	public void physicalDelete(Cidade t) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

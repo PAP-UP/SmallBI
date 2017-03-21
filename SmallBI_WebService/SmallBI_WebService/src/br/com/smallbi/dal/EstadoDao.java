@@ -48,4 +48,10 @@ public class EstadoDao implements InterfaceDao<Estado>{
 		EntityManager em = SingletonConexao.getInstance();
 		return em.find(Estado.class, id);
 	}
+
+	@Override
+	public void physicalDelete(Estado t) {
+		// TODO Auto-generated method stub
+		
+	}
 }

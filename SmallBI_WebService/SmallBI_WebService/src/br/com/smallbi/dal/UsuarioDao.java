@@ -48,4 +48,10 @@ public class UsuarioDao implements InterfaceDao<Usuario>{
 		EntityManager em = SingletonConexao.getInstance();
 		return em.find(Usuario.class, id);
 	}
+
+	@Override
+	public void physicalDelete(Usuario t) {
+		// TODO Auto-generated method stub
+		
+	}
 }

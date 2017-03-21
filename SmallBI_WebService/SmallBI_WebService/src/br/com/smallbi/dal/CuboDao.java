@@ -49,4 +49,10 @@ public class CuboDao implements InterfaceDao<Cubo>{
 		return em.find(Cubo.class, id);
 	}
 
+	@Override
+	public void physicalDelete(Cubo t) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

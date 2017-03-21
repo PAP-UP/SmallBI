@@ -49,4 +49,10 @@ public class FuncaoDao implements InterfaceDao<Funcao>{
 		return em.find(Funcao.class, id);
 	}
 
+	@Override
+	public void physicalDelete(Funcao t) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

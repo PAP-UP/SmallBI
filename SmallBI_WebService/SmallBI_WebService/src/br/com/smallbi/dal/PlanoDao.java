@@ -49,4 +49,10 @@ public class PlanoDao implements InterfaceDao<Plano>{
 		return em.find(Plano.class, id);
 	}
 
+	@Override
+	public void physicalDelete(Plano t) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

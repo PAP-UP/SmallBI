@@ -49,4 +49,10 @@ public class TipoDao implements InterfaceDao<Tipo>{
 		return em.find(Tipo.class, id);
 	}
 
+	@Override
+	public void physicalDelete(Tipo t) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

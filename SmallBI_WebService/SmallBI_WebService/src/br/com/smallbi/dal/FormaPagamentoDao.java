@@ -49,4 +49,10 @@ public class FormaPagamentoDao implements InterfaceDao<FormaPagamento>{
 		return em.find(FormaPagamento.class, id);
 	}
 
+	@Override
+	public void physicalDelete(FormaPagamento t) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

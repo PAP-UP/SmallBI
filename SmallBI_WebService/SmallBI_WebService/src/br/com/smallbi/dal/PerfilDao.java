@@ -49,4 +49,10 @@ public class PerfilDao implements InterfaceDao<Perfil>{
 		return em.find(Perfil.class, id);
 	}
 
+	@Override
+	public void physicalDelete(Perfil t) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

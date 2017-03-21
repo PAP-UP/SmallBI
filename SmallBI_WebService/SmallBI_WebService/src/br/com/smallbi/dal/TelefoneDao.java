@@ -49,4 +49,13 @@ public class TelefoneDao implements InterfaceDao<Telefone>{
 		return em.find(Telefone.class, id);
 	}
 
+	@Override
+	public void physicalDelete(Telefone t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.remove(em.contains(t) ? t : em.merge(t));
+		em.getTransaction().commit();
+		em.close();
+	}
+
 }

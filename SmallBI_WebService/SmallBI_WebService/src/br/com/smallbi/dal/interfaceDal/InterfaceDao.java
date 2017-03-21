@@ -8,5 +8,6 @@ public interface InterfaceDao <T>{
 	public List<T> list();
 	public void update(T t);
 	public void delete(T t);
+	public void physicalDelete(T t);
 	public T getObjById(Integer id);
 }

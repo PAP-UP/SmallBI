@@ -32,7 +32,7 @@ public class UsuarioLogadoBusiness implements InterfaceBusiness<UsuarioLogado>{
 	@Override
 	public String delete(Integer id) {
 		UsuarioLogado ul = getObjById(id);
-		dao.delete(ul);
+		dao.physicalDelete(ul);
 		return "Token deletado com sucesso!";
 	}
 

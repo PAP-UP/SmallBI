@@ -49,4 +49,10 @@ public class RamoAtividadeDao implements InterfaceDao<RamoAtividade>{
 		return em.find(RamoAtividade.class, id);
 	}
 
+	@Override
+	public void physicalDelete(RamoAtividade t) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

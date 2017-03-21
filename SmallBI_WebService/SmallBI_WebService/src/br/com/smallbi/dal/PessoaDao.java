@@ -49,4 +49,13 @@ public class PessoaDao implements InterfaceDao<Pessoa>{
 		return em.find(Pessoa.class, id);
 	}
 
+	@Override
+	public void physicalDelete(Pessoa t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.remove(em.contains(t) ? t : em.merge(t));
+		em.getTransaction().commit();
+		em.close();
+	}
+
 }

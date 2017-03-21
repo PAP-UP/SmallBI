@@ -6,6 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import br.com.smallbi.dal.EnderecoDao;
+import br.com.smallbi.dal.PessoaDao;
+import br.com.smallbi.dal.TelefoneDao;
 import br.com.smallbi.dal.UsuarioLogadoDao;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
@@ -243,17 +246,20 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		usuarioDao.delete(usuario);
 		
 		//Del Pessoa
-		new PessoaBusiness().delete(usuario.getPessoa().getIdPessoa());
+		//new PessoaBusiness().delete(usuario.getPessoa().getIdPessoa());
+		new PessoaDao().physicalDelete(usuario.getPessoa());
 		
 		//Del Telefone
 		EnderecoBusiness enderecoBusiness = new EnderecoBusiness();
 		Endereco e = enderecoBusiness.getByPessoa(usuario.getPessoa().getIdPessoa());
-		enderecoBusiness.delete(e.getIdEndereco());
+		//enderecoBusiness.delete(e.getIdEndereco());
+		new EnderecoDao().physicalDelete(e);
 		
 		//Del Endereço
 		TelefoneBusiness telefoneBusiness = new TelefoneBusiness();
 		Telefone telefone = telefoneBusiness.getByPessoa(usuario.getPessoa().getIdPessoa());
-		telefoneBusiness.delete(telefone.getIdTelefone());
+		//telefoneBusiness.delete(telefone.getIdTelefone());
+		new TelefoneDao().physicalDelete(telefone);
 		
 		
 		return "Usuario deletado com sucesso!";

@@ -39,17 +39,22 @@ public class UsuarioLogadoDao implements InterfaceDao<UsuarioLogado>{
 
 	@Override
 	public void delete(UsuarioLogado t) {
-		EntityManager em = SingletonConexao.getInstance();
-		em.getTransaction().begin();
-		em.remove(em.contains(t) ? t : em.merge(t));
-		em.getTransaction().commit();
-		em.close();
+
 	}
 
 	@Override
 	public UsuarioLogado getObjById(Integer id) {
 		EntityManager em = SingletonConexao.getInstance();
 		return em.find(UsuarioLogado.class, id);
+	}
+
+	@Override
+	public void physicalDelete(UsuarioLogado t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.remove(em.contains(t) ? t : em.merge(t));
+		em.getTransaction().commit();
+		em.close();
 	}
 
 }

@@ -49,4 +49,13 @@ public class EnderecoDao implements InterfaceDao<Endereco>{
 		return em.find(Endereco.class, id);
 	}
 
+	@Override
+	public void physicalDelete(Endereco t) {
+		EntityManager em = SingletonConexao.getInstance();
+		em.getTransaction().begin();
+		em.remove(em.contains(t) ? t : em.merge(t));
+		em.getTransaction().commit();
+		em.close();
+	}
+
 }
