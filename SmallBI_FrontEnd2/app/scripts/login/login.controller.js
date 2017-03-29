@@ -15,17 +15,11 @@
 
     function login() {
       AuthService.signin(vm.dadosLogin).then(
-        function () {
-
+        function (result) {
+        console.log(result);
       }, function () {
 
       });
     }
-
-    function activate() {
-
-    }
-
-    activate();
   }
 })();
