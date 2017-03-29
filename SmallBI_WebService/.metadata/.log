@@ -3355,3 +3355,623 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 
 !ENTRY org.eclipse.jface.text 2 0 2017-03-21 19:26:25.630
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+!SESSION 2017-03-24 21:21:05.198 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2017-03-24 21:24:46.726
+!MESSAGE The Tomcat server configuration at /Servers/Tomcat v7.0 Server at localhost-config is missing. Check the server for errors.
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2017-03-24 21:24:55.544
+!MESSAGE already installed: org.eclipse.jst.server.generic.jonas4
+!SESSION 2017-03-29 19:47:34.515 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data /home/deynesonborba/smallbi-repository/SmallBI_WebService -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ui 2 0 2017-03-29 19:47:45.554
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2017-03-29 19:47:45.554
+!MESSAGE Cannot bind to an undefined command: plug-in='com.genuitec.eclipse.theming.ui', id='com.genuitec.myeclipse.help.darktheme.commandid'
+
+!ENTRY com.genuitec.eclipse.theming.ui 1 0 2017-03-29 19:47:49.383
+!MESSAGE Darkest Dark theme is being activated on this workspace; preparing colors and configuration
+
+!ENTRY com.genuitec.eclipse.theming.ui 1 0 2017-03-29 19:47:49.439
+!MESSAGE Darkest Dark has archived current color configurations to alternate preferences - will be restored when switching out of Darkest Dark theme
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:13.919
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:14.000
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:14.004
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:14.038
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:14.039
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:14.040
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:14.076
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:14.098
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:14.099
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:14.100
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:14.101
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:48:14.102
+!MESSAGE Unsupported or unrecognized format
+!STACK 0
+org.eclipse.swt.SWTException: Unsupported or unrecognized format
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.internal.image.FileFormat.load(FileFormat.java:84)
+	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:146)
+	at org.eclipse.swt.graphics.ImageDataLoader.load(ImageDataLoader.java:22)
+	at org.eclipse.swt.graphics.ImageData.<init>(ImageData.java:332)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:691)
+	at com.genuitec.eclipse.dashboard.templates.TemplateImageProvider.doLoadFromLocalFile(TemplateImageProvider.java:74)
+	at com.genuitec.eclipse.dashboard.templates.ImageDownloadRunnable.run(ImageDownloadRunnable.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:50:13.925
+!MESSAGE Invalid argument or cannot assign requested address
+!STACK 0
+java.net.SocketException: Invalid argument or cannot assign requested address
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:668)
+	at sun.security.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:173)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527)
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264)
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:367)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1138)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1032)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1546)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1474)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254)
+	at java.net.URL.openStream(URL.java:1045)
+	at com.genuitec.eclipse.dashboard.common.rss.NewsRSSManager$1.run(NewsRSSManager.java:33)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.genuitec.eclipse.dashboard.common 4 0 2017-03-29 19:50:14.821
+!MESSAGE Invalid argument or cannot assign requested address
+!STACK 0
+java.net.SocketException: Invalid argument or cannot assign requested address
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:668)
+	at sun.security.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:173)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527)
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264)
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:367)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1138)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1032)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1546)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1474)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254)
+	at java.net.URL.openStream(URL.java:1045)
+	at com.genuitec.eclipse.dashboard.common.cache.CachedFileProvider$1.run(CachedFileProvider.java:49)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2017-03-29 19:52:57.871
+!MESSAGE already installed: org.eclipse.jst.server.generic.jonas4
+!SESSION 2017-03-29 21:28:24.664 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data /home/deynesonborba/smallbi-repository/SmallBI_WebService -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2017-03-29 21:29:20.383
+!MESSAGE Unable to retrieve the bundle from the URI: bundleclass://com.genuitec.eclipse.meexplorer/com.genuitec.eclipse.meexplorer.breadcrumb.e4.BreadCrumbContainer
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2017-03-29 21:29:41.975
+!MESSAGE Removing part descriptor with the 'com.genuitec.eclipse.javascript.debug.ui.scriptexplorer.view' id and the 'Loaded JavaScript' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2017-03-29 21:29:42.003
+!MESSAGE Removing part descriptor with the 'com.genuitec.eclipse.tools.MinimapView' id and the 'Minimap' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2017-03-29 21:29:42.004
+!MESSAGE Removing part descriptor with the 'com.genuitec.eclipse.meexplorer.MENavigator' id and the 'Project Explorer+' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2017-03-29 21:29:42.009
+!MESSAGE Removing part descriptor with the 'com.genuitec.eclipse.ws.jaxrs.explorer.view' id and the 'REST Explorer' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2017-03-29 21:29:42.009
+!MESSAGE Removing part descriptor with the 'com.genuitec.help' id and the 'DevSearch' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2017-03-29 21:29:42.011
+!MESSAGE Removing part descriptor with the 'com.genuitec.eclipse.webclipse.terminal.ui.TerminalPlusView' id and the 'Terminal+' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2017-03-29 21:29:42.012
+!MESSAGE Removing part descriptor with the 'io.emmet.eclipse.views.cheatsheet' id and the 'Emmet Cheat Sheet' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-29 21:36:01.960
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-29 21:36:01.961
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+!SESSION 2017-03-30 19:54:09.263 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2017-03-30 19:55:08.962
+!MESSAGE Unable to retrieve the bundle from the URI: bundleclass://com.genuitec.eclipse.meexplorer/com.genuitec.eclipse.meexplorer.breadcrumb.e4.BreadCrumbContainer
+
+!ENTRY org.eclipse.ui.workbench 4 2 2017-03-30 19:55:40.350
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.LinkageError: loader constraint violation: when resolving method "com.genuitec.eclipse.webicons.styled.JSONStyledBlock.<init>(Lorg/json/simple/JSONObject;)V" the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) of the current class, com/genuitec/eclipse/webclipse/evergreen/internal/ui/DialogBlocksFactory, and the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) for the method's defining class, com/genuitec/eclipse/webicons/styled/JSONStyledBlock, have different Class objects for the type org/json/simple/JSONObject used in the signature
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.DialogBlocksFactory.getVisibleBlocks(DialogBlocksFactory.java:35)
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.ReleaseNotesDialog.showReleaseNotes(ReleaseNotesDialog.java:59)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.processNewManifest(EvergreenManager.java:45)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<init>(EvergreenManager.java:38)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<clinit>(EvergreenManager.java:20)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenStartup.earlyStartup(EvergreenStartup.java:13)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:77)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui 4 0 2017-03-30 19:55:40.406
+!MESSAGE Unable to execute early startup code for the org.eclipse.ui.IStartup extension contributed by the 'com.genuitec.eclipse.webclipse.evergreen' plug-in.
+!STACK 0
+java.lang.LinkageError: loader constraint violation: when resolving method "com.genuitec.eclipse.webicons.styled.JSONStyledBlock.<init>(Lorg/json/simple/JSONObject;)V" the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) of the current class, com/genuitec/eclipse/webclipse/evergreen/internal/ui/DialogBlocksFactory, and the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) for the method's defining class, com/genuitec/eclipse/webicons/styled/JSONStyledBlock, have different Class objects for the type org/json/simple/JSONObject used in the signature
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.DialogBlocksFactory.getVisibleBlocks(DialogBlocksFactory.java:35)
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.ReleaseNotesDialog.showReleaseNotes(ReleaseNotesDialog.java:59)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.processNewManifest(EvergreenManager.java:45)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<init>(EvergreenManager.java:38)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<clinit>(EvergreenManager.java:20)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenStartup.earlyStartup(EvergreenStartup.java:13)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:77)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-30 19:56:28.523
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-30 19:56:28.524
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+!SESSION 2017-03-30 20:29:29.981 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2017-03-30 20:29:53.227
+!MESSAGE Unable to retrieve the bundle from the URI: bundleclass://com.genuitec.eclipse.meexplorer/com.genuitec.eclipse.meexplorer.breadcrumb.e4.BreadCrumbContainer
+
+!ENTRY org.eclipse.ui.workbench 4 2 2017-03-30 20:30:15.383
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.LinkageError: loader constraint violation: when resolving method "com.genuitec.eclipse.webicons.styled.JSONStyledBlock.<init>(Lorg/json/simple/JSONObject;)V" the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) of the current class, com/genuitec/eclipse/webclipse/evergreen/internal/ui/DialogBlocksFactory, and the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) for the method's defining class, com/genuitec/eclipse/webicons/styled/JSONStyledBlock, have different Class objects for the type org/json/simple/JSONObject used in the signature
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.DialogBlocksFactory.getVisibleBlocks(DialogBlocksFactory.java:35)
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.ReleaseNotesDialog.showReleaseNotes(ReleaseNotesDialog.java:59)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.processNewManifest(EvergreenManager.java:45)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<init>(EvergreenManager.java:38)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<clinit>(EvergreenManager.java:20)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenStartup.earlyStartup(EvergreenStartup.java:13)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:77)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui 4 0 2017-03-30 20:30:15.566
+!MESSAGE Unable to execute early startup code for the org.eclipse.ui.IStartup extension contributed by the 'com.genuitec.eclipse.webclipse.evergreen' plug-in.
+!STACK 0
+java.lang.LinkageError: loader constraint violation: when resolving method "com.genuitec.eclipse.webicons.styled.JSONStyledBlock.<init>(Lorg/json/simple/JSONObject;)V" the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) of the current class, com/genuitec/eclipse/webclipse/evergreen/internal/ui/DialogBlocksFactory, and the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) for the method's defining class, com/genuitec/eclipse/webicons/styled/JSONStyledBlock, have different Class objects for the type org/json/simple/JSONObject used in the signature
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.DialogBlocksFactory.getVisibleBlocks(DialogBlocksFactory.java:35)
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.ReleaseNotesDialog.showReleaseNotes(ReleaseNotesDialog.java:59)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.processNewManifest(EvergreenManager.java:45)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<init>(EvergreenManager.java:38)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<clinit>(EvergreenManager.java:20)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenStartup.earlyStartup(EvergreenStartup.java:13)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:77)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-30 20:30:23.673
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-30 20:30:23.674
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+!SESSION 2017-03-31 19:29:09.575 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2017-03-31 19:29:37.366
+!MESSAGE Unable to retrieve the bundle from the URI: bundleclass://com.genuitec.eclipse.meexplorer/com.genuitec.eclipse.meexplorer.breadcrumb.e4.BreadCrumbContainer
+
+!ENTRY org.eclipse.ui.workbench 4 2 2017-03-31 19:30:08.547
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.LinkageError: loader constraint violation: when resolving method "com.genuitec.eclipse.webicons.styled.JSONStyledBlock.<init>(Lorg/json/simple/JSONObject;)V" the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) of the current class, com/genuitec/eclipse/webclipse/evergreen/internal/ui/DialogBlocksFactory, and the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) for the method's defining class, com/genuitec/eclipse/webicons/styled/JSONStyledBlock, have different Class objects for the type org/json/simple/JSONObject used in the signature
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.DialogBlocksFactory.getVisibleBlocks(DialogBlocksFactory.java:35)
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.ReleaseNotesDialog.showReleaseNotes(ReleaseNotesDialog.java:59)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.processNewManifest(EvergreenManager.java:45)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<init>(EvergreenManager.java:38)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<clinit>(EvergreenManager.java:20)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenStartup.earlyStartup(EvergreenStartup.java:13)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:77)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui 4 0 2017-03-31 19:30:08.573
+!MESSAGE Unable to execute early startup code for the org.eclipse.ui.IStartup extension contributed by the 'com.genuitec.eclipse.webclipse.evergreen' plug-in.
+!STACK 0
+java.lang.LinkageError: loader constraint violation: when resolving method "com.genuitec.eclipse.webicons.styled.JSONStyledBlock.<init>(Lorg/json/simple/JSONObject;)V" the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) of the current class, com/genuitec/eclipse/webclipse/evergreen/internal/ui/DialogBlocksFactory, and the class loader (instance of org/eclipse/osgi/internal/loader/EquinoxClassLoader) for the method's defining class, com/genuitec/eclipse/webicons/styled/JSONStyledBlock, have different Class objects for the type org/json/simple/JSONObject used in the signature
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.DialogBlocksFactory.getVisibleBlocks(DialogBlocksFactory.java:35)
+	at com.genuitec.eclipse.webclipse.evergreen.internal.ui.ReleaseNotesDialog.showReleaseNotes(ReleaseNotesDialog.java:59)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.processNewManifest(EvergreenManager.java:45)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<init>(EvergreenManager.java:38)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager.<clinit>(EvergreenManager.java:20)
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenStartup.earlyStartup(EvergreenStartup.java:13)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:77)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.genuitec.eclipse.webclipse.evergreen 4 0 2017-03-31 19:30:09.104
+!MESSAGE Could not initialize class com.genuitec.eclipse.webclipse.evergreen.EvergreenManager
+!STACK 0
+java.lang.NoClassDefFoundError: Could not initialize class com.genuitec.eclipse.webclipse.evergreen.EvergreenManager
+	at com.genuitec.eclipse.webclipse.evergreen.EvergreenManager$1.manifestChanged(EvergreenManager.java:33)
+	at com.genuitec.eclipse.webclipse.evergreen.internal.WebclipseManifestManager$ManifestUpdateJob.run(WebclipseManifestManager.java:229)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-31 20:31:42.127
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-31 20:31:42.149
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.recommenders.models.rcp 1 11 2017-03-31 20:31:44.690
+!MESSAGE The model index service was accessed either before it started or after it finished running.
+!STACK 0
+org.eclipse.recommenders.utils.Logs$LogTraceException
+	at org.eclipse.recommenders.utils.Logs$LogTraceException.newTrace(Logs.java:381)
+	at org.eclipse.recommenders.utils.Logs.log(Logs.java:134)
+	at org.eclipse.recommenders.utils.Logs.log(Logs.java:126)
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelIndex.suggest(EclipseModelIndex.java:212)
+	at org.eclipse.recommenders.models.SimpleModelProvider.acquireModel(SimpleModelProvider.java:70)
+	at org.eclipse.recommenders.models.PoolingModelProvider.access$0(PoolingModelProvider.java:1)
+	at org.eclipse.recommenders.models.PoolingModelProvider$ModelPoolFactoryMediator.makeObject(PoolingModelProvider.java:96)
+	at org.eclipse.recommenders.models.PoolingModelProvider$ModelPoolFactoryMediator.makeObject(PoolingModelProvider.java:1)
+	at org.apache.commons.pool.impl.GenericKeyedObjectPool.borrowObject(GenericKeyedObjectPool.java:1220)
+	at org.eclipse.recommenders.models.PoolingModelProvider.acquireModel(PoolingModelProvider.java:67)
+	at org.eclipse.recommenders.internal.overrides.rcp.RcpOverrideModelProvider.acquireModel(RcpOverrideModelProvider.java:66)
+	at org.eclipse.recommenders.internal.overrides.rcp.OverrideCompletionSessionProcessor.hasModel(OverrideCompletionSessionProcessor.java:121)
+	at org.eclipse.recommenders.internal.overrides.rcp.OverrideCompletionSessionProcessor.startSession(OverrideCompletionSessionProcessor.java:86)
+	at org.eclipse.recommenders.completion.rcp.processable.IntelligentCompletionProposalComputer.fireStartSession(IntelligentCompletionProposalComputer.java:304)
+	at org.eclipse.recommenders.completion.rcp.processable.IntelligentCompletionProposalComputer.computeCompletionProposals(IntelligentCompletionProposalComputer.java:170)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalComputerDescriptor.computeCompletionProposals(CompletionProposalComputerDescriptor.java:333)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalCategory.computeCompletionProposals(CompletionProposalCategory.java:337)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.collectProposals(ContentAssistProcessor.java:331)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.computeCompletionProposals(ContentAssistProcessor.java:288)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$3.run(ContentAssistant.java:1931)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1928)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:565)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$16(CompletionProposalPopup.java:560)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$2.run(CompletionProposalPopup.java:494)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.showProposals(CompletionProposalPopup.java:487)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.showPossibleCompletions(ContentAssistant.java:1747)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor$AdaptedSourceViewer.doOperation(CompilationUnitEditor.java:184)
+	at org.eclipse.ui.texteditor.ContentAssistAction$1.run(ContentAssistAction.java:84)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.texteditor.ContentAssistAction.run(ContentAssistAction.java:81)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:473)
+	at org.eclipse.jface.commands.ActionHandler.execute(ActionHandler.java:118)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:282)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:264)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:132)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:152)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:494)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:488)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:210)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:286)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:507)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:558)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.filterKeySequenceBindings(KeyBindingDispatcher.java:378)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.access$0(KeyBindingDispatcher.java:324)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher$KeyDownFilter.handleEvent(KeyBindingDispatcher.java:86)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.filterEvent(Display.java:1605)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1339)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1366)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1349)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1378)
+	at org.eclipse.swt.widgets.Widget.gtk_key_press_event(Widget.java:764)
+	at org.eclipse.swt.widgets.Control.gtk_key_press_event(Control.java:3465)
+	at org.eclipse.swt.widgets.Composite.gtk_key_press_event(Composite.java:801)
+	at org.eclipse.swt.widgets.Widget.windowProc(Widget.java:2000)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:5827)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5498)
+	at org.eclipse.swt.internal.gtk.OS._gtk_main_do_event(Native Method)
+	at org.eclipse.swt.internal.gtk.OS.gtk_main_do_event(OS.java:9545)
+	at org.eclipse.swt.widgets.Display.eventProc(Display.java:1275)
+	at org.eclipse.swt.internal.gtk.OS._g_main_context_iteration(Native Method)
+	at org.eclipse.swt.internal.gtk.OS.g_main_context_iteration(OS.java:2495)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4149)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1492)
+
+!ENTRY org.eclipse.wst.server.core 4 0 2017-03-31 21:22:19.774
+!MESSAGE Server Tomcat v7.0 Server at localhost failed to start.

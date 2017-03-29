@@ -1,6 +1,8 @@
 $(window).on('load', function() {
 	$(function(){
-
+		setTimeout(function(){
+			$('body').addClass('loaded');
+		}, 1000);
 		var windowWidth = $(window).width() / 2 + 125;
 		$('h1').width(windowWidth);
 		$(window).resize(function(){

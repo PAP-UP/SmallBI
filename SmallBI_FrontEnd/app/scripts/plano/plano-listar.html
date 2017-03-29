@@ -10,8 +10,8 @@
   <tbody>
   <tr ng-repeat="p in vm.listaPlanos">
     <td>{{p.descricao}}</td>
-    <td><a ui-sref="plano.editar({id : p.idPlano})">Editar</a></td>
-    <td><a href="" ng-click="vm.excluirPlano(p.idPlano)">Excluir</a></td>
+    <td><a ui-sref="plano.editar({id : p.idPlano})" class="text-info"><i class="fa fa-edit"></i> Editar</a></td>
+    <td><a href="" ng-click="vm.excluirPlano(p.idPlano)" class="text-danger"><i class="fa fa-trash-o"></i> Excluir</a></td>
   </tr>
   </tbody>
 </table>

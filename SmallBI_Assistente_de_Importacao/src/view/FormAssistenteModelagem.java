@@ -41,8 +41,10 @@ import xmleditorkit.XMLEditorKit;
 
 public class FormAssistenteModelagem extends javax.swing.JFrame {
     
-    public static List<Dimensao> dimensoes = new ArrayList<>();
-    public static List<GrupoMetrica> grupoMetricas = new ArrayList<>();
+    private List<Dimensao> dimensoesModeladas = new ArrayList<>();
+    public static List<Dimensao> dimensoesSalvas = new ArrayList<>();
+    private List<GrupoMetrica> grupoMetricasModeladas = new ArrayList<>();
+    public static List<GrupoMetrica> grupoMetricasSalvas = new ArrayList<>();
     public static List<TabelaImportada> tabelasImportadas = new ArrayList<>();
     public static List<Link> links = new ArrayList<>();
     private static Integer idLink = 0;
@@ -636,7 +638,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
         painelGerenciarRelacionamentos.setBorder(javax.swing.BorderFactory.createTitledBorder("Relacionamentos"));
 
-        lblTabelaRel.setText("Tabela com base:");
+        lblTabelaRel.setText("Tabela base:");
 
         cbxTabelaRelacionamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
         cbxTabelaRelacionamento.addActionListener(new java.awt.event.ActionListener() {
@@ -676,7 +678,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelAddRelacionamentoLayout.createSequentialGroup()
                         .addComponent(lblTabelaRel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
                         .addComponent(cbxTabelaRelacionamento, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddRelacionamentoLayout.createSequentialGroup()
                         .addGroup(painelAddRelacionamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1058,7 +1060,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         cbxColunaMetrica.removeAllItems();
         cbxColunaMetrica.addItem("Selecione");
         
-         carregarTabelasMetricas();
+        carregarTabelasMetricas();
         
         jTabbedPane_Metricas.setSelectedIndex(0);
     }
@@ -1193,7 +1195,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private void carregarAtributosRel(){
         if(!cbxTabelaRelacionamento.getSelectedItem().toString().equals("Selecione")){
             Dimensao dimUsada = new Dimensao();
-            for(Dimensao d : dimensoes){
+            for(Dimensao d : dimensoesSalvas){
                 if(d.getTabela().equals(cbxTabelaRelacionamento.getSelectedItem().toString())){
                     dimUsada = d;
                 }
@@ -1213,7 +1215,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private void carregarTabelasReferenciadas(){
         cbxTabelaReferenciada.removeAllItems();
         cbxTabelaReferenciada.addItem("Selecione");
-        for(Dimensao d : dimensoes){
+        for(Dimensao d : dimensoesSalvas){
             if(!d.getTabela().equals(cbxTabelaRelacionamento.getSelectedItem().toString())){
                 cbxTabelaReferenciada.addItem(d.getTabela());
             }
@@ -1229,27 +1231,57 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private void salvarDimensoes(){
         Component[] components = painelListaDimensoes.getComponents();
         if(components.length > 0){
+            
+            int qtdDimSelec = 0;
+            
             for(Component c : components){
                 if(c instanceof JCheckBox){
                     JCheckBox checkBox = (JCheckBox) c;
                     if(!checkBox.isSelected()){
                         delDimByName(checkBox.getText());
+                    }else{
+                        //Deve ser selecionada pelo menos uma dimensão
+                        qtdDimSelec++;
+                        //Adicionar dim se não existir ja
+                        if(!verificarSeJaExisteNaLista(checkBox.getText())){
+                            dimensoesSalvas.add(getDimensaoModelada(checkBox.getText()));
+                        }
                     }
                 }
             }
-                    
-            carregarTabelasMetricas();
-            PercorrerAbasFormAssistenteModelagem.modelDimToModelMetri();
+            
+            if(qtdDimSelec > 0){
+                carregarTabelasMetricas();
+                PercorrerAbasFormAssistenteModelagem.modelDimToModelMetri();
+            }else{
+                JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
         }
     }
     
+    private Dimensao getDimensaoModelada(String nome){
+        for(Dimensao d : dimensoesModeladas){
+            if(d.getNome().equals(nome))
+                return d;
+        }
+        return null;
+    }
+    
+    private boolean verificarSeJaExisteNaLista(String nome){
+        for(Dimensao d : dimensoesSalvas){
+            if(d.getNome().equals(nome))
+                return true;
+        }
+        return false;
+    }
+    
     private void carregarTabelasMetricas(){
         //Carregar Tabelas para serem utilizadas na gestão de metricas.
         //Validação com DeafultComboBoxModel para não haver redundância de tabelas
-        cbxTabelaMetrica.addItem("Selecione");
-        for(Dimensao d : dimensoes){
+        //cbxTabelaMetrica.addItem("Selecione");
+        for(Dimensao d : dimensoesSalvas){
             if(((DefaultComboBoxModel)cbxTabelaMetrica.getModel()).getIndexOf(d.getTabela()) < 0)
                 cbxTabelaMetrica.addItem(d.getTabela());
         }
@@ -1257,10 +1289,11 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }
     
     //Foi colocado a assinatura boolean apenas para quebrar o For quando remover a dimensão indesejada;
+    //Ainda deve ser definido como remover o nome da tabela do "cbxTabelaMetrica" sem causar problemas;
     private boolean delDimByName(String nomeDim){
-        for(Dimensao d : dimensoes){
+        for(Dimensao d : dimensoesSalvas){
             if(d.getNome().equals(nomeDim)){
-                dimensoes.remove(d);
+                dimensoesSalvas.remove(d);
                 return true;
             }
         }
@@ -1269,7 +1302,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     private void atualizarListaDimensoes(){
         painelListaDimensoes.removeAll();
-        for(Dimensao d : dimensoes){
+        for(Dimensao d : dimensoesModeladas){
             JCheckBox checkBox = new JCheckBox();
             checkBox.setText(d.getNome());
             checkBox.setSelected(true);
@@ -1312,7 +1345,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                     d.setKey(chave);
                     d.setAtributos(atributosSelecionados);
 
-                    dimensoes.add(d);
+                    dimensoesModeladas.add(d);
                     atualizarListaDimensoes();
                     jTabbedPane_Dimensoes.setSelectedIndex(1);
                 }else{
@@ -1325,7 +1358,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }
     
     private boolean nomeJaExistente(){
-        for(Dimensao d : dimensoes){
+        for(Dimensao d : dimensoesSalvas){
             if(d.getNome().equals(txtNomeDimensao.getText())){
                 return true;
             }
@@ -1382,19 +1415,35 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private void salvarMetricas(){
         Component[] components = painelListaMetricas.getComponents();
         if(components.length > 0){
+            
+            //Carregando lista gm salvos
+            grupoMetricasSalvas.clear();
+            for(GrupoMetrica gm : grupoMetricasModeladas){
+                grupoMetricasSalvas.add(gm);
+            }
+            
+            int qtdMetriSelec = 0;
+            
             for(Component c : components){
                 if(c instanceof JCheckBox){
                     JCheckBox checkBox = (JCheckBox) c;
                     if(!checkBox.isSelected()){
                         delMetricaByName(checkBox.getText());
+                    }else{
+                        qtdMetriSelec++;
                     }
                 }
             }
-            if(tabelasImportadas.size() > 1){
-                PercorrerAbasFormAssistenteModelagem.modelMetriToAddRel();
+            
+            if(qtdMetriSelec > 0){                 
+                if(tabelasImportadas.size() > 1){
+                    PercorrerAbasFormAssistenteModelagem.modelMetriToAddRel();
+                }else{
+                    gerarSchemaXml();
+                    PercorrerAbasFormAssistenteModelagem.modelMetriToCuboPreview();
+                }
             }else{
-                gerarSchemaXml();
-                PercorrerAbasFormAssistenteModelagem.modelMetriToCuboPreview();
+                JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
             }
         }else{
             JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
@@ -1403,7 +1452,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     //Foi colocado a assinatura boolean apenas para quebrar o For quando remover a métrica indesejada;
     private boolean delMetricaByName(String nome){
-        for(GrupoMetrica gm : grupoMetricas){
+        for(GrupoMetrica gm : grupoMetricasSalvas){
             List<Metrica> metricas = gm.getMetricas();
             for(Metrica m : metricas){
                 if(m.getNome().equals(nome)){
@@ -1433,7 +1482,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         cbxColunaMetrica.removeAllItems();
         cbxColunaMetrica.addItem("Selecione");
         Dimensao dimSelecionada = new Dimensao();
-        for(Dimensao d : dimensoes){
+        for(Dimensao d : dimensoesSalvas){
             if(cbxTabelaMetrica.getSelectedItem() != null &&
                     cbxTabelaMetrica.getSelectedItem().toString().equals(d.getTabela())){
                 dimSelecionada = d;
@@ -1468,28 +1517,28 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                         metricas.add(metrica);
                         gm.setMetricas(metricas);
 
-                        grupoMetricas.add(gm);
+                        grupoMetricasModeladas.add(gm);
                     }else{
                         List<Metrica> metricas = gm.getMetricas();
                         metricas.add(metrica);
                         gm.setMetricas(metricas);
 
-                        grupoMetricas.set(grupoMetricas.indexOf(gm), gm);
+                        grupoMetricasModeladas.set(grupoMetricasModeladas.indexOf(gm), gm);
                     }
                     atualizarListaMetricas();
                     jTabbedPane_Metricas.setSelectedIndex(1);
 
                     //Apenas para controle e teste;
-                    System.out.println("Inicio");
-                    for(GrupoMetrica grupo : grupoMetricas){
-                        System.out.println("Nome GrupoMetrica: " + grupo.getNome() + ", Tabela: " + grupo.getTabela());
-                        List<Metrica> ms = grupo.getMetricas();
-                        for(Metrica m : ms){
-                            System.out.println("Métrica: " + m.getNome());
-                        }
-                        System.out.println("-------------------------");
-                    }
-                    System.out.println("Fim");
+//                    System.out.println("Inicio");
+//                    for(GrupoMetrica grupo : grupoMetricasModeladas){
+//                        System.out.println("Nome GrupoMetrica: " + grupo.getNome() + ", Tabela: " + grupo.getTabela());
+//                        List<Metrica> ms = grupo.getMetricas();
+//                        for(Metrica m : ms){
+//                            System.out.println("Métrica: " + m.getNome());
+//                        }
+//                        System.out.println("-------------------------");
+//                    }
+//                    System.out.println("Fim");
                     
                 }else{
                     JOptionPane.showMessageDialog(null, "Defina uma coluna!");
@@ -1504,7 +1553,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     private void atualizarListaMetricas(){
         painelListaMetricas.removeAll();
-        for(GrupoMetrica gm : grupoMetricas){
+        for(GrupoMetrica gm : grupoMetricasModeladas){
             List<Metrica> metricas = gm.getMetricas();
             for(Metrica m : metricas){
                 JCheckBox checkBox = new JCheckBox();
@@ -1522,7 +1571,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }
     
     private GrupoMetrica getGrupoUsandoMesmaTabela(String tabSelecionada){
-        for(GrupoMetrica gm : grupoMetricas){
+        for(GrupoMetrica gm : grupoMetricasModeladas){
             if(gm.getTabela().equals(tabSelecionada)){
                 return gm;
             }
@@ -1618,7 +1667,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }
     
     private void modelMetriToAddRel(){
-        if(grupoMetricas.size() > 0){
+        if(grupoMetricasSalvas.size() > 0){
             if(tabelasImportadas.size() > 1){
                 PercorrerAbasFormAssistenteModelagem.modelMetriToAddRel();            
             }else{
@@ -1631,7 +1680,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }
     
     private void modelDimToModelMetri(){
-        if(dimensoes.size() > 0){
+        if(dimensoesSalvas.size() > 0){
             PercorrerAbasFormAssistenteModelagem.modelDimToModelMetri();
         }else{
             JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
@@ -1661,8 +1710,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         schema.setNome("Schema " + Util.formatarString(txtAbaNomeCubo_NomeCubo.getText()));
         schema.setTabelasFato(tabelasImportadas);
         schema.setNomeCubo(Util.formatarString(txtAbaNomeCubo_NomeCubo.getText()));
-        schema.setDimensoes(dimensoes);
-        schema.setGrupoMetrica(grupoMetricas);
+        schema.setDimensoes(dimensoesSalvas);
+        schema.setGrupoMetrica(grupoMetricasSalvas);
         schema.setLinks(links);
         
         GerarSchema gerarSchema = new GerarSchema();

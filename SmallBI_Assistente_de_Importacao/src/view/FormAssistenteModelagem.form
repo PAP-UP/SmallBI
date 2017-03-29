@@ -962,7 +962,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="lblTabelaRel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="207" max="32767" attributes="0"/>
+                                          <EmptySpace pref="268" max="32767" attributes="0"/>
                                           <Component id="cbxTabelaRelacionamento" min="-2" pref="306" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
@@ -1013,7 +1013,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="lblTabelaRel">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Tabela com base:"/>
+                            <Property name="text" type="java.lang.String" value="Tabela base:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbxTabelaRelacionamento">

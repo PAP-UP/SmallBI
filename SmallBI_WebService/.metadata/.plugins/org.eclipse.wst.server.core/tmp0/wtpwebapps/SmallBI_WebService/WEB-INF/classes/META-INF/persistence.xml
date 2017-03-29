@@ -18,9 +18,6 @@
 			<property name="javax.persistence.jdbc.password" value="postgres" />
 
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
-
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
 		</properties>
 	</persistence-unit>
 </persistence>
