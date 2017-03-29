@@ -13,20 +13,17 @@
       'oitozero.ngSweetAlert'
     ]).config(routes).run(autentica);
 
-  function autentica($rootScope) {
+  function autentica($rootScope, $state, AuthService, SweetAlert) {
     $rootScope.$on('$stateChangeStart',function(evt,next,current){
-      if (next.authorize) {
         if (!AuthService.getToken()) {
-          /* Ugly way
            event.preventDefault();
-           $location.path('/login');
-           ========================== */
-
-          $rootScope.$evalAsync(function () {
-            $location.path('/signin');
-          })
+           SweetAlert.swal("Erro", "", "error");
+           $state.go('/index');
+          //
+          // $rootScope.$evalAsync(function () {
+          //   $location.path('/signin');
+          // })
         }
-      }
     });
   }
 
@@ -36,7 +33,6 @@
     $urlRouterProvider.otherwise('index');
 
 // USUÁRIO ROUTE
-
     var listarUsuario = {
       name: 'listar',
       url: '/listar',
@@ -67,7 +63,6 @@
     });
 
     // CUBO ROUTE
-
     var listarCubo = {
       name: 'listar',
       url: '/listar',
@@ -84,7 +79,6 @@
     });
 
     // CLIENTE ROUTE
-
     var listarCliente = {
       name: 'listar',
       url: '/listar',
@@ -117,7 +111,6 @@
     });
 
     // PLANO ROUTE
-
     var listarPlanos = {
       name: 'listar',
       url: '/listar',
@@ -150,7 +143,6 @@
     });
 
     // FORMA DE PAGAMENTO ROUTE
-
     var listarFormas = {
       name: 'listar',
       url: '/listar',
@@ -183,7 +175,6 @@
     });
 
     // RAMO DE ATIVIDADE ROUTE
-
     var listarRamo = {
       name: 'listar',
       url: '/listar',
@@ -216,7 +207,6 @@
     });
 
     // FUNÇÃO ROUTE
-
     var listarFuncao = {
       name: 'listar',
       url: '/listar',
@@ -249,7 +239,6 @@
     });
 
     // PERFIL ROUTE
-
     var listarPerfil = {
       name: 'listar',
       url: '/listar',
@@ -282,7 +271,6 @@
     });
 
     // SITE ROUTE
-
     var index = {
       name: '',
       url: '',
