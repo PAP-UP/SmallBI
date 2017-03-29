@@ -1,0 +1,20 @@
+<h3>Detalhes dos Planos</h3>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+  <tr>
+    <th>Perfil</th>
+    <th class="text-center">Editar</th>
+    <th class="text-center">Excluir</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="p in vm.listaPlanos">
+    <td>{{p.descricao}}</td>
+    <td><a ui-sref="plano.editar({id : p.idPlano})">Editar</a></td>
+    <td><a href="" ng-click="vm.excluirPlano(p.idPlano)">Excluir</a></td>
+  </tr>
+  </tbody>
+</table>
+<a href="#" id="plus"><i class="fa fa-plus fa-lg icon"></i></a>
+<a ui-sref="plano.cadastrar" class="novou">Cadastrar novo plano</a>
+
