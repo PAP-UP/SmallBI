@@ -1,5 +1,5 @@
 <!-- TOPO -->
-<div class="area-topo">
+<div class="area-topo" xmlns="http://www.w3.org/1999/html">
 
   <!-- CABEÇALHO -->
   <header class="topo">
@@ -219,27 +219,21 @@
     </div>
 
     <div class="dialog-content">
-
       <button class="btnGoogle" title="Entrar com Google"><span class="fa fa-google-plus"></span> Entrar com Google</button>
-
       <div class="form-option">ou</div>
       <div id="loginForm-modal-login">
-        <form class="modalForm" ng-controller="loginController as vm" ng-submit="login()">
+        <form class="modalForm" name="formLogin" ng-submit="formLogin.$valid && vm.login()" ng-controller="loginController as vm">
           <label for="login-email-modal-login">E-mail</label>
-          <input name="usuario" type="email" id="login-email-modal-login" placeholder="name@company.com" ng-model="vm.dadosLogin.usuario">
+          <input name="usuario" type="email" id="login-email-modal-login" placeholder="name@company.com" ng-model="vm.dadosLogin.login">
           <label for="login-password-modal-login">Senha</label>
           <input name="senha" type="password" id="login-password-modal-login" placeholder="Senha" ng-model="vm.dadosLogin.senha">
-
           <a href="#" title="Esqueceu sua senha?" class="center-block text-center btnEsqueceuSenha">Esqueceu sua senha?</a>
-
           <input type="submit" id="login-submit-modal-login" class="btnModal" title="Entrar" value="Entrar">
         </form>
-
       </div>
-
     </div>
-
   </div>
 </div>
 
-<div id="modalContato" class="dialog">
+<div id="modalContato" class="dialog"></div>
+

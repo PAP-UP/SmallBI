@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('planoListarController', planoListarController);
 
-  function planoListarController(planoResource, $state) {
+  function planoListarController(planoResource, $state, SweetAlert) {
 
     var vm = this;
 
@@ -26,9 +26,12 @@
         });
     }
 
+    // function teste() {
+    //   SweetAlert.swal("Good job!", "You clicked the button!", "success");
+    // }
+
     function activate() {
       listaPlanos();
-
     }
 
     activate();

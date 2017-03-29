@@ -14,7 +14,6 @@
       serviceGetById: serviceGetById,
       serviceDelete: serviceDelete
     };
-
     return service;
 
 

@@ -4,25 +4,26 @@
   angular
     .module('SmallBIApp', [
       'ngAnimate',
+      'ngCookies',
+      'ngResource',
+      'ngSanitize',
+      'ngTouch',
       'ui.router',
       'ui.router.stateHelper',
-      'ngCookies'
-    ]).config(routes).run(rotas);
+      'oitozero.ngSweetAlert'
+    ]).config(routes).run(autentica);
 
-  function rotas($rootScope) {
+  function autentica($rootScope, $state, AuthService, SweetAlert) {
     $rootScope.$on('$stateChangeStart',function(evt,next,current){
-      if (next.authorize) {
         if (!AuthService.getToken()) {
-          /* Ugly way
            event.preventDefault();
-           $location.path('/login');
-           ========================== */
-
-          $rootScope.$evalAsync(function () {
-            $location.path('/signin');
-          })
+           //SweetAlert.swal("Erro", "", "error");
+           // $state.go('index');
+          //
+          // $rootScope.$evalAsync(function () {
+          //   $location.path('/signin');
+          // })
         }
-      }
     });
   }
 
@@ -31,9 +32,7 @@
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('index');
 
-
-    // USUÁRIO ROUTE
-
+// USUÁRIO ROUTE
     var listarUsuario = {
       name: 'listar',
       url: '/listar',
@@ -44,16 +43,16 @@
 
     var editarUsuario = {
       name: 'editar',
-          url: '/editar/:id',
-          templateUrl: 'scripts/usuario/usuario-form.html',
-          controller: 'usuarioEditarController as vm',
+      url: '/editar/:id',
+      templateUrl: 'scripts/usuario/usuario-form.html',
+      controller: 'usuarioEditarController as vm',
     };
 
     var cadastrarUsuario = {
       name: 'cadastrar',
-          url: '/cadastrar',
-          templateUrl: 'scripts/usuario/usuario-form.html',
-          controller: 'usuarioCadastrarController as vm',
+      url: '/cadastrar',
+      templateUrl: 'scripts/usuario/usuario-form.html',
+      controller: 'usuarioCadastrarController as vm',
     };
 
     stateHelperProvider.setNestedState({
@@ -64,7 +63,6 @@
     });
 
     // CUBO ROUTE
-
     var listarCubo = {
       name: 'listar',
       url: '/listar',
@@ -81,7 +79,6 @@
     });
 
     // CLIENTE ROUTE
-
     var listarCliente = {
       name: 'listar',
       url: '/listar',
@@ -114,7 +111,6 @@
     });
 
     // PLANO ROUTE
-
     var listarPlanos = {
       name: 'listar',
       url: '/listar',
@@ -146,8 +142,7 @@
       children: [listarPlanos, editarPlano, cadastrarPlano]
     });
 
-      // FORMA DE PAGAMENTO ROUTE
-
+    // FORMA DE PAGAMENTO ROUTE
     var listarFormas = {
       name: 'listar',
       url: '/listar',
@@ -180,7 +175,6 @@
     });
 
     // RAMO DE ATIVIDADE ROUTE
-
     var listarRamo = {
       name: 'listar',
       url: '/listar',
@@ -213,7 +207,6 @@
     });
 
     // FUNÇÃO ROUTE
-
     var listarFuncao = {
       name: 'listar',
       url: '/listar',
@@ -246,7 +239,6 @@
     });
 
     // PERFIL ROUTE
-
     var listarPerfil = {
       name: 'listar',
       url: '/listar',
@@ -279,7 +271,6 @@
     });
 
     // SITE ROUTE
-
     var index = {
       name: '',
       url: '',
@@ -295,6 +286,10 @@
       children: [index]
     });
 
+    stateHelperProvider.setNestedState({
+      name: 'painel',
+      url: '/painel',
+      templateUrl: 'views/main.html'
+    });
   }
-
 })();
