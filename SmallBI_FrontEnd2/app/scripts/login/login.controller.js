@@ -5,7 +5,7 @@
   angular.module('SmallBIApp')
     .controller('loginController', loginController);
 
-  function loginController(AuthService) {
+  function loginController(AuthService, $state, SweetAlert) {
     var vm = this;
     vm.dadosLogin = {};
 
@@ -16,9 +16,10 @@
     function login() {
       AuthService.signin(vm.dadosLogin).then(
         function (result) {
-        console.log(result);
+        $state.transitionTo('painel');
+          SweetAlert.swal({title: "Bem vindo", timer: 2000, type: "success", showConfirmButton: false});
       }, function () {
-
+          SweetAlert.swal("Usuário ou senha incorretos!", "", "error");
       });
     }
   }

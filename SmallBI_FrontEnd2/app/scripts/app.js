@@ -17,8 +17,8 @@
     $rootScope.$on('$stateChangeStart',function(evt,next,current){
         if (!AuthService.getToken()) {
            event.preventDefault();
-           SweetAlert.swal("Erro", "", "error");
-           $state.go('/index');
+           //SweetAlert.swal("Erro", "", "error");
+           // $state.go('index');
           //
           // $rootScope.$evalAsync(function () {
           //   $location.path('/signin');
@@ -284,6 +284,12 @@
       url: '/index',
       templateUrl: 'views/site.html',
       children: [index]
+    });
+
+    stateHelperProvider.setNestedState({
+      name: 'painel',
+      url: '/painel',
+      templateUrl: 'views/main.html'
     });
   }
 })();
