@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .factory('Service', Service);
 
-  function Service($http, SweetAlert) {
+  function Service($http) {
 
     var baseUrl = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/";
 
@@ -14,12 +14,10 @@
       serviceGetById: serviceGetById,
       serviceDelete: serviceDelete
     };
-
     return service;
 
 
     function serviceGet(url) {
-      SweetAlert.swal("Salvo com sucesso!", "", "success");
       return $http.get(baseUrl + url);
     }
 
