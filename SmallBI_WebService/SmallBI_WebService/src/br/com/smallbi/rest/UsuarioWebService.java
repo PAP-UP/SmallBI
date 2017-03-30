@@ -115,9 +115,16 @@ public class UsuarioWebService {
 			jsonResponse.put("idUsuario", ul.getIdUsuarioLogado());
 			jsonResponse.put("idCliente", ul.getClienteId());
 			jsonResponse.put("token", ul.getToken());
+			Usuario u = usuarioBusiness.getObjById(ul.getIdUsuarioLogado());
+			jsonResponse.put("login", u.getLogin());
+			jsonResponse.put("nome", u.getPessoa().getNome());
+			//jsonResponse.put("message", )
+			jsonResponse.put("success", true);
 			return jsonResponse.toString();
 		}else{
-			return gson.toJson("Usuário ou senha inválidos!");
+			//return gson.toJson("Usuário ou senha inválidos!");
+			jsonObject = new JSONObject().put("success", false);
+			return jsonObject.toString();
 		}
 	}
 	
@@ -128,14 +135,16 @@ public class UsuarioWebService {
 	public String checarToken(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
 		UsuarioLogado ul = new UsuarioLogadoBusiness().getUsuarioLogadoByToken(jsonObject.getString("token"));
+		JSONObject jsonResponse = new JSONObject();
 		if(ul != null){
-			JSONObject jsonResponse = new JSONObject();
-			jsonResponse.put("idUsuario", ul.getIdUsuarioLogado());
+			/*jsonResponse.put("idUsuario", ul.getIdUsuarioLogado());
 			jsonResponse.put("idCliente", ul.getClienteId());
 			jsonResponse.put("token", ul.getToken());
-			return jsonResponse.toString();
+			return jsonResponse.toString();*/
+			return jsonResponse.put("isValid", true).toString();
 		}
-		return gson.toJson("Sessão encerrada!");
+		//return gson.toJson("Sessão encerrada!");
+		return jsonResponse.put("isValid", false).toString();
 	}
 	
 	@POST

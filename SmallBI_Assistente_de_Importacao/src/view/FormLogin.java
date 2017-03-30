@@ -126,12 +126,12 @@ public class FormLogin extends javax.swing.JFrame {
     private void btnAuten_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuten_LoginActionPerformed
         
         //Chamando direto sem validar para otimizar o trabalho
-//        FormAssistenteImportacao frm = new FormAssistenteImportacao();
-//        frm.setLocationRelativeTo(null);
-//        frm.setResizable(false);
-//        frm.setVisible(true); 
-//        this.dispose();
-        login();
+        FormAssistenteImportacao frm = new FormAssistenteImportacao();
+        frm.setLocationRelativeTo(null);
+        frm.setResizable(false);
+        frm.setVisible(true); 
+        this.dispose();
+//        login();
     }//GEN-LAST:event_btnAuten_LoginActionPerformed
 
     private void btnAuten_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuten_CancelarActionPerformed

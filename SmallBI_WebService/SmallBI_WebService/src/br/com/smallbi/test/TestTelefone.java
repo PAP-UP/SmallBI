@@ -6,12 +6,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.smallbi.business.ClienteBusiness;
-import br.com.smallbi.business.PessoaBusiness;
 import br.com.smallbi.business.TelefoneBusiness;
 import br.com.smallbi.business.TipoBusiness;
-import br.com.smallbi.entity.Cliente;
-import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Tipo;
 import br.com.smallbi.util.Data;

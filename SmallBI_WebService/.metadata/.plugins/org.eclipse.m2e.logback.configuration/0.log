@@ -135,3 +135,9 @@ Caused by: org.apache.http.conn.ConnectTimeoutException: Connect to download.ecl
 2017-03-12 06:09:10,596 [main] INFO  org.eclipse.jetty.server.Server - Started @1001017ms
 2017-03-12 06:19:52,336 [Framework stop] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@6690629e{HTTP/1.1,[http/1.1]}{0.0.0.0:0}
 2017-03-12 06:19:52,414 [Framework stop] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@2da64c8d{/wse,null,UNAVAILABLE}
+2017-03-29 19:48:54,931 [Worker-15] INFO  j.exodus.env.EnvironmentImpl - Exodus environment created: /home/deynesonborba/smallbi-repository/SmallBI_WebService/.metadata/com.genuitec.eclipse.webclipse.livepreview/0/store
+2017-03-29 19:48:55,237 [Worker-15] INFO  j.exodus.env.EnvironmentImpl - Exodus environment created: /home/deynesonborba/smallbi-repository/SmallBI_WebService/.metadata/com.genuitec.eclipse.webclipse.livepreview/1/store
+2017-03-29 19:52:47,098 [Worker-27] INFO  j.exodus.env.EnvironmentImpl - Store get cache hit rate: 0.0%
+2017-03-29 19:52:47,099 [Worker-27] INFO  j.exodus.env.EnvironmentImpl - Tree nodes cache hit rate: 0.0%
+2017-03-29 19:52:47,099 [Worker-27] INFO  j.exodus.env.EnvironmentImpl - Exodus log cache hit rate: 0.0%
+2017-03-29 19:53:07,413 [Worker-22] INFO  j.exodus.env.EnvironmentImpl - Exodus environment created: /home/deynesonborba/smallbi-repository/SmallBI_WebService/.metadata/com.genuitec.eclipse.webclipse.livepreview/1/store
