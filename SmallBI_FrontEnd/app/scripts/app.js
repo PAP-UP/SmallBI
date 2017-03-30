@@ -21,7 +21,7 @@
           //$state.transitionTo('index');
         }
       }else {
-        // $cookieStore.delete();
+        $cookieStore.delete();
       }
 
     });
