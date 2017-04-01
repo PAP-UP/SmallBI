@@ -2,6 +2,9 @@ package view;
 
 import business.GerarSchema;
 import business.GerarScriptSql;
+import business.GerenciarDimensoes;
+import business.GerenciarMetricas;
+import business.GerenciarRelacionamentos;
 import business.Util;
 import com.google.gson.Gson;
 import java.awt.Component;
@@ -41,27 +44,20 @@ import xmleditorkit.XMLEditorKit;
 
 public class FormAssistenteModelagem extends javax.swing.JFrame {
     
-    private List<Dimensao> dimensoesModeladas = new ArrayList<>();
-    public static List<Dimensao> dimensoesSalvas = new ArrayList<>();
-    private List<GrupoMetrica> grupoMetricasModeladas = new ArrayList<>();
-    public static List<GrupoMetrica> grupoMetricasSalvas = new ArrayList<>();
     public static List<TabelaImportada> tabelasImportadas = new ArrayList<>();
-    public static List<Link> links = new ArrayList<>();
-    private static Integer idLink = 0;
-    //private static Util util = new Util();
     //String urlApiAddCubo = "http://localhost:8081/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
     String urlApiAddCubo = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
     
     public FormAssistenteModelagem() {
         initComponents();
         PercorrerAbasFormAssistenteModelagem.desativarAbasInicio();  
-        carregarAgregadoresModelMetri();
-        carregarFormatosModelMetri();
-        carregarTabelasModelDim();
-        carregarTabelasRelacionamentos();
-        atualizarListaDimensoes();
-        atualizarListaRelacionamentos();
-        atualizarListaMetricas();
+        GerenciarMetricas.carregarAgregadoresModelMetri();
+        GerenciarMetricas.carregarFormatosModelMetri();
+        GerenciarDimensoes.carregarTabelasModelDim();
+        GerenciarRelacionamentos.carregarTabelasRelacionamentos();
+        GerenciarDimensoes.atualizarListaDimensoes();
+        GerenciarRelacionamentos.atualizarListaRelacionamentos();
+        GerenciarMetricas.atualizarListaMetricas();
     }
 
     @SuppressWarnings("unchecked")
@@ -928,7 +924,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarMetricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarMetricaActionPerformed
-        adicionarMetrica();
+        GerenciarMetricas.adicionarMetrica();
     }//GEN-LAST:event_btnAdicionarMetricaActionPerformed
 
     private void btnAbaModelMetri_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelMetri_SairActionPerformed
@@ -940,11 +936,11 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaModelMetri_VoltarActionPerformed
 
     private void btnAbaModelMetri_ProxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelMetri_ProxActionPerformed
-        modelMetriToAddRel();
+        GerenciarMetricas.modelMetriToAddRel();
     }//GEN-LAST:event_btnAbaModelMetri_ProxActionPerformed
 
     private void btnAddDimensaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDimensaoActionPerformed
-        adicionarDimensao();
+        GerenciarDimensoes.adicionarDimensao();
     }//GEN-LAST:event_btnAddDimensaoActionPerformed
 
     private void btnAbaModelDim_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelDim_VoltarActionPerformed
@@ -952,7 +948,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaModelDim_VoltarActionPerformed
 
     private void btnAbaModelDim_ProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelDim_ProximoActionPerformed
-        modelDimToModelMetri();
+        GerenciarDimensoes.modelDimToModelMetri();
     }//GEN-LAST:event_btnAbaModelDim_ProximoActionPerformed
 
     private void btnAbaModelDim_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaModelDim_SairActionPerformed
@@ -980,11 +976,11 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPainelRel_SairActionPerformed
 
     private void btnPainelRel_GerarCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPainelRel_GerarCuboActionPerformed
-        addRelToCuboPreview();
+        GerenciarRelacionamentos.addRelToCuboPreview();
     }//GEN-LAST:event_btnPainelRel_GerarCuboActionPerformed
 
     private void btnPainelRel_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPainelRel_VoltarActionPerformed
-        addRelToModelMetri();
+        GerenciarRelacionamentos.addRelToModelMetri();
     }//GEN-LAST:event_btnPainelRel_VoltarActionPerformed
 
     private void btnAbaCuboPreview_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbaCuboPreview_VoltarActionPerformed
@@ -992,39 +988,39 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbaCuboPreview_VoltarActionPerformed
 
     private void cbxTabelaMetricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTabelaMetricaActionPerformed
-        carregarCbxColunasMetrica();
+        GerenciarMetricas.carregarCbxColunasMetrica();
     }//GEN-LAST:event_cbxTabelaMetricaActionPerformed
 
     private void btnSalvarMetricasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarMetricasActionPerformed
-        salvarMetricas();
+        GerenciarMetricas.salvarMetricas();
     }//GEN-LAST:event_btnSalvarMetricasActionPerformed
 
     private void cbxTabelaDimensaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTabelaDimensaoActionPerformed
-        getTabSelecionada();
+        GerenciarDimensoes.getTabSelecionada();
     }//GEN-LAST:event_cbxTabelaDimensaoActionPerformed
 
     private void btnSalvarDimensoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDimensoesActionPerformed
-        salvarDimensoes();
+        GerenciarDimensoes.salvarDimensoes();
     }//GEN-LAST:event_btnSalvarDimensoesActionPerformed
 
     private void btnVoltarDimensoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDimensoesActionPerformed
-        limparAbaAddDimensao();
+        GerenciarDimensoes.limparAbaAddDimensao();
     }//GEN-LAST:event_btnVoltarDimensoesActionPerformed
 
     private void btnVoltarMetricasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarMetricasActionPerformed
-        limparAbaAddMetrica();
+        GerenciarMetricas.limparAbaAddMetrica();
     }//GEN-LAST:event_btnVoltarMetricasActionPerformed
 
     private void cbxTabelaRelacionamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTabelaRelacionamentoActionPerformed
-        carregarAtributosRel();
+        GerenciarRelacionamentos.carregarAtributosRel();
     }//GEN-LAST:event_cbxTabelaRelacionamentoActionPerformed
 
     private void cbxAtributoRelacionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAtributoRelacionadoActionPerformed
-       ativarTabelaReferenciada();
+       GerenciarRelacionamentos.ativarTabelaReferenciada();
     }//GEN-LAST:event_cbxAtributoRelacionadoActionPerformed
 
     private void btnAdicionarRelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarRelActionPerformed
-        adicionarRelacionamento();
+        GerenciarRelacionamentos.adicionarRelacionamento();
     }//GEN-LAST:event_btnAdicionarRelActionPerformed
 
     private void btnVoltarRelacionamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarRelacionamentosActionPerformed
@@ -1032,15 +1028,15 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarRelacionamentosActionPerformed
 
     private void btnSalvarRelacionamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarRelacionamentosActionPerformed
-        salvarRelacionamentos();
+        GerenciarRelacionamentos.salvarRelacionamentos();
     }//GEN-LAST:event_btnSalvarRelacionamentosActionPerformed
 
     private void jcbSelecTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSelecTodosActionPerformed
-        selecionarTodosAtributos();
+        GerenciarDimensoes.selecionarTodosAtributos();
     }//GEN-LAST:event_jcbSelecTodosActionPerformed
 
     private void cbxChaveDimensaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxChaveDimensaoActionPerformed
-        ativarSelecTodosAtrDimensao();
+        GerenciarDimensoes.ativarSelecTodosAtrDimensao();
     }//GEN-LAST:event_cbxChaveDimensaoActionPerformed
 
     private void cuboPreviewVoltar(){
@@ -1049,582 +1045,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         }else{
             PercorrerAbasFormAssistenteModelagem.cuboPreviewToModelMetri();
         }
-    }
-    
-    private void limparAbaAddMetrica(){
-        txtNomeMetrica.setText("");
-        
-        cbxTabelaMetrica.removeAllItems();
-        cbxTabelaMetrica.addItem("Selecione");
-        
-        cbxColunaMetrica.removeAllItems();
-        cbxColunaMetrica.addItem("Selecione");
-        
-        carregarTabelasMetricas();
-        
-        jTabbedPane_Metricas.setSelectedIndex(0);
-    }
-    
-    private void ativarSelecTodosAtrDimensao(){
-        if(cbxChaveDimensao.getSelectedItem() != null &&
-                !cbxChaveDimensao.getSelectedItem().toString().equals("Selecione")){
-                
-            jcbSelecTodos.setEnabled(true);
-            Component[] components = painelListaAtributos.getComponents();
-            for(Component c : components){
-                c.setEnabled(true);
-            }
-        }
-    }
-    
-    private void limparAbaAddDimensao(){
-        painelListaAtributos.removeAll();
-        jcbSelecTodos.setSelected(false);
-        jcbSelecTodos.setEnabled(false);
-        txtNomeDimensao.setText("");
-
-        cbxChaveDimensao.removeAllItems();
-        cbxChaveDimensao.addItem("Selecione");        
-        
-        cbxTabelaDimensao.removeAllItems();
-        cbxTabelaDimensao.addItem("Selecione");
-
-        carregarTabelasModelDim();
-        
-        jTabbedPane_Dimensoes.setSelectedIndex(0);
-    }
-    
-    private void selecionarTodosAtributos(){
-        Component[] components = painelListaAtributos.getComponents();
-        if(jcbSelecTodos.isSelected()){
-            for(Component c : components){
-                if(c instanceof JCheckBox){
-                    ((JCheckBox) c).setSelected(true);
-                }
-            }
-        }else{
-            for(Component c : components){
-                if(c instanceof JCheckBox){
-                    ((JCheckBox) c).setSelected(false);
-                }
-            }            
-        }
-    }
-    
-    private void salvarRelacionamentos(){
-        if(links.size() > 0){
-            Component[] components = painelListaRelacionamentos.getComponents();
-            if(components.length > 0){
-                for(Component c : components){
-                    if(c instanceof JCheckBox){
-                        JCheckBox checkBox = (JCheckBox) c;
-                        if(!checkBox.isSelected()){
-                            delRel(checkBox);
-                        }
-                    }
-                }
-            }
-            addRelToCuboPreview();
-        }else{
-            JOptionPane.showMessageDialog(null, "Adicione ao menos um relacionamento!");
-        }
-    }
-    
-    //Foi colocado a assinatura boolean apenas para quebrar o For quando remover o relacionamento indesejado;
-    private boolean delRel(JCheckBox checkBox){
-        for(Link l : links){
-            if(l.getIdLink().toString().equals(checkBox.getName())){
-                links.remove(l);
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    private void adicionarRelacionamento(){
-        String tabRelacionamento = cbxTabelaRelacionamento.getSelectedItem().toString();
-        String atrRelacionado = cbxAtributoRelacionado.getSelectedItem().toString();
-        String tabReferenciada = cbxTabelaReferenciada.getSelectedItem().toString();
-        
-        if(!tabRelacionamento.equals("Selecione") &&
-                !atrRelacionado.equals("Selecione") &&
-                    !tabReferenciada.equals("Selecione")){
-            
-            Link linkRel = new Link();
-            linkRel.setIdLink(idLink + 1);
-            linkRel.setTarget(tabRelacionamento);
-            linkRel.setForeignKey(atrRelacionado);
-            linkRel.setSource(tabReferenciada);
-            links.add(linkRel);
-            
-            atualizarListaRelacionamentos();
-            jTabbedPane_Relacionamentos.setSelectedIndex(1);
-        }
-    }
-    
-    private void atualizarListaRelacionamentos(){
-        
-        painelListaRelacionamentos.removeAll();
-        for(Link rel : links){
-            JLabel label = new JLabel();
-            label.setText("Relacionamento: ");
-            
-            JCheckBox checkBox = new JCheckBox();
-            checkBox.setName(String.valueOf(rel.getIdLink()));
-            checkBox.setText(rel.getTarget() + "." + rel.getForeignKey() + " => " + rel.getSource());
-            checkBox.setSelected(true);
-            
-            painelListaRelacionamentos.add(label);
-            painelListaRelacionamentos.add(checkBox);
-        }
-        painelListaRelacionamentos.setLayout(new BoxLayout(painelListaRelacionamentos, BoxLayout.Y_AXIS));
-        painelListaRelacionamentos.updateUI();
-    }
-    
-    private void ativarTabelaReferenciada(){
-        //Essa condicional está declarada para evitar uma Exeption quando o comando
-        //cbxAtributosRelacionado.removeAllItens(); for executado.
-        if(cbxAtributoRelacionado.getModel().getSelectedItem() != null){            
-            String atrRelacionado = cbxAtributoRelacionado.getSelectedItem().toString();
-            if(!atrRelacionado.equals("") && !atrRelacionado.equals("Selecione")){
-                cbxTabelaReferenciada.setEnabled(true);
-            }
-        }
-    }
-    
-    private void carregarAtributosRel(){
-        if(!cbxTabelaRelacionamento.getSelectedItem().toString().equals("Selecione")){
-            Dimensao dimUsada = new Dimensao();
-            for(Dimensao d : dimensoesSalvas){
-                if(d.getTabela().equals(cbxTabelaRelacionamento.getSelectedItem().toString())){
-                    dimUsada = d;
-                }
-            }
-            
-            cbxAtributoRelacionado.removeAllItems();
-            cbxAtributoRelacionado.addItem("Selecione");
-            for(String atr : dimUsada.getAtributos()){
-                cbxAtributoRelacionado.addItem(atr);
-            }
-            cbxAtributoRelacionado.setEnabled(true);
-            cbxAtributoRelacionado.updateUI();
-            carregarTabelasReferenciadas();
-        }
-    }
-    
-    private void carregarTabelasReferenciadas(){
-        cbxTabelaReferenciada.removeAllItems();
-        cbxTabelaReferenciada.addItem("Selecione");
-        for(Dimensao d : dimensoesSalvas){
-            if(!d.getTabela().equals(cbxTabelaRelacionamento.getSelectedItem().toString())){
-                cbxTabelaReferenciada.addItem(d.getTabela());
-            }
-        }
-    }
-    
-    private void carregarTabelasRelacionamentos(){
-        for(TabelaImportada t : tabelasImportadas){
-            cbxTabelaRelacionamento.addItem(t.getNomeTabela());
-        }
-    }
-    
-    private void salvarDimensoes(){
-        Component[] components = painelListaDimensoes.getComponents();
-        if(components.length > 0){
-            
-            int qtdDimSelec = 0;
-            
-            for(Component c : components){
-                if(c instanceof JCheckBox){
-                    JCheckBox checkBox = (JCheckBox) c;
-                    if(!checkBox.isSelected()){
-                        delDimByName(checkBox.getText());
-                    }else{
-                        //Deve ser selecionada pelo menos uma dimensão
-                        qtdDimSelec++;
-                        //Adicionar dim se não existir ja
-                        if(!verificarSeJaExisteNaLista(checkBox.getText())){
-                            dimensoesSalvas.add(getDimensaoModelada(checkBox.getText()));
-                        }
-                    }
-                }
-            }
-            
-            if(qtdDimSelec > 0){
-                carregarTabelasMetricas();
-                PercorrerAbasFormAssistenteModelagem.modelDimToModelMetri();
-            }else{
-                JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
-        }
-    }
-    
-    private Dimensao getDimensaoModelada(String nome){
-        for(Dimensao d : dimensoesModeladas){
-            if(d.getNome().equals(nome))
-                return d;
-        }
-        return null;
-    }
-    
-    private boolean verificarSeJaExisteNaLista(String nome){
-        for(Dimensao d : dimensoesSalvas){
-            if(d.getNome().equals(nome))
-                return true;
-        }
-        return false;
-    }
-    
-    private void carregarTabelasMetricas(){
-        //Carregar Tabelas para serem utilizadas na gestão de metricas.
-        //Validação com DeafultComboBoxModel para não haver redundância de tabelas
-        //cbxTabelaMetrica.addItem("Selecione");
-        for(Dimensao d : dimensoesSalvas){
-            if(((DefaultComboBoxModel)cbxTabelaMetrica.getModel()).getIndexOf(d.getTabela()) < 0)
-                cbxTabelaMetrica.addItem(d.getTabela());
-        }
-        cbxTabelaMetrica.setSelectedIndex(0);
-    }
-    
-    //Foi colocado a assinatura boolean apenas para quebrar o For quando remover a dimensão indesejada;
-    //Ainda deve ser definido como remover o nome da tabela do "cbxTabelaMetrica" sem causar problemas;
-    private boolean delDimByName(String nomeDim){
-        for(Dimensao d : dimensoesSalvas){
-            if(d.getNome().equals(nomeDim)){
-                dimensoesSalvas.remove(d);
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    private void atualizarListaDimensoes(){
-        painelListaDimensoes.removeAll();
-        for(Dimensao d : dimensoesModeladas){
-            JCheckBox checkBox = new JCheckBox();
-            checkBox.setText(d.getNome());
-            checkBox.setSelected(true);
-            JLabel label = new JLabel();
-            label.setText("Dimensão: ");
-            painelListaDimensoes.add(label);
-            painelListaDimensoes.add(checkBox);
-        }
-        painelListaDimensoes.setLayout(new BoxLayout(painelListaDimensoes, BoxLayout.Y_AXIS));
-        painelListaDimensoes.updateUI();
-    }
-    
-    private void adicionarDimensao(){
-        String nomeDim = txtNomeDimensao.getText();
-        String tabela = cbxTabelaDimensao.getSelectedItem().toString();
-        String chave = cbxChaveDimensao.getSelectedItem().toString();
-        
-        if(nomeDim != null && !nomeDim.equals("") &&
-                tabela != null && !tabela.equals("") && !tabela.equals("Selecione") &&
-                    chave != null && !chave.equals("") && !chave.equals("Selecione")){
-        
-            if(nomeJaExistente()){
-                JOptionPane.showMessageDialog(null, "Já existe uma dimensão com este nome!");
-            }else{            
-                List<String> atributosSelecionados = new ArrayList<>();
-                Component[] components = painelListaAtributos.getComponents();
-                for(Component c : components){
-                    if(c instanceof JCheckBox){
-                        JCheckBox checkBox = (JCheckBox) c;
-                        if(checkBox.isSelected()){
-                            atributosSelecionados.add(checkBox.getText());
-                        }
-                    }
-                }
-
-                if(atributosSelecionados.size() > 0){
-                    Dimensao d = new Dimensao();
-                    d.setNome(nomeDim);
-                    d.setTabela(tabela);
-                    d.setKey(chave);
-                    d.setAtributos(atributosSelecionados);
-
-                    dimensoesModeladas.add(d);
-                    atualizarListaDimensoes();
-                    jTabbedPane_Dimensoes.setSelectedIndex(1);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Selecione ao menos um atributo!");
-                }
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-        }
-    }
-    
-    private boolean nomeJaExistente(){
-        for(Dimensao d : dimensoesSalvas){
-            if(d.getNome().equals(txtNomeDimensao.getText())){
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    private void getTabSelecionada(){
-        //Validação dos itens do comboBox...
-        //Existe pois no momento que se chama o método cbx.removeAllItens()...
-        //O compilador passa por aqui...
-        if(cbxTabelaDimensao.getSelectedItem() != null &&
-                !cbxTabelaDimensao.getSelectedItem().equals("Selecione")){
-            TabelaImportada tabSelecionada = new TabelaImportada();
-            for(TabelaImportada t : tabelasImportadas){
-                if(t.getNomeTabela().equals(cbxTabelaDimensao.getSelectedItem().toString())){
-                    tabSelecionada = t;
-                }
-            }
-            carregarAtributosModelDim(tabSelecionada);
-            carregarChavesModelDim(tabSelecionada);
-        }
-    }
-    
-    private void carregarChavesModelDim(TabelaImportada tabSelecionada){
-        cbxChaveDimensao.removeAllItems();
-        cbxChaveDimensao.addItem("Selecione");
-        JTable jTable = tabSelecionada.getjTable();
-        for(int i = 0; i < jTable.getColumnCount(); i++){
-            cbxChaveDimensao.addItem(jTable.getColumnName(i));
-        }
-        cbxChaveDimensao.updateUI();
-    }
-    
-    private void carregarAtributosModelDim(TabelaImportada tabSelecionada){
-        painelListaAtributos.removeAll();
-        JTable jTable = tabSelecionada.getjTable();
-        for(int i = 0; i < jTable.getColumnCount(); i++){
-            JCheckBox checkBox = new JCheckBox();
-            checkBox.setText(jTable.getColumnName(i));
-            checkBox.setEnabled(false);
-            painelListaAtributos.add(checkBox);
-        }
-        painelListaAtributos.setLayout(new BoxLayout(painelListaAtributos, BoxLayout.Y_AXIS));
-        painelListaAtributos.updateUI();
-    }
-    
-    private void carregarTabelasModelDim(){
-        for(TabelaImportada t : tabelasImportadas){
-            cbxTabelaDimensao.addItem(t.getNomeTabela());
-        }
-    }
-    
-    private void salvarMetricas(){
-        Component[] components = painelListaMetricas.getComponents();
-        if(components.length > 0){            
-            int qtdMetriSelec = 0;
-            for(Component c : components){
-                if(c instanceof JCheckBox){
-                    JCheckBox checkBox = (JCheckBox) c;
-                    
-                    if(!checkBox.isSelected()){
-                        delMetricaByName(checkBox.getText());
-                    }else{
-                       Metrica m = getMetricaModeladaByName(checkBox.getText());
-                       if(!metricaJaSalva(m.getNome())){
-                            GrupoMetrica gmModelado = getGrupoMetricaModeladoByMetricas(m.getNome());
-                            GrupoMetrica gmJaSalvo = getGrupoMetricaJaSalvo(gmModelado.getNome());
-                            if(gmJaSalvo == null){
-                                 GrupoMetrica newGm = new GrupoMetrica();
-                                 newGm.setNome(gmModelado.getNome());
-                                 newGm.setTabela(gmModelado.getTabela());
-                                 List<Metrica> metricas = new ArrayList<>();
-                                 metricas.add(m);
-                                 newGm.setMetricas(metricas);
-                                 grupoMetricasSalvas.add(newGm);
-                             }else{
-                                 gmJaSalvo.getMetricas().add(m);
-                                 grupoMetricasSalvas.set(grupoMetricasSalvas.indexOf(gmJaSalvo), gmJaSalvo);
-                             }
-                        }
-                       qtdMetriSelec++;
-                    }
-                }
-            }
-            
-            if(qtdMetriSelec > 0){                 
-                if(tabelasImportadas.size() > 1){
-                    PercorrerAbasFormAssistenteModelagem.modelMetriToAddRel();
-                }else{
-                    gerarSchemaXml();
-                    PercorrerAbasFormAssistenteModelagem.modelMetriToCuboPreview();
-                }
-            }else{
-                JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
-        }
-    }
-    
-    private boolean metricaJaSalva(String nomeMetricaModelada){
-        for(GrupoMetrica gm : grupoMetricasSalvas){
-            for(Metrica m : gm.getMetricas()){
-                if(m.getNome().equals(nomeMetricaModelada))
-                    return true;
-            }
-        }
-        return false;
-    }
-    
-    private GrupoMetrica getGrupoMetricaJaSalvo(String nomeGrupoModelado){
-        for(GrupoMetrica gm : grupoMetricasSalvas){
-            if(gm.getNome().equals(nomeGrupoModelado))
-                return gm;
-        }
-        return null;
-    }
-    
-    private GrupoMetrica getGrupoMetricaModeladoByMetricas(String nomeMetrica){
-        for(GrupoMetrica gm : grupoMetricasModeladas){
-            for(Metrica m : gm.getMetricas()){
-                if(m.getNome().equals(nomeMetrica))
-                    return gm;
-            }
-        }
-        return null;
-    }
-    
-    private Metrica getMetricaModeladaByName(String nomeMetrica){
-        for(GrupoMetrica gm : grupoMetricasModeladas){
-            for(Metrica m : gm.getMetricas()){
-                if(m.getNome().equals(nomeMetrica))
-                    return m;
-            }
-        }        
-        return null;
-    }
-    
-    //Foi colocado a assinatura boolean apenas para quebrar o For quando remover a métrica indesejada;
-    private boolean delMetricaByName(String nome){
-        for(GrupoMetrica gm : grupoMetricasSalvas){
-            List<Metrica> metricas = gm.getMetricas();
-            for(Metrica m : metricas){
-                if(m.getNome().equals(nome)){
-                    metricas.remove(m);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    
-    private void carregarAgregadoresModelMetri(){
-        cbxAgregadorMetrica.removeAllItems();
-        cbxAgregadorMetrica.addItem("count");
-        cbxAgregadorMetrica.addItem("sum");
-        cbxAgregadorMetrica.addItem("avg");
-        cbxAgregadorMetrica.addItem("max");
-    }
-    
-    private void carregarFormatosModelMetri(){
-        cbxFormatoMetrica.removeAllItems();
-        cbxFormatoMetrica.addItem("Standard");
-        cbxFormatoMetrica.addItem("#,###.00");
-    }
-    
-    private void carregarCbxColunasMetrica(){
-        cbxColunaMetrica.removeAllItems();
-        cbxColunaMetrica.addItem("Selecione");
-        Dimensao dimSelecionada = new Dimensao();
-        for(Dimensao d : dimensoesSalvas){
-            if(cbxTabelaMetrica.getSelectedItem() != null &&
-                    cbxTabelaMetrica.getSelectedItem().toString().equals(d.getTabela())){
-                dimSelecionada = d;
-            }
-        }
-        
-        if(dimSelecionada.getAtributos() != null){
-            for(String atr : dimSelecionada.getAtributos()){
-                cbxColunaMetrica.addItem(atr);
-            }
-        }
-    }
-    
-    private void adicionarMetrica(){
-        if(txtNomeMetrica.getText() != null && !txtNomeMetrica.getText().equals("")){
-            if(!cbxTabelaMetrica.getSelectedItem().toString().equals("Selecione")){
-                if(!cbxColunaMetrica.getSelectedItem().toString().equals("Selecione")){
-                    
-                    Metrica metrica = new Metrica();
-                    metrica.setNome(txtNomeMetrica.getText());
-                    metrica.setColuna(cbxColunaMetrica.getSelectedItem().toString());
-                    metrica.setAgregador(cbxAgregadorMetrica.getSelectedItem().toString());
-                    metrica.setFormato(cbxFormatoMetrica.getSelectedItem().toString());        
-
-                    GrupoMetrica gm = getGrupoUsandoMesmaTabela(cbxTabelaMetrica.getSelectedItem().toString());
-                    if(gm == null){
-                        gm = new GrupoMetrica();
-                        gm.setNome("Grupo_" + metrica.getNome());
-                        gm.setTabela(cbxTabelaMetrica.getSelectedItem().toString());
-
-                        List<Metrica> metricas = new ArrayList<>();            
-                        metricas.add(metrica);
-                        gm.setMetricas(metricas);
-
-                        grupoMetricasModeladas.add(gm);
-                    }else{
-                        List<Metrica> metricas = gm.getMetricas();
-                        metricas.add(metrica);
-                        gm.setMetricas(metricas);
-
-                        grupoMetricasModeladas.set(grupoMetricasModeladas.indexOf(gm), gm);
-                    }
-                    atualizarListaMetricas();
-                    jTabbedPane_Metricas.setSelectedIndex(1);
-
-                    //Apenas para controle e teste;
-//                    System.out.println("Inicio");
-//                    for(GrupoMetrica grupo : grupoMetricasModeladas){
-//                        System.out.println("Nome GrupoMetrica: " + grupo.getNome() + ", Tabela: " + grupo.getTabela());
-//                        List<Metrica> ms = grupo.getMetricas();
-//                        for(Metrica m : ms){
-//                            System.out.println("Métrica: " + m.getNome());
-//                        }
-//                        System.out.println("-------------------------");
-//                    }
-//                    System.out.println("Fim");
-                    
-                }else{
-                    JOptionPane.showMessageDialog(null, "Defina uma coluna!");
-                }
-            }else{
-                JOptionPane.showMessageDialog(null, "Defina uma tabela!");
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Defina um nome para a métrica!");
-        }
-    }
-    
-    private void atualizarListaMetricas(){
-        painelListaMetricas.removeAll();
-        for(GrupoMetrica gm : grupoMetricasModeladas){
-            List<Metrica> metricas = gm.getMetricas();
-            for(Metrica m : metricas){
-                JCheckBox checkBox = new JCheckBox();
-                checkBox.setText(m.getNome());
-//                checkBox.setText("Métrica: " + m.getNome());
-                checkBox.setSelected(true);
-                JLabel label = new JLabel();
-                label.setText("Métrica: ");
-                painelListaMetricas.add(label);
-                painelListaMetricas.add(checkBox);
-            }
-        }
-        painelListaMetricas.setLayout(new BoxLayout(painelListaMetricas, BoxLayout.Y_AXIS));
-        painelListaMetricas.updateUI();
-    }
-    
-    private GrupoMetrica getGrupoUsandoMesmaTabela(String tabSelecionada){
-        for(GrupoMetrica gm : grupoMetricasModeladas){
-            if(gm.getTabela().equals(tabSelecionada)){
-                return gm;
-            }
-        }
-        return null;
     }
     
     private void enviarCubo(){
@@ -1704,37 +1124,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         return "";
     }
     
-    private void addRelToModelMetri(){
-        PercorrerAbasFormAssistenteModelagem.addRelToModelMetri();
-        painelListaMetricas.updateUI();
-    }
-    
-    private void addRelToCuboPreview(){
-        PercorrerAbasFormAssistenteModelagem.addRelToCuboPreview();
-        gerarSchemaXml();
-    }
-    
-    private void modelMetriToAddRel(){
-        if(grupoMetricasSalvas.size() > 0){
-            if(tabelasImportadas.size() > 1){
-                PercorrerAbasFormAssistenteModelagem.modelMetriToAddRel();            
-            }else{
-                PercorrerAbasFormAssistenteModelagem.modelMetriToCuboPreview();
-                gerarSchemaXml();
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
-        }
-    }
-    
-    private void modelDimToModelMetri(){
-        if(dimensoesSalvas.size() > 0){
-            PercorrerAbasFormAssistenteModelagem.modelDimToModelMetri();
-        }else{
-            JOptionPane.showMessageDialog(null, "Adicione ao menos uma dimensão ao cubo!");
-        }
-    }
-    
     private void nomeCuboToModelDim(){
         if(!txtAbaNomeCubo_NomeCubo.getText().equals("")){
             if(txtAbaNomeCubo_NomeCubo.getText().length() < 25){
@@ -1753,14 +1142,14 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         }
     }
     
-    private void gerarSchemaXml(){
+    public static void gerarSchemaXml(){
         Schema schema = new Schema();
         schema.setNome("Schema " + Util.formatarString(txtAbaNomeCubo_NomeCubo.getText()));
         schema.setTabelasFato(tabelasImportadas);
         schema.setNomeCubo(Util.formatarString(txtAbaNomeCubo_NomeCubo.getText()));
-        schema.setDimensoes(dimensoesSalvas);
-        schema.setGrupoMetrica(grupoMetricasSalvas);
-        schema.setLinks(links);
+        schema.setDimensoes(GerenciarDimensoes.dimensoesSalvas);
+        schema.setGrupoMetrica(GerenciarMetricas.grupoMetricasSalvas);
+        schema.setLinks(GerenciarRelacionamentos.links);
         
         GerarSchema gerarSchema = new GerarSchema();
         String xmlGerado = gerarSchema.createSchema(schema);
@@ -1768,7 +1157,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         carregarTxtAreaPreview(xmlGerado);
     }
     
-    private void carregarTxtAreaPreview(String schemaXml){  
+    private static void carregarTxtAreaPreview(String schemaXml){  
           edtPaneAbaCuboPreview_XmlPreview.setEditorKit(new XMLEditorKit());
           edtPaneAbaCuboPreview_XmlPreview.setText(schemaXml);
     }
@@ -1793,7 +1182,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JButton btnAbaModelMetri_Voltar;
     private javax.swing.JButton btnAbaNomeCubo_Proximo;
     private javax.swing.JButton btnAbaNomeCubo_Sair;
-    private javax.swing.JButton btnAddDimensao;
+    public static javax.swing.JButton btnAddDimensao;
     private javax.swing.JButton btnAdicionarMetrica;
     private javax.swing.JButton btnAdicionarRel;
     private javax.swing.JButton btnPainelRel_GerarCubo;
@@ -1805,25 +1194,25 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltarDimensoes;
     private javax.swing.JButton btnVoltarMetricas;
     private javax.swing.JButton btnVoltarRelacionamentos;
-    private javax.swing.JComboBox<String> cbxAgregadorMetrica;
-    private javax.swing.JComboBox<String> cbxAtributoRelacionado;
-    private javax.swing.JComboBox<String> cbxChaveDimensao;
-    private javax.swing.JComboBox<String> cbxColunaMetrica;
-    private javax.swing.JComboBox<String> cbxFormatoMetrica;
-    private javax.swing.JComboBox<String> cbxTabelaDimensao;
-    private javax.swing.JComboBox<String> cbxTabelaMetrica;
-    private javax.swing.JComboBox<String> cbxTabelaReferenciada;
-    private javax.swing.JComboBox<String> cbxTabelaRelacionamento;
-    private javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;
+    public static javax.swing.JComboBox<String> cbxAgregadorMetrica;
+    public static javax.swing.JComboBox<String> cbxAtributoRelacionado;
+    public static javax.swing.JComboBox<String> cbxChaveDimensao;
+    public static javax.swing.JComboBox<String> cbxColunaMetrica;
+    public static javax.swing.JComboBox<String> cbxFormatoMetrica;
+    public static javax.swing.JComboBox<String> cbxTabelaDimensao;
+    public static javax.swing.JComboBox<String> cbxTabelaMetrica;
+    public static javax.swing.JComboBox<String> cbxTabelaReferenciada;
+    public static javax.swing.JComboBox<String> cbxTabelaRelacionamento;
+    public static javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane_Dimensoes;
-    private javax.swing.JTabbedPane jTabbedPane_Metricas;
-    private javax.swing.JTabbedPane jTabbedPane_Relacionamentos;
-    private javax.swing.JCheckBox jcbSelecTodos;
+    public static javax.swing.JTabbedPane jTabbedPane_Dimensoes;
+    public static javax.swing.JTabbedPane jTabbedPane_Metricas;
+    public static javax.swing.JTabbedPane jTabbedPane_Relacionamentos;
+    public static javax.swing.JCheckBox jcbSelecTodos;
     public static javax.swing.JTabbedPane lbl;
     private javax.swing.JLabel lblAbaNomeCubo_Nomecubo;
     private javax.swing.JLabel lblAgregadorMetrica;
@@ -1851,14 +1240,14 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JPanel painelGerenciarDimensões;
     public static javax.swing.JPanel painelGerenciarMetricas;
     private javax.swing.JPanel painelGerenciarRelacionamentos;
-    private javax.swing.JPanel painelListaAtributos;
-    private javax.swing.JPanel painelListaDimensoes;
-    private javax.swing.JPanel painelListaMetricas;
-    private javax.swing.JPanel painelListaRelacionamentos;
+    public static javax.swing.JPanel painelListaAtributos;
+    public static javax.swing.JPanel painelListaDimensoes;
+    public static javax.swing.JPanel painelListaMetricas;
+    public static javax.swing.JPanel painelListaRelacionamentos;
     private javax.swing.JPanel painelMetricas;
     private javax.swing.JPanel painelRelacionamentos;
-    private javax.swing.JTextField txtAbaNomeCubo_NomeCubo;
-    private javax.swing.JTextField txtNomeDimensao;
-    private javax.swing.JTextField txtNomeMetrica;
+    public static javax.swing.JTextField txtAbaNomeCubo_NomeCubo;
+    public static javax.swing.JTextField txtNomeDimensao;
+    public static javax.swing.JTextField txtNomeMetrica;
     // End of variables declaration//GEN-END:variables
 }
