@@ -22,7 +22,7 @@ public class Servico implements javax.servlet.ServletContextListener{
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 		
-		System.out.println("Inicializando Tomcat!!!");
+		//System.out.println("Inicializando Tomcat!!!");
 		
 		Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
@@ -38,8 +38,8 @@ public class Servico implements javax.servlet.ServletContextListener{
                 	long differenceInMillis = dataAtual.getTime() - ul.getData().getTime();
                 	long diffMinutes = differenceInMillis / (60 * 1000) % 60;
                 	System.out.println("Diferença: " + diffMinutes);
-                	if(diffMinutes >= 1){
-                		System.out.println("Passou mais de um minuto: " + ul.getData() + 
+                	if(diffMinutes >= 15){
+                		System.out.println("Passou mais de 15 minuto: " + ul.getData() + 
                 				" Usuário: " + ul.getIdUsuarioLogado());
                 		business.delete(ul.getId());
                 		System.out.println("Token deletado...");
@@ -54,8 +54,11 @@ public class Servico implements javax.servlet.ServletContextListener{
         //A cada segundo
         //timer.schedule(timerTask, 01, 1 * 1000);
 
+//        A cada 10 seg
+        timer.schedule(timerTask, 01, 5 * 1000);
+        
         //A cada 10 seg
-        timer.schedule(timerTask, 01, 10 * 1000);
+        //timer.schedule(timerTask, 01, 10 * 1000);
         
         //A cada 1 min
         //timer.schedule(timerTask, 01, 1 * 60 * 1000);
