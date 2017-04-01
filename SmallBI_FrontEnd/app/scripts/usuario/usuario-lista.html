@@ -20,8 +20,8 @@
             <td>{{u.login}}</td>
             <td>{{u.cliente}}</td>
             <td>{{u.usuarioSaiku}}</td>
-            <td><a ui-sref="usuario.editar({id : u.idUsuario})">Editar</a></td>
-            <td><a href="" ng-click="vm.excluirUsuario(u.idUsuario)">Excluir</a></td>
+            <td><a ui-sref="usuario.editar({id : u.idUsuario})" class="text-info"><i class="fa fa-edit"></i> Editar</a></td>
+            <td><a href="" ng-click="vm.excluirUsuario(u.idUsuario)" class="text-danger"><i class="fa fa-trash-o"></i> Excluir</a></td>
           </tr>
 				</tbody>
 			</table>

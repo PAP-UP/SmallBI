@@ -10,8 +10,8 @@
   <tbody>
   <tr ng-repeat="p in vm.listaPerfil">
     <td>{{p.descricao}}</td>
-    <td><a ui-sref="perfil.editar({id : p.idPerfil})">Editar</a></td>
-    <td><a href="" ng-click="vm.excluirPerfil(p.idPerfil)">Excluir</a></td>
+    <td><a ui-sref="perfil.editar({id : p.idPerfil})" class="text-info"><i class="fa fa-edit"></i> Editar</a></td>
+    <td><a href="" ng-click="vm.excluirPerfil(p.idPerfil)" class="text-danger"><i class="fa fa-trash-o"></i> Excluir</a></td>
   </tr>
   </tbody>
 </table>

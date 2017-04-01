@@ -20,8 +20,8 @@
     <td>{{c.nomeFantasia}}</td>
     <td>{{c.ramoAtividade}}</td>
     <td>{{c.razaoSocial}}</td>
-    <td><a ui-sref="cliente.editar({id : c.idCliente})">Editar</a></td>
-    <td><a href="" ng-click="vm.excluirCliente(c.idCliente)">Excluir</a></td>
+    <td><a ui-sref="cliente.editar({id : c.idCliente})" class="text-info"><i class="fa fa-edit"></i> Editar</a></td>
+    <td><a href="" ng-click="vm.excluirCliente(c.idCliente)" class="text-danger"><i class="fa fa-trash-o"></i> Excluir</a></td>
   </tr>
   </tbody>
 </table>
