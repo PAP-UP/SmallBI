@@ -1414,23 +1414,33 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     private void salvarMetricas(){
         Component[] components = painelListaMetricas.getComponents();
-        if(components.length > 0){
-            
-            //Carregando lista gm salvos
-            grupoMetricasSalvas.clear();
-            for(GrupoMetrica gm : grupoMetricasModeladas){
-                grupoMetricasSalvas.add(gm);
-            }
-            
+        if(components.length > 0){            
             int qtdMetriSelec = 0;
-            
             for(Component c : components){
                 if(c instanceof JCheckBox){
                     JCheckBox checkBox = (JCheckBox) c;
+                    
                     if(!checkBox.isSelected()){
                         delMetricaByName(checkBox.getText());
                     }else{
-                        qtdMetriSelec++;
+                       Metrica m = getMetricaModeladaByName(checkBox.getText());
+                       if(!metricaJaSalva(m.getNome())){
+                            GrupoMetrica gmModelado = getGrupoMetricaModeladoByMetricas(m.getNome());
+                            GrupoMetrica gmJaSalvo = getGrupoMetricaJaSalvo(gmModelado.getNome());
+                            if(gmJaSalvo == null){
+                                 GrupoMetrica newGm = new GrupoMetrica();
+                                 newGm.setNome(gmModelado.getNome());
+                                 newGm.setTabela(gmModelado.getTabela());
+                                 List<Metrica> metricas = new ArrayList<>();
+                                 metricas.add(m);
+                                 newGm.setMetricas(metricas);
+                                 grupoMetricasSalvas.add(newGm);
+                             }else{
+                                 gmJaSalvo.getMetricas().add(m);
+                                 grupoMetricasSalvas.set(grupoMetricasSalvas.indexOf(gmJaSalvo), gmJaSalvo);
+                             }
+                        }
+                       qtdMetriSelec++;
                     }
                 }
             }
@@ -1448,6 +1458,44 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
         }
+    }
+    
+    private boolean metricaJaSalva(String nomeMetricaModelada){
+        for(GrupoMetrica gm : grupoMetricasSalvas){
+            for(Metrica m : gm.getMetricas()){
+                if(m.getNome().equals(nomeMetricaModelada))
+                    return true;
+            }
+        }
+        return false;
+    }
+    
+    private GrupoMetrica getGrupoMetricaJaSalvo(String nomeGrupoModelado){
+        for(GrupoMetrica gm : grupoMetricasSalvas){
+            if(gm.getNome().equals(nomeGrupoModelado))
+                return gm;
+        }
+        return null;
+    }
+    
+    private GrupoMetrica getGrupoMetricaModeladoByMetricas(String nomeMetrica){
+        for(GrupoMetrica gm : grupoMetricasModeladas){
+            for(Metrica m : gm.getMetricas()){
+                if(m.getNome().equals(nomeMetrica))
+                    return gm;
+            }
+        }
+        return null;
+    }
+    
+    private Metrica getMetricaModeladaByName(String nomeMetrica){
+        for(GrupoMetrica gm : grupoMetricasModeladas){
+            for(Metrica m : gm.getMetricas()){
+                if(m.getNome().equals(nomeMetrica))
+                    return m;
+            }
+        }        
+        return null;
     }
     
     //Foi colocado a assinatura boolean apenas para quebrar o For quando remover a métrica indesejada;
