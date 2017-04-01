@@ -13,17 +13,17 @@
       'oitozero.ngSweetAlert'
     ]).config(routes).run(autentica);
 
-  function autentica($rootScope, $state, AuthService, SweetAlert) {
+  function autentica($rootScope, $state, AuthService, SweetAlert, $location, $cookieStore) {
     $rootScope.$on('$stateChangeStart',function(evt,next,current){
+      if(next.name != 'index'){
         if (!AuthService.getToken()) {
-           event.preventDefault();
-           //SweetAlert.swal("Erro", "", "error");
-           // $state.go('index');
-          //
-          // $rootScope.$evalAsync(function () {
-          //   $location.path('/signin');
-          // })
+          $location.path('/index');
+          //$state.transitionTo('index');
         }
+      }else {
+        // $cookieStore.delete();
+      }
+
     });
   }
 
@@ -272,10 +272,9 @@
 
     // SITE ROUTE
     var index = {
-      name: '',
-      url: '',
-      templateUrl: 'scripts/perfil/perfil-listar.html',
-      controller: 'indexController',
+      name: 'index',
+      url: '/index',
+      templateUrl: 'views/site.html',
       controllerAs: 'vm'
     };
 
