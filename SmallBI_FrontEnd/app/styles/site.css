@@ -823,10 +823,10 @@ p {
 }
 .pg-painel .menu .avatar img {
   width: 100px;
-  border-radius: 50%;
+  /*border-radius: 50%;*/
   overflow: hidden;
-  border: 4px solid #ccc;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+  /* border: 4px solid #ccc;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2); */
 }
 .pg-painel .menu .avatar strong {
   font-weight: normal;
