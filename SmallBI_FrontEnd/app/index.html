@@ -20,6 +20,86 @@
 
   </head>
   <body ng-app="SmallBIApp">
+  <style type="text/css" media="screen">
+      @-webkit-keyframes color-shift {
+        0%, 100% {
+          background: #14858a;
+          fill: #14858a;
+        }
+        33% {
+          background: #a0dddf;
+          fill: #a0dddf;
+        }
+        66% {
+          background: #41bbbe;
+          fill: #41bbbe;
+        }
+      }
+      @-moz-keyframes color-shift {
+        0%, 100% {
+          background: #14858a;
+          fill: #14858a;
+        }
+        33% {
+          background: #a0dddf;
+          fill: #a0dddf;
+        }
+        66% {
+          background: #41bbbe;
+          fill: #41bbbe;
+        }
+      }
+      @keyframes color-shift {
+        0%, 100% {
+          background: #14858a;
+          fill: #14858a;
+        }
+        33% {
+          background: #a0dddf;
+          fill: #a0dddf;
+        }
+        66% {
+          background: #41bbbe;
+          fill: #41bbbe;
+        }
+      }
+    svg {        
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+    }
+      svg path {
+        -webkit-animation: color-shift 1.2s infinite;
+        -moz-animation: color-shift 1.2s infinite;
+        animation: color-shift 1.2s infinite;
+      }
+      
+      svg path:nth-child(2) {
+        -webkit-animation-delay: -0.8s;
+        -moz-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+      }
+      svg path:nth-child(3) {
+        -webkit-animation-delay: -0.4s;
+        -moz-animation-delay: -0.4s;
+        animation-delay: -0.4s;
+      }
+
+  </style>
+  <div class="areaLoader">
+      <svg xmlns="http://www.w3.org/2000/svg" width="180" height="206.097" viewBox="0 0 180 206.097">
+        <path fill="#CCCCCC" d="M89.997,154.906l-44.905-25.927l-0.004,0.002V77.122L2.126,52.319l0.007,101.459l87.873,50.734V154.9
+          L89.997,154.906z M89.997,51.192v51.855l0.01,0.006l44.905,25.924l-0.003-51.849v-0.006L89.997,51.192z"></path>
+        <path fill="#E0E0E0" d="M134.909,77.127l0.003,51.849h-0.003L90.006,154.9v49.612l87.868-50.734V52.319L134.909,77.127z
+           M89.997,103.047V51.192L45.09,77.12l-0.002,0.001v51.855L89.997,103.047z"></path>
+        <path fill="#F5F5F5" d="M134.909,77.122v0.006l42.965-24.808l-0.008-0.004l-87.86-50.73L2.133,52.319L45.09,77.12l44.907-25.929
+          L134.909,77.122z M45.088,128.976l0.004,0.002l44.905,25.927l0.009-0.006l44.902-25.924l-44.901-25.924l-0.01-0.006L45.088,128.976z"></path>
+      </svg>
+  </div>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->

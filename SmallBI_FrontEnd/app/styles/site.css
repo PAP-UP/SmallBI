@@ -21,6 +21,7 @@ body{
   font-size: 16px;
   color: #093a4d;
   margin: 0;
+  position: relative;
 }
 body.cadastro{
   margin: 0;
@@ -57,7 +58,22 @@ a:active,
 a:hover {
   outline: 0!important;
 }
-
+/* LOADER */
+.areaLoader {
+  position: fixed;
+  z-index: 99999;
+  top: 0; left: 0;
+  visibility: visible;
+  width: 100%; 
+  height: 100%; 
+  opacity: 1; 
+  background: #414A52;
+  }
+  .loaded .areaLoader {
+    z-index: -99999;
+    visibility: hidden;
+    opacity: 0;
+  }
 /* TOPO */
 .area-topo {
   position: relative;
@@ -174,7 +190,7 @@ a:hover {
 .area-topo .topo .navbar-header h1::before {
   display: block;
   content: '';
-  width: 150px;
+  width: 131px;
   height: 150px;
   margin: 0;
   padding: 0;
