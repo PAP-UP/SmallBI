@@ -1080,7 +1080,6 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
         FormAssistenteModelagem frm = new FormAssistenteModelagem();
         frm.setLocationRelativeTo(null);
         frm.setResizable(false);
-        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setTitle("Assistente de Modelagem do Cubo");
         frm.setVisible(true);        
     }
@@ -1088,7 +1087,6 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
     private void ajudaAreaConsulBanco(){
         FormAjudaConsulBanco frm = new FormAjudaConsulBanco();
         frm.setLocationRelativeTo(null);
-        //frm.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         frm.setVisible(true);       
     }
     
@@ -1104,7 +1102,6 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
         String msg = business.ValidarTipos.validarTipagemDosCampos(jTableAtivo, listaDeCbxTipos);                
         JOptionPane.showMessageDialog(null, msg);
         if (msg.equals("Campos validados com sucesso!")) {
-            //btnAbaTabPrev_GerarCuboXml.setEnabled(true);
             btnAbaTabPrev_SalvarTabela.setEnabled(true);
         } 
     }
@@ -1198,7 +1195,6 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             for(String tabela : tabelas){
                 cbxAbaConexBd_Tabela.addItem(tabela);
             }
-//            JOptionPane.showMessageDialog(null, "Conectado com sucesso!");
             return true;
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível acessar este banco!");
@@ -1228,8 +1224,8 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
         if(jTable != null){
             if(jTable.getRowCount() > 0){
                 iniciarComboBoxTiposArquivo(jTable);
-                painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, BoxLayout.Y_AXIS)); 
-                //jTable.setShowHorizontalLines(true);
+                painelAbaTabPrev_painelTabela.setLayout(new BoxLayout(painelAbaTabPrev_painelTabela, 
+                        BoxLayout.Y_AXIS)); 
                 JScrollPane jScrollPane = new JScrollPane(jTable);
                 painelAbaTabPrev_painelTabela.add(jScrollPane);
                 painelAbaTabPrev_painelTabela.updateUI();
@@ -1332,7 +1328,6 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new FormAssistenteImportacao().setVisible(true);
                 FormAssistenteImportacao form = new FormAssistenteImportacao();
                 form.setLocationRelativeTo(null);
                 form.setVisible(true);
