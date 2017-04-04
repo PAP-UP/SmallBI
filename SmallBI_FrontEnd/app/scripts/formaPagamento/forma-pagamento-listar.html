@@ -10,8 +10,8 @@
   <tbody>
   <tr ng-repeat="p in vm.listaPagamentos">
     <td>{{p.descricao}}</td>
-    <td><a ui-sref="forma-pagamento.editar({id : p.idFormaPagamento})" class="text-info"><i class="fa fa-edit"></i> Editar</a></td>
-    <td><a href="" ng-click="vm.excluirPagamento(p.idFormaPagamento)" class="text-danger"><i class="fa fa-trash-o"></i> Excluir</a></td>
+    <td><a ui-sref="forma-pagamento.editar({id : p.idFormaPagamento})" class="text-info" data-toggle="tooltip" data-placement="top" title="Clique para editar"><i class="fa fa-edit"></i></a></td>
+    <td><a href="" ng-click="vm.excluirPagamento(p.idFormaPagamento)" class="text-danger" data-toggle="tooltip" data-placement="top" title="Clique para excluir"><i class="fa fa-trash-o"></i></a></td>
   </tr>
   </tbody>
 </table>

@@ -1367,3 +1367,88 @@ form .btn:hover {
     transform: translate3d(0, 0, 0);
   }
 }
+.tooltip > .tooltip-inner {
+    background-color: #414A52;
+}
+.tooltip > .tooltip-arrow { 
+  border-top-color:#414A52!important;
+}
+.table a.text-info,
+.table a.text-danger {
+  display: block;
+}
+.grid-container {
+  margin-bottom: 50px;
+}
+ul.rig {
+  list-style: none;
+  font-size: 0px;
+  margin-left: -2.5%; /* should match li left margin */
+}
+ul.rig li {
+  display: inline-block;
+  padding: 10px;
+  margin: 0 0 2.5% 2.5%;
+  background: #fff;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  font-size: 1rem;
+  vertical-align: top;
+  box-shadow: 0 0 5px #ddd;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+ul.rig li img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 10px;
+}
+ul.rig li h3 {
+  margin: 0 0 5px;
+      font-size: 20px;
+      min-height: 44px;
+}
+ul.rig li span {
+      font-size: 13px;
+}
+ul.rig li p {
+  font-size: 12px;
+  line-height: 1.5em;
+  color: #999;
+}
+/* class for 4 columns */
+ul.rig.columns-4 li {
+  width: 22.5%; /* this value + 2.5 should = 25% */
+}
+@media(max-width: 1199px) {
+   ul.rig.columns-4 li {
+    width: 33.333%;
+  }
+}
+@media (max-width: 991px) {
+   ul.rig.columns-4 li {
+    width: 47.5%;
+  }
+}
+@media (max-width: 768px) {
+   ul.rig.columns-4 li {
+    width: 100% !important; /* over-ride all li styles */
+    margin: 0 0 20px;
+  }
+}
+@media (max-width: 480px) {
+  ul.rig.columns-4 li {
+    display: block;
+    margin: 0 0 5px;
+  }
+  ul.grid-nav li a {
+    display: block;
+  }
+  ul.rig {
+    margin-left: 0;
+  }
+  ul.rig.columns-4 li {
+   
+  }
+}

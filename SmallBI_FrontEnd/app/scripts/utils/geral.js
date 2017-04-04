@@ -3,6 +3,7 @@ $(window).on('load', function() {
 		setTimeout(function(){
 			$('body').addClass('loaded');
 		}, 1000);
+		$("[data-toggle=tooltip").tooltip();
 		var windowWidth = $(window).width() / 2 + 125;
 		$('h1').width(windowWidth);
 		$(window).resize(function(){
