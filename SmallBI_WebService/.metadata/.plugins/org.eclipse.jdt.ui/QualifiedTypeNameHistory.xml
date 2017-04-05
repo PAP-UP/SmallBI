@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.io.FileWriter"/>
-<fullyQualifiedTypeName name="java.io.BufferedWriter"/>
-<fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
-<fullyQualifiedTypeName name="br.com.smallbi.util.Util"/>
-<fullyQualifiedTypeName name="java.sql.ResultSet"/>
-<fullyQualifiedTypeName name="javax.security.auth.login.CredentialNotFoundException"/>
-<fullyQualifiedTypeName name="org.apache.http.auth.Credentials"/>
-<fullyQualifiedTypeName name="org.apache.http.auth.UsernamePasswordCredentials"/>
 <fullyQualifiedTypeName name="org.apache.http.impl.client.DefaultHttpClient"/>
 <fullyQualifiedTypeName name="br.com.smallbi.util.SaikuConnection"/>
 <fullyQualifiedTypeName name="java.util.Base64"/>
@@ -26,13 +17,8 @@
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletContextListener"/>
-<fullyQualifiedTypeName name="javax.persistence.Entity"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
-<fullyQualifiedTypeName name="br.com.smallbi.dal.interfaceDal.InterfaceDao"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.UsuarioDao"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
-<fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
 <fullyQualifiedTypeName name="java.math.BigInteger"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
@@ -43,10 +29,7 @@
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="br.com.smallbi.business.interfaceBusiness.InterfaceBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.UsuarioLogadoDao"/>
-<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
-<fullyQualifiedTypeName name="br.com.smallbi.dal.singleton.SingletonConexao"/>
 <fullyQualifiedTypeName name="org.hibernate.mapping.UnionSubclass"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.UsuarioLogado"/>
 <fullyQualifiedTypeName name="br.com.smallbi.util.HashSenha"/>
@@ -60,4 +43,21 @@
 <fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioBusiness"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Usuario"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+<fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
+<fullyQualifiedTypeName name="javax.persistence.Column"/>
+<fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
+<fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
+<fullyQualifiedTypeName name="org.hibernate.annotations.ForeignKey"/>
+<fullyQualifiedTypeName name="br.com.smallbi.dal.interfaceDal.InterfaceDao"/>
+<fullyQualifiedTypeName name="javax.management.Query"/>
+<fullyQualifiedTypeName name="javax.persistence.Query"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+<fullyQualifiedTypeName name="br.com.smallbi.dal.singleton.SingletonConexao"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.interfaceBusiness.InterfaceBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Url"/>
+<fullyQualifiedTypeName name="br.com.smallbi.dal.UrlDao"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Perfil"/>
 </qualifiedTypeNameHistroy>

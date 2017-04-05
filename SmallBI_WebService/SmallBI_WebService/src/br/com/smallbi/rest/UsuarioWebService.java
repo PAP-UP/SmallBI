@@ -23,6 +23,7 @@ import com.google.gson.reflect.TypeToken;
 import br.com.smallbi.business.EnderecoBusiness;
 import br.com.smallbi.business.PessoaBusiness;
 import br.com.smallbi.business.TelefoneBusiness;
+import br.com.smallbi.business.UrlBusiness;
 import br.com.smallbi.business.UsuarioBusiness;
 import br.com.smallbi.business.UsuarioLogadoBusiness;
 import br.com.smallbi.entity.Cliente;
@@ -116,8 +117,9 @@ public class UsuarioWebService {
 			jsonResponse.put("idCliente", ul.getClienteId());
 			jsonResponse.put("token", ul.getToken());
 			Usuario u = usuarioBusiness.getObjById(ul.getIdUsuarioLogado());
-			jsonResponse.put("login", u.getLogin());
+			//jsonResponse.put("login", u.getLogin());
 			jsonResponse.put("nome", u.getPessoa().getNome());
+			jsonResponse.put("idPerfil", u.getPerfil().getIdPerfil());
 			//jsonResponse.put("message", )
 			jsonResponse.put("success", true);
 			return jsonResponse.toString();
@@ -129,7 +131,7 @@ public class UsuarioWebService {
 	}
 	
 	@POST
-	@Path("/checarToken")
+	@Path("/authenticationVerify")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String checarToken(String json) throws JSONException{
@@ -137,14 +139,21 @@ public class UsuarioWebService {
 		UsuarioLogado ul = new UsuarioLogadoBusiness().getUsuarioLogadoByToken(jsonObject.getString("token"));
 		JSONObject jsonResponse = new JSONObject();
 		if(ul != null){
-			/*jsonResponse.put("idUsuario", ul.getIdUsuarioLogado());
-			jsonResponse.put("idCliente", ul.getClienteId());
-			jsonResponse.put("token", ul.getToken());
-			return jsonResponse.toString();*/
-			return jsonResponse.put("isValid", true).toString();
+			boolean access = new UrlBusiness().hasAccess(jsonObject.getString("url"), jsonObject.getInt("idPerfil"));
+			if(access){
+				jsonResponse.put("isValidAccess", true);
+			}else{
+				jsonResponse.put("isValidAccess", false);
+			}
+			
+			Usuario u = usuarioBusiness.getObjById(ul.getIdUsuarioLogado());
+			jsonResponse.put("idPerfil", u.getPerfil().getIdPerfil());
+			
+			jsonResponse.put("isValidToken", true);
+			
+			return jsonResponse.toString();
 		}
-		//return gson.toJson("Sessão encerrada!");
-		return jsonResponse.put("isValid", false).toString();
+		return jsonResponse.put("isValidToken", false).toString();
 	}
 	
 	@POST

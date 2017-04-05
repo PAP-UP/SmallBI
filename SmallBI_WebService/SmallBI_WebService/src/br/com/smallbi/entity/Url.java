@@ -23,7 +23,7 @@ public class Url {
 	@ManyToOne
 	@JoinColumn(name="perfilId", referencedColumnName="idPerfil")
 	@ForeignKey(name="fk_perfil")	
-	private Perfil perfilId;
+	private Perfil perfil;
 	
 	public Url(){
 	}
@@ -44,11 +44,11 @@ public class Url {
 		this.url = url;
 	}
 
-	public Integer getPerfilId() {
-		return perfilId;
+	public Perfil getPerfil() {
+		return perfil;
 	}
 
-	public void setPerfilId(Integer perfilId) {
-		this.perfilId = perfilId;
+	public void setPerfil(Perfil perfilId) {
+		this.perfil = perfilId;
 	}
 }

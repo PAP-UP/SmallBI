@@ -328,6 +328,4 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		System.out.println("Usuário não encontrado!");
 		return null;
 	}
-	
-
 }
