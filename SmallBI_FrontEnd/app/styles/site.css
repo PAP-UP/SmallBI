@@ -935,7 +935,7 @@ p {
   background: #414A52;
   position: fixed;
   height: 40px;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
   padding: 0 20px;
@@ -1451,4 +1451,20 @@ ul.rig.columns-4 li {
   ul.rig.columns-4 li {
    
   }
+}
+.pg-painel .rodape ul.dropdown-menu {
+  float: none;
+  text-align: left;
+  margin: 2px 0 0;
+  left: inherit;
+    padding: 9px 0;
+    right: -10px;
+}
+
+.pg-painel .rodape ul.dropdown-menu li {
+  display: block;
+  margin-right: 0px;
+}
+.pg-painel .rodape ul.dropdown-menu li a {
+  color: #14858a;
 }

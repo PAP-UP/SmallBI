@@ -3,6 +3,11 @@ $(window).on('load', function() {
 		setTimeout(function(){
 			$('body').addClass('loaded');
 		}, 1000);
+		$('li.dropdown').hover(function() {
+		  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+		}, function() {
+		  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+		});
 		$("[data-toggle=tooltip").tooltip();
 		var windowWidth = $(window).width() / 2 + 125;
 		$('h1').width(windowWidth);
