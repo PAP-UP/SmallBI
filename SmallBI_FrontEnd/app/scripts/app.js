@@ -13,15 +13,15 @@
       'oitozero.ngSweetAlert'
     ]).config(routes).run(autentica);
 
-  function autentica($rootScope, $state, AuthService, SweetAlert, $location, $cookieStore) {
+  function autentica($rootScope, AuthService, $location) {
     $rootScope.$on('$stateChangeStart',function(evt,next,current){
       if(next.name != 'index'){
-        if (!AuthService.getToken()) {
+        if (!AuthService.getToken(next.name)) {
           $location.path('/index');
           //$state.transitionTo('index');
         }
       }else {
-        $cookieStore.delete();
+        //$cookieStore.delete();
       }
 
     });

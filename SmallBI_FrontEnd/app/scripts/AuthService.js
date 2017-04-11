@@ -6,14 +6,21 @@
 
   function AuthService($http, $q, $cookies, $cookieStore) {
     return {
-      getToken : function () {
+      getToken : function (param) {
         if($cookieStore.get('success')) {
           var obj = {};
           obj.token = $cookieStore.get('TOKEN');
+          obj.idPerfil = $cookieStore.get('idPerfil');
+          obj.url = param;
           return $q(function (resolve, reject) {
-            $http.post('http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/checarToken', obj).then(
+            // $http.post('http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/authenticationVerify', obj).then(
+            $http.post('http://localhost:8080/SmallBI_WebService/rest/usuario/authenticationVerify', obj).then(
               function (result) {
-                resolve(result);
+                if(result.data.isValidToken && result.data.isValidAccess) {
+                  resolve(result);
+                }else {
+                  reject(result);
+                }
               }, function (response) {
                 reject(response);
               });
@@ -28,7 +35,8 @@
       // },
       signin: function (data) {
         return $q(function (resolve, reject) {
-          $http.post('http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login', data).then(
+          // $http.post('http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login', data).then(
+          $http.post('http://localhost:8080/SmallBI_WebService/rest/usuario/login', data).then(
             function (result) {
               resolve(result);
               $cookieStore.put('idUsuario', result.data.idUsuario);
@@ -36,6 +44,7 @@
               $cookieStore.put('TOKEN', result.data.token);
               $cookieStore.put('userName', result.data.nome);
               $cookieStore.put('success', result.data.success);
+              $cookieStore.put('idPerfil', result.data.idPerfil);
             }, function (response) {
               reject(response);
             });
