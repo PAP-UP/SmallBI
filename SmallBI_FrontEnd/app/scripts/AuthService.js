@@ -13,8 +13,8 @@
           obj.idPerfil = $cookieStore.get('idPerfil');
           obj.url = param;
           return $q(function (resolve, reject) {
-            // $http.post('http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/authenticationVerify', obj).then(
-            $http.post('http://localhost:8080/SmallBI_WebService/rest/usuario/authenticationVerify', obj).then(
+            $http.post('http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/authenticationVerify', obj).then(
+            //$http.post('http://localhost:8080/SmallBI_WebService/rest/usuario/authenticationVerify', obj).then(
               function (result) {
                 if(result.data.isValidToken && result.data.isValidAccess) {
                   resolve(result);
@@ -35,8 +35,8 @@
       // },
       signin: function (data) {
         return $q(function (resolve, reject) {
-          // $http.post('http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login', data).then(
-          $http.post('http://localhost:8080/SmallBI_WebService/rest/usuario/login', data).then(
+          $http.post('http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login', data).then(
+          //$http.post('http://localhost:8080/SmallBI_WebService/rest/usuario/login', data).then(
             function (result) {
               resolve(result);
               $cookieStore.put('idUsuario', result.data.idUsuario);
