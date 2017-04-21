@@ -1,4 +1,4 @@
-<div class="pg-painel">
+<div class="pg-painel" ng-controller="loginController as vm">
   <div class="menu" tabindex="0">
     <div class="smartphone-menu-trigger"></div>
     <div class="avatar">
@@ -31,11 +31,11 @@
   <footer class="rodape">
     <ul>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nome do usuário <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{vm.nomeUsuarioLogado}} <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="#">Seu Perfil</a></li>
           <li class="divider"></li>
-          <li><a href="#"><b>Sair</b></a></li>
+          <li><a href="#" ng-click="vm.logout()"><b>Sair</b></a></li>
         </ul>
       </li>
     </ul>

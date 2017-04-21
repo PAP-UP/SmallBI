@@ -13,15 +13,21 @@
       'oitozero.ngSweetAlert'
     ]).config(routes).run(autentica);
 
-  function autentica($rootScope, AuthService, $location, $cookieStore) {
-    $rootScope.$on('$stateChangeStart',function(evt,next,current){
-      if(next.name != 'index'){
-        if (!AuthService.getToken(next.name)) {
-          $location.path('/index');
-          //$state.transitionTo('index');
-        }
+  function autentica($rootScope, AuthService, $location, $cookieStore, $state) {
+    $rootScope.$on('$stateChangeStart',function(evt,next,current, previous){
+      if(next.name !== 'index'){
+        AuthService.getToken(next.name).then(
+          function () {
+            $state.transitionTo(next.name);
+        }, function () {
+            if(previous.name === "") {
+              $state.transitionTo('index');
+            }else {
+              $state.transitionTo(previous.name);
+            }
+          });
       }else {
-        $cookieStore.remove('TOKEN');
+        $cookieStore.remove('cookie');
       }
     });
   }

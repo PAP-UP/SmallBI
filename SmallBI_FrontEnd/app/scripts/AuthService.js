@@ -6,29 +6,27 @@
 
   function AuthService($http, $q, $cookies, $cookieStore) {
     return {
-      getToken : function (param) {
-        if($cookieStore.get('success')) {
+      getToken : function (url) {
+        if($cookieStore.get('cookie')) {
           var obj = {};
-          obj.token = $cookieStore.get('TOKEN');
-          obj.idPerfil = $cookieStore.get('idPerfil');
-          obj.url = param;
+          var param = $cookieStore.get('cookie');
+          obj.token = param.token;
+          obj.idPerfil = param.idPerfil;
+          obj.url = url;
           return $q(function (resolve, reject) {
             $http.post('http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/authenticationVerify', obj).then(
             //$http.post('http://localhost:8080/SmallBI_WebService/rest/usuario/authenticationVerify', obj).then(
               function (result) {
                 if(result.data.isValidToken && result.data.isValidAccess) {
-                  resolve(result);
+                  resolve();
                 }else {
-                  reject(result);
+                  reject();
                 }
-              }, function (response) {
-                reject(response);
               });
           });
         }else {
-          return false;
+          return $q.reject();
         }
-
       },
       // setToken: function (token) {
       //   $localStorage.token = token;
@@ -38,15 +36,12 @@
           $http.post('http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login', data).then(
           //$http.post('http://localhost:8080/SmallBI_WebService/rest/usuario/login', data).then(
             function (result) {
-              resolve(result);
-              $cookieStore.put('idUsuario', result.data.idUsuario);
-              $cookieStore.put('idCliente', result.data.idCliente);
-              $cookieStore.put('TOKEN', result.data.token);
-              $cookieStore.put('userName', result.data.nome);
-              $cookieStore.put('success', result.data.success);
-              $cookieStore.put('idPerfil', result.data.idPerfil);
-            }, function (response) {
-              reject(response);
+              if(result.data.success) {
+                $cookieStore.put('cookie', result.data);
+                resolve(result);
+              }else {
+                reject();
+              }
             });
         });
       },
