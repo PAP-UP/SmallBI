@@ -46,6 +46,22 @@ public class CuboWebService {
 	}
 	
 	@POST
+	@Path("/listarByIdCliente")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getCubosByIdCliente(String json) throws JSONException{
+		List<Cubo> cubos = cuboBusiness.list();
+		JSONObject jsonObject = new JSONObject(json);
+		int idCliente = jsonObject.getInt("idCliente");
+		List<Hashtable<String, Object>> hashCubos = new ArrayList<>();
+		for(Cubo c : cubos){
+			if(c.getCliente().getIdCliente() == idCliente)
+				hashCubos.add(getHashFromObject(c));
+		}
+		return gson.toJson(hashCubos);
+	}
+	
+	@POST
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
