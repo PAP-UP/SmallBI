@@ -29,6 +29,7 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-ui-router.stateHelper/statehelper.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/livereload-js/dist/livereload.js',
       // endbower
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
