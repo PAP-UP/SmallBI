@@ -55,6 +55,22 @@ public class UsuarioWebService {
 	}
 	
 	@POST
+	@Path("/listarByIdCliente")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String getUsuariosByIdCliente(String json) throws JSONException{
+		List<Usuario> usuarios = usuarioBusiness.list();
+		JSONObject jsonObject = new JSONObject(json);
+		int idCliente = jsonObject.getInt("idCliente");
+		List<Hashtable<String, Object>> hashUsuarios = new ArrayList<>();
+		for(Usuario u : usuarios){
+			if(u.getPessoa().getCliente().getIdCliente() == idCliente)
+				hashUsuarios.add(getHashFromObject(u));
+		}
+		return gson.toJson(hashUsuarios);
+	}
+	
+	@POST
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
