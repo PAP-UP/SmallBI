@@ -5,9 +5,12 @@
   angular.module('SmallBIApp')
     .controller('loginController', loginController);
 
-  function loginController(AuthService, $state, SweetAlert) {
+  function loginController(AuthService, $state, SweetAlert, $cookieStore) {
     var vm = this;
-    vm.dadosLogin = {};
+
+    // var cookie = $cookieStore.get('cookie');
+    // vm.nomeUsuarioLogado = cookie.nome;
+    // vm.permissao = cookie.idPerfil;
 
     angular.extend(vm, {
       login: login,
@@ -16,8 +19,7 @@
 
     function login() {
       AuthService.signin(vm.dadosLogin).then(
-        function (result) {
-          vm.nomeUsuarioLogado = result.data.nome;
+        function () {
             $state.transitionTo('painel');
             SweetAlert.swal({title: "Bem vindo", timer: 2000, type: "success", showConfirmButton: false});
       }, function () {

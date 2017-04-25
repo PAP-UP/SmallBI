@@ -276,18 +276,10 @@
     });
 
     // SITE ROUTE
-    var index = {
-      name: 'index',
-      url: '/index',
-      templateUrl: 'views/site.html',
-      controllerAs: 'vm'
-    };
-
     stateHelperProvider.setNestedState({
       name: 'index',
       url: '/index',
-      templateUrl: 'views/site.html',
-      children: [index]
+      templateUrl: 'views/site.html'
     });
 
     stateHelperProvider.setNestedState({
