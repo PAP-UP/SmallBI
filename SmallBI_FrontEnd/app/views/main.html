@@ -6,7 +6,6 @@
       <strong>Nome Empresa</strong>
     </div>
     <ul class="panel-group" id="accordion">
-      <li class="fa fa-home active"><a href="#home"><span>Dashboard</span></a></li>
       <li class="fa fa-bank" ng-if="vm.permissao == 2">
         <a href="#" data-toggle="collapse" data-target="#dadosCliente" data-parent="#accordion"><span>Dados do Cliente</span></a>
         <ul id="dadosCliente" class="collapse ulCollapse">
@@ -28,28 +27,28 @@
           <li><a ui-sref="plano.listar"><span>Listar</span></a></li>
         </ul>
       </li>
-      <li class="fa fa-user">
+      <li class="fa fa-user" ng-if="vm.permissao == 1">
         <a href="#" data-toggle="collapse" data-target="#ramo-atividade" data-parent="#accordion"><span>Ramo de Atividade</span></a>
         <ul id="ramo-atividade" class="collapse ulCollapse">
           <li><a ui-sref="ramo-atividade.cadastrar"><span>Cadastrar</span></a></li>
           <li><a ui-sref="ramo-atividade.listar"><span>Listar</span></a></li>
         </ul>
       </li>
-      <li class="fa fa-user">
+      <li class="fa fa-user" ng-if="vm.permissao == 1">
         <a href="#" data-toggle="collapse" data-target="#perfil" data-parent="#accordion"><span>Perfil</span></a>
         <ul id="perfil" class="collapse ulCollapse">
           <li><a ui-sref="perfil.cadastrar"><span>Cadastrar</span></a></li>
           <li><a ui-sref="perfil.listar"><span>Listar</span></a></li>
         </ul>
       </li>
-      <li class="fa fa-user">
+      <li class="fa fa-user" ng-if="vm.permissao == 1">
         <a href="#" data-toggle="collapse" data-target="#forma-pagamento" data-parent="#accordion"><span>Forma de Pagamento</span></a>
         <ul id="forma-pagamento" class="collapse ulCollapse">
           <li><a ui-sref="forma-pagamento.cadastrar"><span>Cadastrar</span></a></li>
           <li><a ui-sref="forma-pagamento.listar"><span>Listar</span></a></li>
         </ul>
       </li>
-      <li class="fa fa-user">
+      <li class="fa fa-user" ng-if="vm.permissao == 1">
         <a href="#" data-toggle="collapse" data-target="#funcao" data-parent="#accordion"><span>Função</span></a>
         <ul id="funcao" class="collapse ulCollapse">
           <li><a ui-sref="funcao.cadastrar"><span>Cadastrar</span></a></li>
