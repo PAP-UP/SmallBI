@@ -18,7 +18,7 @@
       if(next.name !== 'index'){
         AuthService.getToken(next.name).then(
           function () {
-            $state.transitionTo(next.name);
+            //$state.transitionTo(next.name);
         }, function () {
             if(previous.name === "") {
               $state.transitionTo('index');
