@@ -5,7 +5,7 @@
   <header class="topo">
     <ul class="areaAcessoUsuario">
       <li><a href="#" title="Entrar" id="btnModalLogin">Entrar</a></li>
-      <li><a href="#" title="Cadastro">Cadastro</a></li>
+      <li><a href="#" title="Cadastro" id="btnModalCadastrar">Cadastro</a></li>
     </ul>
     <nav class="navbar" role="navigation">
 
@@ -233,6 +233,128 @@
       </div>
     </div>
   </div>
+</div>
+
+<div id="modalCadastrar" class="dialog">
+    <a href="#" class="dialog-close dialog-close-background btnFecharModal"></a>
+    <div class="dialog-container modal-lg">
+        <a href="#" class="dialog-close-icone fa fa-times btnFecharModal"></a>
+
+        <div class="dialog-header">
+            <strong>Cadastrar </strong>
+            <strong id="tituloModalCadastrar">dados da empresa</strong>
+        </div>
+
+        <div class="dialog-content">
+
+            <div id="loginForm-modal-login">
+                <form class="modalForm" name="">
+                    
+                    <div class="row" id="areaEmpresaModal">
+                        <div class="col-md-6 padding15px">
+
+                            <label for="">Razão Social</label>
+                            <input name="" type="text" id="" placeholder="Razão Social">
+
+                            <label for="">Nome Fantasia</label>
+                            <input name="" type="text" id="" placeholder="Nome Fantasia">
+
+                            <label for="">CNPJ</label>
+                            <input name="" type="text" id="" placeholder="CNPJ">
+
+                            <label for="">Inscrição Estadual</label>
+                            <input name="" type="text" id="" placeholder="Inscrição Estadual">
+
+                            <label for="">Telefone</label>
+                            <input name="" type="text" id="" placeholder="Telefone">
+
+                            <label for="">Ramo de Atividade</label>
+                            <select id="" class="">
+                                <option value="">Selecione</option>
+                            </select>
+
+                        </div>
+                        <div class="col-md-6 padding15px">
+                            
+
+                            <label for="">Forma de Pagamento</label>
+                            <select id="" class="">
+                                <option value="">Selecione</option>
+                            </select>
+
+                            
+                            <label for="">Plano</label>
+                            <select id="" class="">
+                                <option value="">Selecione</option>
+                            </select>
+
+                            
+                            <label for="">Endereço</label>
+                            <input name="" type="text" id="" placeholder="Endereço">
+
+                            <label for="">Número</label>
+                            <input name="" type="text" id="" placeholder="Número">
+
+                            <label for="">Bairro</label>
+                            <input name="" type="text" id="" placeholder="Bairro">
+
+                            <label for="">Cidade</label>
+                            <input name="" type="text" id="" placeholder="Cidade">
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="display: none;" id="areaUsuarioModal">
+                        <div class="col-md-6 padding15px">
+
+                                <label for="">Nome completo</label>
+                                <input name="" type="text" id="" placeholder="Nome completo">
+
+                                <label for="">CPF</label>
+                                <input name="" type="text" id="" placeholder="CPF">
+
+                                <label for="">RG</label>
+                                <input name="" type="text" id="" placeholder="RG">
+
+                                <label for="">Função</label>
+                                <select id="nomeFuncao" class="">
+                                    <option value="">Selecione</option>
+                                </select>
+
+                                <label for="">Login</label>
+                                <input name="" type="text" id="" placeholder="Login">
+
+                                <label for="">Senha</label>
+                                <input name="" type="text" id="" placeholder="Senha">
+                                        
+                        </div>
+                        <div class="col-md-6 padding15px">            
+                            
+                                <label for="">Endereço</label>
+                                <input name="" type="text" id="" placeholder="Endereço">
+
+                                <label for="">Número</label>
+                                <input name="" type="text" id="" placeholder="Número">
+
+                                <label for="">Bairro</label>
+                                <input name="" type="text" id="" placeholder="Bairro">
+
+                                <label for="">Cidade</label>
+                                <input name="" type="text" id="" placeholder="Cidade">
+
+                                <label for="">Telefone</label>
+                                <input name="" type="text" id="" placeholder="Telefone">
+                            
+                        </div>
+                    </div>
+                    <input type="submit" id="cadastrarModal" class="btnModal" title="Cadastrar" value="Cadastrar" style="display: none;">
+                    <button id="voltarModal" class="btnModal" style="display: none;">Retornar</button>
+                    <button id="avancarModal" class="btnModal">Avançar</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="modalContato" class="dialog"></div>

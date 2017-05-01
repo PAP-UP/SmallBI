@@ -21,6 +21,31 @@ $(window).on('load', function() {
 			$("#modalLogin").css({"opacity": 1, "visibility":"visible"});
 		});
 
+		$("#btnModalCadastrar").click(function(e){
+			e.preventDefault();
+			$("#modalCadastrar").css({"opacity": 1, "visibility":"visible"});
+		});
+
+		$("#avancarModal").click(function(e){
+			e.preventDefault();
+			$(this).css({"display": "none"});
+			$("#tituloModalCadastrar").html("dados do usuário");
+			$("#areaEmpresaModal").css({"display": "none"});
+			$("#areaUsuarioModal").css({"display": "block"});
+			$("#voltarModal").css({"display": "block"});
+			$("#cadastrarModal").css({"display": "block"});
+		});	
+
+		$("#voltarModal").click(function(e){
+			e.preventDefault();
+			$(this).css({"display": "none"});
+			$("#tituloModalCadastrar").html("dados da empresa");
+			$("#areaEmpresaModal").css({"display": "block"});
+			$("#areaUsuarioModal").css({"display": "none"});
+			$("#avancarModal").css({"display": "block"});
+			$("#cadastrarModal").css({"display": "none"});
+		});		
+
 		$("#btnModalContato").click(function(e){
 			e.preventDefault();
 			$("#modalContato").css({"opacity": 1, "visibility":"visible"});
