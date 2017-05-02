@@ -501,7 +501,8 @@ p {
   clear: left;
   margin-top: 0;
 }
-.modalForm input{
+.modalForm input,
+.modalForm select{
   background-color: #fff;
   border: 1px solid #cdcfd2;
   border-radius: 3px;
@@ -1355,7 +1356,7 @@ form .btn:hover {
   animation-delay: 360ms;
 }
 .padding15px {
-  padding: 0 15px;
+  padding: 0 15px!important;
 }
 @keyframes fadeIn {
   from {
