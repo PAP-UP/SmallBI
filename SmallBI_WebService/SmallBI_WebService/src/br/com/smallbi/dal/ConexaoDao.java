@@ -61,6 +61,7 @@ public class ConexaoDao {
 			Statement statement = connection.createStatement();
 			//statement.executeUpdate(script);
 			statement.executeUpdate(script);
+			System.out.println("Script executado: " + script);
 		}catch (Exception e) {
 			e.printStackTrace();
 			return false;

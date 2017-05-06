@@ -141,10 +141,11 @@ public class FormSalvarTabela extends javax.swing.JFrame {
         if(nomeTabela != null && !nomeTabela.isEmpty()){
             if(chavePrimaria != "Selecione"){
                 
-                Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-                String data = sdf.format(calendar.getTime());
-                nomeTabela = Util.formatarString(nomeTabela + "_" + data);
+//                Calendar calendar = Calendar.getInstance();
+//                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+//                String data = sdf.format(calendar.getTime());
+//                nomeTabela = Util.formatarString(nomeTabela + "_" + data);
+                nomeTabela = Util.formatarString(nomeTabela);
                 
                 //Consulta à memória aqui
                 boolean existeNaMem = false;

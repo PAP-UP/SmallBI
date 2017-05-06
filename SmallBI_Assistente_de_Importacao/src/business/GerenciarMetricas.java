@@ -5,18 +5,18 @@
  */
 package business;
 
-import static business.GerenciarDimensoes.dimensoesSalvas;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import model.Dimensao;
 import model.GrupoMetrica;
 import model.Metrica;
+import model.TabelaImportada;
 import static view.FormAssistenteModelagem.*;
 import view.percorrerAbas.PercorrerAbasFormAssistenteModelagem;
 /**
@@ -29,40 +29,44 @@ public class GerenciarMetricas {
 
     public static void adicionarMetrica(){
         if(txtNomeMetrica.getText() != null && !txtNomeMetrica.getText().equals("")){
-            if(!cbxTabelaMetrica.getSelectedItem().toString().equals("Selecione")){
-                if(!cbxColunaMetrica.getSelectedItem().toString().equals("Selecione")){
-                    
-                    Metrica metrica = new Metrica();
-                    metrica.setNome(txtNomeMetrica.getText());
-                    metrica.setColuna(cbxColunaMetrica.getSelectedItem().toString());
-                    metrica.setAgregador(cbxAgregadorMetrica.getSelectedItem().toString());
-                    metrica.setFormato(cbxFormatoMetrica.getSelectedItem().toString());        
+            if(txtNomeMetrica.getText().length() < 25){
+                if(!cbxTabelaMetrica.getSelectedItem().toString().equals("Selecione")){
+                   if(!cbxColunaMetrica.getSelectedItem().toString().equals("Selecione")){
 
-                    GrupoMetrica gm = getGrupoUsandoMesmaTabela(cbxTabelaMetrica.getSelectedItem().toString());
-                    if(gm == null){
-                        gm = new GrupoMetrica();
-                        gm.setNome("Grupo_" + metrica.getNome());
-                        gm.setTabela(cbxTabelaMetrica.getSelectedItem().toString());
+                       Metrica metrica = new Metrica();
+                       metrica.setNome(Util.formatarString(txtNomeMetrica.getText()));
+                       metrica.setColuna(cbxColunaMetrica.getSelectedItem().toString());
+                       metrica.setAgregador(cbxAgregadorMetrica.getSelectedItem().toString());
+                       metrica.setFormato(cbxFormatoMetrica.getSelectedItem().toString());        
 
-                        List<Metrica> metricas = new ArrayList<>();            
-                        metricas.add(metrica);
-                        gm.setMetricas(metricas);
+                       GrupoMetrica gm = getGrupoUsandoMesmaTabela(cbxTabelaMetrica.getSelectedItem().toString());
+                       if(gm == null){
+                           gm = new GrupoMetrica();
+                           gm.setNome("Grupo_" + metrica.getNome());
+                           gm.setTabela(cbxTabelaMetrica.getSelectedItem().toString());
 
-                        grupoMetricasModeladas.add(gm);
-                    }else{
-                        List<Metrica> metricas = gm.getMetricas();
-                        metricas.add(metrica);
-                        gm.setMetricas(metricas);
+                           List<Metrica> metricas = new ArrayList<>();            
+                           metricas.add(metrica);
+                           gm.setMetricas(metricas);
 
-                        grupoMetricasModeladas.set(grupoMetricasModeladas.indexOf(gm), gm);
-                    }
-                    atualizarListaMetricas();
-                    jTabbedPane_Metricas.setSelectedIndex(1);                    
-                }else{
-                    JOptionPane.showMessageDialog(null, "Defina uma coluna!");
-                }
+                           grupoMetricasModeladas.add(gm);
+                       }else{
+                           List<Metrica> metricas = gm.getMetricas();
+                           metricas.add(metrica);
+                           gm.setMetricas(metricas);
+
+                           grupoMetricasModeladas.set(grupoMetricasModeladas.indexOf(gm), gm);
+                       }
+                       atualizarListaMetricas();
+                       jTabbedPane_Metricas.setSelectedIndex(1);                    
+                   }else{
+                       JOptionPane.showMessageDialog(null, "Defina uma coluna!");
+                   }
+               }else{
+                   JOptionPane.showMessageDialog(null, "Defina uma tabela!");
+               }   
             }else{
-                JOptionPane.showMessageDialog(null, "Defina uma tabela!");
+                JOptionPane.showMessageDialog(null, "O nome não pode conter mais do que 25 letras");
             }
         }else{
             JOptionPane.showMessageDialog(null, "Defina um nome para a métrica!");
@@ -214,30 +218,43 @@ public class GerenciarMetricas {
     public static void carregarCbxColunasMetrica(){
         cbxColunaMetrica.removeAllItems();
         cbxColunaMetrica.addItem("Selecione");
-        Dimensao dimSelecionada = new Dimensao();
-        for(Dimensao d : GerenciarDimensoes.dimensoesSalvas){
-            if(cbxTabelaMetrica.getSelectedItem() != null &&
-                    cbxTabelaMetrica.getSelectedItem().toString().equals(d.getTabela())){
-                dimSelecionada = d;
-            }
-        }
         
-        if(dimSelecionada.getAtributos() != null){
-            for(String atr : dimSelecionada.getAtributos()){
-                cbxColunaMetrica.addItem(atr);
-            }
+        JTable jTable = tabelaFato.getjTable();
+        for(int i = 0; i < jTable.getColumnCount(); i++){            
+            cbxColunaMetrica.addItem(jTable.getColumnName(i));
         }
+//        Dimensao dimSelecionada = new Dimensao();
+//        for(Dimensao d : GerenciarDimensoes.dimensoesSalvas){
+//            if(cbxTabelaMetrica.getSelectedItem() != null &&
+//                    cbxTabelaMetrica.getSelectedItem().toString().equals(d.getTabela())){
+//                dimSelecionada = d;
+//            }
+//        }
+//        
+//        if(dimSelecionada.getAtributos() != null){
+//            for(String atr : dimSelecionada.getAtributos()){
+//                cbxColunaMetrica.addItem(atr);
+//            }
+//        }
     }    
     
     public static void carregarTabelasMetricas(){
         //Carregar Tabelas para serem utilizadas na gestão de metricas.
         //Validação com DeafultComboBoxModel para não haver redundância de tabelas
         //cbxTabelaMetrica.addItem("Selecione");
-        for(Dimensao d : dimensoesSalvas){
-            if(((DefaultComboBoxModel)cbxTabelaMetrica.getModel()).getIndexOf(d.getTabela()) < 0)
-                cbxTabelaMetrica.addItem(d.getTabela());
+//        for(Dimensao d : dimensoesSalvas){
+//            if(((DefaultComboBoxModel)cbxTabelaMetrica.getModel()).getIndexOf(d.getTabela()) < 0)
+//                cbxTabelaMetrica.addItem(d.getTabela());
+//        }
+//        cbxTabelaMetrica.setSelectedIndex(0);
+
+        /**
+         * Adiciona apenas a tabela que foi escolhida como fato
+         */
+        for(TabelaImportada tabImp : tabelasImportadas){
+            if(tabImp.isIsTabFato())
+                cbxTabelaMetrica.addItem(tabImp.getNomeTabela());
         }
-        cbxTabelaMetrica.setSelectedIndex(0);
     }    
     
     public static void modelMetriToAddRel(){
@@ -257,10 +274,10 @@ public class GerenciarMetricas {
         txtNomeMetrica.setText("");
         
         cbxTabelaMetrica.removeAllItems();
-        cbxTabelaMetrica.addItem("Selecione");
+        //cbxTabelaMetrica.addItem("Selecione");
         
         cbxColunaMetrica.removeAllItems();
-        cbxColunaMetrica.addItem("Selecione");
+        //cbxColunaMetrica.addItem("Selecione");
         
         GerenciarMetricas.carregarTabelasMetricas();
         

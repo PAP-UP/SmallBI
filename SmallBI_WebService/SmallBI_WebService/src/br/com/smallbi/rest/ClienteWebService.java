@@ -55,16 +55,17 @@ public class ClienteWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addEmpresa(String json) throws JSONException{
 		Cliente cliente = getObjectFromHash(json);		
-		String response = clienteBusiness.create(cliente);
+		JSONObject response = clienteBusiness.create(cliente);
 		
-		if(response.equals("Cliente cadastrado com sucesso!")){
+		if(response.getString("message").equals("Cliente cadastrado com sucesso!")){
 			boolean endTelAdd = appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
 			if(endTelAdd){
-				//chamar add usuario
-			}
+				//chamar add usuario caso seja feito no mesmo endpoint
+			}			
 		}
 		
-		return gson.toJson(response);
+		/*return gson.toJson(response);*/
+		return response.toString();
 	}
 	
 	@POST

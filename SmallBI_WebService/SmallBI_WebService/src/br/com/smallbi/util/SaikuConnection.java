@@ -20,6 +20,13 @@ import org.codehaus.jettison.json.JSONObject;
 
 public class SaikuConnection {
 
+	/**
+	 * Adiciona usuario ao Saiku atraves da API
+	 * @param login
+	 * @param senha
+	 * @param idCliente
+	 * @return {@link Integer} codigo de resposta do servidor
+	 */
 	public static int addUsuarioSaiku(String login, String senha, Integer idCliente){
 		
 		JSONObject jsonObject = new JSONObject();
@@ -36,11 +43,18 @@ public class SaikuConnection {
 		}		
 		
 		System.out.println(jsonObject);
-		String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/users/";
-		//String url = "http://localhost:8080/saiku/rest/saiku/admin/users/";
+		//String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/users/";
+		String url = "http://localhost:8080/saiku/rest/saiku/admin/users/";
 		return sendToSaikuApi(url, jsonObject.toString());
 	}
 	
+	/**
+	 * Envia a string de conexao para API do Saiku
+	 * @param idCliente
+	 * @param nomeSchema
+	 * @return {@link Integer} codigo de resposta do servidor
+	 * @throws JSONException
+	 */
 	public static int addDatasourceSaiku(Integer idCliente, 
 			String nomeSchema) throws JSONException{
 		
@@ -60,22 +74,13 @@ public class SaikuConnection {
 				+ "security.mapping="
 				+ "ROLE_USER=No Access;"
 				+ "role_id_" + idCliente + "=access_id_" + idCliente;
-//				+ "security.enabled=false";
-//				+ "security.enabled=true"
-//				+ "security.type=lookup\n";
-				/*
-					security.mapping=
-					ROLE_USER=No Access People;
-					ROLE_ADMIN=Access People;
-					ROLE_CUSTOM=Access People\n",				 
-				 */
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("connectionname", nomeSchema);
 		jsonObject.put("advanced", connection);
 		
-		//String url = "http://localhost:8080/saiku/rest/saiku/admin/datasources/";
-		String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/datasources/";
+		String url = "http://localhost:8080/saiku/rest/saiku/admin/datasources/";
+		//String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/datasources/";
 		 
 		return sendToSaikuApi(url, jsonObject.toString());
 	}
@@ -107,6 +112,13 @@ public class SaikuConnection {
 		return 0;
 	}
 	
+	/**
+	 * Salva o XML no servidor no diretorio /datasources/id_+idCLiente
+	 * @param idCliente
+	 * @param schemaName
+	 * @param schema
+	 * @return {@link Boolean}
+	 */
     public static boolean saveSchemaInSaikuServer(Integer idCliente, String schemaName, String schema){
     	
     	File clienteDir = new File("/datasources/id_" + idCliente);

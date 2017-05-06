@@ -104,12 +104,12 @@ public class CuboWebService {
 					case 200:
 						return gson.toJson("Cubo adicionado com sucesso!");
 					case 404:
-						return gson.toJson("Falha ao adicionar datasource no Saiku. Servidor Saiku não encontrado!");
+						return gson.toJson("Falha ao adicionar datasource no Saiku. Servidor Saiku não encontrado ou indisponível!");
 					case 500:
 						return gson.toJson("Falha ao adicionar datasource no Saiku. Erro interno no Saiku API!");
 				}
 			}else{
-				return gson.toJson("Falha ao salvar MDX no servidor Saiku!");
+				return gson.toJson("Falha ao salvar MDX no servidor!");
 			}
 			
 		}else{
