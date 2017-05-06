@@ -17,7 +17,11 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-
+/**
+ * Classe que faz toda integração com a API do Saiku
+ * @author deynesonborba
+ *
+ */
 public class SaikuConnection {
 
 	/**
@@ -43,8 +47,8 @@ public class SaikuConnection {
 		}		
 		
 		System.out.println(jsonObject);
-		//String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/users/";
-		String url = "http://localhost:8080/saiku/rest/saiku/admin/users/";
+		String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/users/";
+		//String url = "http://localhost:8080/saiku/rest/saiku/admin/users/";
 		return sendToSaikuApi(url, jsonObject.toString());
 	}
 	
@@ -79,8 +83,8 @@ public class SaikuConnection {
 		jsonObject.put("connectionname", nomeSchema);
 		jsonObject.put("advanced", connection);
 		
-		String url = "http://localhost:8080/saiku/rest/saiku/admin/datasources/";
-		//String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/datasources/";
+		//String url = "http://localhost:8080/saiku/rest/saiku/admin/datasources/";
+		String url = "http://backend.smallbi.com.br:28080/saiku/rest/saiku/admin/datasources/";
 		 
 		return sendToSaikuApi(url, jsonObject.toString());
 	}

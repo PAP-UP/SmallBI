@@ -15,7 +15,6 @@ import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Cubo;
 import br.com.smallbi.entity.Usuario;
 import br.com.smallbi.util.Data;
-import br.com.smallbi.util.SaikuConnection;
 
 public class CuboBusiness implements InterfaceBusiness<Cubo>{
 	
