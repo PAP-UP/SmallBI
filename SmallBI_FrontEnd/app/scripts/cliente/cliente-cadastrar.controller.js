@@ -9,6 +9,7 @@
     var vm = this;
 
     vm.dadosCliente = {};
+    vm.showButton = false;
 
     angular.extend(vm, {
       clienteSalvar: clienteSalvar,
@@ -20,8 +21,9 @@
     function clienteSalvar() {
       vm.dadosCliente.usuarioId = 1;
       clienteResource.insereCliente(vm.dadosCliente).then(function (result) {
-        $state.transitionTo('cliente.listar');
-        console.log(result);
+        vm.showButton = true;
+        //$state.transitionTo('cliente.listar');
+        //console.log(result);
       },function (resolve) {
         console.log(resolve);
       });
