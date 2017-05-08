@@ -6,8 +6,8 @@
 
   function Service($http) {
 
-    var baseUrl = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/";
-    //var baseUrl = "http://localhost:8080/SmallBI_WebService/rest/";
+    //var baseUrl = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/";
+    var baseUrl = "http://localhost:8080/SmallBI_WebService/rest/";
 
     var service = {
       serviceGet: serviceGet,

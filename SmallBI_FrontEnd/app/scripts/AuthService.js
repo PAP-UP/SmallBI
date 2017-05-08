@@ -28,9 +28,7 @@
           return $q.reject();
         }
       },
-      // setToken: function (token) {
-      //   $localStorage.token = token;
-      // },
+
       signin: function (data) {
         return $q(function (resolve, reject) {
           $http.post('http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login', data).then(

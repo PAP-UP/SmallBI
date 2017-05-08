@@ -8,13 +8,15 @@
 
     var vm = this;
 
+    var cookie = $cookieStore.get('cookie');
+
     angular.extend(vm, {
       listaUsuarios: listaUsuarios,
       excluirUsuario: excluirUsuario
     });
 
     function listaUsuarios() {
-      usuarioResource.listaUsuario().then(function (result) {
+      usuarioResource.listaUsuario(cookie.idCliente).then(function (result) {
         vm.listaUsuarios = result.data;
       });
     }

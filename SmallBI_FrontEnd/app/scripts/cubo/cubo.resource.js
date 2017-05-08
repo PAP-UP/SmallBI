@@ -4,27 +4,22 @@
   angular.module('SmallBIApp')
     .factory('cuboResource', cuboResource);
 
-  function cuboResource($http) {
+  function cuboResource(Service) {
 
     var service = {
       listaCubo: listaCubo,
-      insereCubo: insereCubo
+      analisarCubo: analisarCubo
     };
 
     return service;
 
-    function listaCubo() {
-      return $http.get("http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/listar");
+    function listaCubo(param) {
+      var url = 'cubo/listarByIdCliente';
+      return Service.servicePost(param, url);
     }
-
-    function insereCubo(dataParam) {
-
-      return $http({
-        url: "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/adicionar",
-        method : "POST",
-        data :  dataParam,
-        headers: {'Content-Type': 'application/json'}
-      });
+    function analisarCubo(id) {
+      var url = 'cubo/analisar';
+      return Service.servicePost(id, url);
     }
   }
 })();
