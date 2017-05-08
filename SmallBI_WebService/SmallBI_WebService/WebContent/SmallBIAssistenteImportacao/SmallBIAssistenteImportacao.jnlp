@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://backend.smallbi.com.br:18080/SmallBI_WebService/SmallBIAssistenteImportacao" href="SmallBIAssistenteImportacao.jnlp">
+    <information>
+        <title>SmallBI Assistente de Importação</title>
+        <vendor>SmallBI</vendor>
+        <homepage href="www.smallbi.com.br"/>
+        <icon href="logo.png"/>
+        <icon kind="splash" href="logo.png"/>
+    </information>
+    <security>
+    	<all-permissions/>
+    </security>
+    <resources>
+        <j2se version="1.8" />
+        <jar href="Assistente.jar"/>
+    </resources>
+    <application-desc main-class="">
+        <!-- Application Arguments -->
+    </application-desc>
+</jnlp>
