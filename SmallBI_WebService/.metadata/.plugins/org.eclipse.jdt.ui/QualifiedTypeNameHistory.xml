@@ -57,7 +57,7 @@
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Perfil"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
-<fullyQualifiedTypeName name="br.com.smallbi.util.SaikuConnection"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
+<fullyQualifiedTypeName name="br.com.smallbi.util.SaikuConnection"/>
 </qualifiedTypeNameHistroy>

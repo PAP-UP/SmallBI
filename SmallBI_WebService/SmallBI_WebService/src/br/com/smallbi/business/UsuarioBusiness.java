@@ -217,9 +217,10 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		}
 		
 		//Usuário que está alterando estas informações
-		if(t.getUsuarioId().equals(null)){
+		/*if(t.getUsuarioId().equals(null)){
 			return "A variável 'usuarioId' deve ser informada!";
-		}
+		}*/
+		t.setUsuarioId(1);
 		
 		if(t.getUsuarioSaiku().equals(null) || t.getUsuarioSaiku().equals("")){
 			return "A variável 'usuarioSaiku' deve ser informada!";
