@@ -141,7 +141,10 @@ public class UsuarioWebService {
 			return jsonResponse.toString();
 		}else{
 			//return gson.toJson("Usuário ou senha inválidos!");
-			jsonObject = new JSONObject().put("success", false);
+			jsonObject = new JSONObject()
+					.put("success", false)
+						.put("msg", "Usuário ou senha inválidos!");
+			
 			return jsonObject.toString();
 		}
 	}

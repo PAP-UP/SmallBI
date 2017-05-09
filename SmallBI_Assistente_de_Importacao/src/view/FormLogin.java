@@ -22,8 +22,8 @@ public class FormLogin extends javax.swing.JFrame {
 
     public static Integer idCliente = 0;
     public static String login, senha = new String();
-    //String urlApiLogin = "http://localhost:8081/SmallBI_WebService/rest/usuario/login";
-    String urlApiLogin = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
+    String urlApiLogin = "http://localhost:8080/SmallBI_WebService/rest/usuario/login";
+    //String urlApiLogin = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
     
     public FormLogin() {
         initComponents();
@@ -164,17 +164,21 @@ public class FormLogin extends javax.swing.JFrame {
                     JSONObject jSONObject;
                     try {
                         jSONObject = new JSONObject(json);
-//                        String jsonMyHashMap = jSONObject.getJSONObject("myHashMap").toString();
-//                        jSONObject = new JSONObject(jsonMyHashMap);
-                        idCliente = jSONObject.getInt("idCliente");
-                        System.out.println("Id obtido: " + idCliente);
-                        System.out.println("idUsuario: " + jSONObject.getInt("idUsuario"));
                         
-                        this.dispose();
-                        FormAssistenteImportacao frm = new FormAssistenteImportacao();
-                        frm.setLocationRelativeTo(null);
-                        frm.setResizable(false);
-                        frm.setVisible(true); 
+                        if(jSONObject.isNull("msg")){
+                        
+                            idCliente = jSONObject.getInt("idCliente");
+                            System.out.println("Id obtido: " + idCliente);
+                            System.out.println("idUsuario: " + jSONObject.getInt("idUsuario"));
+
+                            this.dispose();
+                            FormAssistenteImportacao frm = new FormAssistenteImportacao();
+                            frm.setLocationRelativeTo(null);
+                            frm.setResizable(false);
+                            frm.setVisible(true); 
+                        }else{
+                            JOptionPane.showMessageDialog(null, jSONObject.get("msg"));
+                        }
                     } catch (JSONException ex) {
     //                    Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
                         JOptionPane.showMessageDialog(null, json);

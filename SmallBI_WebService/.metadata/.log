@@ -1896,3 +1896,9 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/SmallBI_WebSe
 >>>>>>> 1131d347235a0806fdf6847f38ccba530fbe4948
 >>>>>>> 1a864756f92d30b290d3af743a57c35c0ddd4c7e
 >>>>>>> f590967697a7c883c73a518f236099bf64450875
+
+!ENTRY org.eclipse.jface.text 2 0 2017-05-08 21:35:51.772
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-05-08 21:35:51.772
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
