@@ -30,24 +30,24 @@ public class Servico implements javax.servlet.ServletContextListener{
             public void run() {
             	
             	Date dataAtual = Data.getDate();
-            	System.out.println("-------------------------------------------------------");
-            	System.out.println("Checando as: " + dataAtual);
+            	//System.out.println("-------------------------------------------------------");
+            	//System.out.println("Checando as: " + dataAtual);
             	
                 List<UsuarioLogado> uls = business.list();
                 for(UsuarioLogado ul : uls){
                 	long differenceInMillis = dataAtual.getTime() - ul.getData().getTime();
                 	long diffMinutes = differenceInMillis / (60 * 1000) % 60;
-                	System.out.println("Diferença: " + diffMinutes);
+                	//System.out.println("Diferença: " + diffMinutes);
                 	if(diffMinutes >= 15){
-                		System.out.println("Passou mais de 15 minuto: " + ul.getData() + 
-                				" Usuário: " + ul.getIdUsuarioLogado());
+                	//	System.out.println("Passou mais de 15 minuto: " + ul.getData() + 
+                	//			" Usuário: " + ul.getIdUsuarioLogado());
                 		business.delete(ul.getId());
-                		System.out.println("Token deletado...");
+                	//	System.out.println("Token deletado...");
                 	}else{
-                		System.out.println("Não passou um minuto: " + ul.getData() + " Usuário: " + ul.getIdUsuarioLogado());
+                	//	System.out.println("Não passou um minuto: " + ul.getData() + " Usuário: " + ul.getIdUsuarioLogado());
                 	}
                 }
-                System.out.println("-------------------------------------------------------");
+                //System.out.println("-------------------------------------------------------");
             }
         };        
             

@@ -141,6 +141,8 @@ public class GerarScriptSql {
                 return "DATE";
             case "Data MM-dd-yyyy":
                 return "DATE";
+            case "Data yyyy-MM-dd":
+                return "DATE";                
         }
         return "";
     }

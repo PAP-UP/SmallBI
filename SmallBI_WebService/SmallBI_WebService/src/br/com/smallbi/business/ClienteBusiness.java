@@ -3,7 +3,9 @@ package br.com.smallbi.business;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
+
 import br.com.smallbi.dal.ConexaoDao;
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
@@ -14,7 +16,7 @@ import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
 import br.com.smallbi.util.Data;
 
-public class ClienteBusiness implements InterfaceBusiness<Cliente>{
+public class ClienteBusiness{
 
 	InterfaceDao<Cliente> clienteDao = FactoryDao.createClienteDao();
 	InterfaceDao<Endereco> enderecoDao = FactoryDao.createEnderecoDao();
@@ -22,19 +24,22 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 	InterfaceDao<Plano> planoDao = FactoryDao.createPlanoDao();
 	InterfaceDao<RamoAtividade> ramoAtividadeDao = FactoryDao.createRamoAtividadeDao();
 	
-	@Override
-	public String create(Cliente t){
+	public JSONObject create(Cliente t){
 		
+		String msg = new String();
 		if(t == null){
-			return "O objeto não pode ser null!";
+			/*return "O objeto não pode ser null!";*/
+			msg = "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdCliente() != null){
-			return "A variavel ID não pode ser informada na criação de um novo objeto!";
+			/*return "A variavel ID não pode ser informada na criação de um novo objeto!";*/
+			msg = "A variavel ID não pode ser informada na criação de um novo objeto!";
 		}
 		
 		if(t.getCnpj().equals(null) || t.getCnpj().equals("")){
-			return "A variável 'cnpj' deve ser informada!";
+			/*return "A variável 'cnpj' deve ser informada!";*/
+			msg = "A variável 'cnpj' deve ser informada!";
 		}else{
 			//validar cnpj
 		}
@@ -43,51 +48,63 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 			if(t.getFormaPagamento().getIdFormaPagamento() != null){
 				FormaPagamento formaPagamento = formaPagamentoDao.getObjById(t.getFormaPagamento().getIdFormaPagamento());
 				if(formaPagamento == null){
-					return "Nenhum resultado para a variável 'FormaPagamento' foi encontrado!";
+					/*return "Nenhum resultado para a variável 'FormaPagamento' foi encontrado!";*/
+					msg = "Nenhum resultado para a variável 'FormaPagamento' foi encontrado!";
 				}
 			}else{
-				return "A variável 'formaPagamento.idFormaPagamento' deve ser informada!";
+				/*return "A variável 'formaPagamento.idFormaPagamento' deve ser informada!";*/
+				msg = "A variável 'formaPagamento.idFormaPagamento' deve ser informada!";
 			}
 		}else{
-			return "A variável 'formaPagamento' deve ser informada!";
+			/*return "A variável 'formaPagamento' deve ser informada!";*/
+			msg = "A variável 'formaPagamento' deve ser informada!";
 		}
 		
 		if(t.getIe().equals(null) || t.getIe().equals("")){
-			return "A variável 'ie' deve ser informada!";
+			/*return "A variável 'ie' deve ser informada!";*/
+			msg = "A variável 'ie' deve ser informada!";
 		}
 		
 		if(t.getNomeFantasia().equals(null) || t.getNomeFantasia().equals("")){
-			return "A variável 'nomeFantasia' deve ser informada!";
+			/*return "A variável 'nomeFantasia' deve ser informada!";*/
+			msg = "A variável 'nomeFantasia' deve ser informada!";
 		}
 		
 		if(t.getPlano() != null){
 			if(t.getPlano().getIdPlano() != null){
 				Plano plano = planoDao.getObjById(t.getPlano().getIdPlano());
 				if(plano == null){
-					return "Nenhum resultado para a variável 'Plano' foi encontrado!";
+					/*return "Nenhum resultado para a variável 'Plano' foi encontrado!";*/
+					msg = "Nenhum resultado para a variável 'Plano' foi encontrado!";
 				}
 			}else{
-				return "A variável 'plano.idPlano' deve ser informada!";
+				/*return "A variável 'plano.idPlano' deve ser informada!";*/
+				msg = "A variável 'plano.idPlano' deve ser informada!";
 			}
 		}else{
-			return "A variável 'plano' deve ser informada!";
+			/*return "A variável 'plano' deve ser informada!";*/
+			msg ="A variável 'plano' deve ser informada!";
 		}
 		
 		if(t.getRamoAtividade() != null){
 			if(t.getRamoAtividade().getIdRamoAtividade() != null){
 				RamoAtividade ramoAtividade = ramoAtividadeDao.getObjById(t.getRamoAtividade().getIdRamoAtividade());
 				if(ramoAtividade == null){
-					return "Nenhum resultado para a variável 'RamoAtividade' foi encontrado!";
+					/*return "Nenhum resultado para a variável 'RamoAtividade' foi encontrado!";*/
+					msg = "Nenhum resultado para a variável 'RamoAtividade' foi encontrado!";
 				}
 			}else{
-				return "A variável 'ramoAtividade.idRamoAtividade' deve ser informada!";
+				/*return "A variável 'ramoAtividade.idRamoAtividade' deve ser informada!";*/
+				msg = "A variável 'ramoAtividade.idRamoAtividade' deve ser informada!";
 			}
 		}else{
-			return "A variável 'ramoAtividade' deve ser informada!";
+			/*return "A variável 'ramoAtividade' deve ser informada!";*/
+			msg = "A variável 'ramoAtividade' deve ser informada!";
 		}
 		
 		if(t.getRazaoSocial().equals(null) || t.getRazaoSocial().equals("")){
-			return "A variável 'razaoSocial' deve ser informada!";
+			/*return "A variável 'razaoSocial' deve ser informada!";*/
+			msg = "A variável 'razaoSocial' deve ser informada!";
 		}
 		
 		/*if(t.getTamanhoTotal() == null){
@@ -109,7 +126,8 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		boolean result = ConexaoDao.criarDatabaseCliente(t.getNomeFantasia(), t.getIdCliente());
 		
 		if(result == false){
-			return "Falha ao criar banco de dados do cliente!";
+			/*return "Falha ao criar banco de dados do cliente!";*/
+			msg = "Falha ao criar banco de dados do cliente!";
 		}
 		
 		Integer tamBd = ConexaoDao.getTamanhoBancoCliente(t.getIdCliente());
@@ -117,17 +135,26 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 			t.setNomeFantasia(t.getNomeFantasia() + "Erro Tam Bd");
 			clienteDao.update(t);
 			delete(t.getIdCliente());
-			return "Falha ao definir tamanho do Banco de Dados do cliete";
+			/*return "Falha ao definir tamanho do Banco de Dados do cliete";*/
+			msg = "Falha ao definir tamanho do Banco de Dados do cliete";
 		}else{
 			t.setTamanhoTotal(tamBd);
 //			update(t);
 			clienteDao.update(t);
 		}
 		
-		return "Cliente cadastrado com sucesso!";
+		/*return "Cliente cadastrado com sucesso!";*/
+		msg = "Cliente cadastrado com sucesso!";
+		try {
+			JSONObject response = new JSONObject().put("message", msg).put("idCliente", t.getIdCliente());
+			return response;
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	@Override
+	
 	public List<Cliente> list() {
 		List<Cliente> clientes = new ArrayList<>();
 		for(Cliente e : clienteDao.list()){
@@ -138,7 +165,7 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		return clientes;
 	}
 
-	@Override
+	
 	public String update(Cliente t){
 		
 		if(t == null){
@@ -238,7 +265,7 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		return "Cliente alterado com sucesso!";
 	}
 
-	@Override
+	
 	public String delete(Integer id){
 		Cliente cliente = getObjById(id);
 		if(cliente == null){
@@ -248,7 +275,7 @@ public class ClienteBusiness implements InterfaceBusiness<Cliente>{
 		return "Empresa deletada com sucesso!";
 	}
 
-	@Override
+	
 	public Cliente getObjById(Integer id){
 		Cliente cliente = clienteDao.getObjById(id);
 		if(cliente != null && cliente.isStatus() != false){

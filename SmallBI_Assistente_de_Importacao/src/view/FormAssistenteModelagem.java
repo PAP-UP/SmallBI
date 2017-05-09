@@ -7,27 +7,15 @@ import business.GerenciarMetricas;
 import business.GerenciarRelacionamentos;
 import business.Util;
 import com.google.gson.Gson;
-import java.awt.Component;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
 import view.percorrerAbas.PercorrerAbasFormAssistenteModelagem;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.BoxLayout;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import model.Dimensao;
-import model.GrupoMetrica;
-import model.Link;
-import model.Metrica;
 import model.Schema;
 import model.TabelaImportada;
 import org.apache.http.HttpEntity;
@@ -45,19 +33,25 @@ import xmleditorkit.XMLEditorKit;
 public class FormAssistenteModelagem extends javax.swing.JFrame {
     
     public static List<TabelaImportada> tabelasImportadas = new ArrayList<>();
+    
+    public static TabelaImportada tabelaFato = new TabelaImportada();
     //String urlApiAddCubo = "http://localhost:8081/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
     String urlApiAddCubo = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
     
     public FormAssistenteModelagem() {
         initComponents();
         PercorrerAbasFormAssistenteModelagem.desativarAbasInicio();  
+        
+        carregarTabelasImportadasParaEscolherFato();
+        GerenciarDimensoes.atualizarListaDimensoes();
+        //GerenciarDimensoes.carregarTabelasModelDim();
+        
         GerenciarMetricas.carregarAgregadoresModelMetri();
         GerenciarMetricas.carregarFormatosModelMetri();
-        GerenciarDimensoes.carregarTabelasModelDim();
-        GerenciarRelacionamentos.carregarTabelasRelacionamentos();
-        GerenciarDimensoes.atualizarListaDimensoes();
-        GerenciarRelacionamentos.atualizarListaRelacionamentos();
         GerenciarMetricas.atualizarListaMetricas();
+        
+        GerenciarRelacionamentos.carregarTabelasRelacionamentos();
+        GerenciarRelacionamentos.atualizarListaRelacionamentos();
     }
 
     @SuppressWarnings("unchecked")
@@ -70,6 +64,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         painelAbaNomeCubo_NomeCubo = new javax.swing.JPanel();
         lblAbaNomeCubo_Nomecubo = new javax.swing.JLabel();
         txtAbaNomeCubo_NomeCubo = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        cbxAbaNomeCubo_TabFato = new javax.swing.JComboBox<>();
         btnAbaNomeCubo_Proximo = new javax.swing.JButton();
         btnAbaNomeCubo_Sair = new javax.swing.JButton();
         paineAbaModelDim = new javax.swing.JPanel();
@@ -85,6 +81,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         cbxChaveDimensao = new javax.swing.JComboBox<>();
         btnAddDimensao = new javax.swing.JButton();
         jcbSelecTodos = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
+        cbxLinkComFato = new javax.swing.JComboBox<>();
         painelDimensoes = new javax.swing.JPanel();
         btnSalvarDimensoes = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -152,15 +150,21 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
         lblAbaNomeCubo_Nomecubo.setText("Nome do Cubo: ");
 
+        jLabel1.setText("Tabela Fato: ");
+
         javax.swing.GroupLayout painelAbaNomeCubo_NomeCuboLayout = new javax.swing.GroupLayout(painelAbaNomeCubo_NomeCubo);
         painelAbaNomeCubo_NomeCubo.setLayout(painelAbaNomeCubo_NomeCuboLayout);
         painelAbaNomeCubo_NomeCuboLayout.setHorizontalGroup(
             painelAbaNomeCubo_NomeCuboLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaNomeCubo_NomeCuboLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblAbaNomeCubo_Nomecubo)
+                .addGroup(painelAbaNomeCubo_NomeCuboLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAbaNomeCubo_Nomecubo)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAbaNomeCubo_NomeCubo, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+                .addGroup(painelAbaNomeCubo_NomeCuboLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxAbaNomeCubo_TabFato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtAbaNomeCubo_NomeCubo, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
                 .addContainerGap())
         );
         painelAbaNomeCubo_NomeCuboLayout.setVerticalGroup(
@@ -170,7 +174,11 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                 .addGroup(painelAbaNomeCubo_NomeCuboLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAbaNomeCubo_Nomecubo)
                     .addComponent(txtAbaNomeCubo_NomeCubo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(painelAbaNomeCubo_NomeCuboLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxAbaNomeCubo_TabFato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
 
         btnAbaNomeCubo_Proximo.setText("Próximo");
@@ -256,6 +264,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Link com Fato: ");
+
         javax.swing.GroupLayout painelAddDimensaoLayout = new javax.swing.GroupLayout(painelAddDimensao);
         painelAddDimensao.setLayout(painelAddDimensaoLayout);
         painelAddDimensaoLayout.setHorizontalGroup(
@@ -263,19 +273,21 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddDimensaoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddDimensaoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAddDimensao))
                     .addGroup(painelAddDimensaoLayout.createSequentialGroup()
                         .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblChaveDimensao)
                             .addComponent(lblTabelaDimensao)
-                            .addComponent(lblNomeDimensao))
+                            .addComponent(lblNomeDimensao)
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxLinkComFato, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNomeDimensao)
                             .addComponent(cbxTabelaDimensao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbxChaveDimensao, 0, 204, Short.MAX_VALUE)))
-                    .addGroup(painelAddDimensaoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAddDimensao)))
+                            .addComponent(cbxChaveDimensao, 0, 239, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
                 .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelListaAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,8 +313,13 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                             .addComponent(cbxChaveDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblChaveDimensao))
                         .addGap(18, 18, 18)
+                        .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbxLinkComFato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(35, 35, 35)
                         .addComponent(btnAddDimensao))
-                    .addComponent(painelListaAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(painelListaAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jTabbedPane_Dimensoes.addTab("Adicionar Dimensão", painelAddDimensao);
@@ -1039,6 +1056,13 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         GerenciarDimensoes.ativarSelecTodosAtrDimensao();
     }//GEN-LAST:event_cbxChaveDimensaoActionPerformed
 
+    private void carregarTabelasImportadasParaEscolherFato(){
+        cbxAbaNomeCubo_TabFato.addItem("Selecione");
+        for(TabelaImportada tabImp : tabelasImportadas){
+            cbxAbaNomeCubo_TabFato.addItem(tabImp.getNomeTabela());
+        }
+    }
+    
     private void cuboPreviewVoltar(){
         if(tabelasImportadas.size() > 1){
             PercorrerAbasFormAssistenteModelagem.cuboPrevToAddRel();
@@ -1054,7 +1078,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         for(String s : GerarScriptSql.scripts){
             scriptSql += s;
         }
-
+        
+        System.out.println("Script completo: " + scriptSql);
+        
         Hashtable<String, Object> hash = new Hashtable<>();
         hash.put("login", FormLogin.login);
         hash.put("senha", FormLogin.senha);
@@ -1127,19 +1153,42 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private void nomeCuboToModelDim(){
         if(!txtAbaNomeCubo_NomeCubo.getText().equals("")){
             if(txtAbaNomeCubo_NomeCubo.getText().length() < 25){
-                Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-                String data = sdf.format(calendar.getTime());
-
-                GerarScriptSql gerarScriptSql = new GerarScriptSql();
-                gerarScriptSql.salvarQuerySQL("ScriptSQL_" + Util.formatarString(txtAbaNomeCubo_NomeCubo.getText()) + "_" + data);
-                PercorrerAbasFormAssistenteModelagem.nomeCuboToModelDim();
+                if(!cbxAbaNomeCubo_TabFato.getSelectedItem().toString().equals("Selecione")){
+                    
+                    //Salva o scriptSql no diretorio do usuario
+                    GerarScriptSql gerarScriptSql = new GerarScriptSql();
+                    gerarScriptSql.salvarQuerySQL("ScriptSQL_" + 
+                    Util.formatarString(txtAbaNomeCubo_NomeCubo.getText()));
+                    
+                    //Seta qual sera a tabela fato do cubo
+                    TabelaImportada tabImp = getTabImportadaByName(cbxAbaNomeCubo_TabFato.getSelectedItem().toString());
+                    tabImp.setIsTabFato(true);
+                    tabelaFato = tabImp;
+                    
+                    //Carregar Tabelas que nao sao fato
+                    GerenciarDimensoes.carregarTabelasModelDim();
+                    
+                    //Carregar Opcoes de Link com a tabela fato
+                    GerenciarDimensoes.carregarLinksComFato();
+                    
+                    PercorrerAbasFormAssistenteModelagem.nomeCuboToModelDim();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Selecione a tabela fato!");
+                }
             }else{
                 JOptionPane.showMessageDialog(null, "O nome do cubo não pode ser superior a 25 caracteres!");
             }
         }else{
             JOptionPane.showMessageDialog(null, "Preencha o nome do cubo!");
         }
+    }
+    
+    public static TabelaImportada getTabImportadaByName(String name){
+        for(TabelaImportada tabImp : tabelasImportadas){
+            if(tabImp.getNomeTabela().equals(name))
+                return tabImp;
+        }
+        return null;
     }
     
     public static void gerarSchemaXml(){
@@ -1150,6 +1199,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         schema.setDimensoes(GerenciarDimensoes.dimensoesSalvas);
         schema.setGrupoMetrica(GerenciarMetricas.grupoMetricasSalvas);
         schema.setLinks(GerenciarRelacionamentos.links);
+        
+        schema.setTabelaFato(cbxAbaNomeCubo_TabFato.getSelectedItem().toString());
         
         GerarSchema gerarSchema = new GerarSchema();
         String xmlGerado = gerarSchema.createSchema(schema);
@@ -1194,17 +1245,21 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltarDimensoes;
     private javax.swing.JButton btnVoltarMetricas;
     private javax.swing.JButton btnVoltarRelacionamentos;
+    public static javax.swing.JComboBox<String> cbxAbaNomeCubo_TabFato;
     public static javax.swing.JComboBox<String> cbxAgregadorMetrica;
     public static javax.swing.JComboBox<String> cbxAtributoRelacionado;
     public static javax.swing.JComboBox<String> cbxChaveDimensao;
     public static javax.swing.JComboBox<String> cbxColunaMetrica;
     public static javax.swing.JComboBox<String> cbxFormatoMetrica;
+    public static javax.swing.JComboBox<String> cbxLinkComFato;
     public static javax.swing.JComboBox<String> cbxTabelaDimensao;
     public static javax.swing.JComboBox<String> cbxTabelaMetrica;
     public static javax.swing.JComboBox<String> cbxTabelaReferenciada;
     public static javax.swing.JComboBox<String> cbxTabelaRelacionamento;
     public static javax.swing.JEditorPane edtPaneAbaCuboPreview_XmlPreview;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

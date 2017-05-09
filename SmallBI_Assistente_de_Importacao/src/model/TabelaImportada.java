@@ -8,7 +8,7 @@ public class TabelaImportada {
     private String scriptSql;
     private JTable jTable;
     private String primaryKey;
-    
+    private boolean isTabFato;
 
     /**
      * @return the scriptSql
@@ -64,6 +64,20 @@ public class TabelaImportada {
      */
     public void setNomeTabela(String nomeTabela) {
         this.nomeTabela = nomeTabela;
+    }
+
+    /**
+     * @return the isTabFato
+     */
+    public boolean isIsTabFato() {
+        return isTabFato;
+    }
+
+    /**
+     * @param isTabFato the isTabFato to set
+     */
+    public void setIsTabFato(boolean isTabFato) {
+        this.isTabFato = isTabFato;
     }
     
     

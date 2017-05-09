@@ -12,12 +12,12 @@
           <li><a ui-sref="cliente.listar"><span>Listar</span></a></li>
         </ul> -->
       </li>
-      <li class="fa fa-user" ng-if="vm.permissao == 2">
+      <li class="fa fa-user">
         <a ui-sref="usuario.listar" data-toggle="collapse" data-target="#dadosUsuario" data-parent="#accordion"><span>Dados do Usuário</span></a>
-        <!-- <ul id="dadosUsuario" class="collapse ulCollapse">
-          <li><a ui-sref="usuario.cadastrar"><span>Cadastrar</span></a></li>
+        <ul id="dadosUsuario" class="collapse ulCollapse">
+          <!--<li><a ui-sref="usuario.cadastrar"><span>Cadastrar</span></a></li>-->
           <li><a ui-sref="usuario.listar"><span>Listar</span></a></li>
-        </ul> -->
+        </ul>
       </li>
       <li class="fa fa-user" ng-if="vm.permissao == 1">
         <a href="#" data-toggle="collapse" data-target="#planos" data-parent="#accordion"><span>Planos</span></a>

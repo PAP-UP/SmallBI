@@ -9,6 +9,7 @@ public class Schema {
     private List<Dimensao> dimensoes;
     private List<GrupoMetrica> grupoMetrica;
     private List<Link> links;
+    private String tabelaFato;
     
     /**
      * @return the nome
@@ -92,6 +93,20 @@ public class Schema {
      */
     public void setLinks(List<Link> links) {
         this.links = links;
+    }
+
+    /**
+     * @return the tabelaFato
+     */
+    public String getTabelaFato() {
+        return tabelaFato;
+    }
+
+    /**
+     * @param tabelaFato the tabelaFato to set
+     */
+    public void setTabelaFato(String tabelaFato) {
+        this.tabelaFato = tabelaFato;
     }
     
 }

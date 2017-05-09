@@ -17,9 +17,20 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-
+/**
+ * Classe que faz toda integração com a API do Saiku
+ * @author deynesonborba
+ *
+ */
 public class SaikuConnection {
 
+	/**
+	 * Adiciona usuario ao Saiku atraves da API
+	 * @param login
+	 * @param senha
+	 * @param idCliente
+	 * @return {@link Integer} codigo de resposta do servidor
+	 */
 	public static int addUsuarioSaiku(String login, String senha, Integer idCliente){
 		
 		JSONObject jsonObject = new JSONObject();
@@ -41,6 +52,13 @@ public class SaikuConnection {
 		return sendToSaikuApi(url, jsonObject.toString());
 	}
 	
+	/**
+	 * Envia a string de conexao para API do Saiku
+	 * @param idCliente
+	 * @param nomeSchema
+	 * @return {@link Integer} codigo de resposta do servidor
+	 * @throws JSONException
+	 */
 	public static int addDatasourceSaiku(Integer idCliente, 
 			String nomeSchema) throws JSONException{
 		
@@ -60,15 +78,6 @@ public class SaikuConnection {
 				+ "security.mapping="
 				+ "ROLE_USER=No Access;"
 				+ "role_id_" + idCliente + "=access_id_" + idCliente;
-//				+ "security.enabled=false";
-//				+ "security.enabled=true"
-//				+ "security.type=lookup\n";
-				/*
-					security.mapping=
-					ROLE_USER=No Access People;
-					ROLE_ADMIN=Access People;
-					ROLE_CUSTOM=Access People\n",				 
-				 */
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("connectionname", nomeSchema);
@@ -107,6 +116,13 @@ public class SaikuConnection {
 		return 0;
 	}
 	
+	/**
+	 * Salva o XML no servidor no diretorio /datasources/id_+idCLiente
+	 * @param idCliente
+	 * @param schemaName
+	 * @param schema
+	 * @return {@link Boolean}
+	 */
     public static boolean saveSchemaInSaikuServer(Integer idCliente, String schemaName, String schema){
     	
     	File clienteDir = new File("/datasources/id_" + idCliente);

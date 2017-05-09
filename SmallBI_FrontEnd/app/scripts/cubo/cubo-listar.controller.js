@@ -14,8 +14,13 @@
 
     var cookie = $cookieStore.get('cookie');
 
+    var obj = {
+      'idCliente' : cookie.idCliente
+    };
+
+
     function init() {
-      cuboResource.listaCubo(cookie.idCliente).then(
+      cuboResource.listaCubo(obj).then(
         function (result) {
         vm.listaCubos = result.data;
       }, function (error) {

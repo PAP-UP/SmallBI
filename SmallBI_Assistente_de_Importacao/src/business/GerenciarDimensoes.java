@@ -9,7 +9,6 @@ import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -31,6 +30,7 @@ public class GerenciarDimensoes {
         String nomeDim = txtNomeDimensao.getText();
         String tabela = cbxTabelaDimensao.getSelectedItem().toString();
         String chave = cbxChaveDimensao.getSelectedItem().toString();
+        String linkComFato = cbxLinkComFato.getSelectedItem().toString();
         
         if(nomeDim != null && !nomeDim.equals("") &&
                 tabela != null && !tabela.equals("") && !tabela.equals("Selecione") &&
@@ -52,10 +52,11 @@ public class GerenciarDimensoes {
 
                 if(atributosSelecionados.size() > 0){
                     Dimensao d = new Dimensao();
-                    d.setNome(nomeDim);
+                    d.setNome(Util.formatarString(nomeDim));
                     d.setTabela(tabela);
                     d.setKey(chave);
                     d.setAtributos(atributosSelecionados);
+                    d.setLinkComFato(linkComFato);
 
                     dimensoesModeladas.add(d);
                     atualizarListaDimensoes();
@@ -159,19 +160,24 @@ public class GerenciarDimensoes {
         txtNomeDimensao.setText("");
 
         cbxChaveDimensao.removeAllItems();
-        cbxChaveDimensao.addItem("Selecione");        
+        //cbxChaveDimensao.addItem("Selecione");        
         
         cbxTabelaDimensao.removeAllItems();
-        cbxTabelaDimensao.addItem("Selecione");
+        //cbxTabelaDimensao.addItem("Selecione");
 
         carregarTabelasModelDim();
         
         jTabbedPane_Dimensoes.setSelectedIndex(0);
     }    
     
+    /**
+     * Carrega as tabelas que não foram escolhidas como fato
+     */
     public static void carregarTabelasModelDim(){
+        cbxTabelaDimensao.removeAllItems();
         for(TabelaImportada t : tabelasImportadas){
-            cbxTabelaDimensao.addItem(t.getNomeTabela());
+            if(!t.isIsTabFato())
+                cbxTabelaDimensao.addItem(t.getNomeTabela());
         }
     }    
     
@@ -251,4 +257,11 @@ public class GerenciarDimensoes {
             }
         }
     }    
+    
+    public static void carregarLinksComFato(){
+        JTable jTable = tabelaFato.getjTable();
+        for(int i = 0; i < jTable.getColumnCount(); i++){
+            cbxLinkComFato.addItem(jTable.getColumnName(i));
+        }
+    }
 }

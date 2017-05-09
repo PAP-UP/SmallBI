@@ -94,17 +94,19 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			
 			if(scriptsalvo){
 				
-				/*boolean mdxSalvo = SaikuConnection.saveSchemaInSaikuServer(idCliente, jsonObject.getString("nomeCubo"), 
-						jsonObject.getString("mdx"));*/
+				//Comentar esta declaração e usa-la apenas no endpoint cubo/analisar
+				//boolean mdxSalvo = SaikuConnection.saveSchemaInSaikuServer(idCliente, jsonObject.getString("nomeCubo"), 
+					//	jsonObject.getString("mdx"));
 				
 				//if(mdxSalvo){
 					usuario.getPessoa().getCliente().setTamanhoTotal(ConexaoDao.getTamanhoBancoCliente(idCliente));
 					new ClienteBusiness().update(usuario.getPessoa().getCliente());
+
+					//Comentar esta declaração e usa-la apenas no endpoint cubo/analisar					
+					//int saikuResponse = SaikuConnection.addDatasourceSaiku(idCliente, 
+						//	jsonObject.getString("nomeCubo"));
 					
-					/*int saikuResponse = SaikuConnection.addDatasourceSaiku(idCliente, 
-							jsonObject.getString("nomeCubo"));*/
-					
-//					if(saikuResponse == 200){
+					//if(saikuResponse == 200){
 						Cubo cubo = new Cubo();			
 						cubo.setCliente(usuario.getPessoa().getCliente());
 						
@@ -120,14 +122,16 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 						create(cubo);
 						
 						return "Cubo cadastrado com sucesso!";
-					/*}else{
-						return "Falha ao enviar cubo ao Saiku!";
-					}*/
-/*				}else{
-					return "Falha ao salvar MDX no servidor!";
-				}*/
+					//}else{
+						//return "Falha ao enviar cubo ao Saiku!";
+					//}
+				//}else{
+				//	return "Falha ao salvar MDX no servidor!";
+				//}
 			}else{
-				return "Falha ao salvar tabelas no bando de dados do cliente!";
+				return "Falha ao salvar tabelas no bando de dados do cliente! "
+						+ "\nVerifique se os nomes das tabela que você deseja importar "
+						+ "\njá existem no banco de dados do cliente";
 			}
 		}		
 		return "Usuário ou senha inválidos";

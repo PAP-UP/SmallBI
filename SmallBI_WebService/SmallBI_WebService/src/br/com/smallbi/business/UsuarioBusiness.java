@@ -21,6 +21,7 @@ import br.com.smallbi.entity.Usuario;
 import br.com.smallbi.entity.UsuarioLogado;
 import br.com.smallbi.util.Data;
 import br.com.smallbi.util.HashSenha;
+import br.com.smallbi.util.SaikuConnection;
 
 public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 
@@ -112,14 +113,14 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			return "A variável 'usuarioSaiku' deve ser informada!";
 		}*/	
 		
-		/*int code = SaikuConnection.addUsuarioSaiku(t.getUsuarioSaiku(), t.getSenha(), 
+		int code = SaikuConnection.addUsuarioSaiku(t.getUsuarioSaiku(), t.getSenha(), 
 				t.getPessoa().getCliente().getIdCliente());
 		
 		if(code != 200){
 			//chamar delete fisico
 			new PessoaBusiness().delete(t.getPessoa().getIdPessoa());
 			return "Falha ao adicionar usuário ao sistema Saiku!" + " Código da API do Saiku: " + code;
-		}*/
+		}
 		
 		//Call here encryption method
 		String hashSenha = HashSenha.makePasswordHash(t.getSenha());
@@ -216,9 +217,10 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		}
 		
 		//Usuário que está alterando estas informações
-		if(t.getUsuarioId().equals(null)){
+		/*if(t.getUsuarioId().equals(null)){
 			return "A variável 'usuarioId' deve ser informada!";
-		}
+		}*/
+		t.setUsuarioId(1);
 		
 		if(t.getUsuarioSaiku().equals(null) || t.getUsuarioSaiku().equals("")){
 			return "A variável 'usuarioSaiku' deve ser informada!";

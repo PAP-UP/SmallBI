@@ -41,22 +41,16 @@ public class GerarSchema {
         return schemaXml;
     }
     
-    private String formatarString(String str){
-        String strFormatada = str.toLowerCase();
-        strFormatada = strFormatada.replaceAll(" ", "_");
-        return strFormatada;
-    }
-    
     private String initializeSchema(String nomeSchema){
-        return "<?xml version='1.0'?><Schema name='" + formatarString(nomeSchema) + "' metamodelVersion='4.0'>";
+        return "<?xml version='1.0'?><Schema name='" + Util.formatarString(nomeSchema) + "' metamodelVersion='4.0'>";
     }
     
     private String setPhysicalSchema(List<TabelaImportada> tabelas, List<Link>links){
         String schema = "<PhysicalSchema>";
                 
         for(TabelaImportada t : tabelas){
-            schema += "<Table name='" + formatarString(t.getNomeTabela()) + "'><Key><Column name='" +
-                    formatarString(t.getPrimaryKey()) + "'/></Key></Table>";
+            schema += "<Table name='" + Util.formatarString(t.getNomeTabela()) + "'><Key><Column name='" +
+                    Util.formatarString(t.getPrimaryKey()) + "'/></Key></Table>";
         }
         
         for(Link l : links){
@@ -69,19 +63,19 @@ public class GerarSchema {
     }
     
     private String setCubeName(String cubeName){
-        return "<Cube name='" + formatarString(cubeName) + "'>";
+        return "<Cube name='" + Util.formatarString(cubeName) + "'>";
     }
 
     public String setSchemaDimensions(List<Dimensao> dimensoes){   
   
         String schema = "<Dimensions>";
         for(Dimensao dim : dimensoes){
-            schema += "<Dimension name='" + formatarString(dim.getNome()) + "' table='" + formatarString(dim.getTabela()) +
-                    "' key='" + formatarString(dim.getKey()) + "'><Attributes>";
+            schema += "<Dimension name='" + Util.formatarString(dim.getNome()) + "' table='" + Util.formatarString(dim.getTabela()) +
+                    "' key='" + Util.formatarString(dim.getKey()) + "'><Attributes>";
 
             for(String atributo : dim.getAtributos()){
-                schema += "<Attribute name='" + formatarString(atributo) + "' keyColumn='" +
-                        formatarString(atributo) + "' hasHierarchy='true'/>";
+                schema += "<Attribute name='" + Util.formatarString(atributo) + "' keyColumn='" +
+                        Util.formatarString(atributo) + "' hasHierarchy='true'/>";
             }
             schema += "</Attributes></Dimension>";            
         }
@@ -97,20 +91,20 @@ public class GerarSchema {
         schema = "<MeasureGroups>";
         
         for(GrupoMetrica gm : grupoMetricas){
-            schema += "<MeasureGroup name='" + formatarString(gm.getNome()) + "' table='" + formatarString(gm.getTabela())
+            schema += "<MeasureGroup name='" + Util.formatarString(gm.getNome()) + "' table='" + Util.formatarString(gm.getTabela())
                     + "'><Measures>";
             
             for(Metrica m : gm.getMetricas()){
-                schema += "<Measure name='" + formatarString(m.getNome()) + "' column='" + formatarString(m.getColuna())
-                        + "' aggregator='" + formatarString(m.getAgregador()) + "' formatString='"
+                schema += "<Measure name='" + Util.formatarString(m.getNome()) + "' column='" + Util.formatarString(m.getColuna())
+                        + "' aggregator='" + Util.formatarString(m.getAgregador()) + "' formatString='"
                             + m.getFormato() + "' visible='true'/>";    
             }
             
             schema += "</Measures><DimensionLinks>";
   
             for(Dimensao d : dimensoes){
-                schema += "<FactLink dimension='" + d.getNome() + "' foreignKeyColumn='" +
-                        d.getKey() + "'/>";
+                schema += "<ForeignKeyLink dimension='" + d.getNome() + "' foreignKeyColumn='" +
+                        d.getLinkComFato() + "'/>";
             }
 //            for(FactLink f : gm.getFactLinks()){
 //                schema += "<FactLink dimension='" + formatarString(f.getDimension()) + "' foreignKeyColumn='" +
@@ -141,7 +135,7 @@ public class GerarSchema {
                 System.getProperty("file.separator") +
                 "cubes-scripts-generated"+
                 System.getProperty("file.separator") + 
-                formatarString(nomeSchema) + ".xml");    
+                Util.formatarString(nomeSchema) + ".xml");    
         //File file = new File("/home/deynesonborba/files-to-test-saiku/cubes-scripts-generated/" + formatarString(nomeSchema) + ".xml");
         
         try {

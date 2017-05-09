@@ -8,7 +8,7 @@ public class Dimensao {
     private String tabela;
     private String key;
     private List<String> atributos;
-
+    private String linkComFato;
     
     /**
      * @return the nome
@@ -64,6 +64,20 @@ public class Dimensao {
      */
     public void setKey(String key) {
         this.key = key;
+    }
+
+    /**
+     * @return the linkComFato
+     */
+    public String getLinkComFato() {
+        return linkComFato;
+    }
+
+    /**
+     * @param linkComFato the linkComFato to set
+     */
+    public void setLinkComFato(String linkComFato) {
+        this.linkComFato = linkComFato;
     }
     
     
