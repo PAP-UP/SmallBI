@@ -38,7 +38,7 @@ public class Servico implements javax.servlet.ServletContextListener{
                 	long differenceInMillis = dataAtual.getTime() - ul.getData().getTime();
                 	long diffMinutes = differenceInMillis / (60 * 1000) % 60;
                 	//System.out.println("Diferença: " + diffMinutes);
-                	if(diffMinutes >= 15){
+                	if(diffMinutes >= 60){
                 	//	System.out.println("Passou mais de 15 minuto: " + ul.getData() + 
                 	//			" Usuário: " + ul.getIdUsuarioLogado());
                 		business.delete(ul.getId());
