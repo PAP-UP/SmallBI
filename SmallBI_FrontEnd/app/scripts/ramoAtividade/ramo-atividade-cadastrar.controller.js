@@ -10,19 +10,20 @@
 
     vm.dadosRamo = {};
 
+    var cookie = $cookieStore.get('cookie');
+
     angular.extend(vm, {
       ramoSalvar: ramoSalvar,
     });
 
 
     function ramoSalvar() {
-      vm.dadosRamo.usuarioId = 1;
-
+      vm.dadosRamo.usuarioId = cookie.idPerfil;
       ramoResource.insereRamo(vm.dadosRamo).then(function (result) {
+        SweetAlert.swal({title: result.data, timer: 2000, type: "success", showConfirmButton: false});
         $state.transitionTo('ramo.listar');
-        console.log(result);
       },function (resolve) {
-        console.log(resolve);
+        SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
       });
     }
 

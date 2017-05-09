@@ -10,19 +10,21 @@
 
     vm.dadosFuncao = {};
 
+    var cookie = $cookieStore.get('cookie');
+
     angular.extend(vm, {
       funcaoSalvar: funcaoSalvar,
     });
 
 
     function funcaoSalvar() {
-      vm.dadosFuncao.usuarioId = 1;
+      vm.dadosFuncao.usuarioId = cookie.idPerfil;
 
       funcaoResource.insereFuncao(vm.dadosFuncao).then(function (result) {
         $state.transitionTo('funcao.listar');
-        console.log(result);
+        SweetAlert.swal({title: result.data, timer: 2000, type: "success", showConfirmButton: false});
       },function (resolve) {
-        console.log(resolve);
+        SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
       });
     }
 

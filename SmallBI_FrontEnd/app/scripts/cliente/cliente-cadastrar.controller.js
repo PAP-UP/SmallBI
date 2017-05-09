@@ -19,7 +19,6 @@
 
 
     function clienteSalvar() {
-      vm.dadosCliente.usuarioId = 1;
       clienteResource.insereCliente(vm.dadosCliente).then(function (result) {
         vm.showButton = true;
         //$state.transitionTo('cliente.listar');

@@ -4,9 +4,15 @@
   angular.module('SmallBIApp')
     .controller('usuarioListarController', usuarioListarController);
 
-  function usuarioListarController(usuarioResource, $state) {
+  function usuarioListarController(usuarioResource, $state, $cookieStore) {
 
     var vm = this;
+
+    var cookie = $cookieStore.get('cookie');
+
+    var obj = {
+      'idCliente' : cookie.idCliente
+    }
 
     angular.extend(vm, {
       listaUsuarios: listaUsuarios,
@@ -14,8 +20,10 @@
     });
 
     function listaUsuarios() {
-      usuarioResource.listaUsuario().then(function (result) {
+      usuarioResource.listaUsuario(obj).then(function (result) {
         vm.listaUsuarios = result.data;
+      }, function (resolve) {
+        console.log(resolve);
       });
     }
 

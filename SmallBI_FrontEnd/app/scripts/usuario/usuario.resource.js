@@ -16,9 +16,9 @@
 
 		return service;
 
-		function listaUsuario() {
-			var url = 'usuario/listar';
-			return Service.serviceGet(url);
+		function listaUsuario(param) {
+			var url = 'usuario/listarByIdCliente';
+			return Service.servicePost(param, url);
 		}
 
 			function insereUsuario(dataParam) {

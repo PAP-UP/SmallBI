@@ -20,10 +20,12 @@
 <div class="grid-container">
     <ul class="rig columns-4">
         <li ng-repeat="item in vm.listaCubos">
-            <a href="#" title="{{item.nomeCubo}}"><img src="images/cube.png" alt="{{item.nomeCubo}}"></a>
+          <div ng-click="vm.analisarCubo(item.idCubo)">
+            <a href="http://backend.smallbi.com.br:28080" target="_blank" title="{{item.nomeCubo}}"><img src="images/cube.png" alt="{{item.nomeCubo}}"></a>
             <h3>{{item.nomeCubo}}</h3>
             <span>{{item.cliente}}</span>
             <p><i class="fa fa-floppy-o"></i> {{item.tamanho}} kb</p>
+          </div>
         </li>
     </ul>
 </div>
