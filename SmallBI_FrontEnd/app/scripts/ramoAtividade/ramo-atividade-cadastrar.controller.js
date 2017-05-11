@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('ramoCadastrarController', ramoCadastrarController);
 
-  function ramoCadastrarController(ramoResource, $state) {
+  function ramoCadastrarController(ramoResource, $state, $cookieStore, SweetAlert) {
 
     var vm = this;
 

@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('funcaoListarController', funcaoListarController);
 
-  function funcaoListarController(funcaoResource, $state) {
+  function funcaoListarController(funcaoResource, $state, SweetAlert) {
 
     var vm = this;
 
@@ -21,8 +21,10 @@
     function excluirFuncao(id) {
       funcaoResource.deleteFuncao(id).then(
         function (result) {
-          console.log(result);
+          SweetAlert.swal({title: result.data, timer: 2000, type: "success", showConfirmButton: false});
           $state.reload();
+        }, function (resolve) {
+          SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
         });
     }
 

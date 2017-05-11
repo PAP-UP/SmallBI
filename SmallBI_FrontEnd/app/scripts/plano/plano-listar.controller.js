@@ -23,12 +23,10 @@
         function (result) {
           console.log(result);
           $state.reload();
+        }, function (resolve) {
+          SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
         });
     }
-
-    // function teste() {
-    //   SweetAlert.swal("Good job!", "You clicked the button!", "success");
-    // }
 
     function activate() {
       listaPlanos();

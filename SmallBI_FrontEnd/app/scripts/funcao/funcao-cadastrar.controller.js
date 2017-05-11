@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('funcaoCadastrarController', funcaoCadastrarController);
 
-  function funcaoCadastrarController(funcaoResource, $state) {
+  function funcaoCadastrarController(funcaoResource, $state, $cookieStore, SweetAlert) {
 
     var vm = this;
 
@@ -19,7 +19,6 @@
 
     function funcaoSalvar() {
       vm.dadosFuncao.usuarioId = cookie.idPerfil;
-
       funcaoResource.insereFuncao(vm.dadosFuncao).then(function (result) {
         $state.transitionTo('funcao.listar');
         SweetAlert.swal({title: result.data, timer: 2000, type: "success", showConfirmButton: false});

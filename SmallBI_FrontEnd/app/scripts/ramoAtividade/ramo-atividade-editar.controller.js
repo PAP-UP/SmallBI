@@ -4,11 +4,13 @@
   angular.module('SmallBIApp')
     .controller('ramoEditarController', ramoEditarController);
 
-  function ramoEditarController(ramoResource, $stateParams, $state) {
+  function ramoEditarController(ramoResource, $stateParams, $state, $cookieStore, SweetAlert) {
 
     var vm = this;
 
     vm.id = $stateParams.id;
+
+    var cookie = $cookieStore.get('cookie');
 
     angular.extend(vm, {
       ramoSalvar: ramoSalvar
@@ -24,13 +26,12 @@
     }
 
     function ramoSalvar() {
-      vm.dadosRamo.usuarioId = 1;
-
+      vm.dadosRamo.usuarioId = cookie.idPerfil;
       ramoResource.alteraRamo(vm.dadosRamo).then(function (result) {
+        SweetAlert.swal({title: result.data, timer: 2000, type: "success", showConfirmButton: false});
         $state.transitionTo('ramo-atividade.listar');
-        console.log(result);
       },function (resolve) {
-        console.log(resolve);
+        SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
       });
     }
 

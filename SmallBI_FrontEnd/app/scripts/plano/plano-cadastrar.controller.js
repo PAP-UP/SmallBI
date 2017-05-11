@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('planoCadastrarController', planoCadastrarController);
 
-  function planoCadastrarController(planoResource, $state) {
+  function planoCadastrarController(planoResource, $state, $cookieStore, SweetAlert) {
 
     var vm = this;
 

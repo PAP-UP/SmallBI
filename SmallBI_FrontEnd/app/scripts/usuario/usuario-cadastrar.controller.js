@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('usuarioCadastrarController', usuarioCadastrarController);
 
-  function usuarioCadastrarController(usuarioResource, funcaoResource, estadoResource, $state, $cookieStore) {
+  function usuarioCadastrarController(usuarioResource, funcaoResource, $state, $cookieStore, SweetAlert) {
 
     var vm = this;
 
@@ -39,16 +39,8 @@
         });
     }
 
-    function listarEstado() {
-      estadoResource.listaEstado().then(
-        function (result) {
-          vm.dadosEstado = result.data;
-        });
-    }
-
     function init() {
       listarFuncao();
-      //listarEstado();
     }
 
     init();

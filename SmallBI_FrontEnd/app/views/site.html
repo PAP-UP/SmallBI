@@ -258,8 +258,8 @@
                           <label for="fantasia">Nome Fantasia</label>
                           <input type="text" class="" id="fantasia" name="fantasia" ng-model="vm.dadosCliente.nomeFantasia" placeholder="Nome Fantasia">
 
-                          <label for="cnpj">CNPJ</label>
-                          <input type="text" class="" id="cnpj" name="cnpj" ng-model="vm.dadosCliente.cnpj" placeholder="CNPJ">
+                          <label for="">CNPJ</label>
+                          <input type="text" class="" name="cnpj" ng-model="vm.dadosCliente.cnpj" placeholder="CNPJ">
 
                           <label for="ie">Inscrição Estadual</label>
                           <input type="text" class="" id="ie" name="ie" ng-model="vm.dadosCliente.ie" placeholder=" Inscrição Estadual">
@@ -298,13 +298,13 @@
 
                         </div>
                     </div>
-                  <input type="button" class="btnModal" style="float: left;" ng-if="!vm.showButton" value="Enviar" ng-click="vm.clienteSalvar()">
-                  <input type="button" id="avancarModal" class="btnModal" ng-if="vm.showButton" value="Avançar">
+                  <input type="button" class="btnModal" id="btnEnviar" style="float: left;" ng-if="!vm.showButton" value="Enviar" ng-click="vm.clienteSalvar()">
+                  <input type="button" id="avancarModal" class="btnModal"  value="Avançar" ng-click="vm.avancarModal()" ng-if="vm.showButton">
                 </form>
             </div>
 
-            <div ng-controller="usuarioCadastrarController as vm">
-              <form class="modalForm" novalidate ng-controller="usuarioCadastrarController">
+            <div ng-controller="clienteCadastrarController as vm">
+              <form class="modalForm" novalidate ng-controller="clienteCadastrarController">
                     <div class="row" style="display: none;" id="areaUsuarioModal">
                         <div class="col-md-6 padding15px">
 

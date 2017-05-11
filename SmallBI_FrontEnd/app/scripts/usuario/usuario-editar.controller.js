@@ -4,11 +4,13 @@
   angular.module('SmallBIApp')
     .controller('usuarioEditarController', usuarioEditarController);
 
-  function usuarioEditarController(usuarioResource, $stateParams, funcaoResource, estadoResource) {
+  function usuarioEditarController(usuarioResource, $stateParams, funcaoResource, $cookieStore, SweetAlert) {
 
     var vm = this;
 
     vm.id = $stateParams.id;
+
+    var cookie = $cookieStore.get('cookie');
 
     angular.extend(vm, {
       usuarioSalvar: usuarioSalvar
@@ -30,24 +32,16 @@
         });
     }
 
-    function listarEstado() {
-      estadoResource.listaEstado().then(
-        function (result) {
-          vm.dadosEstado = result.data;
-        });
-    }
-
     function usuarioSalvar() {
-      vm.dadosUsuario.usuarioId = 1,
+      vm.dadosUsuario.usuarioId = cookie.idPerfil,
         vm.dadosUsuario.idCliente = 1,
-        vm.dadosUsuario.usuarioSaiku = 'none',
         vm.dadosUsuario.idPerfil = 1
 
       usuarioResource.insereUsuario(vm.dadosUsuario).then(function (result) {
+        SweetAlert.swal({title: result.data, timer: 2000, type: "success", showConfirmButton: false});
         $state.transitionTo('usuario.listar');
-        console.log(result);
       },function (resolve) {
-        console.log(resolve);
+        SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
       });
     }
 
@@ -55,7 +49,6 @@
     function activate() {
       getUser();
       listarFuncao();
-      //listarEstado();
     }
 
     activate();

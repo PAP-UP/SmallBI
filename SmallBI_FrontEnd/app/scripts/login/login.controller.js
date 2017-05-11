@@ -5,12 +5,8 @@
   angular.module('SmallBIApp')
     .controller('loginController', loginController);
 
-  function loginController(AuthService, $state, SweetAlert, $cookieStore) {
+  function loginController(AuthService, $state, SweetAlert) {
     var vm = this;
-
-    // var cookie = $cookieStore.get('cookie');
-    // vm.nomeUsuarioLogado = cookie.nome;
-    // vm.permissao = cookie.idPerfil;
 
     angular.extend(vm, {
       login: login,

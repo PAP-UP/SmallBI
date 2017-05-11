@@ -4,28 +4,45 @@
   angular.module('SmallBIApp')
     .controller('clienteCadastrarController', clienteCadastrarController);
 
-  function clienteCadastrarController(clienteResource, planoResource, pagamentoResource, ramoResource, $state) {
+  function clienteCadastrarController(clienteResource, planoResource, pagamentoResource, ramoResource, SweetAlert, funcaoResource) {
 
     var vm = this;
 
     vm.dadosCliente = {};
+    vm.dadosUsuario = {};
+    vm.idCliente = '';
     vm.showButton = false;
 
     angular.extend(vm, {
       clienteSalvar: clienteSalvar,
       listaPlanos: listaPlanos,
-      listaFormasPagamento: listaFormasPagamento
+      listaFormasPagamento: listaFormasPagamento,
+      usuarioSalvar: usuarioSalvar,
+      avancarModal: avancarModal
     });
 
 
     function clienteSalvar() {
       clienteResource.insereCliente(vm.dadosCliente).then(function (result) {
         vm.showButton = true;
-        //$state.transitionTo('cliente.listar');
-        //console.log(result);
+        vm.idCliente = result.data.idCliente;
       },function (resolve) {
-        console.log(resolve);
+        SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
       });
+    }
+
+    function usuarioSalvar() {
+      vm.dadosUsuario.usuarioId = 1,
+        vm.dadosUsuario.idCliente = vm.idCliente,
+        vm.dadosUsuario.idPerfil = 2
+
+      usuarioResource.insereUsuario(vm.dadosUsuario).then(
+        function (result) {
+          SweetAlert.swal({title: result.data, timer: 2000, type: "success", showConfirmButton: false});
+          $state.transitionTo('usuario.listar');
+        },function (resolve) {
+          SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
+        });
     }
 
     function listaPlanos() {
@@ -46,10 +63,28 @@
       });
     }
 
+    function listarFuncao() {
+      funcaoResource.listaFuncoes().then(
+        function (result) {
+          vm.dadosFuncao = result.data;
+        });
+    }
+
+    function avancarModal() {
+      $(this).hide();
+      $("#tituloModalCadastrar").html("dados do usuário");
+      $("#areaEmpresaModal").hide();
+      $("#areaUsuarioModal").css({"display": "block"});
+      $("#btnEnviar").hide();
+      $("#cadastrarModal").css({"display": "block"});
+
+    }
+
     function activate() {
       listaPlanos();
       listaFormasPagamento();
       listaRamoAtividade();
+      listarFuncao();
     }
 
     activate();

@@ -24,7 +24,7 @@
         function (result) {
         vm.listaCubos = result.data;
       }, function (error) {
-          console.log(error);
+
         });
     }
 

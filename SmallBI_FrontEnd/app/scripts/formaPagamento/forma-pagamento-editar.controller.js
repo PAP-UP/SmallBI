@@ -4,11 +4,13 @@
   angular.module('SmallBIApp')
     .controller('pagamentoEditarController', pagamentoEditarController);
 
-  function pagamentoEditarController(pagamentoResource, $stateParams, $state) {
+  function pagamentoEditarController(pagamentoResource, $stateParams, $state, $cookieStore, SweetAlert) {
 
     var vm = this;
 
     vm.id = $stateParams.id;
+
+    var cookie = $cookieStore.get('cookie');
 
     angular.extend(vm, {
       pagamentoSalvar: pagamentoSalvar
@@ -24,13 +26,12 @@
     }
 
     function pagamentoSalvar() {
-      vm.dadosPagamento.usuarioId = 1;
-
+      vm.dadosPagamento.usuarioId = cookie.idPerfil;
       pagamentoResource.alteraPagamento(vm.dadosPagamento).then(function (result) {
+        SweetAlert.swal({title: result.data, timer: 2000, type: "success", showConfirmButton: false});
         $state.transitionTo('forma-pagamento.listar');
-        console.log(result);
       },function (resolve) {
-        console.log(resolve);
+        SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
       });
     }
 
