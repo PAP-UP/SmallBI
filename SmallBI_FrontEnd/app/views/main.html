@@ -12,51 +12,51 @@
           <li><a ui-sref="cliente.listar"><span>Listar</span></a></li>
         </ul> -->
       </li>
-      <li class="fa fa-user">
+      <li class="fa fa-users">
         <a ui-sref="usuario.listar" data-toggle="collapse" data-target="#dadosUsuario" data-parent="#accordion"><span>Dados do Usuário</span></a>
         <ul id="dadosUsuario" class="collapse ulCollapse">
           <!--<li><a ui-sref="usuario.cadastrar"><span>Cadastrar</span></a></li>-->
-          <li><a ui-sref="usuario.listar"><span>Listar</span></a></li>
+          <!-- <li><a ui-sref="usuario.listar"><span>Listar</span></a></li> -->
         </ul>
       </li>
-      <li class="fa fa-user" ng-if="vm.permissao == 1">
-        <a href="#" data-toggle="collapse" data-target="#planos" data-parent="#accordion"><span>Planos</span></a>
+      <li class="fa fa-usd" ng-if="vm.permissao == 1">
+        <a ui-sref="plano.listar" data-toggle="collapse" data-target="#planos" data-parent="#accordion"><span>Planos</span></a>
         <ul id="planos" class="collapse ulCollapse">
-          <li><a ui-sref="plano.cadastrar"><span>Cadastrar</span></a></li>
-          <li><a ui-sref="plano.listar"><span>Listar</span></a></li>
+          <!-- <li><a ui-sref="plano.cadastrar"><span>Cadastrar</span></a></li>
+          <li><a ui-sref="plano.listar"><span>Listar</span></a></li> -->
         </ul>
       </li>
-      <li class="fa fa-user" ng-if="vm.permissao == 1">
-        <a href="#" data-toggle="collapse" data-target="#ramo-atividade" data-parent="#accordion"><span>Ramo de Atividade</span></a>
+      <li class="fa fa-building" ng-if="vm.permissao == 1">
+        <a ui-sref="ramo-atividade.listar" data-toggle="collapse" data-target="#ramo-atividade" data-parent="#accordion"><span>Ramo de Atividade</span></a>
         <ul id="ramo-atividade" class="collapse ulCollapse">
-          <li><a ui-sref="ramo-atividade.cadastrar"><span>Cadastrar</span></a></li>
-          <li><a ui-sref="ramo-atividade.listar"><span>Listar</span></a></li>
+         <!--  <li><a ui-sref="ramo-atividade.cadastrar"><span>Cadastrar</span></a></li>
+         <li><a ui-sref="ramo-atividade.listar"><span>Listar</span></a></li> -->
         </ul>
       </li>
       <li class="fa fa-user" ng-if="vm.permissao == 1">
-        <a href="#" data-toggle="collapse" data-target="#perfil" data-parent="#accordion"><span>Perfil</span></a>
+        <a  ui-sref="perfil.listar" data-toggle="collapse" data-target="#perfil" data-parent="#accordion"><span>Perfil</span></a>
         <ul id="perfil" class="collapse ulCollapse">
-          <li><a ui-sref="perfil.cadastrar"><span>Cadastrar</span></a></li>
-          <li><a ui-sref="perfil.listar"><span>Listar</span></a></li>
+         <!--  <li><a ui-sref="perfil.cadastrar"><span>Cadastrar</span></a></li>
+         <li><a ui-sref="perfil.listar"><span>Listar</span></a></li> -->
         </ul>
       </li>
-      <li class="fa fa-user" ng-if="vm.permissao == 1">
-        <a href="#" data-toggle="collapse" data-target="#forma-pagamento" data-parent="#accordion"><span>Forma de Pagamento</span></a>
+      <li class="fa fa-money" ng-if="vm.permissao == 1">
+        <a  ui-sref="forma-pagamento.listar" data-toggle="collapse" data-target="#forma-pagamento" data-parent="#accordion"><span>Forma de Pagamento</span></a>
         <ul id="forma-pagamento" class="collapse ulCollapse">
-          <li><a ui-sref="forma-pagamento.cadastrar"><span>Cadastrar</span></a></li>
-          <li><a ui-sref="forma-pagamento.listar"><span>Listar</span></a></li>
+         <!--  <li><a ui-sref="forma-pagamento.cadastrar"><span>Cadastrar</span></a></li>
+         <li><a ui-sref="forma-pagamento.listar"><span>Listar</span></a></li> -->
         </ul>
       </li>
-      <li class="fa fa-user" ng-if="vm.permissao == 1">
-        <a href="#" data-toggle="collapse" data-target="#funcao" data-parent="#accordion"><span>Função</span></a>
+      <li class="fa fa-tags" ng-if="vm.permissao == 1">
+        <a ui-sref="funcao.listar" data-toggle="collapse" data-target="#funcao" data-parent="#accordion"><span>Função</span></a>
         <ul id="funcao" class="collapse ulCollapse">
-          <li><a ui-sref="funcao.cadastrar"><span>Cadastrar</span></a></li>
-          <li><a ui-sref="funcao.listar"><span>Listar</span></a></li>
+          <!-- <li><a ui-sref="funcao.cadastrar"><span>Cadastrar</span></a></li>
+          <li><a ui-sref="funcao.listar"><span>Listar</span></a></li> -->
         </ul>
       </li>
       <li class="fa fa-cubes"><a ui-sref="cubo.listar"><span>Cubos</span></a></li>
       <li class="fa fa-upload"><a href="#opcao4"><span>Carregar Cubos</span></a></li>
-      <li class="fa fa-upload"><a href="http://backend.smallbi.com.br:18080/SmallBI_WebService/SmallBIAssistenteImportacao/SmallBIAssistenteImportacao.jnlp"><span>Download Assistente</span></a></li>
+      <li class="fa fa-download"><a href="http://backend.smallbi.com.br:18080/SmallBI_WebService/SmallBIAssistenteImportacao/SmallBIAssistenteImportacao.jnlp"><span>Download Assistente</span></a></li>
     </ul>
   </div>
   <!-- HOME PAINEL -->
