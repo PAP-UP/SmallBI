@@ -44,7 +44,7 @@
     function clienteSalvar() {
       vm.dadosCliente.usuarioId = cookie.idPerfil;
       clienteResource.alteraCliente(vm.dadosCliente).then(function (result) {
-        SweetAlert.swal({title: result.data, timer: 2000, type: "success", showConfirmButton: false});
+        SweetAlert.swal({title: result.data.message, timer: 2000, type: "success", showConfirmButton: false});
         $state.transitionTo('cliente.listar');
       },function (resolve) {
         SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
