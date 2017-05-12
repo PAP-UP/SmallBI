@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
+
 import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.EnderecoDao;
 import br.com.smallbi.dal.PessoaDao;
@@ -23,30 +26,30 @@ import br.com.smallbi.util.Data;
 import br.com.smallbi.util.HashSenha;
 import br.com.smallbi.util.SaikuConnection;
 
-public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
+public class UsuarioBusiness {
 
 	InterfaceDao<Usuario> usuarioDao = FactoryDao.createUsuarioDao();
 	InterfaceDao<Cliente> empresaDao = FactoryDao.createClienteDao();
 	InterfaceDao<Perfil> perfilDao = FactoryDao.createPerfilDao();
 	InterfaceDao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();
 	
-	@Override
-	public String create(Usuario t){
+	public JSONObject create(Usuario t){
+		
+		String msg = new String();
 		
 		if(t == null){
-			return "O objeto não pode ser null!";
+			/*return "O objeto não pode ser null!";*/
+			msg = "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdUsuario() != null){
-			return "A variavel ID não pode ser informada na criação de um novo objeto!";
-		}
-		
-		if(t.getUsuarioId() == null){
-			return "A variável 'usuarioId' deve ser informada!";
+			/*return "A variavel ID não pode ser informada na criação de um novo objeto!";*/
+			msg =  "A variavel ID não pode ser informada na criação de um novo objeto!";
 		}
 		
 		if(t.getLogin().equals(null)|| t.getLogin().equals("")){
-			return "A variável 'login' deve ser informada!";
+			/*return "A variável 'login' deve ser informada!";*/
+			msg =  "A variável 'login' deve ser informada!";
 		}else{
 			
 			String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -59,13 +62,15 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 				System.out.println("corresponde");
 			}else{
 				System.out.println("Não corresponde");
-				return "Email inválido!";
+				/*return "Email inválido!";*/
+				msg =  "Email inválido!";
 			}
 			
 			List<Usuario> usuarios = list();
 			for(Usuario u : usuarios){
 				if(u.getLogin().equals(t.getLogin())){
-					return "Já existe um usuário com esse login!";
+					/*return "Já existe um usuário com esse login!";*/
+					msg =  "Já existe um usuário com esse login!";
 				}
 			}
 		}
@@ -74,38 +79,47 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 			if(t.getPerfil().getIdPerfil() != null){
 				Perfil perfil = perfilDao.getObjById(t.getPerfil().getIdPerfil());
 				if(perfil == null){
-					return "Nenhum resultado para a variável 'perfil' foi encontrado!";
+					/*return "Nenhum resultado para a variável 'perfil' foi encontrado!";*/
+					msg =  "Nenhum resultado para a variável 'perfil' foi encontrado!";
 				}
 			}else{
-				return "A variável 'perfil.idPerfil' deve ser informada!";
+				/*return "A variável 'perfil.idPerfil' deve ser informada!";*/
+				msg =  "A variável 'perfil.idPerfil' deve ser informada!";
 			}
 		}else{
-			return "A variável 'perfil' deve ser informada!";
+			/*return "A variável 'perfil' deve ser informada!";*/
+			msg =  "A variável 'perfil' deve ser informada!";
 		}
 		
 		if(t.getPessoa() != null){
 			if(t.getPessoa().getIdPessoa() != null){
 				Pessoa pessoa = pessoaDao.getObjById(t.getPessoa().getIdPessoa());
 				if(pessoa == null){
-					return "Nenhum resultado para a variável 'pessoa' foi encontrado!";
+					/*return "Nenhum resultado para a variável 'pessoa' foi encontrado!";*/
+					msg =  "Nenhum resultado para a variável 'pessoa' foi encontrado!";
 				}else{
 					//t.setPessoa(pessoa);
 				}
 			}else{
-				return "A variável 'pessoa.idPessoa' deve ser informada!";
+				/*return "A variável 'pessoa.idPessoa' deve ser informada!";*/
+				msg =  "A variável 'pessoa.idPessoa' deve ser informada!";
 			}
 		}else{
-			return "A variável 'pessoa' deve ser informada!";
+			/*return "A variável 'pessoa' deve ser informada!";*/
+			msg =  "A variável 'pessoa' deve ser informada!";
 		}
 
 		
 		if(t.getSenha().equals(null) || t.getSenha().equals("")){
-			return "A variável 'senha' deve ser informada!";
+			/*return "A variável 'senha' deve ser informada!";*/
+			msg =  "A variável 'senha' deve ser informada!";
 		}
 		
-		if(t.getUsuarioId() == null){
+		/*if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
-		}
+		}*/
+		
+		t.setUsuarioId(1);
 		
 		//MUDAR PARA SETAR usuarioSaiku COM DADOS DO LOGIN
 		t.setUsuarioSaiku(t.getLogin());
@@ -119,7 +133,8 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		if(code != 200){
 			//chamar delete fisico
 			new PessoaBusiness().delete(t.getPessoa().getIdPessoa());
-			return "Falha ao adicionar usuário ao sistema Saiku!" + " Código da API do Saiku: " + code;
+			/*return "Falha ao adicionar usuário ao sistema Saiku!" + " Código da API do Saiku: " + code;*/
+			msg =  "Falha ao adicionar usuário ao sistema Saiku!" + " Código da API do Saiku: " + code;
 		}
 		
 		//Call here encryption method
@@ -132,10 +147,20 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		t.setStatus(true);
 		
 		usuarioDao.create(t);
-		return "Usuario cadastrado com sucesso!";
+		/*return "Usuario cadastrado com sucesso!";*/
+		if(msg.equals(""))
+			msg =  "Usuario cadastrado com sucesso!";
+		
+		try {
+			JSONObject jsonObject = new JSONObject().put("message", msg).put("idUsuario", t.getIdUsuario());
+			return jsonObject;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	@Override
 	public List<Usuario> list() {
 		List<Usuario> usuarios = new ArrayList<>();
 		for(Usuario u : usuarioDao.list()){
@@ -146,7 +171,6 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		return usuarios;
 	}
 
-	@Override
 	public String update(Usuario t){
 		
 		if(t.getIdUsuario() == null){
@@ -239,7 +263,6 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		return "Usuario alterado com sucesso!";
 	}
 
-	@Override
 	public String delete(Integer id){
 		Usuario usuario = getObjById(id);
 		if(usuario == null){
@@ -267,7 +290,6 @@ public class UsuarioBusiness implements InterfaceBusiness<Usuario>{
 		return "Usuario deletado com sucesso!";
 	}
 
-	@Override
 	public Usuario getObjById(Integer id) {
 		Usuario usuario = usuarioDao.getObjById(id);
 		if(usuario != null && usuario.isStatus() != false){

@@ -76,13 +76,31 @@ public class UsuarioWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addUsuario(String json) throws JSONException{
 		Usuario usuario = getObjectFromHash(json);
-		String response = usuarioBusiness.create(usuario);
+		JSONObject response = usuarioBusiness.create(usuario);
 		
-		if(response.equals("Usuario cadastrado com sucesso!")){
+		if(response.getString("message").equals("Usuario cadastrado com sucesso!")){
 			appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
 		}
 		
 		return gson.toJson(response);
+	}
+	
+	/**
+	 * Metodo criado para adicionar o super usuário do cliente<br/>
+	 * Usado no mesmo momento em que se cadastra o cliente
+	 * @param json
+	 * @return {@link Boolean}
+	 * @throws JSONException 
+	 */
+	public JSONObject addUsuarioFromAddCliente(String json) throws JSONException{
+		
+		Usuario usuario = getObjectFromHash(json);
+		JSONObject responseUsuarioBusiness = usuarioBusiness.create(usuario);
+		
+		if(!responseUsuarioBusiness.isNull("idUsuario")){
+			appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+		}
+		return responseUsuarioBusiness;
 	}
 	
 	@POST
@@ -280,8 +298,8 @@ public class UsuarioWebService {
 		
 		Pessoa p = new Pessoa();
 
-		int usuarioId = jsonObject.getInt("usuarioId");	//Atribuido à variavel para ser reutilizado no objeto u;
-		p.setUsuarioId(usuarioId);
+		//int usuarioId = jsonObject.getInt("usuarioId");	//Atribuido à variavel para ser reutilizado no objeto u;
+		//p.setUsuarioId(usuarioId);
 		p.setNome(jsonObject.getString("nome"));
 		p.setCpf(jsonObject.getString("cpf"));
 		p.setRg(jsonObject.getString("rg"));
@@ -307,7 +325,7 @@ public class UsuarioWebService {
 			u.setIdUsuario(jsonObject.getInt("idUsuario"));
 		}
 		u.setPessoa(p);
-		u.setUsuarioId(usuarioId);
+		//u.setUsuarioId(usuarioId);
 		u.setLogin(jsonObject.getString("login"));
 		u.setSenha(jsonObject.getString("senha"));
 		u.setUsuarioSaiku(jsonObject.getString("usuarioSaiku"));

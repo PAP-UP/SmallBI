@@ -3,7 +3,9 @@ package br.com.smallbi.business;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
+
 import br.com.smallbi.dal.factory.FactoryDao;
 import br.com.smallbi.dal.interfaceDal.InterfaceDao;
 import br.com.smallbi.entity.Cliente;
@@ -12,95 +14,101 @@ import br.com.smallbi.entity.Funcao;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.util.Data;
 
-public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
+public class PessoaBusiness {
 
 	InterfaceDao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();
 	InterfaceDao<Endereco> enderecoDao = FactoryDao.createEnderecoDao();
 	InterfaceDao<Funcao> funcaoDao = FactoryDao.createFuncaoDao();
 	InterfaceDao<Cliente> clienteDao = FactoryDao.createClienteDao();
 	
-	@Override
-	public String create(Pessoa t){
+	public JSONObject create(Pessoa t){
 		
+		String msg = new String();
 		if(t == null){
-			return "O objeto não pode ser null!";
+			/*return "O objeto não pode ser null!";*/
+			msg = "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdPessoa() != null){
-			return "A variavel ID não pode ser informada na criação de um novo objeto!";
+			/*return "A variavel ID não pode ser informada na criação de um novo objeto!";*/
+			msg = "A variavel ID não pode ser informada na criação de um novo objeto!";
 		}
 		
 		if(t.getCpf().equals(null) || t.getCpf().equals("")){
-			return "A variável 'cpf' deve ser informada!";
+			/*return "A variável 'cpf' deve ser informada!";*/
+			msg = "A variável 'cpf' deve ser informada!";
 		}else{
 			//VALIDAR CPF
 		}
-		
-		//Retirado o endereço da pessoa, pois estava invertido, uma pessoa tem vários endereços, um endereço tem uma pessoa.
-//		  if(t.getEndereco() != null){
-//			if(t.getEndereco().getIdEndereco() != null){
-//				Endereco endereco = enderecoDao.getObjById(t.getEndereco().getIdEndereco());
-//				if(endereco == null){
-////					throw new BusinessException("Nenhum resultado para a variável 'endereco' foi encontrado!");
-//					return "Nenhum resultado para a variável 'endereco' foi encontrado!";
-//				}
-//			}else{
-////				throw new BusinessException("A variável 'endereco.idEndereco' deve ser informada!");
-//				return "A variável 'endereco.idEndereco' deve ser informada!";
-//			}
-//		}else{
-////			throw new BusinessException("A variável 'endereco' deve ser informada!");
-//			return "A variável 'endereco' deve ser informada!";
-//		}
 		
 		if(t.getCliente() != null){
 			if(t.getCliente().getIdCliente() != null){
 				Cliente cliente = clienteDao.getObjById(t.getCliente().getIdCliente());
 				if(cliente == null){
-					return "Nenhum resultado para a variável 'cliente' foi encontrado!";
+					/*return "Nenhum resultado para a variável 'cliente' foi encontrado!";*/
+					msg = "Nenhum resultado para a variável 'cliente' foi encontrado!";
 				}
 			}else{
-				return "A variável 'cliente.idCliente' deve ser informada!";
+				/*return "A variável 'cliente.idCliente' deve ser informada!";*/
+				msg = "A variável 'cliente.idCliente' deve ser informada!";
 			}
 		}else{
-			return "A variável 'cliente' deve ser informada!";
+			/*return "A variável 'cliente' deve ser informada!";*/
+			msg = "A variável 'cliente' deve ser informada!";
 		}
 		
 		if(t.getFuncao() != null){
 			if(t.getFuncao().getIdFuncao() != null){
 				Funcao funcao = funcaoDao.getObjById(t.getFuncao().getIdFuncao());
 				if(funcao == null){
-					return "Nenhum resultado para a variável 'funcao' foi encontrado!";
+					/*return "Nenhum resultado para a variável 'funcao' foi encontrado!";*/
+					msg = "Nenhum resultado para a variável 'funcao' foi encontrado!";
 				}
 			}else{
-				return "A variável 'funcao.idFuncao' deve ser informada!";
+				/*return "A variável 'funcao.idFuncao' deve ser informada!";*/
+				msg = "A variável 'funcao.idFuncao' deve ser informada!";
 			}
 		}else{
-			return "A variável 'funcao' deve ser informada!";
+			/*return "A variável 'funcao' deve ser informada!";*/
+			msg = "A variável 'funcao' deve ser informada!";
 		}
 		
 		if(t.getNome().equals(null) || t.getNome().equals("")){
-			return "A variável 'nome' deve ser informada!";
+			/*return "A variável 'nome' deve ser informada!";*/
+			msg = "A variável 'nome' deve ser informada!";
 		}
 		
 		if(t.getRg().equals(null) || t.getRg().equals("")){
-			return "A variável 'rg' deve ser informada!";
+			/*return "A variável 'rg' deve ser informada!";*/
+			msg = "A variável 'rg' deve ser informada!";
 		}else{
 			//VALIDAR RG
 		}
 		
-		if(t.getUsuarioId() == null){
+		/*if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
-		}	
+		}*/	
+		
+		t.setUsuarioId(1);
 		
 		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
 		pessoaDao.create(t);
-		return "Pessoa cadastrada com sucesso! => ID: " + t.getIdPessoa();
+		if(msg != null && !msg.equals(""))
+			msg = "Pessoa cadastrada com sucesso!";
+		
+		try {
+			JSONObject jsonObject = new JSONObject().put("msg", msg);
+			return jsonObject;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		/*return "Pessoa cadastrada com sucesso! => ID: " + t.getIdPessoa();*/
 	}
 
-	@Override
 	public List<Pessoa> list() {
 		List<Pessoa> pessoas = new ArrayList<>();
 		for(Pessoa p : pessoaDao.list()){
@@ -111,7 +119,6 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 		return pessoas;
 	}
 
-	@Override
 	public String update(Pessoa t){
 		
 		if(t == null){
@@ -188,7 +195,6 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 		return "Pessoa alterada com sucesso!";
 	}
 
-	@Override
 	public String delete(Integer id){
 		Pessoa pessoa = getObjById(id);
 		if(pessoa == null){
@@ -202,7 +208,6 @@ public class PessoaBusiness implements InterfaceBusiness<Pessoa>{
 		return "";
 	}
 
-	@Override
 	public Pessoa getObjById(Integer id){
 		Pessoa pessoa = pessoaDao.getObjById(id);
 		if(pessoa != null && pessoa.isStatus() != false){

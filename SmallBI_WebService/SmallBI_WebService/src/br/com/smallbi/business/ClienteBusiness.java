@@ -144,7 +144,9 @@ public class ClienteBusiness{
 		}
 		
 		/*return "Cliente cadastrado com sucesso!";*/
-		msg = "Cliente cadastrado com sucesso!";
+		if(msg.equals(""))
+			msg = "Cliente cadastrado com sucesso!";
+		
 		try {
 			JSONObject response = new JSONObject().put("message", msg).put("idCliente", t.getIdCliente());
 			return response;

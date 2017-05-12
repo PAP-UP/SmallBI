@@ -60,11 +60,22 @@ public class ClienteWebService {
 		if(response.getString("message").equals("Cliente cadastrado com sucesso!")){
 			boolean endTelAdd = appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
 			if(endTelAdd){
+				
 				//chamar add usuario caso seja feito no mesmo endpoint
-			}			
+				JSONObject jsonObject = new JSONObject(json);
+				jsonObject.put("idCliente", response.getInt("idCliente"));
+				UsuarioWebService service = new UsuarioWebService();
+				JSONObject addUserResult = service.addUsuarioFromAddCliente(jsonObject.toString());
+				
+				if(addUserResult.isNull("idUsuario")){
+					response.remove("message");
+					response.append("message", "Falha ao cadastrar usuário");
+					response.append("error", addUserResult.getString("message"));
+				}else{
+					response.put("idUsuarioPut", addUserResult.getInt("idUsuario"));
+				}
+			}
 		}
-		
-		/*return gson.toJson(response);*/
 		return response.toString();
 	}
 	
@@ -88,10 +99,6 @@ public class ClienteWebService {
 	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String delEmpresa(@PathParam("idCliente") String idCliente) throws JSONException{
-		/*JSONObject jsonObject = new JSONObject(json);
-		Cliente c = new Cliente();
-		c.setIdCliente(jsonObject.getInt("idCliente"));
-		return gson.toJson(clienteBusiness.delete(c.getIdCliente()));*/
 		return gson.toJson(clienteBusiness.delete(Integer.parseInt(idCliente)));
 	}
 	
