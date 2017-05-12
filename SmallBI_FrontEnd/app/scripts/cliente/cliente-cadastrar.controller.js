@@ -23,9 +23,11 @@
 
 
     function clienteSalvar() {
+        vm.dadosCliente.usuarioId = 1,
+        vm.dadosCliente.idPerfil = 2
+
       clienteResource.insereCliente(vm.dadosCliente).then(function (result) {
-        vm.showButton = true;
-        vm.idCliente = result.data.idCliente;
+        SweetAlert.swal({title: result.data.message, timer: 2000, type: "success", showConfirmButton: false});
       },function (resolve) {
         SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
       });

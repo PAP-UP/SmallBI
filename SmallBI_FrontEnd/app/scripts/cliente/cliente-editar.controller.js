@@ -4,11 +4,9 @@
   angular.module('SmallBIApp')
     .controller('clienteEditarController', clienteEditarController);
 
-  function clienteEditarController(clienteResource, $stateParams, planoResource, pagamentoResource, ramoResource, $state, $cookieStore, SweetAlert) {
+  function clienteEditarController(clienteResource, planoResource, pagamentoResource, ramoResource, $state, $cookieStore, SweetAlert) {
 
     var vm = this;
-
-    vm.id = $stateParams.id;
 
     var cookie = $cookieStore.get('cookie');
 
@@ -17,7 +15,7 @@
     });
 
     function getCliente() {
-      clienteResource.getClienteById(vm.id).then(
+      clienteResource.getClienteById(cookie.idCliente).then(
         function (result) {
           vm.dadosCliente = result.data;
         }, function (resolve) {

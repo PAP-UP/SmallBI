@@ -238,7 +238,7 @@
 
 <div id="modalCadastrar" class="dialog">
     <a href="#" class="dialog-close dialog-close-background btnFecharModal"></a>
-    <div class="dialog-container modal-lg">
+    <div class="dialog-container modal-lg" style="overflow: auto;height: 500px;">
         <a href="#" class="dialog-close-icone fa fa-times btnFecharModal"></a>
 
         <div class="dialog-header">
@@ -264,15 +264,10 @@
                           <label for="ie">Inscrição Estadual</label>
                           <input type="text" class="" id="ie" name="ie" ng-model="vm.dadosCliente.ie" placeholder=" Inscrição Estadual">
 
-                          <label for="telefone">Telefone</label>
-                          <input type="text" class="" id="telefone" name="telefone" ng-model="vm.dadosCliente.telefone" placeholder="Telefone">
-
                           <label for="ramoAtividade">Ramo de Atividade</label>
                           <select id="ramoAtividade" class="" ng-model="vm.dadosCliente.idRamoAtividade" ng-options="ramo.idRamoAtividade as ramo.descricao for ramo in vm.dadosRamoAtividade">
                             <option value="">Selecione</option>
                           </select>
-                        </div>
-                        <div class="col-md-6 padding15px">
 
                           <label for="formaPagamento">Forma de Pagamento</label>
                           <select id="formaPagamento" class="" ng-model="vm.dadosCliente.idFormaPagamento" ng-options="form.idFormaPagamento as form.descricao for form in vm.dadosFormaPagamento">
@@ -296,60 +291,36 @@
                           <label for="cidade">Cidade</label>
                           <input type="text" class="" id="cidade" name="cidade" ng-model="vm.dadosCliente.nomeCidade" placeholder="Cidade">
 
-                        </div>
-                    </div>
-                  <input type="button" class="btnModal" id="btnEnviar" style="float: left;" ng-if="!vm.showButton" value="Enviar" ng-click="vm.clienteSalvar()">
-                  <input type="button" id="avancarModal" class="btnModal"  value="Avançar" ng-click="vm.avancarModal()" ng-if="vm.showButton">
-                </form>
-            </div>
+                          <label for="telefone">Telefone</label>
+                          <input type="text" class="" id="telefone" name="telefone" ng-model="vm.dadosCliente.telefone" placeholder="Telefone">
 
-            <div ng-controller="clienteCadastrarController as vm">
-              <form class="modalForm" novalidate ng-controller="clienteCadastrarController">
-                    <div class="row" style="display: none;" id="areaUsuarioModal">
+                        </div>
                         <div class="col-md-6 padding15px">
 
                           <label for="nome">Nome completo</label>
-                          <input type="text" class="" id="nome" name="nome" ng-model="vm.dadosUsuario.nome" placeholder="Nome completo">
+                          <input type="text" class="" id="nome" name="nome" ng-model="vm.dadosCliente.nome" placeholder="Nome completo">
 
                           <label for="cpf">CPF</label>
-                          <input type="text" class="" id="cpf" name="cpf" ng-model="vm.dadosUsuario.cpf" placeholder="CPF">
+                          <input type="text" class="" id="cpf" name="cpf" ng-model="vm.dadosCliente.cpf" placeholder="CPF">
 
                           <label for="rg">RG</label>
-                          <input type="text" class="" id="rg" name="rg" ng-model="vm.dadosUsuario.rg" placeholder="RG">
+                          <input type="text" class="" id="rg" name="rg" ng-model="vm.dadosCliente.rg" placeholder="RG">
 
                           <label for="nomeFuncao">Função</label>
-                          <select id="nomeFuncao" class="" ng-model="vm.dadosUsuario.idFuncao" ng-options="func.idFuncao as func.descricao for func in vm.dadosFuncao">
+                          <select id="nomeFuncao" class="" ng-model="vm.dadosCliente.idFuncao" ng-options="func.idFuncao as func.descricao for func in vm.dadosFuncao">
                             <option value="">Selecione</option>
                           </select>
 
                           <label for="login">Login</label>
-                          <input type="text" class="" id="login" name="login" ng-model="vm.dadosUsuario.login" placeholder="Login">
+                          <input type="text" class="" id="login" name="login" ng-model="vm.dadosCliente.login" placeholder="Login">
 
                           <label for="senha">Senha</label>
-                          <input type="password" class="" id="senha" name="senha" ng-model="vm.dadosUsuario.senha" placeholder="Senha">
-
-                        </div>
-                        <div class="col-md-6 padding15px">
-
-                          <label for="enderecoU">Endereço</label>
-                          <input type="text" class="" id="enderecoU" name="endereco" ng-model="vm.dadosUsuario.endereco" placeholder="Endereço">
-
-                          <label for="numeroU">Número</label>
-                          <input type="text" class="" id="numeroU" name="numero" ng-model="vm.dadosUsuario.numero" placeholder="Número">
-
-                          <label for="bairroU">Bairro</label>
-                          <input type="text" class="" id="bairroU" name="bairro" ng-model="vm.dadosUsuario.bairro" placeholder="Bairro">
-
-                          <label for="cidadeU">Cidade</label>
-                          <input type="text" class="" id="cidadeU" name="cidade" ng-model="vm.dadosUsuario.cidade" placeholder="Cidade">
-
-                          <label for="telefoneU">Telefone</label>
-                          <input type="text" class="" id="telefoneU" name="telefone" ng-model="vm.dadosUsuario.telefone" placeholder="Telefone">
+                          <input type="password" class="" id="senha" name="senha" ng-model="vm.dadosCliente.senha" placeholder="Senha">
 
                         </div>
                     </div>
-                    <input type="submit" id="cadastrarModal" class="btnModal" title="Cadastrar" value="Cadastrar" style="display: none;" ng-click="vm.usuarioSalvar()">
-              </form>
+                  <input type="button" class="btnModal" id="btnEnviar" style="float: right;" value="Enviar" ng-click="vm.clienteSalvar()">
+                </form>
             </div>
         </div>
     </div>

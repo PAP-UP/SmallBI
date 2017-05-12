@@ -94,7 +94,7 @@
 
     var editarCliente = {
       name: 'editar',
-      url: '/editar/:id',
+      url: '/editar',
       templateUrl: 'scripts/cliente/cliente-form.html',
       controller: 'clienteEditarController',
       controllerAs: 'vm'
