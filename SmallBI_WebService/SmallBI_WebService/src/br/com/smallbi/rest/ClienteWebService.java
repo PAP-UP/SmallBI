@@ -85,13 +85,17 @@ public class ClienteWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String setEmpresa(String json) throws JSONException{
 		Cliente cliente = getObjectFromHash(json);
-		String response = clienteBusiness.update(cliente);
-		
-		if(response.equals("Cliente alterado com sucesso!")){
-			appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
+		JSONObject response = clienteBusiness.update(cliente);
+			
+		if(response.getString("message").equals("Cliente alterado com sucesso!")){
+			boolean endTelSucces = appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
+			if(!endTelSucces){
+				response.remove("message");
+				response.put("message", "Falha ao alterar endereço ou telefone!");
+			}
 		}
 		
-		return gson.toJson(response);
+		return response.toString();
 	}
 	
 	@DELETE
@@ -180,28 +184,36 @@ public class ClienteWebService {
 			JSONObject jsonObject = new JSONObject(json);
 			jsonObject.put("idCliente", idCliente);
 			
-			if(!jsonObject.isNull("idPessoa")){
+			if(!jsonObject.isNull("idPessoa"))
 				jsonObject.remove("idPessoa");
-			}		
 			
-			//AGUARDANDO DEFINIÇÃO
+			
 			if(!jsonObject.isNull("endereco")){
 				jsonObject.put("idTipoEndereco", 2);
-				new EnderecoWebService().addEndereco(jsonObject.toString());
+				
+				Endereco e = new EnderecoBusiness().getByCliente(idCliente);
+				if(e == null)
+					new EnderecoWebService().addEndereco(jsonObject.toString());
+				else{
+					jsonObject.put("idEndereco", e.getIdEndereco());
+					new EnderecoWebService().setEndereco(jsonObject.toString());
+				}
 			}
-	/*		if(jsonObject.isNull("idEndereco")){
-				new EnderecoWebService().addEndereco(jsonObject.toString());
-			}else{
-				new EnderecoWebService().setEndereco(jsonObject.toString());
-			}*/
 			
-			jsonObject.put("idTipoTelefone", 2);
-			if(jsonObject.isNull("idTelefone")){
-				new TelefoneWebService().addTelefone(jsonObject.toString());
-			}else{
-				new TelefoneWebService().setTelefone(jsonObject.toString());
+			if(!jsonObject.isNull("telefone")){
+				jsonObject.put("idTipoTelefone", 2);
+				
+				Telefone t = new TelefoneBusiness().getByCliente(idCliente);
+				if(t == null)
+					new TelefoneWebService().addTelefone(jsonObject.toString());
+				else{
+					jsonObject.put("idTelefone", t.getIdTelefone());
+					new TelefoneWebService().setTelefone(jsonObject.toString());
+				}
 			}
+			
 			return true;
+			
 		}catch(Exception e){
 			e.printStackTrace();
 			return false;

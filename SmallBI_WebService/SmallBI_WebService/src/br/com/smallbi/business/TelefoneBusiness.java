@@ -77,9 +77,10 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 			return "A variável 'tipo' deve ser informada!";
 		}
 		
-		if(t.getUsuarioId() == null){
+		/*if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
-		}
+		}*/
+		t.setUsuarioId(1);
 		
 		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
@@ -162,10 +163,11 @@ public class TelefoneBusiness implements InterfaceBusiness<Telefone>{
 			return "A variável 'tipo' deve ser informada!";
 		}*/
 		
-		if(t.getUsuarioId() == null){
+		/*if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
-		}
+		}*/
 		
+		t.setUsuarioId(1);
 		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		

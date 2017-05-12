@@ -66,10 +66,10 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 			return "A variável 'tipo' deve ser informada!";
 		}
 		
-		if(t.getUsuarioId() == null){
+		/*if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
-		}
-		
+		}*/
+		t.setUsuarioId(1);
 		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
@@ -158,11 +158,12 @@ public class EnderecoBusiness implements InterfaceBusiness<Endereco>{
 			return "A variável 'tipo' deve ser informada!";
 		}
 		
-		if(t.getUsuarioId() == null){
+		/*if(t.getUsuarioId() == null){
 //			throw new BusinessException("A variável 'usuarioId' deve ser informada!");
 			return "A variável 'usuarioId' deve ser informada!";
-		}
+		}*/
 		
+		t.setUsuarioId(1);
 		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		

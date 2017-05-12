@@ -328,7 +328,7 @@ public class UsuarioWebService {
 		//u.setUsuarioId(usuarioId);
 		u.setLogin(jsonObject.getString("login"));
 		u.setSenha(jsonObject.getString("senha"));
-		u.setUsuarioSaiku(jsonObject.getString("usuarioSaiku"));
+		//u.setUsuarioSaiku(jsonObject.getString("usuarioSaiku"));
 		
 		Perfil perfil = new Perfil();
 		perfil.setIdPerfil(jsonObject.getInt("idPerfil"));

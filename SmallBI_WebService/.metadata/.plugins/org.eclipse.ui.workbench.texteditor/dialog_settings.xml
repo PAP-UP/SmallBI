@@ -2,19 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Login" key="selection"/>
+		<item value="Saiku" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="saiku"/>
+			<item value="A variável &apos;usuarioId&apos; deve ser informada!"/>
 			<item value="login"/>
 			<item value="usuarioId"/>
 			<item value="getObjectFromHash"/>
 			<item value="context"/>
 			<item value="contextInitialized"/>
 			<item value="idTipoEndereco"/>
-			<item value="idEmpresa"/>
 		</list>
 		<list key="replacehistory">
 		</list>
