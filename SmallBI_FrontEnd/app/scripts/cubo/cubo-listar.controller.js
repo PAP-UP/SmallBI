@@ -29,7 +29,10 @@
     }
 
     function analisarCubo(id) {
-        cuboResource.analisarCubo(id).then(
+      var obj = {
+        'idCubo' : id
+      }
+        cuboResource.analisarCubo(obj).then(
           function (result) {
 
         }, function (resolve) {
