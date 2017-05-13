@@ -1,13 +1,13 @@
 <h3>Cadastro de Formas de Pagamento</h3>
-<form  novalidate ng-controller="pagamentoCadastrarController">
+<form  novalidate ng-controller="pagamentoCadastrarController" name="formCadastro">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<fieldset class="form-fieldset ui-input">
-				<input type="text" class="form-control" id="nome" name="nome" ng-model="vm.dadosPagamento.descricao">
+				<input required type="text" class="form-control" id="nome" name="nome" ng-model="vm.dadosPagamento.descricao">
 				<label class="text-left" for="nome"><span data-text="Nome da forma de pagamento">Nome da forma de pagamento</span></label>			
 			</fieldset>
 		</div>
 	</div>
 	
-	<button type="button" class="btn btn-success" style="float: right;" ng-click="vm.pagamentoSalvar()">Enviar</button>
+	<button type="button" class="btn btn-success" style="float: right;"  ng-disabled="formCadastro.$invalid" ng-click="vm.pagamentoSalvar()">Enviar</button>
 </form>

@@ -1,34 +1,34 @@
 <h3>Cadastro de clientes</h3>
-<form  novalidate ng-controller="clienteCadastrarController">
+<form  novalidate ng-controller="clienteCadastrarController" name="formCadastro">
     <div class="row">
         <div class="col-md-6 padding15px">
             <fieldset class="form-fieldset ui-input">
-                <input type="text" class="" id="razao" name="razao" ng-model="vm.dadosCliente.razaoSocial">
+                <input required type="text" class="" id="razao" name="razao" ng-model="vm.dadosCliente.razaoSocial">
                 <label class="text-left" for="razao"><span data-text="Razão Social">Razão Social</span></label>
             </fieldset>
 
             <fieldset class="form-fieldset ui-input">
-                <input type="text" class="" id="fantasia" name="fantasia" ng-model="vm.dadosCliente.nomeFantasia">
+                <input required type="text" class="" id="fantasia" name="fantasia" ng-model="vm.dadosCliente.nomeFantasia">
                 <label class="text-left" for="fantasia"><span data-text="Nome Fantasia">Nome Fantasia</span></label>
             </fieldset>
 
             <fieldset class="form-fieldset ui-input">
-                <input type="text" class="" id="cnpj" name="cnpj" ng-model="vm.dadosCliente.cnpj">
+                <input required type="text" class="" id="cnpj" name="cnpj" ng-model="vm.dadosCliente.cnpj">
                 <label class="text-left" for="cnpj"><span data-text="CNPJ">CNPJ</span></label>
             </fieldset>
 
             <fieldset class="form-fieldset ui-input">
-                <input type="text" class="" id="ie" name="ie" ng-model="vm.dadosCliente.ie">
+                <input required type="text" class="" id="ie" name="ie" ng-model="vm.dadosCliente.ie">
                 <label class="text-left" for="ie"><span data-text="Inscrição Estadual">Inscrição Estadual</span></label>
             </fieldset>
 
             <fieldset class="form-fieldset ui-input">
-                <input type="text" class="" id="telefone" name="telefone" ng-model="vm.dadosCliente.telefone">
+                <input required type="text" class="" id="telefone" name="telefone" ng-model="vm.dadosCliente.telefone">
                 <label class="text-left" for="telefone"><span data-text="Telefone">Telefone</span></label>
             </fieldset>
 
             <fieldset class="form-fieldset ui-input">
-                <select id="ramoAtividade" class="" ng-model="vm.dadosCliente.idRamoAtividade" ng-options="ramo.idRamoAtividade as ramo.descricao for ramo in vm.dadosRamoAtividade">
+                <select required id="ramoAtividade" class="" ng-model="vm.dadosCliente.idRamoAtividade" ng-options="ramo.idRamoAtividade as ramo.descricao for ramo in vm.dadosRamoAtividade">
                     <option value="">Selecione</option>
                 </select>
                 <label class="text-left" for="ramoAtividade"><span data-text="Ramo de Atividade">Ramo de Atividade</span></label>
@@ -36,41 +36,41 @@
         </div>
         <div class="col-md-6 padding15px">
             <fieldset class="form-fieldset ui-input">
-                <select id="formaPagamento" class="" ng-model="vm.dadosCliente.idFormaPagamento" ng-options="form.idFormaPagamento as form.descricao for form in vm.dadosFormaPagamento">
+                <select required id="formaPagamento" class="" ng-model="vm.dadosCliente.idFormaPagamento" ng-options="form.idFormaPagamento as form.descricao for form in vm.dadosFormaPagamento">
                     <option value="">Selecione</option>
                 </select>
                 <label class="text-left" for="formaPagamento"><span data-text="Forma de Pagamento">Forma de Pagamento</span></label>
             </fieldset>
 
             <fieldset class="form-fieldset ui-input">
-                <select id="plano" class="" ng-model="vm.dadosCliente.idPlano" ng-options="plan.idPlano as plan.descricao for plan in vm.dadosPlano">
+                <select required id="plano" class="" ng-model="vm.dadosCliente.idPlano" ng-options="plan.idPlano as plan.descricao for plan in vm.dadosPlano">
                     <option value="">Selecione</option>
                 </select>
                 <label class="text-left" for="plano"><span data-text="Plano">Plano</span></label>
             </fieldset>
 
             <fieldset class="form-fieldset ui-input">
-                <input type="text" class="" id="endereco" name="endereco" ng-model="vm.dadosCliente.endereco">
+                <input required type="text" class="" id="endereco" name="endereco" ng-model="vm.dadosCliente.endereco">
                 <label class="text-left" for="endereco"><span data-text="Endereço">Endereço</span></label>
             </fieldset>
 
             <fieldset class="form-fieldset ui-input">
-                <input type="text" class="" id="numero" name="numero" ng-model="vm.dadosCliente.numero">
+                <input required type="text" class="" id="numero" name="numero" ng-model="vm.dadosCliente.numero">
                 <label class="text-left" for="numero"><span data-text="Número">Número</span></label>
             </fieldset>
 
             <fieldset class="form-fieldset ui-input">
-                <input type="text" class="" id="bairro" name="bairro" ng-model="vm.dadosCliente.bairro">
+                <input required type="text" class="" id="bairro" name="bairro" ng-model="vm.dadosCliente.bairro">
                 <label class="text-left" for="bairro"><span data-text="Bairro">Bairro</span></label>
             </fieldset>
 
             <fieldset class="form-fieldset ui-input">
-                <input type="text" class="" id="cidade" name="cidade" ng-model="vm.dadosCliente.nomeCidade">
+                <input required type="text" class="" id="cidade" name="cidade" ng-model="vm.dadosCliente.nomeCidade">
                 <label class="text-left" for="cidade"><span data-text="Cidade">Cidade</span></label>
             </fieldset>
         </div>
     </div> 
 
-    <button type="button" class="btn btn-success" style="float: right;" ng-click="vm.clienteSalvar()">Enviar</button>
+    <button type="button" class="btn btn-success" style="float: right;"  ng-disabled="formCadastro.$invalid" ng-click="vm.clienteSalvar()">Enviar</button>
 </form>
 

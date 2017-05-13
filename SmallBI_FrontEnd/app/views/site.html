@@ -225,9 +225,9 @@
       <div id="loginForm-modal-login">
         <form class="modalForm" name="formLogin" ng-submit="formLogin.$valid && vm.login()" ng-controller="loginController as vm">
           <label for="login-email-modal-login">E-mail</label>
-          <input name="usuario" type="email" id="login-email-modal-login" placeholder="name@company.com" ng-model="vm.dadosLogin.login">
+          <input required name="usuario" type="email" id="login-email-modal-login" placeholder="name@company.com" ng-model="vm.dadosLogin.login">
           <label for="login-password-modal-login">Senha</label>
-          <input name="senha" type="password" id="login-password-modal-login" placeholder="Senha" ng-model="vm.dadosLogin.senha">
+          <input required name="senha" type="password" id="login-password-modal-login" placeholder="Senha" ng-model="vm.dadosLogin.senha">
           <a href="#" title="Esqueceu sua senha?" class="center-block text-center btnEsqueceuSenha">Esqueceu sua senha?</a>
           <input type="submit" id="login-submit-modal-login" class="btnModal" title="Entrar" value="Entrar">
         </form>
@@ -248,78 +248,78 @@
 
         <div class="dialog-content">
             <div id="loginForm-modal-cadastrar" ng-controller="clienteCadastrarController as vm">
-                <form class="modalForm" novalidate ng-controller="clienteCadastrarController">
+                <form class="modalForm" novalidate ng-controller="clienteCadastrarController" name="formCadastro">
                     <div class="row" id="areaEmpresaModal">
                         <div class="col-md-6 padding15px">
 
                           <label for="razao">Razão Social</label>
-                          <input type="text" class="" id="razao" name="razao" ng-model="vm.dadosCliente.razaoSocial" placeholder="Razão Social">
+                          <input required type="text" class="" id="razao" name="razao" ng-model="vm.dadosCliente.razaoSocial" placeholder="Razão Social">
 
                           <label for="fantasia">Nome Fantasia</label>
-                          <input type="text" class="" id="fantasia" name="fantasia" ng-model="vm.dadosCliente.nomeFantasia" placeholder="Nome Fantasia">
+                          <input required type="text" class="" id="fantasia" name="fantasia" ng-model="vm.dadosCliente.nomeFantasia" placeholder="Nome Fantasia">
 
                           <label for="">CNPJ</label>
-                          <input type="text" class="" id="cnpj" name="cnpj" ng-model="vm.dadosCliente.cnpj" placeholder="CNPJ">
+                          <input required type="text" class="" id="cnpj" name="cnpj" ng-model="vm.dadosCliente.cnpj" placeholder="CNPJ">
 
                           <label for="ie">Inscrição Estadual</label>
-                          <input type="text" class="" id="ie" name="ie" ng-model="vm.dadosCliente.ie" placeholder=" Inscrição Estadual">
+                          <input required type="text" class="" id="ie" name="ie" ng-model="vm.dadosCliente.ie" placeholder=" Inscrição Estadual">
 
                           <label for="ramoAtividade">Ramo de Atividade</label>
-                          <select id="ramoAtividade" class="" ng-model="vm.dadosCliente.idRamoAtividade" ng-options="ramo.idRamoAtividade as ramo.descricao for ramo in vm.dadosRamoAtividade">
+                          <select required id="ramoAtividade" class="" ng-model="vm.dadosCliente.idRamoAtividade" ng-options="ramo.idRamoAtividade as ramo.descricao for ramo in vm.dadosRamoAtividade">
                             <option value="">Selecione</option>
                           </select>
 
                           <label for="formaPagamento">Forma de Pagamento</label>
-                          <select id="formaPagamento" class="" ng-model="vm.dadosCliente.idFormaPagamento" ng-options="form.idFormaPagamento as form.descricao for form in vm.dadosFormaPagamento">
+                          <select required id="formaPagamento" class="" ng-model="vm.dadosCliente.idFormaPagamento" ng-options="form.idFormaPagamento as form.descricao for form in vm.dadosFormaPagamento">
                             <option value="">Selecione</option>
                           </select>
 
                           <label for="plano">Plano</label>
-                          <select id="plano" class="" ng-model="vm.dadosCliente.idPlano" ng-options="plan.idPlano as plan.descricao for plan in vm.dadosPlano">
+                          <select required id="plano" class="" ng-model="vm.dadosCliente.idPlano" ng-options="plan.idPlano as plan.descricao for plan in vm.dadosPlano">
                             <option value="">Selecione</option>
                           </select>
 
                           <label for="endereco">Endereço</label>
-                          <input type="text" class="" id="endereco" name="endereco" ng-model="vm.dadosCliente.endereco" placeholder="Endereço">
+                          <input required type="text" class="" id="endereco" name="endereco" ng-model="vm.dadosCliente.endereco" placeholder="Endereço">
 
                           <label for="numero">Número</label>
-                          <input type="text" class="" id="numero" name="numero" ng-model="vm.dadosCliente.numero" placeholder="Número">
+                          <input required type="text" class="" id="numero" name="numero" ng-model="vm.dadosCliente.numero" placeholder="Número">
 
                           <label for="bairro">Bairro</label>
-                          <input type="text" class="" id="bairro" name="bairro" ng-model="vm.dadosCliente.bairro" placeholder="Bairro">
+                          <input required type="text" class="" id="bairro" name="bairro" ng-model="vm.dadosCliente.bairro" placeholder="Bairro">
 
                           <label for="cidade">Cidade</label>
-                          <input type="text" class="" id="cidade" name="cidade" ng-model="vm.dadosCliente.nomeCidade" placeholder="Cidade">
+                          <input required type="text" class="" id="cidade" name="cidade" ng-model="vm.dadosCliente.nomeCidade" placeholder="Cidade">
 
                           <label for="telefone">Telefone</label>
-                          <input type="text" class="" id="telefone" name="telefone" ng-model="vm.dadosCliente.telefone" placeholder="Telefone">
+                          <input required type="text" class="" id="telefone" name="telefone" ng-model="vm.dadosCliente.telefone" placeholder="Telefone">
 
                         </div>
                         <div class="col-md-6 padding15px">
 
                           <label for="nome">Nome completo</label>
-                          <input type="text" class="" id="nome" name="nome" ng-model="vm.dadosCliente.nome" placeholder="Nome completo">
+                          <input required type="text" class="" id="nome" name="nome" ng-model="vm.dadosCliente.nome" placeholder="Nome completo">
 
                           <label for="cpf">CPF</label>
-                          <input type="text" class="" id="cpf" name="cpf" ng-model="vm.dadosCliente.cpf" placeholder="CPF">
+                          <input required type="text" class="" id="cpf" name="cpf" ng-model="vm.dadosCliente.cpf" placeholder="CPF">
 
                           <label for="rg">RG</label>
-                          <input type="text" class="" id="rg" name="rg" ng-model="vm.dadosCliente.rg" placeholder="RG">
+                          <input required type="text" class="" id="rg" name="rg" ng-model="vm.dadosCliente.rg" placeholder="RG">
 
                           <label for="nomeFuncao">Função</label>
-                          <select id="nomeFuncao" class="" ng-model="vm.dadosCliente.idFuncao" ng-options="func.idFuncao as func.descricao for func in vm.dadosFuncao">
+                          <select required id="nomeFuncao" class="" ng-model="vm.dadosCliente.idFuncao" ng-options="func.idFuncao as func.descricao for func in vm.dadosFuncao">
                             <option value="">Selecione</option>
                           </select>
 
                           <label for="login">Login</label>
-                          <input type="text" class="" id="login" name="login" ng-model="vm.dadosCliente.login" placeholder="Login">
+                          <input required type="text" class="" id="login" name="login" ng-model="vm.dadosCliente.login" placeholder="Login">
 
                           <label for="senha">Senha</label>
-                          <input type="password" class="" id="senha" name="senha" ng-model="vm.dadosCliente.senha" placeholder="Senha">
+                          <input required type="password" class="" id="senha" name="senha" ng-model="vm.dadosCliente.senha" placeholder="Senha">
 
                         </div>
                     </div>
-                  <input type="button" class="btnModal" id="btnEnviar" style="float: right;" value="Enviar" ng-click="vm.clienteSalvar()">
+                  <input type="submit" class="btnModal" id="btnEnviar" style="float: right;" value="Enviar" ng-disabled="formCadastro.$invalid" ng-click="vm.clienteSalvar()">
                 </form>
             </div>
         </div>
