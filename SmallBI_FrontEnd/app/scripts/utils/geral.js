@@ -62,7 +62,7 @@ $(window).on('load', function() {
 		    this.value = this.value.replace(/[^0-9\.]/g,'');
 		});*/
 
-		$('#data').mask('99/99/9999');
+		/*$('#data').mask('99/99/9999');
 		$('#cep').mask('99999-999');
 		$('#cpf').mask('999.999.999-99');
 		$('#cnpj').mask('99.999.999/9999-99');
@@ -71,7 +71,7 @@ $(window).on('load', function() {
 			$('#telefone').mask('(99) 99999-999?9');
 		} else {
 			$('#telefone').mask('(99) 9999-9999?9');
-		}
+		}*/
 
 		function autoCompletarEndereco(v) {
 			if ( $( '#campoCep' ).length ) {
