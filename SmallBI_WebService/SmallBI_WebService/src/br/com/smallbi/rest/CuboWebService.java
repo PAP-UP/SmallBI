@@ -102,7 +102,8 @@ public class CuboWebService {
 				int code = SaikuConnection.addDatasourceSaiku(cubo.getCliente().getIdCliente(), cubo.getNomeCubo());
 				switch(code){
 					case 200:
-						return gson.toJson("Cubo adicionado com sucesso!");
+						return gson.toJson("Cubo adicionado com sucesso!\n"
+								+ "Entre com seu usuário em smallbi.com.br para analisar seus dados!");
 					case 404:
 						return gson.toJson("Falha ao adicionar datasource no Saiku. Servidor Saiku não encontrado ou indisponível!");
 					case 500:

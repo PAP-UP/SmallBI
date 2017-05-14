@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-import br.com.smallbi.business.interfaceBusiness.InterfaceBusiness;
 import br.com.smallbi.dal.EnderecoDao;
 import br.com.smallbi.dal.PessoaDao;
 import br.com.smallbi.dal.TelefoneDao;
@@ -59,9 +58,9 @@ public class UsuarioBusiness {
 			boolean match = matcher.matches();
 			
 			if(match == true){
-				System.out.println("corresponde");
+				//System.out.println("corresponde");
 			}else{
-				System.out.println("Não corresponde");
+				//System.out.println("Não corresponde");
 				/*return "Email inválido!";*/
 				msg =  "Email inválido!";
 			}
@@ -257,7 +256,7 @@ public class UsuarioBusiness {
 		String hashSenha = HashSenha.makePasswordHash(t.getSenha());
 		if(hashSenha != null && !hashSenha.equals(""))
 			t.setSenha(hashSenha);
-		System.out.println(t.getSenha());
+		//System.out.println(t.getSenha());
 		
 		usuarioDao.update(t);
 		return "Usuario alterado com sucesso!";

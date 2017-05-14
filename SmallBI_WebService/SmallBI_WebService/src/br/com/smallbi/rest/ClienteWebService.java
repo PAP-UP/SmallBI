@@ -54,29 +54,35 @@ public class ClienteWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addEmpresa(String json) throws JSONException{
-		Cliente cliente = getObjectFromHash(json);		
-		JSONObject response = clienteBusiness.create(cliente);
 		
-		if(response.getString("message").equals("Cliente cadastrado com sucesso!")){
-			boolean endTelAdd = appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
-			if(endTelAdd){
-				
-				//chamar add usuario caso seja feito no mesmo endpoint
-				JSONObject jsonObject = new JSONObject(json);
-				jsonObject.put("idCliente", response.getInt("idCliente"));
-				UsuarioWebService service = new UsuarioWebService();
-				JSONObject addUserResult = service.addUsuarioFromAddCliente(jsonObject.toString());
-				
-				if(addUserResult.isNull("idUsuario")){
-					response.remove("message");
-					response.append("message", "Falha ao cadastrar usuário");
-					response.append("error", addUserResult.getString("message"));
-				}else{
-					response.put("idUsuarioPut", addUserResult.getInt("idUsuario"));
+		String isValid = clienteBusiness.isValid(json);
+		
+		if(isValid == "OK"){
+			Cliente cliente = getObjectFromHash(json);		
+			JSONObject response = clienteBusiness.create(cliente);
+			
+			if(response.getString("message").equals("Cliente cadastrado com sucesso!")){
+				boolean endTelAdd = appendEnderecoTelefone(json, cliente.getIdCliente(), cliente.getUsuarioId());
+				if(endTelAdd){
+					
+					//chamar add usuario caso seja feito no mesmo endpoint
+					JSONObject jsonObject = new JSONObject(json);
+					jsonObject.put("idCliente", response.getInt("idCliente"));
+					UsuarioWebService service = new UsuarioWebService();
+					JSONObject addUserResult = service.addUsuarioFromAddCliente(jsonObject.toString());
+					
+					if(addUserResult.isNull("idUsuario")){
+						response.remove("message");
+						response.append("message", "Falha ao cadastrar usuário");
+						response.append("error", addUserResult.getString("message"));
+					}else{	
+						response.put("idUsuarioPut", addUserResult.getInt("idUsuario"));
+					}
 				}
 			}
 		}
-		return response.toString();
+		JSONObject jsonObject = new JSONObject().put("message", isValid);
+		return jsonObject.toString();
 	}
 	
 	@POST

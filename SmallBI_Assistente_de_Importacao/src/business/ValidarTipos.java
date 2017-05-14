@@ -90,6 +90,23 @@ public class ValidarTipos {
                             }
                             break;
 
+                        case "Data dd/MM/yyyy":
+                            if(strValorCampo.equals(" ")){
+                               erro = false; 
+                            }else{
+                                if (strValorCampo.length() > 0) {
+                                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                    sdf.setLenient(false);
+                                    try {
+                                        sdf.parse(strValorCampo);
+                                        erro = false;
+                                    } catch (Exception e) {
+                                        erro = true;
+                                    }   
+                                }
+                            }                                
+                            break;
+                            
                         case "Data dd-MM-yyyy":
                             if(strValorCampo.equals(" ")){
                                erro = false; 
@@ -176,21 +193,21 @@ public class ValidarTipos {
         
     }
     
-    private static void atualizarComboBoxTiposArquivo(List<JComboBox> listaCbx){
-        painelAbaTabPrev_CbxTiposVariaveis.removeAll();
-        for(int i = 0; i < listaCbx.size(); i++){
-            JComboBox cbx = new JComboBox();
-            cbx.addItem("Texto");
-            cbx.addItem("V/F");
-            cbx.addItem("Inteiro");
-            cbx.addItem("Real");
-            cbx.addItem("Caractere");
-            cbx.addItem("Data dd-MM-yyyy");            
-            cbx.addItem("Data MM-dd-yyyy");
-            cbx.addItem("Data yyyy-MM-dd");
-            cbx.addItem("Não importar");
-            painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
-        }
-        painelAbaTabPrev_CbxTiposVariaveis.updateUI();
-    }
+//    private static void atualizarComboBoxTiposArquivo(List<JComboBox> listaCbx){
+//        painelAbaTabPrev_CbxTiposVariaveis.removeAll();
+//        for(int i = 0; i < listaCbx.size(); i++){
+//            JComboBox cbx = new JComboBox();
+//            cbx.addItem("Texto");
+//            cbx.addItem("V/F");
+//            cbx.addItem("Inteiro");
+//            cbx.addItem("Real");
+//            cbx.addItem("Caractere");
+//            cbx.addItem("Data dd-MM-yyyy");            
+//            cbx.addItem("Data MM-dd-yyyy");
+//            cbx.addItem("Data yyyy-MM-dd");
+//            cbx.addItem("Não importar");
+//            painelAbaTabPrev_CbxTiposVariaveis.add(cbx);
+//        }
+//        painelAbaTabPrev_CbxTiposVariaveis.updateUI();
+//    }
 }

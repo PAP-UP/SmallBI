@@ -22,8 +22,8 @@ public class FormLogin extends javax.swing.JFrame {
 
     public static Integer idCliente = 0;
     public static String login, senha = new String();
-    //String urlApiLogin = "http://localhost:8080/SmallBI_WebService/rest/usuario/login";
-    String urlApiLogin = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
+    String urlApiLogin = "http://localhost:8081/SmallBI_WebService/rest/usuario/login";
+    //String urlApiLogin = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/usuario/login";
     
     public FormLogin() {
         initComponents();
@@ -168,7 +168,7 @@ public class FormLogin extends javax.swing.JFrame {
                         if(jSONObject.isNull("msg")){
                         
                             idCliente = jSONObject.getInt("idCliente");
-                            System.out.println("Id obtido: " + idCliente);
+                            System.out.println("idCliente: " + idCliente);
                             System.out.println("idUsuario: " + jSONObject.getInt("idUsuario"));
 
                             this.dispose();

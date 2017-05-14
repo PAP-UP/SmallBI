@@ -2,9 +2,7 @@ package view;
 
 import business.GerarScriptSql;
 import business.Util;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;

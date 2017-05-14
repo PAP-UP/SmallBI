@@ -128,9 +128,11 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
 
         painelAbaInicio_ExplicaoAssistente.setBorder(javax.swing.BorderFactory.createTitledBorder("Como utilizar o Assistente de Importação do SmallBI"));
 
+        txtAreaAbaInicio_Explicacao.setEditable(false);
         txtAreaAbaInicio_Explicacao.setColumns(20);
+        txtAreaAbaInicio_Explicacao.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtAreaAbaInicio_Explicacao.setRows(5);
-        txtAreaAbaInicio_Explicacao.setText("\t\n\t\n\t           Aqui vai o texto explicativo para utilização do Assistente de Importação do SmallBI");
+        txtAreaAbaInicio_Explicacao.setText("\t\n\t\n                Bem vindo ao Assistente de Importação e Modelagem do SmallBI - Intelgência para Empresas!\n              \n        Aqui você podera importar dados de várias fontes como arquivos do excel, csv e bancos de dados como \n    MySQL, PostgreSQL e SQL Server. Para garantir uma análise de qualidade você deverá tratar seus dados de \n    acordo com seu tipo, dados de texto, números inteiros ou reais, etc. \n        Após fazer a coleta e tipagem dos dados, você será direcionado para área de modelagem de cubos, onde\n    será importante ter um conhecimento básico sobre modelagem multidimencional, nela você deverá definir \n    qual fato você quer analisar, qual é a tabela principal de sua análise, em outras palavras, qual o foco de sua \n    análise, onde está o centro da informação que você busca. Definido seu fato, você então deverá modelar \n    suas dimensões, onde se encontram os dados qualitativos e suas métricas, as quais detem seus dados \n    quantitativos.\n        Após a coleta, tratativa e modelagem dos dados, você enviará seu cubo multidimencional para nós, onde \n    ele estará disponível para análise no seu painel administrativo em smallbi.com.br.");
         txtAreaAbaInicio_Explicacao.setFocusable(false);
         jScrollPaneInicioExplicacao.setViewportView(txtAreaAbaInicio_Explicacao);
 
@@ -148,7 +150,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             .addGroup(painelAbaInicio_ExplicaoAssistenteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAbaInicio_ExplicaoAssistenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneInicioExplicacao, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneInicioExplicacao, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaInicio_ExplicaoAssistenteLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAbaInicio_Proximo)))
@@ -158,7 +160,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             painelAbaInicio_ExplicaoAssistenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaInicio_ExplicaoAssistenteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneInicioExplicacao, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addComponent(jScrollPaneInicioExplicacao, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAbaInicio_Proximo)
                 .addContainerGap())
@@ -246,7 +248,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
                 .addGroup(painelAbaTipoImport_ImportacaoBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaTipoImport_ImportacaoBancoLayout.createSequentialGroup()
-                        .addGap(0, 523, Short.MAX_VALUE)
+                        .addGap(0, 544, Short.MAX_VALUE)
                         .addComponent(btnAbaTipoImportImportarBanco)))
                 .addContainerGap())
         );
@@ -287,7 +289,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
                 .addComponent(painelAbaTipoImport_ImportacaoArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelAbaTipoImport_ImportacaoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
                 .addComponent(btnAbaTipoImport_Voltar)
                 .addContainerGap())
         );
@@ -321,7 +323,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             .addGroup(painelAbaImportArq_ImportCsvLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAbaImportArq_ImportCsvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneImportCsv, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneImportCsv, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaImportArq_ImportCsvLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lblAbaImportArq_ParamSeparador)
@@ -411,12 +413,12 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
                 .addComponent(painelAbaImportArq_ImportCsv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelAbaImportArq_ImportXlsx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
                 .addComponent(btnAbaImportArq_Voltar)
                 .addContainerGap())
         );
 
-        painelAbas.addTab("Importação de Arquivo", painelAbaImportacaoArquivo);
+        painelAbas.addTab("Arquivo", painelAbaImportacaoArquivo);
 
         painelAbaConexBd_Conexao.setBorder(javax.swing.BorderFactory.createTitledBorder("Conexão com o Banco"));
 
@@ -590,7 +592,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
                 .addComponent(painelAbaConexBd_InfoConex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelAbaConexBd_Conexao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addGroup(painelAbaConexBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbaConexBd_Voltar)
                     .addComponent(btnAbaConexBd_Prox))
@@ -623,7 +625,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
                 .addComponent(cbxAbaConexBd_Tabela, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAbaConexBd_ImportTabela)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         painelAbaConexBd_ConsulDefaultLayout.setVerticalGroup(
             painelAbaConexBd_ConsulDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -825,7 +827,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             painelAbaTabPrev_painelTiposVariaveisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAbaTabPrev_painelTiposVariaveisLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAbaTabPrev_CbxTiposVariaveis, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+                .addComponent(painelAbaTabPrev_CbxTiposVariaveis, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
                 .addContainerGap())
         );
         painelAbaTabPrev_painelTiposVariaveisLayout.setVerticalGroup(
@@ -943,7 +945,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        painelAbas.addTab("Tabela Preview", painelAbaTabelaPreview);
+        painelAbas.addTab("Visualização da Tabela", painelAbaTabelaPreview);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -958,7 +960,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAbas, javax.swing.GroupLayout.PREFERRED_SIZE, 559, Short.MAX_VALUE)
+                .addComponent(painelAbas)
                 .addContainerGap())
         );
 
@@ -1081,7 +1083,8 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
         frm.setLocationRelativeTo(null);
         frm.setResizable(false);
         frm.setTitle("Assistente de Modelagem do Cubo");
-        frm.setVisible(true);        
+        frm.setVisible(true);   
+        dispose();
     }
     
     private void ajudaAreaConsulBanco(){
@@ -1266,6 +1269,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             cbx.addItem("Inteiro");
             cbx.addItem("Real");
             cbx.addItem("Caractere");
+            cbx.addItem("Data dd/MM/yyyy");
             cbx.addItem("Data dd-MM-yyyy");            
             cbx.addItem("Data MM-dd-yyyy");
             cbx.addItem("Data yyyy-MM-dd");
@@ -1289,6 +1293,7 @@ public class FormAssistenteImportacao extends javax.swing.JFrame {
             cbx.addItem("Inteiro");
             cbx.addItem("Real");
             cbx.addItem("Caractere");
+            cbx.addItem("Data dd/MM/yyyy");
             cbx.addItem("Data dd-MM-yyyy");            
             cbx.addItem("Data MM-dd-yyyy");
             cbx.addItem("Data yyyy-MM-dd");

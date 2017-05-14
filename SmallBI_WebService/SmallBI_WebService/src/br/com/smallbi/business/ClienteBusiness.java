@@ -293,4 +293,42 @@ public class ClienteBusiness{
 		}
 		return null;
 	}
+	
+	/**
+	 * Metodo que valida se o json que vem do front está completo<br/>
+	 * evitando exeptions
+	 * @param json
+	 * @return
+	 */
+	public String isValid(String json){
+		
+		try {
+			JSONObject jsonObject = new JSONObject(json);
+			
+			if(jsonObject.isNull("razaoSocial"))
+				return ("O campo Razão Social é obrigatório!");
+			
+			if(jsonObject.isNull("nomeFantasia"))
+				return ("O campo Nome Fantasia é obrigatório!!");
+				
+			if(jsonObject.isNull("cnpj"))
+				return ("O campo CNPJ é obrigatório!");
+			
+			if(jsonObject.isNull("ie"))
+				return ("O campo Inscrição Estadual é obrigatório!");
+			
+			if(jsonObject.isNull("idRamoAtividade"))
+				return ("O campo Ramo de Atividade é obrigatório!");
+			
+			if(jsonObject.isNull("idFormaPagamento"))
+				return ("O campo Forma de Pagamento é obrigatório!");
+			
+			if(jsonObject.isNull("idPlano"))
+				return ("O campo Plano é obrigatório!");
+		} catch (JSONException e) {
+				return ("Não foi possível mapear o json"
+						+ "verifique a integridade do objeto!");
+		}
+		return ("OK");
+	}	
 }

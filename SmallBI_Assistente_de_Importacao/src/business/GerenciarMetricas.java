@@ -13,7 +13,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import model.Dimensao;
 import model.GrupoMetrica;
 import model.Metrica;
 import model.TabelaImportada;
@@ -135,12 +134,15 @@ public class GerenciarMetricas {
             }
             
             if(qtdMetriSelec > 0){                 
-                if(tabelasImportadas.size() > 1){
-                    PercorrerAbasFormAssistenteModelagem.modelMetriToAddRel();
-                }else{
-                    gerarSchemaXml();
-                    PercorrerAbasFormAssistenteModelagem.modelMetriToCuboPreview();
-                }
+                //Comentado pois aba de relacionamentos foi removida
+//                if(tabelasImportadas.size() > 1){
+//                    PercorrerAbasFormAssistenteModelagem.modelMetriToAddRel();
+//                }else{
+//                    gerarSchemaXml();
+//                    PercorrerAbasFormAssistenteModelagem.modelMetriToCuboPreview();
+//                }
+                gerarSchemaXml();
+                PercorrerAbasFormAssistenteModelagem.modelMetriToCuboPreview();
             }else{
                 JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
             }
@@ -203,15 +205,20 @@ public class GerenciarMetricas {
     
     public static void carregarAgregadoresModelMetri(){
         cbxAgregadorMetrica.removeAllItems();
-        cbxAgregadorMetrica.addItem("count");
-        cbxAgregadorMetrica.addItem("sum");
-        cbxAgregadorMetrica.addItem("avg");
-        cbxAgregadorMetrica.addItem("max");
+        cbxAgregadorMetrica.addItem("Contar");
+        cbxAgregadorMetrica.addItem("Somar");
+        cbxAgregadorMetrica.addItem("Média");
+        cbxAgregadorMetrica.addItem("Máximo");
+//        cbxAgregadorMetrica.addItem("count");
+//        cbxAgregadorMetrica.addItem("sum");
+//        cbxAgregadorMetrica.addItem("avg");
+//        cbxAgregadorMetrica.addItem("max");
     }
     
     public static void carregarFormatosModelMetri(){
         cbxFormatoMetrica.removeAllItems();
-        cbxFormatoMetrica.addItem("Standard");
+//        cbxFormatoMetrica.addItem("Standard");
+        cbxFormatoMetrica.addItem("Padrão");
         cbxFormatoMetrica.addItem("#,###.00");
     }
     
@@ -257,18 +264,14 @@ public class GerenciarMetricas {
         }
     }    
     
-    public static void modelMetriToAddRel(){
+    public static void modelMetriToCuboPreview(){
         if(grupoMetricasSalvas.size() > 0){
-            if(tabelasImportadas.size() > 1){
-                PercorrerAbasFormAssistenteModelagem.modelMetriToAddRel();            
-            }else{
-                PercorrerAbasFormAssistenteModelagem.modelMetriToCuboPreview();
-                gerarSchemaXml();
-            }
+            PercorrerAbasFormAssistenteModelagem.modelMetriToCuboPreview();
+            gerarSchemaXml();            
         }else{
             JOptionPane.showMessageDialog(null, "Adicione ao menos uma métrica ao cubo!");
         }
-    }    
+    }
     
     public static void limparAbaAddMetrica(){
         txtNomeMetrica.setText("");

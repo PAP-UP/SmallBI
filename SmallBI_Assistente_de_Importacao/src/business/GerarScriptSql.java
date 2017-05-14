@@ -4,10 +4,14 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import org.apache.poi.ss.usermodel.DataFormat;
 
 public class GerarScriptSql {
     
@@ -23,7 +27,7 @@ public class GerarScriptSql {
 //        salvarQuerySQL(nomeTabela);
         scripts.add(scriptSqlTabelaPivot);
                 
-        return "Script salvo com sucesso!";
+        return "Tabela salva com sucesso!";
     }
 
     private String criarTabela(JTable tbl, String nomeTabela, String chavePrimaria,
@@ -65,6 +69,10 @@ public class GerarScriptSql {
             List<JComboBox> listaCbxTiposParametro) {
         
         try{
+            
+            /**
+             * Obtem as colunas da tabela
+             */
             String sql = "INSERT INTO " + formatarString(nomeTabela) + " (";
             JComboBox cbx;
 
@@ -77,6 +85,9 @@ public class GerarScriptSql {
             }
             sql += ") VALUES ";
 
+            /**
+             * Insere os registros
+             */
             for (int linha = 0; linha < tbl.getRowCount(); linha++) {
                 
                 sql += "(";
@@ -100,7 +111,23 @@ public class GerarScriptSql {
                             sql += "'" + tbl.getValueAt(linha, coluna).toString() + "'";
                             break;
                         case "DATE":
-                            sql += "'" + tbl.getValueAt(linha, coluna).toString() + "'";
+                            
+                            //O postgres nao aceita o formato dd/MM/yyyy
+                            //Obtem data da tabela
+                            String dataFromTab = tbl.getValueAt(linha, coluna).toString();
+                            
+                            //Transforma em tipo Date
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                            Date dt = sdf.parse(dataFromTab);
+                            //System.out.println(dt);
+                            
+                            //Formata para MM-dd-yyyy
+                            SimpleDateFormat sdfFinal = new SimpleDateFormat("MM-dd-yyyy");
+                            String dtFinal = sdfFinal.format(dt);
+                            //System.out.println(dtFinal);
+                            
+                            sql += "'" + dtFinal + "'";
+                            //sql += "'" + tbl.getValueAt(linha, coluna).toString() + "'";
                             break;
                         default:
                             sql += "'" + tbl.getValueAt(linha, coluna).toString() + "'";
@@ -142,7 +169,9 @@ public class GerarScriptSql {
             case "Data MM-dd-yyyy":
                 return "DATE";
             case "Data yyyy-MM-dd":
-                return "DATE";                
+                return "DATE";     
+            case "Data dd/MM/yyyy":
+                return "DATE";
         }
         return "";
     }

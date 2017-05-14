@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.net.ssl.HttpsURLConnection"/>
-<fullyQualifiedTypeName name="org.apache.commons.codec.binary.Base64"/>
-<fullyQualifiedTypeName name="org.apache.http.client.CredentialsProvider"/>
-<fullyQualifiedTypeName name="org.apache.http.impl.client.BasicCredentialsProvider"/>
-<fullyQualifiedTypeName name="org.apache.http.auth.AuthScope"/>
-<fullyQualifiedTypeName name="org.apache.http.client.methods.HttpGet"/>
 <fullyQualifiedTypeName name="java.util.UUID"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="javax.jws.WebService"/>
@@ -59,5 +53,11 @@
 <fullyQualifiedTypeName name="java.lang.Boolean"/>
 <fullyQualifiedTypeName name="br.com.smallbi.rest.UsuarioWebService"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Endereco"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.EnderecoBusiness"/>
+<fullyQualifiedTypeName name="br.com.smallbi.rest.EnderecoWebService"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Telefone"/>
+<fullyQualifiedTypeName name="br.com.smallbi.business.TelefoneBusiness"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
+<fullyQualifiedTypeName name="com.sun.jersey.api.json.JSONJAXBContext.JSONNotation"/>
 </qualifiedTypeNameHistroy>

@@ -58,7 +58,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="painelAbas" pref="559" max="32767" attributes="0"/>
+              <Component id="painelAbas" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -117,7 +117,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPaneInicioExplicacao" pref="758" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneInicioExplicacao" pref="775" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="btnAbaInicio_Proximo" min="-2" max="-2" attributes="0"/>
@@ -131,7 +131,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPaneInicioExplicacao" pref="425" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneInicioExplicacao" pref="445" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnAbaInicio_Proximo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -149,9 +149,13 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextArea" name="txtAreaAbaInicio_Explicacao">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="columns" type="int" value="20"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Dialog" size="14" style="0"/>
+                        </Property>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="&#x9;&#xa;&#x9;&#xa;&#x9;           Aqui vai o texto explicativo para utiliza&#xe7;&#xe3;o do Assistente de Importa&#xe7;&#xe3;o do SmallBI"/>
+                        <Property name="text" type="java.lang.String" value="&#x9;&#xa;&#x9;&#xa;                Bem vindo ao Assistente de Importa&#xe7;&#xe3;o e Modelagem do SmallBI - Intelg&#xea;ncia para Empresas!&#xa;              &#xa;        Aqui voc&#xea; podera importar dados de v&#xe1;rias fontes como arquivos do excel, csv e bancos de dados como &#xa;    MySQL, PostgreSQL e SQL Server. Para garantir uma an&#xe1;lise de qualidade voc&#xea; dever&#xe1; tratar seus dados de &#xa;    acordo com seu tipo, dados de texto, n&#xfa;meros inteiros ou reais, etc. &#xa;        Ap&#xf3;s fazer a coleta e tipagem dos dados, voc&#xea; ser&#xe1; direcionado para &#xe1;rea de modelagem de cubos, onde&#xa;    ser&#xe1; importante ter um conhecimento b&#xe1;sico sobre modelagem multidimencional, nela voc&#xea; dever&#xe1; definir &#xa;    qual fato voc&#xea; quer analisar, qual &#xe9; a tabela principal de sua an&#xe1;lise, em outras palavras, qual o foco de sua &#xa;    an&#xe1;lise, onde est&#xe1; o centro da informa&#xe7;&#xe3;o que voc&#xea; busca. Definido seu fato, voc&#xea; ent&#xe3;o dever&#xe1; modelar &#xa;    suas dimens&#xf5;es, onde se encontram os dados qualitativos e suas m&#xe9;tricas, as quais detem seus dados &#xa;    quantitativos.&#xa;        Ap&#xf3;s a coleta, tratativa e modelagem dos dados, voc&#xea; enviar&#xe1; seu cubo multidimencional para n&#xf3;s, onde &#xa;    ele estar&#xe1; dispon&#xed;vel para an&#xe1;lise no seu painel administrativo em smallbi.com.br."/>
                         <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
@@ -202,7 +206,7 @@
                       <Component id="painelAbaTipoImport_ImportacaoArquivo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="painelAbaTipoImport_ImportacaoBanco" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="127" max="32767" attributes="0"/>
+                      <EmptySpace pref="187" max="32767" attributes="0"/>
                       <Component id="btnAbaTipoImport_Voltar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -294,7 +298,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane2" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="523" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="544" max="32767" attributes="0"/>
                                   <Component id="btnAbaTipoImportImportarBanco" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -357,8 +361,8 @@
         <Container class="javax.swing.JPanel" name="painelAbaImportacaoArquivo">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Importa&#xe7;&#xe3;o de Arquivo">
-                <Property name="tabTitle" type="java.lang.String" value="Importa&#xe7;&#xe3;o de Arquivo"/>
+              <JTabbedPaneConstraints tabName="Arquivo">
+                <Property name="tabTitle" type="java.lang.String" value="Arquivo"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -387,7 +391,7 @@
                       <Component id="painelAbaImportArq_ImportCsv" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="painelAbaImportArq_ImportXlsx" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="103" max="32767" attributes="0"/>
+                      <EmptySpace pref="175" max="32767" attributes="0"/>
                       <Component id="btnAbaImportArq_Voltar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -410,7 +414,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPaneImportCsv" alignment="0" pref="758" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneImportCsv" alignment="0" pref="775" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="lblAbaImportArq_ParamSeparador" min="-2" max="-2" attributes="0"/>
@@ -603,7 +607,7 @@
                       <Component id="painelAbaConexBd_InfoConex" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="painelAbaConexBd_Conexao" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="73" max="32767" attributes="0"/>
+                      <EmptySpace pref="140" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAbaConexBd_Voltar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnAbaConexBd_Prox" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -961,7 +965,7 @@
                               <Component id="cbxAbaConexBd_Tabela" min="-2" pref="179" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnAbaConexBd_ImportTabela" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="188" max="32767" attributes="0"/>
+                              <EmptySpace pref="215" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1148,8 +1152,8 @@
         <Container class="javax.swing.JPanel" name="painelAbaTabelaPreview">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Tabela Preview">
-                <Property name="tabTitle" type="java.lang.String" value="Tabela Preview"/>
+              <JTabbedPaneConstraints tabName="Visualiza&#xe7;&#xe3;o da Tabela">
+                <Property name="tabTitle" type="java.lang.String" value="Visualiza&#xe7;&#xe3;o da Tabela"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -1350,7 +1354,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="painelAbaTabPrev_CbxTiposVariaveis" pref="708" max="32767" attributes="0"/>
+                                      <Component id="painelAbaTabPrev_CbxTiposVariaveis" pref="748" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>

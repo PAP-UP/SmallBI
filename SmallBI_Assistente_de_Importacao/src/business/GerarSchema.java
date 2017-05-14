@@ -53,10 +53,10 @@ public class GerarSchema {
                     Util.formatarString(t.getPrimaryKey()) + "'/></Key></Table>";
         }
         
-        for(Link l : links){
-            schema += "<Link source='" + l.getSource() + "' target='" + l.getTarget() + "'>" +
-                    "<ForeignKey><Column name='" + l.getForeignKey() + "'/></ForeignKey></Link>";
-        }
+//        for(Link l : links){
+//            schema += "<Link source='" + l.getSource() + "' target='" + l.getTarget() + "'>" +
+//                    "<ForeignKey><Column name='" + l.getForeignKey() + "'/></ForeignKey></Link>";
+//        }
         
         schema += "</PhysicalSchema>";
         return schema;
@@ -91,13 +91,14 @@ public class GerarSchema {
         schema = "<MeasureGroups>";
         
         for(GrupoMetrica gm : grupoMetricas){
-            schema += "<MeasureGroup name='" + Util.formatarString(gm.getNome()) + "' table='" + Util.formatarString(gm.getTabela())
-                    + "'><Measures>";
+            schema += "<MeasureGroup name='" + Util.formatarString(gm.getNome()) +
+                    "' table='" + Util.formatarString(gm.getTabela()) + "'><Measures>";
             
             for(Metrica m : gm.getMetricas()){
-                schema += "<Measure name='" + Util.formatarString(m.getNome()) + "' column='" + Util.formatarString(m.getColuna())
-                        + "' aggregator='" + Util.formatarString(m.getAgregador()) + "' formatString='"
-                            + m.getFormato() + "' visible='true'/>";    
+                schema += "<Measure name='" + Util.formatarString(m.getNome()) + 
+                        "' column='" + Util.formatarString(m.getColuna()) + 
+                            "' aggregator='" + Util.formatarString(getAggregator(m.getAgregador())) + "' formatString='"
+                                + getFormat(m.getFormato()) + "' visible='true'/>";    
             }
             
             schema += "</Measures><DimensionLinks>";
@@ -126,6 +127,40 @@ public class GerarSchema {
         schema = "<Role name='No Access'><SchemaGrant access='none'/></Role>";
         schema += "<Role name='access_id_" + idCliente + "'><SchemaGrant access='all'/></Role></Schema>";
         return schema;
+    }
+    
+    /**
+     * Traduz agregador para o padrao mondrian
+     * @param agregador
+     * @return 
+     */
+    private String getAggregator(String agregador){
+        switch(agregador){
+            case "Contar":
+                return "count";
+            case "Somar":
+                return "sum";
+            case "Média":
+                return "avg";
+            case "Máximo":
+                return "max";
+        }
+        return "";
+    }
+    
+    /**
+     * Traduz o formato para o padrao mondrian
+     * @param formato
+     * @return 
+     */
+    private String getFormat(String formato){
+        switch(formato){
+            case "Padrão":
+                return "Standart";
+            case "#,###.00":
+                    return "#,###.00";
+        }
+        return "";
     }
     
     public void salvarSchema(){
