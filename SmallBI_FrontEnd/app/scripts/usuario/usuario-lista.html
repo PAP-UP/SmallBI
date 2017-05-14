@@ -4,9 +4,7 @@
 					<tr>
 						<th>Perfil</th>
 						<th>Pessoa</th>
-						<th>Senha</th>
 						<th>Login</th>
-						<th>Cliente</th>
 						<th>Usuario Saiku</th>
 						<th class="text-center">Editar</th>
 						<th class="text-center">Excluir</th>
@@ -16,9 +14,7 @@
 					<tr ng-repeat="u in vm.listaUsuarios">
             <td>{{u.perfil}}</td>
             <td>{{u.pessoa}}</td>
-            <td>{{u.senha}}</td>
             <td>{{u.login}}</td>
-            <td>{{u.cliente}}</td>
             <td>{{u.usuarioSaiku}}</td>
             <td><a ui-sref="usuario.editar({id : u.idUsuario})" class="text-info" data-toggle="tooltip" data-placement="top" title="Clique para editar"><i class="fa fa-edit"></i></a></td>
             <td><a href="" ng-click="vm.excluirUsuario(u.idUsuario)" class="text-danger" data-toggle="tooltip" data-placement="top" title="Clique para excluir"><i class="fa fa-trash-o"></i></a></td>

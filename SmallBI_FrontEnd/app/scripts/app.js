@@ -279,6 +279,8 @@
     stateHelperProvider.setNestedState({
       name: 'index',
       url: '/index',
+      controller: 'indexController',
+      controllerAs: 'vm',
       templateUrl: 'views/site.html'
     });
 

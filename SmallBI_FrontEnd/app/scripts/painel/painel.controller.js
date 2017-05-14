@@ -17,7 +17,7 @@
     });
 
     function logout() {
-      $state.transitionTo('index');
+      $state.transitionTo('index', {}, {reload: true, inherit: false, notify: true});
     }
   }
 })();
