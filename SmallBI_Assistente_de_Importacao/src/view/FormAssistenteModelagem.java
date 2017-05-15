@@ -49,8 +49,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         GerenciarMetricas.carregarFormatosModelMetri();
         GerenciarMetricas.atualizarListaMetricas();
         
-//        GerenciarRelacionamentos.carregarTabelasRelacionamentos();
-//        GerenciarRelacionamentos.atualizarListaRelacionamentos();
+        cbxChaveDimensao.setVisible(false);
+        lblChaveDimensao.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -220,9 +220,11 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
 
         lblNomeDimensao.setText("Nome:");
 
-        lblChaveDimensao.setText("Chave Primária");
+        lblChaveDimensao.setText("PK nao visivel");
+        lblChaveDimensao.setEnabled(false);
 
         cbxChaveDimensao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cbxChaveDimensao.setEnabled(false);
         cbxChaveDimensao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxChaveDimensaoActionPerformed(evt);
@@ -237,7 +239,6 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         });
 
         jcbSelecTodos.setText("Selecionar Todos");
-        jcbSelecTodos.setEnabled(false);
         jcbSelecTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbSelecTodosActionPerformed(evt);
@@ -290,14 +291,14 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                             .addComponent(lblTabelaDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbxChaveDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblChaveDimensao))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbxLinkComFato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(35, 35, 35)
-                        .addComponent(btnAddDimensao))
+                        .addComponent(btnAddDimensao)
+                        .addGap(61, 61, 61)
+                        .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbxChaveDimensao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblChaveDimensao)))
                     .addComponent(painelListaAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
@@ -804,7 +805,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbSelecTodosActionPerformed
 
     private void cbxChaveDimensaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxChaveDimensaoActionPerformed
-        GerenciarDimensoes.ativarSelecTodosAtrDimensao();
+        //GerenciarDimensoes.ativarSelecTodosAtrDimensao();
     }//GEN-LAST:event_cbxChaveDimensaoActionPerformed
 
     private void carregarTabelasImportadasParaEscolherFato(){

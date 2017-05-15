@@ -29,12 +29,12 @@ public class GerenciarDimensoes {
     public static void adicionarDimensao(){
         String nomeDim = txtNomeDimensao.getText();
         String tabela = cbxTabelaDimensao.getSelectedItem().toString();
-        String chave = cbxChaveDimensao.getSelectedItem().toString();
+        //String chave = cbxChaveDimensao.getSelectedItem().toString();
         String linkComFato = cbxLinkComFato.getSelectedItem().toString();
         
         if(nomeDim != null && !nomeDim.equals("") &&
-                tabela != null && !tabela.equals("") && !tabela.equals("Selecione") &&
-                    chave != null && !chave.equals("") && !chave.equals("Selecione")){
+                tabela != null && !tabela.equals("") && !tabela.equals("Selecione")){ //&&
+                    //chave != null && !chave.equals("") && !chave.equals("Selecione")){
         
             if(nomeJaExistente()){
                 JOptionPane.showMessageDialog(null, "Já existe uma dimensão com este nome!");
@@ -54,7 +54,8 @@ public class GerenciarDimensoes {
                     Dimensao d = new Dimensao();
                     d.setNome(Util.formatarString(nomeDim));
                     d.setTabela(tabela);
-                    d.setKey(chave);
+                    d.setKey(getPrimaryKeyFromImportedTable(tabela));
+                    //d.setKey(chave);
                     d.setAtributos(atributosSelecionados);
                     d.setLinkComFato(linkComFato);
 
@@ -70,6 +71,23 @@ public class GerenciarDimensoes {
         }
     }
     
+    /**
+     * Obtem PK da tabela importada para definir a PK da dimensao
+     * @param tableName
+     * @return 
+     */
+    private static String getPrimaryKeyFromImportedTable(String tableName){
+        for(TabelaImportada tabelaImportada : tabelasImportadas){
+            if(tabelaImportada.getNomeTabela().equals(tableName))
+                return tabelaImportada.getPrimaryKey();
+        }
+        return null;
+    }
+    
+    /**
+     * Verifica se o nome da dimensao ja existe
+     * @return 
+     */
     private static boolean nomeJaExistente(){
         for(Dimensao d : dimensoesSalvas){
             if(d.getNome().equals(txtNomeDimensao.getText())){
@@ -156,7 +174,7 @@ public class GerenciarDimensoes {
     public static void limparAbaAddDimensao(){
         painelListaAtributos.removeAll();
         jcbSelecTodos.setSelected(false);
-        jcbSelecTodos.setEnabled(false);
+        //jcbSelecTodos.setEnabled(false);
         txtNomeDimensao.setText("");
 
         cbxChaveDimensao.removeAllItems();
@@ -222,7 +240,7 @@ public class GerenciarDimensoes {
         for(int i = 0; i < jTable.getColumnCount(); i++){
             JCheckBox checkBox = new JCheckBox();
             checkBox.setText(jTable.getColumnName(i));
-            checkBox.setEnabled(false);
+            //checkBox.setEnabled(false);
             painelListaAtributos.add(checkBox);
         }
         painelListaAtributos.setLayout(new BoxLayout(painelListaAtributos, BoxLayout.Y_AXIS));
@@ -246,17 +264,17 @@ public class GerenciarDimensoes {
         }
     }    
     
-    public static void ativarSelecTodosAtrDimensao(){
-        if(cbxChaveDimensao.getSelectedItem() != null &&
-                !cbxChaveDimensao.getSelectedItem().toString().equals("Selecione")){
-                
-            jcbSelecTodos.setEnabled(true);
-            Component[] components = painelListaAtributos.getComponents();
-            for(Component c : components){
-                c.setEnabled(true);
-            }
-        }
-    }    
+//    public static void ativarSelecTodosAtrDimensao(){
+//        if(cbxChaveDimensao.getSelectedItem() != null &&
+//                !cbxChaveDimensao.getSelectedItem().toString().equals("Selecione")){
+//                
+//            jcbSelecTodos.setEnabled(true);
+//            Component[] components = painelListaAtributos.getComponents();
+//            for(Component c : components){
+//                c.setEnabled(true);
+//            }
+//        }
+//    }    
     
     public static void carregarLinksComFato(){
         JTable jTable = tabelaFato.getjTable();
