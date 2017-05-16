@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.UUID"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="javax.jws.WebService"/>
 <fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="br.com.smallbi.business.TelefoneBusiness"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
 <fullyQualifiedTypeName name="com.sun.jersey.api.json.JSONJAXBContext.JSONNotation"/>
+<fullyQualifiedTypeName name="br.com.smallbi.util.ClassMapper"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Cliente"/>
 </qualifiedTypeNameHistroy>

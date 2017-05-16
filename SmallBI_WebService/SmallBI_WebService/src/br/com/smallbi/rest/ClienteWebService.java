@@ -29,6 +29,7 @@ import br.com.smallbi.entity.FormaPagamento;
 import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
 import br.com.smallbi.entity.Telefone;
+import br.com.smallbi.util.ClassMapper;
 
 @Path("/cliente")
 public class ClienteWebService {
@@ -55,9 +56,10 @@ public class ClienteWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addEmpresa(String json) throws JSONException{
 		
-		String isValid = clienteBusiness.isValid(json);
+		//String jsonIsValid = clienteBusiness.jsonIsValid(json);
+		String jsonIsValid = ClassMapper.map(json, "Cliente");
 		
-		if(isValid == "OK"){
+		if(jsonIsValid == "OK"){
 			Cliente cliente = getObjectFromHash(json);		
 			JSONObject response = clienteBusiness.create(cliente);
 			
@@ -81,7 +83,7 @@ public class ClienteWebService {
 				}
 			}
 		}
-		JSONObject jsonObject = new JSONObject().put("message", isValid);
+		JSONObject jsonObject = new JSONObject().put("message", jsonIsValid);
 		return jsonObject.toString();
 	}
 	
@@ -123,6 +125,11 @@ public class ClienteWebService {
 		return gson.toJson("Nenhum resultado foi encontrado na tabela Cliente com o id {"+idCliente+"}");
 	}
 	
+	/**
+	 * Mapea cliente para json a partir do idCliente
+	 * @param c
+	 * @return
+	 */
 	public Hashtable<String, Object> getHashById(Cliente c){
 		Hashtable<String, Object> hash = new Hashtable<>();
 		hash.put("idCliente", c.getIdCliente());
@@ -131,9 +138,10 @@ public class ClienteWebService {
 		hash.put("cnpj", c.getCnpj());
 		hash.put("ie", c.getIe());
 		hash.put("idRamoAtividade", c.getRamoAtividade().getIdRamoAtividade());
-		hash.put("tamanhoTotal", c.getTamanhoTotal());
+		//hash.put("tamanhoTotal", c.getTamanhoTotal());
 		hash.put("idFormaPagamento", c.getFormaPagamento().getIdFormaPagamento());
 		hash.put("idPlano", c.getPlano().getIdPlano());
+		hash.put("nomecliente", c.getNomeFantasia());
 		
 		Endereco e = new EnderecoBusiness().getByCliente(c.getIdCliente());
 		if(e != null){
@@ -156,6 +164,12 @@ public class ClienteWebService {
 		return hash;
 	}
 	
+	/**
+	 * Mapea cliente a partir do json
+	 * @param json
+	 * @return
+	 * @throws JSONException
+	 */
 	public Cliente getObjectFromHash(String json) throws JSONException{
 		JSONObject jsonObject = new JSONObject(json);
 		Cliente c = new Cliente();
@@ -226,6 +240,11 @@ public class ClienteWebService {
 		}
 	}
 	
+	/**
+	 * Mapea cliente a partir do objeto
+	 * @param c
+	 * @return
+	 */
 	public Hashtable<String, Object> getHashFromObject(Cliente c){
 		Hashtable<String, Object> hashCliente = new Hashtable<>();
 		hashCliente.put("idCliente", c.getIdCliente());
