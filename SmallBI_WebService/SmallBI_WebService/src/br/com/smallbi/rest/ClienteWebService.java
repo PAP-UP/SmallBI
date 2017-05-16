@@ -57,9 +57,9 @@ public class ClienteWebService {
 	public String addEmpresa(String json) throws JSONException{
 		
 		//String jsonIsValid = clienteBusiness.jsonIsValid(json);
-		String jsonIsValid = ClassMapper.map(json, "Cliente");
+		String jsonIsValid = ClassMapper.validadeJson(json, new Cliente().getClass().getName());
 		
-		if(jsonIsValid == "OK"){
+		if(jsonIsValid.equals("OK")){
 			Cliente cliente = getObjectFromHash(json);		
 			JSONObject response = clienteBusiness.create(cliente);
 			
@@ -78,7 +78,7 @@ public class ClienteWebService {
 						response.append("message", "Falha ao cadastrar usuário");
 						response.append("error", addUserResult.getString("message"));
 					}else{	
-						response.put("idUsuarioPut", addUserResult.getInt("idUsuario"));
+						response.put("idUsuario", addUserResult.getInt("idUsuario"));
 					}
 				}
 			}

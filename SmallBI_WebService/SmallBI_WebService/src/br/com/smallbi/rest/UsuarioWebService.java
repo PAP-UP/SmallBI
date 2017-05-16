@@ -34,6 +34,7 @@ import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Usuario;
 import br.com.smallbi.entity.UsuarioLogado;
+import br.com.smallbi.util.ClassMapper;
 
 @Path("/usuario")
 public class UsuarioWebService {
@@ -75,14 +76,21 @@ public class UsuarioWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addUsuario(String json) throws JSONException{
-		Usuario usuario = getObjectFromHash(json);
-		JSONObject response = usuarioBusiness.create(usuario);
 		
-		if(response.getString("message").equals("Usuario cadastrado com sucesso!")){
-			appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+		String jsonIsValid = ClassMapper.validadeJson(json, new Usuario().getClass().getName());
+		
+		if(jsonIsValid.equals("OK")){
+			Usuario usuario = getObjectFromHash(json);
+			JSONObject response = usuarioBusiness.create(usuario);
+			
+			if(response.getString("message").equals("Usuario cadastrado com sucesso!"))
+				appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+				
+			return response.toString();
 		}
 		
-		return gson.toJson(response);
+		JSONObject jsonObject = new JSONObject().put("message", jsonIsValid);
+		return jsonObject.toString();
 	}
 	
 	/**
@@ -94,13 +102,17 @@ public class UsuarioWebService {
 	 */
 	public JSONObject addUsuarioFromAddCliente(String json) throws JSONException{
 		
-		Usuario usuario = getObjectFromHash(json);
-		JSONObject responseUsuarioBusiness = usuarioBusiness.create(usuario);
-		
-		if(!responseUsuarioBusiness.isNull("idUsuario")){
-			appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+		String jsonIsValid = ClassMapper.validadeJson(json, new Usuario().getClass().getName());
+		if(jsonIsValid.equals("OK")){
+			Usuario usuario = getObjectFromHash(json);
+			JSONObject responseUsuarioBusiness = usuarioBusiness.create(usuario);
+			
+			if(!responseUsuarioBusiness.isNull("idUsuario")){
+				appendEnderecoTelefone(json, usuario.getPessoa().getIdPessoa(), usuario.getUsuarioId());
+			}
+			return responseUsuarioBusiness;
 		}
-		return responseUsuarioBusiness;
+		return new JSONObject().put("message", jsonIsValid);
 	}
 	
 	@POST

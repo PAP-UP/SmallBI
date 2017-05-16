@@ -56,9 +56,9 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="painelAbas" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="painelAbas" min="-2" pref="677" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -101,10 +101,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="painelAbaInicio_ExplicaoAssistente" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="painelAbaInicio_ExplicaoAssistente" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnAbaInicio_Proximo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -127,7 +127,10 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane8" alignment="0" pref="646" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jScrollPane8" min="-2" pref="539" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -202,9 +205,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="painelAbaTipoImport_ImportacaoArquivo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="161" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Component id="painelAbaTipoImport_ImportacaoBanco" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
                       <Component id="btnAbaTipoImport_Voltar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -267,7 +270,7 @@
                         </Property>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="&#x9;&#xa;&#x9;Nesta op&#xe7;&#xe3;o voc&#xea; pode tanto escolher arquivos CSV quanto planilhas no formato XLSX,&#xa;          voc&#xea; precisa apenas nos dizer o caminho do arquivo e no caso de arquivos no formato CSV, precisar&#xe1; nos&#xa;                                                            informar o par&#xe2;metro separador de colunas."/>
+                        <Property name="text" type="java.lang.String" value="&#x9;&#xa;&#x9;Nesta op&#xe7;&#xe3;o voc&#xea; pode tanto escolher arquivos CSV quanto planilhas no formato XLSX, voc&#xea; precisa apenas nos dizer o caminho do &#xa;                                                   arquivo e no caso de arquivos no formato CSV, precisar&#xe1; nos  informar o par&#xe2;metro separador de colunas."/>
                         <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
@@ -335,7 +338,7 @@
                         </Property>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="&#x9;&#xa;&#x9;Nesta op&#xe7;&#xe3;o voc&#xea; poder&#xe1; se conectar a um banco de dados PostgreSQL, MySQL ou &#xa;             SQL Server, poder&#xe1; ainda consultar tabelas completas ou fazer suas pr&#xf3;prias consultas customizadas."/>
+                        <Property name="text" type="java.lang.String" value="&#x9;&#xa;                            Nesta op&#xe7;&#xe3;o voc&#xea; poder&#xe1; se conectar a um banco de dados PostgreSQL, MySQL ou SQL Server, poder&#xe1; ainda consultar tabelas completas &#xa;                                                                                                                     ou fazer suas pr&#xf3;prias consultas customizadas."/>
                         <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
@@ -377,17 +380,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="painelAbaImportArq_ImportCsv" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="btnAbaImportArq_Voltar" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="painelAbaImportArq_ImportCsv" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Component id="painelAbaImportArq_ImportXlsx" alignment="1" pref="976" max="32767" attributes="0"/>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnAbaImportArq_Voltar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -395,10 +397,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="painelAbaImportArq_ImportCsv" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="161" max="32767" attributes="0"/>
+                      <Component id="painelAbaImportArq_ImportCsv" min="-2" pref="209" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="painelAbaImportArq_ImportXlsx" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace pref="82" max="32767" attributes="0"/>
                       <Component id="btnAbaImportArq_Voltar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -420,17 +422,21 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPaneImportCsv" pref="930" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblAbaImportArq_ParamSeparador" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cbxAbaImportArq_ParamSeparador" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnAbaImportArq_ProcurarArquivoCsv" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jScrollPaneImportCsv" pref="930" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="lblAbaImportArq_ParamSeparador" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="cbxAbaImportArq_ParamSeparador" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="btnAbaImportArq_ProcurarArquivoCsv" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -438,14 +444,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPaneImportCsv" pref="153" max="32767" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jScrollPaneImportCsv" min="-2" pref="118" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblAbaImportArq_ParamSeparador" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxAbaImportArq_ParamSeparador" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnAbaImportArq_ProcurarArquivoCsv" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -465,7 +471,7 @@
                         </Property>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="&#x9;&#xa;&#x9;  Imporme-nos o par&#xe2;metro separador de colunas no seu arquivo CSV e depois nos mostre&#xa;&#x9;  &#x9;&#x9;            o caminho at&#xe9; ele."/>
+                        <Property name="text" type="java.lang.String" value="&#x9;&#xa;&#x9;                                     Informe o par&#xe2;metro separador de colunas no seu arquivo CSV e depois nos mostre  o caminho at&#xe9; ele."/>
                         <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
@@ -555,7 +561,7 @@
                         </Property>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="&#xa;&#xa;&#x9;&#x9;                   Nos mostre o caminho at&#xe9; sua planilha."/>
+                        <Property name="text" type="java.lang.String" value="&#xa;&#xa;&#x9;&#x9;                                                                  Escolha o caminho at&#xe9; sua planilha."/>
                         <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
@@ -596,17 +602,21 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="painelAbaConexBd_InfoConex" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btnAbaConexBd_Prox" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnAbaConexBd_Voltar" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="painelAbaConexBd_InfoConex" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="btnAbaConexBd_Prox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnAbaConexBd_Voltar" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
+                          <Component id="painelAbaConexBd_Conexao" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Component id="painelAbaConexBd_Conexao" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -616,12 +626,12 @@
                       <Component id="painelAbaConexBd_InfoConex" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="painelAbaConexBd_Conexao" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="194" max="32767" attributes="0"/>
+                      <EmptySpace pref="91" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAbaConexBd_Voltar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnAbaConexBd_Prox" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -640,38 +650,29 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblAbaConexBd_Endereco" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblAbaConexBd_Sgbd" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblAbaConexBd_Endereco" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblAbaConexBd_Sgbd" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cbxAbaConexBd_Sgbd" min="-2" pref="199" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtAbaConexBd_Usuario" max="32767" attributes="0"/>
-                                                  <Component id="txtAbaConexBd_Endereco" pref="199" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                      <Component id="cbxAbaConexBd_Sgbd" min="-2" pref="199" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtAbaConexBd_Usuario" max="32767" attributes="0"/>
+                                          <Component id="txtAbaConexBd_Endereco" pref="199" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="lblAbaConexBd_Usuario" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="418" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblAbaConexBd_Banco" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblABaConexBd_Porta" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblAbaConexBd_Senha" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnAbaConexBd_Conectar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lblAbaConexBd_Usuario" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblAbaConexBd_Banco" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblABaConexBd_Porta" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAbaConexBd_Senha" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="txtAbaConexBd_Banco" max="32767" attributes="0"/>
@@ -679,6 +680,11 @@
                               <Component id="txtPassAbaConexBd_Senha" pref="231" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="469" max="-2" attributes="0"/>
+                          <Component id="btnAbaConexBd_Conectar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -712,9 +718,9 @@
                                   <Component id="txtPassAbaConexBd_Senha" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                           <Component id="btnAbaConexBd_Conectar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -843,7 +849,7 @@
                         </Property>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="&#x9;         &#xa;&#x9;          Informe-nos as vari&#xe1;veis necess&#xe1;rias para se conectar com seu banco de dados.&#xa;&#x9;                   Lembre-se que ele pode ser acessado localmente ou remotamente.&#xa;&#x9;          Qualquer d&#xfa;vida clique no bot&#xe3;o ajuda ou acesse nosso site www.smallbi.com.br"/>
+                        <Property name="text" type="java.lang.String" value="&#x9;         &#xa;&#x9;                                                      Informe-nos as vari&#xe1;veis necess&#xe1;rias para se conectar com seu banco de dados. &#xa;                                         &#x9;                                  Lembre-se que ele pode ser acessado localmente ou remotamente.&#xa;&#x9;                                                      Qualquer d&#xfa;vida clique no bot&#xe3;o ajuda ou acesse nosso site www.smallbi.com.br"/>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                         <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
@@ -910,11 +916,11 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="painelAbaConsulBd_InfoConsul" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="painelAbaConsulBd_ConsultarBd" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="painelAbaConsulBd_ConsultarBd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnAbaConsulBd_Voltar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -935,8 +941,8 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="painelAbaConexBd_ConsulDefault" max="32767" attributes="0"/>
                               <Component id="painelAbaImportBd_ConsulPerson" max="32767" attributes="0"/>
+                              <Component id="painelAbaConexBd_ConsulDefault" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -945,11 +951,11 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="painelAbaConexBd_ConsulDefault" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="painelAbaImportBd_ConsulPerson" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="painelAbaImportBd_ConsulPerson" min="-2" pref="278" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -959,22 +965,23 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Consulta Default"/>
+                        <TitledBorder title="Consulta Padr&#xe3;o"/>
                       </Border>
                     </Property>
+                    <Property name="name" type="java.lang.String" value="" noResource="true"/>
                   </Properties>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="266" max="-2" attributes="0"/>
                               <Component id="txtAbaConexBd_Tabela" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cbxAbaConexBd_Tabela" min="-2" pref="179" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="cbxAbaConexBd_Tabela" min="-2" pref="179" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="btnAbaConexBd_ImportTabela" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="422" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1046,8 +1053,8 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane3" pref="277" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jScrollPane3" min="-2" pref="213" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnAbaImportBd_ExecConsulPerson" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1132,7 +1139,7 @@
                         </Property>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="&#xa;&#x9;&#x9;Voc&#xea; pode consultar seu banco de dados de duas formas:&#xa;           Na consulta default, voc&#xea; consultar&#xe1; qualquer tabela do seu banco e todos os dados dela ser&#xe3;o trazidos.&#xa;       Na consulta personalizada, voc&#xea; poder&#xe1; montar sua query sql como desejar seguindo os padr&#xf5;es de seu SGBD."/>
+                        <Property name="text" type="java.lang.String" value="&#xa;&#x9;&#x9;                                          Voc&#xea; pode consultar seu banco de dados de duas formas:&#xa;                                                         Na consulta default, voc&#xea; consultar&#xe1; qualquer tabela do seu banco e todos os dados dela ser&#xe3;o trazidos.&#xa;                                                  Na consulta personalizada, voc&#xea; poder&#xe1; montar sua query sql como desejar seguindo os padr&#xf5;es de seu SGBD."/>
                         <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
@@ -1151,6 +1158,7 @@
             <Component class="javax.swing.JButton" name="btnAbaConsulBd_Voltar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Voltar"/>
+                <Property name="alignmentX" type="float" value="0.5"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaConsulBd_VoltarActionPerformed"/>
@@ -1188,12 +1196,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="painelAbaTabPrev_AreaDaTabResult" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="painelAbaTabPrev_AreaDaTabResult" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="painelAbaTabPrev_TrabDados" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                       <Component id="btnAbaTabPrev_Voltar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1287,7 +1295,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Tabela Preview Resultado"/>
+                    <TitledBorder title="Valida&#xe7;&#xe3;o Tabela Importada"/>
                   </Border>
                 </Property>
               </Properties>
@@ -1298,28 +1306,31 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPaneAbaTabPrev_ScrollDaAreaTabPrev" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jScrollPaneAbaTabPrev_ScrollDaAreaTabPrev" pref="930" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="btnAbaTabPrev_SalvarTabela" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnAbaTabPrev_ValidarTipos" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPaneAbaTabPrev_ScrollDaAreaTabPrev" max="32767" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jScrollPaneAbaTabPrev_ScrollDaAreaTabPrev" min="-2" pref="263" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnAbaTabPrev_ValidarTipos" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnAbaTabPrev_SalvarTabela" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAbaTabPrev_ValidarTipos" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1334,13 +1345,13 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="painelAbaTabPrev_painelTabela" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="painelAbaTabPrev_painelTiposVariaveis" max="32767" attributes="0"/>
+                                      <Component id="painelAbaTabPrev_painelTabela" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace pref="31" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1348,9 +1359,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="painelAbaTabPrev_painelTiposVariaveis" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="painelAbaTabPrev_painelTabela" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="painelAbaTabPrev_painelTabela" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="81" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1363,7 +1374,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="painelAbaTabPrev_CbxTiposVariaveis" pref="880" max="32767" attributes="0"/>
+                                      <Component id="painelAbaTabPrev_CbxTiposVariaveis" pref="871" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1401,7 +1412,7 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="384" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="213" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
@@ -1435,6 +1446,7 @@
             <Component class="javax.swing.JButton" name="btnAbaTabPrev_Voltar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Voltar"/>
+                <Property name="alignmentX" type="float" value="0.5"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbaTabPrev_VoltarActionPerformed"/>
