@@ -162,11 +162,10 @@ public class UsuarioWebService {
 			jsonResponse.put("idCliente", ul.getClienteId());
 			jsonResponse.put("token", ul.getToken());
 			Usuario u = usuarioBusiness.getObjById(ul.getIdUsuarioLogado());
-			//jsonResponse.put("login", u.getLogin());
 			jsonResponse.put("nome", u.getPessoa().getNome());
 			jsonResponse.put("idPerfil", u.getPerfil().getIdPerfil());
-			//jsonResponse.put("message", )
 			jsonResponse.put("success", true);
+			jsonResponse.put("nomeCliente", u.getCliente().getNomeFantasia());
 			return jsonResponse.toString();
 		}else{
 			//return gson.toJson("Usuário ou senha inválidos!");
