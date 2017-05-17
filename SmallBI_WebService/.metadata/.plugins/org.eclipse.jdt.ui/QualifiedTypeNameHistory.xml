@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.jws.WebService"/>
 <fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
@@ -26,7 +25,6 @@
 <fullyQualifiedTypeName name="br.com.smallbi.dal.EnderecoDao"/>
 <fullyQualifiedTypeName name="br.com.smallbi.dal.TelefoneDao"/>
 <fullyQualifiedTypeName name="br.com.smallbi.business.UsuarioBusiness"/>
-<fullyQualifiedTypeName name="br.com.smallbi.entity.Usuario"/>
 <fullyQualifiedTypeName name="javax.persistence.Entity"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
@@ -56,8 +54,10 @@
 <fullyQualifiedTypeName name="br.com.smallbi.rest.EnderecoWebService"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Telefone"/>
 <fullyQualifiedTypeName name="br.com.smallbi.business.TelefoneBusiness"/>
-<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
 <fullyQualifiedTypeName name="com.sun.jersey.api.json.JSONJAXBContext.JSONNotation"/>
 <fullyQualifiedTypeName name="br.com.smallbi.util.ClassMapper"/>
 <fullyQualifiedTypeName name="br.com.smallbi.entity.Cliente"/>
+<fullyQualifiedTypeName name="br.com.smallbi.entity.Usuario"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
 </qualifiedTypeNameHistroy>

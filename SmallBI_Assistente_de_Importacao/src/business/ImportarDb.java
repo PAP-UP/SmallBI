@@ -255,6 +255,8 @@ public class ImportarDb {
                         return "Caractere";
                     case "varchar":
                         return "Texto";
+//                    case "datetime":
+//                        return
                     default:
                         return "Texto";                    
                 }//swtich mysql

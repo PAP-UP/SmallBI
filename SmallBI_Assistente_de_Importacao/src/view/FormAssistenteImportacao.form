@@ -141,10 +141,10 @@
                   <SubComponents>
                     <Component class="javax.swing.JEditorPane" name="jEditorPane2">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;  &lt;head&gt;&#xa;&#xa;  &lt;/head&gt;&#xa;  &lt;body&gt;&#xa;&lt;p style=&quot;text-align: justify;&quot;&gt;&lt;strong&gt;Bem-vindo ao Assistente de Importa&amp;ccedil;&amp;atilde;o e Modelagem do SmallBI - Intelig&amp;ecirc;ncia para Empresas!&lt;/strong&gt;&lt;/p&gt;&#xa;&lt;p style=&quot;text-align: justify;&quot;&gt;Esse assistente &amp;eacute; dividido em duas partes: &lt;em&gt;&lt;strong&gt;I - Coleta&lt;/strong&gt;&lt;/em&gt;, &lt;em&gt;&lt;strong&gt;II&amp;nbsp;- Modelagem&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;&#xa;&lt;ol style=&quot;list-style-type: upper-roman; text-align: justify;&quot;&gt;&#xa;&lt;li&gt;&lt;em&gt;&lt;strong&gt;Coleta&lt;/strong&gt;&lt;/em&gt;: Nesta primeira etapa lhe auxiliaremos a buscas a informa&amp;ccedil;&amp;otilde;es que ser&amp;atilde;o analisadas, a busca pode ser realizada atrav&amp;eacute;s de arquivos CSV (Arquivos Texto), arquivos XLSX (Microsoft Excel), tabelas de banco de dados ou consultas nestes mesmos bancos de dados.&#xa;&lt;ol&gt;&#xa;&lt;li&gt;Coletas de arquivos CSV ou XLSX: Quando realizada a coleta atrav&amp;eacute;s de arquivos CSV &amp;eacute; necess&amp;aacute;rio selecionar o caractere que separa as colunas, o mais comum &amp;eacute; separa-los por &quot;;&quot;. Ap&amp;oacute;s selecionado o arquivo &amp;eacute; necess&amp;aacute;rio escolher o formato de cada coluna do seu arquivo, por exemplo: Caso a coluna A contenha informa&amp;ccedil;&amp;otilde;es do tipo num&amp;eacute;rico inteiro, dever&amp;aacute; ser selecionado essa op&amp;ccedil;&amp;atilde;o na caixa de sele&amp;ccedil;&amp;atilde;o acima. Dentre as op&amp;ccedil;&amp;otilde;es da caixa de sele&amp;ccedil;&amp;atilde;o temos ainda (Inteiro, Real, V/F (Verdadeiro/Falso), Caractere (Apenas um caractere), Texto, Data (dd/MM/yyyy, dd-MM-yyyy, MM-dd-yyyy e yyyy-MM-dd) e N&amp;atilde;o Importar). Essa configura&amp;ccedil;&amp;atilde;o &amp;eacute; realizada na tabela de visualiza&amp;ccedil;&amp;atilde;o dos dados, ap&amp;oacute;s terminado o ajuste &amp;eacute; necess&amp;aacute;rio fazer a valida&amp;ccedil;&amp;atilde;o dos tipos de dados escolhidos, clicando no bot&amp;atilde;o correspondente e ap&amp;oacute;s isso clicar em salvar tabela, nomeando o nome da tabela e a chave que a ligar&amp;aacute; com as tabelas a serem importadas em seguida.&lt;/li&gt;&#xa;&lt;li&gt;Coleta de bancos de dados: Nesta op&amp;ccedil;&amp;atilde;o pode ser realizada a coleta de um banco de dados, os aceitos s&amp;atilde;o MySQL, PostgreSQL ou Microsoft SQL Server. Para fazer a coleta &amp;eacute; necess&amp;aacute;rio ter em m&amp;atilde;os os dados para acesso ao banco que s&amp;atilde;o: nome ou ip do servidor de banco de dados, nome do banco de dados, nome do usu&amp;aacute;rio, senha e porta de conex&amp;atilde;o. Ap&amp;oacute;s o preenchimento dessas informa&amp;ccedil;&amp;otilde;es e no caso da conex&amp;atilde;o realizada, pode-se escolher entre buscar uma tabela ou executar uma consulta. Ap&amp;oacute;s utilizar qualquer uma desta op&amp;ccedil;&amp;otilde;es voc&amp;ecirc; ser&amp;aacute; levado a tela de visualiza&amp;ccedil;&amp;atilde;o dos dados. Terminado a coleta &amp;eacute; necess&amp;aacute;rio fazer a valida&amp;ccedil;&amp;atilde;o dos tipos de dados escolhidos, clicando no bot&amp;atilde;o correspondente e ap&amp;oacute;s isso clicar em salvar tabela, nomeando o nome da tabela e a chave que a ligar&amp;aacute; com as tabelas a serem importadas em seguida.&lt;/li&gt;&#xa;&lt;/ol&gt;&#xa;&lt;/li&gt;&#xa;&lt;li&gt;&lt;em&gt;&lt;strong&gt;Modelagem&lt;/strong&gt;&lt;/em&gt;: Est&amp;aacute; segunda etapa &amp;eacute; subdivida em 3 fases: Nomea&amp;ccedil;&amp;atilde;o do Cubo, Especifica&amp;ccedil;&amp;atilde;o das Dimens&amp;otilde;es, Especifica&amp;ccedil;&amp;atilde;o das M&amp;eacute;tricas.&#xa;&lt;ol&gt;&#xa;&lt;li&gt;Nomea&amp;ccedil;&amp;atilde;o do Cubo: Aqui deve ser escolhido o nome que ser&amp;aacute; dado ao cubo (cole&amp;ccedil;&amp;atilde;o de informa&amp;ccedil;&amp;otilde;es que ser&amp;atilde;o analisadas), e defini&amp;ccedil;&amp;atilde;o da Tabela Fato (Tabela que cont&amp;eacute;m as m&amp;eacute;tricas - dados quantitativos).&lt;/li&gt;&#xa;&lt;li&gt;Especifica&amp;ccedil;&amp;atilde;o das Dimens&amp;otilde;es: As dimens&amp;otilde;es podem ser escolhidas para estarem nos eixos (X ou Y) conforme o cen&amp;aacute;rio a ser analisado. As dimens&amp;otilde;es cont&amp;ecirc;m dados qualitativos.&lt;/li&gt;&#xa;&lt;li&gt;Especifica&amp;ccedil;&amp;atilde;o da M&amp;eacute;tricas: S&amp;atilde;o os valores que estar&amp;atilde;o da &amp;aacute;rea do gr&amp;aacute;fico. As m&amp;eacute;tricas cont&amp;ecirc;m os dados quantitativos.&lt;br /&gt; Para mais informa&amp;ccedil;&amp;otilde;es estamos &amp;agrave; disposi&amp;ccedil;&amp;atilde;o.&lt;/li&gt;&#xa;&lt;/ol&gt;&#xa;&lt;/li&gt;&#xa;&lt;/ol&gt;&#xa;&lt;p&gt;Para mais informa&amp;ccedil;&amp;otilde;es estamos a disposi&amp;ccedil;&amp;atilde;o.&lt;/p&gt;&#xa;&lt;p&gt;&lt;em&gt;&lt;strong&gt;Equipe SmallBI&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xa;      &#xa;    &lt;/p&gt;&#xa;  &lt;/body&gt;&#xa;&lt;/html&gt;&#xa;"/>
                         <Property name="caretPosition" type="int" value="1"/>
-                        <Property name="focusable" type="boolean" value="false"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[32767, 32767]"/>
                         </Property>
@@ -256,7 +256,7 @@
                           <Component id="jScrollPane7" min="-2" pref="87" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnAbaTipoImport_ImportarArquivo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -279,6 +279,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JEditorPane" name="jEditorPane1">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="cc" red="cc" type="rgb"/>
                         </Property>
@@ -328,7 +329,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="87" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="99" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnAbaTipoImportImportarBanco" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -359,6 +360,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JEditorPane" name="jEditorPane3">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="cc" red="cc" type="rgb"/>
                         </Property>
@@ -474,7 +476,7 @@
                               <Component id="cbxAbaImportArq_ParamSeparador" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnAbaImportArq_ProcurarArquivoCsv" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -516,6 +518,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JEditorPane" name="jEditorPane4">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="cc" red="cc" type="rgb"/>
                         </Property>
@@ -565,7 +568,7 @@
                           <Component id="jScrollPane9" min="-2" pref="87" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnAbaImportArq_ProcurarPlanilhaXlsx" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -588,6 +591,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JEditorPane" name="jEditorPane5">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="cc" red="cc" type="rgb"/>
                         </Property>
@@ -748,7 +752,7 @@
                                   <Component id="txtPassAbaConexBd_Senha" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="31" max="32767" attributes="0"/>
+                          <EmptySpace pref="47" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -888,6 +892,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JEditorPane" name="jEditorPane6">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="cc" red="cc" type="rgb"/>
                         </Property>
@@ -971,7 +976,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="painelAbaConsulBd_InfoConsul" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="painelAbaConsulBd_ConsultarBd" pref="220" max="32767" attributes="0"/>
+                      <Component id="painelAbaConsulBd_ConsultarBd" pref="250" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnAbaConsulBd_Voltar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1209,6 +1214,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JEditorPane" name="jEditorPane7">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="cc" red="cc" type="rgb"/>
                         </Property>
@@ -1309,7 +1315,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="61" max="32767" attributes="0"/>
+                          <EmptySpace pref="67" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnAbaTabPrev_ImportMaisDados" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnAbaTabPrev_GerarCuboXml" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1360,6 +1366,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JEditorPane" name="jEditorPane8">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="fe" green="fe" red="fe" type="rgb"/>
                         </Property>

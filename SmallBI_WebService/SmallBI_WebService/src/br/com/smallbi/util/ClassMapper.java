@@ -89,6 +89,9 @@ public class ClassMapper {
 					return "O campo Perfil é obrigatório!";
 				
 				return ("OK");
+				
+			/*case "br.com.smallbi.entity.Cubo":*/
+				
 			default:
 				break;
 		}		
