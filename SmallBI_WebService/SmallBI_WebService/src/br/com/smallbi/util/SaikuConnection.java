@@ -73,10 +73,10 @@ public class SaikuConnection {
 				+ "username=postgres\n"	
 				+ "password=postgres\n"
 				+ "security.enabled=true\n"
-				+ "security.type=lookup\n"
-				+ "security.mapping="
-				+ "ROLE_USER=No Access;"
-				+ "role_id_" + idCliente + "=access_id_" + idCliente;
+				+ "security.type=lookup\n";
+				//+ "security.mapping="
+				//+ "ROLE_USER=No Access;"
+				//+ "role_id_" + idCliente + "=access_id_" + idCliente;
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("connectionname", nomeSchema);
