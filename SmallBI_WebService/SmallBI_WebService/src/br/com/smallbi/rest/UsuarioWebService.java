@@ -165,7 +165,7 @@ public class UsuarioWebService {
 			jsonResponse.put("nome", u.getPessoa().getNome());
 			jsonResponse.put("idPerfil", u.getPerfil().getIdPerfil());
 			jsonResponse.put("success", true);
-			jsonResponse.put("nomeCliente", u.getCliente().getNomeFantasia());
+			jsonResponse.put("nomeCliente", u.getPessoa().getCliente().getNomeFantasia());
 			return jsonResponse.toString();
 		}else{
 			//return gson.toJson("Usuário ou senha inválidos!");
