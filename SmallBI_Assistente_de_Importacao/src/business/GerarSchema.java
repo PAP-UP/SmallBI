@@ -156,7 +156,7 @@ public class GerarSchema {
     private String getFormat(String formato){
         switch(formato){
             case "Padrão":
-                return "Standart";
+                return "Standard";
             case "#,###.00":
                     return "#,###.00";
         }
