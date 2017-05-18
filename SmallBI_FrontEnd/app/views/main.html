@@ -3,10 +3,10 @@
     <div class="smartphone-menu-trigger"></div>
     <div class="avatar">
       <img src="images/logo.png" />
-      <strong>Nome Empresa</strong>
+      <strong>{{vm.nomeCliente}}</strong>
     </div>
     <ul class="panel-group" id="accordion">
-      <li class="fa fa-bank" ng-if="vm.permissao == 2">
+      <li class="fa fa-bank">
         <a  ui-sref="cliente.listar" data-toggle="collapse" data-target="#dadosCliente" data-parent="#accordion"><span>Dados do Cliente</span></a>
         <!-- <ul id="dadosCliente" class="collapse ulCollapse">
           <li><a ui-sref="cliente.listar"><span>Listar</span></a></li>

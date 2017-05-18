@@ -9,6 +9,8 @@
     var vm = this;
 
     var cookie = $cookieStore.get('cookie');
+    var havePermission = cookie.idPerfil;
+    var idCliente = cookie.idCliente;
 
     var obj = {
       'idCliente' : cookie.idCliente
@@ -20,11 +22,19 @@
     });
 
     function listaUsuarios() {
-      usuarioResource.listaUsuario(obj).then(function (result) {
-        vm.listaUsuarios = result.data;
-      }, function (resolve) {
-        console.log(resolve);
-      });
+      if(havePermission == 1) {
+        usuarioResource.listaUsuarioAll().then(function (result) {
+          vm.listaUsuarios = result.data;
+        }, function (resolve) {
+          console.log(resolve);
+        });
+      }else {
+        usuarioResource.listaUsuario(obj).then(function (result) {
+          vm.listaUsuarios = result.data;
+        }, function (resolve) {
+          console.log(resolve);
+        });
+      }
     }
 
     function excluirUsuario(id) {

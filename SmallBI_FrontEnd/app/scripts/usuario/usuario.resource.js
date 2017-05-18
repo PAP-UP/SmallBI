@@ -7,6 +7,7 @@
 	function usuarioResource(Service) {
 
 		var service = {
+      listaUsuarioAll: listaUsuarioAll,
 			listaUsuario: listaUsuario,
 			insereUsuario: insereUsuario,
       alteraUsuario: alteraUsuario,
@@ -15,6 +16,11 @@
 		};
 
 		return service;
+
+    function listaUsuarioAll() {
+      var url = 'usuario/listar';
+      return Service.serviceGet(url);
+    }
 
 		function listaUsuario(param) {
 			var url = 'usuario/listarByIdCliente';

@@ -38,8 +38,7 @@
 
     function deletePagamento(param) {
       var url = 'formaPagamento/deletar/';
-      return Service.serviceDelete(param, url);
+      return Service.serviceDelete(url + param);
     }
-
   }
 })();

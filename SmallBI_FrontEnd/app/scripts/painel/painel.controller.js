@@ -11,6 +11,7 @@
     var cookie = $cookieStore.get('cookie');
     vm.nomeUsuarioLogado = cookie.nome;
     vm.permissao = cookie.idPerfil;
+    vm.nomeCliente = cookie.nomeCliente;
 
     angular.extend(vm, {
       logout : logout
