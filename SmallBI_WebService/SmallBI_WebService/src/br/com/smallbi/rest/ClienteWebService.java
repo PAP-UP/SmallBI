@@ -137,7 +137,11 @@ public class ClienteWebService {
 		hash.put("cnpj", c.getCnpj());
 		hash.put("ie", c.getIe());
 		hash.put("idRamoAtividade", c.getRamoAtividade().getIdRamoAtividade());
-		hash.put("tamanhoTotal", c.getTamanhoTotal());
+		
+		//Converte para MB
+		int mb = c.getTamanhoTotal() / 1024;
+		hash.put("tamanhoTotal", mb);
+		
 		hash.put("idFormaPagamento", c.getFormaPagamento().getIdFormaPagamento());
 		hash.put("idPlano", c.getPlano().getIdPlano());
 		hash.put("nomecliente", c.getNomeFantasia());
