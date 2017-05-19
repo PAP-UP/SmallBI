@@ -4,9 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.HttpClient;
@@ -38,10 +35,12 @@ public class SaikuConnection {
 			jsonObject.put("username", login);
 			jsonObject.put("email", login);
 			jsonObject.put("password", senha);
-			List<String> roles = new ArrayList<>();
+			
+			//Removido permissoes de cubo
+			//List<String> roles = new ArrayList<>();
 			//roles.add(login);
-			roles.add("role_id_" + idCliente);
-			jsonObject.put("roles", roles);
+			//roles.add("role_id_" + idCliente);
+			//jsonObject.put("roles", roles);
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}		
@@ -74,10 +73,10 @@ public class SaikuConnection {
 				+ "username=postgres\n"	
 				+ "password=postgres\n"
 				+ "security.enabled=true\n"
-				+ "security.type=lookup\n"
-				+ "security.mapping="
-				+ "ROLE_USER=No Access;"
-				+ "role_id_" + idCliente + "=access_id_" + idCliente;
+				+ "security.type=lookup\n";
+				//+ "security.mapping="
+				//+ "ROLE_USER=No Access;"
+				//+ "role_id_" + idCliente + "=access_id_" + idCliente;
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("connectionname", nomeSchema);

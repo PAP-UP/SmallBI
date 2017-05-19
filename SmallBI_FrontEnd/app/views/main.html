@@ -3,16 +3,23 @@
     <div class="smartphone-menu-trigger"></div>
     <div class="avatar">
       <img src="images/logo.png" />
-      <strong>Nome Empresa</strong>
+      <strong>{{vm.nomeCliente}}</strong>
     </div>
     <ul class="panel-group" id="accordion">
       <li class="fa fa-bank">
+<<<<<<< HEAD
         <div ng-if="vm.permissao == 1">
           <a  ui-sref="cliente.listar" data-toggle="collapse" data-target="#dadosCliente" data-parent="#accordion"><span>Dados do Cliente</span></a>
         </div>
         <div ng-if="vm.permissao == 2">
           <a  ui-sref="cliente.editar" data-toggle="collapse" data-target="#dadosCliente" data-parent="#accordion"><span>Dados do Cliente</span></a>
         </div>
+=======
+        <a  ui-sref="cliente.listar" data-toggle="collapse" data-target="#dadosCliente" data-parent="#accordion"><span>Dados do Cliente</span></a>
+        <!-- <ul id="dadosCliente" class="collapse ulCollapse">
+          <li><a ui-sref="cliente.listar"><span>Listar</span></a></li>
+        </ul> -->
+>>>>>>> 04cd5b189b1155662d1bc1c2675da9091092d797
       </li>
       <li class="fa fa-users">
         <a ui-sref="usuario.listar" data-toggle="collapse" data-target="#dadosUsuario" data-parent="#accordion"><span>Dados do Usuário</span></a>
@@ -35,6 +42,11 @@
       <li class="fa fa-cubes"><a ui-sref="cubo.listar"><span>Cubos</span></a></li>
       <li class="fa fa-download"><a href="http://backend.smallbi.com.br:18080/SmallBI_WebService/SmallBIAssistenteImportacao/SmallBIAssistenteImportacao.jnlp"><span>Download Assistente</span></a></li>
     </ul>
+    <p class="tituloConsumo" ng-if="vm.permissao != 1">Consumo Atual:</p>
+    <div class="areaConsumo"  ng-if="vm.permissao != 1">
+      <i class="fa fa-save"></i>
+      <span>14mb</span>
+    </div>
   </div>
   <!-- HOME PAINEL -->
   <section id="home" class="text-center active" ui-view=""></section>

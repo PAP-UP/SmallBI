@@ -20,7 +20,7 @@
       var url = 'funcao/listar';
       return Service.serviceGet(url);
     }
-	
+
 	function insereFuncao(dataParam) {
       var url = 'funcao/adicionar';
       return Service.servicePost(dataParam, url);
@@ -30,15 +30,15 @@
 		  var url = 'funcao/alterar';
 		  return Service.servicePost(dataParam, url);
 	}
-	
+
 	function getFuncaoById(param) {
       var url = 'funcao/getById/';
       return Service.serviceGetById(param, url);
 	}
-	
+
 	function deleteFuncao(param) {
       var url = 'funcao/deletar/';
-      return Service.serviceDelete(param, url);
+      return Service.serviceDelete(url + param);
 	}
   }
 })();

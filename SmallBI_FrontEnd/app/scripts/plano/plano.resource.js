@@ -20,7 +20,7 @@
       var url = 'plano/listar';
       return Service.serviceGet(url);
     }
-	
+
 	function inserePlano(dataParam) {
       var url = 'plano/adicionar';
       return Service.servicePost(dataParam, url);
@@ -30,15 +30,15 @@
 		  var url = 'plano/alterar';
 		  return Service.servicePost(dataParam, url);
 	}
-	
+
 	function getPlanoById(param) {
       var url = 'plano/getById/';
       return Service.serviceGetById(param, url);
 	}
-	
+
 	function deletePlano(param) {
       var url = 'plano/deletar/';
-      return Service.serviceDelete(param, url);
+      return Service.serviceDelete(url + param);
 	}
   }
 })();

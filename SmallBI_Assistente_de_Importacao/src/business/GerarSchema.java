@@ -33,7 +33,7 @@ public class GerarSchema {
         schemaXml += setCubeName(schema.getNome());
         schemaXml += setSchemaDimensions(schema.getDimensoes());
         schemaXml += setSchemaMeasures(schema.getGrupoMetrica(), schema.getDimensoes());
-        schemaXml += setRoles(FormLogin.idCliente);
+        //schemaXml += setRoles(FormLogin.idCliente);
         
         nomeSchema = schema.getNome();
         //salvarSchema(schema.getNome(), schemaXml);
@@ -118,7 +118,7 @@ public class GerarSchema {
         
         
         
-        //schema += "</Schema>";//Quebrar no </Schema> para adicionar o ROLE na API;
+        schema += "</Schema>";//Quebrar no </Schema> para adicionar o ROLE na API;
         return schema;
     }
     
@@ -156,7 +156,7 @@ public class GerarSchema {
     private String getFormat(String formato){
         switch(formato){
             case "Padrão":
-                return "Standart";
+                return "Standard";
             case "#,###.00":
                     return "#,###.00";
         }

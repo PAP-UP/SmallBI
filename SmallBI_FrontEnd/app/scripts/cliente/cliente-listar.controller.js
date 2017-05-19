@@ -4,9 +4,14 @@
   angular.module('SmallBIApp')
     .controller('clienteListarController', clienteListarController);
 
-  function clienteListarController(clienteResource, $state, SweetAlert) {
+  function clienteListarController(clienteResource, $state, SweetAlert, $cookieStore) {
 
     var vm = this;
+
+    var cookie = $cookieStore.get('cookie');
+
+    var havePermission = cookie.idPerfil;
+    var idCliente = cookie.idCliente;
 
     angular.extend(vm, {
       listaClientes: listaClientes,
@@ -14,9 +19,16 @@
     });
 
     function listaClientes() {
-      clienteResource.listaCliente().then(function (result) {
-        vm.listaClientes = result.data;
-      });
+      if(havePermission == 1) {
+        clienteResource.listaCliente().then(function (result) {
+          vm.listaClientes = result.data;
+        });
+      }else {
+        clienteResource.getClienteById(idCliente).then(function (result) {
+          vm.listaClientes = result.data;
+        });
+      }
+
     }
 
     function excluirCliente(id) {

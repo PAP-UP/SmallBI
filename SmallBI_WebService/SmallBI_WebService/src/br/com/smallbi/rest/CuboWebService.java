@@ -6,7 +6,6 @@ import java.util.Hashtable;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -87,12 +86,26 @@ public class CuboWebService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String analisarCubo(String json) throws JSONException{
 		Cubo cubo = new Cubo();
-		JSONObject jsonObject = new JSONObject(json);
+		JSONObject jsonObject;
+		try{
+			jsonObject = new JSONObject(json);
+		}catch(Exception e){
+			System.out.println("O objeto json com o atributo idCubo deve ser informado! Verifique "
+					+ "se o objeto está sendo criado corretamente!");
+			
+			return gson.toJson("O objeto json com o atributo idCubo deve ser informado! Verifique "
+					+ "se o objeto está sendo criado corretamente!");
+		}
+		
 		if(!jsonObject.isNull("idCubo")){
 			cubo = cuboBusiness.getObjById(jsonObject.getInt("idCubo"));
-		}else if(!jsonObject.isNull("nomeCubo")){
-			cubo = cuboBusiness.getCuboByName(jsonObject.getString("nomeCubo"));
-		}			
+		}else{
+			System.out.println("O objeto json com o atributo idCubo deve ser informado! Verifique "
+					+ "se o objeto está sendo criado corretamente!");
+			
+			return gson.toJson("O objeto json com o atributo idCubo deve ser informado! Verifique "
+					+ "se o objeto está sendo criado corretamente!");
+		}
 		
 		if(cubo != null){
 			boolean mdxSalvo = SaikuConnection.saveSchemaInSaikuServer(cubo.getCliente().getIdCliente(),
@@ -128,7 +141,7 @@ public class CuboWebService {
 		return gson.toJson(cuboBusiness.update(cubo));
 	}
 	
-	@DELETE
+	@GET
 	@Path("/deletar/{idCubo}")
 	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

@@ -34,8 +34,8 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
     public static List<TabelaImportada> tabelasImportadas = new ArrayList<>();
     
     public static TabelaImportada tabelaFato = new TabelaImportada();
-    String urlApiAddCubo = "http://localhost:8081/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
-    //String urlApiAddCubo = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+    //String urlApiAddCubo = "http://localhost:8081/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
+    String urlApiAddCubo = "http://backend.smallbi.com.br:18080/SmallBI_WebService/rest/cubo/addCubeFromAssistent";
     
     public FormAssistenteModelagem() {
         initComponents();
@@ -51,6 +51,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
         
         cbxChaveDimensao.setVisible(false);
         lblChaveDimensao.setVisible(false);
+        btnAbaModelDim_Voltar.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")

@@ -111,21 +111,16 @@ public class GerarScriptSql {
                             sql += "'" + tbl.getValueAt(linha, coluna).toString() + "'";
                             break;
                         case "DATE":
-                            
-                            //O postgres nao aceita o formato dd/MM/yyyy
                             //Obtem data da tabela
                             String dataFromTab = tbl.getValueAt(linha, coluna).toString();
                             
-                            //Transforma em tipo Date
-                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                            Date dt = sdf.parse(dataFromTab);
-                            //System.out.println(dt);
-                            
+                            //Transforma em tipo Date e valida todos os formatos
+                            Date dt = convertStringToDate(dataFromTab);
+
                             //Formata para MM-dd-yyyy
-                            SimpleDateFormat sdfFinal = new SimpleDateFormat("MM-dd-yyyy");
+                            SimpleDateFormat sdfFinal = new SimpleDateFormat("yyyy-MM-dd");
                             String dtFinal = sdfFinal.format(dt);
-                            //System.out.println(dtFinal);
-                            
+
                             sql += "'" + dtFinal + "'";
                             //sql += "'" + tbl.getValueAt(linha, coluna).toString() + "'";
                             break;
@@ -149,6 +144,48 @@ public class GerarScriptSql {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
+        return null;
+    }
+    
+    /**
+     * Converte data da celula para variavel do tipo Date
+     * @param dataFromTab
+     * @return 
+     */
+    private Date convertStringToDate(String dataFromTab){
+        Date dt = new Date();
+        SimpleDateFormat sdf;
+        try{
+            sdf = new SimpleDateFormat("dd/MM/yyyy");
+            dt = sdf.parse(dataFromTab); 
+            return dt;
+        }catch(Exception e){
+            System.out.println("Erro ao converter tipo date para dd/MM/yyyy");
+        }
+
+//        try{
+//            sdf = new SimpleDateFormat("MM-dd-yyyy");
+//            dt = sdf.parse(dataFromTab);
+//            return dt;
+//        }catch(Exception e){
+//            System.out.println("Erro ao converter tipo date para MM-dd-yyyy");
+//        }
+
+        try{
+            sdf = new SimpleDateFormat("yyyy-MM-dd");
+            dt = sdf.parse(dataFromTab);
+            return dt;
+        }catch(Exception e){
+            System.out.println("Erro ao converter tipo date para yyyy-MM-dd");
+        }
+
+//        try{
+//            sdf = new SimpleDateFormat("dd-MM-yyyy");
+//            dt = sdf.parse(dataFromTab);
+//            return dt;
+//        }catch(Exception e){
+//            System.out.println("Erro ao converter tipo date para dd-MM-yyyy");
+//        }         
         return null;
     }
 

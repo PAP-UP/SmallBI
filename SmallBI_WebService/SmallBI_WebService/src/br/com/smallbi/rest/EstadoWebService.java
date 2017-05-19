@@ -6,7 +6,6 @@ import java.util.Hashtable;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -60,7 +59,7 @@ public class EstadoWebService {
 		return gson.toJson(estadoBusiness.update(estado));
 	}
 	
-	@DELETE
+	@GET
 	@Path("/deletar/{idEstado}")
 	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

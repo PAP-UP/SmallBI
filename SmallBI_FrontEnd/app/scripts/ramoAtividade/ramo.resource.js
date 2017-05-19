@@ -38,7 +38,7 @@
 
     function deleteRamo(param) {
       var url = 'ramoAtividade/deletar/';
-      return Service.serviceDelete(param, url);
+      return Service.serviceDelete(url + param);
     }
   }
 })();
