@@ -819,8 +819,33 @@ p {
 }
 .pg-painel .menu .avatar {
   background: rgba(0, 0, 0, 0.1);
-  padding: 2em 0.5em;
+  padding: 1.5em 0.5em;
   text-align: center;
+}
+.tituloConsumo {
+	margin-bottom: -40px;
+	color: #fff;
+	font-style: italic;
+	font-size: 17px;
+	text-align: center;
+}
+.areaConsumo {
+	width: 150px;
+    height: 150px;
+    border: 10px solid #7AE2DE;
+    border-radius: 100%;
+    margin: 30px auto auto;
+    text-align: center;
+}
+.areaConsumo i {
+	line-height: 113px;
+    font-size: 40px;
+    display: block;
+}
+.areaConsumo span {
+	margin-top: -33px;
+    display: block;
+    font-size: 16px;
 }
 .pg-painel .menu .avatar img {
   width: 100px;
