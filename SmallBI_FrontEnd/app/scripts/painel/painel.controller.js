@@ -13,6 +13,8 @@
     vm.permissao = cookie.idPerfil;
     vm.nomeCliente = cookie.nomeCliente;
 
+    vm.consumoTotal = cookie.tamanhoTotal;
+
     angular.extend(vm, {
       logout : logout
     });

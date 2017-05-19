@@ -21,7 +21,7 @@
     function excluirPlano(id) {
       planoResource.deletePlano(id).then(
         function (result) {
-          console.log(result);
+          SweetAlert.swal({title: result.data, timer: 2000, type: "success", showConfirmButton: false});
           $state.reload();
         }, function (resolve) {
           SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
