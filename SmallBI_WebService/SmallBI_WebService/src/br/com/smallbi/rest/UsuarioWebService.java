@@ -166,7 +166,9 @@ public class UsuarioWebService {
 			jsonResponse.put("idPerfil", u.getPerfil().getIdPerfil());
 			jsonResponse.put("success", true);
 			jsonResponse.put("nomeCliente", u.getPessoa().getCliente().getNomeFantasia());
-			jsonResponse.put("tamanhoTotal", u.getPessoa().getCliente().getTamanhoTotal());
+			//Converte para MB
+			int mb = (u.getPessoa().getCliente().getTamanhoTotal() / 1024);
+			jsonResponse.put("tamanhoTotal", mb);
 			return jsonResponse.toString();
 		}else{
 			//return gson.toJson("Usuário ou senha inválidos!");
