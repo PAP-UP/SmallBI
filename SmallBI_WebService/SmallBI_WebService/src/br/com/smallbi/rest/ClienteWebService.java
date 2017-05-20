@@ -141,7 +141,6 @@ public class ClienteWebService {
 		
 		//Converte para MB
 		int mb = (c.getTamanhoTotal() / 1024);
-		
 		hash.put("tamanhoTotal", mb);
 		
 		hash.put("idFormaPagamento", c.getFormaPagamento().getIdFormaPagamento());
@@ -259,7 +258,9 @@ public class ClienteWebService {
 		hashCliente.put("cnpj", c.getCnpj());
 		hashCliente.put("ie", c.getIe());
 		hashCliente.put("ramoAtividade", c.getRamoAtividade().getRamoAtividade());
-		hashCliente.put("tamanhoTotal", c.getTamanhoTotal());
+		//Converte para MB
+		int mb = (c.getTamanhoTotal() / 1024);
+		hashCliente.put("tamanhoTotal", mb);
 		hashCliente.put("formaPagamento", c.getFormaPagamento().getFormaPagamento());
 		hashCliente.put("plano", c.getPlano().getNomePlano());
 		
