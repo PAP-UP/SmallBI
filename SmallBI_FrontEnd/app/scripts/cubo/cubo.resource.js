@@ -8,7 +8,8 @@
 
     var service = {
       listaCubo: listaCubo,
-      analisarCubo: analisarCubo
+      analisarCubo: analisarCubo,
+      listaCuboAll: listaCuboAll
     };
 
     return service;
@@ -20,6 +21,11 @@
     function analisarCubo(id) {
       var url = 'cubo/analisar';
       return Service.servicePost(id, url);
+    }
+
+    function listaCuboAll() {
+      var url = 'cubo/listar';
+      return Service.serviceGet(url);
     }
   }
 })();

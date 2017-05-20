@@ -18,14 +18,25 @@
       'idCliente' : cookie.idCliente
     };
 
+    var permissao = cookie.idPerfil;
+
 
     function init() {
-      cuboResource.listaCubo(obj).then(
-        function (result) {
-        vm.listaCubos = result.data;
-      }, function (error) {
+      if(permissao == 1) {
+        cuboResource.listaCuboAll().then(
+          function (result) {
+            vm.listaCubos = result.data;
+          }, function (error) {
 
-        });
+          });
+      }else {
+        cuboResource.listaCubo(obj).then(
+          function (result) {
+            vm.listaCubos = result.data;
+          }, function (error) {
+
+          });
+      }
     }
 
     function analisarCubo(id) {
