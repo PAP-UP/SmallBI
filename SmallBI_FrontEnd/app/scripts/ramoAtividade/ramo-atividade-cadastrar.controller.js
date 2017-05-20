@@ -21,7 +21,7 @@
       vm.dadosRamo.usuarioId = cookie.idPerfil;
       ramoResource.insereRamo(vm.dadosRamo).then(function (result) {
         SweetAlert.swal({title: result.data, timer: 2000, type: "success", showConfirmButton: false});
-        $state.transitionTo('ramo.listar');
+        $state.transitionTo('ramo-atividade.listar');
       },function (resolve) {
         SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
       });
