@@ -137,7 +137,7 @@ public class ClienteWebService {
 		hash.put("cnpj", c.getCnpj());
 		hash.put("ie", c.getIe());
 		hash.put("idRamoAtividade", c.getRamoAtividade().getIdRamoAtividade());
-		//hash.put("tamanhoTotal", c.getTamanhoTotal());
+		hash.put("tamanhoTotal", c.getTamanhoTotal());
 		hash.put("idFormaPagamento", c.getFormaPagamento().getIdFormaPagamento());
 		hash.put("idPlano", c.getPlano().getIdPlano());
 		hash.put("nomecliente", c.getNomeFantasia());
@@ -253,7 +253,7 @@ public class ClienteWebService {
 		hashCliente.put("cnpj", c.getCnpj());
 		hashCliente.put("ie", c.getIe());
 		hashCliente.put("ramoAtividade", c.getRamoAtividade().getRamoAtividade());
-		hashCliente.put("tamamhoTotal", c.getTamanhoTotal());
+		hashCliente.put("tamanhoTotal", c.getTamanhoTotal());
 		hashCliente.put("formaPagamento", c.getFormaPagamento().getFormaPagamento());
 		hashCliente.put("plano", c.getPlano().getNomePlano());
 		
