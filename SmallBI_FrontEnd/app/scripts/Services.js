@@ -35,8 +35,8 @@
       return $http.get(baseUrl + url + param);
     }
 
-    function serviceDelete(param, url) {
-      return $http.delete(baseUrl + url + param);
+    function serviceDelete(url) {
+      return $http.get(baseUrl + url);
     }
   }
 })();

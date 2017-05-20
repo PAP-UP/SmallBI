@@ -38,7 +38,7 @@
 
     function deletePerfil(param) {
       var url = 'perfil/deletar/';
-      return Service.serviceDelete(param, url);
+      return Service.serviceDelete(url + param);
     }
   }
 })();
