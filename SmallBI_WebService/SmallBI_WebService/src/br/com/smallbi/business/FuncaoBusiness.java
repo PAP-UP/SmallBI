@@ -88,7 +88,7 @@ public class FuncaoBusiness implements InterfaceBusiness<Funcao>{
 			return "Nenhum resultado foi encontrado na tabela Função com o id {"+id+"}";
 		}
 		funcaoDao.delete(funcao);
-		return "Funcao deletada com sucesso!";
+		return "Função deletada com sucesso!";
 	}
 
 	@Override
