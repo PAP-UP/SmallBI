@@ -26,7 +26,9 @@
         vm.dadosCliente.usuarioId = 1,
         vm.dadosCliente.idPerfil = 2
 
-      clienteResource.insereCliente(vm.dadosCliente).then(function (result) {
+      clienteResource.insereCliente(vm.dadosCliente).then(
+        function (result) {
+          $('#modalCadastrar').hide();
         SweetAlert.swal({title: result.data.message, timer: 2000, type: "success", showConfirmButton: false});
       },function (resolve) {
         SweetAlert.swal({title: resolve.data, timer: 2000, type: "error", showConfirmButton: false});
