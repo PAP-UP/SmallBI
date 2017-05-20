@@ -1,6 +1,7 @@
 package br.com.smallbi.rest;
 
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -139,7 +140,8 @@ public class ClienteWebService {
 		hash.put("idRamoAtividade", c.getRamoAtividade().getIdRamoAtividade());
 		
 		//Converte para MB
-		int mb = c.getTamanhoTotal() / 1024;
+		int mb = (c.getTamanhoTotal() / 1024);
+		
 		hash.put("tamanhoTotal", mb);
 		
 		hash.put("idFormaPagamento", c.getFormaPagamento().getIdFormaPagamento());
