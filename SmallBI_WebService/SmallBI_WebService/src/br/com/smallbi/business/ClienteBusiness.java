@@ -106,7 +106,7 @@ public class ClienteBusiness{
 			msg = "Falha ao criar banco de dados do cliente!";
 		}
 		
-		Integer tamBd = ConexaoDao.getTamanhoBancoCliente(t.getIdCliente());
+		float tamBd = ConexaoDao.getTamanhoBancoCliente(t.getIdCliente());
 		if(tamBd <= 0){
 			t.setNomeFantasia(t.getNomeFantasia() + "Erro Tam Bd");
 			clienteDao.update(t);
@@ -210,8 +210,8 @@ public class ClienteBusiness{
 		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
-		if(t.getTamanhoTotal() == null)
-			t.setTamanhoTotal(0);
+		/*if(t.getTamanhoTotal() == null)
+			t.setTamanhoTotal(0);*/
 		
 		/*Integer tamBd = ConexaoDao.getTamanhoBancoCliente(t.getIdCliente());
 		if(tamBd <= 0){

@@ -99,7 +99,7 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 					cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
 					cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
 					
-					Integer tamCubo = ConexaoDao.getTamanhoCubo(idCliente, tabelasCubo);
+					float tamCubo = ConexaoDao.getTamanhoCubo(idCliente, tabelasCubo);
 					cubo.setTamanho(tamCubo);
 					cubo.setUsuarioId(usuario.getIdUsuario());
 					
@@ -169,9 +169,9 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			return "A variável 'tabelaFato' deve ser informada!";
 		}
 		
-		if(t.getTamanho() == null){
+		/*if(t.getTamanho() == null){
 			return "A variável 'tamanho' deve ser informada!";
-		}
+		}*/
 		
 		if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";

@@ -69,21 +69,22 @@ public class ConexaoDao {
 		return true;
 	}
 	
-	public static Integer getTamanhoBancoCliente(Integer idCliente){
+	/**
+	 * Obtem o tamanho do banco de dados do cliente
+	 * @param idCliente
+	 * @return
+	 */
+	public static float getTamanhoBancoCliente(Integer idCliente){
 		String banco = "id_" + idCliente;
 		Connection connection = getConexao(banco);
 		Statement statement;
 		try {
 			statement = connection.createStatement();
-			String query = "SELECT pg_size_pretty(pg_database_size('" + banco + "'));";
+			String query = "SELECT pg_database_size('" + banco + "');";			
 			ResultSet resultSet = statement.executeQuery(query);
 			while(resultSet.next()){
-				String strTamBd = (String) resultSet.getObject("pg_size_pretty");
-				strTamBd = strTamBd.replace("MB", "");
-				strTamBd = strTamBd.replace("kB", "");
-				strTamBd = strTamBd.replace("bytes", "");
-				strTamBd = strTamBd.replace(" ", "");
-				return Integer.parseInt(strTamBd);
+				float fTamBd = resultSet.getFloat("pg_database_size");
+				return fTamBd / 1000 / 1000;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -92,28 +93,30 @@ public class ConexaoDao {
 		return 0;
 	}
 	
-	public static Integer getTamanhoCubo(Integer idCliente, List<String> tabelasCubo){
+	/**
+	 * Obtem o tamanho do cubo conforme as tabelas que ele usa
+	 * @param idCliente
+	 * @param tabelasCubo
+	 * @return
+	 */
+	public static float getTamanhoCubo(Integer idCliente, List<String> tabelasCubo){
 		String banco = "id_" + idCliente;
 		Connection connection = getConexao(banco);
 		
-		Integer tamCubo = 0;
+		float tamCubo = 0;
 		try{
 			Statement statement = connection.createStatement();
 			for(String tab : tabelasCubo){
-				//SELECT pg_size_pretty(pg_relation_size('table_name')); 
-				String query = "SELECT pg_size_pretty(pg_relation_size('" + tab + "'));";
+				
+				//String query = "SELECT pg_size_pretty(pg_relation_size('" + tab + "'));";
+				String query = "SELECT pg_relation_size('" + tab + "');";
 				ResultSet resultSet = statement.executeQuery(query);
-				while(resultSet.next()){
-//					tamCubo += (Integer) resultSet.getObject("pg_size_pretty");		
-					String sTamCubo = (String) resultSet.getObject("pg_size_pretty");
-					sTamCubo = sTamCubo.replace("MB", "");
-					sTamCubo = sTamCubo.replace("kB", "");
-					sTamCubo = sTamCubo.replace("bytes", "");
-					sTamCubo = sTamCubo.replace(" ", "");
-					tamCubo += Integer.parseInt(sTamCubo);
+				while(resultSet.next()){					
+					float fTamCubo = resultSet.getFloat("pg_relation_size");
+					tamCubo += fTamCubo;
 				}
 			}
-			return tamCubo;
+			return tamCubo / 1000 / 1000;
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
