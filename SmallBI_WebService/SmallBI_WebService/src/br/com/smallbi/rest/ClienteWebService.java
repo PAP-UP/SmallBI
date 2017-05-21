@@ -1,7 +1,6 @@
 package br.com.smallbi.rest;
 
 import java.lang.reflect.Type;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;

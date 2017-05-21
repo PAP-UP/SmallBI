@@ -28,17 +28,14 @@ public class ClienteBusiness{
 		
 		String msg = new String();
 		if(t == null){
-			/*return "O objeto não pode ser null!";*/
 			msg = "O objeto não pode ser null!";
 		}
 		
 		if(t.getIdCliente() != null){
-			/*return "A variavel ID não pode ser informada na criação de um novo objeto!";*/
 			msg = "A variavel ID não pode ser informada na criação de um novo objeto!";
 		}
 		
 		if(t.getCnpj().equals(null) || t.getCnpj().equals("")){
-			/*return "A variável 'cnpj' deve ser informada!";*/
 			msg = "A variável 'cnpj' deve ser informada!";
 		}else{
 			//validar cnpj
@@ -48,25 +45,20 @@ public class ClienteBusiness{
 			if(t.getFormaPagamento().getIdFormaPagamento() != null){
 				FormaPagamento formaPagamento = formaPagamentoDao.getObjById(t.getFormaPagamento().getIdFormaPagamento());
 				if(formaPagamento == null){
-					/*return "Nenhum resultado para a variável 'FormaPagamento' foi encontrado!";*/
 					msg = "Nenhum resultado para a variável 'FormaPagamento' foi encontrado!";
 				}
 			}else{
-				/*return "A variável 'formaPagamento.idFormaPagamento' deve ser informada!";*/
 				msg = "A variável 'formaPagamento.idFormaPagamento' deve ser informada!";
 			}
 		}else{
-			/*return "A variável 'formaPagamento' deve ser informada!";*/
 			msg = "A variável 'formaPagamento' deve ser informada!";
 		}
 		
 		if(t.getIe().equals(null) || t.getIe().equals("")){
-			/*return "A variável 'ie' deve ser informada!";*/
 			msg = "A variável 'ie' deve ser informada!";
 		}
 		
 		if(t.getNomeFantasia().equals(null) || t.getNomeFantasia().equals("")){
-			/*return "A variável 'nomeFantasia' deve ser informada!";*/
 			msg = "A variável 'nomeFantasia' deve ser informada!";
 		}
 		
@@ -74,15 +66,12 @@ public class ClienteBusiness{
 			if(t.getPlano().getIdPlano() != null){
 				Plano plano = planoDao.getObjById(t.getPlano().getIdPlano());
 				if(plano == null){
-					/*return "Nenhum resultado para a variável 'Plano' foi encontrado!";*/
 					msg = "Nenhum resultado para a variável 'Plano' foi encontrado!";
 				}
 			}else{
-				/*return "A variável 'plano.idPlano' deve ser informada!";*/
 				msg = "A variável 'plano.idPlano' deve ser informada!";
 			}
 		}else{
-			/*return "A variável 'plano' deve ser informada!";*/
 			msg ="A variável 'plano' deve ser informada!";
 		}
 		
@@ -90,30 +79,18 @@ public class ClienteBusiness{
 			if(t.getRamoAtividade().getIdRamoAtividade() != null){
 				RamoAtividade ramoAtividade = ramoAtividadeDao.getObjById(t.getRamoAtividade().getIdRamoAtividade());
 				if(ramoAtividade == null){
-					/*return "Nenhum resultado para a variável 'RamoAtividade' foi encontrado!";*/
 					msg = "Nenhum resultado para a variável 'RamoAtividade' foi encontrado!";
 				}
 			}else{
-				/*return "A variável 'ramoAtividade.idRamoAtividade' deve ser informada!";*/
 				msg = "A variável 'ramoAtividade.idRamoAtividade' deve ser informada!";
 			}
 		}else{
-			/*return "A variável 'ramoAtividade' deve ser informada!";*/
 			msg = "A variável 'ramoAtividade' deve ser informada!";
 		}
 		
 		if(t.getRazaoSocial().equals(null) || t.getRazaoSocial().equals("")){
-			/*return "A variável 'razaoSocial' deve ser informada!";*/
 			msg = "A variável 'razaoSocial' deve ser informada!";
 		}
-		
-		/*if(t.getTamanhoTotal() == null){
-			return "A variável 'tamahoTotal' deve ser informada!";
-		}*/
-		
-		/*if(t.getUsuarioId() == null){
-			return "A variável 'usuarioId' deve ser informada!";
-		}*/
 		
 		t.setUsuarioId(1);
 		
@@ -126,7 +103,6 @@ public class ClienteBusiness{
 		boolean result = ConexaoDao.criarDatabaseCliente(t.getNomeFantasia(), t.getIdCliente());
 		
 		if(result == false){
-			/*return "Falha ao criar banco de dados do cliente!";*/
 			msg = "Falha ao criar banco de dados do cliente!";
 		}
 		
@@ -135,16 +111,13 @@ public class ClienteBusiness{
 			t.setNomeFantasia(t.getNomeFantasia() + "Erro Tam Bd");
 			clienteDao.update(t);
 			delete(t.getIdCliente());
-			/*return "Falha ao definir tamanho do Banco de Dados do cliete";*/
 			msg = "Falha ao definir tamanho do Banco de Dados do cliete";
 		}else{
 			t.setTamanhoTotal(tamBd);
-//			update(t);
 			clienteDao.update(t);
 		}
 		
-		/*return "Cliente cadastrado com sucesso!";*/
-		if(msg.equals(""))
+		if("".equals(msg))
 			msg = "Cliente cadastrado com sucesso!";
 		
 		try {
@@ -172,12 +145,10 @@ public class ClienteBusiness{
 		
 		String msg = new String();
 		if(t == null){
-			/*return "O objeto não pode ser null!";*/
 			msg = "O objeto não pode ser null!";
 		}
 		
 		if(t.getCnpj().equals(null) || t.getCnpj().equals("")){
-			/*return "A variável 'cnpj' deve ser informada!";*/
 			msg = "A variável 'cnpj' deve ser informada!";
 		}else{
 			//validar cnpj
@@ -187,25 +158,20 @@ public class ClienteBusiness{
 			if(t.getFormaPagamento().getIdFormaPagamento() != null){
 				FormaPagamento formaPagamento = formaPagamentoDao.getObjById(t.getFormaPagamento().getIdFormaPagamento());
 				if(formaPagamento == null){
-					/*return "Nenhum resultado para a variável 'FormaPagamento' foi encontrado!";*/
 					msg = "Nenhum resultado para a variável 'FormaPagamento' foi encontrado!";
 				}
 			}else{
-				/*return "A variável 'formaPagamento.idFormaPagamento' deve ser informada!";*/
 				msg = "A variável 'formaPagamento.idFormaPagamento' deve ser informada!";
 			}
 		}else{
-			/*return "A variável 'formaPagamento' deve ser informada!";*/
 			msg = "A variável 'formaPagamento' deve ser informada!";
 		}
 		
 		if(t.getIe().equals(null) || t.getIe().equals("")){
-			/*return "A variável 'ie' deve ser informada!";*/
 			msg = "A variável 'ie' deve ser informada!";
 		}
 		
 		if(t.getNomeFantasia().equals(null) || t.getNomeFantasia().equals("")){
-			/*return "A variável 'nomeFantasia' deve ser informada!";*/
 			msg = "A variável 'nomeFantasia' deve ser informada!";
 		}
 		
@@ -213,15 +179,12 @@ public class ClienteBusiness{
 			if(t.getPlano().getIdPlano() != null){
 				Plano plano = planoDao.getObjById(t.getPlano().getIdPlano());
 				if(plano == null){
-					/*return "Nenhum resultado para a variável 'Plano' foi encontrado!";*/
 					msg = "Nenhum resultado para a variável 'Plano' foi encontrado!";
 				}
 			}else{
-				/*return "A variável 'plano.idPlano' deve ser informada!";*/
 				msg = "A variável 'plano.idPlano' deve ser informada!";
 			}
 		}else{
-			/*return "A variável 'plano' deve ser informada!";*/
 			msg ="A variável 'plano' deve ser informada!";
 		}
 		
@@ -229,25 +192,24 @@ public class ClienteBusiness{
 			if(t.getRamoAtividade().getIdRamoAtividade() != null){
 				RamoAtividade ramoAtividade = ramoAtividadeDao.getObjById(t.getRamoAtividade().getIdRamoAtividade());
 				if(ramoAtividade == null){
-					/*return "Nenhum resultado para a variável 'RamoAtividade' foi encontrado!";*/
 					msg = "Nenhum resultado para a variável 'RamoAtividade' foi encontrado!";
 				}
 			}else{
-				/*return "A variável 'ramoAtividade.idRamoAtividade' deve ser informada!";*/
 				msg = "A variável 'ramoAtividade.idRamoAtividade' deve ser informada!";
 			}
 		}else{
-			/*return "A variável 'ramoAtividade' deve ser informada!";*/
 			msg = "A variável 'ramoAtividade' deve ser informada!";
 		}
 		
 		if(t.getRazaoSocial().equals(null) || t.getRazaoSocial().equals("")){
-			/*return "A variável 'razaoSocial' deve ser informada!";*/
 			msg = "A variável 'razaoSocial' deve ser informada!";
 		}
 		
 		t.setUsuarioId(1);
-		t.setTamanhoTotal(0);
+		
+		if(t.getTamanhoTotal() == null)
+			t.setTamanhoTotal(0);
+		
 		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
@@ -256,7 +218,6 @@ public class ClienteBusiness{
 			t.setNomeFantasia(t.getNomeFantasia() + "Erro Tam Bd");
 			clienteDao.update(t);
 			delete(t.getIdCliente());
-			/*return "Falha ao definir tamanho do Banco de Dados do cliete";*/
 			msg =  "Falha ao definir tamanho do Banco de Dados do cliete";
 		}else{
 			t.setTamanhoTotal(tamBd);

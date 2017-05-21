@@ -53,14 +53,6 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			return "A variável 'nomeCubo' deve ser informada!";
 		}
 		
-/*		if(t.getTabelaFato().equals(null) || t.getTabelaFato().equals("")){
-			return "A variável 'tabelaFato' deve ser informada!";
-		}
-		
-		if(t.getTamanho() == null){
-			return "A variável 'tamanho' deve ser informada!";
-		}*/
-		
 		if(t.getUsuarioId() == null){
 			return "A variável 'usuarioId' deve ser informada!";
 		}
@@ -119,9 +111,20 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 						cubo.setTamanho(tamCubo);
 						cubo.setUsuarioId(usuario.getIdUsuario());
 						
-						create(cubo);
+						String createCuboResponse = this.create(cubo);
+						if("Cubo cadastrado com sucesso!".equals(createCuboResponse)){
+
+							//update tamahoTotal cliente
+							Cliente c = usuario.getPessoa().getCliente();
+							c.setTamanhoTotal(c.getTamanhoTotal() + tamCubo);
+							JSONObject updateClienteResponse = new ClienteBusiness().update(c);							
+							if(!("Cliente alterado com sucesso!").equals(updateClienteResponse.get("msg")))
+								return updateClienteResponse.getString("msg");					
 						
-						return "Cubo cadastrado com sucesso!";
+							return "Cubo cadastrado com sucesso!";
+						}
+						
+						return createCuboResponse;
 					//}else{
 						//return "Falha ao enviar cubo ao Saiku!";
 					//}

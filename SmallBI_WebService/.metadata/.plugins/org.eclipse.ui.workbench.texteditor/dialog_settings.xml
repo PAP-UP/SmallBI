@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Total" key="selection"/>
+		<item value="tam" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="tam"/>
 			<item value="Total"/>
 			<item value="fanta"/>
 			<item value="System"/>
@@ -15,7 +16,6 @@
 			<item value="dao"/>
 			<item value="saiku"/>
 			<item value="A variável &apos;usuarioId&apos; deve ser informada!"/>
-			<item value="login"/>
 		</list>
 		<list key="replacehistory">
 		</list>
