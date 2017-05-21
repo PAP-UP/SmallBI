@@ -73,7 +73,6 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			
 			String scriptSql = jsonObject.getString("scriptSql");
 			Integer idCliente = usuario.getPessoa().getCliente().getIdCliente();
-//			Integer idCliente = jsonObject.getInt("idCliente");
 
 			List<String> tabelasCubo = new ArrayList<>();
 			JSONArray jsonArray = jsonObject.getJSONArray("tabelasCubo");
@@ -86,51 +85,29 @@ public class CuboBusiness implements InterfaceBusiness<Cubo>{
 			
 			if(scriptsalvo){
 				
-				//Comentar esta declaração e usa-la apenas no endpoint cubo/analisar
-				//boolean mdxSalvo = SaikuConnection.saveSchemaInSaikuServer(idCliente, jsonObject.getString("nomeCubo"), 
-					//	jsonObject.getString("mdx"));
-				
-				//if(mdxSalvo){
-					usuario.getPessoa().getCliente().setTamanhoTotal(ConexaoDao.getTamanhoBancoCliente(idCliente));
-					new ClienteBusiness().update(usuario.getPessoa().getCliente());
+				//Atualiza consumo do cliente
+				usuario.getPessoa().getCliente().setTamanhoTotal(ConexaoDao.getTamanhoBancoCliente(idCliente));
+				JSONObject updateClienteResponse = new ClienteBusiness().update(usuario.getPessoa().getCliente());
 
-					//Comentar esta declaração e usa-la apenas no endpoint cubo/analisar					
-					//int saikuResponse = SaikuConnection.addDatasourceSaiku(idCliente, 
-						//	jsonObject.getString("nomeCubo"));
+				//Salva os meta dados do cubo em nossa base
+				if("Cliente alterado com sucesso!".equals(updateClienteResponse.get("message"))){
+					Cubo cubo = new Cubo();			
+					cubo.setCliente(usuario.getPessoa().getCliente());
 					
-					//if(saikuResponse == 200){
-						Cubo cubo = new Cubo();			
-						cubo.setCliente(usuario.getPessoa().getCliente());
-						
-						cubo.setMdx(jsonObject.getString("mdx"));
-						
-						cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
-						cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
-						
-						Integer tamCubo = ConexaoDao.getTamanhoCubo(idCliente, tabelasCubo);
-						cubo.setTamanho(tamCubo);
-						cubo.setUsuarioId(usuario.getIdUsuario());
-						
-						String createCuboResponse = this.create(cubo);
-						if("Cubo cadastrado com sucesso!".equals(createCuboResponse)){
-
-							//update tamahoTotal cliente
-							Cliente c = usuario.getPessoa().getCliente();
-							c.setTamanhoTotal(c.getTamanhoTotal() + tamCubo);
-							JSONObject updateClienteResponse = new ClienteBusiness().update(c);							
-							if(!("Cliente alterado com sucesso!").equals(updateClienteResponse.get("msg")))
-								return updateClienteResponse.getString("msg");					
-						
-							return "Cubo cadastrado com sucesso!";
-						}
-						
-						return createCuboResponse;
-					//}else{
-						//return "Falha ao enviar cubo ao Saiku!";
-					//}
-				//}else{
-				//	return "Falha ao salvar MDX no servidor!";
-				//}
+					cubo.setMdx(jsonObject.getString("mdx"));
+					
+					cubo.setNomeCubo(jsonObject.getString("nomeCubo"));
+					cubo.setTabelaFato(jsonObject.getString("nomeCubo")); //Provisório
+					
+					Integer tamCubo = ConexaoDao.getTamanhoCubo(idCliente, tabelasCubo);
+					cubo.setTamanho(tamCubo);
+					cubo.setUsuarioId(usuario.getIdUsuario());
+					
+					return this.create(cubo);
+				}else{
+					return updateClienteResponse.getString("message");
+				}
+			
 			}else{
 				return "Falha ao salvar tabelas no bando de dados do cliente! "
 						+ "\nVerifique se os nomes das tabela que você deseja importar "

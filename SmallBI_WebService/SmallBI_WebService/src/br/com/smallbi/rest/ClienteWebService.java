@@ -160,8 +160,6 @@ public class ClienteWebService {
 		Telefone t = new TelefoneBusiness().getByCliente(c.getIdCliente());
 		if(t != null){
 			hash.put("idTelefone", t.getIdTelefone());
-//			hash.put("idTipoTelefone", t.getTipo().getIdTipo());
-//			hash.put("ddd", t.getDdd());
 			hash.put("telefone", t.getTelefone());
 		}
 		return hash;

@@ -207,13 +207,13 @@ public class ClienteBusiness{
 		
 		t.setUsuarioId(1);
 		
-		if(t.getTamanhoTotal() == null)
-			t.setTamanhoTotal(0);
-		
 		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
-		Integer tamBd = ConexaoDao.getTamanhoBancoCliente(t.getIdCliente());
+		if(t.getTamanhoTotal() == null)
+			t.setTamanhoTotal(0);
+		
+		/*Integer tamBd = ConexaoDao.getTamanhoBancoCliente(t.getIdCliente());
 		if(tamBd <= 0){
 			t.setNomeFantasia(t.getNomeFantasia() + "Erro Tam Bd");
 			clienteDao.update(t);
@@ -222,7 +222,9 @@ public class ClienteBusiness{
 		}else{
 			t.setTamanhoTotal(tamBd);
 			clienteDao.update(t);
-		}
+		}*/
+		
+		clienteDao.update(t);
 		
 		if(msg.equals(""))
 			msg = "Cliente alterado com sucesso!";

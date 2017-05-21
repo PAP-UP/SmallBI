@@ -1,0 +1,21 @@
+﻿
+--Tamanho do banco
+SELECT pg_size_pretty(pg_database_size('id_18'));
+--7280 kB
+
+--Mostra todas as tabelas do cliente
+SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname = 'public';
+
+--Tamanho da table
+SELECT pg_size_pretty(pg_relation_size('tab_vendas')); 
+--vendedores = 8192 bytes;
+--tab_itensvendas = 16 kB;
+--tab_vendas = 8192 bytes;
+
+--Seleciona o nome e tamanho de todos os bd's
+SELECT pg_database.datname, pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database;
+
+--Seleciona o nome e tamanho de todas as tabelas
+SELECT relname as "Table", pg_size_pretty(pg_total_relation_size(relid)) As "Size",
+pg_size_pretty(pg_total_relation_size(relid) - pg_relation_size(relid)) as "External Size"
+   FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC;

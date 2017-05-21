@@ -881,8 +881,9 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                         //Logger.getLogger(FormAssistenteModelagem.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                   JOptionPane.showMessageDialog(null, msg);
-                   dispose();
+                    JOptionPane.showMessageDialog(null, msg);
+                    if("Cubo cadastrado com sucesso!".equals(msg))
+                        dispose();
 
                 } catch (IOException ex) {
                     Logger.getLogger(FormAssistenteModelagem.class.getName()).log(Level.SEVERE, null, ex);
