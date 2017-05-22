@@ -34,6 +34,7 @@ import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Usuario;
 import br.com.smallbi.entity.UsuarioLogado;
 import br.com.smallbi.util.ClassMapper;
+import br.com.smallbi.util.Util;
 
 @Path("/usuario")
 public class UsuarioWebService {
@@ -166,7 +167,7 @@ public class UsuarioWebService {
 			jsonResponse.put("idPerfil", u.getPerfil().getIdPerfil());
 			jsonResponse.put("success", true);
 			jsonResponse.put("nomeCliente", u.getPessoa().getCliente().getNomeFantasia());
-			jsonResponse.put("tamanhoTotal", u.getPessoa().getCliente().getTamanhoTotal());
+			jsonResponse.put("tamanhoTotal", Util.formatFloat(u.getPessoa().getCliente().getTamanhoTotal()));
 			return jsonResponse.toString();
 		}else{
 			//return gson.toJson("Usuário ou senha inválidos!");

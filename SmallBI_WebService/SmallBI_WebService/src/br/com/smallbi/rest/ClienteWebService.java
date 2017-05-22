@@ -29,6 +29,7 @@ import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.util.ClassMapper;
+import br.com.smallbi.util.Util;
 
 @Path("/cliente")
 public class ClienteWebService {
@@ -137,7 +138,7 @@ public class ClienteWebService {
 		hash.put("cnpj", c.getCnpj());
 		hash.put("ie", c.getIe());
 		hash.put("idRamoAtividade", c.getRamoAtividade().getIdRamoAtividade());
-		hash.put("tamanhoTotal", c.getTamanhoTotal());
+		hash.put("tamanhoTotal", Util.formatFloat(c.getTamanhoTotal()));
 		hash.put("idFormaPagamento", c.getFormaPagamento().getIdFormaPagamento());
 		hash.put("idPlano", c.getPlano().getIdPlano());
 		hash.put("nomecliente", c.getNomeFantasia());
@@ -251,7 +252,7 @@ public class ClienteWebService {
 		hashCliente.put("cnpj", c.getCnpj());
 		hashCliente.put("ie", c.getIe());
 		hashCliente.put("ramoAtividade", c.getRamoAtividade().getRamoAtividade());
-		hashCliente.put("tamanhoTotal", c.getTamanhoTotal());
+		hashCliente.put("tamanhoTotal", Util.formatFloat(c.getTamanhoTotal()));
 		hashCliente.put("formaPagamento", c.getFormaPagamento().getFormaPagamento());
 		hashCliente.put("plano", c.getPlano().getNomePlano());
 		
