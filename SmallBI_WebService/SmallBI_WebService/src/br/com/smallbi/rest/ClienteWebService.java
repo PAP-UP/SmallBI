@@ -75,12 +75,19 @@ public class ClienteWebService {
 					
 					if(addUserResult.isNull("idUsuario")){
 						response.remove("message");
-						response.append("message", "Falha ao cadastrar usuário");
-						response.append("error", addUserResult.getString("message"));
+						response.put("message", "Falha ao cadastrar usuário");
+						response.put("error", addUserResult.getString("message"));
 					}else{	
 						response.put("idUsuario", addUserResult.getInt("idUsuario"));
 					}
+					return response.toString();
+				}else{
+					JSONObject jsonObject = new JSONObject().put("message", "Falha ao cadastrar telefone e endereço!");
+					return jsonObject.toString();					
 				}
+			}else{
+				JSONObject jsonObject = new JSONObject().put("message", "Falha ao cadastrar cliente!");
+				return jsonObject.toString();				
 			}
 		}
 		JSONObject jsonObject = new JSONObject().put("message", jsonIsValid);
