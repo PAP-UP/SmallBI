@@ -1,7 +1,6 @@
 package br.com.smallbi.rest;
 
 import java.lang.reflect.Type;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -30,6 +29,7 @@ import br.com.smallbi.entity.Plano;
 import br.com.smallbi.entity.RamoAtividade;
 import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.util.ClassMapper;
+import br.com.smallbi.util.Util;
 
 @Path("/cliente")
 public class ClienteWebService {
@@ -75,12 +75,19 @@ public class ClienteWebService {
 					
 					if(addUserResult.isNull("idUsuario")){
 						response.remove("message");
-						response.append("message", "Falha ao cadastrar usuário");
-						response.append("error", addUserResult.getString("message"));
+						response.put("message", "Falha ao cadastrar usuário");
+						response.put("error", addUserResult.getString("message"));
 					}else{	
 						response.put("idUsuario", addUserResult.getInt("idUsuario"));
 					}
+					return response.toString();
+				}else{
+					JSONObject jsonObject = new JSONObject().put("message", "Falha ao cadastrar telefone e endereço!");
+					return jsonObject.toString();					
 				}
+			}else{
+				JSONObject jsonObject = new JSONObject().put("message", "Falha ao cadastrar cliente!");
+				return jsonObject.toString();				
 			}
 		}
 		JSONObject jsonObject = new JSONObject().put("message", jsonIsValid);
@@ -138,11 +145,7 @@ public class ClienteWebService {
 		hash.put("cnpj", c.getCnpj());
 		hash.put("ie", c.getIe());
 		hash.put("idRamoAtividade", c.getRamoAtividade().getIdRamoAtividade());
-		
-		//Converte para MB
-		int mb = (c.getTamanhoTotal() / 1024);
-		hash.put("tamanhoTotal", mb);
-		
+		hash.put("tamanhoTotal", Util.removeDatabaseSize(c.getTamanhoTotal()));
 		hash.put("idFormaPagamento", c.getFormaPagamento().getIdFormaPagamento());
 		hash.put("idPlano", c.getPlano().getIdPlano());
 		hash.put("nomecliente", c.getNomeFantasia());
@@ -161,8 +164,6 @@ public class ClienteWebService {
 		Telefone t = new TelefoneBusiness().getByCliente(c.getIdCliente());
 		if(t != null){
 			hash.put("idTelefone", t.getIdTelefone());
-//			hash.put("idTipoTelefone", t.getTipo().getIdTipo());
-//			hash.put("ddd", t.getDdd());
 			hash.put("telefone", t.getTelefone());
 		}
 		return hash;
@@ -258,9 +259,7 @@ public class ClienteWebService {
 		hashCliente.put("cnpj", c.getCnpj());
 		hashCliente.put("ie", c.getIe());
 		hashCliente.put("ramoAtividade", c.getRamoAtividade().getRamoAtividade());
-		//Converte para MB
-		int mb = (c.getTamanhoTotal() / 1024);
-		hashCliente.put("tamanhoTotal", mb);
+		hashCliente.put("tamanhoTotal", Util.removeDatabaseSize(c.getTamanhoTotal()));
 		hashCliente.put("formaPagamento", c.getFormaPagamento().getFormaPagamento());
 		hashCliente.put("plano", c.getPlano().getNomePlano());
 		

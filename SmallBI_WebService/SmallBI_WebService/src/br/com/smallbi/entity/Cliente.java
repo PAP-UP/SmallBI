@@ -35,17 +35,12 @@ public class Cliente {
 	@Column (length=25)
 	private String ie;
 	
-//	@OneToOne
-//	@JoinColumn(name="enderecoId", referencedColumnName="idEndereco")
-//	@ForeignKey(name="fk_endereco")
-//	private Endereco endereco;
-	
 	@ManyToOne
 	@JoinColumn(name="ramoAtividadeId", referencedColumnName="idRamoAtividade")
 	@ForeignKey(name="fk_ramoAtividade")
 	private RamoAtividade ramoAtividade;
 	
-	private Integer tamanhoTotal;
+	private float tamanhoTotal;
 	
 	@ManyToOne
 	@JoinColumn(name="formaPagamentoId", referencedColumnName="idFormaPagamento")
@@ -123,14 +118,6 @@ public class Cliente {
 		this.ie = ie;
 	}
 
-//	public Endereco getEndereco() {
-//		return endereco;
-//	}
-//
-//	public void setEndereco(Endereco endereco) {
-//		this.endereco = endereco;
-//	}
-
 	public RamoAtividade getRamoAtividade() {
 		return ramoAtividade;
 	}
@@ -139,11 +126,11 @@ public class Cliente {
 		this.ramoAtividade = ramoAtividade;
 	}
 
-	public Integer getTamanhoTotal() {
+	public float getTamanhoTotal() {
 		return tamanhoTotal;
 	}
 
-	public void setTamanhoTotal(Integer tamanhoTotal) {
+	public void setTamanhoTotal(float tamanhoTotal) {
 		this.tamanhoTotal = tamanhoTotal;
 	}
 

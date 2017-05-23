@@ -34,6 +34,7 @@ import br.com.smallbi.entity.Telefone;
 import br.com.smallbi.entity.Usuario;
 import br.com.smallbi.entity.UsuarioLogado;
 import br.com.smallbi.util.ClassMapper;
+import br.com.smallbi.util.Util;
 
 @Path("/usuario")
 public class UsuarioWebService {
@@ -166,9 +167,7 @@ public class UsuarioWebService {
 			jsonResponse.put("idPerfil", u.getPerfil().getIdPerfil());
 			jsonResponse.put("success", true);
 			jsonResponse.put("nomeCliente", u.getPessoa().getCliente().getNomeFantasia());
-			//Converte para MB
-			int mb = (u.getPessoa().getCliente().getTamanhoTotal() / 1024);
-			jsonResponse.put("tamanhoTotal", mb);
+			jsonResponse.put("tamanhoTotal", Util.removeDatabaseSize(u.getPessoa().getCliente().getTamanhoTotal()));
 			return jsonResponse.toString();
 		}else{
 			//return gson.toJson("Usuário ou senha inválidos!");

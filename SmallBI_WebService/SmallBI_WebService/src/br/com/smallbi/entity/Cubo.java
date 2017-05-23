@@ -39,7 +39,7 @@ public class Cubo {
 	@Column (length=25)
 	private String tabelaFato;
 	
-	private Integer tamanho;
+	private float tamanho;
 
 	private boolean status;
 	
@@ -107,11 +107,11 @@ public class Cubo {
 		this.tabelaFato = tabelaFato;
 	}
 
-	public Integer getTamanho() {
+	public float getTamanho() {
 		return tamanho;
 	}
 
-	public void setTamanho(Integer tamanho) {
+	public void setTamanho(float tamanho) {
 		this.tamanho = tamanho;
 	}
 

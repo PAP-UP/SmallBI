@@ -23,6 +23,7 @@ import br.com.smallbi.business.CuboBusiness;
 import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Cubo;
 import br.com.smallbi.util.SaikuConnection;
+import br.com.smallbi.util.Util;
 
 
 @Path("/cubo")
@@ -172,7 +173,7 @@ public class CuboWebService {
 		hash.put("cliente", c.getCliente().getNomeFantasia());
 		hash.put("mdx", c.getMdx());
 		hash.put("tabelaFato", c.getTabelaFato());
-		hash.put("tamanho", c.getTamanho());
+		hash.put("tamanho", Util.formatFloat(c.getTamanho()));
 		return hash;
 	}
 	
