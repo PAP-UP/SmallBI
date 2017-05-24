@@ -248,7 +248,7 @@
 
         <div class="dialog-content">
             <div id="loginForm-modal-cadastrar" ng-controller="clienteCadastrarController as vm">
-                <form class="modalForm" novalidate ng-controller="clienteCadastrarController" name="formCadastro">
+                <form class="modalForm" ng-controller="clienteCadastrarController" ng-submit="vm.clienteSalvar()">
                     <div class="row" id="areaEmpresaModal">
                         <div class="col-md-6 padding15px">
 
@@ -258,8 +258,8 @@
                           <label for="fantasia">Nome Fantasia</label>
                           <input required type="text" class="" id="fantasia" name="fantasia" ng-model="vm.dadosCliente.nomeFantasia" placeholder="Nome Fantasia">
 
-                          <label for="">CNPJ</label>
-                          <input required type="text" class="" id="cnpj" name="cnpj" ng-model="vm.dadosCliente.cnpj" placeholder="CNPJ">
+                          <label for="cnpj">CNPJ</label>
+                          <input required type="text" id="cnpj" ng-model="vm.dadosCliente.cnpj" ui-mask="99.999.999/9999-99">
 
                           <label for="ie">Inscrição Estadual</label>
                           <input required type="text" class="" id="ie" name="ie" ng-model="vm.dadosCliente.ie" placeholder=" Inscrição Estadual">
@@ -288,11 +288,24 @@
                           <label for="bairro">Bairro</label>
                           <input required type="text" class="" id="bairro" name="bairro" ng-model="vm.dadosCliente.bairro" placeholder="Bairro">
 
-                          <label for="cidade">Cidade</label>
-                          <input required type="text" class="" id="cidade" name="cidade" ng-model="vm.dadosCliente.nomeCidade" placeholder="Cidade">
+                          <label for="estado">Estado</label>
+                          <select id="estado"
+                                  required
+                                  ng-model="vm.dadosCliente.idEstado"
+                                  ng-options="est.idEstado as est.nomeEstado for est in vm.listaEstados"
+                                  ng-change="vm.listaCidadeByIdEstado(vm.dadosCliente.idEstado)">
+                            <option value="">Selecione</option>
+                          </select>
+
+                          <label>Cidade</label>
+                          <select-autocomplete
+                            placeholder="Selecione a Cidade"
+                            ng-model="vm.dadosCliente.Cidade"
+                            select-options="cid.nomeCidade for cid in vm.listaCidades">
+                          </select-autocomplete>
 
                           <label for="telefone">Telefone</label>
-                          <input required type="text" class="" id="telefone" name="telefone" ng-model="vm.dadosCliente.telefone" placeholder="Telefone">
+                          <input required type="text" id="telefone" name="telefone" ng-model="vm.dadosCliente.telefone" ui-mask="+55 (99) 99999-9999">
 
                         </div>
                         <div class="col-md-6 padding15px">
@@ -301,7 +314,7 @@
                           <input required type="text" class="" id="nome" name="nome" ng-model="vm.dadosCliente.nome" placeholder="Nome completo">
 
                           <label for="cpf">CPF</label>
-                          <input required type="text" class="" id="cpf" name="cpf" ng-model="vm.dadosCliente.cpf" placeholder="CPF">
+                          <input required type="text" class="" id="cpf" name="cpf" ng-model="vm.dadosCliente.cpf" ui-mask="999.999.999-99">
 
                           <label for="rg">RG</label>
                           <input required type="text" class="" id="rg" name="rg" ng-model="vm.dadosCliente.rg" placeholder="RG">
@@ -319,7 +332,7 @@
 
                         </div>
                     </div>
-                  <input type="submit" class="btnModal" id="btnEnviar" style="float: right;" value="Enviar" ng-disabled="formCadastro.$invalid" ng-click="vm.clienteSalvar()">
+                  <input type="submit" class="btnModal" id="btnEnviar" style="float: right;" value="Enviar">
                 </form>
             </div>
         </div>

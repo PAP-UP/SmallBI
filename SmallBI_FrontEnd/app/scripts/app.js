@@ -10,7 +10,9 @@
       'ngTouch',
       'ui.router',
       'ui.router.stateHelper',
-      'oitozero.ngSweetAlert'
+      'oitozero.ngSweetAlert',
+      'ui.mask',
+      'selectAutocomplete'
     ]).config(routes).run(autentica);
 
   function autentica($rootScope, AuthService, $location, $cookieStore, $state) {

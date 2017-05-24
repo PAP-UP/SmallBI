@@ -4,7 +4,7 @@
   angular.module('SmallBIApp')
     .controller('clienteCadastrarController', clienteCadastrarController);
 
-  function clienteCadastrarController(clienteResource, planoResource, pagamentoResource, ramoResource, SweetAlert, funcaoResource) {
+  function clienteCadastrarController(clienteResource, planoResource, pagamentoResource, ramoResource, SweetAlert, funcaoResource, estadoResource) {
 
     var vm = this;
 
@@ -18,13 +18,16 @@
       listaPlanos: listaPlanos,
       listaFormasPagamento: listaFormasPagamento,
       usuarioSalvar: usuarioSalvar,
-      avancarModal: avancarModal
+      avancarModal: avancarModal,
+      listaCidadeByIdEstado: listaCidadeByIdEstado
     });
 
 
     function clienteSalvar() {
-        vm.dadosCliente.usuarioId = 1,
-        vm.dadosCliente.idPerfil = 2
+        vm.dadosCliente.usuarioId = 1;
+        vm.dadosCliente.idPerfil = 2;
+      vm.dadosCliente.idCidade = vm.dadosCliente.Cidade.idCidade;
+      delete vm.dadosCliente.Cidade;
 
       clienteResource.insereCliente(vm.dadosCliente).then(
         function (result) {
@@ -74,6 +77,24 @@
         });
     }
 
+    function listarEstado() {
+      estadoResource.listaEstado().then(
+        function(result){
+          vm.listaEstados = result.data;
+      }, function(resolve){
+
+        })
+    }
+
+    function listaCidadeByIdEstado(id) {
+      estadoResource.getCidadeByIdEstado({'idEstado': id}).then(
+        function (result) {
+          vm.listaCidades = result.data;
+      }, function (resolve) {
+
+        });
+    }
+
     function avancarModal() {
       $(this).hide();
       $("#tituloModalCadastrar").html("dados do usuário");
@@ -89,6 +110,7 @@
       listaFormasPagamento();
       listaRamoAtividade();
       listarFuncao();
+      listarEstado();
     }
 
     activate();

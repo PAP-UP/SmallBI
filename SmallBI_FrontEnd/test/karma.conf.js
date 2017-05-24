@@ -28,6 +28,11 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-ui-router.stateHelper/statehelper.js',
+      'bower_components/angular-select-options/dist/angular-select-options.js',
+      'bower_components/angular-disable-all/dist/angular-disable-all.js',
+      'bower_components/angular-select-items/dist/angular-select-items.js',
+      'bower_components/angular-open-dropdown/dist/angular-open-dropdown.js',
+      'bower_components/angular-select-autocomplete/dist/angular-select-autocomplete.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/livereload-js/dist/livereload.js',
       // endbower
