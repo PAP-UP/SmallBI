@@ -74,6 +74,7 @@ public class ClienteWebService {
 					JSONObject addUserResult = service.addUsuarioFromAddCliente(jsonObject.toString());
 					
 					if(addUserResult.isNull("idUsuario")){
+						//################ DELETAR CLIENTE, TELE, ENDE fisico
 						response.remove("message");
 						response.put("message", "Falha ao cadastrar usuário");
 						response.put("error", addUserResult.getString("message"));

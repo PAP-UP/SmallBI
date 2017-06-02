@@ -196,7 +196,7 @@ public class PessoaBusiness {
 	}
 
 	public String delete(Integer id){
-		Pessoa pessoa = getObjById(id);
+		Pessoa pessoa = this.getObjById(id);
 		if(pessoa == null){
 			return "Nenhum resultado foi encontrado na tabela Pessoa com o id {"+id+"}";
 		}
@@ -205,7 +205,12 @@ public class PessoaBusiness {
 	}
 	
 	public String deleteFisico(Integer id){
-		return "";
+		Pessoa pessoa = this.getObjById(id);
+		if(pessoa == null){
+			return "Nenhum resultado foi encontrado na tabela Pessoa com o id {"+id+"}";
+		}
+		pessoaDao.physicalDelete(pessoa);
+		return "Pessoa deletada com sucesso!";
 	}
 
 	public Pessoa getObjById(Integer id){

@@ -41,6 +41,29 @@ public class CidadeWebService {
 	}
 	
 	@POST
+	@Path("/listarByIdEstado")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String listCidadeByIdEstado(String json){
+		try {
+			JSONObject jsonObject = new JSONObject(json);
+			int idEstado = jsonObject.getInt("idEstado");
+			
+			List<Cidade> cidades = cidadeBusiness.list();
+			List<Hashtable<String, Object>> hashCidades = new ArrayList<>();
+			for(Cidade c : cidades){
+				if(c.getEstado().getIdEstado() == idEstado)
+					hashCidades.add(getHashFromObject(c));
+			}		
+			return gson.toJson(hashCidades);
+			
+		} catch (JSONException e) {
+			System.out.println("Ocorreu um erro ao listar as cidade por idEstado " + e.getMessage());
+			return "";
+		}
+	}
+	
+	@POST
 	@Path("/adicionar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

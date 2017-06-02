@@ -21,9 +21,12 @@ import com.google.gson.reflect.TypeToken;
 
 import br.com.smallbi.business.CidadeBusiness;
 import br.com.smallbi.business.EnderecoBusiness;
+import br.com.smallbi.dal.CidadeDao;
+import br.com.smallbi.dal.EstadoDao;
 import br.com.smallbi.entity.Cidade;
 import br.com.smallbi.entity.Cliente;
 import br.com.smallbi.entity.Endereco;
+import br.com.smallbi.entity.Estado;
 import br.com.smallbi.entity.Pessoa;
 import br.com.smallbi.entity.Tipo;
 
@@ -122,27 +125,8 @@ public class EnderecoWebService {
 		e.setNumero(jsonObject.getInt("numero"));
 		e.setBairro(jsonObject.getString("bairro"));
 		
-/*		if(!jsonObject.isNull("idEstado")){
-			Estado estado = new EstadoDao().getObjById(jsonObject.getInt("idEstado"));
-			
-			if(estado != null){
-				Cidade cidade = new Cidade();
-				cidade.setEstado(estado);
-				cidade.setNomeCidade(jsonObject.getString("nomeCidade"));
-				cidade.setUsuarioId(jsonObject.getInt("usuarioId"));
-				new CidadeBusiness().create(cidade);
-				
-								
-				
-				
-			}
-		}*/
-		
-		Cidade cidade = new CidadeBusiness().getByName(jsonObject.getString("nomeCidade"));
-		if(cidade != null){
-			e.setCidade(cidade);
-		}
-		
+		Cidade c = new CidadeDao().getObjById(jsonObject.getInt("idCidade"));
+		e.setCidade(c);		
 		
 		if(!jsonObject.isNull("idPessoa")){
 			Pessoa pessoa = new Pessoa();

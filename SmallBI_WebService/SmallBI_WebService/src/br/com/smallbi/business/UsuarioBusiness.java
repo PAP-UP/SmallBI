@@ -110,7 +110,7 @@ public class UsuarioBusiness {
 		
 		if(code != 200){
 			//chama delete fisico
-			new PessoaBusiness().delete(t.getPessoa().getIdPessoa());
+			new PessoaBusiness().deleteFisico(t.getPessoa().getIdPessoa());
 			msg =  "Falha ao adicionar usuário ao sistema Saiku!" + " Código da API do Saiku: " + code;
 		}
 		
@@ -123,17 +123,30 @@ public class UsuarioBusiness {
 		t.setDataCadastro(Data.getDate());
 		t.setStatus(true);
 		
-		usuarioDao.create(t);
-		
-		if(msg.equals(""))
+		JSONObject jsonObject = new JSONObject();
+		if(msg.equals("")){
+			
+			usuarioDao.create(t);
 			msg =  "Usuario cadastrado com sucesso!";
-		
-		try {
-			JSONObject jsonObject = new JSONObject().put("message", msg).put("idUsuario", t.getIdUsuario());
-			return jsonObject;
-		} catch (JSONException e) {
-			e.printStackTrace();
-			return null;
+			
+			try {
+				jsonObject.put("message", msg).put("idUsuario", t.getIdUsuario());
+				return jsonObject;
+			} catch (JSONException e) {
+				e.printStackTrace();
+				return null;
+			}
+			
+		}else{
+			
+			try {
+				jsonObject.put("message", msg);
+				return jsonObject;
+			} catch (JSONException e) {
+				e.printStackTrace();
+				return null;
+			}
+			
 		}
 	}
 
