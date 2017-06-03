@@ -67,10 +67,10 @@
                               <Component id="cbxPainelConfTab_lblNomeTab" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxPainelConfTab_lblPrimaryKey" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtPainelConfTab_txtNomeTab" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cbxPainelConfTab_CamposPrimaryKey" alignment="0" pref="307" max="32767" attributes="0"/>
+                              <Component id="txtPainelConfTab_txtNomeTab" pref="282" max="32767" attributes="0"/>
+                              <Component id="cbxPainelConfTab_CamposPrimaryKey" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -97,7 +97,7 @@
                       <Component id="cbxPainelConfTab_lblPrimaryKey" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbxPainelConfTab_CamposPrimaryKey" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="151" max="32767" attributes="0"/>
+                  <EmptySpace pref="181" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnPainelConfTab_Sair" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnPainelConfTab_Salvar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -110,7 +110,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="cbxPainelConfTab_lblPrimaryKey">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Chave Prim&#xe1;ria:"/>
+            <Property name="text" type="java.lang.String" value="Identificador &#xda;nico:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbxPainelConfTab_CamposPrimaryKey">

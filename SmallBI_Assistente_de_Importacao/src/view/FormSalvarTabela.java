@@ -38,7 +38,7 @@ public class FormSalvarTabela extends javax.swing.JFrame {
 
         painelAbaSaveSqlTabPivot_ConfTab.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurações da Tabela"));
 
-        cbxPainelConfTab_lblPrimaryKey.setText("Chave Primária:");
+        cbxPainelConfTab_lblPrimaryKey.setText("Identificador Único:");
 
         cbxPainelConfTab_CamposPrimaryKey.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione" }));
 
@@ -71,10 +71,10 @@ public class FormSalvarTabela extends javax.swing.JFrame {
                         .addGroup(painelAbaSaveSqlTabPivot_ConfTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbxPainelConfTab_lblNomeTab)
                             .addComponent(cbxPainelConfTab_lblPrimaryKey))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(painelAbaSaveSqlTabPivot_ConfTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPainelConfTab_txtNomeTab)
-                            .addComponent(cbxPainelConfTab_CamposPrimaryKey, 0, 307, Short.MAX_VALUE)))
+                            .addComponent(txtPainelConfTab_txtNomeTab, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                            .addComponent(cbxPainelConfTab_CamposPrimaryKey, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbaSaveSqlTabPivot_ConfTabLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnPainelConfTab_Salvar)
@@ -93,7 +93,7 @@ public class FormSalvarTabela extends javax.swing.JFrame {
                 .addGroup(painelAbaSaveSqlTabPivot_ConfTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxPainelConfTab_lblPrimaryKey)
                     .addComponent(cbxPainelConfTab_CamposPrimaryKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addGroup(painelAbaSaveSqlTabPivot_ConfTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPainelConfTab_Sair)
                     .addComponent(btnPainelConfTab_Salvar))
