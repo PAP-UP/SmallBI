@@ -305,7 +305,7 @@
                                               <Component id="cbxLinkComFato" alignment="1" max="32767" attributes="0"/>
                                               <Component id="txtNomeDimensao" max="32767" attributes="0"/>
                                               <Component id="cbxTabelaDimensao" max="32767" attributes="0"/>
-                                              <Component id="cbxChaveDimensao" pref="239" max="32767" attributes="0"/>
+                                              <Component id="cbxChaveDimensao" pref="249" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -450,7 +450,7 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel2">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Link com Fato: "/>
+                            <Property name="text" type="java.lang.String" value="Conector: "/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbxLinkComFato">

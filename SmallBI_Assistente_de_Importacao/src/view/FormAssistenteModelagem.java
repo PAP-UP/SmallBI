@@ -246,7 +246,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Link com Fato: ");
+        jLabel2.setText("Conector: ");
 
         javax.swing.GroupLayout painelAddDimensaoLayout = new javax.swing.GroupLayout(painelAddDimensao);
         painelAddDimensao.setLayout(painelAddDimensaoLayout);
@@ -269,7 +269,7 @@ public class FormAssistenteModelagem extends javax.swing.JFrame {
                             .addComponent(cbxLinkComFato, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNomeDimensao)
                             .addComponent(cbxTabelaDimensao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbxChaveDimensao, 0, 239, Short.MAX_VALUE))))
+                            .addComponent(cbxChaveDimensao, 0, 249, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
                 .addGroup(painelAddDimensaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelListaAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
