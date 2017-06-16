@@ -1514,3 +1514,169 @@ ul.rig.columns-4 li {
 .pg-painel .rodape ul.dropdown-menu li a {
   color: #14858a;
 }
+
+.tour {
+    width: 800px;
+    height: 500px;
+    position: relative;
+    margin: 50px auto;
+    background-color: #F3F3F3;
+    border-radius: 6px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.4);
+    padding-top: 5px;
+    padding-bottom: 72px;   
+}
+.tour:before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 28px;
+    border-style: solid;
+    border-width: 10px 14px 10px 0;
+    border-color: rgba(0, 0, 0, 0) #F3F3F3 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+}
+.tour .item-tour {
+    width: 350px;
+    font-size: 16px;
+    color: #a8aab2;
+    font-weight: 400;
+    line-height: 28px;
+    float: left;
+    margin: 0;
+}
+.tour .bottom {
+    display: block;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+.tour .bottom .step {
+    width: 100%;
+    height: 54px;
+    background-color: #373942;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    text-align: center;
+}
+.tour .bottom .step span {
+    line-height: 50px;
+    color: #fff;
+    margin-left: 25px;
+    font-size: 18px;
+}
+.tour .bottom .step ul {
+    list-style: none;
+    height: 10px;
+    margin: 0;
+    padding-left: 15px;
+    display: inline-block;
+}
+.tour .bottom .step ul li {
+    position: relative;
+    height: 7px;
+    width: 7px;
+    margin: 0 10px;
+    float: left;
+    border-radius: 50%;
+    background-color: none;
+    border: 1px solid #535560;
+}
+.tour .bottom .step ul li:first-child:before {
+    width: 0;
+}
+.tour .bottom .step ul li:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    border-top: 1px solid #535560;
+    left: -21px;
+    top: 3px;
+}
+.tour .bottom .step ul li.true {
+    background-color: #7a7d86;
+}
+.tour .bottom .step ul li.active {
+    background-color: #fff;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.78);
+}
+.tour-anterior {
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    border-bottom-left-radius: 6px;
+    cursor: pointer;
+    transition: all .3s;
+    width: 70px;
+    height: 54px;
+    float: left;
+}
+.tour-proximo {
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    border-bottom-right-radius: 6px;
+    cursor: pointer;
+    transition: all .3s;
+    width: 70px;
+    height: 54px;
+    float: right;
+}
+.slider-tour {
+    margin: 0 25px;
+    height: 100%;
+}
+.slider-tour .item img{
+    max-height: 368px!important;
+    display: block!important;
+    max-width: 100%!important;
+    height: auto!important;
+    width: auto!important;
+    margin: 0 auto!important;
+}
+.slider-turn {
+
+}
+.download-btn {
+    height: 65px;
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #5bb75b;
+    color: #ffffff;
+    text-align: center;
+    line-height: 65px;
+    font-size: 1.4em;
+    cursor: pointer;
+    display: block;
+}
+.download-btn:hover {
+    height: 65px;
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #5bb75b;
+    color: #ffffff;
+    text-align: center;
+    line-height: 65px;
+    font-size: 1.4em;
+    cursor: pointer;
+}
+.download-text {
+    height: 65px;
+    display: block;
+    background-color: #555555;
+    color: white;
+    padding: 0 1.3em;
+    font-size: 1.5em;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    line-height: 65px;
+    text-decoration: none;
+}
