@@ -1,143 +1,15 @@
 <a href="http://backend.smallbi.com.br:18080/SmallBI_WebService/SmallBIAssistenteImportacao/SmallBIAssistenteImportacao.jnlp" class="download-btn"><i class="fa fa-cloud-download">&nbsp;&nbsp;</i>Download</a>
-    <div class="tour">
-        <h1>Tutorial para utilização do assistente</h1>
-        <span class="close"></span>
-
-        <div class="slider-tour">
-            <div class="owl-carousel" id="slider">
-                <div class="item">
-                    <h3>Esse assistente é dividido em duas partes: I - Coleta, II - Modelagem</h3>
-                    <p><b>Coleta:</b> Nesta primeira etapa lhe auxiliaremos a buscar as informações que serão analisadas, a busca pode ser realizada através de arquivos CSV (Arquivos Texto), arquivos XLSX (Microsoft Excel), tabelas de banco de dados ou consultas nestes mesmos bancos de dados.</p>
-                    <p><b>Modelagem:</b> Está segunda etapa é subdivida em 3 fases: Nomeação do Cubo, Especificação das Dimensões, Especificação das Métricas.</p>
-                </div>
-                <div class="item">
-                    <h3>Coleta de arquivos CSV ou XLSX</h3>
-                    <p>1 - Coletas de arquivos CSV ou XLSX: Quando realizada a coleta através de arquivos CSV é necessário selecionar o caractere que separa as colunas, o mais comum é separa-los por ";". Após selecionado o arquivo é necessário escolher o formato de cada coluna do seu arquivo, por exemplo: Caso a coluna A contenha informações do tipo numérico inteiro, deverá ser selecionado essa opção na caixa de seleção acima. Dentre as opções da caixa de seleção temos ainda (Inteiro, Real, V/F (Verdadeiro/Falso), Caractere (Apenas um caractere), Texto, Data (dd/MM/yyyy, dd-MM-yyyy, MM-dd-yyyy e yyyy-MM-dd) e Não Importar). Essa configuração é realizada na tabela de visualização dos dados, após terminado o ajuste é necessário fazer a validação dos tipos de dados escolhidos, clicando no botão correspondente e após isso clicar em salvar tabela, nomeando o nome da tabela e a chave que a ligará com as tabelas a serem importadas em seguida.</p>  
-                </div>
-                <div class="item">
-                    <h3>Coleta de arquivos CSV ou XLSX</h3>
-                    <img src="small2.png" class="">
-                </div>
-                <div class="item">
-                    <h3>Coleta de bancos de dados</h3>
-                    <p>2 - Coleta de bancos de dados: Nesta opção pode ser realizada a coleta de um banco de dados, os aceitos são MySQL, PostgreSQL ou Microsoft SQL Server. Para fazer a coleta é necessário ter em mãos os dados para acesso ao banco que são: nome ou ip do servidor de banco de dados, nome do banco de dados, nome do usuário, senha e porta de conexão. Após o preenchimento dessas informações e no caso da conexão realizada, pode-se escolher entre buscar uma tabela ou executar uma consulta. Após utilizar qualquer uma desta opções você será levado a tela de visualização dos dados. Terminado a coleta é necessário fazer a validação dos tipos de dados escolhidos, clicando no botão correspondente e após isso clicar em salvar tabela, nomeando o nome da tabela e a chave que a ligará com as tabelas a serem importadas em seguida.</p>
-                    
-                </div>
-                <div class="item">
-                    <h3>Coleta de bancos de dados</h3>
-                    <img src="small3.png" class="">
-                </div>
-
-                <div class="item">
-                    <h3>Coleta - Visualização da importação</h3>
-                    <img src="small4.png" class="">
-                </div>
-
-                <div class="item">
-                    <h3>Modelagem - Nomeação do Cubo</h3>
-                    <p>1 - Nomeação do Cubo: Aqui deve ser escolhido o nome que será dado ao cubo (coleção de informações que serão analisadas), e definição da Tabela Fato (Tabela que contém as métricas - dados quantitativos).</p>
-                    
-                </div>
-                <div class="item">
-                    <h3>Modelagem - Nomeação do Cubo</h3>
-                    <img src="small5.png" class="">
-                    
-                </div>
-
-                <div class="item">
-                    <h3>Modelagem - Especificação das Dimensões</h3>
-                    <p>2 - Especificação das Dimensões: As dimensões podem ser escolhidas para estarem nos eixos (X ou Y) conforme o cenário a ser analisado. As dimensões contêm dados qualitativos.</p>
-                    
-                </div>
-                <div class="item">
-                    <h3>Modelagem - Especificação das Dimensões</h3>
-                    <img src="small6.png" class="">
-                    
-                </div>
-
-                <div class="item">
-                    <h3>Modelagem - Especificação da Métricas</h3>
-                    <p>3 - Especificação da Métricas: São os valores que estarão da área do gráfico. As métricas contêm os dados quantitativos.</p>
-
-                </div>
-                <div class="item">
-                    <h3>Modelagem - Especificação da Métricas</h3>
-                    <img src="small7.png" class="">
-                    
-                </div>
-
-                <div class="item">
-                    <h3>Modelagem - Visualização da modelagem</h3>
-                    <img src="small8.png" class="">
-                </div>
-            </div>
+<div uib-carousel active="active" style="height: 500px; top:20px;">
+  <div uib-slide ng-repeat="slide in slides track by $index" index="$index" style="height: 500px; overflow: auto;">
+    <div class="carousel-caption">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>{{slide.title}}</h3>
+          <img ng-src="{{slide.image}}" style="margin:auto;">
+          <p>{{slide.text1}}</p>
+          <p>{{slide.text2}}</p>
         </div>
-
-        <div class="bottom">
-            <div class="step">
-                <button class="tour-anterior">
-                    <?xml version="1.0" encoding="iso-8859-1"?>
-                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 487.622 487.622" style="enable-background:new 0 0 487.622 487.622;" width="45px" height="45px" xml:space="preserve">
-                    <g>
-                        <circle style="fill:#CF6F55;" cx="243.811" cy="243.811" r="243.811"/>
-                        <path style="fill:#C06046;" d="M473.438,325.906l-77.24-82.096l-89.987-34.76l-68.096-78.382L91.424,243.81l214.352,235.854
-                            C383.796,459.221,446.552,401.096,473.438,325.906z"/>
-                        <polygon style="fill:#FFFFFF;" points="91.424,243.81 238.116,130.668 238.116,182.748 396.198,243.81 238.116,304.872 
-                            238.116,356.952         "/>
-                    </g>
-                    </svg>
-                </button>
-                <ul id="customDots" class="owl-dots"></ul>
-                <button class="tour-proximo">
-                    <?xml version="1.0" encoding="iso-8859-1"?>
-                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    viewBox="0 0 487.622 487.622" style="enable-background:new 0 0 487.622 487.622;" xml:space="preserve" width="45px" height="45px">
-                    <g>
-                        <circle style="fill:#65B3AD;" cx="243.811" cy="243.811" r="243.811"/>
-                        <path style="opacity:0.37;fill:#56A49E;enable-background:new    ;" d="M473.438,325.907l-77.24-82.096H91.424l214.353,235.854
-                        C383.795,459.222,446.551,401.096,473.438,325.907z"/>
-                        <polygon style="fill:#FFFFFF;" points="396.198,243.811 249.506,130.669 249.506,182.749 91.424,243.811 249.506,304.873 
-                        249.506,356.953"/>
-                    </g>
-                </svg>
-                </button>
-            </div>
-        </div>
+      </div>
     </div>
-
-    <script>
-        $('.owl-carousel').owlCarousel({
-            loop:true,
-            margin:10,
-            nav:false,
-            dots: true,
-            dotsEach: true,
-            dotsContainer: "#customDots",
-            autoplay:true,
-            autoplayTimeout:5000,
-            autoplayHoverPause:true,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                1000:{
-                    items:1
-                }
-            }
-        });
-
-        $('.owl-dot').click(function () {
-            owl.trigger('to.owl.carousel', [$(this).index(), 300]);
-        });
-        var owl = $('.owl-carousel');
-        $(".tour-anterior").on('click', function () {
-            owl.trigger('prev.owl.carousel');
-        });
-        $(".tour-proximo").on('click', function () {
-            owl.trigger('next.owl.carousel');
-        });
-
-    </script>	
+  </div>
+</div>

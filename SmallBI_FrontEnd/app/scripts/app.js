@@ -12,7 +12,8 @@
       'ui.router.stateHelper',
       'oitozero.ngSweetAlert',
       'ui.mask',
-      'selectAutocomplete'
+      'selectAutocomplete',
+      'ui.bootstrap'
     ]).config(routes).run(autentica);
 
   function autentica($rootScope, AuthService, $location, $cookieStore, $state) {
@@ -73,8 +74,8 @@
     var listarCubo = {
       name: 'listar',
       url: '/listar',
-      templateUrl: 'scripts/cubo/cubo-lista.html',
-      controller: 'cuboListarController',
+      templateUrl: 'scripts/assistente/assistente.html',
+      controller: 'assistenteController',
       controllerAs: 'vm'
     };
 
@@ -278,11 +279,11 @@
     });
 
     // ASSISTENTE ROUTE
-    var tutorialAssistente = {
-      name: 'tutorial',
-      url: '/tutorial',
+    var assistente = {
+      name: 'assistenteImportacao',
+      url: '/assistenteImportacao',
       templateUrl: 'scripts/assistente/assistente.html',
-      controller: 'turorialController',
+      controller: 'assistenteController',
       controllerAs: 'vm'
     };
 
@@ -290,7 +291,7 @@
       name: 'assistente',
       url: '/assistente',
       templateUrl: 'views/main.html',
-      children: [tutorialAssistente]
+      children: [assistente]
     });
 
     // SITE ROUTE
