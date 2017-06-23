@@ -33,7 +33,8 @@
         <a ui-sref="funcao.listar" data-toggle="collapse" data-target="#funcao" data-parent="#accordion"><span>Função</span></a>
       </li>
       <li class="fa fa-cubes"><a ui-sref="cubo.listar"><span>Cubos</span></a></li>
-      <li class="fa fa-download"><a href="http://backend.smallbi.com.br:18080/SmallBI_WebService/SmallBIAssistenteImportacao/SmallBIAssistenteImportacao.jnlp"><span>Download Assistente</span></a></li>
+      <!-- <li class="fa fa-download"><a href="http://backend.smallbi.com.br:18080/SmallBI_WebService/SmallBIAssistenteImportacao/SmallBIAssistenteImportacao.jnlp"><span>Download Assistente</span></a></li> -->
+      <li class="fa fa-download"><a ui-sref="assistente.tutorial"><span>Download Assistente</span></a></li>
     </ul>
     <div ng-if="vm.permissao != 1" class="areaTituloConsumo">
       <p class="tituloConsumo">Consumo Atual:</p>

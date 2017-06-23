@@ -277,6 +277,22 @@
       children: [listarPerfil, editarPerfil, cadastrarPerfil]
     });
 
+    // ASSISTENTE ROUTE
+    var tutorialAssistente = {
+      name: 'tutorial',
+      url: '/tutorial',
+      templateUrl: 'scripts/assistente/assistente.html',
+      controller: 'turorialController',
+      controllerAs: 'vm'
+    };
+
+    stateHelperProvider.setNestedState({
+      name: 'assistente',
+      url: '/assistente',
+      templateUrl: 'views/main.html',
+      children: [tutorialAssistente]
+    });
+
     // SITE ROUTE
     stateHelperProvider.setNestedState({
       name: 'index',
