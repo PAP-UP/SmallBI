@@ -1,11 +1,11 @@
 <a href="http://backend.smallbi.com.br:18080/SmallBI_WebService/SmallBIAssistenteImportacao/SmallBIAssistenteImportacao.jnlp" class="download-btn"><i class="fa fa-cloud-download">&nbsp;&nbsp;</i>Download</a>
 <div uib-carousel active="active" style="height: 500px; top:20px;">
-  <div uib-slide ng-repeat="slide in slides track by $index" index="$index" style="height: 500px; overflow: auto;">
+  <div uib-slide ng-repeat="slide in vm.slides track by $index" index="$index" style="height: 500px; overflow: auto;">
     <div class="carousel-caption">
       <div class="row">
         <div class="col-md-12">
           <h3>{{slide.title}}</h3>
-          <img ng-src="{{slide.image}}" style="margin:auto;">
+          <img ng-src="{{slide.image}}" style="margin:auto;" width="700" height="390" ng-if="slide.image">
           <p>{{slide.text1}}</p>
           <p>{{slide.text2}}</p>
         </div>

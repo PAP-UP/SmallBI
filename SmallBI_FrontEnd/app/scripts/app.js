@@ -74,8 +74,8 @@
     var listarCubo = {
       name: 'listar',
       url: '/listar',
-      templateUrl: 'scripts/assistente/assistente.html',
-      controller: 'assistenteController',
+      templateUrl: 'scripts/cubo/cubo-lista.html',
+      controller: 'cuboListarController',
       controllerAs: 'vm'
     };
 

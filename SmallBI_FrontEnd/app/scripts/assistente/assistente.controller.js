@@ -4,14 +4,14 @@
   angular.module('SmallBIApp')
     .controller('assistenteController', assistenteController);
 
-  function assistenteController($scope) {
+  function assistenteController() {
 
-    // var vm = this;
+     var vm = this;
 
-    $scope.myInterval = 3000;
-    $scope.noWrapSlides = false;
-    $scope.active = 0;
-    $scope.slides = [
+    vm.myInterval = 3000;
+    vm.noWrapSlides = false;
+    vm.active = 0;
+    vm.slides = [
       {
         title: 'Esse assistente é dividido em duas partes: I - Coleta, II - Modelagem',
         text1: 'Coleta: Nesta primeira etapa lhe auxiliaremos a buscar as informações que serão analisadas, a busca pode ser realizada através de arquivos CSV (Arquivos Texto), arquivos XLSX (Microsoft Excel), tabelas de banco de dados ou consultas nestes mesmos bancos de dados.',
@@ -23,7 +23,7 @@
       },
       {
         title: 'Coleta de arquivos CSV ou XLSX',
-        image: 'images/logo.png'
+        image: 'images/small2.png'
       },
       {
         title: 'Coleta de bancos de dados',
@@ -31,11 +31,11 @@
       },
       {
         title: 'Coleta de bancos de dados',
-        image: 'images/logo.png'
+        image: 'images/small3.png'
       },
       {
         title: 'Coleta - Visualização da importação',
-        image: 'images/logo.png'
+        image: 'images/small4.png'
       },
       {
         title: 'Modelagem - Nomeação do Cubo',
@@ -43,7 +43,7 @@
       },
       {
         title: 'Modelagem - Nomeação do Cubo',
-        image: 'images/logo.png'
+        image: 'images/small5.png'
       },
       {
         title: 'Modelagem - Especificação das Dimensões',
@@ -51,7 +51,7 @@
       },
       {
         title: 'Modelagem - Especificação das Dimensões',
-        image: 'images/logo.png'
+        image: 'images/small6.png'
       },
       {
         title: 'Modelagem - Especificação da Métricas',
@@ -59,13 +59,12 @@
       },
       {
         title: 'Modelagem - Especificação da Métricas',
-        image: 'images/logo.png'
+        image: 'images/small7.png'
       },
       {
         title: 'Modelagem - Visualização da modelagem',
-        image: 'images/logo.png'
-      },
-
+        image: 'images/small8.png'
+      }
     ];
 
   }
