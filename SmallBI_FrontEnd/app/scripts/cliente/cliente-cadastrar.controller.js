@@ -28,7 +28,7 @@
         vm.dadosCliente.idPerfil = 2;
       vm.dadosCliente.idCidade = vm.dadosCliente.Cidade.idCidade;
       delete vm.dadosCliente.Cidade;
-      
+
       clienteResource.insereCliente(vm.dadosCliente).then(
         function (result) {
           $('#modalCadastrar').hide();
